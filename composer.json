@@ -9,6 +9,10 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/upenn/penn403.git"
+        },
+        {
             "type": "path",
             "url": "upstream-configuration"
         }
@@ -20,7 +24,9 @@
         "drupal/core-recommended": "^10",
         "pantheon-systems/drupal-integrations": "^10",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11 || ^12"
+        "drush/drush": "^11 || ^12",
+        "upenn/penn403": "dev-d8",
+        "drupal/simplesamlphp_auth": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -64,8 +70,14 @@
         "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
     },
     "scripts": {
+        "post-install-cmd": [
+            "/bin/bash scripts/saml_config.sh"
+        ],
         "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
-        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"]
+        "post-update-cmd": [
+            "DrupalComposerManaged\\ComposerScripts::postUpdate",
+            "/bin/bash scripts/saml_config.sh"
+        ]
     },
     "config": {
         "preferred-install": "dist",
@@ -79,7 +91,9 @@
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "simplesamlphp/composer-xmlprovider-installer": true,
+            "simplesamlphp/composer-module-installer": true
         }
     }
 }

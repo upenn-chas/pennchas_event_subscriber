@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://collegehouses.upenn.edu/simplesaml/module.php/saml/sp/metadata.php/default-sp">
+  <md:Extensions>
+    <mdattr:EntityAttributes xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute">
+      <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" FriendlyName="Penn Self-Service EAEG" Name="urn:mace:upenn.edu:penn:shib:idp:attribute:eg:selfservice" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">urn:mace:upenn.edu:shib:EntityGroup:selfservice</saml2:AttributeValue>
+      </saml2:Attribute>
+      <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="http://shibboleth.net/ns/attributes/releaseAllValues" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">surname</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">eduPersonAffiliation</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">eduPersonScopedAffiliation</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">eduPersonPrincipalName</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">mail</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">employeeNumber</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">givenName</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">Pennname</saml2:AttributeValue>
+        <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">displayName</saml2:AttributeValue>
+      </saml2:Attribute>
+    </mdattr:EntityAttributes>
+  </md:Extensions>
+  <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:KeyDescriptor use="signing">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>MIID8jCCAtoCCQC/8yomyfJgijANBgkqhkiG9w0BAQsFADCBujELMAkGA1UEBhMCVVMxFTATBgNVBAgMDFBlbm5zeWx2YW5pYTEVMBMGA1UEBwwMUGhpbGFkZWxwaGlhMSMwIQYDVQQKDBpVbml2ZXJzaXR5IG9mIFBlbm5zeWx2YW5pYTElMCMGA1UECwwcSVNDIEFJUyBXZWIgUGxhdGZvcm0gU2VydmljZTENMAsGA1UEAwwEbGl2ZTEiMCAGCSqGSIb3DQEJARYTd2VibWFzdGVyQHVwZW5uLmVkdTAeFw0yMjAxMTgxOTMyMThaFw0zMjAxMTgxOTMyMThaMIG6MQswCQYDVQQGEwJVUzEVMBMGA1UECAwMUGVubnN5bHZhbmlhMRUwEwYDVQQHDAxQaGlsYWRlbHBoaWExIzAhBgNVBAoMGlVuaXZlcnNpdHkgb2YgUGVubnN5bHZhbmlhMSUwIwYDVQQLDBxJU0MgQUlTIFdlYiBQbGF0Zm9ybSBTZXJ2aWNlMQ0wCwYDVQQDDARsaXZlMSIwIAYJKoZIhvcNAQkBFhN3ZWJtYXN0ZXJAdXBlbm4uZWR1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvjtXF1eGkOw2FOb+U0B23QGVMycSJBCIHHwTT2aajLb+72b9y8UGcx2+HghNTblU0SAVXeZsu+rGGF51ZBD1FHBemGg72PSTBOBAyArnw7qxAoYAwvOHsq726Xdxn6nnjaOAe+jc/DgOFwf3YgpdUEw94J1Ne54CdETU2kVt8LMkgSx6WxKS15N+U733AUKCf+j2ouImof9nT1T2m7dBLa0UbCztJC1PD6yYfobDyd86lm51M9sFwGP9G24peRezPHvHyoP/3IltUFffCDXuUYgubwYhrRQ8um/3heFsEU+PhtkzXlR/ObZxay8W0GDu+U7wzoqZRDoW4NedAqp1QwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAbAK4yAiwy2HHR5LeRCv1beXU1r7X4SB4DYgf0KcqHAqmcyGkq0uLA6LLOsKsIGqf5W82mV8FlnyROY7jrkPFeMJW4Ot7SuQC9WxgI/rRXbR4jSkai4U5yMmIv0Ua1Hhz/Cop7MCKpo8RB71uD0osCSpWBu3bHye86VOb9mI4Sy1EjrNJhIbH46iaRpUViRVC44wbqBirEI27PFhSzcdGWCRfhy2juwQ1T95ThdLm4SJYKUoSUtuNmpxI70gb7v6OpI2fgJVlfWsxRH22FjJqSfzOLbdKSR4Ds0Q9bV41K/WoZtkaz+/Qmsy6c+a4VXLHXvpptPQdSj1ww41gVOhRT</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+    <md:KeyDescriptor use="encryption">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>MIID8jCCAtoCCQC/8yomyfJgijANBgkqhkiG9w0BAQsFADCBujELMAkGA1UEBhMCVVMxFTATBgNVBAgMDFBlbm5zeWx2YW5pYTEVMBMGA1UEBwwMUGhpbGFkZWxwaGlhMSMwIQYDVQQKDBpVbml2ZXJzaXR5IG9mIFBlbm5zeWx2YW5pYTElMCMGA1UECwwcSVNDIEFJUyBXZWIgUGxhdGZvcm0gU2VydmljZTENMAsGA1UEAwwEbGl2ZTEiMCAGCSqGSIb3DQEJARYTd2VibWFzdGVyQHVwZW5uLmVkdTAeFw0yMjAxMTgxOTMyMThaFw0zMjAxMTgxOTMyMThaMIG6MQswCQYDVQQGEwJVUzEVMBMGA1UECAwMUGVubnN5bHZhbmlhMRUwEwYDVQQHDAxQaGlsYWRlbHBoaWExIzAhBgNVBAoMGlVuaXZlcnNpdHkgb2YgUGVubnN5bHZhbmlhMSUwIwYDVQQLDBxJU0MgQUlTIFdlYiBQbGF0Zm9ybSBTZXJ2aWNlMQ0wCwYDVQQDDARsaXZlMSIwIAYJKoZIhvcNAQkBFhN3ZWJtYXN0ZXJAdXBlbm4uZWR1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvjtXF1eGkOw2FOb+U0B23QGVMycSJBCIHHwTT2aajLb+72b9y8UGcx2+HghNTblU0SAVXeZsu+rGGF51ZBD1FHBemGg72PSTBOBAyArnw7qxAoYAwvOHsq726Xdxn6nnjaOAe+jc/DgOFwf3YgpdUEw94J1Ne54CdETU2kVt8LMkgSx6WxKS15N+U733AUKCf+j2ouImof9nT1T2m7dBLa0UbCztJC1PD6yYfobDyd86lm51M9sFwGP9G24peRezPHvHyoP/3IltUFffCDXuUYgubwYhrRQ8um/3heFsEU+PhtkzXlR/ObZxay8W0GDu+U7wzoqZRDoW4NedAqp1QwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAbAK4yAiwy2HHR5LeRCv1beXU1r7X4SB4DYgf0KcqHAqmcyGkq0uLA6LLOsKsIGqf5W82mV8FlnyROY7jrkPFeMJW4Ot7SuQC9WxgI/rRXbR4jSkai4U5yMmIv0Ua1Hhz/Cop7MCKpo8RB71uD0osCSpWBu3bHye86VOb9mI4Sy1EjrNJhIbH46iaRpUViRVC44wbqBirEI27PFhSzcdGWCRfhy2juwQ1T95ThdLm4SJYKUoSUtuNmpxI70gb7v6OpI2fgJVlfWsxRH22FjJqSfzOLbdKSR4Ds0Q9bV41K/WoZtkaz+/Qmsy6c+a4VXLHXvpptPQdSj1ww41gVOhRT</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dev-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://dev-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://test-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://live-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev.collegehouses.upenn.edu/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev.dubois.house.upenn.edu/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://test.collegehouses.upenn.edu/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://dev-penn-college-house.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev-penn-chas.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://test-penn-chas.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://live-penn-chas.pantheonsite.io/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp"/>
+  </md:SPSSODescriptor>
+  <md:ContactPerson contactType="technical">
+    <md:GivenName>ISC Web Hosting Service</md:GivenName>
+    <md:EmailAddress>mailto:web-platform-service@lists.upenn.edu</md:EmailAddress>
+  </md:ContactPerson>
+</md:EntityDescriptor>
