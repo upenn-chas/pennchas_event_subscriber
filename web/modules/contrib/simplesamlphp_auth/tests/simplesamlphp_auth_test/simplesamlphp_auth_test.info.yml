@@ -1,0 +1,12 @@
+name: 'SimpleSAMLPHP Authentication Test module'
+type: module
+description: 'Support module for SimpleSAMLPHP Authentication tests'
+package: Testing
+dependencies:
+  - drupal:user
+hidden: true
+
+# Information added by Drupal.org packaging script on 2023-11-08
+version: '4.0.0'
+project: 'simplesamlphp_auth'
+datestamp: 1699460962
