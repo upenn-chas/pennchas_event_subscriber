@@ -1,0 +1,24 @@
+uuid: b3d08aa1-92c9-45e1-87fe-10852b9a5186
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_intended_audience
+field_name: field_intended_audience
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: None
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

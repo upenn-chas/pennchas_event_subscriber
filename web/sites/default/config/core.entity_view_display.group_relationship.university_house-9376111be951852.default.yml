@@ -1,0 +1,23 @@
+uuid: 33712ce3-acbb-4e12-89c0-b98da957f3d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.university_house-9376111be951852.group_roles
+    - group.relationship_type.university_house-9376111be951852
+id: group_relationship.university_house-9376111be951852.default
+targetEntityType: group_relationship
+bundle: university_house-9376111be951852
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  uid: true

@@ -1,0 +1,17 @@
+uuid: 78f38bbc-ef04-4faa-9b40-be68df9fa85e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'CHAS Event'
+type: chas_event
+description: 'Use this to create house event.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: true

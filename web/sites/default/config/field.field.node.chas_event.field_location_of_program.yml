@@ -1,0 +1,19 @@
+uuid: 6b57fbc4-9298-4c36-a65f-943baa83dd2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_of_program
+    - node.type.chas_event
+id: node.chas_event.field_location_of_program
+field_name: field_location_of_program
+entity_type: node
+bundle: chas_event
+label: 'Location of Program'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
