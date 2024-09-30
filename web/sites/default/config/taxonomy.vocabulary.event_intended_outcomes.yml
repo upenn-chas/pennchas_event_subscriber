@@ -1,9 +1,0 @@
-uuid: de4b91e5-c406-4ef7-888a-e46d40dfc3a5
-langcode: en
-status: true
-dependencies: {  }
-name: 'Event Intended Outcomes'
-vid: event_intended_outcomes
-description: 'Event Intended Outcomes'
-weight: 0
-new_revision: false

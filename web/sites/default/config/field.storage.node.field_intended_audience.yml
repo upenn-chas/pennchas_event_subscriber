@@ -12,8 +12,32 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: none
-      label: None
+      value: all_house_residents
+      label: 'All house residents'
+    -
+      value: floors_residents
+      label: 'Residents of a specific floor(s) in a college house'
+    -
+      value: program_community
+      label: 'Program community'
+    -
+      value: all_college_houses
+      label: 'All college houses'
+    -
+      value: multiple_college_houses
+      label: 'Multiple college houses'
+    -
+      value: all_first_year_students
+      label: 'All first year students'
+    -
+      value: all_second_year_students
+      label: 'All second year students'
+    -
+      value: all_upper_year_students
+      label: 'All upper year students'
+    -
+      value: other
+      label: Other
   allowed_values_function: ''
 module: options
 locked: false

@@ -6,12 +6,6 @@
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
     if ($form_id === 'node_chas_event_form') {
-        $form['field_intended_audience']['widget']['#options'] = getTermsOptions('intended_audience');
-        
-        $form['field_intended_audience']['widget']['#options'] = getTermsOptions('intended_audience');
-
-        $form['field_intended_outcomes']['widget']['#options'] = getTermsOptions('event_intended_outcomes');
-
         // Enable floor number field
         $form['field_audience_floor']['#states'] = [
             'visible' => [

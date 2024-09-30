@@ -12,8 +12,23 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: none
-      label: None
+      value: learn_a_skill
+      label: 'Learn a skill'
+    -
+      value: gain_information
+      label: 'Gain information'
+    -
+      value: connect_with_peers
+      label: 'Connect with peers'
+    -
+      value: connect_with_resource
+      label: 'Connect with resource'
+    -
+      value: connect_with_faculty
+      label: 'Connect with faculty'
+    -
+      value: engage_in_an_activity
+      label: 'Engage in an activity'
   allowed_values_function: ''
 module: options
 locked: false
