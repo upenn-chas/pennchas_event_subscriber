@@ -1,0 +1,14 @@
+uuid: c060423c-5f9f-4fa3-ab9b-ffe16f547497
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_technology
+  module:
+    - user
+id: user_add_role_action.chas_technology
+label: 'Add the CHAS Technology role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: chas_technology

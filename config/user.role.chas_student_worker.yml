@@ -1,0 +1,18 @@
+uuid: 7e0da464-f6b7-4667-b9d0-74de670ffd28
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+    - node.type.page
+    - node.type.reserve_room
+  module:
+    - node
+id: chas_student_worker
+label: 'CHAS Student Worker'
+weight: 5
+is_admin: null
+permissions:
+  - 'create event content'
+  - 'create page content'
+  - 'create reserve_room content'

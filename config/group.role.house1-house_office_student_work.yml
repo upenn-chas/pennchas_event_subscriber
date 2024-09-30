@@ -1,0 +1,16 @@
+uuid: cfbebb16-76c5-435e-a68d-b658ddc3ed96
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-house_office_student_work
+label: 'House Office Student Worker'
+weight: 106
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access group_node overview'
+  - 'view group_node:event entity'

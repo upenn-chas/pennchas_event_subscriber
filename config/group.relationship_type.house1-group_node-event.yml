@@ -1,0 +1,17 @@
+uuid: 8d6f3c03-ac59-44b0-9f74-2aa11a50835c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - node.type.event
+  module:
+    - gnode
+    - node
+id: house1-group_node-event
+group_type: house1
+content_plugin: 'group_node:event'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

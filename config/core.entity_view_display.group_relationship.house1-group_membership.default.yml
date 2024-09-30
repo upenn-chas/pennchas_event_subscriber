@@ -1,0 +1,23 @@
+uuid: a04eeece-52f3-452e-82d1-7974b8f11ecd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_relationship.house1-group_membership.group_roles
+    - group.relationship_type.house1-group_membership
+id: group_relationship.house1-group_membership.default
+targetEntityType: group_relationship
+bundle: house1-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  uid: true

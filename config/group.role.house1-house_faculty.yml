@@ -1,0 +1,27 @@
+uuid: 720fe337-97d3-4b5f-9d53-b9805984c5b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-house_faculty
+label: 'House Faculty'
+weight: 108
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:event entity'
+  - 'create group_node:page entity'
+  - 'delete own group_node:event entity'
+  - 'delete own group_node:page entity'
+  - 'update own group_node:event entity'
+  - 'update own group_node:page entity'
+  - 'view group'
+  - 'view group_node:event entity'
+  - 'view group_node:room relationship'
+  - 'view own unpublished group'
+  - 'view own unpublished group_node:event entity'
+  - 'view own unpublished group_node:page entity'

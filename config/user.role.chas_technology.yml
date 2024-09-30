@@ -1,0 +1,28 @@
+uuid: fe90910f-7481-4783-8f6c-248a5135f443
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+    - node.type.page
+    - node.type.reserve_room
+    - node.type.room
+  module:
+    - node
+id: chas_technology
+label: 'CHAS Technology'
+weight: 6
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'create event content'
+  - 'create page content'
+  - 'create reserve_room content'
+  - 'create room content'
+  - 'delete own event content'
+  - 'delete own page content'
+  - 'delete own reserve_room content'
+  - 'edit own event content'
+  - 'edit own page content'
+  - 'edit own reserve_room content'
+  - 'edit own room content'

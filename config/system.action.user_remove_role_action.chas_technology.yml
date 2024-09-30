@@ -1,0 +1,14 @@
+uuid: 96a95345-0254-4de2-8c14-a81dbb9e451d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_technology
+  module:
+    - user
+id: user_remove_role_action.chas_technology
+label: 'Remove the CHAS Technology role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: chas_technology

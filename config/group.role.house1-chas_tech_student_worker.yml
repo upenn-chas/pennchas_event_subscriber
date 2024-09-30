@@ -1,0 +1,14 @@
+uuid: 1aaa93a7-1e30-460b-804f-c334118ac670
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-chas_tech_student_worker
+label: 'CHAS Tech Student Worker'
+weight: 104
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions: {  }

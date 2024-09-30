@@ -1,0 +1,14 @@
+uuid: cd8700a6-2c84-41dd-80a3-3091d3c677e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-admin
+label: Admin
+weight: 100
+admin: true
+scope: individual
+global_role: null
+group_type: house1
+permissions: {  }

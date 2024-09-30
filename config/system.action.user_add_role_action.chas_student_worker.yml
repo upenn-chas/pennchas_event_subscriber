@@ -1,0 +1,14 @@
+uuid: e9b5a49d-a5e5-4b5e-a56a-0076ec18a7c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_student_worker
+  module:
+    - user
+id: user_add_role_action.chas_student_worker
+label: 'Add the CHAS Student Worker role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: chas_student_worker

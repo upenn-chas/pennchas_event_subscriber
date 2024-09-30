@@ -1,0 +1,36 @@
+uuid: c0d93e30-9b5f-429f-862a-42185b2196cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-house_coordinator
+label: 'House Coordinator'
+weight: 109
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'create group_node:event entity'
+  - 'create group_node:page entity'
+  - 'create group_node:room entity'
+  - 'delete own group_node:event entity'
+  - 'delete own group_node:event relationship'
+  - 'delete own group_node:page entity'
+  - 'delete own group_node:room entity'
+  - 'edit group'
+  - 'update own group_node:event entity'
+  - 'update own group_node:page entity'
+  - 'update own group_node:room entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:event entity'
+  - 'view group_node:event relationship'
+  - 'view own unpublished group'
+  - 'view own unpublished group_node:event entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view own unpublished group_node:room entity'
+  - 'view unpublished group_node:room entity'

@@ -1,0 +1,14 @@
+uuid: 4a7bcb6d-c494-4aab-8383-62622e5e8111
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_director
+  module:
+    - user
+id: user_add_role_action.chas_director
+label: 'Add the CHAS Director role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: chas_director

@@ -1,0 +1,9 @@
+uuid: 62700781-c5a5-4a3e-a2d2-1fc24edfc9bf
+langcode: en
+status: true
+dependencies: {  }
+id: campus_partner
+label: 'Campus Partner'
+weight: 4
+is_admin: null
+permissions: {  }

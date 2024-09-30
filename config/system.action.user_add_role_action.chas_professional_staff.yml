@@ -1,0 +1,14 @@
+uuid: 903560cd-0cb0-40a2-b251-9f86d3fabca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_professional_staff
+  module:
+    - user
+id: user_add_role_action.chas_professional_staff
+label: 'Add the CHAS Professional Staff role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: chas_professional_staff
