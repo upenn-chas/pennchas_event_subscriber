@@ -1,0 +1,18 @@
+uuid: 16ac3be7-a851-4c0c-98d1-2db100aefcc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-resident_advisor
+label: 'Resident Advisor'
+weight: 107
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access group_node overview'
+  - 'view group'
+  - 'view group_node:event entity'
+  - 'view own unpublished group'

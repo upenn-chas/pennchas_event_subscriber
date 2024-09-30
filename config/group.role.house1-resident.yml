@@ -1,0 +1,16 @@
+uuid: 2b1655d4-c5e6-4280-a5a8-3cdc5adaff41
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-resident
+label: Resident
+weight: 103
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access group_node overview'
+  - 'view group_node:event entity'

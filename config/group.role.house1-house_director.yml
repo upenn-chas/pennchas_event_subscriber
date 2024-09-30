@@ -1,0 +1,38 @@
+uuid: 4965684f-065b-49b7-9480-f42c759288e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: house1-house_director
+label: 'House Director'
+weight: 105
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'create group_node:event entity'
+  - 'create group_node:page entity'
+  - 'create group_node:reserve_room entity'
+  - 'create group_node:room entity'
+  - 'delete own group_node:event entity'
+  - 'delete own group_node:event relationship'
+  - 'delete own group_node:page entity'
+  - 'delete own group_node:reserve_room entity'
+  - 'delete own group_node:room entity'
+  - 'update own group_node:event entity'
+  - 'update own group_node:page entity'
+  - 'update own group_node:reserve_room entity'
+  - 'update own group_node:room entity'
+  - 'view group'
+  - 'view group_membership relationship'
+  - 'view group_node:event entity'
+  - 'view group_node:event relationship'
+  - 'view group_node:room relationship'
+  - 'view own unpublished group_node:event entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view own unpublished group_node:room entity'
+  - 'view unpublished group_node:event entity'

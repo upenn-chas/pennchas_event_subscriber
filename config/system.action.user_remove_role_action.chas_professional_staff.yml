@@ -1,0 +1,14 @@
+uuid: da756e0d-4c52-4609-b2e6-f60d501e03a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_professional_staff
+  module:
+    - user
+id: user_remove_role_action.chas_professional_staff
+label: 'Remove the CHAS Professional Staff role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: chas_professional_staff

@@ -1,0 +1,14 @@
+uuid: c16f1970-8073-460f-8f86-9dccff8dddc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_student_worker
+  module:
+    - user
+id: user_remove_role_action.chas_student_worker
+label: 'Remove the CHAS Student Worker role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: chas_student_worker

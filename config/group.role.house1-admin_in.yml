@@ -1,0 +1,15 @@
+uuid: 3d3b0440-6fe2-4dca-beeb-71ca2a387f2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.administrator
+id: house1-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: house1
+permissions: {  }

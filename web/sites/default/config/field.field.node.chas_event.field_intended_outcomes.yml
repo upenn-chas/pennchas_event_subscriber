@@ -1,0 +1,21 @@
+uuid: 981e1f06-ef0a-4f02-b744-c1f2ca3d9a83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intended_outcomes
+    - node.type.chas_event
+  module:
+    - options
+id: node.chas_event.field_intended_outcomes
+field_name: field_intended_outcomes
+entity_type: node
+bundle: chas_event
+label: 'Intended Outcome(s)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,28 @@
+uuid: eb3e3af6-bc10-4a0a-b8f5-4887cf701229
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.reserve_room.body
+    - node.type.reserve_room
+  module:
+    - text
+    - user
+id: node.reserve_room.default
+targetEntityType: node
+bundle: reserve_room
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

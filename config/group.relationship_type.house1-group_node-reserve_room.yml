@@ -1,0 +1,17 @@
+uuid: 21f6542d-f976-4206-a30e-2fc1fccc9649
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - node.type.reserve_room
+  module:
+    - gnode
+    - node
+id: house1-group_node-reserve_room
+group_type: house1
+content_plugin: 'group_node:reserve_room'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

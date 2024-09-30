@@ -1,0 +1,19 @@
+uuid: fb00adb6-c2d8-4a54-b30c-8d1be175be87
+langcode: en
+status: true
+dependencies: {  }
+id: house1
+label: house1
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - house1-admin
+  - house1-chas_tech_student_worker
+  - house1-house_coordinator
+  - house1-house_director
+  - house1-house_faculty
+  - house1-house_office_student_work
+  - house1-resident
+  - house1-resident_advisor

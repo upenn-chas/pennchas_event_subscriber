@@ -1,0 +1,14 @@
+uuid: 9a0921a2-9289-4288-879e-cab68f216cb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.campus_partner
+  module:
+    - user
+id: user_add_role_action.campus_partner
+label: 'Add the Campus Partner role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: campus_partner

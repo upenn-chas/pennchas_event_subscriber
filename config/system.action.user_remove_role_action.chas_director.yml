@@ -1,0 +1,14 @@
+uuid: 3017c94e-7d48-477e-8e53-93c9d3f14446
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chas_director
+  module:
+    - user
+id: user_remove_role_action.chas_director
+label: 'Remove the CHAS Director role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: chas_director

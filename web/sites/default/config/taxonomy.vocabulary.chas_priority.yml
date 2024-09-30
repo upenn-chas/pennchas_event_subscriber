@@ -1,0 +1,9 @@
+uuid: 60c55e0a-c316-4f87-98e3-79990f325d76
+langcode: en
+status: true
+dependencies: {  }
+name: 'CHAS Priority'
+vid: chas_priority
+description: 'CHAS Priority'
+weight: 0
+new_revision: false

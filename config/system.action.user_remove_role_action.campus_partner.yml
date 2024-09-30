@@ -1,0 +1,14 @@
+uuid: 1e4827e7-ea23-4b50-822d-90057b3231d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.campus_partner
+  module:
+    - user
+id: user_remove_role_action.campus_partner
+label: 'Remove the Campus Partner role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: campus_partner
