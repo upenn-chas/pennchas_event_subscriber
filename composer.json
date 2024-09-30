@@ -27,7 +27,14 @@
         "drush/drush": "^11 || ^12",
         "upenn/penn403": "dev-d8",
         "drupal/simplesamlphp_auth": "^4.0",
+<<<<<<< HEAD
         "drupal/group": "^3.2"
+=======
+        "drupal/group": "^3.2",
+        "drupal/term_reference_tree": "^2.0",
+        "drupal/smart_date": "^4.1",
+        "drupal/multiple_fields_remove_button": "^2.2"
+>>>>>>> origin/development
     },
     "require-dev": {
         "drupal/core-dev": "^10"

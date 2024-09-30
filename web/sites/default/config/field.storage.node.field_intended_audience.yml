@@ -1,0 +1,48 @@
+uuid: b3d08aa1-92c9-45e1-87fe-10852b9a5186
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_intended_audience
+field_name: field_intended_audience
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: all_house_residents
+      label: 'All house residents'
+    -
+      value: floors_residents
+      label: 'Residents of a specific floor(s) in a college house'
+    -
+      value: program_community
+      label: 'Program community'
+    -
+      value: all_college_houses
+      label: 'All college houses'
+    -
+      value: multiple_college_houses
+      label: 'Multiple college houses'
+    -
+      value: all_first_year_students
+      label: 'All first year students'
+    -
+      value: all_second_year_students
+      label: 'All second year students'
+    -
+      value: all_upper_year_students
+      label: 'All upper year students'
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

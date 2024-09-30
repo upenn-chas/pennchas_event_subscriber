@@ -1,0 +1,21 @@
+uuid: 87e1ae9a-84dc-4216-abe3-5810eb5d171c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intended_audience
+    - node.type.chas_event
+  module:
+    - options
+id: node.chas_event.field_intended_audience
+field_name: field_intended_audience
+entity_type: node
+bundle: chas_event
+label: 'Intended Audience/Participant Group'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

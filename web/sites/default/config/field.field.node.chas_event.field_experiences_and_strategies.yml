@@ -1,0 +1,19 @@
+uuid: 2345ccbb-9852-406b-99aa-0c1efb1f735f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_experiences_and_strategies
+    - node.type.chas_event
+id: node.chas_event.field_experiences_and_strategies
+field_name: field_experiences_and_strategies
+entity_type: node
+bundle: chas_event
+label: 'Experiences and Strategies'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

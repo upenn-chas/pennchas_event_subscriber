@@ -1,0 +1,9 @@
+uuid: 7ad5c2a7-20f6-4b9f-a3f1-687d1dfeba2c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Program community'
+vid: program_community
+description: 'Program community'
+weight: 0
+new_revision: false

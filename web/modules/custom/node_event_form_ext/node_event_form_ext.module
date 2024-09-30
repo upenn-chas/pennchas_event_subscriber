@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * Implements hook_form_alter()
+ */
+function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
+{
+    if ($form_id === 'node_chas_event_form') {
+        // Enable floor number field
+        $form['field_audience_floor']['#states'] = [
+            'visible' => [
+                ':input[name="field_intended_audience[floors_residents]"]' => [
+                    'checked' => true
+                ]
+            ],
+            'required' => [
+                ':input[name="field_intended_audience[floors_residents]"]' => [
+                    'checked' => true
+                ]
+            ]
+        ];
+
+        // Enable program community field
+        $form['field_program_communities']['#states'] = [
+            'visible' => [
+                ':input[name="field_intended_audience[program_community]"]' => [
+                    'checked' => true
+                ]
+            ],
+            'required' => [
+                ':input[name="field_intended_audience[program_community]"]' => [
+                    'checked' => true
+                ]
+            ]
+        ];
+
+        // Enable college house field
+        $form['field_college_houses']['#states'] = [
+            'visible' => [
+                ':input[name="field_intended_audience[multiple_college_houses]"]' => [
+                    'checked' => true
+                ]
+            ],
+            'required' => [
+                ':input[name="field_intended_audience[multiple_college_houses]"]' => [
+                    'checked' => true
+                ]
+            ]
+        ];
+
+        // Enable Other field
+        $form['field_intended_audience_other']['#states'] = [
+            'visible' => [
+                ':input[name="field_intended_audience[other]"]' => [
+                    'checked' => true
+                ]
+            ],
+            'required' => [
+                ':input[name="field_intended_audience[other]"]' => [
+                    'checked' => true
+                ]
+            ]
+        ];
+
+        // Enable marketing releated fields for audience options
+        $form['field_intended_audience_image']['#states'] = [
+            'visible' => [
+                [
+                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+                ],
+                [
+                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+                ]
+            ],
+        ];
+        $form['field_intended_audience_attach']['#states'] = [
+            'visible' => [
+                [
+                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+                ],
+                [
+                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+                ]
+            ],
+        ];
+        $form['field_marketing_blurb']['#states'] = [
+            'visible' => [
+                [
+                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+                ],
+                [
+                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+                ]
+            ],
+        ];
+
+        // Enbale outcome fields 
+        $form['field_intended_outcomes_remarks']['#states'] = [
+            'visible' => [
+                [
+                    ':input[name="field_intended_outcomes[learn_a_skill]"]' => ['checked' => true],
+                ],
+                [
+                    ':input[name="field_intended_outcomes[gain_information]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_outcomes[connect_with_peers]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_outcomes[connect_with_resource]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_outcomes[connect_with_faculty]"]' => ['checked' => true]
+                ],
+                [
+                    ':input[name="field_intended_outcomes[engage_in_an_activity]"]' => ['checked' => true]
+                ]
+            ],
+        ];
+    }
+}
+
+// function node_event_form_ext_form_validate(array &$form, \Drupal\Core\Form\FormStateInterface $form_state)
+// {
+//     die('XYZ');
+// }
+
+// /**
+//  * Implements hook_entity_presave().
+//  */
+// function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
+// {
+//     if($entity instanceof \Drupal\node\NodeInterface && $entity->bundle() == 'chas_event') {
+//         // $entity->get('field_intended_audience')->getFieldDefinition()->setSetting('allowed_values', getTermsOptions('intended_audience'));
+//         Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'chas_event', 'field_intended_audience')->setSetting('allowed_values', getTermsOptions('intended_audience'));
+//     }
+// }
+
+function getTermsOptions(string $vocabulary)
+{
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocabulary);
+    $options = [];
+    foreach ($terms as $term) {
+        $term_details = Drupal\taxonomy\Entity\Term::load($term->tid);
+        $key = $term_details->get('field_key')->value;
+        $options[$key] = $term->name;
+    }
+    return $options;
+}

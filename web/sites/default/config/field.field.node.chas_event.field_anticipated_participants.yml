@@ -1,0 +1,23 @@
+uuid: 86269c33-741b-45fb-a3e8-5204640e8b43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anticipated_participants
+    - node.type.chas_event
+id: node.chas_event.field_anticipated_participants
+field_name: field_anticipated_participants
+entity_type: node
+bundle: chas_event
+label: 'Anticipated number of participants '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
