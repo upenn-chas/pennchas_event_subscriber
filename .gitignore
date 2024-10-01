@@ -97,3 +97,6 @@
 #/.env
 
 docker-config
+Dockerfile
+docker-compose.yml
+.devcontainer
