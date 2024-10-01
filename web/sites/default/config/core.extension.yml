@@ -15,6 +15,7 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  devel: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -23,16 +24,16 @@ module:
   file: 0
   filter: 0
   flexible_permissions: 0
+  gnode: 0
   group: 0
   help: 0
   history: 0
   image: 0
-  layout_builder: 0
+  layout_builder: 0   
   layout_discovery: 0
   link: 0
   menu_link_content: 0
   menu_ui: 0
-  multiple_fields_remove_button: 0
   mysql: 0
   node: 0
   node_event_form_ext: 0
@@ -43,21 +44,21 @@ module:
   search: 0
   shortcut: 0
   simplesamlphp_auth: 0
-  smart_date: 0
+  smart_date: 0   
   smart_date_recur: 0
+  standard: 0
   system: 0
   taxonomy: 0
-  term_reference_tree: 0
   text: 0
+  term_reference_tree: 0
   toolbar: 0
-  update: 0
   user: 0
+  update: 0
   variationcache: 0
   views_ui: 0
   workflows: 0
   externalauth: 10
   views: 10
-  standard: 1000
 theme:
   olivero: 0
   claro: 0
