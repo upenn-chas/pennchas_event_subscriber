@@ -1,0 +1,39 @@
+uuid: 3911a5eb-6a41-4c80-9967-6f0e9f52e87e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_intended_outcomes
+field_name: field_intended_outcomes
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: learn_a_skill
+      label: 'Learn a skill'
+    -
+      value: gain_information
+      label: 'Gain information'
+    -
+      value: connect_with_peers
+      label: 'Connect with peers'
+    -
+      value: connect_with_resource
+      label: 'Connect with resource'
+    -
+      value: connect_with_faculty
+      label: 'Connect with faculty'
+    -
+      value: engage_in_an_activity
+      label: 'Engage in an activity'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

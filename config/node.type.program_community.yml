@@ -1,0 +1,18 @@
+uuid: 543d13a6-88fd-4cd3-8412-da1f4ac2720a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Program community'
+type: program_community
+description: 'Use this type to create a program community page.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

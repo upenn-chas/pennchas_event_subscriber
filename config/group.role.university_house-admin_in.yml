@@ -1,0 +1,15 @@
+uuid: 0681f872-069c-4767-99e9-f3f4c33620b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.university_house
+    - user.role.administrator
+id: university_house-admin_in
+label: Administrator
+weight: 102
+admin: true
+scope: insider
+global_role: administrator
+group_type: university_house
+permissions: {  }

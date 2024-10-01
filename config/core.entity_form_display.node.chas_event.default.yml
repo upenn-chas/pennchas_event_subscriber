@@ -1,0 +1,244 @@
+uuid: bdae9513-2896-480f-badb-89e5bfaaece5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.chas_event.field_anticipated_cost
+    - field.field.node.chas_event.field_anticipated_participants
+    - field.field.node.chas_event.field_audience_floor
+    - field.field.node.chas_event.field_collaborators
+    - field.field.node.chas_event.field_college_houses
+    - field.field.node.chas_event.field_event_date
+    - field.field.node.chas_event.field_event_priority
+    - field.field.node.chas_event.field_experiences_and_strategies
+    - field.field.node.chas_event.field_intended_audience
+    - field.field.node.chas_event.field_intended_audience_attach
+    - field.field.node.chas_event.field_intended_audience_image
+    - field.field.node.chas_event.field_intended_audience_other
+    - field.field.node.chas_event.field_intended_outcomes
+    - field.field.node.chas_event.field_intended_outcomes_remarks
+    - field.field.node.chas_event.field_location_of_program
+    - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_program_communities
+    - image.style.thumbnail
+    - node.type.chas_event
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - file
+    - image
+    - path
+    - smart_date
+    - smart_date_recur
+    - term_reference_tree
+id: node.chas_event.default
+targetEntityType: node
+bundle: chas_event
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_anticipated_cost:
+    type: number
+    weight: 23
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_anticipated_participants:
+    type: number
+    weight: 24
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_audience_floor:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_collaborators:
+    type: email_default
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_college_houses:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_date:
+    type: smartdate_inline
+    weight: 21
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      show_extra: false
+      hide_date: false
+      allday: false
+      remove_seconds: true
+      separator: to
+    third_party_settings:
+      smart_date_recur:
+        modal: true
+        allowed_recur_freq_values:
+          MINUTELY: '0'
+          HOURLY: '0'
+          DAILY: DAILY
+          WEEKLY: WEEKLY
+          MONTHLY: MONTHLY
+          YEARLY: YEARLY
+  field_event_priority:
+    type: term_reference_tree
+    weight: 16
+    region: content
+    settings:
+      start_minimized: false
+      leaves_only: false
+      select_parents: true
+      cascading_selection: 1
+      max_depth: 0
+    third_party_settings: {  }
+  field_experiences_and_strategies:
+    type: string_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_intended_audience:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_intended_audience_attach:
+    type: file_generic
+    weight: 14
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_intended_audience_image:
+    type: image_image
+    weight: 13
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_intended_audience_other:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_intended_outcomes:
+    type: options_buttons
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_intended_outcomes_remarks:
+    type: string_textarea
+    weight: 19
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_location_of_program:
+    type: string_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_marketing_blurb:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_program_communities:
+    type: options_buttons
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,20 @@
+uuid: c1b74d13-f356-4f4e-a65a-0a4e9829385c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_anticipated_cost
+field_name: field_anticipated_cost
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

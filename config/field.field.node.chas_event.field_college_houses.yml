@@ -1,0 +1,29 @@
+uuid: cfd89f06-4aad-4ea1-a391-85ec305de32c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_college_houses
+    - group.type.university_house
+    - node.type.chas_event
+id: node.chas_event.field_college_houses
+field_name: field_college_houses
+entity_type: node
+bundle: chas_event
+label: 'College houses'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      university_house: university_house
+    sort:
+      field: id
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

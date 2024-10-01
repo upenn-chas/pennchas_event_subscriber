@@ -1,0 +1,32 @@
+uuid: 14ed5162-0ad3-463e-8492-6859adc09f90
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.program_community.body
+    - field.field.node.program_community.field_banner
+    - node.type.program_community
+  module:
+    - text
+    - user
+id: node.program_community.teaser
+targetEntityType: node
+bundle: program_community
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_banner: true
