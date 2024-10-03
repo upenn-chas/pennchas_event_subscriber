@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.chas_event
     - node.type.event
     - node.type.page
     - node.type.reserve_room
@@ -15,13 +16,19 @@ weight: 7
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'create chas_event content'
   - 'create event content'
   - 'create page content'
   - 'create reserve_room content'
   - 'create room content'
+  - 'delete any chas_event content'
+  - 'delete own chas_event content'
   - 'delete own event content'
   - 'delete own page content'
   - 'delete own reserve_room content'
+  - 'edit any chas_event content'
+  - 'edit own chas_event content'
   - 'edit own event content'
   - 'edit own page content'
   - 'edit own room content'
+  - 'view chas_event revisions'

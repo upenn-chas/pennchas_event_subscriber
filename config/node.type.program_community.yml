@@ -9,7 +9,7 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: 'Program community'
+name: 'Program Community'
 type: program_community
 description: 'Use this type to create a program community page.'
 help: null

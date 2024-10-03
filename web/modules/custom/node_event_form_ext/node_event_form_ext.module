@@ -5,7 +5,7 @@
  */
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
-    if ($form_id === 'node_chas_event_form') {
+    if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
         // Enable floor number field
         $form['field_audience_floor']['#states'] = [
             'visible' => [
@@ -150,13 +150,15 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
 
 function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
 {
-    $houses = $node->get('field_college_houses')->getValue();
-    if ($houses) {
-        foreach ($houses as $house_details) {
-            $house = \Drupal\group\Entity\Group::load($house_details['target_id']);
-            $existing_relationship = $house->getRelationships('group_node:' . $node->getType());
-            if (empty($existing_relationship)) {
-                $house->addRelationship($node, 'group_node:' . $node->getType());
+    if ($node->getType() === 'chas_event') {
+        $houses = $node->get('field_college_houses')->getValue();
+        if ($houses) {
+            foreach ($houses as $house_details) {
+                $house = \Drupal\group\Entity\Group::load($house_details['target_id']);
+                $existing_relationship = $house->getRelationships('group_node:' . $node->getType());
+                if (empty($existing_relationship)) {
+                    $house->addRelationship($node, 'group_node:' . $node->getType());
+                }
             }
         }
     }

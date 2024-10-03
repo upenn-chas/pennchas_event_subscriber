@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - group
     - node
-    - taxonomy
 id: node.field_program_communities
 field_name: field_program_communities
 entity_type: node
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: group_relationship
 module: core
 locked: false
 cardinality: -1

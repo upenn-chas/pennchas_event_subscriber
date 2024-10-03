@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_program_communities
+    - group.relationship_type.house1-26dda3a47e3baa4a8c59fd010
     - node.type.chas_event
-    - taxonomy.vocabulary.program_community
 id: node.chas_event.field_program_communities
 field_name: field_program_communities
 entity_type: node
@@ -17,13 +17,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: 'default:group_relationship'
   handler_settings:
     target_bundles:
-      program_community: program_community
+      house1-26dda3a47e3baa4a8c59fd010: house1-26dda3a47e3baa4a8c59fd010
     sort:
-      field: name
-      direction: asc
+      field: id
+      direction: ASC
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

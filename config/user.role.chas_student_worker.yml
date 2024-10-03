@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.chas_event
     - node.type.event
     - node.type.page
     - node.type.reserve_room
@@ -13,6 +14,12 @@ label: 'CHAS Student Worker'
 weight: 5
 is_admin: null
 permissions:
+  - 'create chas_event content'
   - 'create event content'
   - 'create page content'
   - 'create reserve_room content'
+  - 'delete any chas_event content'
+  - 'delete own chas_event content'
+  - 'edit any chas_event content'
+  - 'edit own chas_event content'
+  - 'view chas_event revisions'

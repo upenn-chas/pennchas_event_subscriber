@@ -1,0 +1,17 @@
+uuid: 91a94f24-7a89-4d00-b5d9-2b27b06e2a7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - node.type.program_community
+  module:
+    - gnode
+    - node
+id: house1-26dda3a47e3baa4a8c59fd010
+group_type: house1
+content_plugin: 'group_node:program_community'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

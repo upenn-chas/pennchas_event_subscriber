@@ -7,7 +7,7 @@ label: house1
 description: ''
 new_revision: true
 creator_membership: true
-creator_wizard: true
+creator_wizard: false
 creator_roles:
   - house1-admin
   - house1-chas_tech_student_worker
