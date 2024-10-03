@@ -1,0 +1,4 @@
+create repeated event:
+  title: "Creat Repeated Event"
+  description: "Allow user to create repeatable event."
+  restrict access: true

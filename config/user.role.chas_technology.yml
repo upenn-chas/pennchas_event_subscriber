@@ -8,8 +8,11 @@ dependencies:
     - node.type.page
     - node.type.reserve_room
     - node.type.room
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - node
+    - node_event_form_ext
 id: chas_technology
 label: 'CHAS Technology'
 weight: 6
@@ -19,6 +22,7 @@ permissions:
   - 'create chas_event content'
   - 'create event content'
   - 'create page content'
+  - 'create repeated event'
   - 'create reserve_room content'
   - 'create room content'
   - 'delete any chas_event content'
@@ -32,4 +36,5 @@ permissions:
   - 'edit own page content'
   - 'edit own reserve_room content'
   - 'edit own room content'
+  - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'

@@ -7,7 +7,9 @@ dependencies:
     - node.type.event
     - node.type.page
     - node.type.reserve_room
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - node
 id: chas_student_worker
 label: 'CHAS Student Worker'
@@ -22,4 +24,5 @@ permissions:
   - 'delete own chas_event content'
   - 'edit any chas_event content'
   - 'edit own chas_event content'
+  - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'

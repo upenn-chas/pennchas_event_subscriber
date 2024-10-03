@@ -1,0 +1,21 @@
+uuid: 04ebdbf2-4cad-4cd0-b769-c6c4a1a3996c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_end_date_and_time
+    - node.type.chas_event
+  module:
+    - datetime
+id: node.chas_event.field_event_end_date_and_time
+field_name: field_event_end_date_and_time
+entity_type: node
+bundle: chas_event
+label: 'Event End Date and Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

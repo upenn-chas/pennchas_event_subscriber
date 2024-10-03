@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_event_date
+    - field.field.node.chas_event.field_event_end_date_and_time
     - field.field.node.chas_event.field_event_priority
+    - field.field.node.chas_event.field_event_start_date_and_time
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
@@ -46,7 +48,9 @@ hidden:
   field_collaborators: true
   field_college_houses: true
   field_event_date: true
+  field_event_end_date_and_time: true
   field_event_priority: true
+  field_event_start_date_and_time: true
   field_experiences_and_strategies: true
   field_intended_audience: true
   field_intended_audience_attach: true

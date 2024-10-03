@@ -5,6 +5,7 @@
  */
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
+
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
         // Enable floor number field
         $form['field_audience_floor']['#states'] = [
@@ -12,11 +13,11 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ':input[name="field_intended_audience[floors_residents]"]' => [
                     'checked' => true
                 ]
-            ],
-            'required' => [
-                ':input[name="field_intended_audience[floors_residents]"]' => [
-                    'checked' => true
-                ]
+            ]
+        ];
+        $form['field_audience_floor']['#required'] = [
+            ':input[name="field_intended_audience[floors_residents]"]' => [
+                'checked' => true
             ]
         ];
 
@@ -82,6 +83,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
+
         $form['field_intended_audience_attach']['#states'] = [
             'visible' => [
                 [
@@ -101,6 +103,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
+
         $form['field_marketing_blurb']['#states'] = [
             'visible' => [
                 [
@@ -144,9 +147,17 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
+
+        if (\Drupal::currentUser()->hasPermission('create repeated event')) {
+            unset($form['field_event_start_date_and_time']);
+            unset($form['field_event_end_date_and_time']);
+        } else {
+            unset($form['field_event_date']);
+            $form['field_event_start_date_and_time']['#required'] = true;
+            $form['field_event_end_date_and_time']['#required'] = true;
+        }
     }
 }
-
 
 function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
 {
@@ -164,21 +175,29 @@ function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
     }
 }
 
-// function node_event_form_ext_form_validate(array &$form, \Drupal\Core\Form\FormStateInterface $form_state)
-// {
-//     die('XYZ');
-// }
 
-// /**
-//  * Implements hook_entity_presave().
-//  */
-// function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
-// {
-//     if($entity instanceof \Drupal\node\NodeInterface && $entity->bundle() == 'chas_event') {
-//         // $entity->get('field_intended_audience')->getFieldDefinition()->setSetting('allowed_values', getTermsOptions('intended_audience'));
-//         Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'chas_event', 'field_intended_audience')->setSetting('allowed_values', getTermsOptions('intended_audience'));
-//     }
-// }
+function get_group_node_relationships($group_types)
+{
+    $options = [];
+    $group_query = \Drupal::entityQuery('group')
+        ->condition('type', $group_types, 'IN')
+        ->accessCheck(true)
+        ->execute();
+    $groups = \Drupal\group\Entity\Group::loadMultiple($group_query);
+    // dpm($groups);die();
+    foreach ($groups as $group) {
+        dd($group);
+        $group_content_storage = \Drupal::entityTypeManager()->getStorage('group_relationship_type');
+        dd($group_content_storage);
+        // $group_contents = $group_content_storage->loadByProperties(['gid' => $group->id]);
+        // dd($group_contents);
+        // $group_contents = \Drupal\group\Entity\GroupContent::loadByGroup($group, 'program_community');
+        // dd($group_contents);
+        // foreach($group_contents as $content) {
+        //     dpm($content);die();
+        // }
+    }
+}
 
 function getTermsOptions(string $vocabulary)
 {
