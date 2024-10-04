@@ -1,0 +1,24 @@
+uuid: 3ba4e496-1729-4c38-9737-adf699251601
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.program_communities_block.body
+field_name: body
+entity_type: block_content
+bundle: program_communities_block
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

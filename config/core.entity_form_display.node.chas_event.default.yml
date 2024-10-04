@@ -9,9 +9,7 @@ dependencies:
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_event_date
-    - field.field.node.chas_event.field_event_end_date_and_time
     - field.field.node.chas_event.field_event_priority
-    - field.field.node.chas_event.field_event_start_date_and_time
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
@@ -27,7 +25,6 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
-    - datetime
     - file
     - image
     - path
@@ -47,14 +44,14 @@ content:
     third_party_settings: {  }
   field_anticipated_cost:
     type: number
-    weight: 25
+    weight: 23
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_anticipated_participants:
     type: number
-    weight: 26
+    weight: 24
     region: content
     settings:
       placeholder: ''
@@ -109,12 +106,6 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
-  field_event_end_date_and_time:
-    type: datetime_default
-    weight: 23
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_event_priority:
     type: term_reference_tree
     weight: 16
@@ -125,12 +116,6 @@ content:
       select_parents: true
       cascading_selection: 1
       max_depth: 0
-    third_party_settings: {  }
-  field_event_start_date_and_time:
-    type: datetime_default
-    weight: 22
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_experiences_and_strategies:
     type: string_textarea
@@ -185,7 +170,7 @@ content:
     third_party_settings: {  }
   field_location_of_program:
     type: string_textarea
-    weight: 24
+    weight: 22
     region: content
     settings:
       rows: 5

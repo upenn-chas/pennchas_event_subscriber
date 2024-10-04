@@ -1,0 +1,48 @@
+uuid: 5f9ffb05-7a51-4a16-b280-cfd0647c3acf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_announcements
+    - field.field.block_content.news_announcements.body
+    - field.field.block_content.news_announcements.field_cta
+    - field.field.block_content.news_announcements.field_image
+    - field.field.block_content.news_announcements.field_news
+    - image.style.thumbnail
+  module:
+    - image
+    - link
+id: block_content.news_announcements.default
+targetEntityType: block_content
+bundle: news_announcements
+mode: default
+content:
+  field_cta:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_news:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  info: true

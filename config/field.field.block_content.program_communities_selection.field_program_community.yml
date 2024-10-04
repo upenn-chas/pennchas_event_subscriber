@@ -1,0 +1,29 @@
+uuid: c22962f8-c3f9-401e-9ab9-1d8a0a38e870
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_selection
+    - field.storage.block_content.field_program_community
+    - node.type.program_community
+id: block_content.program_communities_selection.field_program_community
+field_name: field_program_community
+entity_type: block_content
+bundle: program_communities_selection
+label: 'Program community'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      program_community: program_community
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

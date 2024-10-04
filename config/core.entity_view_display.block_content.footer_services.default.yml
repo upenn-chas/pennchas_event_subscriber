@@ -1,0 +1,58 @@
+uuid: a36d3ba6-8ecf-43cc-8303-d241aa7450ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.field.block_content.footer_services.body
+    - field.field.block_content.footer_services.field_cta
+    - field.field.block_content.footer_services.field_heading
+    - field.field.block_content.footer_services.field_image
+  module:
+    - image
+    - link
+    - text
+id: block_content.footer_services.default
+targetEntityType: block_content
+bundle: footer_services
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

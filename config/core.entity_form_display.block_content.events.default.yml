@@ -1,0 +1,33 @@
+uuid: a2ce4773-c815-4090-8dbf-e73e70080b3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.field.block_content.events.body
+    - field.field.block_content.events.field_house_events
+id: block_content.events.default
+targetEntityType: block_content
+bundle: events
+mode: default
+content:
+  field_house_events:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true

@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: house1
-label: house1
-description: ''
+label: 'University house'
+description: "The house in the university\t"
 new_revision: true
 creator_membership: true
 creator_wizard: false

@@ -1,0 +1,19 @@
+uuid: 27b637b1-d720-49de-a8d1-c8c3761678e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - link
+id: block_content.field_cta
+field_name: field_cta
+entity_type: block_content
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

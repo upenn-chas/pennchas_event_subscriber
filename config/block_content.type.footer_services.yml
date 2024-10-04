@@ -1,0 +1,8 @@
+uuid: d457655b-3711-4cee-a6f4-5f0f6eeca832
+langcode: en
+status: true
+dependencies: {  }
+id: footer_services
+label: 'Footer Services'
+revision: false
+description: null

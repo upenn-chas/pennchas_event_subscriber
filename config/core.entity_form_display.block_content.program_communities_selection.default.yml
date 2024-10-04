@@ -1,0 +1,26 @@
+uuid: 5b3f51ea-e28b-445e-a380-fed322db7db5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_selection
+    - field.field.block_content.program_communities_selection.body
+    - field.field.block_content.program_communities_selection.field_program_community
+id: block_content.program_communities_selection.default
+targetEntityType: block_content
+bundle: program_communities_selection
+mode: default
+content:
+  field_program_community:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  info: true
