@@ -15,7 +15,6 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
-  devel: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -55,6 +54,7 @@ module:
   term_reference_tree: 0
   text: 0
   toolbar: 0
+  unpublished_node_permissions: 0
   update: 0
   user: 0
   variationcache: 0

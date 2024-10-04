@@ -31,11 +31,11 @@
         "drupal/term_reference_tree": "^2.0",
         "drupal/smart_date": "^4.1",
         "drupal/multiple_fields_remove_button": "^2.2",
-        "drupal/gcontent_moderation": "3.0.x-dev@dev"
+        "drupal/gcontent_moderation": "3.0.x-dev@dev",
+        "drupal/unpublished_node_permissions": "^1.5"
     },
     "require-dev": {
-        "drupal/core-dev": "^10",
-        "drupal/devel": "^5.0"
+        "drupal/core-dev": "^10"
     },
     "conflict": {
         "drupal/drupal": "*"

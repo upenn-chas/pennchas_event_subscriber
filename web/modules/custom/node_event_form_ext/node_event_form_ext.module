@@ -147,6 +147,11 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
+
+        $group_memberships = \Drupal::service('group.membership_loader')->loadByUser();
+        if(count($group_memberships) === 1) {
+            echo 'Single group';
+        }
     }
 }
 
