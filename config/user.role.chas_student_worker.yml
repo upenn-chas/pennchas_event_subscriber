@@ -16,7 +16,7 @@ weight: 5
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'administer content types'
+  - 'administer nodes'
   - 'create chas_event content'
   - 'create page content'
   - 'create reserve_room content'

@@ -147,15 +147,6 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
-
-        if (\Drupal::currentUser()->hasPermission('create repeated event')) {
-            unset($form['field_event_start_date_and_time']);
-            unset($form['field_event_end_date_and_time']);
-        } else {
-            unset($form['field_event_date']);
-            $form['field_event_start_date_and_time']['#required'] = true;
-            $form['field_event_end_date_and_time']['#required'] = true;
-        }
     }
 }
 

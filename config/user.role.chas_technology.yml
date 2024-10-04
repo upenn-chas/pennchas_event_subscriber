@@ -11,16 +11,16 @@ dependencies:
   module:
     - content_moderation
     - node
-    - node_event_form_ext
+    - smart_date_recur
 id: chas_technology
 label: 'CHAS Technology'
 weight: 6
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'cancel smart date recur instances'
   - 'create chas_event content'
   - 'create page content'
-  - 'create repeated event'
   - 'create reserve_room content'
   - 'create room content'
   - 'delete own chas_event content'
@@ -30,6 +30,8 @@ permissions:
   - 'edit own page content'
   - 'edit own reserve_room content'
   - 'edit own room content'
+  - 'make smart dates recur'
+  - 'reschedule smart date recur instances'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
   - 'view own unpublished content'

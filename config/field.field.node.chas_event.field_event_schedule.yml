@@ -1,9 +1,9 @@
-uuid: 80035d20-9894-4f5c-b0fe-7cee667e9905
+uuid: 25e66c39-9240-41bf-9a13-97ca9b11d902
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_event_date
+    - field.storage.node.field_event_schedule
     - node.type.chas_event
   module:
     - smart_date
@@ -12,13 +12,13 @@ third_party_settings:
   smart_date_recur:
     allow_recurring: true
     month_limit: 12
-id: node.chas_event.field_event_date
-field_name: field_event_date
+id: node.chas_event.field_event_schedule
+field_name: field_event_schedule
 entity_type: node
 bundle: chas_event
-label: 'Event Date'
+label: 'Event Schedule'
 description: ''
-required: false
+required: true
 translatable: false
 default_value:
   -

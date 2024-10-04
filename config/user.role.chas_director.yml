@@ -11,16 +11,16 @@ dependencies:
   module:
     - content_moderation
     - node
-    - node_event_form_ext
+    - smart_date_recur
 id: chas_director
 label: 'CHAS Director'
 weight: 7
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'cancel smart date recur instances'
   - 'create chas_event content'
   - 'create page content'
-  - 'create repeated event'
   - 'create reserve_room content'
   - 'create room content'
   - 'delete all revisions'
@@ -33,6 +33,8 @@ permissions:
   - 'edit own chas_event content'
   - 'edit own page content'
   - 'edit own room content'
+  - 'make smart dates recur'
+  - 'reschedule smart date recur instances'
   - 'revert all revisions'
   - 'revert chas_event revisions'
   - 'use editorial transition archive'

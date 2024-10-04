@@ -8,10 +8,8 @@ dependencies:
     - field.field.node.chas_event.field_audience_floor
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
-    - field.field.node.chas_event.field_event_date
-    - field.field.node.chas_event.field_event_end_date_and_time
     - field.field.node.chas_event.field_event_priority
-    - field.field.node.chas_event.field_event_start_date_and_time
+    - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
@@ -27,12 +25,10 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
-    - datetime
     - file
     - image
     - path
     - smart_date
-    - smart_date_recur
     - term_reference_tree
 id: node.chas_event.default
 targetEntityType: node
@@ -47,14 +43,14 @@ content:
     third_party_settings: {  }
   field_anticipated_cost:
     type: number
-    weight: 21
+    weight: 22
     region: content
     settings:
       placeholder: Cost
     third_party_settings: {  }
   field_anticipated_participants:
     type: number
-    weight: 22
+    weight: 23
     region: content
     settings:
       placeholder: 'No. of participants'
@@ -81,7 +77,18 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_event_date:
+  field_event_priority:
+    type: term_reference_tree
+    weight: 13
+    region: content
+    settings:
+      start_minimized: false
+      leaves_only: false
+      select_parents: true
+      cascading_selection: 1
+      max_depth: 0
+    third_party_settings: {  }
+  field_event_schedule:
     type: smartdate_inline
     weight: 17
     region: content
@@ -95,42 +102,10 @@ content:
         120|2 hours
         custom
       show_extra: false
-      hide_date: false
-      allday: false
-      remove_seconds: true
+      hide_date: true
+      allday: true
+      remove_seconds: false
       separator: to
-    third_party_settings:
-      smart_date_recur:
-        modal: true
-        allowed_recur_freq_values:
-          MINUTELY: '0'
-          HOURLY: '0'
-          DAILY: DAILY
-          WEEKLY: WEEKLY
-          MONTHLY: MONTHLY
-          YEARLY: YEARLY
-  field_event_end_date_and_time:
-    type: datetime_default
-    weight: 19
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_event_priority:
-    type: term_reference_tree
-    weight: 13
-    region: content
-    settings:
-      start_minimized: false
-      leaves_only: false
-      select_parents: true
-      cascading_selection: 1
-      max_depth: 0
-    third_party_settings: {  }
-  field_event_start_date_and_time:
-    type: datetime_default
-    weight: 18
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_experiences_and_strategies:
     type: string_textarea
@@ -148,14 +123,14 @@ content:
     third_party_settings: {  }
   field_intended_audience_attach:
     type: file_generic
-    weight: 24
+    weight: 25
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_intended_audience_image:
     type: image_image
-    weight: 23
+    weight: 24
     region: content
     settings:
       progress_indicator: throbber
@@ -185,7 +160,7 @@ content:
     third_party_settings: {  }
   field_location_of_program:
     type: string_textarea
-    weight: 20
+    weight: 21
     region: content
     settings:
       rows: 5
@@ -193,7 +168,7 @@ content:
     third_party_settings: {  }
   field_marketing_blurb:
     type: string_textarea
-    weight: 25
+    weight: 26
     region: content
     settings:
       rows: 5
@@ -207,7 +182,7 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 26
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }

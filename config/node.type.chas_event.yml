@@ -13,5 +13,5 @@ type: chas_event
 description: 'Use this to create house event.'
 help: null
 new_revision: true
-preview_mode: 0
+preview_mode: 1
 display_submitted: true
