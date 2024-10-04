@@ -15,6 +15,8 @@ label: 'CHAS Student Worker'
 weight: 5
 is_admin: null
 permissions:
+  - 'access content overview'
+  - 'administer content types'
   - 'create chas_event content'
   - 'create page content'
   - 'create reserve_room content'
@@ -22,3 +24,4 @@ permissions:
   - 'edit own chas_event content'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
+  - 'view own unpublished content'

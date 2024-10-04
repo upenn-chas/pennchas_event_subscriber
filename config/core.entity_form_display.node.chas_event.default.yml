@@ -47,21 +47,21 @@ content:
     third_party_settings: {  }
   field_anticipated_cost:
     type: number
-    weight: 25
+    weight: 21
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_anticipated_participants:
     type: number
-    weight: 26
+    weight: 22
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_audience_floor:
     type: string_textfield
-    weight: 10
+    weight: 9
     region: content
     settings:
       size: 60
@@ -77,13 +77,13 @@ content:
     third_party_settings: {  }
   field_college_houses:
     type: options_buttons
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_event_date:
     type: smartdate_inline
-    weight: 21
+    weight: 17
     region: content
     settings:
       modal: false
@@ -111,13 +111,13 @@ content:
           YEARLY: YEARLY
   field_event_end_date_and_time:
     type: datetime_default
-    weight: 23
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
   field_event_priority:
     type: term_reference_tree
-    weight: 16
+    weight: 13
     region: content
     settings:
       start_minimized: false
@@ -128,13 +128,13 @@ content:
     third_party_settings: {  }
   field_event_start_date_and_time:
     type: datetime_default
-    weight: 22
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   field_experiences_and_strategies:
     type: string_textarea
-    weight: 20
+    weight: 16
     region: content
     settings:
       rows: 5
@@ -148,14 +148,14 @@ content:
     third_party_settings: {  }
   field_intended_audience_attach:
     type: file_generic
-    weight: 14
+    weight: 24
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_intended_audience_image:
     type: image_image
-    weight: 13
+    weight: 23
     region: content
     settings:
       progress_indicator: throbber
@@ -171,27 +171,11 @@ content:
     third_party_settings: {  }
   field_intended_outcomes:
     type: options_buttons
-    weight: 17
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   field_intended_outcomes_remarks:
-    type: string_textarea
-    weight: 19
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_location_of_program:
-    type: string_textarea
-    weight: 24
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_marketing_blurb:
     type: string_textarea
     weight: 15
     region: content
@@ -199,15 +183,31 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_location_of_program:
+    type: string_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_marketing_blurb:
+    type: string_textarea
+    weight: 25
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_program_communities:
     type: options_buttons
-    weight: 11
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 18
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }

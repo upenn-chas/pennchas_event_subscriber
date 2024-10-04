@@ -31,3 +31,4 @@ permissions:
   - 'edit own room content'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
+  - 'view own unpublished content'
