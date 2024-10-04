@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6438eb8aafc2d7ff1635ae5fc557e3f0",
+    "content-hash": "eba36dd38943045b62adeef450afe2e5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1752,6 +1752,80 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/flexible_permissions",
                 "issues": "https://drupal.org/project/issues/flexible_permissions"
+            }
+        },
+        {
+            "name": "drupal/gcontent_moderation",
+            "version": "dev-3.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gcontent_moderation.git",
+                "reference": "c7cc724bbe342c60d6e78802a9084a178315c52e"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10",
+                "drupal/group": "^3.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.0.x": "3.0.x-dev"
+                },
+                "drupal": {
+                    "version": "3.0.x-dev",
+                    "datestamp": "1699352917",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap Jan Koster",
+                    "homepage": "https://www.drupal.org/u/jaapjan",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Bram ten Hove",
+                    "homepage": "https://www.drupal.org/u/bramtenhove",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Hernâni Borges de Freitas",
+                    "homepage": "https://www.drupal.org/u/hernani",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Alexander Varwijk",
+                    "homepage": "https://www.drupal.org/u/kingdutch",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Mohammed Nassar",
+                    "homepage": "https://www.drupal.org/u/msnassar",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Naveen Valecha",
+                    "homepage": "https://www.drupal.org/u/naveenvalecha",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ronald te Brake",
+                    "homepage": "https://www.drupal.org/u/ronaldtebrake",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Enable Content Moderation workflow transistions to be used by group members",
+            "homepage": "https://www.drupal.org/project/gcontent_moderation",
+            "support": {
+                "source": "https://git.drupalcode.org/project/gcontent_moderation",
+                "issues": "https://www.drupal.org/project/issues/gcontent_moderation"
             }
         },
         {
@@ -14163,7 +14237,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20
+        "upenn/penn403": 20,
+        "drupal/gcontent_moderation": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

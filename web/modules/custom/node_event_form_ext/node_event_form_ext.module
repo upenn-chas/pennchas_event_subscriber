@@ -175,30 +175,6 @@ function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
     }
 }
 
-
-function get_group_node_relationships($group_types)
-{
-    $options = [];
-    $group_query = \Drupal::entityQuery('group')
-        ->condition('type', $group_types, 'IN')
-        ->accessCheck(true)
-        ->execute();
-    $groups = \Drupal\group\Entity\Group::loadMultiple($group_query);
-    // dpm($groups);die();
-    foreach ($groups as $group) {
-        dd($group);
-        $group_content_storage = \Drupal::entityTypeManager()->getStorage('group_relationship_type');
-        dd($group_content_storage);
-        // $group_contents = $group_content_storage->loadByProperties(['gid' => $group->id]);
-        // dd($group_contents);
-        // $group_contents = \Drupal\group\Entity\GroupContent::loadByGroup($group, 'program_community');
-        // dd($group_contents);
-        // foreach($group_contents as $content) {
-        //     dpm($content);die();
-        // }
-    }
-}
-
 function getTermsOptions(string $vocabulary)
 {
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocabulary);
