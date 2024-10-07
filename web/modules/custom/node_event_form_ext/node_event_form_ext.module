@@ -148,10 +148,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
             ],
         ];
 
-        $group_memberships = \Drupal::service('group.membership_loader')->loadByUser();
-        if(count($group_memberships) === 1) {
-            echo 'Single group';
-        }
+        $form['field_college_houses']['widget']['#options'] = get_groups('house1');
     }
 }
 
@@ -169,6 +166,33 @@ function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
             }
         }
     }
+}
+
+function get_groups(string $group_type)
+{
+    $options = [];
+
+    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser();
+    if (count($group_memberships) > 0) {
+        foreach($group_memberships as $group_membership) {
+            $group = $group_membership->getGroup();
+            $options[$group->id()] = $group->label();
+        }
+    } else {
+
+        $group_query = \Drupal::entityQuery('group')
+            ->condition('type', $group_type, 'IN')
+            ->accessCheck(true)
+            ->execute();
+
+        // Load all groups.
+        $groups = \Drupal\group\Entity\Group::loadMultiple($group_query);
+
+        foreach ($groups as $group) {
+            $options[$group->id()] = $group->label();
+        }
+    }
+    return $options;
 }
 
 function getTermsOptions(string $vocabulary)
