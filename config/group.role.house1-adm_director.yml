@@ -1,0 +1,54 @@
+uuid: f8a14057-77d9-4d34-97bb-c65135f14b3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.chas_student_worker
+id: house1-adm_director
+label: Adm_director
+weight: 110
+admin: false
+scope: insider
+global_role: chas_student_worker
+group_type: house1
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'create group_node:chas_event entity'
+  - 'create group_node:page entity'
+  - 'create group_node:reserve_room entity'
+  - 'create group_node:room entity'
+  - 'delete any group_node:chas_event entity'
+  - 'delete any group_node:page entity'
+  - 'delete any group_node:reserve_room entity'
+  - 'delete any group_node:room entity'
+  - 'delete own group_node:chas_event entity'
+  - 'delete own group_node:page entity'
+  - 'delete own group_node:reserve_room entity'
+  - 'delete own group_node:room entity'
+  - 'update any group_node:chas_event entity'
+  - 'update any group_node:page entity'
+  - 'update any group_node:reserve_room entity'
+  - 'update any group_node:room entity'
+  - 'update own group_node:chas_event entity'
+  - 'update own group_node:page entity'
+  - 'update own group_node:reserve_room entity'
+  - 'update own group_node:room entity'
+  - 'view all group revisions'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group_node:chas_event entity'
+  - 'view group_node:page entity'
+  - 'view group_node:reserve_room entity'
+  - 'view group_node:room entity'
+  - 'view latest version'
+  - 'view own unpublished group'
+  - 'view own unpublished group_node:chas_event entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view own unpublished group_node:reserve_room entity'
+  - 'view own unpublished group_node:room entity'
+  - 'view unpublished group_node:chas_event entity'
+  - 'view unpublished group_node:page entity'
+  - 'view unpublished group_node:reserve_room entity'
+  - 'view unpublished group_node:room entity'

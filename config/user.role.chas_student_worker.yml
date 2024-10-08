@@ -10,6 +10,7 @@ dependencies:
     - node.type.reserve_room
     - node.type.room
   module:
+    - content_moderation
     - node
     - unpublished_node_permissions
 id: chas_student_worker
@@ -24,11 +25,14 @@ permissions:
   - 'create reserve_room content'
   - 'delete own chas_event content'
   - 'edit own chas_event content'
+  - 'view any unpublished content'
   - 'view article unpublished content'
   - 'view chas_event revisions'
-  - 'view own unpublished content'
   - 'view chas_event unpublished content'
+  - 'view latest version'
+  - 'view own unpublished content'
   - 'view page unpublished content'
   - 'view program_community unpublished content'
   - 'view reserve_room unpublished content'
   - 'view room unpublished content'
+  - 'view unpublished content'
