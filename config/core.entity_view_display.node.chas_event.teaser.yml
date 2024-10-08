@@ -11,8 +11,6 @@ dependencies:
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
-    - field.field.node.chas_event.field_event_date
-    - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
