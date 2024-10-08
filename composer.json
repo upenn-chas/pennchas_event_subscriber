@@ -32,6 +32,8 @@
         "drupal/smart_date": "^4.1",
         "drupal/multiple_fields_remove_button": "^2.2",
         "drupal/gcontent_moderation": "3.0.x-dev@dev",
+        "drupal/pathauto": "^1.13",
+        "drupal/admin_toolbar": "^3.5",
         "drupal/unpublished_node_permissions": "^1.5"
     },
     "require-dev": {

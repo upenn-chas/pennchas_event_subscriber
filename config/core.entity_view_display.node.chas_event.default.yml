@@ -80,14 +80,6 @@ content:
     third_party_settings: {  }
     weight: 23
     region: content
-  field_event_priority:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_event_schedule:
     type: smartdate_default
     label: above
@@ -109,7 +101,15 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 26
+    weight: 16
+    region: content
+  field_event_priority:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_experiences_and_strategies:
     type: basic_string

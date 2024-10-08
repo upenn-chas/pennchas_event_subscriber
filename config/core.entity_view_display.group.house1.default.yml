@@ -1,0 +1,32 @@
+uuid: f5bd101f-9b22-414d-aa2d-c29562cbc8af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.house1.field_house_machine_name
+    - group.type.house1
+id: group.house1.default
+targetEntityType: group
+bundle: house1
+mode: default
+content:
+  field_house_machine_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  changed: true
+  created: true
+  uid: true

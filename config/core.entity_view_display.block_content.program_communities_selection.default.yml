@@ -1,0 +1,32 @@
+uuid: 0ee2faf4-9efe-459c-ad3b-85329fe1f99c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_selection
+    - field.field.block_content.program_communities_selection.body
+    - field.field.block_content.program_communities_selection.field_program_community
+  module:
+    - text
+id: block_content.program_communities_selection.default
+targetEntityType: block_content
+bundle: program_communities_selection
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_program_community:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

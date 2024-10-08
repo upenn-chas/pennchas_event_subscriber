@@ -1,0 +1,56 @@
+uuid: 74548f81-7197-4a34-87c8-4767faa0cab3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.field.block_content.footer_services.body
+    - field.field.block_content.footer_services.field_cta
+    - field.field.block_content.footer_services.field_heading
+    - field.field.block_content.footer_services.field_image
+    - image.style.thumbnail
+  module:
+    - image
+    - link
+    - text
+id: block_content.footer_services.default
+targetEntityType: block_content
+bundle: footer_services
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_cta:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_heading: true

@@ -1,0 +1,8 @@
+uuid: c662442e-89e1-4951-a63a-c33d6ca6c636
+langcode: en
+status: true
+dependencies: {  }
+id: program_communities_block
+label: 'Program communities Block'
+revision: false
+description: null

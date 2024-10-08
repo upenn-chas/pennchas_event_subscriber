@@ -1,0 +1,49 @@
+uuid: d59e3a36-346c-4c27-ac0e-2f71c7e9dd40
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_content_section
+    - field.field.block_content.top_content_section.body
+    - field.field.block_content.top_content_section.field_cta
+    - field.field.block_content.top_content_section.field_image
+  module:
+    - image
+    - link
+    - text
+id: block_content.top_content_section.default
+targetEntityType: block_content
+bundle: top_content_section
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

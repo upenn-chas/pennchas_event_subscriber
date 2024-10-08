@@ -1,0 +1,19 @@
+uuid: f018b979-8a54-487d-85ca-1e29e54c2015
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.storage.block_content.field_heading
+id: block_content.footer_services.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: footer_services
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

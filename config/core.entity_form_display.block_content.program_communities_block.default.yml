@@ -1,0 +1,44 @@
+uuid: ad8b7760-fccd-42a8-b298-3c41e385651a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+    - field.field.block_content.program_communities_block.body
+    - field.field.block_content.program_communities_block.field_cta
+    - field.field.block_content.program_communities_block.field_program_community_referenc
+  module:
+    - link
+id: block_content.program_communities_block.default
+targetEntityType: block_content
+bundle: program_communities_block
+mode: default
+content:
+  field_cta:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_program_community_referenc:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true

@@ -106,7 +106,16 @@ content:
       allday: true
       remove_seconds: false
       separator: to
-    third_party_settings: {  }
+    third_party_settings:
+      smart_date_recur:
+        modal: true
+        allowed_recur_freq_values:
+          MINUTELY: '0'
+          HOURLY: '0'
+          DAILY: DAILY
+          WEEKLY: WEEKLY
+          MONTHLY: MONTHLY
+          YEARLY: YEARLY
   field_experiences_and_strategies:
     type: string_textarea
     weight: 16

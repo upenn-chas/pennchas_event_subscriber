@@ -1,0 +1,29 @@
+uuid: 137df694-2652-4446-baf6-4445bedba466
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+    - block_content.type.program_communities_selection
+    - field.storage.block_content.field_program_community_referenc
+id: block_content.program_communities_block.field_program_community_referenc
+field_name: field_program_community_referenc
+entity_type: block_content
+bundle: program_communities_block
+label: 'Program community reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      program_communities_selection: program_communities_selection
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -7,9 +7,7 @@ dependencies:
     - node.type.page
     - node.type.reserve_room
     - node.type.room
-    - workflows.workflow.editorial
   module:
-    - content_moderation
     - node
     - smart_date_recur
 id: chas_professional_staff

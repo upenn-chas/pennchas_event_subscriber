@@ -1,0 +1,23 @@
+uuid: ec29db40-a2e6-45f2-a2cf-d763964dda69
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+    - field.storage.block_content.field_cta
+  module:
+    - link
+id: block_content.program_communities_block.field_cta
+field_name: field_cta
+entity_type: block_content
+bundle: program_communities_block
+label: CTA
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link
