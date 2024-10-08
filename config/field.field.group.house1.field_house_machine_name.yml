@@ -1,0 +1,19 @@
+uuid: e3ae2ddb-0a6f-4eaf-9405-24a823ce23d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_house_machine_name
+    - group.type.house1
+id: group.house1.field_house_machine_name
+field_name: field_house_machine_name
+entity_type: group
+bundle: house1
+label: 'House Machine Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
