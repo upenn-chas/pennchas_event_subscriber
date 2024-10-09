@@ -9,7 +9,7 @@ id: house1-adm_director
 label: Adm_director
 weight: 110
 admin: false
-scope: insider
+scope: outsider
 global_role: chas_student_worker
 group_type: house1
 permissions:
@@ -35,6 +35,8 @@ permissions:
   - 'update own group_node:page entity'
   - 'update own group_node:reserve_room entity'
   - 'update own group_node:room entity'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition create_new_draft'
   - 'view all group revisions'
   - 'view any unpublished group'
   - 'view group'
