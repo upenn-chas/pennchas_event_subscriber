@@ -45,6 +45,7 @@ module:
   path_alias: 0
   search: 0
   shortcut: 0
+  simplesamlphp_auth: 0
   smart_date: 0
   smart_date_recur: 0
   standard: 0
