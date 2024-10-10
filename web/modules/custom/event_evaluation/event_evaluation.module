@@ -37,7 +37,6 @@ function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$a
  * Implements hook_views_post_render().
  */
 function event_evaluation_views_post_render($view) {
-    dd($view);
     if ($view->id() == 'event_evaluation_view' && $view->current_display == 'event_evaluate_page_view') {
      // Set the view title.
      $view->setTitle('NEW TITLE');
