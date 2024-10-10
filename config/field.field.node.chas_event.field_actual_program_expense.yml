@@ -1,0 +1,23 @@
+uuid: 206651a0-c727-4903-8c7c-8c39ac1ad040
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_actual_program_expense
+    - node.type.chas_event
+id: node.chas_event.field_actual_program_expense
+field_name: field_actual_program_expense
+entity_type: node
+bundle: chas_event
+label: 'Actual Program Expense'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

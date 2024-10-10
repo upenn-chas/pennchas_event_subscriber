@@ -16,6 +16,7 @@ permissions:
   - 'create group_node:chas_event relationship'
   - 'delete own group_node:chas_event entity'
   - 'delete own group_node:chas_event relationship'
+  - 'event own evaluation'
   - 'update any group_node:program_community entity'
   - 'update own group_node:chas_event entity'
   - 'update own group_node:chas_event relationship'

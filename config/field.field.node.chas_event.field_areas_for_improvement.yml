@@ -1,0 +1,19 @@
+uuid: d983b771-37e1-49e3-a6ac-ae7a3b01fb36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_areas_for_improvement
+    - node.type.chas_event
+id: node.chas_event.field_areas_for_improvement
+field_name: field_areas_for_improvement
+entity_type: node
+bundle: chas_event
+label: 'Areas for improvement'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

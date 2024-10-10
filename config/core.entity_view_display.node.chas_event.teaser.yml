@@ -4,8 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.chas_event.field_actual_program_attendance
+    - field.field.node.chas_event.field_actual_program_expense
+    - field.field.node.chas_event.field_actual_program_outcomes
     - field.field.node.chas_event.field_anticipated_cost
     - field.field.node.chas_event.field_anticipated_participants
+    - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_audience_floor
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
@@ -40,8 +44,12 @@ content:
     weight: 100
     region: content
 hidden:
+  field_actual_program_attendance: true
+  field_actual_program_expense: true
+  field_actual_program_outcomes: true
   field_anticipated_cost: true
   field_anticipated_participants: true
+  field_areas_for_improvement: true
   field_audience_floor: true
   field_collaborators: true
   field_college_houses: true

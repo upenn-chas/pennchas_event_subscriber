@@ -1,0 +1,45 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$args)
+{
+    if ($view->id() === 'event_evaluation_view' && $display_id === 'event_evaluate_page_view') {
+        $node_id = $args[0];
+        $node = \Drupal\node\Entity\Node::load($node_id);
+        if (!$node) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
+        $view->setTitle($node->title->value);
+        $current_user = \Drupal::currentUser();
+        
+        if (!($current_user->hasPermission('event any evaluation') ||
+            ($current_user->hasPermission('event own evaluation') && $node->getOwnerId() === $current_user->id()))) {
+            throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+        }
+        $view->attachment_after['header'] = [
+            '#type' => 'container',
+            '#id' => 'event_evaluation_form_continer',
+            'form_wrapper' => [
+                '#type' => 'markup',
+                '#markup' => \Drupal::service('renderer')->render(
+                    \Drupal::formBuilder()->getForm(new \Drupal\event_evaluation\Form\EventEvaluationForm($node))
+                )
+            ]
+        ];
+    }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function event_evaluation_views_post_render($view) {
+    dd($view);
+    if ($view->id() == 'event_evaluation_view' && $view->current_display == 'event_evaluate_page_view') {
+     // Set the view title.
+     $view->setTitle('NEW TITLE');
+    }
+ }
