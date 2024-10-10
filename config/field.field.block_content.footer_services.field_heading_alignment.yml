@@ -1,0 +1,21 @@
+uuid: e4e83ed8-208a-4f8c-b47a-6122503e2c30
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.storage.block_content.field_heading_alignment
+  module:
+    - options
+id: block_content.footer_services.field_heading_alignment
+field_name: field_heading_alignment
+entity_type: block_content
+bundle: footer_services
+label: 'Heading Alignment'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

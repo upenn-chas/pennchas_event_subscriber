@@ -1,0 +1,7 @@
+find_your_house.admin_settings:
+  title: 'Find Your House'
+  description: 'Settings for the Find Your House module'
+  parent: system.admin_config_system
+  route_name: find_your_house.settings
+  weight: 100
+  permissions: 'administer site configuration'

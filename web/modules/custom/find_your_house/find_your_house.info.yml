@@ -1,0 +1,8 @@
+name: 'Find Your House'
+type: module
+description: 'A custom block with a group dropdown and redirect button.'
+core_version_requirement: ^10
+version: '1.0'
+package: Custom
+dependencies:
+  - drupal:group

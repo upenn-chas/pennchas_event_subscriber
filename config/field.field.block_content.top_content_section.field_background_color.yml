@@ -1,0 +1,22 @@
+uuid: 1713beb5-07bb-4ed7-b63a-73685281cf54
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_content_section
+    - field.storage.block_content.field_background_color
+  module:
+    - color_field
+id: block_content.top_content_section.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: top_content_section
+label: 'Bottom Section Background Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

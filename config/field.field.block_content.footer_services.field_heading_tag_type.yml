@@ -1,0 +1,21 @@
+uuid: 072ad4ac-ca32-4f5f-86c9-5510441bc5aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.storage.block_content.field_heading_tag_type
+  module:
+    - options
+id: block_content.footer_services.field_heading_tag_type
+field_name: field_heading_tag_type
+entity_type: block_content
+bundle: footer_services
+label: 'Heading tag type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

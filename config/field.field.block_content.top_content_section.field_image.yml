@@ -11,7 +11,7 @@ id: block_content.top_content_section.field_image
 field_name: field_image
 entity_type: block_content
 bundle: top_content_section
-label: Image
+label: 'Right Large Image'
 description: ''
 required: false
 translatable: false

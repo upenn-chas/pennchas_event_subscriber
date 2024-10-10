@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: footer_services
-label: 'Footer Services'
+label: Services
 revision: false
 description: null
