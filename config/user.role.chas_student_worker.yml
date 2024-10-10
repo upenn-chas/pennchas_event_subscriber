@@ -12,6 +12,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - event_evaluation
     - node
     - unpublished_node_permissions
 id: chas_student_worker
@@ -26,6 +27,7 @@ permissions:
   - 'create reserve_room content'
   - 'delete own chas_event content'
   - 'edit own chas_event content'
+  - 'event own evaluation'
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition publish'

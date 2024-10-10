@@ -1,0 +1,19 @@
+uuid: c601527f-78ae-42b1-b3c2-52dac85f6733
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_areas_for_improvement
+field_name: field_areas_for_improvement
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
