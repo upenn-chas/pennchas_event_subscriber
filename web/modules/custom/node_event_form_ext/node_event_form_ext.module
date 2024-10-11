@@ -124,7 +124,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
             ],
         ];
 
-        // Enbale outcome fields 
+        // Enbale outcome fields
         $form['field_intended_outcomes_remarks']['#states'] = [
             'visible' => [
                 [
@@ -147,8 +147,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
-
-        $form['field_college_houses']['widget']['#options'] = get_groups('house1');
+        // $form['field_college_houses']['widget']['#options'] = get_groups('house1');
     }
 }
 

@@ -5,9 +5,12 @@ dependencies:
   config:
     - block_content.type.top_content_section
     - field.field.block_content.top_content_section.body
+    - field.field.block_content.top_content_section.field_background_color
+    - field.field.block_content.top_content_section.field_circle_colour
     - field.field.block_content.top_content_section.field_cta
     - field.field.block_content.top_content_section.field_image
   module:
+    - color_field
     - image
     - link
     - text
@@ -22,6 +25,24 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_background_color:
+    type: color_field_formatter_text
+    label: above
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_circle_colour:
+    type: color_field_formatter_text
+    label: above
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_cta:
     type: link

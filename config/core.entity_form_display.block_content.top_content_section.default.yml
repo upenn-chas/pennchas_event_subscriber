@@ -5,10 +5,13 @@ dependencies:
   config:
     - block_content.type.top_content_section
     - field.field.block_content.top_content_section.body
+    - field.field.block_content.top_content_section.field_background_color
+    - field.field.block_content.top_content_section.field_circle_colour
     - field.field.block_content.top_content_section.field_cta
     - field.field.block_content.top_content_section.field_image
     - image.style.thumbnail
   module:
+    - color_field
     - image
     - link
     - text
@@ -26,6 +29,22 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+    third_party_settings: {  }
+  field_background_color:
+    type: color_field_widget_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_color: ''
+      placeholder_opacity: ''
+    third_party_settings: {  }
+  field_circle_colour:
+    type: color_field_widget_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_color: ''
+      placeholder_opacity: ''
     third_party_settings: {  }
   field_cta:
     type: link_default

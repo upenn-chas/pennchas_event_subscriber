@@ -1,0 +1,21 @@
+uuid: c36c1c3d-c4a6-43d2-a703-f84cf92e2f38
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+    - field.storage.block_content.field_alignment
+  module:
+    - options
+id: block_content.footer_services.field_alignment
+field_name: field_alignment
+entity_type: block_content
+bundle: footer_services
+label: Alignment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
