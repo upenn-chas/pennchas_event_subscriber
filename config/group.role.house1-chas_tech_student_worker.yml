@@ -12,6 +12,8 @@ scope: individual
 global_role: null
 group_type: house1
 permissions:
+  - 'access content overview'
+  - 'access group_node overview'
   - 'create group_node:chas_event entity'
   - 'create group_node:chas_event relationship'
   - 'delete own group_node:chas_event entity'
@@ -22,6 +24,7 @@ permissions:
   - 'update own group_node:chas_event relationship'
   - 'update own group_node:program_community entity'
   - 'use editorial transition create_new_draft'
+  - 'view group'
   - 'view group_node:chas_event entity'
   - 'view group_node:program_community entity'
   - 'view own unpublished group_node:chas_event entity'
