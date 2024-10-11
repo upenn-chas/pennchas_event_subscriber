@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -13,9 +14,13 @@ function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$a
         if (!$node) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
-        $view->setTitle($node->title->value);
+
+        if(!is_event_ready_for_evaluation($node)) {
+            throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException('HJHKJ');
+        }
+
         $current_user = \Drupal::currentUser();
-        
+
         if (!($current_user->hasPermission('event any evaluation') ||
             ($current_user->hasPermission('event own evaluation') && $node->getOwnerId() === $current_user->id()))) {
             throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
@@ -36,9 +41,51 @@ function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$a
 /**
  * Implements hook_views_post_render().
  */
-function event_evaluation_views_post_render($view) {
+function event_evaluation_views_post_render($view)
+{
     if ($view->id() == 'event_evaluation_view' && $view->current_display == 'event_evaluate_page_view') {
-     // Set the view title.
-     $view->setTitle('NEW TITLE');
+        $node_id = \Drupal::routeMatch()->getParameter('node');
+        $node = \Drupal\node\Entity\Node::load($node_id);
+        $view->setTitle("Evaluate: {$node->getTitle()}");
     }
- }
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ *
+ * Add the evaluate option into the content type grid for CHAS Event contents.
+ */
+function event_evaluation_entity_operation_alter(array &$operations, \Drupal\Core\Entity\EntityInterface $entity)
+{
+    if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'chas_event') {
+
+        if (is_event_ready_for_evaluation($entity)) {
+            $operations['evaluate'] = [
+                'title' => 'Evaluate',
+                'weight' => 10,
+                'url' => \Drupal\Core\Url::fromRoute('event_evaluation_operation_option', [
+                    'node' => $entity->id(),
+                ]),
+            ];
+        }
+    }
+}
+
+function is_event_ready_for_evaluation(\Drupal\Core\Entity\EntityInterface $entity)
+{
+    if (!$entity->get('status')->value) {
+        return false;
+    }
+    $result = true;
+    $current_time = time();
+    $event_schedule = $entity->get('field_event_schedule');
+    $length = count($event_schedule);
+    for ($i = 0; $i < $length; $i++) {
+        if ($event_schedule[$i]->end_value > $current_time) {
+            $result = false;
+            break;
+        }
+    }
+
+    return $result;
+}
