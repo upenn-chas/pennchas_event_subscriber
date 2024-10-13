@@ -10,7 +10,6 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
-    - event_evaluation
     - node
     - smart_date_recur
 id: chas_director
@@ -34,8 +33,6 @@ permissions:
   - 'edit own chas_event content'
   - 'edit own page content'
   - 'edit own room content'
-  - 'event any evaluation'
-  - 'event own evaluation'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
   - 'revert all revisions'

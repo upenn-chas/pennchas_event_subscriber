@@ -1,30 +1,32 @@
 <?php
 
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\views\ViewExecutable;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
+
+const EVENT_EVALUTION_VIEW_ID = 'event_evaluation_view';
+const EVENT_EVALUTION_VIEW_DISPLAY_ID = 'event_evaluate_page_view';
 
 /**
  * Implements hook_views_pre_view().
  */
-function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$args)
+function event_evaluation_views_pre_view(ViewExecutable $view, $display_id, &$args)
 {
-    if ($view->id() === 'event_evaluation_view' && $display_id === 'event_evaluate_page_view') {
+    if ($view->id() === EVENT_EVALUTION_VIEW_ID && $display_id === EVENT_EVALUTION_VIEW_DISPLAY_ID) {
         $node_id = $args[0];
-        $node = \Drupal\node\Entity\Node::load($node_id);
+        $node = Node::load($node_id);
         if (!$node) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
-
-        if(!is_event_ready_for_evaluation($node)) {
-            throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException('HJHKJ');
-        }
-
-        $current_user = \Drupal::currentUser();
-
-        if (!($current_user->hasPermission('event any evaluation') ||
-            ($current_user->hasPermission('event own evaluation') && $node->getOwnerId() === $current_user->id()))) {
+        /**
+         * Return access denied, when user is not authroized or can is not ready for evaluation.
+         */
+        if (!(isUserAuthorized($node) && canEvaluateEvent($node))) {
             throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
         }
+
+        // Attache the evealution form in the evaluation view.
         $view->attachment_after['header'] = [
             '#type' => 'container',
             '#id' => 'event_evaluation_form_continer',
@@ -40,13 +42,17 @@ function event_evaluation_views_pre_view(ViewExecutable $view, &$display_id, &$a
 
 /**
  * Implements hook_views_post_render().
+ * 
+ * Set the event title as the view title.
  */
 function event_evaluation_views_post_render($view)
 {
-    if ($view->id() == 'event_evaluation_view' && $view->current_display == 'event_evaluate_page_view') {
+    if ($view->id() === EVENT_EVALUTION_VIEW_ID && $view->current_display === EVENT_EVALUTION_VIEW_DISPLAY_ID) {
         $node_id = \Drupal::routeMatch()->getParameter('node');
         $node = \Drupal\node\Entity\Node::load($node_id);
-        $view->setTitle("Evaluate: {$node->getTitle()}");
+        if ($node) {
+            $view->setTitle("Evaluate: {$node->getTitle()}");
+        }
     }
 }
 
@@ -55,11 +61,11 @@ function event_evaluation_views_post_render($view)
  *
  * Add the evaluate option into the content type grid for CHAS Event contents.
  */
-function event_evaluation_entity_operation_alter(array &$operations, \Drupal\Core\Entity\EntityInterface $entity)
+function event_evaluation_entity_operation_alter(array &$operations, EntityInterface $entity)
 {
     if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'chas_event') {
 
-        if (is_event_ready_for_evaluation($entity)) {
+        if (isUserAuthorized($entity) && canEvaluateEvent($entity)) {
             $operations['evaluate'] = [
                 'title' => 'Evaluate',
                 'weight' => 10,
@@ -71,14 +77,47 @@ function event_evaluation_entity_operation_alter(array &$operations, \Drupal\Cor
     }
 }
 
-function is_event_ready_for_evaluation(\Drupal\Core\Entity\EntityInterface $entity)
+/**
+ * Check is user is authroized for event evalution.
+ */
+function isUserAuthorized($node)
 {
-    if (!$entity->get('status')->value) {
+
+    $current_user = \Drupal::currentUser();
+    if ($current_user->hasRole('administrator')) {
+        return true;
+    }
+    $current_user_id = $current_user->id();
+    $owner_id = $node->getOwnerId();
+    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
+
+    if ($group_memberships) {
+        $node_groups = $node->get('field_college_houses')->getValue();
+
+        foreach ($node_groups as $node_group) {
+            $group = Group::load($node_group['target_id']);
+            if ($group->hasPermission('event own evaluation', $current_user) &&  $owner_id === $current_user_id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    return $current_user->hasPermission('event own evaluation') && $owner_id === $current_user_id;
+}
+
+/**
+ * Check if the event is ready for the evaluation.
+ * 
+ */
+function canEvaluateEvent($node)
+{
+    if (!$node->get('status')->value) {
         return false;
     }
     $result = true;
     $current_time = time();
-    $event_schedule = $entity->get('field_event_schedule');
+    $event_schedule = $node->get('field_event_schedule');
     $length = count($event_schedule);
     for ($i = 0; $i < $length; $i++) {
         if ($event_schedule[$i]->end_value > $current_time) {

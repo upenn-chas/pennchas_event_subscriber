@@ -28,7 +28,6 @@ permissions:
   - 'delete own group_node:page entity'
   - 'delete own group_node:room entity'
   - 'edit group'
-  - 'event any evaluation'
   - 'event own evaluation'
   - 'update any group_node:chas_event entity'
   - 'update any group_node:chas_event relationship'
