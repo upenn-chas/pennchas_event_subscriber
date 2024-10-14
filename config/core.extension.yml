@@ -63,6 +63,7 @@ module:
   user: 0
   variationcache: 0
   views_ui: 0
+  viewsreference: 0
   workflows: 0
   pathauto: 1
   externalauth: 10

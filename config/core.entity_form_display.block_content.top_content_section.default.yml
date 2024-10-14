@@ -9,12 +9,14 @@ dependencies:
     - field.field.block_content.top_content_section.field_circle_colour
     - field.field.block_content.top_content_section.field_cta
     - field.field.block_content.top_content_section.field_image
+    - field.field.block_content.top_content_section.field_view_reference
     - image.style.thumbnail
   module:
     - color_field
     - image
     - link
     - text
+    - viewsreference
 id: block_content.top_content_section.default
 targetEntityType: block_content
 bundle: top_content_section
@@ -61,6 +63,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_view_reference:
+    type: viewsreference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   info:
     type: string_textfield
