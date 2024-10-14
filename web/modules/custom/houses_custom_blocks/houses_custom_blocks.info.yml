@@ -1,0 +1,7 @@
+name: 'Houses Custom Block'
+type: module
+description: 'Provides a custom block.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - block

@@ -36,7 +36,9 @@
         "drupal/admin_toolbar": "^3.5",
         "drupal/unpublished_node_permissions": "^1.5",
         "drupal/devel": "^5.3",
-        "drupal/color_field": "^3.0"
+        "drupal/color_field": "^3.0",
+        "drupal/bootstrap_layout_builder": "^2.1",
+        "drupal/viewsreference": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

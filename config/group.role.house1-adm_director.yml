@@ -6,7 +6,7 @@ dependencies:
     - group.type.house1
     - user.role.chas_student_worker
 id: house1-adm_director
-label: Adm_director
+label: 'CHAS Student Worker'
 weight: 110
 admin: false
 scope: outsider
