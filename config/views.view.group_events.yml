@@ -128,16 +128,16 @@ display:
           exposed: false
           granularity: second
       arguments:
-        label:
-          id: label
+        gid:
+          id: gid
           table: group_relationship_field_data
-          field: label
+          field: gid
           relationship: group_relationship
           group_type: group
           admin_label: ''
           entity_type: group_relationship
-          entity_field: label
-          plugin_id: string
+          entity_field: gid
+          plugin_id: group_id
           default_action: default
           exception:
             value: all
@@ -161,12 +161,8 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          glossary: false
-          limit: 0
-          case: none
-          path_case: none
-          transform_dash: false
           break_phrase: false
+          not: false
       filters:
         status:
           id: status

@@ -11,7 +11,7 @@ id: block_content.informational_block.field_alignment
 field_name: field_alignment
 entity_type: block_content
 bundle: informational_block
-label: Alignment
+label: 'Heading Alignment'
 description: ''
 required: false
 translatable: false
