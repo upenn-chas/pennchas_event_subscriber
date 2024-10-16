@@ -3,17 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
     - node.type.chas_event
     - node.type.page
-    - node.type.program_community
     - node.type.reserve_room
-    - node.type.room
     - workflows.workflow.editorial
   module:
     - content_moderation
     - node
-    - unpublished_node_permissions
 id: chas_student_worker
 label: 'CHAS Student Worker'
 weight: 5
@@ -30,13 +26,6 @@ permissions:
   - 'use editorial transition create_new_draft'
   - 'use editorial transition publish'
   - 'view any unpublished content'
-  - 'view article unpublished content'
   - 'view chas_event revisions'
-  - 'view chas_event unpublished content'
   - 'view latest version'
   - 'view own unpublished content'
-  - 'view page unpublished content'
-  - 'view program_community unpublished content'
-  - 'view reserve_room unpublished content'
-  - 'view room unpublished content'
-  - 'view unpublished content'
