@@ -8,6 +8,7 @@ dependencies:
     - group
     - node
     - user
+    - views_bootstrap
 id: group_events
 label: 'Group events'
 module: views
@@ -138,7 +139,7 @@ display:
           entity_type: group_relationship
           entity_field: gid
           plugin_id: group_id
-          default_action: default
+          default_action: ignore
           exception:
             value: all
             title_enable: false
@@ -185,7 +186,17 @@ display:
           value:
             chas_event: chas_event
       style:
-        type: default
+        type: views_bootstrap_grid
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          grid_class: ''
+          col_xs: none
+          col_sm: none
+          col_md: none
+          col_lg: none
+          col_xl: none
       row:
         type: fields
       query:
