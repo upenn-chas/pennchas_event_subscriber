@@ -1,0 +1,29 @@
+uuid: 3971e833-889b-48a8-8ffd-9c6e3f460856
+langcode: en
+status: true
+dependencies: {  }
+id: et_new_event_mod_notification
+label: 'New Event moderator Notification'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: ' [easy_email:field_event:entity:title] wating for approval'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>New Event Created:</p><p>Title: <a href="https://url]">[easy_email:field_event:entity:title]</a></p><p>Author: [easy_email:creator_uid:entity:display-name]</p><p>Created At: [easy_email:created:date:html_date]</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

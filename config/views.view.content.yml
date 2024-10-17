@@ -646,6 +646,7 @@ display:
           admin_label: author
           plugin_id: standard
           required: true
+      group_by: true
       show_admin_links: false
       display_extenders: {  }
     cache_metadata:

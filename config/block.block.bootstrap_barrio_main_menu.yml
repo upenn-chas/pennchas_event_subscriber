@@ -1,6 +1,6 @@
 uuid: 07f32b41-ff83-4d17-865f-1872cabaf93f
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.main
@@ -12,7 +12,7 @@ _core:
   default_config_hash: Vrn8CVbuNQkElxVQ1UJS57jzA7WHlZ_6EJMfWkspfr0
 id: bootstrap_barrio_main_menu
 theme: bootstrap_barrio
-region: primary_menu
+region: top_header
 weight: -6
 provider: null
 plugin: 'system_menu_block:main'

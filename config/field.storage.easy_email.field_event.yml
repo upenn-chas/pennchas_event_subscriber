@@ -1,0 +1,20 @@
+uuid: 23577cfb-57e7-4e9a-9a31-b2b84b5cbb64
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_email
+    - node
+id: easy_email.field_event
+field_name: field_event
+entity_type: easy_email
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

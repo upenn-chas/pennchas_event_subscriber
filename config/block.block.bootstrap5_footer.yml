@@ -1,6 +1,6 @@
 uuid: ea40e5c9-3516-423a-8aea-cb22dd01a814
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.footer
@@ -12,7 +12,7 @@ _core:
   default_config_hash: xBR1vgpnqSUW4pA2LC3rfhu27FQUox9zZEYsdAFM2Sg
 id: bootstrap5_footer
 theme: bootstrap5
-region: footer
+region: header
 weight: -6
 provider: null
 plugin: 'system_menu_block:footer'

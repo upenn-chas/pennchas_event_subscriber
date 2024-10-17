@@ -1,6 +1,6 @@
 uuid: 606463af-ed1c-477a-89ba-4aa0ec620617
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - search
@@ -10,7 +10,7 @@ _core:
   default_config_hash: yLgqPzgEDODuqWtULettk0_f5ef8CbiNGY3xcDTEGwk
 id: bootstrap_barrio_search_form_wide
 theme: bootstrap_barrio
-region: top_header_form
+region: top_header
 weight: -7
 provider: null
 plugin: search_form_block

@@ -1,6 +1,6 @@
 uuid: 939c0033-4db6-471a-ab90-ebc1b2e7384c
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: uHGQeXpjudF5HkwGniQ_zzUngqcc3iAzzE7fdjWJiyA
 id: bootstrap_barrio_powered
 theme: bootstrap_barrio
-region: footer_fifth
+region: top_header
 weight: -7
 provider: null
 plugin: system_powered_by_block

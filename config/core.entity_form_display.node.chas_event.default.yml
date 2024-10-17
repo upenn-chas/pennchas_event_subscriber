@@ -78,7 +78,7 @@ content:
     third_party_settings: {  }
   field_college_houses:
     type: options_buttons
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -152,7 +152,7 @@ content:
     third_party_settings: {  }
   field_intended_audience_other:
     type: string_textfield
-    weight: 12
+    weight: 11
     region: content
     settings:
       size: 60

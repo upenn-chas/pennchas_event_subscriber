@@ -1,0 +1,3 @@
+services:
+  node_event_form_ext.mail_service:
+    class: \Drupal\node_event_form_ext\Service\EventEmailService

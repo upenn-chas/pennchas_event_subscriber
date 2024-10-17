@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
+
 /**
  * Implements hook_form_alter()
  */
@@ -7,7 +10,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
 {
 
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
-        // Enable floor number field
+        echo $form_id;
         $form['field_audience_floor']['#states'] = [
             'visible' => [
                 ':input[name="field_intended_audience[floors_residents]"]' => [
@@ -15,7 +18,7 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ]
         ];
-        $form['field_audience_floor']['#required'] = [
+        $form['field_audience_floor']['widget']['#required'] = [
             ':input[name="field_intended_audience[floors_residents]"]' => [
                 'checked' => true
             ]
@@ -35,19 +38,11 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
             ]
         ];
 
-        // Enable college house field
-        $form['field_college_houses']['#states'] = [
-            'visible' => [
-                ':input[name="field_intended_audience[multiple_college_houses]"]' => [
-                    'checked' => true
-                ]
-            ],
-            'required' => [
-                ':input[name="field_intended_audience[multiple_college_houses]"]' => [
-                    'checked' => true
-                ]
-            ]
-        ];
+        if ($form_id === 'node_chas_event_form') {
+            $form['field_college_houses']['#states'] = [
+                'checked' => true,
+            ];
+        }
 
         // Enable Other field
         $form['field_intended_audience_other']['#states'] = [
@@ -147,61 +142,116 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ],
         ];
-        // $form['field_college_houses']['widget']['#options'] = get_groups('house1');
+
+        $form['#attached']['library'][] = 'node_event_form_ext/event_listeners';
+        if ($form_id === 'node_chas_event_form') {
+            $form['#attached']['library'][] = 'node_event_form_ext/default_select';
+        }
     }
 }
 
 function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
 {
     if ($node->getType() === 'chas_event') {
+        \Drupal::messenger()->deleteAll();
         $houses = $node->get('field_college_houses')->getValue();
-        if ($houses) {
-            foreach ($houses as $house_details) {
-                $house = \Drupal\group\Entity\Group::load($house_details['target_id']);
-                $existing_relationship = $house->getRelationships('group_node:' . $node->getType());
+        foreach ($houses as $house_details) {
+            $house = \Drupal\group\Entity\Group::load($house_details['target_id']);
+            $existing_relationship = $house->getRelationshipsByEntity($node);
+            if (empty($existing_relationship)) {
+                $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
+        $message = t('Your event has been submitted and there is a possible three day wait time for approval.');
+        if (can_by_pass_moderation(array_column($houses, 'target_id'))) {
+            $node->setPublished(true);
+            $node->set('moderation_state', 'published');
+            $message = t('Your event has been accepted and published.');
+        }
+
+        \Drupal::messenger()->addStatus($message);
+        notify_event_create($node);
+    }
+}
+
+function node_event_form_ext_node_update(\Drupal\node\Entity\Node $node)
+{
+    if ($node->getType() === 'chas_event') {
+        $existing_houses = $node->original->get('field_college_houses')->getValue();
+        $houses = $node->get('field_college_houses')->getValue();
+        $result = process_houses_diff($existing_houses, $houses);
+
+        if ($result['new']) {
+            foreach ($result['new'] as $house_id) {
+                $house = \Drupal\group\Entity\Group::load($house_id);
+                $existing_relationship = $house->getRelationshipsByEntity($node);
                 if (empty($existing_relationship)) {
                     $house->addRelationship($node, 'group_node:' . $node->getType());
+                }
+            }
+        }
+        if ($result['remove']) {
+            foreach ($result['remove'] as $house_id) {
+                $house = \Drupal\group\Entity\Group::load($house_id);
+                $relationships = $house->getRelationshipsByEntity($node);
+                if (!empty($relationships)) {
+                    array_walk($relationships, function (\Drupal\group\Entity\GroupRelationshipInterface $rel) {
+                        $rel->delete();
+                    });
                 }
             }
         }
     }
 }
 
-function get_groups(string $group_type)
+function process_houses_diff($existing_houses, $new_houses)
 {
-    $options = [];
+    $existing_houses_id = array_flip(array_column($existing_houses, 'target_id'));
+    $new_houses_id = array_column($new_houses, 'target_id');
 
-    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser();
-    if (count($group_memberships) > 0) {
-        foreach($group_memberships as $group_membership) {
-            $group = $group_membership->getGroup();
-            $options[$group->id()] = $group->label();
-        }
-    } else {
+    $new_houses_rel = [];
+    $house_rel_del = [];
 
-        $group_query = \Drupal::entityQuery('group')
-            ->condition('type', $group_type, 'IN')
-            ->accessCheck(true)
-            ->execute();
-
-        // Load all groups.
-        $groups = \Drupal\group\Entity\Group::loadMultiple($group_query);
-
-        foreach ($groups as $group) {
-            $options[$group->id()] = $group->label();
+    foreach ($new_houses_id as $house_id) {
+        if (isset($existing_houses_id[$house_id])) {
+            unset($existing_houses_id[$house_id]);
+        } else {
+            $new_houses_rel[] = $house_id;
         }
     }
-    return $options;
+
+    if ($existing_houses) {
+        $house_rel_del = array_flip($existing_houses_id);
+    }
+
+    return [
+        'new' => $new_houses_rel,
+        'remove' => $house_rel_del
+    ];
 }
 
-function getTermsOptions(string $vocabulary)
+function can_by_pass_moderation($group_ids)
 {
-    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocabulary);
-    $options = [];
-    foreach ($terms as $term) {
-        $term_details = Drupal\taxonomy\Entity\Term::load($term->tid);
-        $key = $term_details->get('field_key')->value;
-        $options[$key] = $term->name;
+    $current_user = \Drupal::currentUser();
+    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
+    if (count($group_memberships) > 0) {
+        foreach ($group_ids as $group_id) {
+            $group = Group::load($group_id);
+            if ($group->hasPermission('use editorial transition publish', $current_user)) {
+                return true;
+            }
+        }
+        return false;
     }
-    return $options;
+
+    return $current_user->hasPermission('use editorial transition publish');
+}
+
+/**
+ * Send notification to users
+ */
+function notify_event_create($node)
+{
+    $mail_service = \Drupal::service('node_event_form_ext.mail_service');
+    $mail_service->notify($node);
 }

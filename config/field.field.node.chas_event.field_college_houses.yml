@@ -9,9 +9,9 @@ id: node.chas_event.field_college_houses
 field_name: field_college_houses
 entity_type: node
 bundle: chas_event
-label: 'College houses'
+label: 'Which House(s)?'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

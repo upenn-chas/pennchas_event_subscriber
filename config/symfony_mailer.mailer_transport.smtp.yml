@@ -1,0 +1,18 @@
+uuid: 1aea3bfd-858a-46fe-8e98-69e5460668dd
+langcode: en
+status: true
+dependencies: {  }
+id: smtp
+label: MailHog
+plugin: smtp
+configuration:
+  user: test
+  pass: test
+  host: mailer
+  port: 1025
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null

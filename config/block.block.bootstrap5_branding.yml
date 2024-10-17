@@ -1,6 +1,6 @@
 uuid: db2921a8-4ea0-4641-ab96-91cac9e70528
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: nuW1Z5MdvzbCCEZ9RQojaEWB6Zni32zTq-v5OWbS2sc
 id: bootstrap5_branding
 theme: bootstrap5
-region: nav_branding
-weight: -6
+region: header
+weight: -5
 provider: null
 plugin: system_branding_block
 settings:

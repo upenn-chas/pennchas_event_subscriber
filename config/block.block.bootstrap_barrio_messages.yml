@@ -1,6 +1,6 @@
 uuid: b6edefba-a78b-4224-8da2-70b05cbfdff4
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: VZDxR0xdW-n-VWQRlRQjsiN-dgDS3-1Es-s1vXLfgsI
 id: bootstrap_barrio_messages
 theme: bootstrap_barrio
-region: highlighted
+region: top_header
 weight: -6
 provider: null
 plugin: system_messages_block

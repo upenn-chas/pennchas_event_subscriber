@@ -15,6 +15,7 @@ permissions:
   - 'access content overview'
   - 'access group_node overview'
   - 'create group_node:chas_event entity'
+  - 'create group_node:chas_event relationship'
   - 'delete own group_node:chas_event entity'
   - 'event own evaluation'
   - 'update any group_node:program_community entity'

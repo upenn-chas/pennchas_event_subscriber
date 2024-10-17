@@ -1,0 +1,29 @@
+uuid: 36c6f929-449f-4610-93aa-8c7c88f9a5f8
+langcode: en
+status: true
+dependencies: {  }
+id: et_new_event_md_hst_notification
+label: 'New Event moderator host Notification'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: '[easy_email:field_event:entity:title] created and published'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>New Event created and published:</p><p>Title: <a href="https://url]">[easy_email:field_event:entity:title]</a></p><p>Author: [easy_email:creator_uid:entity:display-name]</p><p>Created At: [easy_email:created:date:html_date]</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

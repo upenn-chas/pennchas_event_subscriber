@@ -1,6 +1,6 @@
 uuid: 056e1d51-0ec0-49f7-95b6-d014ca488de1
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - bootstrap_barrio
@@ -8,7 +8,7 @@ _core:
   default_config_hash: ouz-Jr5EfrE6iN708-53o8J41W-9mqW2ELMpI9jYMAA
 id: bootstrap_barrio_page_title
 theme: bootstrap_barrio
-region: content
+region: top_header
 weight: -7
 provider: null
 plugin: page_title_block

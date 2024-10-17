@@ -21,12 +21,6 @@ settings:
       value: program_community
       label: 'Program community'
     -
-      value: all_college_houses
-      label: 'All college houses'
-    -
-      value: multiple_college_houses
-      label: 'Multiple college houses'
-    -
       value: all_first_year_students
       label: 'All first year students'
     -
