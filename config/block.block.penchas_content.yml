@@ -1,17 +1,17 @@
-uuid: 3ffe6692-47f9-4208-8bf8-4335f2c773d3
+uuid: 61e6bce5-ed9d-433d-b599-72545769204e
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: 1o0W13wt232YmsDYiRA5xtlFq0L2WNS7FmIVbBeuhIY
-id: bootstrap5_content
-theme: bootstrap5
+  default_config_hash: z5MmxsPI6ayFeg48CpXhu0yTlAtcD9ZICJHtR7EViOE
+id: penchas_content
+theme: penchas
 region: content
-weight: -1
+weight: -3
 provider: null
 plugin: system_main_block
 settings:

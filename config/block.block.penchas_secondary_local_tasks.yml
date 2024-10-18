@@ -1,0 +1,22 @@
+uuid: 7421c61c-c179-4158-897f-830081d89605
+langcode: en
+status: true
+dependencies:
+  theme:
+    - penchas
+_core:
+  default_config_hash: Fb6jlpP3U56yBCvpXsMwGicNY0XboZYfiCoqlwc_ETs
+id: penchas_secondary_local_tasks
+theme: penchas
+region: content
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

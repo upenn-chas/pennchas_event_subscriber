@@ -1,17 +1,17 @@
-uuid: 9ec1ddb5-aa5d-4a28-b84a-be4a127fb128
+uuid: 568f0496-4505-4049-92ac-e78284551128
 langcode: en
 status: true
 dependencies:
   module:
     - help
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: S0Y16qIQfKiOEzWlddOGk3u_BKwAruAheA8VVFfGbLc
-id: bootstrap5_help
-theme: bootstrap5
-region: content
-weight: -5
+  default_config_hash: RUx2GFzPgeUTi3zHGWtBFpk3yGQAGStKPs4Moaq_Uew
+id: penchas_help
+theme: penchas
+region: highlighted
+weight: -2
 provider: null
 plugin: help_block
 settings:

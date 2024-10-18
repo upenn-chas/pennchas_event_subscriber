@@ -1,17 +1,17 @@
-uuid: db2921a8-4ea0-4641-ab96-91cac9e70528
+uuid: 070de57a-f774-4fc3-9e91-86fec4b7ab00
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: nuW1Z5MdvzbCCEZ9RQojaEWB6Zni32zTq-v5OWbS2sc
-id: bootstrap5_branding
-theme: bootstrap5
+  default_config_hash: uA1pfqNt1FXdh9IGQKrIST_Su6XWbIfRp10ocfMrrik
+id: penchas_site_branding
+theme: penchas
 region: header
-weight: -5
+weight: -7
 provider: null
 plugin: system_branding_block
 settings:

@@ -1,18 +1,18 @@
-uuid: f99a50ce-b316-4d91-b7c0-bd3bf77ffa85
+uuid: d27fcb98-2196-4961-8c23-975e551af3bf
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.account
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: YRZjNp4d68NjJAVhrrUrXKwpV12i7OFWg4MY6Bsd0mw
-id: bootstrap5_account_menu
-theme: bootstrap5
-region: header
+  default_config_hash: NmLRuS4wP31h4xIWZjSMW9k3sAJ52KcloTl242uEAwQ
+id: penchas_account_menu
+theme: penchas
+region: secondary_menu
 weight: -7
 provider: null
 plugin: 'system_menu_block:account'
@@ -22,6 +22,6 @@ settings:
   label_display: '0'
   provider: system
   level: 1
-  depth: 0
+  depth: 1
   expand_all_items: false
 visibility: {  }
