@@ -1,22 +1,22 @@
-uuid: 4de0ec12-d919-417c-b0a3-252cdbf0211f
+uuid: 5c05540d-3401-4e0a-afc6-fc4dbfea5da7
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: 9LdMj38y4GDi23GrIUtIZIV1bJEn1C47N19jrswvcLc
-id: bootstrap5_messages
-theme: bootstrap5
-region: content
+  default_config_hash: CIq1_PJlMmqzJyxTk-rvcXa5-dH3iGfePrhIuJ6j_nc
+id: penchas_messages
+theme: penchas
+region: highlighted
 weight: -6
 provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: Messages
+  label: 'Status messages'
   label_display: '0'
   provider: system
 visibility: {  }

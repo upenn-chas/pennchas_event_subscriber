@@ -1,17 +1,17 @@
-uuid: 0f46adf1-084c-4510-877e-e546725c8ce4
+uuid: 748d6bb5-c898-48e6-b46c-afb23cceccdb
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: VShtwe72J2j41BJzApoNbs8l554EpngM5RTObxM7yiw
-id: bootstrap5_breadcrumbs
-theme: bootstrap5
-region: header
-weight: -4
+  default_config_hash: 5CWS2VqUwKcmyEVTbrd9Gp6-usUXUYFisWVNYceMrxQ
+id: penchas_breadcrumbs
+theme: penchas
+region: breadcrumb
+weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:

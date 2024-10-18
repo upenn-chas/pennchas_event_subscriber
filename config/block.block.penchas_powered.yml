@@ -1,17 +1,17 @@
-uuid: 075523e9-864a-48c0-89c2-102b0a7907cc
+uuid: 889eb074-6fd6-4e9e-888a-31c1569be38d
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: 2_xxaOb8b_0AUgYFdJLxIBDDwufyh6YozhGfBd97p38
-id: bootstrap5_powered_by_drupal
-theme: bootstrap5
-region: header
-weight: -2
+  default_config_hash: S2S2ZCqwgCd67KwjvAZ-6ujFLR7rozjxdSS3E4_lPYg
+id: penchas_powered
+theme: penchas
+region: footer_fifth
+weight: -7
 provider: null
 plugin: system_powered_by_block
 settings:

@@ -1,15 +1,15 @@
-uuid: 4e4d2713-74dc-4fe3-99e9-143fcc5bee69
+uuid: dd3cc7ad-b5c5-40e9-97c7-ae6a5202fb6a
 langcode: en
 status: true
 dependencies:
   theme:
-    - bootstrap5
+    - penchas
 _core:
-  default_config_hash: qYppfxaWSy6BwGNKdMch1PeUA24PlRTt39jQft6A6Kg
-id: bootstrap5_page_title
-theme: bootstrap5
+  default_config_hash: QCcg9YATLDvWJ2bjZBOzXwZfSjkLmApYth-8xafA_Cw
+id: penchas_page_title
+theme: penchas
 region: content
-weight: -4
+weight: -7
 provider: null
 plugin: page_title_block
 settings:
