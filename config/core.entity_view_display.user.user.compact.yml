@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
@@ -31,6 +32,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_employee_number: true
   field_full_name: true
   field_preferred_name: true
   field_title_position: true

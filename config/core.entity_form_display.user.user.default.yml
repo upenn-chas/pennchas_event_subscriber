@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
@@ -25,6 +26,14 @@ content:
   contact:
     weight: 5
     region: content
+  field_employee_number:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_full_name:
     type: string_textfield
     weight: 31
