@@ -1,0 +1,25 @@
+uuid: 873af6b6-ff37-47a3-8bd6-93b385f8d225
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-2
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_footer2
+theme: penchas
+region: footer_third
+weight: -8
+provider: null
+plugin: 'system_menu_block:footer-2'
+settings:
+  id: 'system_menu_block:footer-2'
+  label: 'Footer 2'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

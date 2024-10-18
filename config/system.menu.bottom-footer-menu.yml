@@ -1,0 +1,8 @@
+uuid: 5f890799-0d78-477d-bedb-c08534697b7c
+langcode: en
+status: true
+dependencies: {  }
+id: bottom-footer-menu
+label: 'Bottom Footer menu'
+description: 'Bottom footer menu items'
+locked: false

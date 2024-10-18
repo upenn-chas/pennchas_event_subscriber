@@ -1,0 +1,23 @@
+uuid: 7569ff0e-9901-4996-a59c-334a362a05d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_sitebranding
+theme: penchas
+region: footer_first
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

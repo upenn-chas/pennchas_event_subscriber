@@ -1,0 +1,8 @@
+uuid: f7d9479e-72b1-4d10-af93-3e8cdc62e9ba
+langcode: en
+status: true
+dependencies: {  }
+id: footer-2
+label: 'Footer 2'
+description: 'Right side menu items'
+locked: false

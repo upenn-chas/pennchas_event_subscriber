@@ -1,0 +1,25 @@
+uuid: 33942e0e-aea5-489f-85bb-c5e3caaac075
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.bottom-footer-menu
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_bottomfootermenu
+theme: penchas
+region: footer_fifth
+weight: 0
+provider: null
+plugin: 'system_menu_block:bottom-footer-menu'
+settings:
+  id: 'system_menu_block:bottom-footer-menu'
+  label: 'Bottom Footer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

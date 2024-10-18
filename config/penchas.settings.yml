@@ -126,7 +126,7 @@ bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: ''
-bootstrap_barrio_bootstrap_icons: 0
+bootstrap_barrio_bootstrap_icons: 1
 bootstrap_barrio_icons: ''
 bootstrap_barrio_base_primary_color: '#000d4d'
 bootstrap_barrio_base_secondary_color: '#0300b3'
