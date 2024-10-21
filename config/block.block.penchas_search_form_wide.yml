@@ -10,8 +10,8 @@ _core:
   default_config_hash: yzo42xSF51aQRuq7di0T1ypfveBC4DXbpOLnet1Bafw
 id: penchas_search_form_wide
 theme: penchas
-region: top_header_form
-weight: -7
+region: none
+weight: -8
 provider: null
 plugin: search_form_block
 settings:

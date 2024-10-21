@@ -31,6 +31,7 @@ regions:
   footer_second: 'Footer second'
   footer_third: 'Footer third'
   footer_fifth: 'Copyright Footer'
+  none: 'None'
 
 # Information added by Drupal.org packaging script on 2024-08-04
 version: '5.0.11'
