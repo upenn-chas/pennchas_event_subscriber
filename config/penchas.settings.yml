@@ -107,7 +107,7 @@ bootstrap_barrio_region_clean_footer_fourth: 0
 bootstrap_barrio_region_width_footer_fourth: 0
 bootstrap_barrio_region_class_footer_fourth: row
 bootstrap_barrio_region_clean_footer_fifth: 1
-bootstrap_barrio_region_width_footer_fifth: 1
+bootstrap_barrio_region_width_footer_fifth: 0
 bootstrap_barrio_region_class_footer_fifth: 'row copy-right-content'
 bootstrap_barrio_sidebar_collapse: 0
 bootstrap_barrio_hide_node_label: 0
