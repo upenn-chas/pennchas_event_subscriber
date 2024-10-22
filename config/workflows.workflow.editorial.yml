@@ -15,52 +15,57 @@ type_settings:
   states:
     archived:
       label: Archived
-      weight: 5
+      weight: 1
       published: false
       default_revision: true
+    denied:
+      label: Denied
+      weight: 0
+      published: false
+      default_revision: false
     draft:
       label: Draft
-      weight: -5
+      weight: -2
       published: false
       default_revision: false
     published:
       label: Published
-      weight: 0
+      weight: -1
       published: true
       default_revision: true
   transitions:
     archive:
       label: Archive
       from:
+        - denied
         - published
       to: archived
-      weight: 2
+      weight: 0
     archived_draft:
       label: 'Restore to Draft'
       from:
         - archived
+        - denied
       to: draft
-      weight: 3
-    archived_published:
-      label: Restore
-      from:
-        - archived
-      to: published
-      weight: 4
+      weight: 1
     create_new_draft:
-      label: 'Create New Draft'
+      label: Draft
       from:
         - draft
-        - published
       to: draft
-      weight: 0
+      weight: -3
+    denied:
+      label: Denied
+      from:
+        - draft
+      to: denied
+      weight: -1
     publish:
       label: Publish
       from:
         - draft
-        - published
       to: published
-      weight: 1
+      weight: -2
   entity_types:
     node:
       - chas_event
