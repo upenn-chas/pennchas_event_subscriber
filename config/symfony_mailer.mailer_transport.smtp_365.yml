@@ -1,0 +1,18 @@
+uuid: 90f43e26-f39b-4bc7-8d9b-3bff0ef60f3d
+langcode: en
+status: true
+dependencies: {  }
+id: smtp_365
+label: 'SMTP - 365'
+plugin: smtp
+configuration:
+  user: smtp-relay/collegehouses.upenn.edu
+  pass: oktad;Kneb63GlovUthid
+  host: smtp-relay.upenn.edu
+  port: 25
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null
