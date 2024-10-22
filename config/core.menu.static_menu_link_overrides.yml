@@ -13,3 +13,15 @@ definitions:
     parent: ''
     expanded: false
     enabled: false
+  user__logout:
+    enabled: true
+    menu_name: login-menu
+    parent: ''
+    expanded: false
+    weight: 0
+  user__page:
+    enabled: false
+    menu_name: account
+    parent: ''
+    expanded: false
+    weight: -50

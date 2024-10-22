@@ -1,0 +1,8 @@
+uuid: 09642946-4bfc-41d7-9448-da699addd1bd
+langcode: en
+status: true
+dependencies: {  }
+id: login-menu
+label: 'Login menu'
+description: 'Login/Logout link'
+locked: false
