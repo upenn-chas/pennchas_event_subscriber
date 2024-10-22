@@ -22,26 +22,22 @@ class EventEmailService
 
     public function notify(Node $node)
     {
-        $this->getGroupModerators('house1', array_column($node->get('field_college_houses')->getValue(), 'target_id'));
-        if (\Drupal::currentUser()->hasPermission('use editorial transition publish')) {
-            $this->sendMail($node, 'et_new_event_md_hst_notification', [$node->getOwnerId()], 'New event: ');
-        } else {
-            $this->sendMail($node, 'et_new_event_host_notification', [$node->getOwnerId()], 'New event: ');
-            $this->sendEmailToModerators($node);
-        }
+        $this->sendMail($node, 'et_new_event_host_notification', [$node->getOwnerId()], 'New event: ');
+        $this->sendEmailToModerators($node);
     }
 
     protected function sendEmailToModerators(Node $node)
     {
-        $moderatorsId = $this->getUsersIdWithModerationPermission($node);
+        $globalModeratorsId = $this->getUsersIdWithModerationPermission();
+        $groupModeratorsId = $this->getGroupModerators('house1', array_column($node->get('field_college_houses')->getValue(), 'target_id'));
+        $moderatorsId = array_unique(array_merge($globalModeratorsId, $groupModeratorsId));
         if ($moderatorsId) {
             $this->sendMail($node, 'et_new_event_mod_notification', $moderatorsId, 'Moderation: ');
         }
     }
 
-    protected function getUsersIdWithModerationPermission(Node $node)
+    protected function getUsersIdWithModerationPermission()
     {
-        $houses = $node->get('field_college_houses')->getValue();
         $roleWithModerationPermission = $this->getRolesWithModerationPermission();
 
         if ($roleWithModerationPermission) {
@@ -66,7 +62,7 @@ class EventEmailService
         $moderatorRoles = [];
 
         foreach ($groupRoles as $roleKey => $groupRole) {
-            if ($roleKey !== $groupTypeKey.'-admin' && $groupRole->hasPermission('use editorial transition publish')) {
+            if ($roleKey !== $groupTypeKey . '-admin' && $groupRole->hasPermission('use editorial transition publish')) {
                 $moderatorRoles[] = $roleKey;
             }
         }
@@ -74,9 +70,9 @@ class EventEmailService
         $groupModeratorsId = [];
 
         $groups = Group::loadMultiple($groupIds);
-        foreach($groups as $group) {
+        foreach ($groups as $group) {
             $members = $group->getMembers($moderatorRoles);
-            foreach($members as $member) {
+            foreach ($members as $member) {
                 $groupModeratorsId[] = $member->getUser()->id();
             }
         }
