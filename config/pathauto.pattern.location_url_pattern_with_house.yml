@@ -1,0 +1,22 @@
+uuid: 7f484dc7-6819-4410-b873-c2542b4dafef
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: location_url_pattern_with_house
+label: 'Location URL pattern with House'
+type: 'canonical_entities:node'
+pattern: 'location/_test[node:url:unaliased:path][location_title]'
+selection_criteria:
+  700c4959-0bd8-4d3f-92bd-4f3607bec537:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 700c4959-0bd8-4d3f-92bd-4f3607bec537
+    context_mapping:
+      node: node
+    bundles:
+      location: location
+selection_logic: and
+weight: -5
+relationships: {  }
