@@ -1,0 +1,25 @@
+uuid: 627d3786-feb9-4d7c-b5ce-fde48c9800eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.login-menu
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_loginmenu
+theme: penchas
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:login-menu'
+settings:
+  id: 'system_menu_block:login-menu'
+  label: 'Login menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }
