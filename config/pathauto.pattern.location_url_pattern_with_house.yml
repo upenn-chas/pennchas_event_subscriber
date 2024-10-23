@@ -7,12 +7,12 @@ dependencies:
 id: location_url_pattern_with_house
 label: 'Location URL pattern with House'
 type: 'canonical_entities:node'
-pattern: 'location/_test[node:url:unaliased:path][location_title]'
+pattern: 'location/[location_custom_token:location_title]'
 selection_criteria:
-  700c4959-0bd8-4d3f-92bd-4f3607bec537:
+  f7b2854b-eee6-496f-ab5e-dca66812898d:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 700c4959-0bd8-4d3f-92bd-4f3607bec537
+    uuid: f7b2854b-eee6-496f-ab5e-dca66812898d
     context_mapping:
       node: node
     bundles:

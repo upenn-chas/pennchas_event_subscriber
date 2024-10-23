@@ -1,0 +1,68 @@
+<?php
+
+use Drupal\group\Entity\Group;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+
+
+function node_event_form_ext_token_info() {
+  $types['location_custom_token'] = [
+    'name' => t('Custom token'),
+    'description' => t('Define custom tokens.'),
+  ];
+  $tokens['location_title'] = [
+    'name' => t('location title'),
+    'description' => t('Token to get current location title.'),
+  ];
+  return [
+    'types' => $types,
+    'tokens' => ['location_custom_token' => $tokens],
+  ];
+}
+
+function get_groups_from_node($nid) {
+  $group_ids = array();
+  $ids = \Drupal::entityQuery('group_relationship')
+    ->condition('entity_id', $nid)
+    ->accessCheck()
+    ->execute();
+  // dd($ids);die();
+  // $relations = \Drupal\group\Entity\GroupContent::loadMultiple($ids);
+  // foreach ($relations as $rel) {
+  //   if ($rel->getEntity()->getEntityTypeId() == 'node') {
+  //     $group_ids[] = $rel->getGroup()->id();
+  //   }
+  // }
+
+  // return $group_ids;
+}
+
+/**
+* Implements hook_tokens().
+*/
+function node_event_form_ext_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if ($type == 'location_custom_token') {
+
+    // $nid = \Drupal::request()->query->get('location');
+    // if ($nid) {
+    //   $node_details = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    // }
+    foreach ($tokens as $name => $original) {
+      // Find the desired token by name.
+      switch ($name) {
+          case 'location_title':
+            $current_nid = $data['node']->id();
+            // dd($data['node']);
+            $groups = get_groups_from_node($current_nid);
+            // dd($groups);
+          // if ($node_details) {
+            $replacements[$original] = 'testing'; //$node_details->label();
+          // }
+          break;
+      }
+    }
+  }
+  // $replacements[$original] = 'testing-new'; //$node_details->label();
+  return $replacements;
+}
