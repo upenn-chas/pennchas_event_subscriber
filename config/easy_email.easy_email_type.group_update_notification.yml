@@ -1,0 +1,29 @@
+uuid: 06f674ac-823e-462b-9485-a58c8367bb50
+langcode: en
+status: true
+dependencies: {  }
+id: group_update_notification
+label: 'Group Update Notification'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: ' [easy_email:field_group:entity:title] Group update Notification'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Hi,</p><p>Group is updated.</p><p>&nbsp;</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

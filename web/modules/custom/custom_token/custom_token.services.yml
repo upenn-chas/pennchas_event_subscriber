@@ -1,0 +1,3 @@
+services:
+  custom_token.mailservice:
+    class: \Drupal\custom_token\Service\GroupEmailService

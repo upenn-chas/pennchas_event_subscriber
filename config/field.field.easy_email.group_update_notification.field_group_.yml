@@ -1,0 +1,29 @@
+uuid: 3ef76f24-260a-4fcb-84ae-b9f37d43f3cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.group_update_notification
+    - field.storage.easy_email.field_group_
+    - group.type.house1
+id: easy_email.group_update_notification.field_group_
+field_name: field_group_
+entity_type: easy_email
+bundle: group_update_notification
+label: group
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      house1: house1
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

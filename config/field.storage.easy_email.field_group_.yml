@@ -1,0 +1,20 @@
+uuid: 67e85986-39be-4688-b13d-4f75a7ffbec0
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_email
+    - group
+id: easy_email.field_group_
+field_name: field_group_
+entity_type: easy_email
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
