@@ -28,8 +28,13 @@ type_settings:
       weight: -2
       published: false
       default_revision: false
+    pending:
+      label: Pending
+      weight: 2
+      published: false
+      default_revision: false
     published:
-      label: Published
+      label: Approved
       weight: -1
       published: true
       default_revision: true
@@ -38,18 +43,19 @@ type_settings:
       label: Archive
       from:
         - denied
+        - pending
         - published
       to: archived
-      weight: 0
+      weight: 1
     archived_draft:
       label: 'Restore to Draft'
       from:
         - archived
         - denied
       to: draft
-      weight: 1
+      weight: 2
     create_new_draft:
-      label: Draft
+      label: 'New Draft'
       from:
         - draft
       to: draft
@@ -57,15 +63,24 @@ type_settings:
     denied:
       label: Denied
       from:
+        - denied
         - draft
+        - pending
       to: denied
-      weight: -1
-    publish:
-      label: Publish
+      weight: 0
+    pending:
+      label: Pending
       from:
         - draft
-      to: published
+      to: pending
       weight: -2
+    publish:
+      label: Approved
+      from:
+        - draft
+        - pending
+      to: published
+      weight: -1
   entity_types:
     node:
       - chas_event

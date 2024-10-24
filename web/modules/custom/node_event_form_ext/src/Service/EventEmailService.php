@@ -26,6 +26,15 @@ class EventEmailService
         $this->sendEmailToModerators($node);
     }
 
+    public function notifyOwnerAboutModeration(Node $node, string $state)
+    {
+        if ($state === 'published') {
+            $this->sendMail($node, 'et_event_approved', [$node->getOwnerId()], 'Approved: ');
+        } else {
+            $this->sendModerationMail($node, $state);
+        }
+    }
+
     protected function sendEmailToModerators(Node $node)
     {
         $globalModeratorsId = $this->getUsersIdWithModerationPermission();
@@ -102,6 +111,24 @@ class EventEmailService
             if ($email) {
                 $email->set('field_event', $node);
                 $email->setRecipientIds($recipients);
+                $this->mailer->sendEmail($email, [], true, true);
+            }
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
+
+    protected function sendModerationMail(Node $node, $state)
+    {
+        try {
+            $email = $this->mailer->createEmail([
+                'type' => 'et_moderation_state_change_notif',
+                'label' => $node->getTitle() . ' is ' . $state
+            ]);
+            if ($email) {
+                $email->set('field_event', $node);
+                $email->set('field_state', $state);
+                $email->setRecipientIds([$node->getOwnerId()]);
                 $this->mailer->sendEmail($email, [], true, true);
             }
         } catch (Exception $e) {

@@ -1,0 +1,29 @@
+uuid: 4da8764d-4923-4122-8e02-646b7c2d1141
+langcode: en
+status: true
+dependencies: {  }
+id: et_moderation_state_change_notif
+label: 'Moderation State Change Notification'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: '[easy_email:field_event:entity:title] is [easy_email:field_state]'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_event:entity:author:display-name]</p><p>Moderation status for your content titled, "[easy_email:field_event:entity:title]" has been updated to: [easy_email:field_state].&nbsp;</p><p>Message: [easy_email:field_event:entity:log]</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

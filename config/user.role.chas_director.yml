@@ -41,6 +41,7 @@ permissions:
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'
+  - 'use editorial transition pending'
   - 'use editorial transition publish'
   - 'view all revisions'
   - 'view any unpublished content'

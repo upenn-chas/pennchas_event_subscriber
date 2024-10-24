@@ -2,7 +2,10 @@ uuid: ca71029b-2b28-41c8-8ec1-6d043c4d4c77
 langcode: en
 status: true
 dependencies:
+  config:
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - node
     - user
   enforced:
@@ -602,6 +605,7 @@ display:
           value:
             editorial-draft: editorial-draft
             editorial-archived: editorial-archived
+            editorial-pending: editorial-pending
           group: 1
           exposed: true
           expose:
@@ -619,7 +623,13 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              content_editor: '0'
               administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -821,7 +831,8 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:workflow_list'
   moderated_content:
     id: moderated_content
     display_title: 'Moderated content'
@@ -840,4 +851,5 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:workflow_list'

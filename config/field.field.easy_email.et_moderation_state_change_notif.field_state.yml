@@ -1,0 +1,19 @@
+uuid: 4ae9ec3b-2601-4552-be56-c065b91c02c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_moderation_state_change_notif
+    - field.storage.easy_email.field_state
+id: easy_email.et_moderation_state_change_notif.field_state
+field_name: field_state
+entity_type: easy_email
+bundle: et_moderation_state_change_notif
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

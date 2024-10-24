@@ -192,6 +192,11 @@ display:
     display_plugin: entity_reference
     position: 1
     display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 0
       style:
         type: entity_reference
         options:

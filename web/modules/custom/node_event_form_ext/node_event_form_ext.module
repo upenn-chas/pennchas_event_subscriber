@@ -2,6 +2,7 @@
 
 use Drupal\group\Entity\Group;
 use Drupal\node\NodeInterface;
+use Drupal\node_event_form_ext\Plugin\EventCreateAndUpdate;
 
 /**
  * Implements hook_form_alter()
@@ -17,20 +18,10 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
                 ]
             ]
         ];
-        $form['field_audience_floor']['widget']['#required'] = [
-            ':input[name="field_intended_audience[floors_residents]"]' => [
-                'checked' => true
-            ]
-        ];
 
         // Enable program community field
         $form['field_program_communities']['#states'] = [
             'visible' => [
-                ':input[name="field_intended_audience[program_community]"]' => [
-                    'checked' => true
-                ]
-            ],
-            'required' => [
                 ':input[name="field_intended_audience[program_community]"]' => [
                     'checked' => true
                 ]
@@ -46,11 +37,6 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
         // Enable Other field
         $form['field_intended_audience_other']['#states'] = [
             'visible' => [
-                ':input[name="field_intended_audience[other]"]' => [
-                    'checked' => true
-                ]
-            ],
-            'required' => [
                 ':input[name="field_intended_audience[other]"]' => [
                     'checked' => true
                 ]
@@ -151,116 +137,24 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
 
 function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
 {
-    if ($entity->bundle() === 'chas_event' && $entity instanceof NodeInterface) {
-        $houses = $entity->get('field_college_houses')->getValue();
-        if (can_by_pass_moderation(array_column($houses, 'target_id'))) {
-            $entity->setPublished(true);
-            $entity->set('moderation_state', 'published');
-        }
+    if ($entity instanceof NodeInterface && $entity->bundle() === 'chas_event' && $entity->isNew()) {
+        $eventHandler = new EventCreateAndUpdate();
+        $eventHandler->handlePreSaveEvent($entity);
     }
 }
 
 function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
 {
     if ($node->getType() === 'chas_event') {
-        \Drupal::messenger()->deleteAll();
-        $houses = $node->get('field_college_houses')->getValue();
-        foreach ($houses as $house_details) {
-            $house = \Drupal\group\Entity\Group::load($house_details['target_id']);
-            $existing_relationship = $house->getRelationshipsByEntity($node);
-            if (empty($existing_relationship)) {
-                $house->addRelationship($node, 'group_node:' . $node->getType());
-            }
-        }
-
-        $message = t('Your event has been accepted and published.');
-        if (!can_by_pass_moderation(array_column($houses, 'target_id'))) {
-            $message = t('Your event has been submitted and there is a possible three day wait time for approval.');
-            notify_event_create($node);
-        }
-
-        \Drupal::messenger()->addStatus($message);
+        $eventHandler = new EventCreateAndUpdate();
+        $eventHandler->handleEventInsert($node);
     }
 }
 
 function node_event_form_ext_node_update(\Drupal\node\Entity\Node $node)
 {
     if ($node->getType() === 'chas_event') {
-        $existing_houses = $node->original->get('field_college_houses')->getValue();
-        $houses = $node->get('field_college_houses')->getValue();
-        $result = process_houses_diff($existing_houses, $houses);
-
-        if ($result['new']) {
-            foreach ($result['new'] as $house_id) {
-                $house = \Drupal\group\Entity\Group::load($house_id);
-                $existing_relationship = $house->getRelationshipsByEntity($node);
-                if (empty($existing_relationship)) {
-                    $house->addRelationship($node, 'group_node:' . $node->getType());
-                }
-            }
-        }
-        if ($result['remove']) {
-            foreach ($result['remove'] as $house_id) {
-                $house = \Drupal\group\Entity\Group::load($house_id);
-                $relationships = $house->getRelationshipsByEntity($node);
-                if (!empty($relationships)) {
-                    array_walk($relationships, function (\Drupal\group\Entity\GroupRelationshipInterface $rel) {
-                        $rel->delete();
-                    });
-                }
-            }
-        }
+        $eventHandler = new EventCreateAndUpdate();
+        $eventHandler->handleEventUpdate($node);
     }
-}
-
-function process_houses_diff($existing_houses, $new_houses)
-{
-    $existing_houses_id = array_flip(array_column($existing_houses, 'target_id'));
-    $new_houses_id = array_column($new_houses, 'target_id');
-
-    $new_houses_rel = [];
-    $house_rel_del = [];
-
-    foreach ($new_houses_id as $house_id) {
-        if (isset($existing_houses_id[$house_id])) {
-            unset($existing_houses_id[$house_id]);
-        } else {
-            $new_houses_rel[] = $house_id;
-        }
-    }
-
-    if ($existing_houses) {
-        $house_rel_del = array_flip($existing_houses_id);
-    }
-
-    return [
-        'new' => $new_houses_rel,
-        'remove' => $house_rel_del
-    ];
-}
-
-function can_by_pass_moderation($group_ids)
-{
-    $current_user = \Drupal::currentUser();
-    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
-    if (count($group_memberships) > 0) {
-        foreach ($group_ids as $group_id) {
-            $group = Group::load($group_id);
-            if ($group->hasPermission('use editorial transition publish', $current_user)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    return $current_user->hasPermission('use editorial transition publish');
-}
-
-/**
- * Send notification to users
- */
-function notify_event_create($node)
-{
-    $mail_service = \Drupal::service('node_event_form_ext.mail_service');
-    $mail_service->notify($node);
 }

@@ -1,0 +1,29 @@
+uuid: e972e3c0-a178-4f70-b1f1-739e4cfcaae8
+langcode: en
+status: true
+dependencies: {  }
+id: et_event_approved
+label: 'Event Approved'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Event [easy_email:field_event:entity:title] is approved'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_event:entity:author:display-name],</p><p>Your event, "[easy_email:field_event:entity:title]" has been approved.</p><p>&nbsp;</p><p>Thank You</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null
