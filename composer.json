@@ -48,7 +48,8 @@
         "drupal/bootstrap_barrio": "^5.5",
         "drupal/tb_megamenu": "^1.9",
         "drupal/group_relationship_tokens": "^1.0",
-        "drupal/smtp": "^1.4"
+        "drupal/smtp": "^1.4",
+        "drupal/group_permissions": "^2.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

@@ -1,0 +1,14 @@
+uuid: 5b80dc98-1cd4-45ea-9673-cb58a4b26e22
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.house_office_student_worker
+  module:
+    - user
+id: user_remove_role_action.house_office_student_worker
+label: 'Remove the House Office Student Worker role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: house_office_student_worker

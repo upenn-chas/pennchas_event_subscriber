@@ -1,0 +1,9 @@
+uuid: f1217dc8-26ed-4a58-af79-89675ac8dc76
+langcode: en
+status: true
+dependencies: {  }
+id: house_office_student_worker
+label: 'House Office Student Worker'
+weight: 9
+is_admin: null
+permissions: {  }

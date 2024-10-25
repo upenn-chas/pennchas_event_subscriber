@@ -37,6 +37,7 @@ module:
   gcontent_moderation: 0
   gnode: 0
   group: 0
+  group_permissions: 0
   group_relationship_tokens: 0
   help: 0
   history: 0
