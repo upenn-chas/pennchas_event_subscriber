@@ -1,0 +1,14 @@
+uuid: f7ab00a4-2914-4e69-9a91-3df42762431b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.resident_advisor
+  module:
+    - user
+id: user_add_role_action.resident_advisor
+label: 'Add the Resident Advisor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: resident_advisor

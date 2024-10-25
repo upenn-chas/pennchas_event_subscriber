@@ -10,6 +10,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - file
     - node
     - smart_date_recur
 id: chas_technology
@@ -24,6 +25,7 @@ permissions:
   - 'create reserve_room content'
   - 'create room content'
   - 'delete own chas_event content'
+  - 'delete own files'
   - 'delete own page content'
   - 'delete own reserve_room content'
   - 'edit own chas_event content'
