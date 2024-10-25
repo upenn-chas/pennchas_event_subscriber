@@ -1,0 +1,25 @@
+uuid: 506361ec-72b1-4132-b601-5d2a794823cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feedback_form
+    - node.type.chas_event
+  module:
+    - webform
+id: node.chas_event.field_feedback_form
+field_name: field_feedback_form
+entity_type: node
+bundle: chas_event
+label: 'Feedback Form'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

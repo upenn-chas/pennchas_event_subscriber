@@ -28,6 +28,7 @@ module:
   editor: 0
   entity: 0
   event_evaluation: 0
+  event_feedback: 0
   field: 0
   field_ui: 0
   file: 0
@@ -54,7 +55,6 @@ module:
   media_library_form_element: 0
   menu_link_content: 0
   menu_ui: 0
-  multiple_fields_remove_button: 0
   mysql: 0
   node: 0
   node_event_form_ext: 0
@@ -82,6 +82,9 @@ module:
   views_bootstrap: 0
   views_ui: 0
   viewsreference: 0
+  webform: 0
+  webform_node: 0
+  webform_ui: 0
   workflows: 0
   pathauto: 1
   externalauth: 10

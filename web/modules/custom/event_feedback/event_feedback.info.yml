@@ -1,0 +1,8 @@
+name: 'Event Feedback'
+description: 'Provides an feedback form for the content type CHAS Event.'
+type: module
+core_version_requirement: ^10
+version: 1.0
+package: Custom
+dependencies:
+  - webform:webform

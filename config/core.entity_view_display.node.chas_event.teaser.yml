@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
+    - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
     - field.field.node.chas_event.field_intended_audience_image
@@ -57,6 +58,7 @@ hidden:
   field_event_priority: true
   field_event_schedule: true
   field_experiences_and_strategies: true
+  field_feedback_form: true
   field_intended_audience: true
   field_intended_audience_attach: true
   field_intended_audience_image: true

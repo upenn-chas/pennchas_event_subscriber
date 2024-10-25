@@ -1,0 +1,15 @@
+<?php
+function event_feedback_theme($existing, $type, $theme, $path)
+{
+    return [
+        'event_feedback_page' => [
+            'variables' => [
+                'node' => NULL,
+                'webform' => NULL,
+                'message' => NULL,
+                'eventDates' => NULL
+            ],
+            'template' => 'event-feedback-page'
+        ]
+    ];
+}

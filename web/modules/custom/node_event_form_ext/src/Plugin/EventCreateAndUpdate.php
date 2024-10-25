@@ -7,6 +7,7 @@ use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\webform\Entity\Webform;
 
 class EventCreateAndUpdate
 {
@@ -14,16 +15,24 @@ class EventCreateAndUpdate
 
     public function handlePreSaveEvent(NodeInterface $node)
     {
+        $eventFeedbackWebformId = 'event_feedback';
+        $node->set('field_feedback_form', [
+            'target_id' => $eventFeedbackWebformId
+        ]);
         $houses = $node->get('field_college_houses')->getValue();
         if ($this->canByPassModeration(array_column($houses, 'target_id'))) {
             $node->setPublished(true);
             $node->set('moderation_state', 'published');
+        } else {
+            $node->setPublished(false);
+            $node->set('moderation_state', 'draft');
         }
     }
 
     public function handleEventInsert(Node $node): void
     {
         \Drupal::messenger()->deleteAll();
+
         $houses = $node->get('field_college_houses')->getValue();
         foreach ($houses as $house_details) {
             $house = Group::load($house_details['target_id']);

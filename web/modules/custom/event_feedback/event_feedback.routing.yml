@@ -1,0 +1,11 @@
+event_feedback.page:
+  path: node/{node}/feedback
+  defaults:
+    _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::feedback'
+    _title: ''
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      node:
+        type: entity:node
