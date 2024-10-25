@@ -43,7 +43,7 @@ class AdminFindYourHouse extends ConfigFormBase {
         foreach ($group_types as $group_type) {
             $options[$group_type->id()] = $group_type->label();
         }
-        
+
         $form['group_types'] = [
             '#type' => 'checkboxes',
             '#title' => $this->t('Group Types'),

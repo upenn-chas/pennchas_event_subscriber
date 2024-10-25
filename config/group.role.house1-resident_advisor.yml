@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - group.type.house1
-    - user.role.resident_advisor
 id: house1-resident_advisor
 label: 'Resident Advisor'
 weight: 107
 admin: false
-scope: outsider
-global_role: resident_advisor
+scope: individual
+global_role: null
 group_type: house1
 permissions:
   - 'access group_node overview'
