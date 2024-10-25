@@ -31,15 +31,16 @@ class FindYourHouse extends BlockBase
 		$go_button = $config->get('go_button') ?? 'Go';
 		$group_types = $config->get('group_types');
 		$link_text = $config->get('link_text') ?? 'Discover all our houses';
-		$link_url = $config->get('link_url')?? '/';
+		$link_url = $config->get('link_url')?? '#';
 
-		$group_query = \Drupal::entityQuery('group')
-		->condition('type', $group_types ,'IN')
-		->accessCheck(true)
-		->execute();
+		// $group_query = \Drupal::entityQuery('group')
+		// ->condition('type', $group_types ,'IN')
+		// ->accessCheck(true)
+		// ->execute();
+    $group_storage = \Drupal::entityTypeManager()->getStorage('group');
+    $group_ids = $group_storage->getQuery()->accessCheck(true)->execute();
 
-		// Load all groups.
-		$groups = Group::loadMultiple($group_query);
+    $groups = Group::loadMultiple($group_ids);
 		$options = [];
 
 		foreach ($groups as $group) {

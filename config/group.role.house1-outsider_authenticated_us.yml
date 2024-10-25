@@ -1,0 +1,16 @@
+uuid: 46e82205-1ce2-4367-b44d-87430f3bec9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.authenticated
+id: house1-outsider_authenticated_us
+label: 'Outsider authenticated user'
+weight: 112
+admin: false
+scope: outsider
+global_role: authenticated
+group_type: house1
+permissions:
+  - 'view group'
