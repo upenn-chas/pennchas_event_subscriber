@@ -70,64 +70,30 @@
 {# see https://www.drupal.org/project/drupal/issues/953034#comment-14192130 #}
 {% set sidebar_first_exists = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
-
+<section id="section1" class="top-notifications" style="background-color: #92B7FF;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5>Attention New and Returning Students!</h5>
+        <p>New and returning students for the Fall 2024 semester must <a href="">complete their wellness requirements</a> (including uploading immunizations and enrolling in or waiving out of the Penn Student Insurance Plan).</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- there is option to align to right or center-->
+<section id="section2" class="top-notifications nav-stacked" style="background-color: #FEACB2;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5>Attention New and Returning Students!</h5>
+        <p>New and returning students for the Fall 2024 semester must  <a href="">complete their wellness requirements</a> (including uploading immunizations and enrolling in or waiving out of the Penn Student Insurance Plan).</p>
+      </div>
+    </div>
+  </div>
+</section>
 <div id="page-wrapper">
   <div id="page">
-    <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
-      {% block head %}
-        {% if page.secondary_menu or page.top_header or page.top_header_form %}
-          <nav{{ navbar_top_attributes }}>
-          {% if container_navbar %}
-          <div class="container">
-          {% endif %}
-              {{ page.secondary_menu }}
-              {{ page.top_header }}
-              {% if page.top_header_form %}
-                <div class="form-inline navbar-form ms-auto">
-                  {{ page.top_header_form }}
-                </div>
-              {% endif %}
-          {% if container_navbar %}
-          </div>
-          {% endif %}
-          </nav>
-        {% endif %}
-        {% if page.header or page.primary_menu or page.header_form %}
-          <nav{{ navbar_attributes }}>
-            {% if container_navbar %}
-            <div class="container">
-            {% endif %}
-              {{ page.header }}
-              {% if page.primary_menu or page.header_form %}
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="{{ navbar_collapse_btn_data }}" data-bs-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="{{ navbar_collapse_class }}" id="CollapsingNavbar">
-                  {% if navbar_offcanvas %}
-                    <div class="offcanvas-header">
-                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                  {% endif %}
-                  {{ page.primary_menu }}
-                  {% if page.header_form %}
-                    <div class="form-inline navbar-form justify-content-end">
-                      {{ page.header_form }}
-                    </div>
-                  {% endif %}
-                  {% if navbar_offcanvas %}
-                    </div>
-                  {% endif %}
-                </div>
-              {% endif %}
-              {% if sidebar_collapse %}
-                <button class="navbar-toggler navbar-toggler-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#CollapsingLeft" aria-controls="CollapsingLeft" aria-expanded="false" aria-label="Toggle navigation"></button>
-              {% endif %}
-            {% if container_navbar %}
-            </div>
-            {% endif %}
-          </nav>
-        {% endif %}
-      {% endblock %}
-    </header>
+      {% include directory ~ '/templates/layout/header.html.twig' %}
     {% if page.highlighted %}
       <div class="highlighted">
         <aside class="{{ container }} section clearfix" role="complementary">
@@ -182,24 +148,6 @@
         </aside>
       </div>
     {% endif %}
-    <footer class="site-footer">
-      {% block footer %}
-        <div class="{{ container }}">
-          {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
-            <div class="row site-footer__top clearfix">
-              {{ page.footer_first }}
-              {{ page.footer_second }}
-              {{ page.footer_third }}
-              {{ page.footer_fourth }}
-            </div>
-          {% endif %}
-          {% if page.footer_fifth %}
-            <div class="site-footer__bottom">
-              {{ page.footer_fifth }}
-            </div>
-          {% endif %}
-        </div>
-      {% endblock %}
-    </footer>
+    {% include directory ~ '/templates/layout/footer.html.twig' %}
   </div>
 </div>
