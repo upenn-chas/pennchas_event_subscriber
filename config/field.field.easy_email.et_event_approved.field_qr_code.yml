@@ -1,0 +1,19 @@
+uuid: 02a4ec2d-ab07-4ba4-a940-50760d1c97e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_event_approved
+    - field.storage.easy_email.field_qr_code
+id: easy_email.et_event_approved.field_qr_code
+field_name: field_qr_code
+entity_type: easy_email
+bundle: et_event_approved
+label: 'Qr Code'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

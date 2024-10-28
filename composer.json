@@ -30,7 +30,6 @@
         "drupal/group": "^3.2",
         "drupal/term_reference_tree": "^2.0",
         "drupal/smart_date": "^4.1",
-        "drupal/multiple_fields_remove_button": "^2.2",
         "drupal/gcontent_moderation": "3.0.x-dev@dev",
         "drupal/pathauto": "^1.13",
         "drupal/admin_toolbar": "^3.5",
@@ -51,7 +50,8 @@
         "drupal/webform": "^6.2",
         "drupal/smtp": "^1.4",
         "drupal/group_permissions": "^2.0@alpha",
-        "drupal/variationcache": "^1.5"
+        "drupal/variationcache": "^1.5",
+        "bacon/bacon-qr-code": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -119,7 +119,8 @@
             "php-http/discovery": true,
             "simplesamlphp/composer-xmlprovider-installer": true,
             "simplesamlphp/composer-module-installer": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "endroid/installer": true
         }
     }
 }

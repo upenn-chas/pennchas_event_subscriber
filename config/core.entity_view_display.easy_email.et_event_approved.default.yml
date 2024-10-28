@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_event_approved
     - field.field.easy_email.et_event_approved.field_event
+    - field.field.easy_email.et_event_approved.field_qr_code
   module:
     - file
     - text
@@ -88,6 +89,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_qr_code:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
     region: content
   from_address:
     type: string

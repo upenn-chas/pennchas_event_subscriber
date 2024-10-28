@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_event_approved
     - field.field.easy_email.et_event_approved.field_event
+    - field.field.easy_email.et_event_approved.field_qr_code
   module:
     - file
     - text
@@ -97,6 +98,14 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_qr_code:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }

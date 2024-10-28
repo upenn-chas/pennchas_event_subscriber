@@ -1,0 +1,21 @@
+uuid: 9c37912a-2307-47dc-87a5-d12ab773b71d
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_email
+id: easy_email.field_qr_code
+field_name: field_qr_code
+entity_type: easy_email
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

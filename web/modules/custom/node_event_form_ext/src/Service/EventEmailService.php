@@ -29,7 +29,7 @@ class EventEmailService
     public function notifyOwnerAboutModeration(Node $node, string $state)
     {
         if ($state === 'published') {
-            $this->sendMail($node, 'et_event_approved', [$node->getOwnerId()], 'Approved: ');
+            $this->sendEventApprovalEmail($node);
         } else {
             $this->sendModerationMail($node, $state);
         }
@@ -114,7 +114,7 @@ class EventEmailService
                 $this->mailer->sendEmail($email, [], true, true);
             }
         } catch (Exception $e) {
-            dd($e);
+            \Drupal::logger('Node Event Form Ext')->error($e->getMessage(), $e->getTrace());
         }
     }
 
@@ -132,7 +132,29 @@ class EventEmailService
                 $this->mailer->sendEmail($email, [], true, true);
             }
         } catch (Exception $e) {
-            dd($e);
+            \Drupal::logger('Node Event Form Ext')->error($e->getMessage(), $e->getTrace());
         }
     }
+
+    protected function sendEventApprovalEmail(Node $node)
+    {
+        try {
+            $email = $this->mailer->createEmail([
+                'type' => 'et_event_approved',
+                'label' => $node->getTitle() . ' is approved'
+            ]);
+            if ($email) {
+                $email->set('field_event', $node);
+                $qrCodeGenerator = \Drupal::service('node_event_form_ext.qr_code_generator');
+                $qrCodePath = $qrCodeGenerator->generateQrCode($node->toUrl()->toString(). '/feedback');
+                $email->set('field_qr_code', $qrCodePath);
+                $email->setRecipientIds([$node->getOwnerId()]);
+                $this->mailer->sendEmail($email, [], true, true);
+            }
+        } catch (Exception $e) {
+            \Drupal::logger('Node Event Form Ext')->error($e->getMessage(), $e->getTrace());
+        }
+    }
+
+    
 }
