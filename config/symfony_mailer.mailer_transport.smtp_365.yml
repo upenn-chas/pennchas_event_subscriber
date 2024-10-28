@@ -1,15 +1,15 @@
-uuid: 74c8d5ca-ad61-46d9-b6c1-da55ca330679
+uuid: 83286ad8-e9f3-437a-b57c-e8e693a89255
 langcode: en
 status: true
 dependencies: {  }
-id: smtp
-label: MailHog
+id: smtp_365
+label: 'SMTP - 365'
 plugin: smtp
 configuration:
-  user: mailhog
-  pass: mailhog
-  host: mailer
-  port: 1025
+  user: smtp-relay/collegehouses.upenn.edu
+  pass: ''
+  host: smtp-relay.upenn.edu
+  port: 25
   query:
     verify_peer: true
     local_domain: ''
