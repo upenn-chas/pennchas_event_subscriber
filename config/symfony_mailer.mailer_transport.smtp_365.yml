@@ -7,7 +7,7 @@ label: 'SMTP - 365'
 plugin: smtp
 configuration:
   user: smtp-relay/collegehouses.upenn.edu
-  pass: ''
+  pass: oktad;Kneb63GlovUthid
   host: smtp-relay.upenn.edu
   port: 25
   query:
