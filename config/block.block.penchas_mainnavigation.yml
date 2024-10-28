@@ -1,0 +1,20 @@
+uuid: b08a5529-a2cc-4b67-a50a-0bd74a972de4
+langcode: en
+status: true
+dependencies:
+  module:
+    - tb_megamenu
+  theme:
+    - penchas
+id: penchas_mainnavigation
+theme: penchas
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'tb_megamenu_menu_block:main'
+settings:
+  id: 'tb_megamenu_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: tb_megamenu
+visibility: {  }

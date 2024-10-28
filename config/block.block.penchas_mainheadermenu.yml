@@ -1,9 +1,11 @@
-uuid: f6141a81-270f-4178-a5a7-702bdf3e7e07
+uuid: 14a29c63-4bb3-4368-a1eb-682b8e2833c0
 langcode: en
 status: true
 dependencies:
+  config:
+    - system.menu.account
   module:
-    - tb_megamenu
+    - system
   theme:
     - penchas
 id: penchas_mainheadermenu
@@ -11,10 +13,13 @@ theme: penchas
 region: primary_menu
 weight: 0
 provider: null
-plugin: 'tb_megamenu_menu_block:account'
+plugin: 'system_menu_block:account'
 settings:
-  id: 'tb_megamenu_menu_block:account'
+  id: 'system_menu_block:account'
   label: 'Main Header menu'
   label_display: '0'
-  provider: tb_megamenu
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
 visibility: {  }
