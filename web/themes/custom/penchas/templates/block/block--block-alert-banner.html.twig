@@ -31,28 +31,19 @@
 #}
 {%
   set classes = [
-    'block infor-block cta-box',
+    'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
+    'alert-top-banner top-notifications',
   ]
 %}
-{% set heading_alignment = '' %}
-
-{% if content.field_alignment %}
-  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
-{% endif %}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-    <div{{ content_attributes.addClass('content') }}>
-      {{ content.body }}
-      <div class="btn-wrapper">
-        {{ content.field_cta }}
+{% block content %}
+  <section {{ attributes.addClass(classes) }} style="background-color: {{content.field_background_color[0]['#markup']}}">
+    {% if label %}
+      <h5{{ title_attributes }}>{{ label }}</h5>
+    {% endif %}
+      <div{{ content_attributes.addClass('content') }}>
+        {{ content.body }}
       </div>
-    </div>
-  {% endblock %}
-</div>
+  </section>
+{% endblock %}

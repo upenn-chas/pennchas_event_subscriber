@@ -1,0 +1,33 @@
+uuid: 6c0c123e-02ef-427d-adc4-d2fec3967841
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_banner
+    - field.field.block_content.alert_banner.body
+    - field.field.block_content.alert_banner.field_background_color
+  module:
+    - color_field
+    - text
+id: block_content.alert_banner.default
+targetEntityType: block_content
+bundle: alert_banner
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_background_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

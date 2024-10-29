@@ -1,0 +1,25 @@
+uuid: 0686b906-9292-4a16-98f9-3383ef23d6d9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:alert_banner:cd8385f1-fc96-4774-b61d-5f16e6c128e0'
+  module:
+    - block_content
+  theme:
+    - penchas
+id: penchas_attentionnewandreturningstudents
+theme: penchas
+region: top_header
+weight: 0
+provider: null
+plugin: 'block_content:cd8385f1-fc96-4774-b61d-5f16e6c128e0'
+settings:
+  id: 'block_content:cd8385f1-fc96-4774-b61d-5f16e6c128e0'
+  label: 'Attention New and Returning Students!'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

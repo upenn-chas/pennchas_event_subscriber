@@ -70,27 +70,6 @@
 {# see https://www.drupal.org/project/drupal/issues/953034#comment-14192130 #}
 {% set sidebar_first_exists = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
-<section id="section1" class="top-notifications" style="background-color: #92B7FF;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h5>Attention New and Returning Students!</h5>
-        <p>New and returning students for the Fall 2024 semester must <a href="">complete their wellness requirements</a> (including uploading immunizations and enrolling in or waiving out of the Penn Student Insurance Plan).</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- there is option to align to right or center-->
-<section id="section2" class="top-notifications nav-stacked" style="background-color: #FEACB2;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h5>Attention New and Returning Students!</h5>
-        <p>New and returning students for the Fall 2024 semester must  <a href="">complete their wellness requirements</a> (including uploading immunizations and enrolling in or waiving out of the Penn Student Insurance Plan).</p>
-      </div>
-    </div>
-  </div>
-</section>
 <div id="page-wrapper">
   <div id="page">
       {% include directory ~ '/templates/layout/header.html.twig' %}

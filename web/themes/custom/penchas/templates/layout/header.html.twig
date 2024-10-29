@@ -1,3 +1,6 @@
+{% if page.top_header %}
+  {{ page.top_header }}
+{% endif %}
 <header id="header" role="banner" aria-label="{{ 'Site header'|t}}">
       {% block head %}
         {% if page.header or page.primary_menu or page.header_form %}
