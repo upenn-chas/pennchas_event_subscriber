@@ -11,6 +11,7 @@ global-styling:
       css/bootstrap.min.css: {}
       css/style.css: {}
       css/slick.css: {}
+      css/custom_style.css: {}
       css/custom.css: {}
   dependencies:
     - core/jquery

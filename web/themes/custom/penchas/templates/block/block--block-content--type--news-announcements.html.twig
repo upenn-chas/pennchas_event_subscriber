@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main content
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'block infor-block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'half-screen-img',
+  ]
+%}
+{% set heading_alignment = '' %}
+
+{% if content.field_alignment %}
+  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
+{% endif %}
+
+{% block content %}
+<section {{ attributes.addClass(classes) }} style="background-color: #ebf1ff;">
+  <div class="container-fluid">
+    <div {{ content_attributes.addClass('content row') }}>
+      <div class="col-12 col-lg-6 bg-img" style="background: url('{{content.field_image.entity.fileuri}}')">
+
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="inner-container">
+          <div class="section-title">
+            {{ title_prefix }}
+            {% if label %}
+              <h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3>
+            {% endif %}
+            {{ title_suffix }}
+          </div>
+          <div class="news-cards">
+            {% for item in content.field_news['#items'] %}
+              <div class="news-card" article-id="{{item.target_id}}">
+                <div class="news-card-left">
+                  <div class="news-head">
+                    <div class="tags">
+                    {# {% for tag in item.entity.field_tags %}
+                        {{dump(tag.value)}}
+                    {% endfor %} #}
+
+                    </div>
+                    <span>{{item.createdtime | date('F j, Y')}}</span>
+                  </div>
+                  <h4><a href="">{{item.entity.label}}</a></h4>
+                  <p>{{item.entity.body.value}}</p>
+                </div>
+                <div class="news-card-right">
+                  <a href="{{item.entity.url}}"><img src="{{item.entity.field_image.entity.fileuri}}" alt="{{item.entity.label}}"></a>
+                </div>
+              </div>
+            {% endfor %}
+
+            <div class="btn-wrapper">
+              {{ content.field_cta }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

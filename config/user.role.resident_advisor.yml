@@ -1,9 +1,0 @@
-uuid: dafdc4ce-b8b2-4986-9d3e-9399784512ea
-langcode: en
-status: true
-dependencies: {  }
-id: resident_advisor
-label: 'Resident Advisor'
-weight: 10
-is_admin: null
-permissions: {  }

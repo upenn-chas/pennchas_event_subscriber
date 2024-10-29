@@ -31,28 +31,20 @@
 #}
 {%
   set classes = [
-    'block infor-block cta-box',
+    'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-{% set heading_alignment = '' %}
-
-{% if content.field_alignment %}
-  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
-{% endif %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
-    <h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3>
+    <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
     <div{{ content_attributes.addClass('content') }}>
-      {{ content.body }}
-      <div class="btn-wrapper">
-        {{ content.field_cta }}
-      </div>
+      {{ content }}
     </div>
   {% endblock %}
 </div>

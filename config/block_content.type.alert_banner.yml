@@ -1,0 +1,8 @@
+uuid: dcee73f5-dcee-4fec-8c84-a483b8bc4777
+langcode: en
+status: true
+dependencies: {  }
+id: alert_banner
+label: 'Alert banner'
+revision: false
+description: null
