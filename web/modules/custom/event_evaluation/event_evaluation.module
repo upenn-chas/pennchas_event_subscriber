@@ -78,11 +78,20 @@ function event_evaluation_entity_operation_alter(array &$operations, EntityInter
 }
 
 /**
+ * Implements hook_cron().
+ * 
+ * Handle the evaluation cron job
+ */
+ function event_evaluation_cron() 
+ {
+    \Drupal::service('event_evaluation.evaluation_email_cron')->notifyEndEventsForEvaluation();
+ }
+
+/**
  * Check is user is authroized for event evalution.
  */
 function isUserAuthorized($node)
 {
-
     $current_user = \Drupal::currentUser();
     if ($current_user->hasRole('administrator')) {
         return true;
@@ -115,16 +124,7 @@ function canEvaluateEvent($node)
     if (!$node->get('status')->value) {
         return false;
     }
-    $result = true;
     $current_time = time();
-    $event_schedule = $node->get('field_event_schedule');
-    $length = count($event_schedule);
-    for ($i = 0; $i < $length; $i++) {
-        if ($event_schedule[$i]->end_value > $current_time) {
-            $result = false;
-            break;
-        }
-    }
-
-    return $result;
+    $event_schedule = (int) $node->get('field_event_ends_on')->getString();
+    return $event_schedule < $current_time;
 }

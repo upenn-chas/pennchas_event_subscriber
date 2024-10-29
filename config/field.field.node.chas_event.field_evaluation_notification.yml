@@ -1,0 +1,23 @@
+uuid: 9be96744-2a2e-4cec-8be7-5c0ac82f4c28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evaluation_notification
+    - node.type.chas_event
+id: node.chas_event.field_evaluation_notification
+field_name: field_evaluation_notification
+entity_type: node
+bundle: chas_event
+label: 'Evaluation Notification'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

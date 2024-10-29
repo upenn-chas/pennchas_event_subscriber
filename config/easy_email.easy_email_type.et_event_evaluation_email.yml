@@ -1,0 +1,29 @@
+uuid: 0a4c54a4-50aa-444c-9c01-e7ba603a7403
+langcode: en
+status: true
+dependencies: {  }
+id: et_event_evaluation_email
+label: 'Event Evaluation Email'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: '[easy_email:field_event:entity:title] evaluation form'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_event:entity:author:display-name],</p><p>Your event, "[easy_email:field_event:entity:title]" has been completed.&nbsp;</p><p>Evaluation Form link: <a href="[easy_email:field_event:entity:url]/evaluate">[easy_email:field_event:entity:url]/evaluate</a></p><p>&nbsp;</p><p>Thank You</p><p>&nbsp;</p><p>&nbsp;</p>'
+  format: email_html
+bodyPlain: ''
+generateBodyPlain: true
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

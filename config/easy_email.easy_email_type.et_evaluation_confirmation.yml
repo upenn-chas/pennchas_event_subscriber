@@ -1,0 +1,29 @@
+uuid: b0520f4d-c79c-4f96-9638-4235259541d1
+langcode: en
+status: true
+dependencies: {  }
+id: et_evaluation_confirmation
+label: 'Evaluation Confirmation'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Evaluation confirmation for [easy_email:field_event:entity:title]'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_event:entity:author:display-name],</p><p>Thank you for submitting the evaluation for the event, "[easy_email:field_event:entity:title]".</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

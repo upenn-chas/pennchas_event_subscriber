@@ -83,5 +83,6 @@ class EventEvaluationForm extends FormBase
         $node->save();
 
         \Drupal::messenger()->addMessage("Event \"{$node->getTitle()}\" has been evaluated.");
+        \Drupal::service('event_evaluation.evaluation_confirmation_handler')->sendConfirmationEmail($node);
     }
 }

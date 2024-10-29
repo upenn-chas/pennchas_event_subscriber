@@ -137,9 +137,13 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
 
 function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
 {
-    if ($entity instanceof NodeInterface && $entity->bundle() === 'chas_event' && $entity->isNew()) {
+    if ($entity instanceof NodeInterface && $entity->bundle() === 'chas_event') {
         $eventHandler = new EventCreateAndUpdate();
-        $eventHandler->handlePreSaveEvent($entity);
+        if($entity->isNew()) {
+            $eventHandler->handlePreSaveEvent($entity);
+        } else {
+            $eventHandler->handlePreUpdateEvent($entity);
+        }
     }
 }
 

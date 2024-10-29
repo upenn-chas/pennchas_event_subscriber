@@ -1,0 +1,29 @@
+uuid: 840e957e-2d8c-4cc3-bc50-87f5671dd348
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_event_evaluation_email
+    - field.storage.easy_email.field_event
+    - node.type.chas_event
+id: easy_email.et_event_evaluation_email.field_event
+field_name: field_event
+entity_type: easy_email
+bundle: et_event_evaluation_email
+label: Event
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      chas_event: chas_event
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

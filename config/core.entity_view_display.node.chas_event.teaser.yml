@@ -13,6 +13,8 @@ dependencies:
     - field.field.node.chas_event.field_audience_floor
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
+    - field.field.node.chas_event.field_evaluation_notification
+    - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
@@ -54,7 +56,9 @@ hidden:
   field_audience_floor: true
   field_collaborators: true
   field_college_houses: true
+  field_evaluation_notification: true
   field_event_date: true
+  field_event_ends_on: true
   field_event_priority: true
   field_event_schedule: true
   field_experiences_and_strategies: true

@@ -27,6 +27,12 @@ class EventCreateAndUpdate
             $node->setPublished(false);
             $node->set('moderation_state', 'draft');
         }
+        $this->updateEventEndsOn($node);
+    }
+
+    public function handlePreUpdateEvent(NodeInterface $node)
+    {
+        $this->updateEventEndsOn($node);
     }
 
     public function handleEventInsert(Node $node): void
@@ -111,6 +117,14 @@ class EventCreateAndUpdate
             'new' => $new_houses_rel,
             'remove' => $house_rel_del
         ];
+    }
+
+    function updateEventEndsOn(NodeInterface $node)
+    {
+        $eventSchedules = $node->get('field_event_schedule')->getValue();
+        $count = count($eventSchedules);
+        $eventLastDay = $eventSchedules[$count - 1];
+        $node->set('field_event_ends_on', $eventLastDay['end_value']);
     }
 
     function handleModerationStateChange(Node $node): void

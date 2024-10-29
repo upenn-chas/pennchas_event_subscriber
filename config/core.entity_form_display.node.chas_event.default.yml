@@ -12,6 +12,8 @@ dependencies:
     - field.field.node.chas_event.field_audience_floor
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
+    - field.field.node.chas_event.field_evaluation_notification
+    - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
@@ -243,5 +245,7 @@ hidden:
   field_actual_program_expense: true
   field_actual_program_outcomes: true
   field_areas_for_improvement: true
+  field_evaluation_notification: true
+  field_event_ends_on: true
   field_feedback_form: true
   moderation_state: true

@@ -1,0 +1,19 @@
+uuid: 480cdf40-e8bc-4bc1-a786-62ad87096581
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_ends_on
+    - node.type.chas_event
+id: node.chas_event.field_event_ends_on
+field_name: field_event_ends_on
+entity_type: node
+bundle: chas_event
+label: 'Event Ends On'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

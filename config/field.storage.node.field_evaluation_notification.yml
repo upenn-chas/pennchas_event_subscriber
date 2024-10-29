@@ -1,18 +1,17 @@
-uuid: e18732b0-46e3-4106-9990-9a3919ac8bcf
+uuid: 90c55ae3-f093-48d3-b149-a75e5dce7e18
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - smart_date
-id: node.field_event_schedule
-field_name: field_event_schedule
+id: node.field_evaluation_notification
+field_name: field_evaluation_notification
 entity_type: node
-type: smartdate
+type: boolean
 settings: {  }
-module: smart_date
+module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

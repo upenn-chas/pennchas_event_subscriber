@@ -12,8 +12,6 @@ class EventEmailService
 {
 
     protected $mailer;
-    protected $template_manager;
-    protected $logger;
 
     public function __construct()
     {
