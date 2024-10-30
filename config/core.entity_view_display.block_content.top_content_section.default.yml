@@ -30,7 +30,7 @@ content:
     region: content
   field_background_color:
     type: color_field_formatter_text
-    label: above
+    label: hidden
     settings:
       format: hex
       opacity: true
@@ -39,7 +39,7 @@ content:
     region: content
   field_circle_colour:
     type: color_field_formatter_text
-    label: above
+    label: hidden
     settings:
       format: hex
       opacity: true
@@ -48,7 +48,7 @@ content:
     region: content
   field_cta:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -60,7 +60,7 @@ content:
     region: content
   field_image:
     type: image
-    label: above
+    label: hidden
     settings:
       image_link: ''
       image_style: ''
@@ -71,7 +71,7 @@ content:
     region: content
   field_view_reference:
     type: viewsreference_formatter
-    label: above
+    label: hidden
     settings:
       plugin_types:
         - block

@@ -83,7 +83,7 @@ class FindYourHouse extends BlockBase
 				],
 				'link' => [
 					'#type' => 'link',
-					'#url' => URL::fromUri($link_url),
+					'#url' => '',
 					'#title' => $this->t($link_text),
 					'#attributes' => [
 						'class' => ['discover_all_houses'],
