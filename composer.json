@@ -52,7 +52,8 @@
         "drupal/group_permissions": "^2.0@alpha",
         "drupal/variationcache": "^1.5",
         "bacon/bacon-qr-code": "^2.0",
-        "drupal/ultimate_cron": "^2.0@alpha"
+        "drupal/ultimate_cron": "^2.0@alpha",
+        "drupal/recreate_block_content": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
