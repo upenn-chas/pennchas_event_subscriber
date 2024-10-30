@@ -9,7 +9,6 @@ use Drupal\webform\Entity\Webform;
  */
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
-
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
         $form['field_audience_floor']['#states'] = [
             'visible' => [
@@ -104,6 +103,8 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
             ],
         ];
 
+        $form['field_event_schedule']['widget']['add_more']= [];
+        
         // Enbale outcome fields
         $form['field_intended_outcomes_remarks']['#states'] = [
             'visible' => [
