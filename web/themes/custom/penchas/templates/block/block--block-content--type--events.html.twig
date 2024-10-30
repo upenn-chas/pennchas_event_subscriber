@@ -37,29 +37,14 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  <section class="all-programs space">
-    <div class="container">
-      {{ title_prefix }}
-      {% if label %}
-      <div class="row">
-        <div class="col-12 section-title">
-          <h2{{ title_attributes }}>{{ label }}</h2>
-        </div>
-      </div>
-      {% endif %}
-      {{ title_suffix }}
-      <div class="row">
-        {% block content %}
-
-            {{ content }}
-
-        {% endblock %}
-      </div>
-      <div class="row">
-        <div class="col-12 text-center">
-          <a href="" class="btn btn-primary">See All Programs</a>
-        </div>
-      </div>
+  {{ title_prefix }}
+  {% if label %}
+    <h3{{ title_attributes }}>{{ label }}</h3>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div{{ content_attributes.addClass('col-12 section-title content') }}>
+      {{ content }}
     </div>
-  </section>
+  {% endblock %}
 </div>

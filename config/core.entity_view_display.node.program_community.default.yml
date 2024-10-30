@@ -24,7 +24,7 @@ content:
     region: content
   field_banner:
     type: image
-    label: above
+    label: hidden
     settings:
       image_link: ''
       image_style: ''

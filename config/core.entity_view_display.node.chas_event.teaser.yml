@@ -29,6 +29,7 @@ dependencies:
     - field.field.node.chas_event.field_location_of_program
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_program_communities
+    - image.style.medium
     - node.type.chas_event
   module:
     - image
@@ -51,18 +52,19 @@ content:
     region: content
   field_event_schedule:
     type: smartdate_default
-    label: above
+    label: hidden
     settings:
       timezone_override: ''
       format_type: medium
-      format: default
+      format: date_only
       force_chronological: false
       add_classes: false
       time_wrapper: true
       localize: false
       parts:
-        - start
-        - end
+        start: start
+        end: end
+        duration: '0'
       duration:
         separator: ' | '
         unit: ''
@@ -83,7 +85,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: medium
       image_loading:
         attribute: lazy
     third_party_settings: {  }

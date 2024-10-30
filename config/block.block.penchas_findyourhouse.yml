@@ -1,0 +1,20 @@
+uuid: 62776e17-a9b6-4cea-8cef-638610f95305
+langcode: en
+status: true
+dependencies:
+  module:
+    - find_your_house
+  theme:
+    - penchas
+id: penchas_findyourhouse
+theme: penchas
+region: none
+weight: 0
+provider: null
+plugin: find_your_house
+settings:
+  id: find_your_house
+  label: 'Find Your House'
+  label_display: '0'
+  provider: find_your_house
+visibility: {  }
