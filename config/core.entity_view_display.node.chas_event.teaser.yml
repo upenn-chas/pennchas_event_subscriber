@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -30,23 +31,66 @@ dependencies:
     - field.field.node.chas_event.field_program_communities
     - node.type.chas_event
   module:
+    - image
+    - options
+    - smart_date
+    - text
     - user
 id: node.chas_event.teaser
 targetEntityType: node
 bundle: chas_event
 mode: teaser
 content:
-  content_moderation_control:
-    settings: {  }
+  body:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 50
     third_party_settings: {  }
-    weight: -20
+    weight: 3
     region: content
-  links:
+  field_event_schedule:
+    type: smartdate_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        - start
+        - end
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_intended_audience:
+    type: list_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
+    region: content
+  field_intended_audience_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
+  content_moderation_control: true
   field_actual_program_attendance: true
   field_actual_program_expense: true
   field_actual_program_outcomes: true
@@ -60,15 +104,13 @@ hidden:
   field_event_date: true
   field_event_ends_on: true
   field_event_priority: true
-  field_event_schedule: true
   field_experiences_and_strategies: true
   field_feedback_form: true
-  field_intended_audience: true
   field_intended_audience_attach: true
-  field_intended_audience_image: true
   field_intended_audience_other: true
   field_intended_outcomes: true
   field_intended_outcomes_remarks: true
   field_location_of_program: true
   field_marketing_blurb: true
   field_program_communities: true
+  links: true

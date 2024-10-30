@@ -60,14 +60,15 @@
             {{ title_suffix }}
           </div>
           <div class="news-cards">
-            {% for item in content.field_news['#items'] %}
+          {{content.field_news}}
+            {# {% for item in content.field_news['#items'] %}
               <div class="news-card" article-id="{{item.target_id}}">
                 <div class="news-card-left">
                   <div class="news-head">
                     <div class="tags">
-                    {# {% for tag in item.entity.field_tags %}
+                    {% for tag in item.entity.field_tags %}
                         {{dump(tag.value)}}
-                    {% endfor %} #}
+                    {% endfor %}
 
                     </div>
                     <span>{{item.createdtime | date('F j, Y')}}</span>
@@ -79,7 +80,7 @@
                   <a href="{{item.entity.url}}"><img src="{{item.entity.field_image.entity.fileuri}}" alt="{{item.entity.label}}"></a>
                 </div>
               </div>
-            {% endfor %}
+            {% endfor %} #}
 
             <div class="btn-wrapper">
               {{ content.field_cta }}

@@ -34,22 +34,32 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-    'alert-top-banner top-notifications',
   ]
 %}
-{% block content %}
-  <section {{ attributes.addClass(classes) }} style="background-color: {{content.field_background_color[0]['#markup']}}">
+<div{{ attributes.addClass(classes) }}>
+  <section class="all-programs space">
     <div class="container">
+      {{ title_prefix }}
+      {% if label %}
       <div class="row">
-        <div class="col-12">
-          {% if label %}
-            <h5{{ title_attributes }}>{{ label }}</h5>
-          {% endif %}
-            <div{{ content_attributes.addClass('content') }}>
-              {{ content.body }}
-            </div>
+        <div class="col-12 section-title">
+          <h2{{ title_attributes }}>{{ label }}</h2>
+        </div>
+      </div>
+      {% endif %}
+      {{ title_suffix }}
+      <div class="row">
+        {% block content %}
+
+            {{ content }}
+
+        {% endblock %}
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="" class="btn btn-primary">See All Programs</a>
         </div>
       </div>
     </div>
   </section>
-{% endblock %}
+</div>
