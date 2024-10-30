@@ -51,7 +51,8 @@
         "drupal/smtp": "^1.4",
         "drupal/group_permissions": "^2.0@alpha",
         "drupal/variationcache": "^1.5",
-        "bacon/bacon-qr-code": "^2.0"
+        "bacon/bacon-qr-code": "^2.0",
+        "drupal/ultimate_cron": "^2.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
