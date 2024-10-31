@@ -1,0 +1,19 @@
+uuid: 55cb77ba-4502-4801-8851-1f30889daaf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.anonymous
+id: house1-visitor
+label: Visitor
+weight: 113
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: house1
+permissions:
+  - 'view group_node:chas_event entity'
+  - 'view group_node:location entity'
+  - 'view group_node:program_community entity'
+  - 'view group_node:room entity'

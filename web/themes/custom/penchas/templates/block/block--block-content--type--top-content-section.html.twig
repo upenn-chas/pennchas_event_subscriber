@@ -36,18 +36,6 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-{# <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-    <div{{ content_attributes.addClass('content') }}>
-      {{ content }}
-    </div>
-  {% endblock %}
-</div> #}
 <section class="hero-banner">
   <style>
     .hero-banner .container:before {
