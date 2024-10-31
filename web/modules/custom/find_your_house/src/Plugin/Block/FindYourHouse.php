@@ -38,8 +38,7 @@ class FindYourHouse extends BlockBase
 		// ->accessCheck(true)
 		// ->execute();
     $group_storage = \Drupal::entityTypeManager()->getStorage('group');
-    $group_ids = $group_storage->getQuery()->accessCheck(true)->execute();
-
+    $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
     $groups = Group::loadMultiple($group_ids);
 		$options = [];
 
