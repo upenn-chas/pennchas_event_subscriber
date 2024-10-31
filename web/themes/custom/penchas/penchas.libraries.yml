@@ -8,7 +8,7 @@ global-styling:
     js/custom.js: {}
   css:
     component:
-      css/bootstrap.min.css: {}
+      # css/bootstrap.min.css: {}
       css/style.css: {}
       css/slick.css: {}
       css/custom_style.css: {}

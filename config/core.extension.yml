@@ -47,6 +47,8 @@ module:
   jquery_ui_resizable: 0
   layout_builder: 0
   layout_builder_blocks: 0
+  layout_builder_restrictions: 0
+  layout_builder_restrictions_by_region: 0
   layout_discovery: 0
   link: 0
   mailsystem: 0
@@ -64,6 +66,7 @@ module:
   path_alias: 0
   recreate_block_content: 0
   search: 0
+  section_library: 0
   shortcut: 0
   simplesamlphp_auth: 0
   smart_date: 0

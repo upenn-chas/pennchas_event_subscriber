@@ -54,7 +54,9 @@
         "bacon/bacon-qr-code": "^2.0",
         "drupal/recreate_block_content": "^3.0",
         "drupal/ultimate_cron": "^2.0@alpha",
-        "drupal/twig_tweak": "^3.4"
+        "drupal/twig_tweak": "^3.4",
+        "drupal/layout_builder_restrictions": "^3.0",
+        "drupal/section_library": "^1.2"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

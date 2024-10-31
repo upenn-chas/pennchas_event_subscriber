@@ -24,7 +24,7 @@ content:
     region: content
   field_cta:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -36,7 +36,7 @@ content:
     region: content
   field_program_community_referenc:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

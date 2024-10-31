@@ -47,7 +47,8 @@
 <section {{ attributes.addClass(classes) }} style="background-color: #ebf1ff;">
   <div class="container-fluid">
     <div {{ content_attributes.addClass('content row') }}>
-      <div class="col-12 col-lg-6 bg-img" style="background: url('{{content.field_image.entity.fileuri}}')">
+      <div class="col-12 col-lg-6 bg-img">
+      {{content.field_image}}
 
       </div>
       <div class="col-12 col-lg-6">
