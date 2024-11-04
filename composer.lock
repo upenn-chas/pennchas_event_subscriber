@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24821fb85b57e31dfbe653847a55c76d",
+    "content-hash": "88fc6c0f9c955be1cafb6cb54c13f378",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2726,6 +2726,110 @@
                 "source": "https://git.drupalcode.org/project/flexible_permissions",
                 "issues": "https://drupal.org/project/issues/flexible_permissions"
             }
+        },
+        {
+            "name": "drupal/fullcalendar",
+            "version": "3.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fullcalendar.git",
+                "reference": "3.0.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fullcalendar-3.0.0-rc1.zip",
+                "reference": "3.0.0-rc1",
+                "shasum": "8cacf1c58c46fe5c1e6dfabee47f47e949a35c45"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "drupal/fullcalendar_io": "^6.1",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "drupal/date_recur": "^3.7",
+                "drupal/smart_date": "^4.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0-rc1",
+                    "datestamp": "1729772451",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "aspilicious",
+                    "homepage": "https://www.drupal.org/user/172527"
+                },
+                {
+                    "name": "dakala",
+                    "homepage": "https://www.drupal.org/user/53175"
+                },
+                {
+                    "name": "hefox",
+                    "homepage": "https://www.drupal.org/user/426416"
+                },
+                {
+                    "name": "jurgenhaas",
+                    "homepage": "https://www.drupal.org/user/168924"
+                },
+                {
+                    "name": "mandclu",
+                    "homepage": "https://www.drupal.org/user/52136"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                },
+                {
+                    "name": "tstoeckler",
+                    "homepage": "https://www.drupal.org/user/107158"
+                }
+            ],
+            "description": "Integrates the Fullcalendar Library from https://fullcalendar.io",
+            "homepage": "https://www.drupal.org/project/fullcalendar",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/fullcalendar",
+                "issues": "https://www.drupal.org/project/issues/fullcalendar"
+            }
+        },
+        {
+            "name": "drupal/fullcalendar_io",
+            "version": "6.1.15",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fullcalendar_io.git",
+                "reference": "f41aaa56538699155557a4192bc8e95a0c69659c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Ffullcalendar_io/repository/archive.zip?sha=f41aaa56538699155557a4192bc8e95a0c69659c",
+                "reference": "f41aaa56538699155557a4192bc8e95a0c69659c",
+                "shasum": ""
+            },
+            "type": "drupal-library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "TBD",
+            "homepage": "https://fullcalendar.io/",
+            "support": {
+                "source": "https://git.drupalcode.org/project/fullcalendar_io/-/tree/6.1.15"
+            },
+            "time": "2024-09-13T12:57:11+00:00"
         },
         {
             "name": "drupal/gcontent_moderation",
@@ -16788,17 +16892,18 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20,
+        "drupal/fullcalendar": 5,
         "drupal/gcontent_moderation": 20,
-        "drupal/viewsreference": 10,
         "drupal/group_permissions": 15,
-        "drupal/ultimate_cron": 15
+        "drupal/ultimate_cron": 15,
+        "drupal/viewsreference": 10,
+        "pantheon-upstreams/upstream-configuration": 20,
+        "upenn/penn403": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2.0"
     },

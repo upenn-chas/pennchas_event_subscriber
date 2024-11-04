@@ -103,9 +103,13 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
             ],
         ];
 
-        $form['field_event_schedule']['widget']['add_more']= [];
-        
-        // Enbale outcome fields
+        $form['field_event_schedule']['widget']['add_more']['#access'] = FALSE;
+
+        if (isset($form['field_event_schedule']['widget']['#tabledrag'])) {
+            unset($form['field_event_schedule']['widget']['#tabledrag']);
+        }
+
+        // Enable outcome fields
         $form['field_intended_outcomes_remarks']['#states'] = [
             'visible' => [
                 [
@@ -140,7 +144,7 @@ function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $
 {
     if ($entity instanceof NodeInterface && $entity->bundle() === 'chas_event') {
         $eventHandler = new EventCreateAndUpdate();
-        if($entity->isNew()) {
+        if ($entity->isNew()) {
             $eventHandler->handlePreSaveEvent($entity);
         } else {
             $eventHandler->handlePreUpdateEvent($entity);
