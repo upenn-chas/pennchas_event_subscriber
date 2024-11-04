@@ -29,7 +29,6 @@ dependencies:
     - field.field.node.chas_event.field_location_of_program
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_program_communities
-    - field.field.node.chas_event.field_rsvp_link
     - image.style.medium
     - node.type.chas_event
   module:
@@ -116,5 +115,4 @@ hidden:
   field_location_of_program: true
   field_marketing_blurb: true
   field_program_communities: true
-  field_rsvp_link: true
   links: true

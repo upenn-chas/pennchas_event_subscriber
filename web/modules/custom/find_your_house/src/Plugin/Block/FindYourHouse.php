@@ -45,6 +45,12 @@ class FindYourHouse extends BlockBase
 		foreach ($groups as $group) {
 			$options[$this->getGroupUrlAlias($group)] = $group->label();
 		}
+    $list_items = array(
+      'lastname', 'email', 'phone'
+    );
+
+    $prefix = '<h2>Find Your College House</h2>';
+    // $content = '<p>Your house search content goes here.</p>';
 
 		$build = [
 			"#type" => "container",
@@ -59,6 +65,7 @@ class FindYourHouse extends BlockBase
 					'#attributes' => [
 						'onsubmit' => 'window.location.href=document.getElementById(\'customer_find_your_house_group\').value; return false;',
 					],
+
 					'group_select' => [
 						'#id' => 'customer_find_your_house_group',
 						'#type' => 'select',
@@ -90,8 +97,12 @@ class FindYourHouse extends BlockBase
 				]
 			],
 			'#attributes' => [
-				'class' => ['find_your_house'],
-			]
+				'class' => ['find_your_house form-group'],
+      ],
+      // '#prefix' => '<div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div></div><ul class="options"><li class="option"><span class="option-text">',
+      // '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
+      // '#suffix' => '</span></li></ul>'
+      '#markup' => $prefix . $content
 		];
 
 		return $build;

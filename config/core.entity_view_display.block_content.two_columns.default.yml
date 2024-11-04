@@ -1,0 +1,22 @@
+uuid: a8d0a105-3621-4768-910f-4c804cacbc13
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns
+    - field.field.block_content.two_columns.body
+  module:
+    - text
+id: block_content.two_columns.default
+targetEntityType: block_content
+bundle: two_columns
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

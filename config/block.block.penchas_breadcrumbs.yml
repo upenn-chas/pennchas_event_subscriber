@@ -11,7 +11,7 @@ _core:
 id: penchas_breadcrumbs
 theme: penchas
 region: breadcrumb
-weight: 0
+weight: -11
 provider: null
 plugin: system_breadcrumb_block
 settings:
@@ -19,4 +19,8 @@ settings:
   label: Breadcrumbs
   label_display: '0'
   provider: system
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/group/*'

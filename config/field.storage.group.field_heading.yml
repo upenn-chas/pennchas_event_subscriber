@@ -1,0 +1,21 @@
+uuid: 15cd16aa-e741-48d0-8d9e-724d446d7740
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_heading
+field_name: field_heading
+entity_type: group
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

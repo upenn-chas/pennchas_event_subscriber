@@ -35,7 +35,6 @@ module:
   filter: 0
   find_your_house: 0
   flexible_permissions: 0
-  fullcalendar: 0
   gcontent_moderation: 0
   gnode: 0
   group: 0
@@ -82,7 +81,6 @@ module:
   token: 0
   toolbar: 0
   twig_tweak: 0
-  ultimate_cron: 0
   update: 0
   user: 0
   variationcache: 0

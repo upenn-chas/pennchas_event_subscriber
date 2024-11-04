@@ -1,0 +1,29 @@
+uuid: d16567c3-5774-447e-868d-6f45e624ae48
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.group-menu-3
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_groupmenu3
+theme: penchas
+region: none
+weight: 0
+provider: null
+plugin: 'system_menu_block:group-menu-3'
+settings:
+  id: 'system_menu_block:group-menu-3'
+  label: 'Group menu 3'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/group/*'

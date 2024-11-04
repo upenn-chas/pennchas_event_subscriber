@@ -8,8 +8,8 @@ _core:
   default_config_hash: KXHXi71YAvE0XBvVwHOI0fkyg2HJMTgz0L4N2HaBfI0
 id: penchas_primary_local_tasks
 theme: penchas
-region: content
-weight: -5
+region: breadcrumb
+weight: -12
 provider: null
 plugin: local_tasks_block
 settings:

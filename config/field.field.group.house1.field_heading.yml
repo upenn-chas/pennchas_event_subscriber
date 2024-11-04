@@ -1,0 +1,19 @@
+uuid: 2cea1b1f-91af-4d61-a338-8d5d8f1b2af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_heading
+    - group.type.house1
+id: group.house1.field_heading
+field_name: field_heading
+entity_type: group
+bundle: house1
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

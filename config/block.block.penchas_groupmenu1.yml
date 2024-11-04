@@ -1,0 +1,29 @@
+uuid: 33a6e8d1-a636-4e7d-abb2-912f6bbf877c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.group-menu-1
+  module:
+    - system
+  theme:
+    - penchas
+id: penchas_groupmenu1
+theme: penchas
+region: none
+weight: -8
+provider: null
+plugin: 'system_menu_block:group-menu-1'
+settings:
+  id: 'system_menu_block:group-menu-1'
+  label: 'Group menu 1'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/group/*'
