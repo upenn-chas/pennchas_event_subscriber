@@ -1,0 +1,9 @@
+name: "Event Calendar"
+description: "Provide custom js to event calendar."
+type: module
+core_version_requirement: ^10
+version: 1.0
+package: Custom
+dependencies:
+  - drupal:views
+  - drupal:fullcalendar_view

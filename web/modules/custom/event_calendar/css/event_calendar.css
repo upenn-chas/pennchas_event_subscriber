@@ -1,0 +1,7 @@
+.fc-day-grid-event .fc-content {
+    white-space: normal;
+}
+
+span.event_title, span.event_location, span.event_moderation_state  {
+    display: block;
+}

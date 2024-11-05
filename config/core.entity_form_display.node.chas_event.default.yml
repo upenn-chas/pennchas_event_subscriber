@@ -28,11 +28,13 @@ dependencies:
     - field.field.node.chas_event.field_location_of_program
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_program_communities
+    - field.field.node.chas_event.field_rsvp_link
     - image.style.thumbnail
     - node.type.chas_event
   module:
     - file
     - image
+    - link
     - path
     - smart_date
     - smart_date_recur
@@ -206,6 +208,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_rsvp_link:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   path:
     type: path

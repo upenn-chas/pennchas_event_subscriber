@@ -1,0 +1,13 @@
+<?php
+
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function event_calendar_preprocess_views_view(&$variables)
+{
+    if ($variables['view']->id() === 'event_calendar') {
+        // \Drupal::service('library.discovery')->load('event_calendar/event_calendar_custom');
+        $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
+    }
+}

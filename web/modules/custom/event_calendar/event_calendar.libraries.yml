@@ -1,0 +1,5 @@
+event_calendar_custom:
+  version: 1.0
+  css:
+    theme:
+      css/event_calendar.css: {}

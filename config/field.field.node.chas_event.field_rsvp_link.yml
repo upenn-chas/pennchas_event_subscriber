@@ -1,0 +1,23 @@
+uuid: eb848801-4d7d-445e-8d42-84e9d9ea1902
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rsvp_link
+    - node.type.chas_event
+  module:
+    - link
+id: node.chas_event.field_rsvp_link
+field_name: field_rsvp_link
+entity_type: node
+bundle: chas_event
+label: 'RSVP Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link
