@@ -41,16 +41,17 @@ class FindYourHouse extends BlockBase
     $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
     $groups = Group::loadMultiple($group_ids);
 		$options = [];
+    $options_html = '';
 
 		foreach ($groups as $group) {
 			$options[$this->getGroupUrlAlias($group)] = $group->label();
+      $options_html .= '<li class="option"><span class="option-text" data-group-url="'.$this->getGroupUrlAlias($group).'">'.$group->label().'</span></li>';
 		}
     $list_items = array(
       'lastname', 'email', 'phone'
     );
 
     $prefix = '<h2>Find Your College House</h2>';
-    // $content = '<p>Your house search content goes here.</p>';
 
 		$build = [
 			"#type" => "container",
@@ -72,6 +73,9 @@ class FindYourHouse extends BlockBase
 						'#title' => '',
 						'#empty_option' => $this->t('Select Your House Name'),
 						'#options' => $options,
+            '#attributes' => [
+							'class' => ['hidden'],
+						],
 					],
 					'submit' => [
 						'#type' => 'submit',
@@ -99,12 +103,13 @@ class FindYourHouse extends BlockBase
 			'#attributes' => [
 				'class' => ['find_your_house form-group'],
       ],
-      // '#prefix' => '<div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div></div><ul class="options"><li class="option"><span class="option-text">',
+      '#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div><ul class="options">'.$options_html.'</ul></div></div>',
       // '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
-      // '#suffix' => '</span></li></ul>'
-      '#markup' => $prefix . $content
+      // '#suffix' => '</span></li></ul></div><div class="form-action"><button type="submit">Go</button></div>'
+      // '#markup' => $prefix . $content
 		];
 
+    $build['#attached']['library'][] = 'find_your_house/find_your_house';
 		return $build;
 	}
 

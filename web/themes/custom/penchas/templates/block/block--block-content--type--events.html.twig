@@ -36,14 +36,19 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
+{% set heading_alignment = '' %}
+
+{% if content.field_alignment %}
+  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
+{% endif %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
-    <h3{{ title_attributes }}>{{ label }}</h3>
+    <div class="section-title"><h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3></div>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    <div{{ content_attributes.addClass('col-12 section-title content') }}>
+    <div{{ content_attributes.addClass('col-12 content') }}>
       {{ content }}
     </div>
   {% endblock %}

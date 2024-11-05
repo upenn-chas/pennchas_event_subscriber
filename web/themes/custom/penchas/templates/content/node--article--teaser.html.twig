@@ -72,24 +72,18 @@
     'clearfix news-card',
   ]
 %}
-  <div {{ attributes.addClass(classes) }}>
-      <div class="news-card-left">
-        <div class="news-head">
-          <div class="tags">
-            <a href=""> Penn Announcements</a>
-          </div>
-          <span>09.10.2024</span>
-        </div>
-        {% if label and not page %}
-          <h4{{ title_attributes.addClass('node__title') }}>
-            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-          </h4>
-        {% endif %}
-        <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-          {{ content }}
-        </div>
-      </div>
-      <div class="news-card-right">
-        {{content.field_image}}
-      </div>
-    </div>
+<div class="news-card">
+              <div class="news-card-left">
+                <div class="news-head">
+                  <div class="tags">
+                    <a href=""> Penn Announcements</a>
+                  </div>
+                  <span>{{node.getCreatedTime|format_date('custom', 'd.n.Y')}}</span>
+                </div>
+                <h4><a href="{{ url }}">{{ label }}</a></h4>
+                <p>{{ content.body }}</p>
+              </div>
+              <div class="news-card-right">
+                {{content.field_image}}
+              </div>
+            </div>

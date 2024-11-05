@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.group.house1.field_color
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
+    - field.field.group.house1.layout_builder__layout
     - group.type.house1
   module:
     - media_library
@@ -15,6 +17,12 @@ targetEntityType: group
 bundle: house1
 mode: default
 content:
+  field_color:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_heading:
     type: string_textfield
     weight: 26
@@ -60,4 +68,5 @@ content:
       display_label: true
     third_party_settings: {  }
 hidden:
+  layout_builder__layout: true
   uid: true

@@ -39,7 +39,8 @@
  * @ingroup themeable
  */
 #}
-<section class="hero-banner" style="background-color: #D6DBD6;">
+
+<section class="hero-banner" style="background-color: #{{group.field_color.value}};">
   <div class="container" {{ attributes }}>
     <div class="row">
       <div class="col-12 col-lg-6">
@@ -52,7 +53,7 @@
           </nav>
         </div>
         <div class="banner-info">
-          <h1>{{ content.field_heading }}</h1>
+          <h1>{{ group.field_heading.value }}</h1>
         </div>
 
         <div class="internal-links">
@@ -60,45 +61,39 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
               Get Involved
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item active" href="#">Calender</a></li>
-              <li><a class="dropdown-item" href="#">Programs</a></li>
-              <li><a class="dropdown-item" href="#">Rooms Reservations</a></li>
-              <li><a class="dropdown-item" href="#">News and Annousements</a></li>
-              </ul>
+            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              {{ drupal_menu('group-menu-1') }}
+            </div>
 
           </div>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
               Living With Us
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item active" href="#">Calender</a></li>
-              <li><a class="dropdown-item" href="#">Programs</a></li>
-              <li><a class="dropdown-item" href="#">Rooms Reservations</a></li>
-              <li><a class="dropdown-item" href="#">News and Annousements</a></li>
-            </ul>
+            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              {{ drupal_menu('group-menu-2') }}
+            </div>
           </div>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
               About
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item active" href="#">Calender</a></li>
-              <li><a class="dropdown-item" href="#">Programs</a></li>
-              <li><a class="dropdown-item" href="#">Rooms Reservations</a></li>
-              <li><a class="dropdown-item" href="#">News and Annousements</a></li>
-            </ul>
+            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              {{ drupal_menu('group-menu-3') }}
+            </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="hero-img">
-          {{content.field_image}}
+          <img src="{{file_url(group.field_image.0.entity.field_media_image.0.entity.uri.value)}}" alt="{{file_url(group.field_image.0.entity.field_media_image.0.entity.alt.value)}}">
         </div>
       </div>
-
-
     </div>
   </div>
 </section>
+
+  <div class="layout-builder-components space">
+    {{ content._layout_builder }}
+
+  </div>

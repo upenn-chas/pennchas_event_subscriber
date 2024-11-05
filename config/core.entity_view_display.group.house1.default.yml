@@ -3,15 +3,151 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.group.house1.label
+    - field.field.group.house1.field_color
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
+    - field.field.group.house1.layout_builder__layout
     - group.type.house1
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - options
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          1405b662-fe8c-4bd2-93ee-6cc49c6b1096:
+            uuid: 1405b662-fe8c-4bd2-93ee-6cc49c6b1096
+            region: content
+            configuration:
+              id: 'field_block:group:house1:label'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          35ac2a95-ac95-4f74-9a8b-5fd243be4dde:
+            uuid: 35ac2a95-ac95-4f74-9a8b-5fd243be4dde
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_house_machine_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          8bcd7be8-8501-465d-813a-1a9968fffc17:
+            uuid: 8bcd7be8-8501-465d-813a-1a9968fffc17
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_heading'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          84f207a7-c76f-42b5-a24a-e1487717fa04:
+            uuid: 84f207a7-c76f-42b5-a24a-e1487717fa04
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          65180e1c-4f32-4d1d-acf3-6e873b0a846d:
+            uuid: 65180e1c-4f32-4d1d-acf3-6e873b0a846d
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_color'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+        - 'bootstrap_layout_builder:blb_col_9'
+        - 'bootstrap_layout_builder:blb_col_12'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories:
+        - Devel
+        - Help
+        - 'SimpleSAMLphp Authentication'
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+        - 'bootstrap_layout_builder:blb_col_9'
+        - 'bootstrap_layout_builder:blb_col_12'
 id: group.house1.default
 targetEntityType: group
 bundle: house1
 mode: default
 content:
+  field_color:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -1
+    region: content
   field_heading:
     type: string
     label: hidden
@@ -48,4 +184,5 @@ content:
 hidden:
   changed: true
   created: true
+  layout_builder__layout: true
   uid: true

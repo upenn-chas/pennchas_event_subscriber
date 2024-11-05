@@ -1,0 +1,30 @@
+uuid: 1a55a56e-dc54-4628-937b-3a49f1182128
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_color
+field_name: field_color
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 92b7ff
+      label: '#92B7FF'
+    -
+      value: ebf1ff
+      label: '#ebf1ff'
+    -
+      value: d6dbd6
+      label: '#D6DBD6'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

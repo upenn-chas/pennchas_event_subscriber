@@ -1,0 +1,124 @@
+.hero-banner {
+  padding-top: 60px;
+  position: relative;
+  z-index: 2;
+
+  @include media-query('tablet') {
+    padding-top: 35px;
+  }
+
+  h1 {
+    span {
+      font-weight: 400;
+      @include media-query('mobile') {
+        display: block;
+      }
+    }
+  }
+  .container {
+    position: relative;
+    &:before {
+      position: absolute;
+      left: -90px;
+      top: -110px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      content: "";
+      @include media-query('tablet') {
+        height: 140px;
+        width: 140px;
+        left: -52px;
+        top: -58px;
+      }
+    }    
+  }
+
+  .col-12 {
+    position: relative;
+    z-index: 1;
+    @include media-query('tablet') {
+      z-index: inherit;
+    }
+  }
+
+  &.yellow-circel {
+    .container {
+      &:before {
+        background-color: $yellowHighlightColor;
+      }
+    }
+  }
+ 
+  h1 {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    @include media-query('mobile') {
+      padding-bottom: 8px;
+    }
+  }
+  p {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 30px;
+    @include media-query('mobile') {
+      margin-bottom: 16px;
+    }
+    @include media-query('tablet') {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  .hero-img {
+    @include media-query('tablet') {
+      margin-top: 30px;
+    }
+    @include media-query('mobile') {
+      margin-top: 45px;
+    }
+    img {
+        height: auto;
+    }
+  }
+
+  &.without-image {
+    .col-lg-6 {
+      flex: 0 0 auto;
+      width: 100%;
+      min-height: 240px;
+    }
+  }
+  .banner-info.items-gap {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      gap: 140px;
+      h1 {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+  }
+}
+
+.path-frontpage {
+  .banner-info {
+    padding-right: 82px;
+    @include media-query('medium') {
+      padding-right: 0;
+    }
+  }
+}
+.mac-os {
+  .hero-banner{
+     h1{
+      padding-bottom: 50px;
+      @include media-query('mobile') {
+        padding-bottom: 20px;
+      }
+     }
+  }
+  .hero-img{
+    margin-top: 54px;
+  }
+}

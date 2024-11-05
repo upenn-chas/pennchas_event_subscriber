@@ -13,6 +13,7 @@ scope: outsider
 global_role: anonymous
 group_type: house1
 permissions:
+  - 'view group'
   - 'view group_node:chas_event entity'
   - 'view group_node:location entity'
   - 'view group_node:program_community entity'

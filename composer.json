@@ -58,7 +58,8 @@
         "drupal/layout_builder_restrictions": "^3.0",
         "drupal/section_library": "^1.2",
         "drupal/fullcalendar_view": "^5.2",
-        "drupal/views_fields_combine": "^10.0"
+        "drupal/views_fields_combine": "^10.0",
+        "drupal/menu_item_role_access": "^2.4"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
