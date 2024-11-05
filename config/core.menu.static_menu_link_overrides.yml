@@ -10,7 +10,7 @@ definitions:
   standard__front_page:
     menu_name: main
     parent: ''
-    weight: -47
+    weight: 0
     expanded: false
     enabled: false
   user__page:

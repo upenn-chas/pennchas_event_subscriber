@@ -1,0 +1,46 @@
+.top-notifications {
+  padding: 22px 0;
+ 
+  @include media-query('mobile') {
+    font-size: 18px;
+  }
+  &.align-right {
+    text-align: right;
+  }
+  &.align-center {
+    text-align: center;
+  }
+  h5 {
+    font-size: 24px;
+    font-family: $secondaryFont;
+    margin: 0;
+    font-weight: 700;
+    @include media-query('mobile') {
+      font-size: 20px;
+    }
+  }
+  p {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0;
+    font-family: $teritoryFont;
+    @include media-query('mobile') {
+      font-size: 11px;
+      line-height: 14px;
+    }
+    a {
+      font-weight: 700;
+    }
+  }
+}
+
+#section1 {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+#section2 {
+  position: sticky;
+  z-index: 1010;
+}

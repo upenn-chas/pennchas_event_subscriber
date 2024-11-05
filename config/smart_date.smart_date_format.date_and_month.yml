@@ -1,0 +1,15 @@
+uuid: df063107-3643-4bab-beeb-4587d9dd807a
+langcode: en
+status: true
+dependencies: {  }
+id: date_and_month
+label: 'Date and Month'
+date_format: 'M j'
+time_format: ''
+time_hour_format: ''
+allday_label: 'All day'
+separator: ' - '
+join: ', '
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'

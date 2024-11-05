@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.program_community.field_banner
     - node.type.program_community
   module:
+    - image
     - text
     - user
 id: node.program_community.teaser
@@ -21,12 +22,22 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
-    weight: 101
+    weight: 1
+    region: content
+  field_banner:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden:
-  field_banner: true
+hidden: {  }

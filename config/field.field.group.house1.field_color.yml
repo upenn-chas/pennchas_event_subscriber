@@ -1,0 +1,21 @@
+uuid: f7a95982-027d-40ea-9be5-f654da93fcca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_color
+    - group.type.house1
+  module:
+    - options
+id: group.house1.field_color
+field_name: field_color
+entity_type: group
+bundle: house1
+label: Color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

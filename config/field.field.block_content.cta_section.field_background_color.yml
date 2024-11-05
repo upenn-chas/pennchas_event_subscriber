@@ -1,0 +1,25 @@
+uuid: 61aace95-b18e-402f-b77d-0c71af0b4fd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_section
+    - field.storage.block_content.field_background_color
+  module:
+    - color_field
+id: block_content.cta_section.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: cta_section
+label: 'Banner Background Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    color: '#92B7FF'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

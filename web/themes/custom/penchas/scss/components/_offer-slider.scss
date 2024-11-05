@@ -1,0 +1,79 @@
+.program-card-info {
+	padding: 0 20px 20px;
+	svg {
+		width: 27px;
+	}
+	.tags {
+		margin-bottom: 10px;
+		a {
+			&:after {
+				background: #92B7FF;
+			}
+		}
+	}
+	p {
+		margin-bottom: 20px;
+	}
+}
+.offer-slider {
+	.slick-list {
+		overflow: visible;
+	}
+	.offer-slider-block {
+		margin: 0 10px;
+	}
+	.slick-prev.slick-arrow {
+		position: absolute;
+		top: -120px;
+		right: 0;
+		font-size: 0;
+		border: 0;
+		background: none;
+		&:after {
+			content: "\f061";
+			font-family: "Font Awesome 6 Sharp";
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 15px;
+		}
+	}
+	.slick-next.slick-arrow {
+		position: absolute;
+		right: -60px;
+		top: -120px;
+		font-size: 0;
+		border: 0;
+		background: none;
+		&:after {
+			content: "\f061";
+			font-family: "Font Awesome 6 Sharp";
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 15px;
+		}
+	}
+	
+}
+.offer-slider-sec {
+	overflow: hidden;	
+	padding: 80px 0;
+	.section-title {
+		padding-bottom: 42px;
+	}
+}
+.program-card {
+	background: #fff;
+	background: #fff;
+	border: 1px solid #011F5B;
+	margin-top: 20px;
+}
+.program-card-img {
+	padding: 0 20px;
+	img {
+		position: relative;
+		top: -20px;
+	}
+}
+

@@ -1,0 +1,47 @@
+uuid: 3e4afd2b-0b01-4848-ba9c-10c308a3782f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_section
+    - field.field.block_content.cta_section.field_background_color
+    - field.field.block_content.cta_section.field_cta
+    - field.field.block_content.cta_section.field_heading
+  module:
+    - color_field
+    - link
+id: block_content.cta_section.default
+targetEntityType: block_content
+bundle: cta_section
+mode: default
+content:
+  field_background_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }
