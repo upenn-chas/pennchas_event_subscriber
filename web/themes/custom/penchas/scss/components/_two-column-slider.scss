@@ -72,7 +72,7 @@
     border: 0;
     position: absolute;
     bottom: 32px;
-    background: url(../../assets/images/arrow-white.svg) no-repeat;
+    background: url(../../assets/images/slider-arrow.svg) no-repeat;
     font-size: 0;
     width: 30px;
     height: 28px;
@@ -87,7 +87,7 @@
     }
   }
   .slick-arrow.slick-next {
-    left: calc(50% + 100px);
+    left: calc(50% + 120px);
     @include media-query('mobile') {     
       left:65px;
     }

@@ -1,60 +1,31 @@
-/*
-Theme Name: Bootstrap 4 Sass
-Description: Bootstrap 4 with Sass
-*/
+/*Modules*/
+@import "./modules/variables";
+@import "./modules/mixins";
 
-// import files
-@import "import";
+/*Partials*/
+@import "./partials/header";
+@import "./partials/footer";
 
-/* GENERAL STYLES
--------------------------------------------------*/
+/*Components*/
+@import "./components/typography";
+@import "./components/common";
+@import "./components/buttons";
+@import "./components/top-notification";
+@import "./components/hero-banner";
+@import "./components/events";
+@import "./components/section-title";
+@import "./components/half-screen-img";
+@import "./components/news-card";
+@import "./components/cta-boxes";
+@import "./components/program-box";
+@import "./components/search";
+@import "./components/breadcrumbs";
+@import "./components/internal-links";
+@import "./components/cta";
+@import "./components/image-with-text";
+@import "./components/staff";
+@import "./components/two-column-slider";
+@import "./components/offer-slider";
+@import "./components/filters";
 
-body {
-    background: $white;
-}
-
-
-/* COLORS
---------------------------------------------------*/
-
-a {
-    color: $accent-shade;
-}
-
-.bg-inverse {
-    background: $primary-shade !important;
-}
-
-.site-footer {
-    background: $accent-shade !important;
-}
-
-.menu--main li a {
-    color: $primary-shade;
-}
-
-.menu--account li a {
-    color: $primary-shade;
-}
-
-.site-name-slogan a {
-    text-decoration: none;
-}
-
-.card-group img {
-    margin: 0;
-    width: 100%;
-    height: auto;
-}
-
-.card-group .field--type-image {
-    margin: 0
-}
-
-.slick {
-    width: 100%;
-}
-
-.slick>div {
-    margin: 0 15px;
-}
+ 

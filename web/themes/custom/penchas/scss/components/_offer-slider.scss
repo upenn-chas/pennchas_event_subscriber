@@ -30,12 +30,19 @@
 		border: 0;
 		background: none;
 		&:after {
-			content: "\f061";
-			font-family: "Font Awesome 6 Sharp";
-			position: absolute;
+			content: "";
 			right: 0;
 			top: 0;
-			font-size: 15px;
+			padding: 0;
+			border: 0;
+			position: absolute;
+			bottom: 32px;
+			background: url(../../assets/images/slider-arrow-blue.svg) no-repeat;
+			font-size: 0;
+			width: 30px;
+			height: 28px;
+			z-index: 1;
+			transform: rotate(180deg);
 		}
 	}
 	.slick-next.slick-arrow {
@@ -46,12 +53,18 @@
 		border: 0;
 		background: none;
 		&:after {
-			content: "\f061";
-			font-family: "Font Awesome 6 Sharp";
-			position: absolute;
+			content: "";
 			right: 0;
 			top: 0;
-			font-size: 15px;
+			padding: 0;
+			border: 0;
+			position: absolute;
+			bottom: 32px;
+			background: url(../../assets/images/slider-arrow-blue.svg) no-repeat;
+			font-size: 0;
+			width: 30px;
+			height: 28px;
+			z-index: 1;
 		}
 	}
 	

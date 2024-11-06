@@ -64,10 +64,13 @@
     }
   }
 
-  h5 {
+  h5, h4 {
     margin-bottom: 5px;
+    text-transform: capitalize;
     a {
       text-decoration: none;
+      font-size: 30px;
+      line-height: 30px;
     }
   }
 
@@ -158,4 +161,14 @@
       min-height: 270px;
     }
   }
+}
+.node--view-mode-teaser{
+  border: 0;
+}
+.block-inline-blockevents {
+	& > .col-12 {
+		&.content {
+			padding-left: 0;
+		}
+	}
 }

@@ -1,0 +1,22 @@
+uuid: 794958be-e8b4-4523-a6fd-bdb7ea917dc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_description
+    - group.type.house1
+  module:
+    - text
+id: group.house1.field_description
+field_name: field_description
+entity_type: group
+bundle: house1
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

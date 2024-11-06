@@ -47,7 +47,15 @@
         object-fit: cover;
         object-position: center;
         z-index: 1;
+        margin-bottom: 0;
       }
+    }
+    .field--type-image {        
+        float: none;
+        margin: 0;
+        @include media-query('mobile') {
+          height: auto;
+        }        
     }
   }
 
@@ -76,6 +84,16 @@
        left: 20px; 
       }
     }
+    .field--type-text-with-summary{ 
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
   }
 
   h5 {
@@ -87,6 +105,7 @@
     }
     a {
       text-decoration: none;
+      line-height: normal;
     }
   }
 
@@ -114,7 +133,7 @@
      
       svg {
         path {
-          fill: $redHighlightColor;
+          stroke: $redHighlightColor;
         }
       }
     }
@@ -145,6 +164,17 @@
   }
   
 }
+
+.block-inline-blockprogram-communities-block{ 
+  .row {
+    justify-content: center;
+    .btn-primary {
+      display: inline-block;
+      width: auto;
+    }
+  }
+}
+
 
 .mac-os {
   .program-box{ 

@@ -1,0 +1,42 @@
+uuid: 242ebe79-f7c4-420c-af33-a190bec13f0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+    - field.field.block_content.houses_sliders.body
+    - field.field.block_content.houses_sliders.field_description
+  module:
+    - text
+id: block_content.houses_sliders.default
+targetEntityType: block_content
+bundle: houses_sliders
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_description:
+    type: text_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

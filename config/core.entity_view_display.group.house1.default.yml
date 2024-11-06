@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.base_field_override.group.house1.label
     - field.field.group.house1.field_color
+    - field.field.group.house1.field_description
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
@@ -15,6 +16,7 @@ dependencies:
     - layout_builder_restrictions
     - layout_discovery
     - options
+    - text
 third_party_settings:
   layout_builder:
     enabled: true
@@ -105,6 +107,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
+          f1accc25-8919-48b2-aa77-cf1743841cb4:
+            uuid: f1accc25-8919-48b2-aa77-cf1743841cb4
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -147,6 +164,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -1
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
     region: content
   field_heading:
     type: string

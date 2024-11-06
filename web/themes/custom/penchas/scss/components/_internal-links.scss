@@ -113,6 +113,8 @@
         font-size: 18px;
         line-height: 22px;
         font-family: $teritoryFont;
+        text-transform: capitalize;
+        text-decoration: none;
         &.active {
           background: none;
           color :$primaryColor;

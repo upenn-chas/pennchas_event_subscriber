@@ -8,13 +8,11 @@
     {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-submenu') %}
   {% endif %}
 {% endif %}
+
 <li {{ attributes }} >
   {% if tag == 'a' %}
     <{{ tag }} href="{{ link['url'] }}" {{ link['attributes'] }}>
   {% else %}
-    <span></span>
-    <span></span>
-    <span></span>
     <{{ tag }}{{ link['attributes'] }}>
   {% endif %}
     {% if item_config['xicon'] %}

@@ -8,7 +8,7 @@ _core:
   default_config_hash: 92xl16L-iwmchA3yFrJupubhz6DTGB7Bx5szmtFclvs
 id: penchas_primary_admin_actions
 theme: penchas
-region: content
+region: breadcrumb
 weight: -11
 provider: null
 plugin: local_actions_block

@@ -20,6 +20,7 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       font-family: $teritoryFont;
       color :#02014C;
+      position: relative;
       @include media-query('tablet') {
         height: 50px;
       }
@@ -99,6 +100,8 @@
       animation-fill-mode: both;
       -webkit-animation-duration: 0.4s;
       -webkit-animation-fill-mode: both;
+      top: 50px;
+      left: 0;
     }
   }
   
@@ -154,16 +157,25 @@
       border-radius: 10px;
       height: 60px;
       width: 60px;
-      font-family: $teritoryFont;
+      font-family: $teritoryFont;    
+      font-weight: normal;  
       @include media-query('tablet') {
         width: 100%;
         height: 50px;
+        min-width: 50px;
       }
 
       &:hover {
         background: $yellowHighlightColor;
         color :$primaryColor;
       }
+      &:before{
+        background: transparent;
+        height: 0;
+      }
+    }
+    select.form-select {
+      display: none;
     }
   }
   h2 {
@@ -172,6 +184,7 @@
       display: inline-block;
       content:"";
       background: url("../../assets/images/search-icon.jpg")no-repeat;
+      background: url("../images/search-icon.jpg")no-repeat;
       background-position: center;
       background-repeat: no-repeat;
       width: 65px;
@@ -181,11 +194,38 @@
         width: 100%;
         background-position: left center;
         margin-bottom: 5px;
+        margin-right: 0;
       }
     }
   }
 }
 
+.find_your_house {
+	.content {
+		& > div {
+			display: flex;
+			width: 100%;
+			max-width: 512px;
+			gap: 20px;
+			flex-wrap: wrap;
+      @include media-query('small'){
+        display: block;
+      }
+			.select-menu {
+				width: calc(100% - 100px);
+        @include media-query('small'){
+          width: 100%;
+          margin-bottom: 10px;
+        }
+			}
+			.form_wrapper {
+				form {
+					gap: 0;
+				}
+			}
+		}
+	}
+}
 
 
 .path-frontpage {

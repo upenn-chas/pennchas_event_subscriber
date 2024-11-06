@@ -4,8 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_circle_color
+    - field.field.node.page.field_image
+    - field.field.node.page.layout_builder__layout
+    - image.style.thumbnail
     - node.type.page
   module:
+    - color_field
+    - content_moderation
+    - image
     - path
     - text
 _core:
@@ -28,6 +35,27 @@ content:
   created:
     type: datetime_timestamp
     weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_circle_color:
+    type: color_field_widget_html5
+    weight: 122
+    region: content
+    settings:
+      show_extra: false
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -76,4 +104,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  layout_builder__layout: true

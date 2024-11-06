@@ -1,0 +1,30 @@
+uuid: dab96a3b-3bd7-4ffd-b77b-8e34387d08e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+    - field.field.block_content.houses_sliders.body
+    - field.field.block_content.houses_sliders.field_description
+  module:
+    - text
+id: block_content.houses_sliders.default
+targetEntityType: block_content
+bundle: houses_sliders
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

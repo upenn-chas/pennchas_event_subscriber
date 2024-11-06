@@ -1,0 +1,21 @@
+uuid: 9cbcfe0e-adda-4d1d-990f-e4ac743b8fb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns
+    - field.storage.block_content.field_image_alignment
+  module:
+    - options
+id: block_content.two_columns.field_image_alignment
+field_name: field_image_alignment
+entity_type: block_content
+bundle: two_columns
+label: 'Image Alignment'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

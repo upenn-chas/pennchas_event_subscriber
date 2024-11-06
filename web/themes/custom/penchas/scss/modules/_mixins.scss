@@ -1,8 +1,9 @@
 $breakpoints: (
   'very-small': 421px,
-  'small':  575px,
+  'small': 575px,
   'mobile': 767px,
-  'tablet':  991px,
+  'tablet': 991px,
+  'tablet-large': 992px,
   'ipad': 1199px,
   'medium': 1300px,
   'large': 1440px,
@@ -34,8 +35,14 @@ $breakpoints: (
   }
 }
 
-// Usage example
-@include media-query-range('mobile-mid', 'mobile') {
-  // Your styles here for min-width: 710px and max-width: 767px
+// Mixin for media queries using min-width
+@mixin media-query-min($size) {
+  @if map-has-key($breakpoints, $size) {
+    $min-width: map-get($breakpoints, $size);
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "No breakpoint defined for '#{$size}'";
+  }
 }
-

@@ -41,6 +41,14 @@
   }
 }
 
+.space {
+	&.cta-boxes {
+		&.layout {
+			padding-bottom: 0;
+		}
+	}
+}
+
 .mac-os{
   .cta-right{ 
     .btn-secondary {

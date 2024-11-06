@@ -94,6 +94,40 @@
        {# class="{{ container }}" #}
         <div id="main">
           {{ page.breadcrumb }}
+
+          {#  #}
+          {# {{dump(node.body)}} #}
+          {% if node.field_image.entity.fileuri and node.field_circle_color.0.value.color %}
+          <section class="hero-banner" >
+            <style>
+                .hero-banner .container:before {
+                    background: {{node.field_circle_color.0.value.color}};
+                }
+            </style>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="breadcrumbs-block">
+                            <nav aria-label="breadcrumb">
+                            </nav>
+                        </div>
+                        <div class="banner-info">
+                            <h1>{{node.title.value}}</h1>
+                            {{node.body.value|t}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="hero-img">
+                             <img src="{{file_url(node.field_image.entity.fileuri)}}" alt="{{node.title.value}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+          {#  #}
+
+
           <div class="row row-offcanvas row-offcanvas-left clearfix">
               <main{{ content_attributes }}>
                 <section class="section">

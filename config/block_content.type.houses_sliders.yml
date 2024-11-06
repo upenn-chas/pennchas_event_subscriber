@@ -1,0 +1,8 @@
+uuid: 9a5f42ea-4dd3-434e-aa0b-f3efaa31c2cb
+langcode: en
+status: true
+dependencies: {  }
+id: houses_sliders
+label: 'Houses sliders'
+revision: false
+description: null

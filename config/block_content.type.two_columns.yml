@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: two_columns
-label: 'Two Columns'
+label: 'Two Columns (50-50)'
 revision: false
 description: null

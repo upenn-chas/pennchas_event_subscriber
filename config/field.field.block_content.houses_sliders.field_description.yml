@@ -1,0 +1,24 @@
+uuid: 3d19cbf6-8c84-4864-949c-9f90fa8932a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+    - field.storage.block_content.field_description
+    - filter.format.basic_html
+  module:
+    - text
+id: block_content.houses_sliders.field_description
+field_name: field_description
+entity_type: block_content
+bundle: houses_sliders
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text

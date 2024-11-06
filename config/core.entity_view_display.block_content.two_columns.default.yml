@@ -5,7 +5,13 @@ dependencies:
   config:
     - block_content.type.two_columns
     - field.field.block_content.two_columns.body
+    - field.field.block_content.two_columns.field_cta
+    - field.field.block_content.two_columns.field_image
+    - field.field.block_content.two_columns.field_image_alignment
   module:
+    - image
+    - link
+    - options
     - text
 id: block_content.two_columns.default
 targetEntityType: block_content
@@ -18,5 +24,35 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image_alignment:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden: {  }

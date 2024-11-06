@@ -19,7 +19,7 @@
     position: relative;
     &:before {
       position: absolute;
-      left: -90px;
+      left: -100px;
       top: -110px;
       width: 240px;
       height: 240px;
@@ -52,7 +52,8 @@
  
   h1 {
     padding-top: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 0;
     @include media-query('mobile') {
       padding-bottom: 8px;
     }
@@ -79,6 +80,9 @@
     }
     img {
         height: auto;
+    }
+    .field--type-image {
+        margin: 0 !important;
     }
   }
 

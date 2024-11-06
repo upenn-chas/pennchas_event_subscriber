@@ -89,7 +89,33 @@
         window.addEventListener('resize', adjustSection2Top);
       });
 
-
+      $('.offer-slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 3,
+        arrows: true,
+        slidesToScroll: 3,
+        centerPadding: '0', // Adjusts how much of the next slide is visible
+        responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              centerPadding: '20px', // Adjust for smaller screens
+            }
+          },
+          {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              centerPadding: '30px', // Adjust for smallest screens
+            }
+          },
+        ]
+      });
 
 
 

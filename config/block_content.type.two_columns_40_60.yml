@@ -1,0 +1,8 @@
+uuid: 00c08147-2a8b-4486-a358-9ca6bc67cde8
+langcode: en
+status: true
+dependencies: {  }
+id: two_columns_40_60
+label: 'Two Columns (40-60)'
+revision: false
+description: null
