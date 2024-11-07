@@ -49,17 +49,45 @@
 
       });
 
-      const menu = document.querySelector(".select-menu");
-      const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
-
-      selectBtn.onclick = () => menu.classList.toggle("active");
-
-      menu.querySelectorAll(".option").forEach(option => {
-        option.onclick = () => {
-          sBtnText.innerText = option.querySelector(".option-text").innerText;
-          menu.classList.remove("active");
-        };
+      $('.offer-slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 3,
+        arrows: true,
+        slidesToScroll: 3,
+        centerPadding: '0', // Adjusts how much of the next slide is visible
+        responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              centerPadding: '20px', // Adjust for smaller screens
+            }
+          },
+          {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              centerPadding: '30px', // Adjust for smallest screens
+            }
+          },
+        ]
       });
+
+      // const menu = document.querySelector(".select-menu");
+      // const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
+
+      // selectBtn.onclick = () => menu.classList.toggle("active");
+
+      // menu.querySelectorAll(".option").forEach(option => {
+      //   option.onclick = () => {
+      //     sBtnText.innerText = option.querySelector(".option-text").innerText;
+      //     menu.classList.remove("active");
+      //   };
+      // });
 
       // Function to close menu if clicked outside
       document.addEventListener("click", function (event) {
@@ -89,33 +117,7 @@
         window.addEventListener('resize', adjustSection2Top);
       });
 
-      $('.offer-slider').slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 3,
-        arrows: true,
-        slidesToScroll: 3,
-        centerPadding: '0', // Adjusts how much of the next slide is visible
-        responsive: [
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              centerPadding: '20px', // Adjust for smaller screens
-            }
-          },
-          {
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              centerPadding: '30px', // Adjust for smallest screens
-            }
-          },
-        ]
-      });
+
 
 
 

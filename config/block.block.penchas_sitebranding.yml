@@ -8,7 +8,7 @@ dependencies:
     - penchas
 id: penchas_sitebranding
 theme: penchas
-region: footer_first
+region: none
 weight: 0
 provider: null
 plugin: system_branding_block
@@ -17,7 +17,7 @@ settings:
   label: 'Site branding'
   label_display: '0'
   provider: system
-  use_site_logo: true
+  use_site_logo: false
   use_site_name: false
   use_site_slogan: false
 visibility: {  }
