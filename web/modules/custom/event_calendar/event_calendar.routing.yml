@@ -1,0 +1,8 @@
+event_calendar.ajax:
+  path: group/{group}/api/events
+  defaults:
+    _controller: '\Drupal\event_calendar\Controller\EventSource::build'
+    _format: 'json'
+  requirements:
+    _access: 'TRUE'
+    group: '\d+'

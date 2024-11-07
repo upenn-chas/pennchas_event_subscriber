@@ -1,13 +1,19 @@
 <?php
-
-
 /**
- * Implements hook_views_pre_view().
- */
-function event_calendar_preprocess_views_view(&$variables)
-{
+* Implements template_preprocess_views_view_fullcalendar().
+*/
+function event_calendar_preprocess_views_view_fullcalendar(array &$variables) {
     if ($variables['view']->id() === 'event_calendar') {
-        // \Drupal::service('library.discovery')->load('event_calendar/event_calendar_custom');
         $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
     }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function event_calendar_theme($existing, $type, $theme, $path) {
+    // dd($existing);
+    return [
+      'views-view-fullcalendar' => []
+    ];
+  }
