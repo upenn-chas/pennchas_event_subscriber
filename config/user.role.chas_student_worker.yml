@@ -9,6 +9,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - event_evaluation
     - file
     - node
 id: chas_student_worker
@@ -24,6 +25,7 @@ permissions:
   - 'delete own chas_event content'
   - 'delete own files'
   - 'edit own chas_event content'
+  - 'event own evaluation'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
   - 'view own unpublished content'
