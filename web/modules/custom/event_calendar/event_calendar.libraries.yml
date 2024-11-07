@@ -1,5 +1,9 @@
 event_calendar_custom:
   version: 1.0
+  js:
+    js/event-fullcalendar.js: {}
   css:
     theme:
       css/event_calendar.css: {}
+  dependencies:
+    - fullcalendar_view/fullcalendar

@@ -1,10 +1,9 @@
-uuid: a481065e-83b9-4890-8454-4b07f1a1b57e
+uuid: 87f19eda-bfcf-4614-aa9f-f99facccbaa4
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_event_schedule
-    - field.storage.node.field_location_of_program
     - node.type.chas_event
     - workflows.workflow.editorial
   module:
@@ -127,7 +126,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: rrule
+          click_sort_column: value
           type: smartdate_default
           settings:
             timezone_override: ''
@@ -145,68 +144,6 @@ display:
               unit: ''
               decimals: 2
               suffix: h
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_location_of_program:
-          id: field_location_of_program
-          table: node__field_location_of_program
-          field: field_location_of_program
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 50
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: true
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: basic_string
-          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -281,6 +218,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        gid:
+          id: gid
+          table: group_relationship_field_data
+          field: gid
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          entity_field: gid
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         fields_combine:
           id: fields_combine
           table: views
@@ -293,7 +295,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<span class=\"event_title\">{{ title }} </span>\r\n<span class=\"event_location\">{{ field_location_of_program }}</span>\r\n<span class=\"event_moderation_state\">{{ moderation_state }}</span>"
+            text: "<span class=\"event_title\">{{ title }}</span>\r\n<span>{{ gid }}</span>\r\n{% if moderation_state != 'published' %}\r\n<span class=\"event_moderation_state\">{{ moderation_state }}</span>\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -332,10 +334,10 @@ display:
           hide_alter_empty: true
           combined_fields:
             title: title
-            field_location_of_program: field_location_of_program
-            moderation_state: moderation_state
+            gid: gid
             field_event_schedule: 0
-          separator: '<br/>'
+            moderation_state: 0
+          separator: ''
           separator_allowed_tags:
             - a
             - em
@@ -367,7 +369,21 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts: {  }
+      sorts:
+        field_event_schedule_value:
+          id: field_event_schedule_value
+          table: node__field_event_schedule
+          field: field_event_schedule_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
       arguments:
         gid:
           id: gid
@@ -415,6 +431,7 @@ display:
           plugin_id: bundle
           value:
             chas_event: chas_event
+          group: 1
         moderation_state:
           id: moderation_state
           table: node_field_data
@@ -470,25 +487,33 @@ display:
           value:
             min: ''
             max: ''
-            value: '-1 month'
-            type: offset
-            granularity: day
+            value: today
+            type: date
+            granularity: month
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: field_event_schedule_value_op
+            label: 'Event Schedule - Start'
             description: ''
             use_operator: false
-            operator: ''
+            operator: field_event_schedule_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: field_event_schedule_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -504,13 +529,74 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_event_schedule_end_value:
+          id: field_event_schedule_end_value
+          table: node__field_event_schedule
+          field: field_event_schedule_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: date
+            granularity: month
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_schedule_end_value_op
+            label: 'Event Schedule - End'
+            description: ''
+            use_operator: false
+            operator: field_event_schedule_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_schedule_end_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: 'Event Schedule - End'
+            description: null
+            identifier: field_event_schedule_end_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: fullcalendar_view_display
         options:
           default_date_source: now
           defaultDate: ''
           start: field_event_schedule
-          end: field_event_schedule
+          end: ''
           title: fields_combine
           left_buttons: 'prev,next today'
           right_buttons: 'dayGridMonth,timeGridWeek'
@@ -528,12 +614,12 @@ display:
           dialogWindow: 0
           openEntityInNewTab: 1
           createEventLink: 0
-          eventLimit: '2'
+          eventLimit: '4'
           tax_field: ''
           vocabularies: ''
           color_bundle:
             article: '#3a87ad'
-            chas_event: '#971d07'
+            chas_event: '#3a87ad'
             location: '#3a87ad'
             page: '#3a87ad'
             program_community: '#3a87ad'
@@ -543,7 +629,7 @@ display:
           rrule: ''
           dialogModal: false
           dialogCanvas: false
-          duration: ''
+          duration: field_event_schedule
           slotDuration: '00:30:00'
           minTime: '00:00:00'
           maxTime: '23:59:59'
@@ -576,14 +662,15 @@ display:
           plugin_id: group_relationship_to_entity_reverse
           required: true
           group_relation_plugins:
+            'group_node:chas_event': 'group_node:chas_event'
             'group_node:article': '0'
-            'group_node:chas_event': '0'
             'group_node:location': '0'
             'group_node:page': '0'
             'group_node:program_community': '0'
             'group_node:reserve_room': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -597,10 +684,9 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
-        - 'config:field.storage.node.field_location_of_program'
         - 'config:workflow_list'
-  event_calender_view_page:
-    id: event_calender_view_page
+  page_1:
+    id: page_1
     display_title: Page
     display_plugin: page
     position: 1
@@ -617,5 +703,4 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
-        - 'config:field.storage.node.field_location_of_program'
         - 'config:workflow_list'
