@@ -10,8 +10,8 @@ _core:
   default_config_hash: 5CWS2VqUwKcmyEVTbrd9Gp6-usUXUYFisWVNYceMrxQ
 id: penchas_breadcrumbs
 theme: penchas
-region: breadcrumb
-weight: -10
+region: none
+weight: -12
 provider: null
 plugin: system_breadcrumb_block
 settings:
