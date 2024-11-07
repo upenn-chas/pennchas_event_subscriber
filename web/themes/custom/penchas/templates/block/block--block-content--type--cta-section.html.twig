@@ -34,15 +34,19 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
+    'space-bottoms'
   ]
 %}
-<section class="space-bottom">
+  {% block content %}
+<section  {{ attributes.addClass(classes) }}>
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="cta">
           <div class="cta-left">
-            <h2><img src="/assets/images/calender-icon.jpg"> <span>{{ label }}</span></h2>
+          {{ title_prefix }}
+            <h2><img src="{{base_path}}/{{themePath}}/images/icons/calender-icon.jpg"> <span>{{ label }}</span></h2>
+            {{ title_suffix }}
           </div>
           <div class="cta-right">
             {% if not logged_in %}
@@ -55,3 +59,4 @@
     </div>
   </div>
 </section>
+  {% endblock %}

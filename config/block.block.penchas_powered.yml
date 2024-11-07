@@ -16,7 +16,7 @@ provider: null
 plugin: system_powered_by_block
 settings:
   id: system_powered_by_block
-  label: 'Copyright 2024 Office of College Houses & Academic Services'
+  label: '© Copyright 2024 Office of College Houses & Academic Services'
   label_display: visible
   provider: system
 visibility: {  }

@@ -5,18 +5,18 @@ dependencies:
   module:
     - node
 id: location_url_pattern_with_house
-label: 'Location URL pattern with House'
+label: 'Room URL pattern with House'
 type: 'canonical_entities:node'
-pattern: 'location/[node:field_group_ref:value]/'
+pattern: 'room/[node:field_group_ref:value]/'
 selection_criteria:
-  6d403a43-afc8-4d3f-baf0-da5ec16d6bb5:
+  6235b4fd-d95e-440c-a306-ad2ee009a40d:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 6d403a43-afc8-4d3f-baf0-da5ec16d6bb5
+    uuid: 6235b4fd-d95e-440c-a306-ad2ee009a40d
     context_mapping:
       node: node
     bundles:
-      location: location
+      room: room
 selection_logic: and
 weight: -5
 relationships: {  }

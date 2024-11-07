@@ -77,17 +77,17 @@
         ]
       });
 
-      // const menu = document.querySelector(".select-menu");
-      // const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
+      const menu = document.querySelector(".select-menu");
+      const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
 
-      // selectBtn.onclick = () => menu.classList.toggle("active");
+      selectBtn.onclick = () => menu.classList.toggle("active");
 
-      // menu.querySelectorAll(".option").forEach(option => {
-      //   option.onclick = () => {
-      //     sBtnText.innerText = option.querySelector(".option-text").innerText;
-      //     menu.classList.remove("active");
-      //   };
-      // });
+      menu.querySelectorAll(".option").forEach(option => {
+        option.onclick = () => {
+          sBtnText.innerText = option.querySelector(".option-text").innerText;
+          menu.classList.remove("active");
+        };
+      });
 
       // Function to close menu if clicked outside
       document.addEventListener("click", function (event) {

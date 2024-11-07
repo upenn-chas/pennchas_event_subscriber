@@ -28,7 +28,7 @@ function getGroupIdsByEntity($nid) {
 function custom_token_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
   //dd($entity);
   $content_type = $entity->bundle();
-  if($content_type == 'location'){
+  if($content_type == 'room'){
     $nid = $entity->id();
     $path = '/' . $entity->getTitle();
     $group_id = getGroupIdsByEntity($nid);

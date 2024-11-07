@@ -1,13 +1,15 @@
 <?php
-use Drupal\group\Entity\Group;
-// use Drupal\Core\Link;
-use Drupal\Core\Url;
 /**
  * @file
  * Functions to support theming in the SASS Starterkit subtheme.
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\Group;
+// use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -32,8 +34,16 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   );
 }
+function penchas_preprocess_html(&$variables) {
+  $variables['base_path'] = base_path();
+
+  // dd('asdjh'.$themePath);
+}
 function penchas_preprocess_block(&$variables) {
-  // dd('adkjhasd');
+
+  $themeHandler = \Drupal::service('theme_handler');
+  $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
+  $variables['themePath'] = $themePath;
   // $variables['page'] = $variables['html']['page'];
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
@@ -42,33 +52,40 @@ function penchas_preprocess_block(&$variables) {
   $groups = Group::loadMultiple($group_ids);
 
   $groups_html = '';
-  // foreach ($groups as $group) {
-  //   // dd($group);
-  //   $options[$this->getGroupUrlAlias($group)] = $group->label();
-  //   // $groups_html .= '<div class="offer-slider-block" data-group="'.$this->getGroupUrlAlias($group).'">'.
-  //   //                     '<div class="program-card">'.
-  //   //                         '<div class="program-card-img">'.
-  //   //                             '<img src="assets/images/offer-slide1.jpg" alt="">'.
-  //   //                         '</div>'.
-  //   //                         '<div class="program-card-info">'.
-  //   //                             '<h4>'.$group->label().'</h4>'.
-  //   //                             '<div class="tags">'.
-  //   //                                 '<a href="#">Four Year Community</a>'.
-  //   //                                 '<a href="#">159 Residents</a>'.
-  //   //                            '</div>'.
-  //   //                             '<p>A Multicultural House that focuses on the African Diaspora and African American
-  //   //                                 scholarship and culture.</p>'.
-  //   //                             '<a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">'.
-  //   //                                     '<path
-  //   //                                         d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">'.
-  //   //                                     '</path>'.
-  //   //                                 '</svg></a>'.
-  //   //                         '</div>'.
-  //   //                     '</div>'.
-  //   //                 '</div>';
-  // }
+  foreach ($groups as $group) {
+      // $group->get('field_house_machine_name')->value;
+      // dd($group->hasField('field_house_machine_name'));
+      $description = $group->get('field_description')->value ? $group->get('field_description')->value : '';
+      $file_path = $image_alt = $image_title ='';
+      if($group->get('field_image')->entity->field_media_image){
+        $image_alt = $group->get('field_image')->entity->field_media_image->getValue()[0]['alt'];
+        $image_title = $group->get('field_image')->entity->field_media_image->getValue()[0]['title'];
+        $file = File::load($group->get('field_image')->entity->field_media_image->getValue()[0]['target_id']);
+        $file_path = $file->createFileUrl();
+      }
+    $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_house_machine_name')->value.'">'.
+                        '<div class="program-card">'.
+                            '<div class="program-card-img">'.
+                              '<img src="'.$file_path.'" alt="'.$image_alt.'" title="'.$image_title.'">'.
+                            '</div>'.
+                            '<div class="program-card-info">'.
+                                '<h4>'.$group->label().'</h4>'.
+                                '<div class="tags">'.
+                                    '<a href="#">Four Year Community</a>'.
+                                    '<a href="#">159 Residents</a>'.
+                               '</div>'.
+                                '<p>'.$description.'</p>'.
+                                '<a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">'.
+                                        '<path
+                                            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">'.
+                                        '</path>'.
+                                    '</svg></a>'.
+                            '</div>'.
+                        '</div>'.
+                    '</div>';
+  }
 
-
-  $variables['all_group_houses'] = 'all houses result';
+  // dd($groups_html);
+  $variables['all_group_houses'] = $groups_html;
   // dd($variables);
 }
