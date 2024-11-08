@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.group.house1.label
     - field.field.group.house1.field_color
     - field.field.group.house1.field_description
+    - field.field.group.house1.field_group_tags
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
@@ -122,6 +123,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
+          c25dfe68-5100-4dcb-b2e0-aa2f557fdeda:
+            uuid: c25dfe68-5100-4dcb-b2e0-aa2f557fdeda
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_group_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -171,6 +188,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_group_tags:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_heading:
     type: string

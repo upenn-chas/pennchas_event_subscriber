@@ -18,7 +18,6 @@ module:
   contact: 0
   content_moderation: 0
   contextual: 0
-  custom_token: 0
   datetime: 0
   dblog: 0
   devel: 0
@@ -42,6 +41,7 @@ module:
   group: 0
   group_permissions: 0
   group_relationship_tokens: 0
+  groupmedia: 0
   help: 0
   history: 0
   image: 0

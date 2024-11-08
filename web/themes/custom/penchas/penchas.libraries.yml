@@ -5,7 +5,7 @@ global-styling:
     js/bootstrap.min.js: { weight: -48 }
     js/barrio.js: {}
     js/slick.min.js: {}
-    js/custom.js: {}
+    js/custom.js?ver=23: {}
   css:
     component:
       # css/bootstrap.min.css: {}
@@ -16,3 +16,4 @@ global-styling:
   dependencies:
     - core/jquery
     - core/drupal
+    - core/once

@@ -33,13 +33,19 @@ class FindYourHouse extends BlockBase
 		$link_text = $config->get('link_text') ?? 'Discover all our houses';
 		$link_url = $config->get('link_url')?? '#';
 
-		// $group_query = \Drupal::entityQuery('group')
-		// ->condition('type', $group_types ,'IN')
-		// ->accessCheck(true)
-		// ->execute();
-    $group_storage = \Drupal::entityTypeManager()->getStorage('group');
+	  $group_storage = \Drupal::entityTypeManager()->getStorage('group');
     $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
     $groups = Group::loadMultiple($group_ids);
+    // Sort groups alphabetically by title
+    usort($groups, function ($a, $b) {
+      // Get titles of the groups
+      $title_a = $a->label(); // 'label' is the function to get the group title.
+      $title_b = $b->label();
+
+      // Compare titles alphabetically (case-insensitive)
+      return strcasecmp($title_a, $title_b);
+    });
+
 		$options = [];
     $options_html = '';
 

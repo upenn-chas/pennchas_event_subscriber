@@ -60,7 +60,8 @@
         "drupal/fullcalendar_view": "^5.2",
         "drupal/menu_item_role_access": "^2.4",
         "drupal/views_fields_combine": "^10.0",
-        "drupal/multiple_fields_remove_button": "^2.2"
+        "drupal/multiple_fields_remove_button": "^2.2",
+        "drupal/groupmedia": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

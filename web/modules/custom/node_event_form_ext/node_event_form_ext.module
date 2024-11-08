@@ -4,6 +4,10 @@ use Drupal\node\NodeInterface;
 use Drupal\node_event_form_ext\Plugin\EventCreateAndUpdate;
 use Drupal\webform\Entity\Webform;
 
+
+use Drupal\group\Entity\Group;
+use Drupal\Core\Entity\EntityInterface;
+
 /**
  * Implements hook_form_alter()
  */
@@ -151,6 +155,26 @@ function node_event_form_ext_entity_presave(Drupal\Core\Entity\EntityInterface $
             $eventHandler->handlePreUpdateEvent($entity);
         }
     }
+
+    $content_type = $entity->bundle();
+    if($content_type == 'room'){
+      $nid = $entity->id();
+      $path = '/' . $entity->getTitle();
+      $group_id = getGroupIdsByEntity($nid);
+      if(!empty($group_id)){
+        $group = Group::load($group_id);
+        if ($group && $group->hasField('field_house_machine_name')) {
+          $group_machine_name = $group->get('field_house_machine_name')->value;
+          if(!empty($group_machine_name)){
+            $node_alias = $group_machine_name.'/'.$path;
+          }
+        }
+      }else{
+        $node_alias = $path;
+      }
+      $custom_field = 'field_group_ref';
+      $entity->set($custom_field, $node_alias);
+    }
 }
 
 function node_event_form_ext_node_insert(\Drupal\node\Entity\Node $node)
@@ -168,3 +192,24 @@ function node_event_form_ext_node_update(\Drupal\node\Entity\Node $node)
         $eventHandler->handleEventUpdate($node);
     }
 }
+
+// use Drupal\Core\Render\BubbleableMetadata;
+function getGroupIdsByEntity($nid) {
+  $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
+  $query->innerjoin('groups_field_data', 'gfd', 'gr.gid = gfd.id');
+  $query->condition('gr.entity_id', $nid);
+
+  // Don't include group user memberships in the query.
+  $query->condition('gr.type', 'group-group_membership', '!=');
+
+  $query->fields('gr', ['gid']);
+  $result = $query->execute();
+  // dd($result->gid);
+  $groupIds = [];
+  foreach ($result as $record) {
+    $groupIds = $record->gid;
+    }
+  // $groupIds = $result->gid;
+  return $groupIds;
+}
+

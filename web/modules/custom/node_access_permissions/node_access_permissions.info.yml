@@ -1,9 +1,0 @@
-name: "Node access Permissions"
-description: "Unpublished node access permissions."
-type: module
-core_version_requirement: ^10
-version: 1.0
-package: Custom
-dependencies:
-  - drupal:group
-  - drupal:gnode
