@@ -10,6 +10,7 @@ use Drupal\webform\Entity\Webform;
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
+
         $form['field_audience_floor']['#states'] = [
             'visible' => [
                 ':input[name="field_intended_audience[floors_residents]"]' => [
@@ -43,67 +44,67 @@ function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStat
         ];
 
         // Enable marketing releated fields for audience options
-        $form['field_intended_audience_image']['#states'] = [
-            'visible' => [
-                [
-                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
-                ],
-                [
-                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
-                ]
-            ],
-        ];
+        // $form['field_intended_audience_image']['#states'] = [
+        //     'visible' => [
+        //         [
+        //             ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+        //         ]
+        //     ],
+        // ];
 
-        $form['field_intended_audience_attach']['#states'] = [
-            'visible' => [
-                [
-                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
-                ],
-                [
-                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
-                ]
-            ],
-        ];
+        // $form['field_intended_audience_attach']['#states'] = [
+        //     'visible' => [
+        //         [
+        //             ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+        //         ]
+        //     ],
+        // ];
 
-        $form['field_marketing_blurb']['#states'] = [
-            'visible' => [
-                [
-                    ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
-                ],
-                [
-                    ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
-                ],
-                [
-                    ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
-                ]
-            ],
-        ];
+        // $form['field_marketing_blurb']['#states'] = [
+        //     'visible' => [
+        //         [
+        //             ':input[name="field_intended_audience[all_house_residents]"]' => ['checked' => true],
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[multiple_college_houses]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_first_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_second_year_students]"]' => ['checked' => true]
+        //         ],
+        //         [
+        //             ':input[name="field_intended_audience[all_upper_year_students]"]' => ['checked' => true]
+        //         ]
+        //     ],
+        // ];
 
-        $form['field_event_schedule']['widget']['add_more']['#access'] = FALSE;
+        // $form['field_event_schedule']['widget']['add_more']['#access'] = FALSE;
 
         if (isset($form['field_event_schedule']['widget']['#tabledrag'])) {
             unset($form['field_event_schedule']['widget']['#tabledrag']);
