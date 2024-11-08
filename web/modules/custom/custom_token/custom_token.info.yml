@@ -1,5 +1,0 @@
-name: Custom token
-type: module
-description: Provides custom tokens.
-package: tokens
-core_version_requirement: ^10

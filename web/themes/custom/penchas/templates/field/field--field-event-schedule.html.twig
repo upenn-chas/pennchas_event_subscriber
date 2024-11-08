@@ -57,12 +57,10 @@
     <div{{ attributes.addClass(classes, 'field__items') }}>
       {% for item in items %}
         <div{{ item.attributes.addClass('field__item') }}>
-        {# {{dump(item.content)}} #}
-        {# {% set date_arr = item.content|split(' ') %}
-          {{date_arr[0]}}
-          -----<br/>pppppp
-          {{date_arr[1]}} #}
-          {{ item.content }}</div>
+          {% set date_a = item.content|render|striptags|trim|split(' ') %}
+          {{date_a['0']}}
+          <span>{{date_a['1']}}</span>
+          </div>
       {% endfor %}
     </div>
   {% else %}

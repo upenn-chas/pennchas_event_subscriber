@@ -10,6 +10,20 @@
   Drupal.behaviors.penchas = {
     attach: function(context, settings) {
 
+        $(document).ready(function() {
+          // Toggle sub-menu on click
+          $('.mega-menu .menu-item > a').click(function(e) {
+            console.log('asjdgajdhs');
+            var $subMenu = $(this).siblings('.sub-menu');
+
+            // Prevent default link behavior (if you don't want the link to be followed)
+            e.preventDefault();
+
+            // Toggle the sub-menu visibility
+            $subMenu.toggleClass('open');
+          });
+        });
+
       // Custom code here
       $(document).ready(function () {
         if (window.outerWidth < 991) {

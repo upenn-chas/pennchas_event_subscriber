@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34d7010976764d79223480a40ee2a14a",
+    "content-hash": "3c82557975111c6c04e70935746f663e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3000,6 +3000,62 @@
             "homepage": "https://www.drupal.org/project/group_relationship_tokens",
             "support": {
                 "source": "https://git.drupalcode.org/project/group_relationship_tokens"
+            }
+        },
+        {
+            "name": "drupal/groupmedia",
+            "version": "4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/groupmedia.git",
+                "reference": "4.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/groupmedia-4.0.3.zip",
+                "reference": "4.0.3",
+                "shasum": "2a6de82cec4b57d5d720aa12bc11aaf25126f7bd"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11",
+                "drupal/group": "^3.0"
+            },
+            "require-dev": {
+                "drupal/paragraphs": "*",
+                "drupal/views_bulk_operations": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.3",
+                    "datestamp": "1724687192",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Dmitriiev",
+                    "homepage": "https://www.drupal.org/u/admitriiev",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nikolay Lobachev",
+                    "homepage": "https://www.drupal.org/u/lobsterr",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "This module allows you to integrate media entity into group functionality",
+            "homepage": "http://drupal.org/project/groupmedia",
+            "support": {
+                "source": "https://git.drupalcode.org/project/groupmedia",
+                "issues": "https://drupal.org/project/issues/groupmedia"
             }
         },
         {

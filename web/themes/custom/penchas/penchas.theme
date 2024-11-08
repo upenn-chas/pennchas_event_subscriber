@@ -34,12 +34,18 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   );
 }
+function penchas_preprocess_page(&$variables) {
+
+}
 function penchas_preprocess_html(&$variables) {
   $variables['base_path'] = base_path();
 
   // dd('asdjh'.$themePath);
 }
 function penchas_preprocess_block(&$variables) {
+  $login_url = \Drupal\Core\Url::fromRoute('user.login')->toString();
+  // Pass the login URL to the template
+  $variables['user_login_path'] = $login_url;
 
   $themeHandler = \Drupal::service('theme_handler');
   $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
@@ -47,42 +53,98 @@ function penchas_preprocess_block(&$variables) {
   // $variables['page'] = $variables['html']['page'];
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
-  $group_storage = \Drupal::entityTypeManager()->getStorage('group');
-  $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
-  $groups = Group::loadMultiple($group_ids);
 
-  $groups_html = '';
-  foreach ($groups as $group) {
-      // $group->get('field_house_machine_name')->value;
-      // dd($group->hasField('field_house_machine_name'));
+  if($variables['plugin_id'] == 'inline_block:houses_sliders'){
+    $group_storage = \Drupal::entityTypeManager()->getStorage('group');
+    $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
+    $groups = Group::loadMultiple($group_ids);
+
+    $groups_html = '';
+
+    foreach ($groups as $group) {
       $description = $group->get('field_description')->value ? $group->get('field_description')->value : '';
       $file_path = $image_alt = $image_title ='';
-      if($group->get('field_image')->entity->field_media_image){
-        $image_alt = $group->get('field_image')->entity->field_media_image->getValue()[0]['alt'];
-        $image_title = $group->get('field_image')->entity->field_media_image->getValue()[0]['title'];
-        $file = File::load($group->get('field_image')->entity->field_media_image->getValue()[0]['target_id']);
-        $file_path = $file->createFileUrl();
+      if($group->get('field_image')){
+        if($group->get('field_image')->entity){
+          if($group->get('field_image')->entity->field_media_image){
+            $image_alt = $group->get('field_image')->entity->field_media_image->getValue()[0]['alt'];
+            $image_title = $group->get('field_image')->entity->field_media_image->getValue()[0]['title'];
+            $file = File::load($group->get('field_image')->entity->field_media_image->getValue()[0]['target_id']);
+            $file_path = $file->createFileUrl();
+          }
+        }
       }
-    $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_house_machine_name')->value.'">'.
-                        '<div class="program-card">'.
-                            '<div class="program-card-img">'.
-                              '<img src="'.$file_path.'" alt="'.$image_alt.'" title="'.$image_title.'">'.
-                            '</div>'.
-                            '<div class="program-card-info">'.
-                                '<h4>'.$group->label().'</h4>'.
-                                '<div class="tags">'.
-                                    '<a href="#">Four Year Community</a>'.
-                                    '<a href="#">159 Residents</a>'.
-                               '</div>'.
-                                '<p>'.$description.'</p>'.
-                                '<a href="#"><svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>'.
-                                    '</svg></a>'.
-                            '</div>'.
-                        '</div>'.
-                    '</div>';
+      $group_tags = $group->get('field_group_tags')->getValue();
+      $group_tag_values = '';
+      if($group_tags){
+        $group_tag_arr = [];
+          foreach ($group_tags as $group_tag) {
+              $group_tag_arr[] = $group_tag['value'];  // Adjust this based on your field type
+          }
+        $group_tag_values = implode('</p> <p>', $group_tag_arr);
+      }
+      $group_path = '/group/' . $group->id();
+      $alias_manager = \Drupal::service('path_alias.manager');
+      $url = $alias_manager->getAliasByPath($group_path);
+      $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_house_machine_name')->value.'">'.
+                          '<div class="program-card"><a href="'.$url.'">'.
+                              '<div class="program-card-img">'.
+                                '<img src="'.$file_path.'" alt="'.$image_alt.'" title="'.$image_title.'">'.
+                              '</div>'.
+                              '<div class="program-card-info">'.
+                                  '<h4>'.$group->label().'</h4>'.
+                                  '<div class="tags">'.
+                                      '<p>'.$group_tag_values.'</p>'.
+                                '</div>'.
+                                  '<p>'.$description.'</p>'.
+                                  '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>'.
+                                      '</svg>'.
+                              '</div>'.
+                          '</a></div>'.
+                      '</div>';
+    }
+    $variables['all_group_houses'] = $groups_html;
   }
+}
 
-  // dd($groups_html);
-  $variables['all_group_houses'] = $groups_html;
-  // dd($variables);
+function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+  $themeHandler = \Drupal::service('theme_handler');
+  $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
+
+  // dd($javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']);
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['group'] = -100;
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['type'] = 'file';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['data'] = $themePath . '/js/tbcustom.js';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['version'] = '1.x';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['minified'] = '';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['weight'] =  0.079;
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['cache'] = 1;
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['preprocess'] = 1;
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['attributes'] = array();
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['browsers'] = array();
+}
+
+function penchas_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+
+  // Remove defaults.css file.
+  // unset($css['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css']);
+  // unset($css['modules/contrib/tb_megamenu/css/tb_megamenu.default.css']);
+  // unset($css['modules/contrib/tb_megamenu/css/tb_megamenu.bootstrap.css']);
+
+}
+
+function penchas_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  if (!empty($breadcrumb)) {
+    // Adding the title of the current page to the breadcrumb.
+    $breadcrumb[] = drupal_get_title();
+
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+    return $output;
+  }
 }
