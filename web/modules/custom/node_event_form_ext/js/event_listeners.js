@@ -2,7 +2,7 @@
   Drupal.behaviors.addEvent = {
     attach: (contact, settings) => {
       let selectAll = $(
-        '<div class="js-form-item form-item js-form-type-checkbox form-type--checkbox form-type--boolean"><input type="checkbox" class="form-checkbox form-boolean form-boolean--type-checkbox form-check-input select-all-houses" id="select-all-houses"/> <label for="select-all-houses" class="form-item__label option"> All college houses </label></div>'
+        '<div class="js-form-item form-item js-form-type-checkbox form-type--checkbox form-type--boolean checkbox form-check form-switch mb-3"><input type="checkbox" class="form-checkbox form-boolean form-boolean--type-checkbox form-check-input select-all-houses" id="select-all-houses"/> <label for="select-all-houses" class="form-item__label option"> All college houses </label></div>'
       );
       if (
         $("#edit-field-college-houses").find("input#select-all-houses")
