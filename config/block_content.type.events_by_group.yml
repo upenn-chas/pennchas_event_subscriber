@@ -1,0 +1,8 @@
+uuid: 46530c8d-9c1f-4931-b7a2-b4fce65ad9f0
+langcode: en
+status: true
+dependencies: {  }
+id: events_by_group
+label: 'Events by Group'
+revision: false
+description: 'Get all published events by group machine name from View and able to get n number of items etc. configurations'

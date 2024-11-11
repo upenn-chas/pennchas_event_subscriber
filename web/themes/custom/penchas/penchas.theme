@@ -43,6 +43,7 @@ function penchas_preprocess_html(&$variables) {
   // dd('asdjh'.$themePath);
 }
 function penchas_preprocess_block(&$variables) {
+  $variables['base_path'] = base_path();
   $login_url = \Drupal\Core\Url::fromRoute('user.login')->toString();
   // Pass the login URL to the template
   $variables['user_login_path'] = $login_url;
@@ -58,11 +59,20 @@ function penchas_preprocess_block(&$variables) {
     $group_storage = \Drupal::entityTypeManager()->getStorage('group');
     $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
     $groups = Group::loadMultiple($group_ids);
+    // Sort groups alphabetically by title
+    usort($groups, function ($a, $b) {
+      // Get titles of the groups
+      $title_a = $a->label(); // 'label' is the function to get the group title.
+      $title_b = $b->label();
 
+      // Compare titles alphabetically (case-insensitive)
+      return strcasecmp($title_a, $title_b);
+    });
     $groups_html = '';
 
     foreach ($groups as $group) {
       $description = $group->get('field_description')->value ? $group->get('field_description')->value : '';
+      $number_of_members = $group->get('field_number_of_members')->value ? $group->get('field_number_of_members')->value : '';
       $file_path = $image_alt = $image_title ='';
       if($group->get('field_image')){
         if($group->get('field_image')->entity){
@@ -94,7 +104,7 @@ function penchas_preprocess_block(&$variables) {
                               '<div class="program-card-info">'.
                                   '<h4>'.$group->label().'</h4>'.
                                   '<div class="tags">'.
-                                      '<p>'.$group_tag_values.'</p>'.
+                                      '<p>'.$group_tag_values.$number_of_members.'</p>'.
                                 '</div>'.
                                   '<p>'.$description.'</p>'.
                                   '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>'.
@@ -146,5 +156,14 @@ function penchas_breadcrumb($variables) {
 
     $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
     return $output;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter().
+ */
+function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view']->element['#view_id'])) {
+    $suggestions[] = 'views_view__' . $variables['view']->element['#view_id'];
   }
 }

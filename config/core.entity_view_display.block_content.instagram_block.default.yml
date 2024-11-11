@@ -1,0 +1,22 @@
+uuid: 989c6eb2-5259-4bc7-b22c-df80e8b3ac77
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.instagram_block
+    - field.field.block_content.instagram_block.body
+  module:
+    - text
+id: block_content.instagram_block.default
+targetEntityType: block_content
+bundle: instagram_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -10,19 +10,19 @@
   Drupal.behaviors.penchas = {
     attach: function(context, settings) {
 
-        $(document).ready(function() {
-          // Toggle sub-menu on click
-          $('.mega-menu .menu-item > a').click(function(e) {
-            console.log('asjdgajdhs');
-            var $subMenu = $(this).siblings('.sub-menu');
+        // $(document).ready(function() {
+        //   // Toggle sub-menu on click
+        //   $('.mega-menu .menu-item > a').click(function(e) {
+        //     console.log('asjdgajdhs');
+        //     var $subMenu = $(this).siblings('.sub-menu');
 
-            // Prevent default link behavior (if you don't want the link to be followed)
-            e.preventDefault();
+        //     // Prevent default link behavior (if you don't want the link to be followed)
+        //     e.preventDefault();
 
-            // Toggle the sub-menu visibility
-            $subMenu.toggleClass('open');
-          });
-        });
+        //     // Toggle the sub-menu visibility
+        //     $subMenu.toggleClass('open');
+        //   });
+        // });
 
       // Custom code here
       $(document).ready(function () {
@@ -90,25 +90,26 @@
           },
         ]
       });
+      // if (!$('.select-menu').hasClass('active')) {
+        const menu = document.querySelector(".select-menu");
+        const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
 
-      const menu = document.querySelector(".select-menu");
-      const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
+        selectBtn.onclick = () => menu.classList.toggle("active");
 
-      selectBtn.onclick = () => menu.classList.toggle("active");
+        // menu.querySelectorAll(".option").forEach(option => {
+        //   option.onclick = () => {
+        //     sBtnText.innerText = option.querySelector(".option-text").innerText;
+        //     menu.classList.remove("active");
+        //   };
+        // });
 
-      menu.querySelectorAll(".option").forEach(option => {
-        option.onclick = () => {
-          sBtnText.innerText = option.querySelector(".option-text").innerText;
-          menu.classList.remove("active");
-        };
-      });
-
-      // Function to close menu if clicked outside
-      document.addEventListener("click", function (event) {
-        if (!menu.contains(event.target) && !selectBtn.contains(event.target)) {
-          menu.classList.remove("active");
-        }
-      });
+        // // Function to close menu if clicked outside
+        // document.addEventListener("click", function (event) {
+        //   if (!menu.contains(event.target) && !selectBtn.contains(event.target)) {
+        //     menu.classList.remove("active");
+        //   }
+        // });
+      // }
 
 
 

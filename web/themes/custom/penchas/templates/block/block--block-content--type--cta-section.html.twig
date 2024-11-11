@@ -51,7 +51,8 @@
           <div class="cta-right">
             {% if not logged_in %}
               <a href="{{user_login_path}}" class="btn btn-secondary">Log In to Get Started</a>
-
+            {% else %}
+              <a href="{{base_path}}" class="btn btn-secondary">Contact</a>
             {% endif %}
 
           </div>

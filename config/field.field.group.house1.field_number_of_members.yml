@@ -1,15 +1,15 @@
-uuid: ad10a83c-2a01-4eb7-ab15-720ec41fc928
+uuid: 1509b101-49f1-4e90-9bce-d52fef1a16b0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_group_tags
+    - field.storage.group.field_number_of_members
     - group.type.house1
-id: group.house1.field_group_tags
-field_name: field_group_tags
+id: group.house1.field_number_of_members
+field_name: field_number_of_members
 entity_type: group
 bundle: house1
-label: Community
+label: 'Number of Residents'
 description: ''
 required: false
 translatable: false
