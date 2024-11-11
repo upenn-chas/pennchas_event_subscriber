@@ -1,0 +1,21 @@
+uuid: 4a826d7c-7cbc-4a2e-992b-2766cabd9160
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - views
+    - viewsreference
+id: block_content.field_events_by_group_ref
+field_name: field_events_by_group_ref
+entity_type: block_content
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

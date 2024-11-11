@@ -1,0 +1,33 @@
+uuid: 51221ae2-2caf-45b0-b4a4-da3683cb5a32
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+    - field.field.block_content.events_by_group.body
+    - field.field.block_content.events_by_group.field_events_by_group_ref
+  module:
+    - text
+    - viewsreference
+id: block_content.events_by_group.default
+targetEntityType: block_content
+bundle: events_by_group
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_events_by_group_ref:
+    type: viewsreference_formatter
+    label: above
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

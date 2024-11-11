@@ -10,9 +10,9 @@ dependencies:
     - user
     - views_bootstrap
 id: group_events
-label: 'Group events'
+label: 'Events by Group reference'
 module: views
-description: ''
+description: 'Get all Events by Group ID reference'
 tag: ''
 base_table: node_field_data
 base_field: nid

@@ -1,0 +1,44 @@
+uuid: 414d680c-44e0-425e-96fb-386c234cb96b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+    - field.storage.block_content.field_events_by_group_ref
+    - views.view.group_events
+  module:
+    - viewsreference
+id: block_content.events_by_group.field_events_by_group_ref
+field_name: field_events_by_group_ref
+entity_type: block_content
+bundle: events_by_group
+label: 'Events by group ref'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: a9d25ea8-992b-4ee9-9c8a-c0c85d8726e3
+    display_id: block_1
+    data: 'a:6:{s:5:"limit";s:1:"4";s:6:"header";N;s:5:"pager";s:0:"";s:5:"title";i:0;s:8:"argument";N;s:6:"offset";N;}'
+    options:
+      limit: '4'
+      pager: ''
+      title: 0
+      argument: ''
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    group_events: group_events
+  enabled_settings:
+    limit: limit
+    pager: pager
+    title: title
+    argument: argument
+field_type: viewsreference

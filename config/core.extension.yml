@@ -30,6 +30,7 @@ module:
   event_evaluation: 0
   event_feedback: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0

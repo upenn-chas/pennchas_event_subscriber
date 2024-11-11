@@ -47,7 +47,7 @@ content:
     type: text_trimmed
     label: hidden
     settings:
-      trim_length: 100
+      trim_length: 140
     third_party_settings: {  }
     weight: 3
     region: content
