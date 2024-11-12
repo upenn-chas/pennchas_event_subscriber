@@ -26,7 +26,6 @@ module:
   easy_email: 0
   editor: 0
   entity: 0
-  entity_reference_revisions: 0
   event_calendar: 0
   event_evaluation: 0
   event_feedback: 0
