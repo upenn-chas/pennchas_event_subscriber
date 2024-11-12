@@ -9,7 +9,7 @@ id: node.chas_event.field_college_houses
 field_name: field_college_houses
 entity_type: node
 bundle: chas_event
-label: 'Which House(s)?'
+label: 'For Which House(s)?'
 description: ''
 required: true
 translatable: false

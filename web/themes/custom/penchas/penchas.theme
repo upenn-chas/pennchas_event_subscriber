@@ -35,7 +35,7 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   );
 }
 function penchas_preprocess_page(&$variables) {
-
+  $variables['base_path'] = base_path();
 }
 function penchas_preprocess_html(&$variables) {
   $variables['base_path'] = base_path();

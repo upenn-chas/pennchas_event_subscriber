@@ -1,0 +1,22 @@
+uuid: f0de9368-8810-467f-a7b0-ac491ff47718
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_columns
+    - field.field.block_content.grid_columns.body
+  module:
+    - text
+id: block_content.grid_columns.default
+targetEntityType: block_content
+bundle: grid_columns
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

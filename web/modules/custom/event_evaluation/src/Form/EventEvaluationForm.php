@@ -39,7 +39,8 @@ class EventEvaluationForm extends FormBase
             '#default_value' => $this->node?->field_actual_program_expense->value,
             '#min' => 0,
             '#step' => 0.01,
-            '#required' => true
+            '#required' => true,
+            '#field_prefix' => '$'
         ];
         $form['actual_program_attendance'] = [
             '#type' => 'number',
