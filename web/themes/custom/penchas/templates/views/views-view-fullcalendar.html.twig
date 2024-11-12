@@ -24,9 +24,23 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  
-  <div class="js-drupal-fullcalendar" data-calendar-view-index="{{ view_index }}" data-calendar-view-name="{{ view_id }}" data-calendar-display="{{ display_id }}">
-    <div class="events-calendar_loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+  <div class="calendar-filter">
+    <p class="calendar-filter-title">Current View</p>
+    <select name="calendar_view">
+      <option value="volvo">Event</option>
+      <option value="saab">Room</option>
+    </select>
+    <button type="button">Reserve a Room</button>
+    <button type="button">Add Event</button>
+  </div>
+  <div class="calendar-container">
+    <div class="js-drupal-fullcalendar"
+      data-calendar-view-index="{{ view_index }}"
+      data-calendar-view-name="{{ view_id }}"
+      data-calendar-display="{{ display_id }}"
+    >
+      <div class="events-calendar_loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+    </div>
   </div>
 </div>
 
