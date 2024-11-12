@@ -15,7 +15,7 @@ dependencies:
     - smart_date_recur
 id: chas_director
 label: 'CHAS Director'
-weight: 7
+weight: -3
 is_admin: null
 permissions:
   - 'access content overview'

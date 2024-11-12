@@ -1,18 +1,19 @@
-uuid: 50f352f7-ea27-4540-aa84-160c2b042c62
+uuid: 2dfc3e26-a5bd-4deb-b468-88db367bda07
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.room.body
-    - field.field.node.room.field_group_ref
-    - node.type.room
+    - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.field_select_house
+    - field.field.node.house_landing_page.layout_builder__layout
+    - node.type.house_landing_page
   module:
     - text
     - user
-id: node.room.teaser
+id: node.house_landing_page.teaser
 targetEntityType: node
-bundle: room
+bundle: house_landing_page
 mode: teaser
 content:
   body:
@@ -29,4 +30,5 @@ content:
     weight: 100
     region: content
 hidden:
-  field_group_ref: true
+  field_select_house: true
+  layout_builder__layout: true

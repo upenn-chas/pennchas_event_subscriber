@@ -1,0 +1,8 @@
+uuid: 8096c6c5-754a-4f14-95ba-16033fcdb99c
+langcode: en
+status: true
+dependencies: {  }
+id: grid_columns
+label: 'Grid Columns'
+revision: false
+description: null

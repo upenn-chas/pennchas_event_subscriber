@@ -14,7 +14,7 @@ dependencies:
     - node
 id: chas_student_worker
 label: 'CHAS Student Worker'
-weight: 5
+weight: -5
 is_admin: null
 permissions:
   - 'access content overview'

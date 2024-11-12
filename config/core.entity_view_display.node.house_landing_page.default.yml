@@ -1,0 +1,117 @@
+uuid: a6dd8f0a-218a-41e6-8cef-48a72d9cf234
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.field_select_house
+    - field.field.node.house_landing_page.layout_builder__layout
+    - node.type.house_landing_page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          1dd4c3eb-6180-48d9-9cef-3a221bfa4fb5:
+            uuid: 1dd4c3eb-6180-48d9-9cef-3a221bfa4fb5
+            region: content
+            configuration:
+              id: 'extra_field_block:node:house_landing_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          0174aa9e-a674-49eb-8dc4-2f052f1b8e41:
+            uuid: 0174aa9e-a674-49eb-8dc4-2f052f1b8e41
+            region: content
+            configuration:
+              id: 'field_block:node:house_landing_page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          59cbf20a-2a8e-4fd1-94e9-adfbc82a1db1:
+            uuid: 59cbf20a-2a8e-4fd1-94e9-adfbc82a1db1
+            region: content
+            configuration:
+              id: 'field_block:node:house_landing_page:field_select_house'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+id: node.house_landing_page.default
+targetEntityType: node
+bundle: house_landing_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_select_house:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  layout_builder__layout: true

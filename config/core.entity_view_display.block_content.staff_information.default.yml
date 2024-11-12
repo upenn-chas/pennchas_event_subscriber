@@ -1,0 +1,22 @@
+uuid: 156dfe8e-f1b3-4b06-a247-044f94855cee
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.staff_information
+    - field.field.block_content.staff_information.body
+  module:
+    - text
+id: block_content.staff_information.default
+targetEntityType: block_content
+bundle: staff_information
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

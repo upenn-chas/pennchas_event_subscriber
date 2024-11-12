@@ -38,6 +38,7 @@
   ]
 %}
   {% block content %}
+  {# {{dump(content)}} #}
 <section  {{ attributes.addClass(classes) }}>
   <div class="container">
     <div class="row">
@@ -49,10 +50,14 @@
             {{ title_suffix }}
           </div>
           <div class="cta-right">
-            {% if not logged_in %}
-              <a href="{{user_login_path}}" class="btn btn-secondary">Log In to Get Started</a>
+            {% if content.field_cta %}
+              {{ content.field_cta }}
             {% else %}
-              <a href="{{base_path}}" class="btn btn-secondary">Contact</a>
+              {% if not logged_in %}
+                <a href="{{user_login_path}}" class="btn btn-secondary">Log In to Get Started</a>
+              {% else %}
+                <a href="{{base_path}}" class="btn btn-secondary">Contact</a>
+              {% endif %}
             {% endif %}
 
           </div>

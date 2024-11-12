@@ -1,0 +1,21 @@
+uuid: 78aefeb5-3944-4932-ae86-f79fec8e89cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.house_landing_page
+  module:
+    - layout_builder
+id: node.house_landing_page.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: house_landing_page
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section
