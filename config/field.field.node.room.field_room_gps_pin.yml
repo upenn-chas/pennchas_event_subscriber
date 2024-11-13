@@ -1,0 +1,19 @@
+uuid: 67bff23d-8e45-4de5-926c-bcb1e11e6a08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_room_gps_pin
+    - node.type.room
+id: node.room.field_room_gps_pin
+field_name: field_room_gps_pin
+entity_type: node
+bundle: room
+label: 'Room GPS Pin'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

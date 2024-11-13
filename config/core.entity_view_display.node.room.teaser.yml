@@ -4,29 +4,43 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.room.body
+    - field.field.node.room.field_address
+    - field.field.node.room.field_amenities_technology
+    - field.field.node.room.field_available_to
+    - field.field.node.room.field_chas_tech_managed_space
+    - field.field.node.room.field_description
     - field.field.node.room.field_group_ref
+    - field.field.node.room.field_legacy_policy_url
+    - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_maximum_occupancy
+    - field.field.node.room.field_photo
+    - field.field.node.room.field_policy_url
+    - field.field.node.room.field_room_gps_pin
+    - field.field.node.room.field_support_contact
     - node.type.room
   module:
-    - text
     - user
 id: node.room.teaser
 targetEntityType: node
 bundle: room
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 101
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 100
     region: content
 hidden:
+  field_address: true
+  field_amenities_technology: true
+  field_available_to: true
+  field_chas_tech_managed_space: true
+  field_description: true
   field_group_ref: true
+  field_legacy_policy_url: true
+  field_legacy_resource_url: true
+  field_maximum_occupancy: true
+  field_photo: true
+  field_policy_url: true
+  field_room_gps_pin: true
+  field_support_contact: true

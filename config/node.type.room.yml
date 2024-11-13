@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Room
 type: room
-description: null
+description: 'Room of the house'
 help: null
 new_revision: true
 preview_mode: 1

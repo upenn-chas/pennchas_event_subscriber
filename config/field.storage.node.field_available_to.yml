@@ -1,16 +1,17 @@
-uuid: 699ce221-fc65-4635-a455-a6d40fb5cdce
+uuid: 985677a3-1594-4da5-8123-274ae02ba375
 langcode: en
 status: true
 dependencies:
   module:
-    - endroid_qr_code
     - node
-id: node.field_group_ref
-field_name: field_group_ref
+    - taxonomy
+id: node.field_available_to
+field_name: field_available_to
 entity_type: node
-type: endroid_qr_code
-settings: {  }
-module: endroid_qr_code
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
 locked: false
 cardinality: 1
 translatable: true

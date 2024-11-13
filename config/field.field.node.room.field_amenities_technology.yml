@@ -1,0 +1,29 @@
+uuid: cf143a79-f0d5-439a-b0b2-3c36952f92bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amenities_technology
+    - node.type.room
+    - taxonomy.vocabulary.room_amenities_and_technology
+id: node.room.field_amenities_technology
+field_name: field_amenities_technology
+entity_type: node
+bundle: room
+label: Amenities/Technology
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      room_amenities_and_technology: room_amenities_and_technology
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

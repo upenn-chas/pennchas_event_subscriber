@@ -62,7 +62,8 @@
         "drupal/views_fields_combine": "^10.0",
         "drupal/groupmedia": "^4.0",
         "drupal/multiple_fields_remove_button": "^2.2",
-        "drupal/field_group": "^3.6"
+        "drupal/field_group": "^3.6",
+        "drupal/endroid_qr_code": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

@@ -1,16 +1,16 @@
-uuid: 699ce221-fc65-4635-a455-a6d40fb5cdce
+uuid: da89c9ff-e2d2-47cb-92a1-f5b90e26a829
 langcode: en
 status: true
 dependencies:
   module:
-    - endroid_qr_code
     - node
-id: node.field_group_ref
-field_name: field_group_ref
+id: node.field_address
+field_name: field_address
 entity_type: node
-type: endroid_qr_code
-settings: {  }
-module: endroid_qr_code
+type: string_long
+settings:
+  case_sensitive: false
+module: core
 locked: false
 cardinality: 1
 translatable: true

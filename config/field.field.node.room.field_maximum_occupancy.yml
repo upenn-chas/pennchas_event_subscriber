@@ -1,0 +1,23 @@
+uuid: c7ba21f6-1c58-458c-9a91-797e6f0c9372
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_maximum_occupancy
+    - node.type.room
+id: node.room.field_maximum_occupancy
+field_name: field_maximum_occupancy
+entity_type: node
+bundle: room
+label: 'Maximum Occupancy'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

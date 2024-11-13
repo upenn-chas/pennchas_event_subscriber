@@ -1,0 +1,19 @@
+uuid: 8e728775-bd8e-4713-92b1-39026f01ab68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_support_contact
+    - node.type.room
+id: node.room.field_support_contact
+field_name: field_support_contact
+entity_type: node
+bundle: room
+label: 'Support Contact'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

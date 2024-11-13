@@ -1,0 +1,21 @@
+uuid: 58a28555-1bb0-4c3d-81aa-953577a4d928
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chas_tech_managed_space
+    - node.type.room
+id: node.room.field_chas_tech_managed_space
+field_name: field_chas_tech_managed_space
+entity_type: node
+bundle: room
+label: 'CHAS Tech Managed Space?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

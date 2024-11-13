@@ -1,0 +1,9 @@
+uuid: 172a1f64-9814-4214-87e9-04767de7c6d9
+langcode: en
+status: true
+dependencies: {  }
+name: 'Role Category'
+vid: role_category
+description: 'Role Category'
+weight: 0
+new_revision: false

@@ -1,0 +1,9 @@
+uuid: ccefccf4-233a-4845-ba47-0e08205ca749
+langcode: en
+status: true
+dependencies: {  }
+name: 'Room amenities and technology'
+vid: room_amenities_and_technology
+description: 'Room amenities and technology '
+weight: 0
+new_revision: false
