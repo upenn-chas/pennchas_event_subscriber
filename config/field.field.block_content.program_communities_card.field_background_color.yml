@@ -1,0 +1,22 @@
+uuid: 668c007e-39d8-41b1-92ca-db634194ef90
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_card
+    - field.storage.block_content.field_background_color
+  module:
+    - color_field
+id: block_content.program_communities_card.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: program_communities_card
+label: 'Banner Background Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

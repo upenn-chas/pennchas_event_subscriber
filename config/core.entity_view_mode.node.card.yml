@@ -1,0 +1,11 @@
+uuid: 5e1e58e7-2ebc-45ab-ac41-33b1d1bb2567
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.card
+label: Card
+description: 'Grid card column layout'
+targetEntityType: node
+cache: true

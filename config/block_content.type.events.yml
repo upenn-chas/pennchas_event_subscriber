@@ -5,4 +5,4 @@ dependencies: {  }
 id: events
 label: Events
 revision: false
-description: null
+description: 'Cherry pick events nodes from Content type "Event"'

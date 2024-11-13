@@ -63,6 +63,37 @@
 
       });
 
+      var $slider = $('.two-column-slider');
+
+  if ($slider.length) {
+    var currentSlide;
+    var slidesCount;
+    var sliderCounter = document.createElement('div');
+    sliderCounter.classList.add('slider__counter');
+
+    var updateSliderCounter = function (slick, currentIndex) {
+      currentSlide = slick.slickCurrentSlide() + 1;
+      slidesCount = slick.slideCount;
+
+      // Add leading zero if the number is less than 10
+      var formattedCurrentSlide = currentSlide < 10 ? '0' + currentSlide : currentSlide;
+      var formattedSlidesCount = slidesCount < 10 ? '0' + slidesCount : slidesCount;
+
+      $(sliderCounter).text(formattedCurrentSlide + '/' + formattedSlidesCount);
+    };
+
+    $slider.on('init', function (event, slick) {
+      $slider.append(sliderCounter);
+      updateSliderCounter(slick);
+    });
+
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      updateSliderCounter(slick, currentSlide);
+    });
+
+    $slider.slick();
+  }
+
       $('.offer-slider').slick({
         dots: false,
         infinite: true,

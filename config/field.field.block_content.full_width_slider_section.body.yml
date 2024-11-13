@@ -1,16 +1,16 @@
-uuid: 4b167a59-ba81-4b2b-9630-a38f4291595e
+uuid: 3891e4f4-d921-4357-8f73-6051a2ac7543
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - node.type.location
+    - block_content.type.full_width_slider_section
+    - field.storage.block_content.body
   module:
     - text
-id: node.location.body
+id: block_content.full_width_slider_section.body
 field_name: body
-entity_type: node
-bundle: location
+entity_type: block_content
+bundle: full_width_slider_section
 label: Body
 description: ''
 required: false
@@ -18,7 +18,7 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_summary: true
+  display_summary: false
   required_summary: false
   allowed_formats: {  }
 field_type: text_with_summary

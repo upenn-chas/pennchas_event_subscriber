@@ -1,16 +1,16 @@
-uuid: 6c91da6d-7bb4-40ff-ae44-8d4d9fc00eaf
+uuid: f2a3b645-7ad2-4e5b-913b-12488bde6795
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.staff_information
+    - block_content.type.slider_items
     - field.storage.block_content.body
   module:
     - text
-id: block_content.staff_information.body
+id: block_content.slider_items.body
 field_name: body
 entity_type: block_content
-bundle: staff_information
+bundle: slider_items
 label: Body
 description: ''
 required: false

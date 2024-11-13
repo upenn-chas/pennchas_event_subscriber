@@ -1,0 +1,29 @@
+uuid: 2c886252-5ee5-4c9e-9c02-2beb4896686c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_card
+    - field.storage.block_content.field_select_program
+    - node.type.program_community
+id: block_content.program_communities_card.field_select_program
+field_name: field_select_program
+entity_type: block_content
+bundle: program_communities_card
+label: 'Select Program'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      program_community: program_community
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

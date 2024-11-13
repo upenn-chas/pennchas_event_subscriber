@@ -1,0 +1,8 @@
+uuid: 1ec972d1-1970-4d66-938d-b0a384262c8c
+langcode: en
+status: true
+dependencies: {  }
+id: all_houses
+label: 'All houses'
+revision: false
+description: 'All group houses in grid format'

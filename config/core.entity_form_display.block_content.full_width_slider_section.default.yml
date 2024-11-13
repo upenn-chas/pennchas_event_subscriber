@@ -1,0 +1,54 @@
+uuid: 9fd38137-68b5-4203-b857-455cff51539b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.full_width_slider_section
+    - field.field.block_content.full_width_slider_section.body
+    - field.field.block_content.full_width_slider_section.field_background_color
+    - field.field.block_content.full_width_slider_section.field_slider_item_selection
+  module:
+    - color_field
+    - text
+id: block_content.full_width_slider_section.default
+targetEntityType: block_content
+bundle: full_width_slider_section
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_background_color:
+    type: color_field_widget_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_color: ''
+      placeholder_opacity: ''
+    third_party_settings: {  }
+  field_slider_item_selection:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

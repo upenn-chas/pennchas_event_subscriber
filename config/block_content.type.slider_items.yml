@@ -1,0 +1,8 @@
+uuid: 5e046f16-be6c-474b-bbd0-bab58ecc3b51
+langcode: en
+status: true
+dependencies: {  }
+id: slider_items
+label: 'Slider Items'
+revision: false
+description: null

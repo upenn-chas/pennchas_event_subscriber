@@ -1,0 +1,19 @@
+uuid: f76e5301-080c-44d4-831e-f53b19aa003b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.staff_information
+    - field.storage.block_content.field_staff_position
+id: block_content.staff_information.field_staff_position
+field_name: field_staff_position
+entity_type: block_content
+bundle: staff_information
+label: 'Staff Position'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
