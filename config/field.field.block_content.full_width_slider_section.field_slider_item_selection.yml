@@ -1,0 +1,29 @@
+uuid: 79b4612d-f378-4f1b-9987-049e256484b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.full_width_slider_section
+    - block_content.type.slider_items
+    - field.storage.block_content.field_slider_item_selection
+id: block_content.full_width_slider_section.field_slider_item_selection
+field_name: field_slider_item_selection
+entity_type: block_content
+bundle: full_width_slider_section
+label: 'Slider Item selection'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      slider_items: slider_items
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

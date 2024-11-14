@@ -1,0 +1,57 @@
+uuid: 864bcf5c-933a-4d09-a9ee-8b18091f8c46
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_card
+    - field.field.block_content.program_communities_card.body
+    - field.field.block_content.program_communities_card.field_background_color
+    - field.field.block_content.program_communities_card.field_cta
+    - field.field.block_content.program_communities_card.field_select_program
+  module:
+    - color_field
+    - link
+    - text
+id: block_content.program_communities_card.default
+targetEntityType: block_content
+bundle: program_communities_card
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_background_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_select_program:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: card
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

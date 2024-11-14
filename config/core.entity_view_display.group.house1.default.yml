@@ -161,6 +161,8 @@ third_party_settings:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
       allowed_layouts:
+        - barrio_col2-equal
+        - barrio_col3-equal
         - 'bootstrap_layout_builder:blb_col_1'
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
@@ -178,6 +180,8 @@ third_party_settings:
         - 'SimpleSAMLphp Authentication'
     entity_view_mode_restriction_by_region:
       allowed_layouts:
+        - barrio_col2-equal
+        - barrio_col3-equal
         - 'bootstrap_layout_builder:blb_col_1'
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'

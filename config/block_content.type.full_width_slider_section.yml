@@ -1,0 +1,8 @@
+uuid: d8f923ef-d332-472c-9805-8d5ed297207f
+langcode: en
+status: true
+dependencies: {  }
+id: full_width_slider_section
+label: 'Full Width Slider Section'
+revision: false
+description: 'Add fields for heading, description, section background color, Also add option to select items from slider item block type.'

@@ -1,0 +1,19 @@
+uuid: 31355b43-a641-49ab-9228-26ab4553cc36
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.slider_items
+    - field.storage.block_content.field_heading
+id: block_content.slider_items.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: slider_items
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

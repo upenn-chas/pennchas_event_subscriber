@@ -1,0 +1,8 @@
+uuid: e66d9db0-ef40-430e-8a22-d836f759e2d3
+langcode: en
+status: true
+dependencies: {  }
+id: program_communities_card
+label: 'Program communities Card '
+revision: false
+description: 'Display the program communities in grid card columns. Added option to set background color, heading, subheading and CTA under the section. '

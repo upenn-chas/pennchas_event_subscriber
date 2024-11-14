@@ -1,0 +1,22 @@
+uuid: 620854a5-5886-4c16-aee9-e031362045ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: house_about_pages_url
+label: 'House About pages URL'
+type: 'canonical_entities:node'
+pattern: '/[node:field_select_house:entity:field_house_machine_name]/[node:title]'
+selection_criteria:
+  3b3e81e7-76fd-4842-8530-085e2e70b3ce:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3b3e81e7-76fd-4842-8530-085e2e70b3ce
+    context_mapping:
+      node: node
+    bundles:
+      house_landing_page: house_landing_page
+selection_logic: and
+weight: -5
+relationships: {  }

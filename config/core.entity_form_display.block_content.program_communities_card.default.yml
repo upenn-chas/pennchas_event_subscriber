@@ -1,0 +1,64 @@
+uuid: d9a65bae-b63b-4590-8cc9-54c9e8b451a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_card
+    - field.field.block_content.program_communities_card.body
+    - field.field.block_content.program_communities_card.field_background_color
+    - field.field.block_content.program_communities_card.field_cta
+    - field.field.block_content.program_communities_card.field_select_program
+  module:
+    - color_field
+    - link
+    - text
+id: block_content.program_communities_card.default
+targetEntityType: block_content
+bundle: program_communities_card
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_background_color:
+    type: color_field_widget_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_color: ''
+      placeholder_opacity: ''
+    third_party_settings: {  }
+  field_cta:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_select_program:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
