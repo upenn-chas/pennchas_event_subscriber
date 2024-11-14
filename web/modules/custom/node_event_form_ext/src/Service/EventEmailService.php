@@ -18,10 +18,12 @@ class EventEmailService
         $this->mailer = \Drupal::service('easy_email.handler');
     }
 
-    public function notify(Node $node)
+    public function notify(Node $node, $sendModerationEmail = false)
     {
         $this->sendMail($node, 'et_new_event_host_notification', [$node->getOwnerId()], 'New event: ');
-        $this->sendEmailToModerators($node);
+        if($sendModerationEmail) {
+            $this->sendEmailToModerators($node);
+        }
     }
 
     public function notifyOwnerAboutModeration(Node $node, string $state)

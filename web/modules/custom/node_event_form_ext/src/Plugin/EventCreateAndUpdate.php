@@ -50,12 +50,13 @@ class EventCreateAndUpdate
 
         $roomReservationMessage = 'Do you need a room reservation? <a href="#">click here</a>';
         $message = t('Your event has been accepted and published.' .' '. $roomReservationMessage);
+        $sendModerationEmail = false;
         if (!$this->canByPassModeration(array_column($houses, 'target_id'))) {
             $message = t('Your event has been submitted and there is a possible three day wait time for approval.' .' '. $roomReservationMessage);
             $mailService = \Drupal::service('node_event_form_ext.mail_service');
-            $mailService->notify($node);
+            $sendModerationEmail = true;
         }
-
+        $mailService->notify($node, $sendModerationEmail);
         \Drupal::messenger()->addStatus($message);
     }
 
