@@ -52,16 +52,12 @@
   ]
 %}
 
-{% if label_hidden %}
-  {% for item in items %}
-        {% if field_type|clean_class == 'image' %}
-          <div class="two-column-slider-slide-img">
-            {{item.content}}
-          </div>
-        {% elseif field_type|clean_class == 'text-with-summary' %}
-          <div class="two-column-slider-slide-info">
-             {{item.content}}
-          </div>
-        {% endif %}
+  {% if multiple %}
+      {% for item in items %}
+        {{ item.content }}
+      {% endfor %}
+  {% else %}
+    {% for item in items %}
+      {{ item.content }}
     {% endfor %}
-{% endif %}
+  {% endif %}

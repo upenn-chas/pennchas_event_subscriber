@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.slider_items
     - field.field.block_content.slider_items.body
-    - field.field.block_content.slider_items.field_heading
     - field.field.block_content.slider_items.field_image
     - image.style.thumbnail
   module:
@@ -25,14 +24,6 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  field_heading:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_image:
     type: image_image

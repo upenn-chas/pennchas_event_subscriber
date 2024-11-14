@@ -1,21 +1,19 @@
-uuid: 1a45aec4-2afb-4f59-9589-290396b61672
+uuid: 8a057afb-11db-4c7c-b406-ad835092624a
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_group_ref
     - node.type.room
-  module:
-    - endroid_qr_code
 id: node.room.field_group_ref
 field_name: field_group_ref
 entity_type: node
 bundle: room
-label: 'Group Ref'
+label: 'Group ref'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: endroid_qr_code
+field_type: string

@@ -3,25 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.room.field_address
-    - field.field.node.room.field_amenities_technology
-    - field.field.node.room.field_available_to
-    - field.field.node.room.field_chas_tech_managed_space
-    - field.field.node.room.field_description
+    - field.field.node.room.body
     - field.field.node.room.field_group_ref
-    - field.field.node.room.field_legacy_policy_url
-    - field.field.node.room.field_legacy_resource_url
-    - field.field.node.room.field_maximum_occupancy
-    - field.field.node.room.field_photo
-    - field.field.node.room.field_policy_url
-    - field.field.node.room.field_room_gps_pin
-    - field.field.node.room.field_support_contact
-    - image.style.thumbnail
     - node.type.room
   module:
     - content_moderation
-    - image
-    - link
     - path
     - text
 id: node.room.default
@@ -29,97 +15,25 @@ targetEntityType: node
 bundle: room
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_address:
-    type: string_textarea
     weight: 10
     region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_amenities_technology:
-    type: options_buttons
-    weight: 17
-    region: content
     settings: {  }
     third_party_settings: {  }
-  field_available_to:
-    type: options_buttons
-    weight: 19
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_chas_tech_managed_space:
-    type: boolean_checkbox
-    weight: 15
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_description:
-    type: text_textarea
-    weight: 9
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_legacy_policy_url:
-    type: link_default
-    weight: 13
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_legacy_resource_url:
-    type: link_default
-    weight: 14
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_maximum_occupancy:
-    type: number
-    weight: 11
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-  field_photo:
-    type: image_image
-    weight: 16
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_policy_url:
-    type: link_default
-    weight: 12
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_room_gps_pin:
+  field_group_ref:
     type: string_textfield
-    weight: 18
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_support_contact:
-    type: string_textfield
-    weight: 8
+    weight: 122
     region: content
     settings:
       size: 60
@@ -127,40 +41,40 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 6
+    weight: 100
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 3
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
+    weight: 120
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 4
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -168,7 +82,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -176,5 +90,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden:
-  field_group_ref: true
+hidden: {  }

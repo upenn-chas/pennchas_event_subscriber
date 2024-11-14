@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.group.field_description
+    - field.storage.group.field_group_tags
     - field.storage.group.field_image
     - image.style.large
   module:
@@ -466,7 +467,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\">\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                            <p>{{ field_description }} </p>\r\n                            <a href=\"{{ view_group }}\"><svg width=\"27\" height=\"30\" viewBox=\"0 0 27 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 14.6816H24.5156\" stroke=\"#011F5B\" stroke-width=\"1.94183\"></path><path d=\"M14.3203 4L25.0004 14.4373L14.3203 25.1174\" stroke=\"#011F5B\" stroke-width=\"1.94183\"></path></svg></a>\r\n                        </div></a>\r\n                    </div>"
+            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                            <p>{{ field_description }} </p>\r\n                            \r\n                        </div>\r\n                    </div>"
             make_link: false
             path: ''
             absolute: false
@@ -503,6 +504,69 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+        field_group_tags:
+          id: field_group_tags
+          table: group__field_group_tags
+          field: field_group_tags
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: none
         options:
@@ -527,14 +591,14 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: string
-          operator: '='
+          operator: contains
           value: ''
           group: 1
           exposed: true
           expose:
             operator_id: field_group_tags_value_op
             label: 'Community (field_group_tags)'
-            description: null
+            description: ''
             use_operator: false
             operator: field_group_tags_value_op
             operator_limit_selection: false
@@ -545,11 +609,19 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: null
-          is_grouped: true
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            placeholder: ''
+          is_grouped: false
           group_info:
             label: 'Community (field_group_tags)'
-            description: ''
+            description: null
             identifier: field_group_tags_value
             optional: true
             widget: select
@@ -558,18 +630,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items:
-              1:
-                title: ''
-                operator: '='
-                value: ''
-              2:
-                title: ''
-                operator: '='
-                value: ''
-              3:
-                title: ''
-                operator: '='
-                value: ''
+              1: {  }
+              2: {  }
+              3: {  }
       filter_groups:
         operator: AND
         groups:
@@ -591,6 +654,7 @@ display:
         options: {  }
       defaults:
         css_class: false
+        use_ajax: false
         pager: false
         style: false
         row: false
@@ -599,6 +663,7 @@ display:
         filter_groups: false
         header: false
       css_class: 'filter-results space-bottom'
+      use_ajax: true
       header:
         area:
           id: area
@@ -623,4 +688,5 @@ display:
         - url
       tags:
         - 'config:field.storage.group.field_description'
+        - 'config:field.storage.group.field_group_tags'
         - 'config:field.storage.group.field_image'

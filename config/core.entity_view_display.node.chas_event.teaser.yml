@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -36,21 +35,12 @@ dependencies:
     - image
     - options
     - smart_date
-    - text
     - user
 id: node.chas_event.teaser
 targetEntityType: node
 bundle: chas_event
 mode: teaser
 content:
-  body:
-    type: text_trimmed
-    label: hidden
-    settings:
-      trim_length: 140
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_event_schedule:
     type: smartdate_default
     label: hidden
