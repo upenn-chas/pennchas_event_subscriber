@@ -1,0 +1,277 @@
+.form-control {
+  border: 1px solid $primaryColor;
+  height: 50px;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-size: 18px;
+  color: #4E638C;
+  font-family: $teritoryFont;
+  @include media-query ('mobile') {
+    font-size: 16px;
+  }
+  &::placeholder {
+    color: #4E638C;
+    opacity: 1;
+  }
+  &:focus {
+    box-shadow: none;
+    border: 1px solid $primaryColor;
+    outline: none;
+  }
+}
+
+textarea.form-control {
+  min-height: 200px;
+  resize: none;
+  padding: 20px;
+}
+
+.select-outer {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    right: 1px;
+    top: 6px;
+    height: 48px;
+    width: 30px;
+    background-color: #fff;
+    pointer-events: none;
+    border-radius: 10px;
+  }
+  &:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 22px;
+    height: 11px;
+    width: 11px;
+    background-color: #fff;  
+    transform: rotate(-45deg);
+    border-left: 2px solid $primaryColor;
+    border-bottom: 2px solid $primaryColor; 
+  }
+  select {
+    font-family: $teritoryFont;
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid $primaryColor;
+    background: #fff;
+    padding: 0 15px;
+    margin: 5px 0 10px 0;
+    color: $primaryColor;
+    font-size: 18px;
+  }
+}
+
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: $teritoryFont;
+  margin-bottom: 5px;
+}
+
+.form-item {
+  margin-bottom: 30px;
+}
+
+
+.reservation-form {
+  .row {
+    margin: 0 -9px;
+  }
+  .col-12 {
+    padding: 0 9px;
+  }
+  h4 {
+    margin-bottom: 30px;
+    img {
+      width: 20px;
+    }
+  }
+}
+
+.select-item {
+  position: relative;
+  select {
+    font-weight: 600;
+    color: $primaryColor;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 48px;
+    height: 13px;
+    width: 13px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    transform: rotate(225deg);
+    pointer-events: none;
+    @include media-query ('ipad') {
+      top: 42px;
+    }
+    @include media-query ('mobile') {
+      top: 44px;
+      height: 11px;
+      width: 11px;
+    }
+  }
+}
+
+
+.repeat-reservation {
+  background: #EBF2FF;
+  border-radius: 10px;
+  display: flex;
+  width: calc(100% - 24px);
+  margin-left: 12px; 
+  padding: 20px 12px 30px 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  @include media-query ('ipad') {
+    gap: 20px;
+    padding: 20px 15px 10px 15px;
+  }
+  .form-item {
+    margin-bottom: 0px;
+  }
+}
+
+
+.policy {
+  label {
+    text-transform: none;
+    font-size: 18px;
+    font-weight: 400;
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+}
+
+.form-item.checkbox {
+  padding-left: 0;
+  input {
+    display: none;
+  }
+  label {
+    position: relative;
+    padding-left: 35px;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: none;
+    @include media-query ('ipad') {
+      padding-left: 30px;
+    }
+    &:before {
+      content:"";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $primaryColor;
+      @include media-query ('ipad') {
+        top: -2px;
+      }
+    }
+  }
+
+  input:checked + label {
+    &:before {
+      background-color: $primaryColor;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 8px;
+      width: 13px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      left: 4px;
+      top: 3px;
+      transform: rotate(-45deg);  
+      @include media-query ('ipad') {
+        top: 2
+      }
+    }
+  }
+}
+
+.error-fields {
+  background: #FEACB2;
+  padding: 13px 20px;
+  border-radius: 10px;
+  margin-top: 32px;
+  p {
+    margin: 0;
+    font-size: 18px;
+    font-family: $teritoryFont;
+    line-height: 25px;
+    &:before {
+      content: "";   
+      height: 25px;
+      width: 25px;
+      background: url(../../assets/images/info-icon.jpg) no-repeat;
+      background-size: contain;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+}
+
+.label-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  label {
+    text-transform: none;
+    margin: 15px 0 0 0;
+  }
+
+  &.select-item:after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    
+  }
+}
+
+.alert {
+  background: #FFEB40;
+  font-size: 18px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+  font-size: 18px;
+  font-family: $teritoryFont;
+  font-weight: 600;
+}
+
+.form-item {
+  .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-radius: 10px;
+  }
+}
+.gj-datepicker {
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    opacity: 0;
+    i {
+      display: none;
+    }
+     
+  }
+}
