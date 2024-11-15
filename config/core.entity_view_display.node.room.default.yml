@@ -3,10 +3,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.room.body
+    - field.field.node.room.field_address
+    - field.field.node.room.field_amenities_technology
+    - field.field.node.room.field_available_to
+    - field.field.node.room.field_chas_tech_managed_space
+    - field.field.node.room.field_description
     - field.field.node.room.field_group_ref
+    - field.field.node.room.field_image
+    - field.field.node.room.field_legacy_policy_url
+    - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_maximum_occupancy
+    - field.field.node.room.field_policy_url
+    - field.field.node.room.field_qr_code
+    - field.field.node.room.field_room_gps_pin
+    - field.field.node.room.field_support_contact
+    - image.style.wide
     - node.type.room
   module:
+    - endroid_qr_code
+    - image
+    - link
     - text
     - user
 id: node.room.default
@@ -14,12 +30,46 @@ targetEntityType: node
 bundle: room
 mode: default
 content:
-  body:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_amenities_technology:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_available_to:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_chas_tech_managed_space:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_description:
     type: text_default
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_group_ref:
     type: string
@@ -27,11 +77,90 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 102
+    weight: 14
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_legacy_policy_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_legacy_resource_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_maximum_occupancy:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_policy_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_qr_code:
+    type: endroid_qr_code_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_room_gps_pin:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_support_contact:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden: {  }

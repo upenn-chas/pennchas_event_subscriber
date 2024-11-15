@@ -83,6 +83,7 @@ content:
     weight: 1
     region: content
 hidden:
+  body: true
   content_moderation_control: true
   field_actual_program_attendance: true
   field_actual_program_expense: true

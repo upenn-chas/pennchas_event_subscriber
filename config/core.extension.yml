@@ -25,6 +25,7 @@ module:
   dynamic_page_cache: 0
   easy_email: 0
   editor: 0
+  endroid_qr_code: 0
   entity: 0
   entity_reference_revisions: 0
   event_calendar: 0
@@ -71,6 +72,8 @@ module:
   path_alias: 0
   recreate_block_content: 0
   responsive_image: 0
+  role_extend: 0
+  room_form: 0
   search: 0
   section_library: 0
   shortcut: 0

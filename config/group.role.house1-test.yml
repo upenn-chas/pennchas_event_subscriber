@@ -1,0 +1,23 @@
+uuid: cfc7d49c-4da0-49f8-b647-dbeb9452117c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+  module:
+    - role_extend
+third_party_settings:
+  role_extend:
+    role_categories:
+      62: '62'
+      64: '64'
+      63: 0
+      65: 0
+id: house1-test
+label: Test
+weight: 114
+admin: false
+scope: individual
+global_role: null
+group_type: house1
+permissions: {  }

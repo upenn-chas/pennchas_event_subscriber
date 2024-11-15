@@ -250,6 +250,7 @@ content:
     weight: 1
     region: content
 hidden:
+  body: true
   field_evaluation_notification: true
   field_event_ends_on: true
   field_feedback_form: true

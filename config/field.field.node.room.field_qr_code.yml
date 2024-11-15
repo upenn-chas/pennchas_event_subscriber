@@ -1,0 +1,21 @@
+uuid: f401d043-21db-479e-a8f7-cbf2768a92c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_qr_code
+    - node.type.room
+  module:
+    - endroid_qr_code
+id: node.room.field_qr_code
+field_name: field_qr_code
+entity_type: node
+bundle: room
+label: 'Page Qr Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: endroid_qr_code

@@ -1,4 +1,4 @@
-uuid: 8a057afb-11db-4c7c-b406-ad835092624a
+uuid: 65fcc74f-e14a-4d34-a7b1-04232f5880d6
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ id: node.room.field_group_ref
 field_name: field_group_ref
 entity_type: node
 bundle: room
-label: 'Group ref'
+label: 'Group Ref'
 description: ''
 required: false
 translatable: false

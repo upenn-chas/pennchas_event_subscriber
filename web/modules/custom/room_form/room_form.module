@@ -1,29 +1,48 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 
-function room_form_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
+function room_form_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface && $entity->bundle() === 'room') {
+        $url_alias = $entity->hasField('path') ? $entity->get('path')->alias : "";
         $nid = $entity->id();
-        $path = '/' . $entity->getTitle();
+        $node_alias = $url_alias ?: ('/' . slugify($entity->getTitle()));
         $group_id = getGroupIdsByEntity($nid);
         if (!empty($group_id)) {
             $group = Group::load($group_id);
             if ($group && $group->hasField('field_house_machine_name')) {
                 $group_machine_name = $group->get('field_house_machine_name')->value;
                 if (!empty($group_machine_name)) {
-                    $node_alias = $group_machine_name . '/' . $path;
+                    $node_alias = $group_machine_name . $node_alias;
                 }
             }
-        } else {
-            $node_alias = $path;
         }
-        $custom_field = 'field_group_ref';
-        $entity->set($custom_field, $node_alias);
+        $entity->set('field_group_ref', $node_alias);
     }
 }
+
+function room_form_node_insert(Node $node)
+{
+    if ($node->getType() === 'room') {
+        $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
+        $node->setNewRevision(false);
+        $node->save();
+    }
+}
+
+function room_form_node_update(Node $node)
+{
+    if ($node->getType() === 'room') {
+        $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
+        $node->setNewRevision(false);
+        $node->save();
+    }
+}
+
 
 // use Drupal\Core\Render\BubbleableMetadata;
 function getGroupIdsByEntity($nid)
@@ -37,11 +56,24 @@ function getGroupIdsByEntity($nid)
 
     $query->fields('gr', ['gid']);
     $result = $query->execute();
-    // dd($result->gid);
     $groupIds = [];
     foreach ($result as $record) {
         $groupIds = $record->gid;
     }
-    // $groupIds = $result->gid;
     return $groupIds;
+}
+
+function slugify($text, string $divider = '-')
+{
+    $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+    $text = preg_replace('~[^-\w]+~', '', $text);
+    $text = trim($text, $divider);
+    $text = preg_replace('~-+~', $divider, $text);
+    $text = strtolower($text);
+
+    if (empty($text)) {
+        return 'n-a';
+    }
+
+    return $text;
 }

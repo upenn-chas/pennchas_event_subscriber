@@ -3,9 +3,9 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 
-function role_extend_form_user_role_form_alter(&$form, FormStateInterface $form_state, $form_id)
+function role_extend_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-    if ($form_id === 'user_role_form') {
+    if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
 
         $categories = [];
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
@@ -21,9 +21,8 @@ function role_extend_form_user_role_form_alter(&$form, FormStateInterface $form_
             '#type' => 'checkboxes',
             '#title' => t('Categories'),
             '#default_value' => $existing_categories ?: '',
-            '#options' => $categories
+            '#options' => $categories,
         ];
-        // $form['#submit'][] = 'role_extend_submit_handler';
         foreach (array_keys($form['actions']) as $action) {
             if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
                 $form['actions'][$action]['#submit'][] = 'role_extend_submit_handler';

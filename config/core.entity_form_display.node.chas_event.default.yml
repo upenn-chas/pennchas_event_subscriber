@@ -250,6 +250,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  body: true
   field_actual_program_attendance: true
   field_actual_program_expense: true
   field_actual_program_outcomes: true

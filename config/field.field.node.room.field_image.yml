@@ -1,14 +1,14 @@
-uuid: 17920926-8a60-4f64-aa70-bc094095d35c
+uuid: 9d516d2c-0e5b-4bca-bc04-49f35591c54a
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_photo
+    - field.storage.node.field_image
     - node.type.room
   module:
     - image
-id: node.room.field_photo
-field_name: field_photo
+id: node.room.field_image
+field_name: field_image
 entity_type: node
 bundle: room
 label: Photo
