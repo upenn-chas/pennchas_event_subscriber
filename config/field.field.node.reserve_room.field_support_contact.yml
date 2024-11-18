@@ -1,0 +1,19 @@
+uuid: 5cc1e6e1-60ac-456e-bfb9-94353e107cb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_support_contact
+    - node.type.reserve_room
+id: node.reserve_room.field_support_contact
+field_name: field_support_contact
+entity_type: node
+bundle: reserve_room
+label: 'Main Contact Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

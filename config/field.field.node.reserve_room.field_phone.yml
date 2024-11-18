@@ -1,0 +1,19 @@
+uuid: 1bca2f4a-2011-44e5-8171-b5ce0557dec6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone
+    - node.type.reserve_room
+id: node.reserve_room.field_phone
+field_name: field_phone
+entity_type: node
+bundle: reserve_room
+label: 'Main Contact Phone Number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

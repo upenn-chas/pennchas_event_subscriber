@@ -1,0 +1,24 @@
+diff --git a/src/Response/QRImageResponse.php b/src/Response/QRImageResponse.php
+index 596beb3..05e64af 100644
+--- a/src/Response/QRImageResponse.php
++++ b/src/Response/QRImageResponse.php
+@@ -90,7 +90,9 @@ class QRImageResponse extends Response {
+    * {@inheritdoc}
+    */
+   public function prepare(Request $request): static {
+-    return parent::prepare($request);
++    parent::prepare($request);
++    $this->headers->remove('Content-Length');
++    return $this;
+   }
+ 
+   /**
+@@ -126,7 +128,7 @@ class QRImageResponse extends Response {
+     $qrCode->setForegroundColor(new Color(0, 0, 0));
+     $qrCode->setBackgroundColor(new Color(255, 255, 255));
+     // Create generic logo.
+-    $logo =  Logo::create('');
++    $logo = null;
+     if ($this->file) {
+       $logo = Logo::create($this->file)
+       ->setResizeToWidth(50)

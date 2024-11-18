@@ -1,0 +1,18 @@
+uuid: 7cc69ef5-dd64-4fb5-bf03-30d769db4f77
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.reserve_room
+id: node.reserve_room.title
+field_name: title
+entity_type: node
+bundle: reserve_room
+label: 'Request Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

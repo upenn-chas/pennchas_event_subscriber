@@ -1,0 +1,19 @@
+uuid: a9372d7c-e24a-4d68-bbbd-658915efe771
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.reserve_room
+id: node.reserve_room.field_email
+field_name: field_email
+entity_type: node
+bundle: reserve_room
+label: 'Main Contact Email'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
