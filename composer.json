@@ -23,7 +23,6 @@
         "drupal/core-composer-scaffold": "^10",
         "drupal/core-recommended": "^10",
         "pantheon-systems/drupal-integrations": "^10",
-        "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12",
         "upenn/penn403": "dev-d8",
         "drupal/simplesamlphp_auth": "^4.0",
@@ -65,7 +64,8 @@
         "drupal/field_group": "^3.6",
         "drupal/svg_image_field": "^2.3",
         "drupal/entity_reference_revisions": "^1.12",
-        "drupal/endroid_qr_code": "^4.0"
+        "drupal/endroid_qr_code": "^4.0",
+        "cweagans/composer-patches": "^1.7"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -103,7 +103,12 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "enable-patching": true
+        "enable-patching": true,
+        "patches": {
+            "drupal/endroid_qr_code": {
+                "Endriod QR Code patch": "patches/endroid_qr_code.patch"
+            }
+        }
     },
     "autoload": {
         "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
@@ -126,7 +131,6 @@
         },
         "allow-plugins": {
             "composer/installers": true,
-            "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
@@ -134,7 +138,8 @@
             "simplesamlphp/composer-xmlprovider-installer": true,
             "simplesamlphp/composer-module-installer": true,
             "tbachert/spi": true,
-            "endroid/installer": true
+            "endroid/installer": true,
+            "cweagans/composer-patches": true
         }
     }
 }
