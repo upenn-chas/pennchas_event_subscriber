@@ -9,7 +9,26 @@
 
   Drupal.behaviors.penchas = {
     attach: function(context, settings) {
+      jQuery(document).ready(function() {
+        jQuery('select[name="field_number_of_residents_value"]').on('change', function (){
+          jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-min"]').val('');
+          jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-max"]').val('');
+          jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-value"]').val('');
 
+          if(jQuery(this).val() == 1){
+              jQuery('select[name="field_number_of_residents_value_1_op"]').val('<=');
+              jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-value"]').val('300');
+          }
+          else if(jQuery(this).val() == 2){
+              jQuery('select[name="field_number_of_residents_value_1_op"]').val('between');
+              jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-min"]').val('300');
+              jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-max"]').val('600');
+          }else if(jQuery(this).val() == 3){
+              jQuery('select[name="field_number_of_residents_value_1_op"]').val('>');
+              jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-value"]').val('600');
+          }
+        });
+      });
         // $(document).ready(function() {
         //   // Toggle sub-menu on click
         //   $('.mega-menu .menu-item > a').click(function(e) {

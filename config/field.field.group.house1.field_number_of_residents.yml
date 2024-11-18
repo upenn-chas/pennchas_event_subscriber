@@ -1,0 +1,23 @@
+uuid: 52fcfa26-def9-4e6f-afe7-8ab798ef98f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_number_of_residents
+    - group.type.house1
+id: group.house1.field_number_of_residents
+field_name: field_number_of_residents
+entity_type: group
+bundle: house1
+label: 'Number of Residents'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,20 +1,19 @@
-uuid: 6d1d56aa-293b-419c-bee9-82217bb20562
+uuid: 232826bf-b72c-4b24-9fe3-4fe96fa6360e
 langcode: en
 status: true
 dependencies:
   module:
     - group
-id: group.field_group_tags
-field_name: field_group_tags
+id: group.field_number_of_residents
+field_name: field_number_of_residents
 entity_type: group
-type: string
+type: integer
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  unsigned: false
+  size: normal
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

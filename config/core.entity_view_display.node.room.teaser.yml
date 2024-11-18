@@ -45,6 +45,7 @@ content:
     weight: 100
     region: content
 hidden:
+  body: true
   field_address: true
   field_amenities_technology: true
   field_available_to: true

@@ -8,6 +8,7 @@
   @include media-query('mobile') {
     display: none;
   }
+
   li {
     text-transform: uppercase;
     font-family: $teritoryFont;

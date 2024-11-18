@@ -5,12 +5,12 @@ dependencies:
   config:
     - core.base_field_override.group.house1.label
     - field.field.group.house1.field_color
+    - field.field.group.house1.field_community
     - field.field.group.house1.field_description
-    - field.field.group.house1.field_group_tags
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
-    - field.field.group.house1.field_number_of_members
+    - field.field.group.house1.field_number_of_residents
     - field.field.group.house1.layout_builder__layout
     - group.type.house1
   module:
@@ -124,37 +124,37 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
-          c25dfe68-5100-4dcb-b2e0-aa2f557fdeda:
-            uuid: c25dfe68-5100-4dcb-b2e0-aa2f557fdeda
+          36ce9457-903e-46f4-b437-cfe721055cf8:
+            uuid: 36ce9457-903e-46f4-b437-cfe721055cf8
             region: content
             configuration:
-              id: 'field_block:group:house1:field_group_tags'
+              id: 'field_block:group:house1:field_number_of_residents'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: string
+                type: number_integer
                 label: above
                 settings:
-                  link_to_entity: false
+                  thousand_separator: ''
+                  prefix_suffix: true
                 third_party_settings: {  }
-            weight: 6
+            weight: 8
             additional: {  }
-          06b5bd63-4ede-4df2-b01a-b9c5cbcafd47:
-            uuid: 06b5bd63-4ede-4df2-b01a-b9c5cbcafd47
+          4c746ddf-5273-4051-82d5-876c7f395c0e:
+            uuid: 4c746ddf-5273-4051-82d5-876c7f395c0e
             region: content
             configuration:
-              id: 'field_block:group:house1:field_number_of_members'
+              id: 'field_block:group:house1:field_community'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: string
+                type: list_default
                 label: above
-                settings:
-                  link_to_entity: false
+                settings: {  }
                 third_party_settings: {  }
-            weight: 7
+            weight: 9
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -203,20 +203,19 @@ content:
     third_party_settings: {  }
     weight: -1
     region: content
+  field_community:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_description:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_group_tags:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
     region: content
   field_heading:
     type: string
@@ -243,13 +242,14 @@ content:
     third_party_settings: {  }
     weight: -2
     region: content
-  field_number_of_members:
-    type: string
+  field_number_of_residents:
+    type: number_integer
     label: above
     settings:
-      link_to_entity: false
+      thousand_separator: ''
+      prefix_suffix: true
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   label:
     type: string

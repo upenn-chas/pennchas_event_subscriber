@@ -1,0 +1,30 @@
+uuid: 130e11e9-4d52-4c18-b798-d901ccc40aef
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_community
+field_name: field_community
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: four_year_community
+      label: 'Four Year Community'
+    -
+      value: first_year_community
+      label: 'First Year Community'
+    -
+      value: upperclass_community
+      label: 'Upperclass Community'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

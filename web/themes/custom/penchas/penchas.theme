@@ -167,3 +167,52 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
     $suggestions[] = 'views_view__' . $variables['view']->element['#view_id'];
   }
 }
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function penchas_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  $id = $view->storage->id();
+  if($id == 'group_houses'){
+    $selected_filters = [];
+    $values = $view->getExposedInput();
+    // dump($values);
+    $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
+    $selected_filters['field_community'] = $community;
+    $variables['size'] = $values['field_number_of_residents_value'];
+    $variables['operator'] = $values['field_number_of_residents_value_1_op'];
+    $residents_arr_ = $values['field_number_of_residents_value_1'];
+    $small_size_value = ($residents_arr_['value'] ? $residents_arr_['value'] : '');
+    $small_size_min = ($residents_arr_['min'] ? $residents_arr_['min'] : '');
+    $small_size_max = ($residents_arr_['max'] ? $residents_arr_['max'] : '');
+
+    // params condition : (Small: <300; Medium: 301<>600; Large >600)
+    $min = $max = $value = '';
+    if($variables['size'] == 1){
+      $selected_filters['size'] = 'Small: < 300';
+      $size = '1';
+      $operator = '<=';
+      $value = 300;
+    }else if($variables['size'] == 1){
+      $size = '2';
+      $operator = 'between';
+      $min = 300;
+      $max = 600;
+      $selected_filters['size'] = 'Medium: 301<>600';
+    }else if($variables['size'] == 1){
+      $size = '3';
+      $operator = '>';
+      $value = 600;
+      $selected_filters['size'] = 'Large >600';
+    }
+
+    $link = '/all-college-houses?field_community_value='.$community.'&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
+    if($selected_filters['field_community']){
+      // $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['field_community'].'</span></a>';
+    }
+    $filters_html = '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['size'].'</span></a>';
+
+    $variables['selected_filters_output'] = $filters_html;
+  }
+}
