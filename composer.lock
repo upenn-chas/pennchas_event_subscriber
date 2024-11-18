@@ -17638,17 +17638,17 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/gcontent_moderation": 20,
-        "drupal/group_permissions": 15,
-        "drupal/ultimate_cron": 15,
-        "drupal/viewsreference": 10,
         "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20
+        "upenn/penn403": 20,
+        "drupal/gcontent_moderation": 20,
+        "drupal/viewsreference": 10,
+        "drupal/group_permissions": 15,
+        "drupal/ultimate_cron": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
