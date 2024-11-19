@@ -10,6 +10,7 @@
   Drupal.behaviors.penchas = {
     attach: function(context, settings) {
       jQuery(document).ready(function() {
+
         jQuery('select[name="field_number_of_residents_value"]').on('change', function (){
           console.log('testing control');
           jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-min"]').val('');
@@ -30,19 +31,6 @@
           }
         });
       });
-        // $(document).ready(function() {
-        //   // Toggle sub-menu on click
-        //   $('.mega-menu .menu-item > a').click(function(e) {
-        //     console.log('asjdgajdhs');
-        //     var $subMenu = $(this).siblings('.sub-menu');
-
-        //     // Prevent default link behavior (if you don't want the link to be followed)
-        //     e.preventDefault();
-
-        //     // Toggle the sub-menu visibility
-        //     $subMenu.toggleClass('open');
-        //   });
-        // });
 
       // Custom code here
       $(document).ready(function () {
@@ -141,51 +129,6 @@
           },
         ]
       });
-      // if (!$('.select-menu').hasClass('active')) {
-        const menu = document.querySelector(".select-menu");
-        const [selectBtn, sBtnText] = [menu.querySelector(".select-btn"), menu.querySelector(".sBtn-text")];
-
-        selectBtn.onclick = () => menu.classList.toggle("active");
-
-        // menu.querySelectorAll(".option").forEach(option => {
-        //   option.onclick = () => {
-        //     sBtnText.innerText = option.querySelector(".option-text").innerText;
-        //     menu.classList.remove("active");
-        //   };
-        // });
-
-        // // Function to close menu if clicked outside
-        // document.addEventListener("click", function (event) {
-        //   if (!menu.contains(event.target) && !selectBtn.contains(event.target)) {
-        //     menu.classList.remove("active");
-        //   }
-        // });
-      // }
-
-
-
-      window.addEventListener('DOMContentLoaded', function () {
-        var section1 = document.getElementById('section1');
-        var section2 = document.getElementById('section2');
-
-        function adjustSection2Top() {
-          // Get the height of section1
-          var section1Height = section1.offsetHeight;
-
-          // Set the top value of section2 dynamically
-          section2.style.top = section1Height + 'px';
-        }
-
-        // Run the function when the page loads
-        adjustSection2Top();
-
-        // Adjust dynamically when window is resized or content changes
-        window.addEventListener('resize', adjustSection2Top);
-      });
-
-
-
-
 
     }
   };

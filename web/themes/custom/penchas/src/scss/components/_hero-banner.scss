@@ -110,6 +110,26 @@
   &.with-bottom-border {
     border-bottom: 1px solid $primaryColor;
   }
+
+  &.banner-style2 {
+    .col-lg-6 {
+      width: 65%;
+      @include media-query('tablet') {
+        width: 100%;
+      }
+    }
+    p {
+      margin-bottom: 0;
+    }
+
+    .banner-info.items-gap {
+      gap: 100px;
+      @include media-query('tablet') {
+        gap: 40px;
+      }
+    }
+  }
+
 }
 
 .path-frontpage {

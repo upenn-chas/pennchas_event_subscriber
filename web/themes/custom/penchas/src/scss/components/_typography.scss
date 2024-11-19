@@ -15,6 +15,12 @@ a {
   text-decoration: underline;
 }
 
+p {
+  a {
+    text-decoration-color: $redHighlightColor;
+  }
+}
+
 h1,h2,h3,h4,h5 {
   font-family: $secondaryFont;
 }
@@ -64,5 +70,80 @@ h5 {
   @include media-query('tablet') {
     font-size: 24px;
     line-height: 24px;
+  }
+}
+
+
+.typography {
+  max-width: 873px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  h3,h4,h5 {
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 30px;
+    @include media-query('small') {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 60px;
+    li {
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 20px;
+      @include media-query('small') {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &::marker {
+        color: #92b7ff;
+      }
+    }
+  }
+  ol {
+    padding-left: 20px;
+    margin-bottom: 0;
+    li {
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 20px;
+      @include media-query('small') {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &::marker {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .accordion {
+    margin-bottom: 60px;
+  
+  }
+}
+
+hr {
+  background-color: $primaryColor;
+  margin-bottom: 30px;
+  opacity: 1;
+}
+
+figure {
+  margin-bottom: 60px;
+  margin-top: 60px;
+  figcaption.figure-caption {
+    font-size: 14px;
+    color: $primaryColor;
+    font-family: $teritoryFont;
   }
 }

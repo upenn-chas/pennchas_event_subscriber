@@ -360,7 +360,7 @@ display:
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -374,7 +374,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -391,8 +391,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: text_trimmed
+          settings:
+            trim_length: 600
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -468,7 +469,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                            <p>{{ field_description }} </p>\r\n                            \r\n                        </div>\r\n                    </div>"
+            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                            <p>{{ field_description }} </p>\r\n                            <p><svg width=\"27\" height=\"30\" viewBox=\"0 0 27 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 14.6816H24.5156\" stroke=\"#011F5B\" stroke-width=\"1.94183\"></path><path d=\"M14.3203 4L25.0004 14.4373L14.3203 25.1174\" stroke=\"#011F5B\" stroke-width=\"1.94183\"></path></svg></p>\r\n                        </div>\r\n                    </div>"
             make_link: false
             path: ''
             absolute: false

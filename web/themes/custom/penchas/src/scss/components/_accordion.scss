@@ -1,0 +1,80 @@
+.accordion-item{
+  margin-bottom: 20px;
+  border: 1px solid $primaryColor;
+  &:first-of-type {
+    border-radius: 0;
+  }
+  &:not(:first-of-type) {
+    border-top: 1px solid $primaryColor;
+  }
+  .accordion-header {
+    margin-bottom: 0;
+    button {
+      font-weight: 900;
+      font-size: 30px;
+      color: $primaryColor;
+      padding: 13px 30px 7px 30px;
+      position: relative;
+      @include media-query('small') {
+        padding: 13px 20px 7px 20px;
+      }
+
+      &:focus {
+        box-shadow: none;
+        outline: none;
+        border: 0;
+      }
+
+      &:after {
+        width: 27px;
+        height: 2px;
+        background: $primaryColor;
+        content:"";
+        position: absolute;
+        top: 37px;
+        right: 11px;
+        @include media-query('small') {
+          width: 24px;
+          height: 2px;
+          top: 33px;
+        }
+      }
+      &:before {
+        width: 2px;
+        height: 28px;
+        background: $primaryColor;
+        content:"";
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        @include media-query('small') {
+          width: 2px;
+          height: 25px;
+          top: 22px;
+          right: 22px;
+  
+        }
+      }
+    }
+  }
+}
+
+.accordion-item {
+  &:has(.accordion-button:not(.collapsed)) {
+    background-color: #D6DBD6;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+    &:before {
+      display: none;
+    }
+  }
+
+  .accordion-body {
+    padding: 0 30px 20px 30px;
+    @include media-query('small') {
+      padding: 0 20px 20px 20px;
+    }
+  }
+}

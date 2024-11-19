@@ -1,0 +1,39 @@
+.tab-outer {
+  width: 100%;
+  overflow: scroll;
+}
+
+.nav-tabs {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $primaryColor;
+  @include media-query('tablet') {
+    flex-wrap: nowrap;
+    width: 600px;    
+  }
+  
+  .nav-item {
+    margin-right: 10px;
+    @include media-query('tablet') {
+     
+    }
+  }
+  .nav-link {
+    border: 1px solid $primaryColor;
+    border-radius: 10px;
+    font-size: 18px;
+    color: $primaryColor;
+    font-family: $teritoryFont;
+    padding: 14px 20px 12px 20px;
+    @include media-query('small') {
+      font-size: 14px;
+      padding: 8px 10px 6px 10px;
+    }
+    &.active {
+      border: 1px solid $primaryColor;
+      background-color: $primaryColor;
+      color: #fff;
+    }
+  }
+
+ 
+}

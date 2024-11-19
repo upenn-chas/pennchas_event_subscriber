@@ -71,7 +71,11 @@ function penchas_preprocess_block(&$variables) {
     $groups_html = '';
 
     foreach ($groups as $group) {
-      $description = $group->get('field_description')->value ? $group->get('field_description')->value : '';
+      $description = $group->get('field_description')->value ?
+    preg_replace('/\s+/', ' ', trim(html_entity_decode(strip_tags($group->get('field_description')->value)))) : '';
+
+      // if($group->id() == 1){
+      // }
       $number_of_members = $group->get('field_number_of_residents')->value ? $group->get('field_number_of_residents')->value.' residents' : '';
       $file_path = $image_alt = $image_title ='';
       if($group->get('field_image')){
@@ -182,32 +186,37 @@ function penchas_preprocess_views_view(&$variables) {
       }
     }
 
-    // dump($filters[0]['value']);
     $filters_html = '';
     if(!empty($values)){
       $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
       $selected_filters['field_community'] = $community;
-      $variables['size'] = $values['field_number_of_residents_value'];
-      $variables['operator'] = ( $values['field_number_of_residents_value_1_op'] ?  $values['field_number_of_residents_value_1_op'] : '');
+      if(isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All'){
+        $variables['size'] = $values['field_number_of_residents_value'];
+      }else{
+        $variables['size'] = 'All';
+      }
+      $variables['operator'] = ( $values['field_number_of_residents_value_1_op'] ?  $values['field_number_of_residents_value_1_op'] : '<');
       $residents_arr_ = $values['field_number_of_residents_value_1'];
       $small_size_value = ($residents_arr_['value'] ? $residents_arr_['value'] : '');
       $small_size_min = ($residents_arr_['min'] ? $residents_arr_['min'] : '');
       $small_size_max = ($residents_arr_['max'] ? $residents_arr_['max'] : '');
 
+      $size = 'All';
+      $operator = '>';
       // params condition : (Small: <300; Medium: 301<>600; Large >600)
-      $min = $max = $value = $size = $operator = '';
+      $min = $max = $value = '';
       if($variables['size'] == 1){
         $selected_filters['size'] = 'Small < 300';
         $size = '1';
         $operator = '<=';
         $value = 300;
-      }else if($variables['size'] == 1){
+      }else if($variables['size'] == 2){
         $size = '2';
         $operator = 'between';
         $min = 300;
         $max = 600;
         $selected_filters['size'] = 'Medium 301<>600';
-      }else if($variables['size'] == 1){
+      }else if($variables['size'] == 3){
         $size = '3';
         $operator = '>';
         $value = 600;
@@ -215,13 +224,14 @@ function penchas_preprocess_views_view(&$variables) {
       }
 
       $link = '/all-college-houses?field_community_value='.$community.'&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
+      $link = '/all-college-houses';
+      // dump($link);
       if(!empty($selected_filters) && isset($selected_filters['field_community'])){
         $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['field_community'].'</span></a>';
       }
-      // dump($selected_filters['field_community']);
       if(!empty($selected_filters) && isset($selected_filters['size'])){
         $filter_size = $selected_filters['size'];
-        $filters_html = '<a href="'.$link.'"><span class="filter-tag">'.$filter_size.'</span></a>';
+        $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$filter_size.'</span></a>';
       }
     }
     $variables['selected_filters_output'] = $filters_html;

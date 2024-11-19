@@ -56,3 +56,22 @@
     }
   }
 }
+
+.col-out-block {
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 60px;
+  @include media-query('small') {
+    padding: 25px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+  &.blue {
+    background-color: $lightBlue;
+  }
+  &.yellow {
+    background-color: $yellowLightColor;
+  }
+}

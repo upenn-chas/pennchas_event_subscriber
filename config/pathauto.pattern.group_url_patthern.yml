@@ -1,0 +1,22 @@
+uuid: 78982f7b-3cfe-4ac5-9da1-4f6a548db434
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group_url_patthern
+label: 'Group URL patthern'
+type: 'canonical_entities:group'
+pattern: 'group/[group:field_house_machine_name:value]'
+selection_criteria:
+  b106aa5b-9da6-4a2f-95f3-7b85d416eb50:
+    id: 'entity_bundle:group'
+    negate: false
+    uuid: b106aa5b-9da6-4a2f-95f3-7b85d416eb50
+    context_mapping:
+      group: group
+    bundles:
+      house1: house1
+selection_logic: and
+weight: -5
+relationships: {  }
