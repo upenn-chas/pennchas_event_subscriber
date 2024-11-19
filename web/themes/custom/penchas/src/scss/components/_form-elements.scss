@@ -20,6 +20,10 @@
   }
 }
 
+.js-form-item-field-number-of-residents-value-1-op {
+  display: none;
+}
+
 textarea.form-control {
   min-height: 200px;
   resize: none;
@@ -47,10 +51,10 @@ textarea.form-control {
     top: 22px;
     height: 11px;
     width: 11px;
-    background-color: #fff;  
+    background-color: #fff;
     transform: rotate(-45deg);
     border-left: 2px solid $primaryColor;
-    border-bottom: 2px solid $primaryColor; 
+    border-bottom: 2px solid $primaryColor;
   }
   select {
     font-family: $teritoryFont;
@@ -129,7 +133,7 @@ label {
   border-radius: 10px;
   display: flex;
   width: calc(100% - 24px);
-  margin-left: 12px; 
+  margin-left: 12px;
   padding: 20px 12px 30px 12px;
   margin-bottom: 30px;
   flex-wrap: wrap;
@@ -197,7 +201,7 @@ label {
       border-bottom: 2px solid #fff;
       left: 4px;
       top: 3px;
-      transform: rotate(-45deg);  
+      transform: rotate(-45deg);
       @include media-query ('ipad') {
         top: 2
       }
@@ -216,7 +220,7 @@ label {
     font-family: $teritoryFont;
     line-height: 25px;
     &:before {
-      content: "";   
+      content: "";
       height: 25px;
       width: 25px;
       background: url(../../assets/images/info-icon.jpg) no-repeat;
@@ -241,7 +245,7 @@ label {
     position: absolute;
     right: 20px;
     top: 15px;
-    
+
   }
 }
 
@@ -272,6 +276,6 @@ label {
     i {
       display: none;
     }
-     
+
   }
 }

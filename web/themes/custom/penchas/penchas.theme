@@ -72,7 +72,7 @@ function penchas_preprocess_block(&$variables) {
 
     foreach ($groups as $group) {
       $description = $group->get('field_description')->value ? $group->get('field_description')->value : '';
-      $number_of_members = $group->get('field_number_of_members')->value ? $group->get('field_number_of_members')->value : '';
+      $number_of_members = $group->get('field_number_of_residents')->value ? $group->get('field_number_of_residents')->value.' residents' : '';
       $file_path = $image_alt = $image_title ='';
       if($group->get('field_image')){
         if($group->get('field_image')->entity){
@@ -84,15 +84,13 @@ function penchas_preprocess_block(&$variables) {
           }
         }
       }
-      $group_tags = $group->get('field_group_tags')->getValue();
-      $group_tag_values = '';
-      if($group_tags){
-        $group_tag_arr = [];
-          foreach ($group_tags as $group_tag) {
-              $group_tag_arr[] = $group_tag['value'];  // Adjust this based on your field type
-          }
-        $group_tag_values = implode('</p> <p>', $group_tag_arr);
+      $group_tags = $group->get('field_community')->value;
+      $tags = $group_tags.' '.$number_of_members;
+      if(!empty($group_tags) && !empty($number_of_members)){
+        $tags = $group_tags.', '.$number_of_members;
       }
+
+
       $group_path = '/group/' . $group->id();
       $alias_manager = \Drupal::service('path_alias.manager');
       $url = $alias_manager->getAliasByPath($group_path);
@@ -104,7 +102,7 @@ function penchas_preprocess_block(&$variables) {
                               '<div class="program-card-info">'.
                                   '<h4>'.$group->label().'</h4>'.
                                   '<div class="tags">'.
-                                      '<p>'.$group_tag_values.$number_of_members.'</p>'.
+                                      '<p>'.$tags.'</p>'.
                                 '</div>'.
                                   '<p>'.$description.'</p>'.
                                   '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>'.
@@ -125,7 +123,7 @@ function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterfa
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['group'] = -100;
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['type'] = 'file';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['data'] = $themePath . '/js/tbcustom.js';
+  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['data'] = $themePath . '/js/tbcustom-3.js';
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['version'] = '1.x';
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['minified'] = '';
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['weight'] =  0.079;
@@ -177,42 +175,55 @@ function penchas_preprocess_views_view(&$variables) {
   if($id == 'group_houses'){
     $selected_filters = [];
     $values = $view->getExposedInput();
-    // dump($values);
-    $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
-    $selected_filters['field_community'] = $community;
-    $variables['size'] = $values['field_number_of_residents_value'];
-    $variables['operator'] = $values['field_number_of_residents_value_1_op'];
-    $residents_arr_ = $values['field_number_of_residents_value_1'];
-    $small_size_value = ($residents_arr_['value'] ? $residents_arr_['value'] : '');
-    $small_size_min = ($residents_arr_['min'] ? $residents_arr_['min'] : '');
-    $small_size_max = ($residents_arr_['max'] ? $residents_arr_['max'] : '');
-
-    // params condition : (Small: <300; Medium: 301<>600; Large >600)
-    $min = $max = $value = '';
-    if($variables['size'] == 1){
-      $selected_filters['size'] = 'Small: < 300';
-      $size = '1';
-      $operator = '<=';
-      $value = 300;
-    }else if($variables['size'] == 1){
-      $size = '2';
-      $operator = 'between';
-      $min = 300;
-      $max = 600;
-      $selected_filters['size'] = 'Medium: 301<>600';
-    }else if($variables['size'] == 1){
-      $size = '3';
-      $operator = '>';
-      $value = 600;
-      $selected_filters['size'] = 'Large >600';
+    $filters = [];
+    foreach ($view->filter as $filter) {
+      if($filter->isExposed()) {
+        $filters[] = $filter->options;
+      }
     }
 
-    $link = '/all-college-houses?field_community_value='.$community.'&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
-    if($selected_filters['field_community']){
-      // $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['field_community'].'</span></a>';
-    }
-    $filters_html = '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['size'].'</span></a>';
+    // dump($filters[0]['value']);
+    $filters_html = '';
+    if(!empty($values)){
+      $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
+      $selected_filters['field_community'] = $community;
+      $variables['size'] = $values['field_number_of_residents_value'];
+      $variables['operator'] = ( $values['field_number_of_residents_value_1_op'] ?  $values['field_number_of_residents_value_1_op'] : '');
+      $residents_arr_ = $values['field_number_of_residents_value_1'];
+      $small_size_value = ($residents_arr_['value'] ? $residents_arr_['value'] : '');
+      $small_size_min = ($residents_arr_['min'] ? $residents_arr_['min'] : '');
+      $small_size_max = ($residents_arr_['max'] ? $residents_arr_['max'] : '');
 
+      // params condition : (Small: <300; Medium: 301<>600; Large >600)
+      $min = $max = $value = $size = $operator = '';
+      if($variables['size'] == 1){
+        $selected_filters['size'] = 'Small < 300';
+        $size = '1';
+        $operator = '<=';
+        $value = 300;
+      }else if($variables['size'] == 1){
+        $size = '2';
+        $operator = 'between';
+        $min = 300;
+        $max = 600;
+        $selected_filters['size'] = 'Medium 301<>600';
+      }else if($variables['size'] == 1){
+        $size = '3';
+        $operator = '>';
+        $value = 600;
+        $selected_filters['size'] = 'Large >600';
+      }
+
+      $link = '/all-college-houses?field_community_value='.$community.'&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
+      if(!empty($selected_filters) && isset($selected_filters['field_community'])){
+        $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['field_community'].'</span></a>';
+      }
+      // dump($selected_filters['field_community']);
+      if(!empty($selected_filters) && isset($selected_filters['size'])){
+        $filter_size = $selected_filters['size'];
+        $filters_html = '<a href="'.$link.'"><span class="filter-tag">'.$filter_size.'</span></a>';
+      }
+    }
     $variables['selected_filters_output'] = $filters_html;
   }
 }
