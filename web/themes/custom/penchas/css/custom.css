@@ -1,3 +1,12 @@
 #edit-field-number-of-residents-value-1-wrapper{
   display:none;
 }
+.tb-megamenu .nav > li > .tb-megamenu-submenu {
+  display: none;
+}
+.tb-megamenu .nav > li.open > .tb-megamenu-submenu {
+  display: block;
+}
+.tb-megamenu-item span.dropdown-toggle.tb-megamenu-no-link.nav-link {
+  cursor: pointer;
+}
