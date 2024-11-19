@@ -125,8 +125,9 @@ Drupal.TBMegaMenu = Drupal.TBMegaMenu || {};
 
   Drupal.behaviors.tbMegaMenuAction = {
     attach: function (context, settings) {
-      var button = $(context).find('.tb-megamenu-button').once('tb-megamenu-action');
+      var button = $(context).find('.tb-megamenu-nav');
       $(button).click(function () {
+        console.log('asdsad');
         if (parseInt($(this).parent().children('.nav-collapse').height())) {
           $(this).parent().children('.nav-collapse').css({height: 0, overflow: 'hidden'});
           Drupal.TBMegaMenu.displayedMenuMobile = false;
@@ -154,7 +155,7 @@ Drupal.TBMegaMenu = Drupal.TBMegaMenu || {};
 
           $('.mega .nav-link').click(function (event) {
             if (event.target !== this){
-              console.log('hello');
+              // console.log('hello');
 
               return;
             }

@@ -11,6 +11,7 @@
     attach: function(context, settings) {
       jQuery(document).ready(function() {
         jQuery('select[name="field_number_of_residents_value"]').on('change', function (){
+          console.log('testing control');
           jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-min"]').val('');
           jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-max"]').val('');
           jQuery('input[data-drupal-selector="edit-field-number-of-residents-value-1-value"]').val('');
