@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_image
+    - field.field.node.page.field_menus
     - field.field.node.page.layout_builder__layout
     - image.style.wide
     - node.type.page
@@ -138,6 +139,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 8
             additional: {  }
+          58f12234-80e8-4b91-b219-226150440735:
+            uuid: 58f12234-80e8-4b91-b219-226150440735
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_menus'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -197,6 +214,14 @@ content:
         attribute: eager
     third_party_settings: {  }
     weight: -1
+    region: content
+  field_menus:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

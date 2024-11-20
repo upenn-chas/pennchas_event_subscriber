@@ -1,0 +1,62 @@
+uuid: 8787f65b-b339-401d-9acb-c4ff8683a582
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+    - field.field.block_content.senior_leadership.body
+    - field.field.block_content.senior_leadership.field_email_address
+    - field.field.block_content.senior_leadership.field_heading
+    - field.field.block_content.senior_leadership.field_image
+    - field.field.block_content.senior_leadership.field_phone_number
+  module:
+    - image
+    - text
+id: block_content.senior_leadership.default
+targetEntityType: block_content
+bundle: senior_leadership
+mode: default
+content:
+  body:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 100
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_email_address:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

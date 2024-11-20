@@ -1,0 +1,8 @@
+uuid: 382e6647-ed95-439a-85c1-1124def8ea94
+langcode: en
+status: true
+dependencies: {  }
+id: accordions
+label: Accordions
+revision: false
+description: 'Accordions with title and description as per theme style guide.'

@@ -119,6 +119,12 @@
     height: 100%;
     z-index: 1;
 	}
+	h2.node__title a {
+		position: relative;
+		font-size: 36px;
+		line-height: 36px;
+		display: block;
+	}
 }
 .program-card-img {
 	padding: 0 20px;

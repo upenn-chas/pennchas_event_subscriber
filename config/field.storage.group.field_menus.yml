@@ -1,0 +1,20 @@
+uuid: c538bc00-6fc6-48ed-a8d5-d1e10f97fbd7
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - system
+id: group.field_menus
+field_name: field_menus
+entity_type: group
+type: entity_reference
+settings:
+  target_type: menu
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

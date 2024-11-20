@@ -1,0 +1,8 @@
+uuid: d392bd06-c7c5-449d-b74f-b09c9ee3a2e4
+langcode: en
+status: true
+dependencies: {  }
+id: callout_block
+label: 'Callout Block'
+revision: false
+description: null

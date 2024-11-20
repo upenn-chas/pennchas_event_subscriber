@@ -1,0 +1,19 @@
+uuid: 4cdc35d2-a57c-4c39-b02d-1c189849013d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+    - field.storage.block_content.field_phone_number
+id: block_content.senior_leadership.field_phone_number
+field_name: field_phone_number
+entity_type: block_content
+bundle: senior_leadership
+label: 'Phone Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

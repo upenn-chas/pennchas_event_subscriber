@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.field_menus
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
     - node.type.house_landing_page
@@ -31,6 +32,16 @@ content:
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_menus:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_select_house:
     type: options_select

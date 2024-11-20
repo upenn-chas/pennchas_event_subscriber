@@ -143,13 +143,48 @@ header {
                 border: 0;
                 color: #011f5b;
                 text-decoration: none;                
-                padding: 17px 20px 17px 0;
+                padding: 17px 0 17px 0;
                 font-size: 20px;
+                display: inline-flex;
+                align-items: center;
                 &::after {
                   border: 0;
                 }
                 span.caret {
                   border: 0;
+                }
+                span.caret {
+                  display: block;
+                  height: 2px;
+                  margin: 0 0;
+                  width: 20px;
+                  background: #011f5b;
+                  transition: all ease-in-out .3s;
+                  top: 0;
+                  position: relative;
+                  margin-left: 10px;
+                  &:before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    height: 2px;
+                    margin: 0 0;
+                    width: 20px;
+                    background: #011f5b;
+                    transition: all ease-in-out .3s;
+                    top: -7px;
+                  }
+                  &:after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    height: 2px;
+                    margin: 0 0;
+                    width: 20px;
+                    background: #011f5b;
+                    transition: all ease-in-out .3s;
+                    top: 7px;
+                  }
                 }
               }
               &:after{
@@ -257,7 +292,22 @@ header {
                   }
                 }
               }                          
-            }        
+            } 
+            &.open{ 
+              .dropdown-toggle.tb-megamenu-no-link{ 
+                span.caret{
+                  height: 0;
+                  &:after {
+                    transform: rotate(-45deg);
+                    top: -1px;
+                  }
+                  &:before {
+                    transform: rotate(45deg);
+                    top: -1px;
+                  }
+                }
+              }
+            }       
           }
           > li {
             &.tb-megamenu-item {              
@@ -668,4 +718,7 @@ article > header {
     }
   }
   
+}
+.node__content.clearfix {
+  margin-top: 0;
 }

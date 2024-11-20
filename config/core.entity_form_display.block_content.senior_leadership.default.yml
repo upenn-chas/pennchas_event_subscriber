@@ -1,0 +1,71 @@
+uuid: 18562698-3720-4625-9fd9-e15bc21796b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+    - field.field.block_content.senior_leadership.body
+    - field.field.block_content.senior_leadership.field_email_address
+    - field.field.block_content.senior_leadership.field_heading
+    - field.field.block_content.senior_leadership.field_image
+    - field.field.block_content.senior_leadership.field_phone_number
+    - image.style.thumbnail
+  module:
+    - image
+    - text
+id: block_content.senior_leadership.default
+targetEntityType: block_content
+bundle: senior_leadership
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_email_address:
+    type: email_default
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_phone_number:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

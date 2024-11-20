@@ -1,0 +1,23 @@
+uuid: 2ed9949a-6f4d-4883-8f94-edd8e75f02fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_menus
+    - node.type.page
+id: node.page.field_menus
+field_name: field_menus
+entity_type: node
+bundle: page
+label: Menus
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:menu'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

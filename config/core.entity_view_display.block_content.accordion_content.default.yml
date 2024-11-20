@@ -1,0 +1,22 @@
+uuid: 04e88469-ca87-45cd-8247-04dc41fddd42
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+    - field.field.block_content.accordion_content.field_description
+  module:
+    - text
+id: block_content.accordion_content.default
+targetEntityType: block_content
+bundle: accordion_content
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,18 @@
+uuid: aac40ec8-740b-46d0-89dd-5e3218a77f7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_email_address
+field_name: field_email_address
+entity_type: block_content
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_image
+    - field.field.node.page.field_menus
     - field.field.node.page.layout_builder__layout
     - image.style.thumbnail
     - node.type.page
@@ -52,6 +53,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_menus:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
