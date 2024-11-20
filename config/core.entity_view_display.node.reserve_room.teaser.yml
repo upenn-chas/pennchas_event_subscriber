@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.reserve_room.field_anticipated_participants
     - field.field.node.reserve_room.field_email
+    - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_purpose_of_request
@@ -20,6 +21,11 @@ targetEntityType: node
 bundle: reserve_room
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_event_schedule:
     type: smartdate_default
     label: hidden
@@ -51,6 +57,7 @@ content:
 hidden:
   field_anticipated_participants: true
   field_email: true
+  field_event_ends_on: true
   field_phone: true
   field_purpose_of_request: true
   field_room: true

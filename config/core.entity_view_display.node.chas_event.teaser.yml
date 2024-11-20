@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -30,6 +29,7 @@ dependencies:
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_rsvp_link
+    - image.style.medium
     - node.type.chas_event
   module:
     - image
@@ -72,10 +72,13 @@ content:
     weight: 2
     region: content
   field_intended_audience_image:
-    type: image_url
+    type: image
     label: hidden
     settings:
-      image_style: ''
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content

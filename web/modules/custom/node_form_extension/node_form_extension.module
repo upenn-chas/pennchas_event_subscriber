@@ -1,0 +1,30 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+use Drupal\node_form_extension\Plugin\RoomReservationHandler;
+
+function node_form_extension_entity_presave(EntityInterface $entity)
+{
+    if ($entity instanceof NodeInterface && $entity->bundle() === 'reserve_room') {
+        $handler = new RoomReservationHandler();
+        $handler->handlePreSave($entity);
+    }
+}
+
+function node_form_extension_node_insert(Node $node)
+{
+    if ($node->getType() === 'reserve_room') {
+        $eventHandler = new RoomReservationHandler();
+        $eventHandler->handleInsert($node);
+    }
+}
+
+// function node_form_extension_node_update(\Drupal\node\Entity\Node $node)
+// {
+//     if ($node->getType() === 'chas_event') {
+//         $eventHandler = new RoomReservationHandler();
+//         $eventHandler->handleEventUpdate($node);
+//     }
+// }

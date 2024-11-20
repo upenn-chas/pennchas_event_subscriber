@@ -1,0 +1,29 @@
+uuid: bf2d5f37-3129-4316-977e-165ad3f2562c
+langcode: en
+status: true
+dependencies: {  }
+id: et_room_reservation_approved
+label: 'Room Reservation Approved'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Room reservation request "[easy_email:field_reserve_room:entity:title]" approved'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation request "[easy_email:field_reserve_room:entity:title]" has been approved.</p><p>&nbsp;</p><p>Thnak You</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

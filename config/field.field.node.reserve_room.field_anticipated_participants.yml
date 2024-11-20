@@ -9,7 +9,7 @@ id: node.reserve_room.field_anticipated_participants
 field_name: field_anticipated_participants
 entity_type: node
 bundle: reserve_room
-label: 'Estimated Guests'
+label: 'Maximum Occupancy'
 description: ''
 required: true
 translatable: false
