@@ -1,0 +1,19 @@
+uuid: 71b155a7-3369-41a5-be1f-72858f7aee00
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+    - field.storage.block_content.field_email_address
+id: block_content.senior_leadership.field_email_address
+field_name: field_email_address
+entity_type: block_content
+bundle: senior_leadership
+label: 'Email Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

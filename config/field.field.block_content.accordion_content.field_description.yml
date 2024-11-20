@@ -1,0 +1,24 @@
+uuid: 9b888dd1-9802-4222-886e-af89009d9f99
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+    - field.storage.block_content.field_description
+    - filter.format.basic_html
+  module:
+    - text
+id: block_content.accordion_content.field_description
+field_name: field_description
+entity_type: block_content
+bundle: accordion_content
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text

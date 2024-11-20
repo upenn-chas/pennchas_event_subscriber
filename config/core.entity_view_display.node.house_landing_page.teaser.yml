@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.field_menus
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
     - node.type.house_landing_page
@@ -30,5 +31,6 @@ content:
     weight: 100
     region: content
 hidden:
+  field_menus: true
   field_select_house: true
   layout_builder__layout: true

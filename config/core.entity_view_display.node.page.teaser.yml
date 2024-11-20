@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_image
+    - field.field.node.page.field_menus
     - field.field.node.page.layout_builder__layout
     - image.style.medium
     - node.type.page
@@ -56,4 +57,5 @@ content:
     weight: 4
     region: content
 hidden:
+  field_menus: true
   layout_builder__layout: true

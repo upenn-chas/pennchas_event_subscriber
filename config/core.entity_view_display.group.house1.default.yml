@@ -10,6 +10,7 @@ dependencies:
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
+    - field.field.group.house1.field_menus
     - field.field.group.house1.field_number_of_residents
     - field.field.group.house1.layout_builder__layout
     - group.type.house1
@@ -156,6 +157,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
+          ea373a40-dcf1-4420-aa64-e885587568c4:
+            uuid: ea373a40-dcf1-4420-aa64-e885587568c4
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_menus'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -241,6 +258,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: -2
+    region: content
+  field_menus:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_number_of_residents:
     type: number_integer

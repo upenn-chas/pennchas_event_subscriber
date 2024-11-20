@@ -1,7 +1,14 @@
 .filters{
     margin-top: 30px;
+    .view-filters{
+        .selected-filters{
+            margin-top: -70px;
+        }
+    }
 }
+
 .filter-section {
+
 	display: flex;
     align-items: flex-end;
     gap: 20px;
@@ -9,15 +16,65 @@
     margin-bottom: 30px;
     @include media-query ('mobile'){
         flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    .d-flex.flex-wrap{
+        display: flex;        
+        gap: 20px;        
+        margin-bottom: 0;
+        align-items: flex-start;
+        @include media-query ('mobile'){
+            flex-wrap: wrap;
+        }
+    }
+    .form-actions {
+        align-self: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0 !important;
+        margin-top: 24px;
+        gap: 30px;
+        align-items: end;
+        button#edit-reset {
+            position: relative;
+            padding: 0;
+            border-radius: 0;
+            border: 0;
+            background: 0 0;
+            color: #011f5b;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: right;
+            width: fit-content;
+            opacity: 1;
+            &:after{
+                content: "";
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                background-color: #fd4453;
+            }
+        }  
+        @include media-query ('mobile'){
+            align-items: flex-start;
+            margin-top: 0;
+            width: 100%;
+        }
     }
 }
-.filter-dropdown {
+.filter-dropdown, .form-item-field-community-value, .form-item-field-number-of-residents-value {
 	display: flex;
     flex-direction: column;
     width: 482px;
+    @include media-query ('large'){
+        width: auto;
+    }
     position: relative;
     @include media-query ('mobile'){
         width: 100%;
+        margin-bottom: 0 !important;
     }
 	label {
 		font-size: 12px;
@@ -60,7 +117,7 @@
         top: 46px;
     }
 }
-.filter-button {
+.filter-button, .filter-section .form-actions button {
 	background-color: #011F5B;
     color: #fff;
     font-family: 'tablet-gothic';
@@ -81,6 +138,9 @@
         width: 100%;
         padding: 13px 20px;
     }
+    &:before{
+        opacity: 0;
+    }
 }
 .selected-filters {
     display: flex;
@@ -89,6 +149,7 @@
     @include media-query ('mobile'){
         flex-direction: column;
         gap: 20px;
+        margin-top: 0 !important;
     }
 }
 .filter-tag-wrap {
@@ -135,3 +196,4 @@
         }
     }
 }
+

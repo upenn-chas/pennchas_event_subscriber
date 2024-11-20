@@ -105,32 +105,27 @@
         </div>
 
         <div class="internal-links">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              Get Involved
-            </button>
-            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              {{ drupal_menu('group-menu-1') }}
-            </div>
-
+            {% for menus in node.field_menus %}
+              {# {{dump(menus.value['target_id'])}} #}
+              <div class="dropdown">
+                {% set items = simplify_menu(menus.value['target_id']) %}
+                {% for menu_item in items.menu_tree %}
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <ul class="clearfix nav">
+                      {% for submenu_item in menu_item.submenu %}
+                      <li class="navigation__item nav-item">
+                        <a href="{{ submenu_item.url }}" class="nav-link nav-link--">{{ submenu_item.text }}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
           </div>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              Living With Us
-            </button>
-            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              {{ drupal_menu('group-menu-2') }}
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              About
-            </button>
-            <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              {{ drupal_menu('group-menu-3') }}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
