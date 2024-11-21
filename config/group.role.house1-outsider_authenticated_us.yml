@@ -7,10 +7,11 @@ dependencies:
     - user.role.authenticated
 id: house1-outsider_authenticated_us
 label: 'Outsider authenticated user'
-weight: 112
+weight: 4
 admin: false
 scope: outsider
 global_role: authenticated
 group_type: house1
 permissions:
   - 'view group'
+  - 'view group_node:room entity'

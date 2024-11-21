@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.room.body
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -12,6 +13,7 @@ dependencies:
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
     - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_max_room_booking_duration
     - field.field.node.room.field_maximum_occupancy
     - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
@@ -20,6 +22,7 @@ dependencies:
     - image.style.wide
     - node.type.room
   module:
+    - duration_field
     - endroid_qr_code
     - image
     - link
@@ -113,6 +116,15 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_max_room_booking_duration:
+    type: duration_human_display
+    label: above
+    settings:
+      text_length: full
+      separator: space
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_maximum_occupancy:
     type: number_integer

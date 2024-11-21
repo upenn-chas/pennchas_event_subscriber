@@ -5,6 +5,13 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\node_form_extension\Plugin\RoomReservationHandler;
 
+function node_form_extension_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
+{
+    if($form_id === 'node_room_form') {
+        // dd($form['field_max_room_booking_duration']['widget'][0]['value']);
+    }
+}
+
 function node_form_extension_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface && $entity->bundle() === 'reserve_room') {

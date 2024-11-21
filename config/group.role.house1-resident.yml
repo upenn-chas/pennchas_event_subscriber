@@ -6,7 +6,7 @@ dependencies:
     - group.type.house1
 id: house1-resident
 label: Resident
-weight: 103
+weight: -7
 admin: false
 scope: individual
 global_role: null

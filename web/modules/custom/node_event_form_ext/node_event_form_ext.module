@@ -14,7 +14,6 @@ use Drupal\Core\Entity\EntityInterface;
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
-
         $form['field_audience_floor']['#states'] = [
             'visible' => [
                 ':input[name="field_intended_audience[floors_residents]"]' => [

@@ -6,7 +6,7 @@ dependencies:
     - group.type.house1
 id: house1-house_faculty
 label: 'House Faculty'
-weight: 108
+weight: -2
 admin: false
 scope: individual
 global_role: null
@@ -34,7 +34,6 @@ permissions:
   - 'view group_node:event entity'
   - 'view group_node:program_community entity'
   - 'view group_node:room entity'
-  - 'view own unpublished group'
   - 'view own unpublished group_node:chas_event entity'
   - 'view own unpublished group_node:event entity'
   - 'view own unpublished group_node:page entity'

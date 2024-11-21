@@ -1,33 +1,34 @@
-uuid: 16ac3be7-a851-4c0c-98d1-2db100aefcc7
+uuid: fc190d06-7d77-404a-81a0-35f3b73d5eba
 langcode: en
 status: true
 dependencies:
   config:
     - group.type.house1
-id: house1-resident_advisor
-label: 'Resident Advisor'
-weight: -3
+    - user.role.chas_professional_staff
+id: house1-chas_professional_staff
+label: 'CHAS Professional Staff'
+weight: 1
 admin: false
-scope: individual
-global_role: null
+scope: outsider
+global_role: chas_professional_staff
 group_type: house1
 permissions:
+  - 'access content overview'
   - 'access group_node overview'
   - 'create group_node:chas_event entity'
+  - 'create group_node:page entity'
   - 'create group_node:reserve_room entity'
   - 'delete own group_node:chas_event entity'
-  - 'delete own group_node:reserve_room entity'
+  - 'delete own group_node:page entity'
   - 'event own evaluation'
-  - 'update any group_node:program_community entity'
   - 'update own group_node:chas_event entity'
-  - 'update own group_node:program_community entity'
+  - 'update own group_node:page entity'
   - 'update own group_node:reserve_room entity'
   - 'use editorial transition create_new_draft'
   - 'view group'
   - 'view group_node:chas_event entity'
-  - 'view group_node:event entity'
-  - 'view group_node:program_community entity'
+  - 'view group_node:page entity'
   - 'view group_node:room entity'
   - 'view own unpublished group_node:chas_event entity'
-  - 'view own unpublished group_node:program_community entity'
-  - 'view unpublished group_node:program_community entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view own unpublished group_node:reserve_room entity'

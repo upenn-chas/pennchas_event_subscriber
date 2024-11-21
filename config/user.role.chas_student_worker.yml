@@ -21,7 +21,6 @@ permissions:
   - 'administer nodes'
   - 'create chas_event content'
   - 'create page content'
-  - 'create reserve_room content'
   - 'delete own chas_event content'
   - 'delete own files'
   - 'delete own reserve_room content'

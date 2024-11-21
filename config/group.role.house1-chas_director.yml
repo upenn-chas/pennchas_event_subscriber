@@ -7,7 +7,7 @@ dependencies:
     - user.role.chas_director
 id: house1-chas_director
 label: 'CHAS Director'
-weight: 111
+weight: 2
 admin: false
 scope: outsider
 global_role: chas_director
@@ -44,6 +44,7 @@ permissions:
   - 'use editorial transition archived_published'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'
+  - 'use editorial transition pending'
   - 'use editorial transition publish'
   - 'view group'
   - 'view group_node:chas_event entity'

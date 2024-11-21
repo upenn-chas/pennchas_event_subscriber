@@ -1,0 +1,22 @@
+uuid: ee39f8d0-3a91-49aa-9869-3b5f555bd4f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_max_room_booking_duration
+    - node.type.room
+  module:
+    - duration_field
+id: node.room.field_max_room_booking_duration
+field_name: field_max_room_booking_duration
+entity_type: node
+bundle: room
+label: 'Max amount of time that room can be booked'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  granularity: 'h:i'
+field_type: duration

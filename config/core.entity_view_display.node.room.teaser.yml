@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.room.body
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
     - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_max_room_booking_duration
     - field.field.node.room.field_maximum_occupancy
     - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
@@ -54,6 +56,7 @@ hidden:
   field_group_ref: true
   field_legacy_policy_url: true
   field_legacy_resource_url: true
+  field_max_room_booking_duration: true
   field_maximum_occupancy: true
   field_policy_url: true
   field_qr_code: true
