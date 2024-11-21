@@ -1,0 +1,66 @@
+uuid: 58d05416-7f04-4a83-9229-5f93720c2aa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.team.field_email_address
+    - field.field.taxonomy_term.team.field_image
+    - field.field.taxonomy_term.team.field_phone_number
+    - field.field.taxonomy_term.team.field_title_position
+    - field.field.taxonomy_term.team.field_type
+    - taxonomy.vocabulary.team
+  module:
+    - options
+    - text
+id: taxonomy_term.team.default
+targetEntityType: taxonomy_term
+bundle: team
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_email_address:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title_position:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

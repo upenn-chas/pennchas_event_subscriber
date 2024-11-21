@@ -1,0 +1,19 @@
+uuid: a9712f9b-be38-479a-931b-59cb4f6e6226
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_title_position
+    - taxonomy.vocabulary.team
+id: taxonomy_term.team.field_title_position
+field_name: field_title_position
+entity_type: taxonomy_term
+bundle: team
+label: Title/Position
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

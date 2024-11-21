@@ -5,34 +5,34 @@
   .info-column {
     padding-left: 0px;
     padding-right: 60px;
-  }  
+  }
   @include media-query('mobile'){
     margin-bottom: 50px;
   }
 }
 
-.image-with-text { 
-  margin-top: 35px;  
+.image-with-text {
+  margin-top: 35px;
   @include media-query('mobile') {
     padding-bottom: 30px;
   }
-  &.style-2 {     
-    .image-with-text-inner {      
-      margin-top: 80px;   
-      border-top: 1px solid $primaryColor;         
+  &.style-2 {
+    .image-with-text-inner {
+      margin-top: 80px;
+      border-top: 1px solid $primaryColor;
       padding: 0;
       width: calc(100% - 26px);
       margin-left: 13px;
       @include media-query('tablet') {
-        margin-top: 50px;  
+        margin-top: 50px;
         width: 100%;
-        margin-left: 0px; 
+        margin-left: 0px;
         padding: 0;
       }
     }
     .row {
       &:nth-child(odd)  {
-        .image-with-text-inner {   
+        .image-with-text-inner {
           flex-direction: row-reverse;
         }
 
@@ -46,7 +46,7 @@
       }
 
         &:nth-child(even)  {
-          .image-with-text-inner {   
+          .image-with-text-inner {
             flex-direction: inherit;
           }
           .info-column {
@@ -59,8 +59,8 @@
         }
     }
   }
- 
- 
+
+
   .info-column {
     padding-left: 0px;
     padding-top: 60px;
@@ -92,22 +92,29 @@
 
   .img-column {
     text-align: center;
+    .field--type-image {
+      float: none;
+    }
     img {
       display: inline-block;
       margin-top: -35px;
       height: auto;
       @include media-query('mobile') {
-        // max-height:200px;
-        width: 100%;
+        max-height: 220px;
+        width: auto;
       }
     }
     iframe{
       margin-top: -35px;
     }
-   
+
   }
   &.style-3 {
     padding-top: 80px;
+    @include media-query ('small'){
+      padding-top: 40px;
+      margin-top: 0;
+    }
     .image-with-text-inner {
         border-top: 1px solid #011F5B;
         padding: 0;
@@ -120,7 +127,7 @@
           padding-left: 0;
           padding-right: 0;
           padding-top: 30px;
-          padding-bottom: 30px;          
+          padding-bottom: 30px;
         }
         .col-12.col-lg-6{
           padding-left: 0;
@@ -130,7 +137,7 @@
     }
     .row{
       margin-bottom: 55px;
-      &:nth-child(even){ 
+      &:nth-child(even){
         .image-with-text-inner {
           flex-direction: row;
           @include media-query ('tablet'){
@@ -147,7 +154,7 @@
             padding-bottom: 0;
         }
       }
-    }   
+    }
     &.reverse-left-align-image {
         margin-top: 0;
         padding-bottom: 0;
@@ -155,7 +162,7 @@
           flex-direction: row-reverse;
         }
     }
-    &.right-align-image{ 
+    &.right-align-image{
       .image-with-text-inner {
         flex-direction: row;
       }
@@ -183,7 +190,7 @@
       }
     }
   }
-  &.row-reverse{ 
+  &.row-reverse{
     .image-with-text-inner {
       flex-direction: row;
       .info-column {
@@ -207,28 +214,28 @@
   }
 }
 
-.right-align-image{ 
+.right-align-image{
   .info-column {
     padding-left: 0 !important;
   }
 }
 
-.node{ 
+.node{
   .field--type-image{
     margin: 0;
   }
 }
 
 .mac-os {
-  .image-with-text{ 
-    .info-column{ 
+  .image-with-text{
+    .info-column{
       h2{
         margin-bottom: 18px;
       }
     }
   }
-  .cta{ 
-    h2{ 
+  .cta{
+    h2{
       span {
         position: relative;
         top: -8px;
