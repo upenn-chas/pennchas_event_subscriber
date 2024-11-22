@@ -190,12 +190,15 @@ function penchas_preprocess_views_view(&$variables) {
         $team_filters[] = $filter->options;
       }
     }
+    // Get the path of the view page
+    $path = $view->getDisplay()->getPath();
+
     if(!empty($team_filters)){
       if(!empty($team_filters[0]['value'])){
         foreach ($team_filters[0]['value'] as $key => $team_filter) {
           if($key != 'all'){
             $team_filters_arr .= '<li class="nav-item" role="presentation">
-                  <a class="nav-link active" href="/team-members?field_type_value='.$key.'">'.$team_filter.'</a>
+                  <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a>
                 </li>';
           }
         }

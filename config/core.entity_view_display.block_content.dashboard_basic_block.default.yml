@@ -1,0 +1,22 @@
+uuid: 82a2afcc-c3fe-4ef9-a221-f11b7395b642
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_block
+    - field.field.block_content.dashboard_basic_block.body
+  module:
+    - text
+id: block_content.dashboard_basic_block.default
+targetEntityType: block_content
+bundle: dashboard_basic_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

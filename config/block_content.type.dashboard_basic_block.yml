@@ -1,0 +1,8 @@
+uuid: 2e7ee530-8e81-4bcd-87e8-d6c745e46234
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_basic_block
+label: 'Dashboard basic Block'
+revision: false
+description: 'Basic block with title and description for Dashboard pages.'
