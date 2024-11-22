@@ -110,9 +110,8 @@
               <div class="dropdown">
                 {% set items = simplify_menu(menus.value['target_id']) %}
                 {% for menu_item in items.menu_tree %}
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a href="{{ menu_item.url }}">{{ menu_item.text }}</a>
-                  </button>
+
+                    <a class="btn btn-secondary dropdown-toggle" >{{ menu_item.text }}</a>
                   <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                     <ul class="clearfix nav">
                       {% for submenu_item in menu_item.submenu %}

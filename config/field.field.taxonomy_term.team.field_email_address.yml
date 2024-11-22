@@ -1,0 +1,19 @@
+uuid: e98889e2-aaec-403e-bfda-2813a7c83c6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_email_address
+    - taxonomy.vocabulary.team
+id: taxonomy_term.team.field_email_address
+field_name: field_email_address
+entity_type: taxonomy_term
+bundle: team
+label: 'Email Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

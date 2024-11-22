@@ -1,0 +1,30 @@
+uuid: 94b40200-5b9f-4dbc-a013-9eed17ad582b
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_type
+field_name: field_type
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: senior_leadership
+      label: 'Senior Leadership'
+    -
+      value: house_members
+      label: 'House Members'
+    -
+      value: other_team_group
+      label: 'Other team Group'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

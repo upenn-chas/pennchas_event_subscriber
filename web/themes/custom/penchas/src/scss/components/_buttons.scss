@@ -15,12 +15,13 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   font-weight: 700;
+  text-transform: capitalize;
   &:focus {
     box-shadow: none;
     outline: none;
   }
   @include media-query('mobile') {
-    font-size: 18px;    
+    font-size: 18px;
   }
 }
 
@@ -110,7 +111,7 @@ button {
     line-height: 50px;
     font-size: 18px;
   }
- 
+
 
   &.with-arrow {
     &:hover {

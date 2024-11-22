@@ -1,0 +1,21 @@
+uuid: 33dcf93a-6420-4836-a000-f41a7fb2ddf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_type
+    - taxonomy.vocabulary.team
+  module:
+    - options
+id: taxonomy_term.team.field_type
+field_name: field_type
+entity_type: taxonomy_term
+bundle: team
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - group.type.house1
+  module:
+    - role_extend
+third_party_settings:
+  role_extend:
+    role_categories:
+      32: 0
+      31: 0
 id: house1-resident
 label: Resident
 weight: -7

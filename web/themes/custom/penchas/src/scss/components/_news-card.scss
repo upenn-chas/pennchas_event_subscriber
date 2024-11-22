@@ -6,7 +6,7 @@
   span {
     font-size: 12px;
     text-transform: uppercase;
-    font-family: $teritoryFont;  
+    font-family: $teritoryFont;
   }
 }
 
@@ -67,15 +67,14 @@
     }
   }
 
-   
+
   &:hover {
     h5 {
       a {
         color: $redHighlightColor;
       }
     }
-  }  
-
+  }
 }
 
 .news-cards {
@@ -93,8 +92,8 @@
 }
 
 .mac-os{
-  .image-with-text-boxed{ 
-    .section-title{ 
+  .image-with-text-boxed{
+    .section-title{
       h2 {
         margin-bottom: 22px;
       }

@@ -43,11 +43,11 @@ img {
 
 .space {
   padding: 80px 0;
-  
+
   @include media-query('mobile') {
     padding: 50px 0;
   }
- 
+
 }
 .space-top {
   padding-top: 80px;
@@ -94,7 +94,7 @@ body {
     padding-bottom: 0;
   }
 }
-.node__content{ 
+.node__content{
   p {
     font-size: 18px;
   }
@@ -117,4 +117,10 @@ body {
   @include media-query('mobile') {
     margin-bottom: 50px;
   }
+}
+
+.user-logged-in nav.tabs {
+  position: relative;
+  z-index: 11;
+  margin: 0;
 }

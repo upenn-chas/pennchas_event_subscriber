@@ -1,9 +1,9 @@
-.cta-boxes { 
+.cta-boxes {
   border-top: 1px solid $primaryColor;
   @include media-query('tablet') {
     padding-bottom: 52px;
   }
- 
+
   &.align-left {
     .cta-box {
       text-align: left;
@@ -31,11 +31,11 @@
   text-align: center;
   position: relative;
   padding-top: 60px;
-  
- 
-  
+  margin-top: 50px;
+
   @include media-query('tablet') {
     margin-bottom: 40px;
+    margin: 0px;
   }
   &:before {
     content: "";
@@ -44,8 +44,8 @@
     top: 0%;
     transform: translate(-50%,-27%) scale(0.5);
     background-color: $yellowHighlightColor;
-    width: 240px;
-    height: 240px;
+    width: 265px;
+    height: 265px;
     transition: all ease-in-out 0.3s;
     border-radius: 50%;
     @include media-query('tablet') {

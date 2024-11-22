@@ -1,0 +1,23 @@
+<?php
+
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupType;
+
+function get_all_group_roles(){
+  $all_roles = [];
+  $group_type_entity = GroupType::load('house1');
+  if ($group_type_entity) {
+    $roles = $group_type_entity->getRoles();
+
+    foreach ($roles as $role_key => $role) {
+
+      // Skip this role if it contains "admin"
+      // Get all roles excluding the Admin roles.
+      if (strpos(strtolower($role->label()), 'admin') !== false) {
+        continue;
+      }
+      $all_roles[$role_key] = $role->label();
+    }
+    return $all_roles;
+  }
+}
