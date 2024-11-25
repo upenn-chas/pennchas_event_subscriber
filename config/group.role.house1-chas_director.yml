@@ -5,13 +5,6 @@ dependencies:
   config:
     - group.type.house1
     - user.role.chas_director
-  module:
-    - role_extend
-third_party_settings:
-  role_extend:
-    role_categories:
-      31: '31'
-      32: 0
 id: house1-chas_director
 label: 'CHAS Director'
 weight: 2

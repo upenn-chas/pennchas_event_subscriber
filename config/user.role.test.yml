@@ -1,16 +1,7 @@
 uuid: f9a4a604-67c3-4714-808f-6d35254b7bf9
 langcode: en
 status: true
-dependencies:
-  module:
-    - role_extend
-third_party_settings:
-  role_extend:
-    role_categories:
-      62: 0
-      63: 0
-      64: 0
-      65: 0
+dependencies: {  }
 id: test
 label: Test
 weight: -1

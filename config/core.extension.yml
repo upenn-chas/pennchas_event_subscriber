@@ -15,6 +15,7 @@ module:
   color_field: 0
   comment: 0
   config: 0
+  config_form_extension: 0
   contact: 0
   content_moderation: 0
   contextual: 0
@@ -76,8 +77,6 @@ module:
   penchas_block_group_role_condition: 0
   recreate_block_content: 0
   responsive_image: 0
-  role_extend: 0
-  room_form: 0
   search: 0
   section_library: 0
   shortcut: 0

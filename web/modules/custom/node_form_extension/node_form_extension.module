@@ -1,37 +1,134 @@
 <?php
 
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\AlertCommand;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\node_form_extension\Plugin\RoomReservationHandler;
+use Drupal\user\Entity\Role;
 
-function node_form_extension_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
+function node_form_extension_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
 {
-    if($form_id === 'node_room_form') {
-        // dd($form['field_max_room_booking_duration']['widget'][0]['value']);
+    if ($form_id === 'node_reserve_room_form' || $form_id === 'node_reserve_room_edit_form') {
+        $form['field_room']['widget']['#ajax'] = [
+            'callback' => 'onRoomChangedAjax',
+            'event' => 'change'
+        ];
     }
+}
+
+function onRoomChangedAjax(array $form, FormStateInterface $form_state)
+{
+    $request = \Drupal::request();
+    $response = new AjaxResponse();
+    if ($request->query->has('ajax_form') && $request->query->get('ajax_form') == 1) {
+        $current_user = \Drupal::currentUser();
+        $result = 'You are not allowed to booking this room';
+        $selected_room = $form_state->getValue('field_room');
+        $selected_room_id = $selected_room[0]['target_id'];
+        $room = Node::load($selected_room_id);
+        $room_available_to = $room->get('field_available_to')->getString();
+
+        $group = \Drupal::routeMatch()->getParameter('group');
+        $member = $group->getMember($current_user);
+        $member_roles = $member->getRoles();
+        foreach ($member_roles as $role) {
+            $categories = $role->getThirdPartySetting('role_extend', 'role_categories');
+            if ($categories && isset($categories[$room_available_to])) {
+                $result = "Room is available";
+            }
+        }
+        $response->addCommand(new AlertCommand($result));
+        return $response;
+    }
+    // return ['#markup' => '<div>sdcvjsdgfhjsgdshgk</div>'];
+    \Drupal::messenger()->addStatus('Test');
+    $response->addCommand(new AlertCommand('OK OK'));
+    return $response;
 }
 
 function node_form_extension_entity_presave(EntityInterface $entity)
 {
-    if ($entity instanceof NodeInterface && $entity->bundle() === 'reserve_room') {
-        $handler = new RoomReservationHandler();
-        $handler->handlePreSave($entity);
+    if ($entity instanceof NodeInterface) {
+        $node_type = $entity->bundle();
+        if ($node_type === 'reserve_room') {
+            $handler = new RoomReservationHandler();
+            $handler->handlePreSave($entity);
+        } else if ($node_type === 'room') {
+            $url_alias = $entity->hasField('path') ? $entity->get('path')->alias : "";
+            $nid = $entity->id();
+            $node_alias = $url_alias ?: ('/' . slugify($entity->getTitle()));
+            $group_id = getGroupIdsByEntity($nid);
+            if (!empty($group_id)) {
+                $group = Group::load($group_id);
+                if ($group && $group->hasField('field_house_machine_name')) {
+                    $group_machine_name = $group->get('field_house_machine_name')->value;
+                    if (!empty($group_machine_name)) {
+                        $node_alias = $group_machine_name . $node_alias;
+                    }
+                }
+            }
+            $entity->set('field_group_ref', $node_alias);
+        }
     }
 }
 
 function node_form_extension_node_insert(Node $node)
 {
-    if ($node->getType() === 'reserve_room') {
+    $node_type = $node->getType();
+    if ($node_type === 'reserve_room') {
         $eventHandler = new RoomReservationHandler();
         $eventHandler->handleInsert($node);
+    } else if ($node_type === 'room') {
+        $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
+        $node->setNewRevision(false);
+        $node->save();
     }
 }
 
-// function node_form_extension_node_update(\Drupal\node\Entity\Node $node)
-// {
-//     if ($node->getType() === 'chas_event') {
-//         $eventHandler = new RoomReservationHandler();
-//         $eventHandler->handleEventUpdate($node);
-//     }
-// }
+function node_form_extension_node_update(Node $node)
+{
+    $node_type = $node->getType();
+    if ($node_type === 'room') {
+        $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
+        $node->setNewRevision(false);
+        $node->save();
+    }
+}
+
+// use Drupal\Core\Render\BubbleableMetadata;
+function getGroupIdsByEntity($nid)
+{
+    $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
+    $query->innerjoin('groups_field_data', 'gfd', 'gr.gid = gfd.id');
+    $query->condition('gr.entity_id', $nid);
+
+    // Don't include group user memberships in the query.
+    $query->condition('gr.type', 'group-group_membership', '!=');
+
+    $query->fields('gr', ['gid']);
+    $result = $query->execute();
+    $groupIds = [];
+    foreach ($result as $record) {
+        $groupIds = $record->gid;
+    }
+    return $groupIds;
+}
+
+function slugify($text, string $divider = '-')
+{
+    $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+    $text = preg_replace('~[^-\w]+~', '', $text);
+    $text = trim($text, $divider);
+    $text = preg_replace('~-+~', $divider, $text);
+    $text = strtolower($text);
+
+    if (empty($text)) {
+        return 'n-a';
+    }
+
+    return $text;
+}

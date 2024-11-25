@@ -1,5 +1,5 @@
-name: "Role Extend"
-description: "Extend the role form with extra field."
+name: "Config Form Extension"
+description: "Extend the config entity formss."
 type: module
 core_version_requirement: ^10
 version: 1.0

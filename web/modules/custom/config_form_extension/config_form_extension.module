@@ -3,7 +3,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 
-function role_extend_form_alter(&$form, FormStateInterface $form_state, $form_id)
+function config_form_extension_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
     if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
 
@@ -15,11 +15,11 @@ function role_extend_form_alter(&$form, FormStateInterface $form_state, $form_id
           }
 
           $role = $form_state->getFormObject()->getEntity();
-          $existing_categories = $role->getThirdPartySetting('role_extend', 'role_categories');
+          $existing_categories = $role->getThirdPartySetting('umbera_roles', 'target_id');
 
-          $form['role_categories'] = [
+          $form['umbera_roles'] = [
               '#type' => 'checkboxes',
-              '#title' => t('Categories'),
+              '#title' => t('Umbera Roles'),
               '#default_value' => $existing_categories ?: '',
               '#options' => $categories,
           ];
@@ -27,7 +27,7 @@ function role_extend_form_alter(&$form, FormStateInterface $form_state, $form_id
           if($form['actions']){
             foreach (array_keys($form['actions']) as $action) {
                 if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
-                    $form['actions'][$action]['#submit'][] = 'role_extend_submit_handler';
+                    $form['actions'][$action]['#submit'][] = 'role_form_submit_handler';
                 }
             }
           }
@@ -35,10 +35,11 @@ function role_extend_form_alter(&$form, FormStateInterface $form_state, $form_id
     }
 }
 
-function role_extend_submit_handler(&$form, FormStateInterface $form_state)
+function role_form_submit_handler(&$form, FormStateInterface $form_state)
 {
-    $role_categories = $form_state->getValue('role_categories');
+    $role_categories = $form_state->getValue('umbera_roles');
+    $role_categories = array_filter($role_categories);
     $role = $form_state->getFormObject()->getEntity();
-    $role->setThirdPartySetting('role_extend', 'role_categories', $role_categories);
+    $role->setThirdPartySetting('umbera_roles', 'target_id', $role_categories);
     $role->save();
 }
