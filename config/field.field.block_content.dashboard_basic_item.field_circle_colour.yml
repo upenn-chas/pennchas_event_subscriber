@@ -1,0 +1,22 @@
+uuid: d28f67b5-b51b-466b-86fd-e552dbe6178b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+    - field.storage.block_content.field_circle_colour
+  module:
+    - color_field
+id: block_content.dashboard_basic_item.field_circle_colour
+field_name: field_circle_colour
+entity_type: block_content
+bundle: dashboard_basic_item
+label: 'Circle Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

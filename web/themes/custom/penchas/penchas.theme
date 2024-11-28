@@ -117,6 +117,7 @@ function penchas_preprocess_block(&$variables) {
     }
     $variables['all_group_houses'] = $groups_html;
   }
+  // dd($variables['plugin_id']);
 }
 
 function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {

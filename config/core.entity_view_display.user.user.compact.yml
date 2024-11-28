@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_category
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
+    - field.field.user.user.field_user_categories
+    - field.field.user.user.layout_builder__layout
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -32,8 +35,11 @@ content:
     weight: 0
     region: content
 hidden:
+  field_category: true
   field_employee_number: true
   field_full_name: true
   field_preferred_name: true
   field_title_position: true
+  field_user_categories: true
+  layout_builder__layout: true
   member_for: true

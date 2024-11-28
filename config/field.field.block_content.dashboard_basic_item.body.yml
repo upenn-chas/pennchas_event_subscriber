@@ -1,16 +1,16 @@
-uuid: ce38ebee-2cfe-4405-8df6-4f8536084bb2
+uuid: 3a93009a-9f23-4f65-b84e-dda8e3fc891b
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.all_houses
+    - block_content.type.dashboard_basic_item
     - field.storage.block_content.body
   module:
     - text
-id: block_content.all_houses.body
+id: block_content.dashboard_basic_item.body
 field_name: body
 entity_type: block_content
-bundle: all_houses
+bundle: dashboard_basic_item
 label: Body
 description: ''
 required: false

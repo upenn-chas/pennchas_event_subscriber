@@ -18,6 +18,7 @@ function get_all_group_roles(){
       }
       $all_roles[$role_key] = $role->label();
     }
+
     return $all_roles;
   }
 }

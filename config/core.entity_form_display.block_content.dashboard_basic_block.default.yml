@@ -5,7 +5,9 @@ dependencies:
   config:
     - block_content.type.dashboard_basic_block
     - field.field.block_content.dashboard_basic_block.body
+    - field.field.block_content.dashboard_basic_block.field_cta
   module:
+    - link
     - text
 id: block_content.dashboard_basic_block.default
 targetEntityType: block_content
@@ -21,6 +23,14 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+    third_party_settings: {  }
+  field_cta:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   info:
     type: string_textfield
