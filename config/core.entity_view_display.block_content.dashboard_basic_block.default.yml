@@ -5,7 +5,9 @@ dependencies:
   config:
     - block_content.type.dashboard_basic_block
     - field.field.block_content.dashboard_basic_block.body
+    - field.field.block_content.dashboard_basic_block.field_cta
   module:
+    - link
     - text
 id: block_content.dashboard_basic_block.default
 targetEntityType: block_content
@@ -18,5 +20,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden: {  }

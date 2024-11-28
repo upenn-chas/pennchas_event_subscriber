@@ -1,18 +1,19 @@
-uuid: 27b637b1-d720-49de-a8d1-c8c3761678e9
+uuid: 584a1b8d-00cb-4188-a2ab-cccf6113b29b
 langcode: en
 status: true
 dependencies:
   module:
     - block_content
-    - link
-id: block_content.field_cta
-field_name: field_cta
+    - media
+id: block_content.field_icon
+field_name: field_icon
 entity_type: block_content
-type: link
-settings: {  }
-module: link
+type: entity_reference
+settings:
+  target_type: media
+module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,0 +1,8 @@
+uuid: f9d5d4d6-a643-4e6b-a33e-bdc325aa31ab
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard-menu
+label: 'Dashboard menu'
+description: 'A dashboard menu items for frontend'
+locked: false

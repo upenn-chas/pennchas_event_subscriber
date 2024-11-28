@@ -1,0 +1,39 @@
+uuid: d7cb2d2b-2870-45bf-b832-8de431f446f2
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dashboard_basic_block:e2279dc0-e06d-4277-8261-1ae32eea21ba'
+  module:
+    - block_content
+    - penchas_block_group_role_condition
+    - user
+  theme:
+    - penchas
+id: penchas_raresources
+theme: penchas
+region: content
+weight: -13
+provider: null
+plugin: 'block_content:e2279dc0-e06d-4277-8261-1ae32eea21ba'
+settings:
+  id: 'block_content:e2279dc0-e06d-4277-8261-1ae32eea21ba'
+  label: 'RA Resources'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  penchas_block_group_role_condition_plugin:
+    id: penchas_block_group_role_condition_plugin
+    block_group_roles:
+      house1-adm_director: house1-adm_director
+    negate: null
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      chas_director: chas_director

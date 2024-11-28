@@ -1,0 +1,9 @@
+uuid: cb91d297-d92e-4577-8d8f-d1c0e8ab987e
+langcode: en
+status: true
+dependencies: {  }
+name: 'User Categories'
+vid: user_categories
+description: 'Categories used in people section '
+weight: 0
+new_revision: false

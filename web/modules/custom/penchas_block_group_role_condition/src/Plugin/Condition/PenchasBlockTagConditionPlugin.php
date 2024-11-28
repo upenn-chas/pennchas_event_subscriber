@@ -4,6 +4,9 @@ namespace Drupal\penchas_block_group_role_condition\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupRole;
+use Drupal\group\Entity\GroupContent;
 
 /**
  * This main class which add ability to determine device.
@@ -74,12 +77,44 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function evaluate() {
+
     if (empty($this->configuration['block_group_roles']) && !$this->isNegated()) {
       return TRUE;
     }
-    $termIds = $this->configuration['block_group_roles'];
-    $request = \Drupal::request();
-    $request_attributes = $request->attributes;
+    // $termIds = $this->configuration['block_group_roles'];
+    // $request = \Drupal::request();
+    // $request_attributes = $request->attributes;
+
+
+    $configured_roles = $this->configuration['block_group_roles'];
+
+    // Load the current user.
+    $current_user = \Drupal::currentUser();
+    $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+
+    if (!$user_entity) {
+      return FALSE; // No user entity, so the condition fails.
+    }
+
+    // Get group memberships for the user.
+    $memberships = \Drupal::service('group.membership_loader')->loadByUser($user_entity);
+
+    $user_roles = [];
+    foreach ($memberships as $membership) {
+      $roles = $membership->getRoles();
+
+      foreach ($roles as $role) {
+        if ($role instanceof GroupRole) {
+          $user_roles[] = $role->id();
+        }
+      }
+    }
+
+    $matching_roles = array_intersect($user_roles, $configured_roles);
+    return $matching_roles;
+
+
+
     // if ($request_attributes->has('node') && $request_attributes->get('_route') === 'entity.node.canonical') {
     //   $node = $request_attributes->get('node');
     //   $node_id = $node->id();

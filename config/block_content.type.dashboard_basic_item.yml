@@ -1,0 +1,8 @@
+uuid: e8f5040a-fad8-4047-9ffb-95abdf1af096
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_basic_item
+label: 'Dashboard tabs'
+revision: false
+description: null
