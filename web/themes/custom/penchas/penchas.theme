@@ -117,7 +117,31 @@ function penchas_preprocess_block(&$variables) {
     }
     $variables['all_group_houses'] = $groups_html;
   }
-  // dd($variables['plugin_id']);
+
+  /**
+   * Fetch all blocks of a specific block type.
+   */
+  $block_type = 'dashboard_basic_block'; // Replace with your custom block type machine name.
+  $block_content = \Drupal::entityTypeManager()
+    ->getStorage('block_content')
+    ->loadByProperties(['type' => $block_type]);
+    // Loop through the blocks and get content.
+    foreach ($block_content as $block) {
+      // You can access fields like this:
+    $field_value = $block->get('info')->value; // Replace 'field_name' with your field machine name.
+
+    // Or render the entire content for a block.
+    $content = \Drupal::entityTypeManager()
+      ->getViewBuilder('block_content')
+      ->view($block);
+
+    // Do something with the content, e.g., return or output.
+    // $content is a render array that can be passed to a theme function or rendered directly.
+  }
+  $renderer = \Drupal::service('renderer');
+  $html_content = $renderer->render($content);
+  $variables['all_dashboard_basic_block'] = $html_content;
+
 }
 
 function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {

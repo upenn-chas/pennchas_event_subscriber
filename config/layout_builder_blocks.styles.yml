@@ -27,3 +27,4 @@ block_restrictions:
   - 'inline_block:footer_services'
   - 'inline_block:top_content_section'
   - page_title_block
+  - local_tasks_block

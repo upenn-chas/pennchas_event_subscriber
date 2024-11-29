@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_chas_news
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.layout_builder__layout
     - image.style.thumbnail
     - node.type.article
   module:
@@ -124,4 +125,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  layout_builder__layout: true

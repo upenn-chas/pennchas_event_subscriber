@@ -1,0 +1,11 @@
+uuid: 500ef4d1-113a-49b6-b519-7a1cb909fe64
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.moderator
+label: Moderator
+description: 'Display for moderator dashboard.'
+targetEntityType: node
+cache: true

@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
-    - field.field.user.user.field_category
+    - block_content.type.dashboard_basic_block
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
@@ -37,6 +37,47 @@ third_party_settings:
     enabled: true
     allow_custom: true
     sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: asd
+          context_mapping: {  }
+        components:
+          587c18aa-e69d-4f62-a4b3-93a2f3d263e1:
+            uuid: 587c18aa-e69d-4f62-a4b3-93a2f3d263e1
+            region: content
+            configuration:
+              id: 'field_block:user:user:roles'
+              label: Roles
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          79047d10-b994-4e07-b9f3-e224f25ab66a:
+            uuid: 79047d10-b994-4e07-b9f3-e224f25ab66a
+            region: content
+            configuration:
+              id: 'inline_block:dashboard_basic_block'
+              label: 'Lorem Ipsum '
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 90
+              block_revision_id: 107
+              block_serialized: null
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
@@ -337,12 +378,30 @@ third_party_settings:
                 entity: '@user.current_user_context:current_user'
                 view_mode: view_mode
               formatter:
+                type: entity_reference_entity_id
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          c9b68337-cd6d-4bdb-b4e4-db05c8830ca5:
+            uuid: c9b68337-cd6d-4bdb-b4e4-db05c8830ca5
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:roles'
+              label: Roles
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
                 type: entity_reference_label
-                label: hidden
+                label: above
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -

@@ -1,0 +1,6 @@
+name: "View Alteration"
+description: "Extension to use view alteration hooks."
+type: module
+core_version_requirement: ^10
+version: 1.0
+package: Custom

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Implements hook_page_attachments().
+ */
+function view_alteration_page_attachments(array &$attachments) {
+  // Attach the custom JavaScript file for AJAX Views pager.
+  $attachments['#attached']['library'][] = 'view_alteration/ajax_pager';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function view_alteration_theme() {
+  return [
+    'ajax_pager' => [
+      'version' => '1.0',
+      'js' => [
+        'js/ajax_pager.js',
+      ],
+    ],
+  ];
+}

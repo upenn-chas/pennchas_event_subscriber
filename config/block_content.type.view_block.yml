@@ -1,0 +1,8 @@
+uuid: 05704f11-3150-4792-b56c-9230984bd69c
+langcode: en
+status: true
+dependencies: {  }
+id: view_block
+label: 'View Block'
+revision: false
+description: null
