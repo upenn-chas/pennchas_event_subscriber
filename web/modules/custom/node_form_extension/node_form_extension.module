@@ -1,7 +1,7 @@
 <?php
 
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\AlertCommand;
+use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
@@ -9,46 +9,8 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\node_form_extension\Plugin\RoomReservationHandler;
 use Drupal\user\Entity\Role;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-function node_form_extension_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
-{
-    if ($form_id === 'node_reserve_room_form' || $form_id === 'node_reserve_room_edit_form') {
-        $form['field_room']['widget']['#ajax'] = [
-            'callback' => 'onRoomChangedAjax',
-            'event' => 'change'
-        ];
-    }
-}
-
-function onRoomChangedAjax(array $form, FormStateInterface $form_state)
-{
-    $request = \Drupal::request();
-    $response = new AjaxResponse();
-    if ($request->query->has('ajax_form') && $request->query->get('ajax_form') == 1) {
-        $current_user = \Drupal::currentUser();
-        $result = 'You are not allowed to booking this room';
-        $selected_room = $form_state->getValue('field_room');
-        $selected_room_id = $selected_room[0]['target_id'];
-        $room = Node::load($selected_room_id);
-        $room_available_to = $room->get('field_available_to')->getString();
-
-        $group = \Drupal::routeMatch()->getParameter('group');
-        $member = $group->getMember($current_user);
-        $member_roles = $member->getRoles();
-        foreach ($member_roles as $role) {
-            $categories = $role->getThirdPartySetting('role_extend', 'role_categories');
-            if ($categories && isset($categories[$room_available_to])) {
-                $result = "Room is available";
-            }
-        }
-        $response->addCommand(new AlertCommand($result));
-        return $response;
-    }
-    // return ['#markup' => '<div>sdcvjsdgfhjsgdshgk</div>'];
-    \Drupal::messenger()->addStatus('Test');
-    $response->addCommand(new AlertCommand('OK OK'));
-    return $response;
-}
 
 function node_form_extension_entity_presave(EntityInterface $entity)
 {
@@ -91,12 +53,12 @@ function node_form_extension_node_insert(Node $node)
 
 function node_form_extension_node_update(Node $node)
 {
-    $node_type = $node->getType();
-    if ($node_type === 'room') {
-        $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
-        $node->setNewRevision(false);
-        $node->save();
-    }
+    // $node_type = $node->getType();
+    // if ($node_type === 'room') {
+    //     $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
+    //     // $node->setNewRevision(false);
+    //     $node->save();
+    // }
 }
 
 // use Drupal\Core\Render\BubbleableMetadata;

@@ -1,0 +1,7 @@
+reserve_room_smart_date:
+  version: 1.0
+  js:
+    js/reserve_room.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

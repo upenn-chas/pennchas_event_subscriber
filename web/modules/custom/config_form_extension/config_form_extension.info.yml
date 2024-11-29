@@ -1,8 +1,0 @@
-name: "Config Form Extension"
-description: "Extend the config entity formss."
-type: module
-core_version_requirement: ^10
-version: 1.0
-package: Custom
-dependencies:
-  - drupal:group

@@ -1,0 +1,11 @@
+event_calendar.ajax:
+  path: /group/{group}/check-room-availability
+  defaults:
+    _controller: '\Drupal\pennchas_form_alter\Controller\ReserveRoomController::onDateTimeSelect'
+    _format: 'json'
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      group:
+        type: entity:group

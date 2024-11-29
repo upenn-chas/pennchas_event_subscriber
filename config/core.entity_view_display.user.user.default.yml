@@ -219,6 +219,115 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          d0a95390-6b3b-4dae-938a-b5c01f9e074c:
+            uuid: d0a95390-6b3b-4dae-938a-b5c01f9e074c
+            region: content
+            configuration:
+              id: 'field_block:user:user:user_picture'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: content
+                  image_style: thumbnail
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1322bad3-5c05-4b7f-aab8-eb18facbedcb:
+            uuid: 1322bad3-5c05-4b7f-aab8-eb18facbedcb
+            region: content
+            configuration:
+              id: 'extra_field_block:user:user:member_for'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          02676454-9f9f-41d7-9d17-bede16ed7194:
+            uuid: 02676454-9f9f-41d7-9d17-bede16ed7194
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_full_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          dbf5dcf2-a8c6-471e-b196-7345a2f4c2cb:
+            uuid: dbf5dcf2-a8c6-471e-b196-7345a2f4c2cb
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_preferred_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          1143c3e7-dfb0-4c6c-8c48-673f9e1e5dd2:
+            uuid: 1143c3e7-dfb0-4c6c-8c48-673f9e1e5dd2
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_title_position'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          375c2478-1d54-4b10-92f0-e6be9ab7d68a:
+            uuid: 375c2478-1d54-4b10-92f0-e6be9ab7d68a
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_employee_number'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          04c127fb-aa95-4234-b0cb-b625fd26cde3:
+            uuid: 04c127fb-aa95-4234-b0cb-b625fd26cde3
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_user_categories'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'

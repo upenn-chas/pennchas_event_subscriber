@@ -60,7 +60,7 @@ content:
       allday: false
       remove_seconds: false
       duration_overlay: false
-      separator: ''
+      separator: to
     third_party_settings:
       smart_date_recur:
         modal: true
