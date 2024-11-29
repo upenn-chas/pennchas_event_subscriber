@@ -57,14 +57,15 @@ function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_st
 function onRoomSelect(array $form, FormStateInterface $form_state)
 {
     $request = \Drupal::request();
-
-    if (!$request->query->has('ajax_form') || $request->query->get('ajax_form') !== 1) {
+    if (!$request->query->has('ajax_form') || (int) $request->query->get('ajax_form') !== 1) {
         throw new AccessDeniedHttpException();
     }
-    $response = new AjaxResponse();
     $current_user = \Drupal::currentUser();
-    $result = t('You are not authorized to book this room.');
-    $message_type = 'error';
+    $response = new AjaxResponse();
+    if ($current_user->hasRole('administrator')) {
+        return $response;
+    }
+    $isAuthentic = false;
     $selected_room = $form_state->getValue('field_room');
     $selected_room_id = $selected_room[0]['target_id'];
     $room = Node::load($selected_room_id);
@@ -81,12 +82,13 @@ function onRoomSelect(array $form, FormStateInterface $form_state)
     foreach ($roles as $role) {
         $umbera_roles = $role->getThirdPartySetting('umbera_roles', 'target_ids');
         if ($umbera_roles && isset($umbera_roles[$room_available_to])) {
-            $result = t('The room is available.');
-            $message_type = 'status';
+            $isAuthentic = true;
             break;
         }
     }
-    $response->addCommand(new MessageCommand($result, NULL, ['type' => $message_type]));
+    if (!$isAuthentic) {
+        $response->addCommand(new MessageCommand(t('You are not authorized to book this room.'), NULL, ['type' => 'error']));
+    }
     return $response;
 }
 
