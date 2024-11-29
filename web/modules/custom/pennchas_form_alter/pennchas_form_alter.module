@@ -1,28 +1,25 @@
 <?php
 
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\node\Entity\Node;
-use Drupal\user\Entity\Role;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
 {
-    if ($form_id === 'node_reserve_room_form' || $form_id === 'node_reserve_room_edit_form') {
-        pennchas_form_alter_reserve_room_form($form, $form_state);
-    } else if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
+    if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
         pennchas_form_alter_role_form($form, $form_state);
     }
 }
 
-function pennchas_form_alter_reserve_room_form(array &$form, FormStateInterface $form_state)
+function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entity_type, $bundle)
 {
-    $form['field_room']['widget']['#ajax'] = [
-        'callback' => 'onRoomSelect',
-        'event' => 'change'
-    ];
-    $form['#attached']['library'][] = 'pennchas_form_alter/reserve_room_smart_date';
+    if ($bundle === 'reserve_room') {
+        if (isset($fields['field_room'])) {
+            $fields['field_room']->addConstraint('AllowRoomConstraint');
+        }
+
+        if (isset($fields['field_event_schedule'])) {
+            $fields['field_event_schedule']->addConstraint('RoomAvailableConstraint');
+        }
+    }
 }
 
 function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_state)
@@ -52,44 +49,6 @@ function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_st
             }
         }
     }
-}
-
-function onRoomSelect(array $form, FormStateInterface $form_state)
-{
-    $request = \Drupal::request();
-    if (!$request->query->has('ajax_form') || (int) $request->query->get('ajax_form') !== 1) {
-        throw new AccessDeniedHttpException();
-    }
-    $current_user = \Drupal::currentUser();
-    $response = new AjaxResponse();
-    if ($current_user->hasRole('administrator')) {
-        return $response;
-    }
-    $isAuthentic = false;
-    $selected_room = $form_state->getValue('field_room');
-    $selected_room_id = $selected_room[0]['target_id'];
-    $room = Node::load($selected_room_id);
-    $room_available_to = $room->get('field_available_to')->getString();
-
-    $group = \Drupal::routeMatch()->getParameter('group');
-    $member = $group->getMember($current_user);
-    $roles = [];
-    if ($member) {
-        $roles = $member->getRoles();
-    } else {
-        $roles = Role::loadMultiple($current_user->getRoles(true));
-    }
-    foreach ($roles as $role) {
-        $umbera_roles = $role->getThirdPartySetting('umbera_roles', 'target_ids');
-        if ($umbera_roles && isset($umbera_roles[$room_available_to])) {
-            $isAuthentic = true;
-            break;
-        }
-    }
-    if (!$isAuthentic) {
-        $response->addCommand(new MessageCommand(t('You are not authorized to book this room.'), NULL, ['type' => 'error']));
-    }
-    return $response;
 }
 
 function role_form_submit_handler(&$form, FormStateInterface $form_state)
