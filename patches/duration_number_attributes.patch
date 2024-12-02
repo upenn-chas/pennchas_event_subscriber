@@ -1,0 +1,17 @@
+diff --git a/src/Element/DurationElement.php b/src/Element/DurationElement.php
+index 7161704..0925464 100644
+--- a/src/Element/DurationElement.php
++++ b/src/Element/DurationElement.php
+@@ -157,6 +157,12 @@ class DurationElement extends FormElement {
+           '#min' => 0,
+         ];
+ 
++        if(isset($element["#$key"])) {
++          foreach($element["#$key"] as $attr => $val) {
++            $element[$key][$attr] = $val;
++          }
++        }
++
+         // Apply the ajax of the main duration element to each granularity
+         // input.
+         if (!empty($element['#ajax'])) {

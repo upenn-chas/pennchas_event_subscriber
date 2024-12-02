@@ -24,7 +24,7 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
     public function validate(mixed $value, Constraint $constraint) {
         $roomId = (int) $this->context->getRoot()->get('field_room')->getString();
         $schedule = $value->getValue();
-        if(!$this->isBookingAvailable($roomId, $schedule)) {
+        if($this->isBookingAvailable($roomId, $schedule)) {
             $this->context->addViolation($constraint->noSlotAvailble);
         }
 

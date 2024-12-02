@@ -6,6 +6,11 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_s
 {
     if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
         pennchas_form_alter_role_form($form, $form_state);
+    } else if ($form_id === 'node_room_form' || $form_id === 'node_room_edit_form') {
+        $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#max'] = 23;
+        $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#step'] = 1;
+        $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#max'] = 30;
+        $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#step'] = 30;
     }
 }
 
@@ -24,38 +29,38 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entity_ty
 
 function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_state)
 {
-    $categories = [];
+    $umbera_roles = [];
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
     if (!empty($terms)) {
         foreach ($terms as $term) {
-            $categories[$term->tid] = $term->name;
+            $umbera_roles[$term->name] = $term->name;
         }
 
         $role = $form_state->getFormObject()->getEntity();
-        $existing_categories = $role->getThirdPartySetting('umbera_roles', 'target_ids');
+        $existing_umbera_roles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
 
         $form['umbera_roles'] = [
             '#type' => 'checkboxes',
             '#title' => t('Umbera Roles'),
-            '#default_value' => $existing_categories ?: '',
-            '#options' => $categories,
+            '#default_value' => $existing_umbera_roles ?: '',
+            '#options' => $umbera_roles,
+            // '#validate' => ['role_form_validation'],
         ];
-
-        if ($form['actions']) {
-            foreach (array_keys($form['actions']) as $action) {
-                if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
-                    $form['actions'][$action]['#submit'][] = 'role_form_submit_handler';
-                }
-            }
-        }
+        
+        $form['actions']['submit']['#submit'][] = 'role_form_submit_handler';
     }
+}
+
+function role_form_validation($form, FormStateInterface $form_state)
+{
+    $form_state->setValue('umbera_roles', $form_state->getValue('umbera_roles'));
 }
 
 function role_form_submit_handler(&$form, FormStateInterface $form_state)
 {
-    $role_categories = $form_state->getValue('umbera_roles');
-    $role_categories = array_filter($role_categories);
+    $umbera_roles = $form_state->getValue('umbera_roles');
+    $umbera_roles = array_filter($umbera_roles);
     $role = $form_state->getFormObject()->getEntity();
-    $role->setThirdPartySetting('umbera_roles', 'target_ids', $role_categories);
+    $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umbera_roles);
     $role->save();
 }
