@@ -7,8 +7,8 @@ dependencies:
     - field.field.node.reserve_room.field_email
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
+    - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
-    - field.field.node.reserve_room.field_purpose_of_request
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
     - node.type.reserve_room
@@ -71,20 +71,20 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
+  field_long_text:
+    type: string_textarea
+    weight: 26
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_phone:
     type: string_textfield
     weight: 10
     region: content
     settings:
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_purpose_of_request:
-    type: string_textarea
-    weight: 13
-    region: content
-    settings:
-      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_room:
