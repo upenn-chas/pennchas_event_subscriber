@@ -4,7 +4,6 @@ status: false
 dependencies:
   config:
     - core.entity_view_mode.user.full
-    - field.field.user.user.field_category
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
@@ -95,5 +94,4 @@ content:
     weight: 0
     region: content
 hidden:
-  field_category: true
   layout_builder__layout: true

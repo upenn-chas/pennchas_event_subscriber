@@ -10,6 +10,12 @@
   Drupal.behaviors.penchas = {
     attach: function(context, settings) {
       jQuery(document).ready(function() {
+        jQuery('#view-display-id-my_pending_events').hide();
+        jQuery('.events-tab-blocks li span').on('click', function(){
+          var clicked_element = jQuery(this).attr('data-wrap');
+          jQuery('.container .event-content').hide();
+          jQuery('#view-display-id-'+clicked_element).show();
+        });
 
         jQuery('select[name="field_number_of_residents_value"]').on('change', function (){
           console.log('testing control');

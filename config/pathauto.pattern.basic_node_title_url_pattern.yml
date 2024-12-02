@@ -1,0 +1,28 @@
+uuid: 62fcddff-72fb-49b6-af8d-025fe6f27458
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: basic_node_title_url_pattern
+label: 'Basic Node title URL pattern'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  8c60701a-61da-4df9-8aff-ee6f658d086f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 8c60701a-61da-4df9-8aff-ee6f658d086f
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      chas_event: chas_event
+      house_landing_page: house_landing_page
+      page: page
+      program_community: program_community
+      reserve_room: reserve_room
+      room: room
+selection_logic: and
+weight: -5
+relationships: {  }

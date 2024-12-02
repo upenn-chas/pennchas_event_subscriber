@@ -53,8 +53,10 @@ module:
   jquery_ui_resizable: 0
   layout_builder: 0
   layout_builder_blocks: 0
+  layout_builder_modal: 0
   layout_builder_restrictions: 0
   layout_builder_restrictions_by_region: 0
+  layout_builder_tabs: 0
   layout_discovery: 0
   link: 0
   mailsystem: 0
@@ -99,6 +101,7 @@ module:
   update: 0
   user: 0
   variationcache: 0
+  view_alteration: 0
   views_bootstrap: 0
   views_fields_combine: 0
   views_ui: 0

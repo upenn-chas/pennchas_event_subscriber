@@ -1,0 +1,71 @@
+<?php
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Provides a 'Dashboard Block' block.
+ *
+ * @Block(
+ *   id = "dashboard_basic_block",
+ *   admin_label = @Translation("Dashboard Block"),
+ *   category = @Translation("Custom")
+ * )
+ */
+class DashboardBlock extends BlockBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function build() {
+    // Retrieve the configuration settings
+    $config = $this->configuration;
+    $dropdown = $config['dropdown'] ?? FALSE;
+    $show_if_empty = $config['show_if_empty'] ?? TRUE;
+
+    // Logic to display content based on the settings
+    $content = [];
+    if ($dropdown) {
+      $content['dropdown'] = 'Cart in dropdown';
+    }
+    if ($show_if_empty || !empty($this->getCartItems())) {
+      $content['cart'] = 'Cart contents here';
+    }
+
+    return [
+      '#theme' => 'dashboard_basic_block',
+      '#content' => $content,
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form['dropdown'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Display cart contents in dropdown'),
+      '#default_value' => $this->configuration['dropdown'] ?? FALSE,
+    ];
+
+    $form['show_if_empty'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Display block if cart is empty'),
+      '#default_value' => $this->configuration['show_if_empty'] ?? TRUE,
+    ];
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state) {
+    $this->configuration['dropdown'] = $form_state->getValue('dropdown');
+    $this->configuration['show_if_empty'] = $form_state->getValue('show_if_empty');
+  }
+
+  private function getCartItems() {
+    // Fetch cart items (this is just an example logic)
+    return [];
+  }
+}

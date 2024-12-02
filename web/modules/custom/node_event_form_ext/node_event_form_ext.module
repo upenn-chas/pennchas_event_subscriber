@@ -13,6 +13,20 @@ use Drupal\Core\Entity\EntityInterface;
  */
 function node_event_form_ext_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id)
 {
+  if($form_id == 'views_exposed_form' && ($form['#id'] == 'views-exposed-form-my-events-my-pending-events' ||  $form['#id'] == 'views-exposed-form-my-events-my-events-block')){
+    if (isset($form['moderation_state'])) {
+      $options = &$form['moderation_state']['#options'];
+      if( $form['#id'] == 'views-exposed-form-my-events-my-pending-events'){
+        if (isset($options['All'])) {
+          unset($options['All']);
+        }
+        unset($options['Editorial']['editorial-draft']);
+        unset($options['Editorial']['editorial-archived']);
+        unset($options['Editorial']['editorial-published']);
+        unset($options['Editorial']['editorial-denied']);
+      }
+    }
+  }
     if ($form_id === 'node_chas_event_form' || $form_id === 'node_chas_event_edit_form') {
         $form['field_audience_floor']['#states'] = [
             'visible' => [
