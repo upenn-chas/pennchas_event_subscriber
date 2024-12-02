@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.room.body
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -70,14 +71,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_group_ref:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 14
     region: content
   field_image:
     type: image
@@ -165,3 +158,4 @@ content:
     region: content
 hidden:
   body: true
+  field_group_ref: true

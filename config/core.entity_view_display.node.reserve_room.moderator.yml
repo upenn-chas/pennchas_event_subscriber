@@ -18,8 +18,141 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    enabled: false
+    enabled: true
     allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          146a9fed-42c4-4ec0-89e3-2bf33ba95c17:
+            uuid: 146a9fed-42c4-4ec0-89e3-2bf33ba95c17
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_support_contact'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          9c810df1-25f5-4c69-b8b2-44f9d562d203:
+            uuid: 9c810df1-25f5-4c69-b8b2-44f9d562d203
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_event_schedule'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: smartdate_default
+                label: above
+                settings:
+                  timezone_override: ''
+                  format_type: medium
+                  format: default
+                  force_chronological: false
+                  add_classes: false
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          d6d6d87a-e9c0-46a5-874d-971258b946e8:
+            uuid: d6d6d87a-e9c0-46a5-874d-971258b946e8
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_anticipated_participants'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          4a106de2-2e57-4499-bdf5-0f67dccc4b32:
+            uuid: 4a106de2-2e57-4499-bdf5-0f67dccc4b32
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_room'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          5ea3eaa9-173a-4ee9-81b1-087b89c96f75:
+            uuid: 5ea3eaa9-173a-4ee9-81b1-087b89c96f75
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_email'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          42414fd5-bdfc-44dc-b46e-7967ccdb196f:
+            uuid: 42414fd5-bdfc-44dc-b46e-7967ccdb196f
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_phone'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          e7426856-24ff-45bb-8bc8-981b8f119cd0:
+            uuid: e7426856-24ff-45bb-8bc8-981b8f119cd0
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_purpose_of_request'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
 id: node.reserve_room.moderator
 targetEntityType: node
 bundle: reserve_room
@@ -32,14 +165,14 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 15
+    weight: 2
     region: content
   field_email:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 4
     region: content
   field_event_schedule:
     type: smartdate_default
@@ -62,7 +195,7 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 12
+    weight: 1
     region: content
   field_phone:
     type: string
@@ -70,14 +203,14 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 104
+    weight: 5
     region: content
   field_purpose_of_request:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 106
+    weight: 6
     region: content
   field_room:
     type: entity_reference_label
@@ -85,7 +218,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 3
     region: content
   field_support_contact:
     type: string
@@ -93,11 +226,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
-hidden: {  }
+hidden:
+  links: true
