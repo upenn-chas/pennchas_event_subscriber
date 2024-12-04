@@ -9,15 +9,15 @@ id: node.reserve_room.field_anticipated_participants
 field_name: field_anticipated_participants
 entity_type: node
 bundle: reserve_room
-label: 'Maximum Occupancy'
+label: 'Estimated Guests'
 description: ''
 required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  min: 0
-  max: null
+  min: 1
+  max: 500
   prefix: ''
   suffix: ''
 field_type: integer

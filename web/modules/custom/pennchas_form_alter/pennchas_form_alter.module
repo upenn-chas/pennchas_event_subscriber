@@ -24,6 +24,10 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entity_ty
         if (isset($fields['field_event_schedule'])) {
             $fields['field_event_schedule']->addConstraint('RoomAvailableConstraint');
         }
+
+        if (isset($fields['field_anticipated_participants'])) {
+            $fields['field_anticipated_participants']->addConstraint('RoomMaxGuestConstraint');
+        }
     }
 }
 

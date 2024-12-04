@@ -2,6 +2,7 @@
 
 namespace Drupal\pennchas_form_alter\Plugin\Validation\Constraint;
 
+use DateTime;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
@@ -21,13 +22,24 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
      *
      * @return void
      */
-    public function validate(mixed $value, Constraint $constraint) {
+    public function validate(mixed $value, Constraint $constraint)
+    {
         $roomId = (int) $this->context->getRoot()->get('field_room')->getString();
+        $room = Node::load($roomId);
         $schedule = $value->getValue();
-        if($this->isBookingAvailable($roomId, $schedule)) {
+        if ($this->isBookingAvailable($roomId, $schedule)) {
             $this->context->addViolation($constraint->noSlotAvailble);
         }
-
+        $roomMaxBookingDuration = $room->get('field_max_room_booking_duration')->getValue();
+        $roomMaxBookingDurationInSeconds = $roomMaxBookingDuration[0]['seconds'];
+        $duration = $this->formatInterval($roomMaxBookingDurationInSeconds);
+        foreach ($schedule as $item) {
+            if (($item['duration'] * 60) > $roomMaxBookingDurationInSeconds) {
+                $this->context->addViolation($constraint->maxBookingTimeExceed, [
+                    '%duration' => $duration
+                ]);
+            }
+        }
     }
 
     public function isBookingAvailable($roomId, $schedule)
@@ -64,6 +76,22 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
         $result = $query->execute()->fetchAll();
 
         return (bool) count($result);
+    }
+
+    private function formatInterval($seconds)
+    {
+        $hours = floor($seconds / 3600);
+        $mintues = floor(($seconds / 60) % 60);
+        $hourText = $hours > 1 ? 'hours' : 'hour';
+        $minuteText = $hours > 1 ? 'mintues' : 'mintue';
+        if ($hours > 0 && $mintues > 0) {
+            return sprintf('%2d %s and %02d %s', $hours, $hourText, $mintues, $minuteText);
+        }
+        if ($hours > 0) {
+            return sprintf('%2d %s', $hours, $hourText);
+        }
+
+        return sprintf('%02d %s', $mintues, $minuteText);
     }
 
     private function generateOccurence(&$values, $entity_type, $bundle, $field_name, $month_limit)
@@ -226,6 +254,7 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
             unset($values[$index]);
 
             foreach ($instances as $rrule_index => $instance) {
+                dd($instance['end_value'] - $instance['value']);
                 $new_item['value'] = $instance['value'];
                 $new_item['end_value'] = $instance['end_value'];
                 $new_item['duration'] = ($instance['end_value'] - $instance['value']) / 60;
