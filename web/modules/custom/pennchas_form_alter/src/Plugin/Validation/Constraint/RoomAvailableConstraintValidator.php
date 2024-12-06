@@ -254,7 +254,6 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
             unset($values[$index]);
 
             foreach ($instances as $rrule_index => $instance) {
-                dd($instance['end_value'] - $instance['value']);
                 $new_item['value'] = $instance['value'];
                 $new_item['end_value'] = $instance['end_value'];
                 $new_item['duration'] = ($instance['end_value'] - $instance['value']) / 60;

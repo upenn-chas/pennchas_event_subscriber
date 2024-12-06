@@ -14,7 +14,7 @@ replyToAddress: ''
 subject: 'Room reservation request "[easy_email:field_reserve_room:entity:title]" is [easy_email:field_state]'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Dear [easy_email:field_reserve_room:entity:author:display-name],</p><p>&nbsp;</p><p>Your room reservation request "[easy_email:field_reserve_room:entity:title]" is [easy_email:field_state].</p><p>&nbsp;</p><p>Thank You</p>'
+  value: '<p>Dear [easy_email:field_reserve_room:entity:author:display-name],</p><p>&nbsp;</p><p>Your room reservation request with the following details, moderation state changed to [easy_email:field_state].</p><p>[easy_email:field_reserve_room:entity:title] - [easy_email:field_reserve_room:entity:field_event_schedule]</p><p>Location: [easy_email:field_reserve_room:entity:field_room:entity]</p><p>Purpose: [easy_email:field_reserve_room:entity:field_long_text:value]</p><p>Number of People: [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</p><p>Main contact</p><p>Name: [easy_email:field_reserve_room:entity:field_support_contact:value]</p><p>Email: [easy_email:field_reserve_room:entity:field_email:value]</p><p>Phone: [easy_email:field_reserve_room:entity:field_phone:value]</p>'
   format: basic_html
 bodyPlain: ''
 generateBodyPlain: true

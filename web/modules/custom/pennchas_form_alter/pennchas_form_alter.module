@@ -1,6 +1,12 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+use Drupal\pennchas_form_alter\Hook\NodeInsertHook;
+use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
+use Drupal\pennchas_form_alter\Util\Constant;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
 {
@@ -11,6 +17,31 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_s
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#step'] = 1;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#max'] = 30;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#step'] = 30;
+    }
+}
+
+function pennchas_form_alter_entity_presave(EntityInterface $entity)
+{
+    if ($entity instanceof NodeInterface) {
+        (new NodePreSaveHook())->handle($entity);
+    }
+}
+
+function pennchas_form_alter_node_insert(Node $node)
+{
+    $node_type = $node->getType();
+    if ($node_type === Constant::NODE_RESERVE_ROOM || $node_type === Constant::NODE_ROOM) {
+        (new NodeInsertHook())->handle($node);
+    }
+}
+
+
+function pennchas_form_alter_entity_type_alter(&$entity_type)
+{
+    if (isset($entity_type['group_role'])) {
+        $entity_keys = $entity_type['group_role']->get('entity_keys');
+        $entity_keys['umbera_roles'] = 'umbera_roles';
+        $entity_type['group_role']->set('entity_keys', $entity_keys);
     }
 }
 
@@ -35,6 +66,7 @@ function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_st
 {
     $umbera_roles = [];
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
+
     if (!empty($terms)) {
         foreach ($terms as $term) {
             $umbera_roles[$term->name] = $term->name;
@@ -47,24 +79,34 @@ function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_st
             '#type' => 'checkboxes',
             '#title' => t('Umbera Roles'),
             '#default_value' => $existing_umbera_roles ?: '',
-            '#options' => $umbera_roles,
-            // '#validate' => ['role_form_validation'],
+            '#options' => $umbera_roles
         ];
-        
+
         $form['actions']['submit']['#submit'][] = 'role_form_submit_handler';
     }
 }
 
 function role_form_validation($form, FormStateInterface $form_state)
 {
+    // dd($form_state->getErrors());
+    $errors  = $form_state->getErrors();
+    $form_state->clearErrors();
+    // foreach($errors as $key => $error) {
+    //     if( $key !== 'third_party_settings][pennchas_form_alter][umbera_roles') {
+    //         $form_state->setErrorByName($key, $error);
+    //     }
+    // }
+
     $form_state->setValue('umbera_roles', $form_state->getValue('umbera_roles'));
 }
 
 function role_form_submit_handler(&$form, FormStateInterface $form_state)
 {
-    $umbera_roles = $form_state->getValue('umbera_roles');
-    $umbera_roles = array_filter($umbera_roles);
-    $role = $form_state->getFormObject()->getEntity();
-    $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umbera_roles);
-    $role->save();
+    if ($form_state->has('umbera_roles')) {
+        $umbera_roles = $form_state->getValue('umbera_roles');
+        $umbera_roles = array_filter($umbera_roles);
+        $role = $form_state->getFormObject()->getEntity();
+        $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umbera_roles);
+        $role->save();
+    }
 }

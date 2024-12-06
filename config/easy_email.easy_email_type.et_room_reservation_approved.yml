@@ -14,10 +14,10 @@ replyToAddress: ''
 subject: 'Room reservation request "[easy_email:field_reserve_room:entity:title]" approved'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation request "[easy_email:field_reserve_room:entity:title]" has been approved.</p><p>&nbsp;</p><p>Thnak You</p>'
+  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation has been approved with the following details:</p><p>[easy_email:field_reserve_room:entity:title] - [easy_email:field_reserve_room:entity:field_event_schedule]</p><p>Location: [easy_email:field_reserve_room:entity:field_room:entity]</p><p>Purpose: [easy_email:field_reserve_room:entity:field_long_text:value]</p><p>Number of People: [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</p><p>Main contact</p><p>Name: [easy_email:field_reserve_room:entity:field_support_contact:value]</p><p>Email: [easy_email:field_reserve_room:entity:field_email:value]</p><p>Phone: [easy_email:field_reserve_room:entity:field_phone:value]</p>'
   format: basic_html
 bodyPlain: ''
-generateBodyPlain: false
+generateBodyPlain: true
 attachment: {  }
 saveAttachment: false
 attachmentScheme: private

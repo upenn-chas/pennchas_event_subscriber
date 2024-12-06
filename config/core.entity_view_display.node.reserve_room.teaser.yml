@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.reserve_room.field_email
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
+    - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
@@ -65,6 +66,7 @@ hidden:
   field_anticipated_participants: true
   field_email: true
   field_event_ends_on: true
+  field_group: true
   field_phone: true
   field_room: true
   field_support_contact: true

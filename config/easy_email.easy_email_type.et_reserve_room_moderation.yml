@@ -14,7 +14,7 @@ replyToAddress: ''
 subject: 'New room reservation request waiting for approval'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi team,</p><p>New room reservation request is waiting for approval.</p><p>Title: &nbsp;[easy_email:field_reserve_room:entity:title]</p><p>URL: <a href="[easy_email:field_reserve_room:entity:url]">[easy_email:field_reserve_room:entity:title]</a></p><p>[easy_email:field_reserve_room:entity:url]</p><p>[easy_email:field_reserve_room:entity:field_qr_code]</p><p>&nbsp;</p>'
+  value: '<p>Hi team,</p><p>A new room reservation request with the following details is waiting for approval.</p><p>Title: <a href="https://url]">[easy_email:field_reserve_room:entity:title]</a></p><p>Scheduled On: [easy_email:field_reserve_room:entity:field_event_schedule]</p><p>Location: [easy_email:field_reserve_room:entity:field_room:entity]</p><p>Purpose: [easy_email:field_reserve_room:entity:field_long_text:value]</p><p>Number of People: [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</p><p>Main contact</p><p>Name: [easy_email:field_reserve_room:entity:field_support_contact:value]</p><p>Email: [easy_email:field_reserve_room:entity:field_email:value]</p><p>Phone: [easy_email:field_reserve_room:entity:field_phone:value]</p><p>&nbsp;</p>'
   format: basic_html
 bodyPlain: ''
 generateBodyPlain: false

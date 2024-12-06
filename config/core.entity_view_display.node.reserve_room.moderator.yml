@@ -6,14 +6,17 @@ dependencies:
     - core.entity_view_mode.node.moderator
     - field.field.node.reserve_room.field_anticipated_participants
     - field.field.node.reserve_room.field_email
+    - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
-    - field.field.node.reserve_room.field_phone
+    - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_long_text
+    - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
     - node.type.reserve_room
   module:
     - layout_builder
+    - layout_discovery
     - smart_date
     - user
 third_party_settings:
@@ -245,4 +248,5 @@ content:
     region: content
 hidden:
   field_event_ends_on: true
+  field_group: true
   links: true
