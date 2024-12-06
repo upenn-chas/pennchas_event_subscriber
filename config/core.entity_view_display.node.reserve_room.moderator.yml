@@ -19,11 +19,8 @@ dependencies:
   module:
     - bootstrap_layout_builder
     - layout_builder
-<<<<<<< HEAD
     - layout_discovery
-=======
     - layout_builder_restrictions
->>>>>>> origin/site_theming
     - smart_date
     - system
     - user
@@ -275,12 +272,8 @@ third_party_settings:
             uuid: 40979072-955d-4bdd-9667-7704035afdad
             region: blb_region_col_2
             configuration:
-<<<<<<< HEAD
-              id: 'field_block:node:reserve_room:field_long_text'
-=======
               id: 'field_block:node:reserve_room:field_anticipated_participants'
               label: Guests
->>>>>>> origin/site_theming
               label_display: '0'
               provider: layout_builder
               context_mapping:
@@ -339,11 +332,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
-<<<<<<< HEAD
     region: content
-=======
-    region: blb_region_col_1
->>>>>>> origin/site_theming
   field_anticipated_participants:
     type: number_integer
     label: above
@@ -416,9 +405,5 @@ content:
     region: content
 hidden:
   field_event_ends_on: true
-<<<<<<< HEAD
   field_group: true
-=======
-  field_long_text: true
->>>>>>> origin/site_theming
   links: true
