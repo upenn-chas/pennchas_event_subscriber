@@ -2,6 +2,15 @@
 
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupType;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Block\BlockRepositoryInterface;
+use Drupal\group\Entity\GroupRole;
+use Drupal\group\Entity\GroupMembership;
+
 
 function get_all_group_roles(){
   $all_roles = [];
@@ -22,3 +31,73 @@ function get_all_group_roles(){
     return $all_roles;
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter() to alter block configuration forms.
+ */
+// function penchas_block_group_role_condition_form_block_configure_alter(array &$form, FormStateInterface $form_state, $block) {
+//   // dd('adkjhasds');
+//   // Check if the block is an instance of BlockInterface to ensure it's a block form
+//   if ($block instanceof BlockPluginInterface) {
+//     // Add a custom field to the block configuration form.
+//     $form['my_custom_field'] = [
+//       '#type' => 'textfield',
+//       '#title' => t('Custom Field'),
+//       '#description' => t('This is a custom field added to all block types.'),
+//       '#default_value' => $block->getConfiguration()['my_custom_field'] ?? '',
+//     ];
+
+//     // Ensure the custom field is saved with the block configuration.
+//     $form['#submit'][] = 'my_module_block_form_submit';
+//   }
+// }
+
+/**
+ * Form submission handler to save the custom field value.
+ */
+// function penchas_block_group_role_condition_block_form_submit(array $form, FormStateInterface $form_state) {
+//   $block = $form_state->getFormObject()->getEntity();
+//   // Save the custom field value into block configuration.
+//   $block->setConfigurationValue('my_custom_field', $form_state->getValue('my_custom_field'));
+// }
+
+
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function penchas_block_group_role_condition_preprocess_block(&$variables) {
+  // Check if the block is the specific inline block we want to target.
+  if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
+    // Retrieve the roles specified in the block's field.
+    $field_values = $variables['content']['field_block_display_condition_wi'];
+
+    if (!isset($field_values['#items'])) {
+      // If there are no field values, stop further processing.
+      return;
+    }
+
+    $group_roles_arr = [];
+    foreach ($field_values['#items']->referencedEntities() as $value) {
+      $group_roles_arr[] = $value->id();
+    }
+    // Load the current user.
+    $current_user = \Drupal::currentUser();
+    $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+
+    if (!$user_entity) {
+      // No user entity, so do not show the block.
+      $variables['#access'] = FALSE;
+      return;
+    }
+    foreach (get_all_group_roles() as $key => $value) {
+      if (array_key_exists($key, $group_roles_arr)) {
+        $variables['#access'] = TRUE;
+        break;
+      }else{
+        $variables['#access'] = FALSE;
+      }
+    }
+  }
+}
+

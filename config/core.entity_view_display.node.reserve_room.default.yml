@@ -104,3 +104,4 @@ content:
 hidden:
   field_event_ends_on: true
   field_group: true
+  field_purpose_of_request: true

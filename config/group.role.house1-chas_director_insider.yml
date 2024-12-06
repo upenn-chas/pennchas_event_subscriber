@@ -1,0 +1,25 @@
+uuid: 1a8dc8cb-2edc-4a9e-b5f0-4109dbd51464
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.chas_director
+id: house1-chas_director_insider
+label: 'CHAS Director'
+weight: 6
+admin: false
+scope: insider
+global_role: chas_director
+group_type: house1
+permissions:
+  - 'event own evaluation'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition denied'
+  - 'use editorial transition pending'
+  - 'use editorial transition publish'
+  - 'view group'
+  - 'view latest version'
+  - 'view own unpublished group'

@@ -68,5 +68,6 @@ hidden:
   field_event_ends_on: true
   field_group: true
   field_phone: true
+  field_purpose_of_request: true
   field_room: true
   field_support_contact: true

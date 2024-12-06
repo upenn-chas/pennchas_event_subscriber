@@ -1,0 +1,19 @@
+uuid: 3e64b32a-8270-4133-8831-bf4c6c94dcbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_purpose_of_request
+    - node.type.reserve_room
+id: node.reserve_room.field_purpose_of_request
+field_name: field_purpose_of_request
+entity_type: node
+bundle: reserve_room
+label: 'Purpose Of Request'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

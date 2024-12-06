@@ -1,6 +1,6 @@
 .top-notifications {
   padding: 22px 0;
- 
+
   @include media-query('mobile') {
     font-size: 18px;
     padding: 17px 0;
@@ -38,13 +38,21 @@
   }
 }
 
-#section1 {
+#block-penchas-attentionnewandreturningstudents {
   position: sticky;
   top: 0;
   z-index: 1020;
 }
 
-#section2 {
+
+#block-penchas-attentionnewandreturningstudents22 {
   position: sticky;
   z-index: 1010;
+  top: 0;
+}
+
+
+.user-logged-in #block-penchas-attentionnewandreturningstudents,
+.user-logged-in #block-penchas-attentionnewandreturningstudents22 {
+  position: static;
 }
