@@ -84,7 +84,7 @@ function penchas_block_group_role_condition_preprocess_block(&$variables) {
     // Load the current user.
     $current_user = \Drupal::currentUser();
     $user_entity = \Drupal\user\Entity\User::load($current_user->id());
-
+    // dd($user_entity);
     if (!$user_entity) {
       // No user entity, so do not show the block.
       $variables['#access'] = FALSE;
