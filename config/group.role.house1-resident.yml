@@ -4,20 +4,17 @@ status: true
 dependencies:
   config:
     - group.type.house1
-  module:
-    - role_extend
-third_party_settings:
-  role_extend:
-    role_categories:
-      32: 0
-      31: 0
 id: house1-resident
 label: Resident
-weight: 103
+weight: -7
 admin: false
 scope: individual
 global_role: null
 group_type: house1
 permissions:
   - 'access group_node overview'
+  - 'create group_node:reserve_room entity'
+  - 'delete own group_node:reserve_room entity'
+  - 'update own group_node:reserve_room entity'
   - 'view group_node:event entity'
+  - 'view group_node:room entity'

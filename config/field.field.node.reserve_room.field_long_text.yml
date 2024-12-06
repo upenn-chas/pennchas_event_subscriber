@@ -1,0 +1,19 @@
+uuid: 13337852-f198-40d7-9f8c-4c6f29a73218
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_long_text
+    - node.type.reserve_room
+id: node.reserve_room.field_long_text
+field_name: field_long_text
+entity_type: node
+bundle: reserve_room
+label: 'Purpose Of Request'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

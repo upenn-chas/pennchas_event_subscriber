@@ -1,0 +1,23 @@
+uuid: 59e9c152-0ceb-4263-954e-031532b3c90f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+    - field.storage.block_content.field_call_to_actions
+  module:
+    - link
+id: block_content.dashboard_blocks.field_call_to_actions
+field_name: field_call_to_actions
+entity_type: block_content
+bundle: dashboard_blocks
+label: 'Call to Actions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

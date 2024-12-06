@@ -1,0 +1,8 @@
+uuid: 881df13b-a4a9-4897-80a5-3ab6fe67c8fc
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_blocks
+label: 'Dashboard Blocks'
+revision: false
+description: null

@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: 'CHAS Event'
 type: chas_event
-description: 'Use this to create house event.'
+description: 'Use <em>chas event</em> to create a house event.'
 help: null
 new_revision: true
 preview_mode: 1

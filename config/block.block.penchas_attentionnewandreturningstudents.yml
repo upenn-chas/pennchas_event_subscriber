@@ -11,7 +11,7 @@ dependencies:
 id: penchas_attentionnewandreturningstudents
 theme: penchas
 region: top_header
-weight: 0
+weight: -15
 provider: null
 plugin: 'block_content:cd8385f1-fc96-4774-b61d-5f16e6c128e0'
 settings:

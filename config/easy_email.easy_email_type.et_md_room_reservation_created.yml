@@ -1,0 +1,29 @@
+uuid: 1d7dfc96-02e4-415d-b7c1-b02f12c64f13
+langcode: en
+status: true
+dependencies: {  }
+id: et_md_room_reservation_created
+label: 'Moderator Room Reservation Created'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Room Reservation is created and approved'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_reserve_room:entity:author:display-name],</p><p>&nbsp;</p><p>Your room reservation request "[easy_email:field_reserve_room:entity:title]" has created and approved successfully.</p><p>&nbsp;</p><p>Thank You</p><p>&nbsp;</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: true
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

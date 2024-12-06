@@ -1,0 +1,34 @@
+uuid: fc190d06-7d77-404a-81a0-35f3b73d5eba
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.chas_professional_staff
+id: house1-chas_professional_staff
+label: 'CHAS Professional Staff'
+weight: 1
+admin: false
+scope: outsider
+global_role: chas_professional_staff
+group_type: house1
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'create group_node:chas_event entity'
+  - 'create group_node:page entity'
+  - 'create group_node:reserve_room entity'
+  - 'delete own group_node:chas_event entity'
+  - 'delete own group_node:page entity'
+  - 'event own evaluation'
+  - 'update own group_node:chas_event entity'
+  - 'update own group_node:page entity'
+  - 'update own group_node:reserve_room entity'
+  - 'use editorial transition create_new_draft'
+  - 'view group'
+  - 'view group_node:chas_event entity'
+  - 'view group_node:page entity'
+  - 'view group_node:room entity'
+  - 'view own unpublished group_node:chas_event entity'
+  - 'view own unpublished group_node:page entity'
+  - 'view own unpublished group_node:reserve_room entity'

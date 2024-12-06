@@ -1,0 +1,24 @@
+uuid: e6e2c002-8f93-43ab-a75c-baec265cce0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.dashboard_blocks.body
+field_name: body
+entity_type: block_content
+bundle: dashboard_blocks
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

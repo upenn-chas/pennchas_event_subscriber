@@ -1,0 +1,20 @@
+uuid: 0d711ce1-e854-420d-bc14-8152e3ff3f93
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - group
+id: block_content.field_block_display_condition_wi
+field_name: field_block_display_condition_wi
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: group_role
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

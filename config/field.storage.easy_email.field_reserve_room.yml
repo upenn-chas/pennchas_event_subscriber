@@ -1,0 +1,20 @@
+uuid: 2e7f02bb-6951-4cfd-bc76-d74ad6da4cbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_email
+    - node
+id: easy_email.field_reserve_room
+field_name: field_reserve_room
+entity_type: easy_email
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

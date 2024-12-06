@@ -1,0 +1,29 @@
+uuid: 466cdd0a-0004-49c9-981b-ac4279b2f7c0
+langcode: en
+status: true
+dependencies: {  }
+id: et_room_reservation_created
+label: 'Room Reservation Created'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Room reservation request created.'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_reserve_room:entity:author:display-name],</p><p>&nbsp;</p><p>The room reservation reservation has been created successfully.</p><p>&nbsp;</p><p>Thank You</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

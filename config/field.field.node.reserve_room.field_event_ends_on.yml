@@ -1,0 +1,19 @@
+uuid: c2dfaa99-c71a-4cc3-96b6-f6960ceb9734
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_ends_on
+    - node.type.reserve_room
+id: node.reserve_room.field_event_ends_on
+field_name: field_event_ends_on
+entity_type: node
+bundle: reserve_room
+label: 'Event Ends On'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

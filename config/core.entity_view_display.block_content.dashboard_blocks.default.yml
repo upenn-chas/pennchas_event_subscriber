@@ -1,0 +1,45 @@
+uuid: 76d1aead-8398-4462-ac8d-d73f13b00d69
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+    - field.field.block_content.dashboard_blocks.body
+    - field.field.block_content.dashboard_blocks.field_block_display_condition_wi
+    - field.field.block_content.dashboard_blocks.field_call_to_actions
+  module:
+    - link
+    - text
+id: block_content.dashboard_blocks.default
+targetEntityType: block_content
+bundle: dashboard_blocks
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_block_display_condition_wi:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_call_to_actions:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

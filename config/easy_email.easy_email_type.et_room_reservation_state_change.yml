@@ -1,0 +1,29 @@
+uuid: c345394d-30a2-4a96-aa08-098325da0f89
+langcode: en
+status: true
+dependencies: {  }
+id: et_room_reservation_state_change
+label: 'Room Reservation State Change'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Room reservation request "[easy_email:field_reserve_room:entity:title]" is [easy_email:field_state]'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Dear [easy_email:field_reserve_room:entity:author:display-name],</p><p>&nbsp;</p><p>Your room reservation request "[easy_email:field_reserve_room:entity:title]" is [easy_email:field_state].</p><p>&nbsp;</p><p>Thank You</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: true
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

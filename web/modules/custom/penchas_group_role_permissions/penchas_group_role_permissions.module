@@ -1,0 +1,29 @@
+<?php
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function penchas_group_role_permissions_entity_base_field_info(EntityTypeInterface $entity_type) {
+  $fields = array();
+
+  // Add a 'Highlight' base field to all node types.
+  // dump($entity_type->id());
+  if ($entity_type->id() === 'node') {
+    // $fields['highlight'] = BaseFieldDefinition::create('boolean')
+    //   ->setLabel(t('Highlight'))
+    //   ->setDescription(t('Whether or not the node is highlighted.'))
+    //   ->setRevisionable(TRUE)
+    //   ->setTranslatable(TRUE)
+    //   ->setDisplayOptions('form', array(
+    //     'type' => 'boolean_checkbox',
+    //     'settings' => array(
+    //       'display_label' => TRUE,
+    //     ),
+    //   ))
+    //   ->setDisplayConfigurable('form', TRUE);
+  }
+
+  return $fields;
+}

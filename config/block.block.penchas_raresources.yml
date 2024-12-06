@@ -7,6 +7,7 @@ dependencies:
   module:
     - block_content
     - penchas_block_group_role_condition
+    - system
     - user
   theme:
     - penchas
@@ -28,6 +29,7 @@ visibility:
   penchas_block_group_role_condition_plugin:
     id: penchas_block_group_role_condition_plugin
     block_group_roles:
+      house1-resident: house1-resident
       house1-adm_director: house1-adm_director
     negate: null
   user_role:
@@ -37,3 +39,7 @@ visibility:
       user: '@user.current_user_context:current_user'
     roles:
       chas_director: chas_director
+  request_path:
+    id: request_path
+    negate: false
+    pages: /user/39

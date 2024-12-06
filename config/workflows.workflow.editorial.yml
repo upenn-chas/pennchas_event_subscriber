@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.chas_event
+    - node.type.reserve_room
   module:
     - content_moderation
 _core:
@@ -84,4 +85,5 @@ type_settings:
   entity_types:
     node:
       - chas_event
+      - reserve_room
   default_moderation_state: draft

@@ -1,0 +1,14 @@
+<?php
+use \Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function penchas_node_alteration_entity_view_mode_alter(&$view_mode, EntityInterface $entity, $context) {
+  $type = $entity->bundle();
+
+  if($type == 'reserve_room'){
+    $view_mode = 'moderator';
+  }
+}

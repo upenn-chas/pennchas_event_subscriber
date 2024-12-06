@@ -1,9 +1,8 @@
-name: "Room Node Form Extension"
-description: "Extension to room node form."
+name: "Penchas Group roles condition"
+description: "Extend the condition of Group roles."
 type: module
 core_version_requirement: ^10
 version: 1.0
 package: Custom
 dependencies:
   - drupal:group
-  - drupal:gnode

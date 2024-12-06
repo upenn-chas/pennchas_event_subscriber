@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes

@@ -6,9 +6,10 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.reserve_room.field_anticipated_participants
     - field.field.node.reserve_room.field_email
+    - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
+    - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
-    - field.field.node.reserve_room.field_purpose_of_request
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
     - node.type.reserve_room
@@ -20,6 +21,11 @@ targetEntityType: node
 bundle: reserve_room
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_event_schedule:
     type: smartdate_default
     label: hidden
@@ -41,16 +47,24 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 0
+    weight: 1
+    region: content
+  field_long_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 3
     region: content
 hidden:
   field_anticipated_participants: true
   field_email: true
+  field_event_ends_on: true
   field_phone: true
   field_purpose_of_request: true
   field_room: true

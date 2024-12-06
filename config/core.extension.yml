@@ -22,6 +22,7 @@ module:
   dblog: 0
   devel: 0
   devel_generate: 0
+  duration_field: 0
   dynamic_page_cache: 0
   easy_email: 0
   editor: 0
@@ -65,18 +66,20 @@ module:
   menu_item_role_access: 0
   menu_link_content: 0
   menu_ui: 0
+  multiple_fields_remove_button: 0
   mysql: 0
   node: 0
-  node_event_form_ext: 0
+  node_form_extension: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
   penchas_block_group_role_condition: 0
+  penchas_group_role_permissions: 0
+  penchas_node_alteration: 0
+  pennchas_form_alter: 0
   recreate_block_content: 0
   responsive_image: 0
-  role_extend: 0
-  room_form: 0
   search: 0
   section_library: 0
   shortcut: 0

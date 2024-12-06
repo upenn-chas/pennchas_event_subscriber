@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Room
 type: room
-description: null
+description: 'Use <em>room</em> to create a house room page.'
 help: null
 new_revision: true
 preview_mode: 1

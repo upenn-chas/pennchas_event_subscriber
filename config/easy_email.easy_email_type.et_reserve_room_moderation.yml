@@ -1,0 +1,29 @@
+uuid: aab61e85-583a-4c5a-8e39-228f71cfbc53
+langcode: en
+status: true
+dependencies: {  }
+id: et_reserve_room_moderation
+label: 'Reserve Room Moderation'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'New room reservation request waiting for approval'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Hi team,</p><p>New room reservation request is waiting for approval.</p><p>Title: &nbsp;[easy_email:field_reserve_room:entity:title]</p><p>URL: <a href="[easy_email:field_reserve_room:entity:url]">[easy_email:field_reserve_room:entity:title]</a></p><p>[easy_email:field_reserve_room:entity:url]</p><p>[easy_email:field_reserve_room:entity:field_qr_code]</p><p>&nbsp;</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

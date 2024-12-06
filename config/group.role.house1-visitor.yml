@@ -7,7 +7,7 @@ dependencies:
     - user.role.anonymous
 id: house1-visitor
 label: Visitor
-weight: 113
+weight: 5
 admin: false
 scope: outsider
 global_role: anonymous

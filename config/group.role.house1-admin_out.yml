@@ -7,7 +7,7 @@ dependencies:
     - user.role.administrator
 id: house1-admin_out
 label: Administrator
-weight: 101
+weight: -9
 admin: true
 scope: outsider
 global_role: administrator
