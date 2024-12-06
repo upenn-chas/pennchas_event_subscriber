@@ -1,3 +1,0 @@
-services:
-  node_form_extension.mail_service:
-    class: \Drupal\node_form_extension\Service\EmailService

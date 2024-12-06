@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_description
+    - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
@@ -71,6 +72,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_group:
+    type: entity_reference_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_image:

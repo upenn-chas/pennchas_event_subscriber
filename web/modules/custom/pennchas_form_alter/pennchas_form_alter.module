@@ -6,6 +6,7 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Hook\NodeInsertHook;
 use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
+use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
@@ -32,6 +33,14 @@ function pennchas_form_alter_node_insert(Node $node)
     $node_type = $node->getType();
     if ($node_type === Constant::NODE_RESERVE_ROOM || $node_type === Constant::NODE_ROOM) {
         (new NodeInsertHook())->handle($node);
+    }
+}
+
+function pennchas_form_alter_node_update(Node $node)
+{
+    $node_type = $node->getType();
+    if ($node_type === Constant::NODE_RESERVE_ROOM) {
+        (new NodeUpdateHook())->handle($node);
     }
 }
 

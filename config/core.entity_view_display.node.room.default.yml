@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_description
+    - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
@@ -116,7 +117,7 @@ content:
       text_length: full
       separator: space
     third_party_settings: {  }
-    weight: 15
+    weight: 14
     region: content
   field_maximum_occupancy:
     type: number_integer
@@ -169,4 +170,5 @@ content:
     region: content
 hidden:
   body: true
+  field_group: true
   field_group_ref: true

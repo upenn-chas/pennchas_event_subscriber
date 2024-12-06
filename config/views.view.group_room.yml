@@ -27,7 +27,7 @@ display:
           id: gid
           table: group_relationship_field_data
           field: gid
-          relationship: group_relationship
+          relationship: none
           group_type: group
           admin_label: ''
           entity_type: group_relationship
@@ -207,16 +207,14 @@ display:
             field_identifier: ''
           exposed: false
       arguments:
-        gid:
-          id: gid
-          table: group_relationship_field_data
-          field: gid
-          relationship: group_relationship
+        field_group_target_id:
+          id: field_group_target_id
+          table: node__field_group
+          field: field_group_target_id
+          relationship: reverse__node__field_group
           group_type: group
           admin_label: ''
-          entity_type: group_relationship
-          entity_field: gid
-          plugin_id: group_id
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -263,19 +261,65 @@ display:
           plugin_id: bundle
           value:
             room: room
+        field_group_target_id:
+          id: field_group_target_id
+          table: node__field_group
+          field: field_group_target_id
+          relationship: reverse__node__field_group
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: default
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          uses_fields: false
       row:
         type: fields
         options:
           default_field_elements: true
-          inline: {  }
-          separator: ''
+          inline:
+            gid: gid
+            title: title
+            field_group: field_group
+          separator: ' - '
           hide_empty: false
       query:
         type: views_query
@@ -286,25 +330,25 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        group_relationship:
-          id: group_relationship
-          table: node_field_data
-          field: group_relationship
+        field_group:
+          id: field_group
+          table: node__field_group
+          field: field_group
           relationship: none
           group_type: group
-          admin_label: 'Content group relationship'
-          entity_type: node
-          plugin_id: group_relationship_to_entity_reverse
+          admin_label: 'field_group: Group'
+          plugin_id: standard
+          required: false
+        reverse__node__field_group:
+          id: reverse__node__field_group
+          table: groups_field_data
+          field: reverse__node__field_group
+          relationship: field_group
+          group_type: group
+          admin_label: field_group
+          entity_type: group
+          plugin_id: entity_reverse
           required: true
-          group_relation_plugins:
-            'group_node:room': 'group_node:room'
-            'group_node:article': '0'
-            'group_node:chas_event': '0'
-            'group_node:house_landing_page': '0'
-            'group_node:page': '0'
-            'group_node:program_community': '0'
-            'group_node:reserve_room': '0'
-            'group_node:webform': '0'
       header: {  }
       footer: {  }
       display_extenders: {  }
