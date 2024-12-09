@@ -24,6 +24,9 @@ class NodePreSaveHook
     {
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
+        if (!$node->get('field_group')) {
+            $node->set('field_group', $group->id());
+        }
         if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
             $node->setPublished(true);
             $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
@@ -39,15 +42,24 @@ class NodePreSaveHook
         $nid = $node->id();
         $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
         $groupId = $this->getGroupIdsByEntity($nid);
-        if (!empty($groupId)) {
+        $group = null;
+        if ($groupId) {
             $group = Group::load($groupId);
-            if ($group && $group->hasField('field_house_machine_name')) {
+        } else {
+            $group = \Drupal::routeMatch()->getParameter('group');
+        }
+        if ($group) {
+            if ($group->hasField('field_house_machine_name')) {
                 $groupMachineName = $group->get('field_house_machine_name')->value;
-                if (!empty($groupMachineName)) {
+                if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
+            if (!$node->get('field_group')) {
+                $node->set('field_group', $group->id());
+            }
         }
+
         $node->set('field_group_ref', $urlAlias);
     }
 

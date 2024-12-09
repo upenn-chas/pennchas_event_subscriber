@@ -9,15 +9,19 @@ use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
 use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Util\Constant;
 
-function pennchas_form_alter_form_alter(array &$form, FormStateInterface $form_state, string $form_id)
+function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
-    if ($form_id === 'user_role_form' || $form_id === 'group_role_add_form' || $form_id === 'group_role_edit_form') {
-        pennchas_form_alter_role_form($form, $form_state);
-    } else if ($form_id === 'node_room_form' || $form_id === 'node_room_edit_form') {
+    if ($formId === 'user_role_form' || $formId === 'group_role_add_form' || $formId === 'group_role_edit_form') {
+        pennchas_form_alter_role_form($form, $formState);
+    } else if ($formId === 'node_room_form' || $formId === 'node_room_edit_form') {
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#max'] = 23;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#step'] = 1;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#max'] = 30;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#step'] = 30;
+    } else if($formId === 'node_reserve_room_edit_form') {
+        $node  = $formState->getFormObject()->getEntity();
+        $groupId = (int) $node->get('field_group')->getString();
+        $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
     }
 }
 
@@ -30,31 +34,31 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
 
 function pennchas_form_alter_node_insert(Node $node)
 {
-    $node_type = $node->getType();
-    if ($node_type === Constant::NODE_RESERVE_ROOM || $node_type === Constant::NODE_ROOM) {
+    $nodeType = $node->getType();
+    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM) {
         (new NodeInsertHook())->handle($node);
     }
 }
 
 function pennchas_form_alter_node_update(Node $node)
 {
-    $node_type = $node->getType();
-    if ($node_type === Constant::NODE_RESERVE_ROOM) {
+    $nodeType = $node->getType();
+    if ($nodeType === Constant::NODE_RESERVE_ROOM) {
         (new NodeUpdateHook())->handle($node);
     }
 }
 
 
-function pennchas_form_alter_entity_type_alter(&$entity_type)
+function pennchas_form_alter_entity_type_alter(&$entityType)
 {
-    if (isset($entity_type['group_role'])) {
-        $entity_keys = $entity_type['group_role']->get('entity_keys');
-        $entity_keys['umbera_roles'] = 'umbera_roles';
-        $entity_type['group_role']->set('entity_keys', $entity_keys);
+    if (isset($entityType['group_role'])) {
+        $entityKeys = $entityType['group_role']->get('entity_keys');
+        $entityKeys['umbera_roles'] = 'umbera_roles';
+        $entityType['group_role']->set('entity_keys', $entityKeys);
     }
 }
 
-function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entity_type, $bundle)
+function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
     if ($bundle === 'reserve_room') {
         if (isset($fields['field_room'])) {
@@ -71,51 +75,54 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entity_ty
     }
 }
 
-function pennchas_form_alter_role_form(array &$form, FormStateInterface $form_state)
+function pennchas_form_alter_role_form(array &$form, FormStateInterface $formState)
 {
-    $umbera_roles = [];
+    $umberaRoles = [];
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
 
     if (!empty($terms)) {
         foreach ($terms as $term) {
-            $umbera_roles[$term->name] = $term->name;
+            $umberaRoles[$term->name] = $term->name;
         }
 
-        $role = $form_state->getFormObject()->getEntity();
-        $existing_umbera_roles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
+        $role = $formState->getFormObject()->getEntity();
+        $existingUmbera_roles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
 
         $form['umbera_roles'] = [
             '#type' => 'checkboxes',
             '#title' => t('Umbera Roles'),
-            '#default_value' => $existing_umbera_roles ?: '',
-            '#options' => $umbera_roles
+            '#default_value' => $existingUmbera_roles ?: '',
+            '#options' => $umberaRoles
         ];
 
         $form['actions']['submit']['#submit'][] = 'role_form_submit_handler';
     }
 }
 
-function role_form_validation($form, FormStateInterface $form_state)
+function role_form_submit_handler(&$form, FormStateInterface $formState)
 {
-    // dd($form_state->getErrors());
-    $errors  = $form_state->getErrors();
-    $form_state->clearErrors();
-    // foreach($errors as $key => $error) {
-    //     if( $key !== 'third_party_settings][pennchas_form_alter][umbera_roles') {
-    //         $form_state->setErrorByName($key, $error);
-    //     }
-    // }
-
-    $form_state->setValue('umbera_roles', $form_state->getValue('umbera_roles'));
-}
-
-function role_form_submit_handler(&$form, FormStateInterface $form_state)
-{
-    if ($form_state->has('umbera_roles')) {
-        $umbera_roles = $form_state->getValue('umbera_roles');
-        $umbera_roles = array_filter($umbera_roles);
-        $role = $form_state->getFormObject()->getEntity();
-        $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umbera_roles);
+    if ($formState->has('umbera_roles')) {
+        $umberaRoles = $formState->getValue('umbera_roles');
+        $umberaRoles = array_filter($umberaRoles);
+        $role = $formState->getFormObject()->getEntity();
+        $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umberaRoles);
         $role->save();
     }
+}
+
+function _get_group_rooms(int $groupId){
+    $roomsIds = \Drupal::entityQuery('node')
+    ->accessCheck(false)
+    ->condition('type', 'room')
+    ->condition('status', 1)
+    ->condition('field_group', $groupId)
+    ->execute();
+
+    $rooms = Node::loadMultiple($roomsIds);
+
+    $roomOptions = [];
+    foreach($rooms as $room) {
+        $roomOptions[$room->id()] = $room->getTitle();
+    }
+    return $roomOptions;
 }
