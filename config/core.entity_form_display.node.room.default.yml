@@ -74,16 +74,6 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_group:
-    type: entity_reference_autocomplete
-    weight: 21
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_image:
     type: image_image
     weight: 17
@@ -198,5 +188,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_group: true
   field_group_ref: true
   field_qr_code: true
