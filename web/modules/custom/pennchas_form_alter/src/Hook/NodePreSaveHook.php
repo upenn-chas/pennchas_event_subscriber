@@ -24,7 +24,7 @@ class NodePreSaveHook
     {
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
-        if (!$node->get('field_group')) {
+        if ($node->isNew() || !$node->original->get('field_group')->getString()) {
             $node->set('field_group', $group->id());
         }
         if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
@@ -55,7 +55,7 @@ class NodePreSaveHook
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
-            if (!$node->get('field_group')) {
+            if ($node->isNew() || !$node->original->get('field_group')->getString()) {
                 $node->set('field_group', $group->id());
             }
         }

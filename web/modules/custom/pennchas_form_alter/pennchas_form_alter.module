@@ -18,6 +18,9 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#step'] = 1;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#max'] = 30;
         $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#step'] = 30;
+    } else if($formId === 'node_reserve_room_form') {
+        $group = \Drupal::routeMatch()->getParameter('group');
+        $form['field_room']['widget']['#options'] = _get_group_rooms($group->id());
     } else if($formId === 'node_reserve_room_edit_form') {
         $node  = $formState->getFormObject()->getEntity();
         $groupId = (int) $node->get('field_group')->getString();
@@ -120,7 +123,9 @@ function _get_group_rooms(int $groupId){
 
     $rooms = Node::loadMultiple($roomsIds);
 
-    $roomOptions = [];
+    $roomOptions = [
+        '' => '- Select a value -'
+    ];
     foreach($rooms as $room) {
         $roomOptions[$room->id()] = $room->getTitle();
     }

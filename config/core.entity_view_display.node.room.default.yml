@@ -75,6 +75,14 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_image:
     type: image
     label: hidden
@@ -170,5 +178,4 @@ content:
     region: content
 hidden:
   body: true
-  field_group: true
   field_group_ref: true
