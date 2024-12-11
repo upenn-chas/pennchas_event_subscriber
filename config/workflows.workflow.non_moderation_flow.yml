@@ -1,0 +1,33 @@
+uuid: 688cf6ff-e792-4c74-8757-fa9485a3ce44
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.room
+  module:
+    - content_moderation
+id: non_moderation_flow
+label: 'Non Moderation Flow'
+type: content_moderation
+type_settings:
+  states:
+    delete:
+      label: Delete
+      weight: 2
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+  transitions: {  }
+  entity_types:
+    node:
+      - room
+  default_moderation_state: published

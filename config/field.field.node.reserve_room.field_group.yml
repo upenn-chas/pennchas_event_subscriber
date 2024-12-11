@@ -10,7 +10,7 @@ id: node.reserve_room.field_group
 field_name: field_group
 entity_type: node
 bundle: reserve_room
-label: Group
+label: House
 description: ''
 required: false
 translatable: false

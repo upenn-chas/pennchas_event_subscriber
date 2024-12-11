@@ -11,7 +11,7 @@ id: node.room.body
 field_name: body
 entity_type: node
 bundle: room
-label: Body
+label: Description
 description: ''
 required: false
 translatable: true

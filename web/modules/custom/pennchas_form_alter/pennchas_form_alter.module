@@ -11,20 +11,43 @@ use Drupal\pennchas_form_alter\Util\Constant;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
+    // echo $formId;
     if ($formId === 'user_role_form' || $formId === 'group_role_add_form' || $formId === 'group_role_edit_form') {
         pennchas_form_alter_role_form($form, $formState);
     } else if ($formId === 'node_room_form' || $formId === 'node_room_edit_form') {
-        $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#max'] = 23;
-        $form['field_max_room_booking_duration']['widget'][0]['duration']['#h']['#step'] = 1;
-        $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#max'] = 30;
-        $form['field_max_room_booking_duration']['widget'][0]['duration']['#i']['#step'] = 30;
-    } else if($formId === 'node_reserve_room_form') {
+        $form['field_duration']['widget'][0]['duration']['#h']['#max'] = 23;
+        $form['field_duration']['widget'][0]['duration']['#h']['#step'] = 1;
+        $form['field_duration']['widget'][0]['duration']['#i']['#max'] = 30;
+        $form['field_duration']['widget'][0]['duration']['#i']['#step'] = 30;
+    } else if ($formId === 'node_reserve_room_form') {
         $group = \Drupal::routeMatch()->getParameter('group');
         $form['field_room']['widget']['#options'] = _get_group_rooms($group->id());
-    } else if($formId === 'node_reserve_room_edit_form') {
+    } else if ($formId === 'node_reserve_room_edit_form') {
         $node  = $formState->getFormObject()->getEntity();
         $groupId = (int) $node->get('field_group')->getString();
         $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
+    } else if ($formId === 'node_room_delete_form') {
+        $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
+    }
+}
+
+function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formState)
+{
+    $node = $formState->getFormObject()->getEntity();
+    if ($node instanceof Node && $node->hasField('moderation_state')) {
+        if ($node->get('moderation_state')->getString() !== Constant::MOD_STATUS_DELETE) {
+            $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
+            $node->setUnpublished();
+            $node->setRevisionLogMessage(t('Deleted'));
+            $node->save();
+
+            \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
+        } else {
+            \Drupal::messenger()->addStatus(t('Node %title has already been deleted.', ['%title' => $node->getTitle()]));
+        }
+        $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
+    } else {
+        \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
     }
 }
 
@@ -63,7 +86,7 @@ function pennchas_form_alter_entity_type_alter(&$entityType)
 
 function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
-    if ($bundle === 'reserve_room') {
+    if ($bundle === Constant::NODE_RESERVE_ROOM) {
         if (isset($fields['field_room'])) {
             $fields['field_room']->addConstraint('AllowRoomConstraint');
         }
@@ -74,6 +97,10 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
 
         if (isset($fields['field_anticipated_participants'])) {
             $fields['field_anticipated_participants']->addConstraint('RoomMaxGuestConstraint');
+        }
+    } else if ($bundle === Constant::NODE_ROOM) {
+        if (isset($fields['field_room_gps_pin'])) {
+            $fields['field_room_gps_pin']->addConstraint('GeoCoordinatesConstraint');
         }
     }
 }
@@ -102,6 +129,20 @@ function pennchas_form_alter_role_form(array &$form, FormStateInterface $formSta
     }
 }
 
+function pennchas_form_alter_entity_operation_alter(array &$operations, EntityInterface $entity)
+{
+    if ($entity instanceof NodeInterface) {
+        if (!$entity->isPublished() && $entity->get('moderation_state')->getString() === Constant::MOD_STATUS_DELETE) {
+            if (isset($operations['edit'])) {
+                unset($operations['edit']);
+            }
+            if (isset($operations['delete'])) {
+                unset($operations['delete']);
+            }
+        }
+    }
+}
+
 function role_form_submit_handler(&$form, FormStateInterface $formState)
 {
     if ($formState->has('umbera_roles')) {
@@ -113,20 +154,21 @@ function role_form_submit_handler(&$form, FormStateInterface $formState)
     }
 }
 
-function _get_group_rooms(int $groupId){
+function _get_group_rooms(int $groupId)
+{
     $roomsIds = \Drupal::entityQuery('node')
-    ->accessCheck(false)
-    ->condition('type', 'room')
-    ->condition('status', 1)
-    ->condition('field_group', $groupId)
-    ->execute();
+        ->accessCheck(false)
+        ->condition('type', 'room')
+        ->condition('status', 1)
+        ->condition('field_group', $groupId)
+        ->execute();
 
     $rooms = Node::loadMultiple($roomsIds);
 
     $roomOptions = [
         '' => '- Select a value -'
     ];
-    foreach($rooms as $room) {
+    foreach ($rooms as $room) {
         $roomOptions[$room->id()] = $room->getTitle();
     }
     return $roomOptions;

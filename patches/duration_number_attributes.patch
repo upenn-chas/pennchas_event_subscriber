@@ -1,8 +1,28 @@
 diff --git a/src/Element/DurationElement.php b/src/Element/DurationElement.php
-index 7161704..0925464 100644
+index 7161704..12549d4 100644
 --- a/src/Element/DurationElement.php
 +++ b/src/Element/DurationElement.php
-@@ -157,6 +157,12 @@ class DurationElement extends FormElement {
+@@ -97,10 +97,6 @@ class DurationElement extends FormElement {
+       $value = new DateInterval($value);
+     }
+ 
+-    if (!$value) {
+-      $value = $duration_service->createEmptyDateInterval();
+-    }
+-
+     // Create a wrapper for the elements. This is done in this manner
+     // rather than nesting the elements in a wrapper with #prefix and #suffix
+     // so as to not end up with [wrapper] as part of the name attribute
+@@ -149,7 +145,7 @@ class DurationElement extends FormElement {
+           '#title' => $label,
+           // $value is a DateInterval object. This outputs the numeric value for
+           // the key.
+-          '#default_value' => $value->format('%' . $key),
++          '#default_value' => $value ? $value->format('%' . $key): '',
+           // Only require elements that are part of the given require elements
+           // granularity.
+           '#required' => $granularity_service->includeGranularityElement($key, $element['#required_elements']),
+@@ -157,6 +153,12 @@ class DurationElement extends FormElement {
            '#min' => 0,
          ];
  

@@ -1,12 +1,12 @@
-uuid: 93d73db8-4b21-4abc-8d03-6a63a36153c2
+uuid: b214d281-ea3d-4116-a8c0-b9498bfbe70a
 langcode: en
 status: true
 dependencies:
   module:
     - duration_field
     - node
-id: node.field_max_room_booking_duration
-field_name: field_max_room_booking_duration
+id: node.field_duration
+field_name: field_duration
 entity_type: node
 type: duration
 settings: {  }

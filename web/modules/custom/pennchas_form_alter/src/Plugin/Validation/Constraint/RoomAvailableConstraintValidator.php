@@ -30,14 +30,16 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
         if ($this->isBookingAvailable($roomId, $schedule)) {
             $this->context->addViolation($constraint->noSlotAvailble);
         }
-        $roomMaxBookingDuration = $room->get('field_max_room_booking_duration')->getValue();
-        $roomMaxBookingDurationInSeconds = $roomMaxBookingDuration[0]['seconds'];
-        $duration = $this->formatInterval($roomMaxBookingDurationInSeconds);
-        foreach ($schedule as $item) {
-            if (($item['duration'] * 60) > $roomMaxBookingDurationInSeconds) {
-                $this->context->addViolation($constraint->maxBookingTimeExceed, [
-                    '%duration' => $duration
-                ]);
+        $roomMaxBookingDuration = $room->get('field_duration')->getValue();
+        if (count($roomMaxBookingDuration) > 0 && !empty($roomMaxBookingDuration[0])) {
+            $roomMaxBookingDurationInSeconds = $roomMaxBookingDuration[0]['seconds'];
+            $duration = $this->formatInterval($roomMaxBookingDurationInSeconds);
+            foreach ($schedule as $item) {
+                if (($item['duration'] * 60) > $roomMaxBookingDurationInSeconds) {
+                    $this->context->addViolation($constraint->maxBookingTimeExceed, [
+                        '%duration' => $duration
+                    ]);
+                }
             }
         }
     }

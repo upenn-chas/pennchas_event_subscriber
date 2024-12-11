@@ -105,7 +105,7 @@ function isUserAuthorized($node)
 
         foreach ($node_groups as $node_group) {
             $group = Group::load($node_group['target_id']);
-            if ($group->hasPermission('event own evaluation', $current_user) &&  $owner_id === $current_user_id) {
+            if ($group && $group->hasPermission('event own evaluation', $current_user) &&  $owner_id === $current_user_id) {
                 return true;
             }
         }

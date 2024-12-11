@@ -10,6 +10,7 @@ final class Constant
 
     const MOD_STATUS_PUBLISHED = 'published';
     const MOD_STATUS_DRAFT = 'draft';
+    const MOD_STATUS_DELETE = 'delete';
 
     const PERMISSION_MODERATION = 'use editorial transition publish';
 }

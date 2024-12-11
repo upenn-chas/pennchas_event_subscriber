@@ -8,13 +8,12 @@ dependencies:
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
-    - field.field.node.room.field_description
+    - field.field.node.room.field_duration
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
     - field.field.node.room.field_legacy_resource_url
-    - field.field.node.room.field_max_room_booking_duration
     - field.field.node.room.field_maximum_occupancy
     - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
@@ -23,7 +22,6 @@ dependencies:
     - image.style.thumbnail
     - node.type.room
   module:
-    - content_moderation
     - duration_field
     - image
     - link
@@ -34,6 +32,16 @@ targetEntityType: node
 bundle: room
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 2
@@ -42,7 +50,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: string_textfield
-    weight: 10
+    weight: 9
     region: content
     settings:
       size: 60
@@ -50,33 +58,31 @@ content:
     third_party_settings: {  }
   field_amenities_technology:
     type: options_buttons
-    weight: 18
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_available_to:
     type: options_buttons
-    weight: 19
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   field_chas_tech_managed_space:
     type: options_buttons
-    weight: 16
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_description:
-    type: text_textarea
-    weight: 8
+  field_duration:
+    type: duration_widget
+    weight: 26
     region: content
-    settings:
-      rows: 5
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_image:
     type: image_image
-    weight: 17
+    weight: 16
     region: content
     settings:
       progress_indicator: throbber
@@ -84,7 +90,7 @@ content:
     third_party_settings: {  }
   field_legacy_policy_url:
     type: link_default
-    weight: 14
+    weight: 13
     region: content
     settings:
       placeholder_url: ''
@@ -92,28 +98,22 @@ content:
     third_party_settings: {  }
   field_legacy_resource_url:
     type: link_default
-    weight: 15
+    weight: 14
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_max_room_booking_duration:
-    type: duration_widget
-    weight: 20
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_maximum_occupancy:
     type: number
-    weight: 11
+    weight: 10
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_policy_url:
     type: link_default
-    weight: 13
+    weight: 12
     region: content
     settings:
       placeholder_url: ''
@@ -121,7 +121,7 @@ content:
     third_party_settings: {  }
   field_room_gps_pin:
     type: string_textfield
-    weight: 12
+    weight: 11
     region: content
     settings:
       size: 60
@@ -129,17 +129,11 @@ content:
     third_party_settings: {  }
   field_support_contact:
     type: string_textfield
-    weight: 9
+    weight: 8
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  moderation_state:
-    type: moderation_state_default
-    weight: 6
-    region: content
-    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -156,7 +150,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -187,7 +181,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  body: true
   field_group: true
   field_group_ref: true
   field_qr_code: true
+  moderation_state: true

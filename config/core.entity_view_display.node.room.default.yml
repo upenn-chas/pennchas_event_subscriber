@@ -8,13 +8,12 @@ dependencies:
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
-    - field.field.node.room.field_description
+    - field.field.node.room.field_duration
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
     - field.field.node.room.field_legacy_resource_url
-    - field.field.node.room.field_max_room_booking_duration
     - field.field.node.room.field_maximum_occupancy
     - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
@@ -34,6 +33,13 @@ targetEntityType: node
 bundle: room
 mode: default
 content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_address:
     type: string
     label: above
@@ -68,12 +74,14 @@ content:
     third_party_settings: {  }
     weight: 9
     region: content
-  field_description:
-    type: text_default
+  field_duration:
+    type: duration_human_display
     label: above
-    settings: {  }
+    settings:
+      text_length: full
+      separator: space
     third_party_settings: {  }
-    weight: 1
+    weight: 14
     region: content
   field_group:
     type: entity_reference_label
@@ -117,15 +125,6 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 8
-    region: content
-  field_max_room_booking_duration:
-    type: duration_human_display
-    label: above
-    settings:
-      text_length: full
-      separator: space
-    third_party_settings: {  }
-    weight: 14
     region: content
   field_maximum_occupancy:
     type: number_integer
@@ -177,5 +176,5 @@ content:
     weight: 0
     region: content
 hidden:
-  body: true
+  content_moderation_control: true
   field_group_ref: true

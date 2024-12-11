@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
-    - field.field.node.reserve_room.field_purpose_of_request
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
     - node.type.reserve_room
@@ -160,5 +159,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_event_ends_on: true
-  field_purpose_of_request: true
   moderation_state: true
