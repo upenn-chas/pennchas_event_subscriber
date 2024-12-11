@@ -20,5 +20,5 @@ class GeoCoordinatesConstraint extends Constraint
      * 
      * @var string
      */
-    public $invalidGpsPin = 'Please enter valid coordinates in the format "latitude,longitude" (e.g., 37.7749,-122.4194).';
+    public $invalidGpsPin = 'GPS pins is not valid or format is invalid.';
 }
