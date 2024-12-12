@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_group
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
     - field.field.node.chas_event.field_intended_audience_image
@@ -26,6 +28,7 @@ dependencies:
     - field.field.node.chas_event.field_intended_outcomes_remarks
     - field.field.node.chas_event.field_location_of_program
     - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_rsvp_link
     - image.style.thumbnail
@@ -131,6 +134,16 @@ content:
       rows: 5
       placeholder: 'Experiences and Strategies'
     third_party_settings: {  }
+  field_group:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_intended_audience:
     type: options_buttons
     weight: 8
@@ -189,6 +202,12 @@ content:
     settings:
       rows: 5
       placeholder: 'Marketing blurb'
+    third_party_settings: {  }
+  field_participants:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_program_communities:
     type: options_buttons

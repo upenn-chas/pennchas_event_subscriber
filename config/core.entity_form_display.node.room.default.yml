@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
-    - field.field.node.room.field_description
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
@@ -80,13 +79,6 @@ content:
     weight: 26
     region: content
     settings: {  }
-  field_description:
-    type: text_textarea
-    weight: 8
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
     third_party_settings: {  }
   field_image:
     type: image_image

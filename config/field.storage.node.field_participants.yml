@@ -1,0 +1,36 @@
+uuid: 916e66f1-2c56-4702-b493-4f050815b535
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_participants
+field_name: field_participants
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: ALL_STUD
+      label: 'All students'
+    -
+      value: FY_STUD
+      label: 'All first year students'
+    -
+      value: SY_STUD
+      label: 'All second year students'
+    -
+      value: UY_STUD
+      label: 'All upper year students'
+    -
+      value: TX_STUD
+      label: 'Transfer students'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

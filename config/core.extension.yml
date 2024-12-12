@@ -69,7 +69,7 @@ module:
   multiple_fields_remove_button: 0
   mysql: 0
   node: 0
-  node_form_extension: 0
+  node_event_form_ext: 0
   options: 0
   page_cache: 0
   path: 0
@@ -101,7 +101,6 @@ module:
   ultimate_cron: 0
   update: 0
   user: 0
-  userprotect: 0
   variationcache: 0
   view_alteration: 0
   views_bootstrap: 0

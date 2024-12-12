@@ -67,7 +67,7 @@ content:
     settings:
       start_minimized: false
       leaves_only: false
-      select_parents: true
+      select_parents: false
       cascading_selection: 0
       max_depth: 0
     third_party_settings: {  }
