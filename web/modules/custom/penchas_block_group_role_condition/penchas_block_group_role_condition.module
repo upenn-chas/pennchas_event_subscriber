@@ -10,6 +10,13 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockRepositoryInterface;
 use Drupal\group\Entity\GroupRole;
 use Drupal\group\Entity\GroupMembership;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Layout\LayoutBuilderInterface;
+
+use Drupal\block\BlockPluginInterface;
+use Drupal\Core\Block\BlockBase;
+
+use Drupal\views\Views;
 
 
 function get_all_group_roles(){
@@ -61,43 +68,139 @@ function get_all_group_roles(){
 //   $block->setConfigurationValue('my_custom_field', $form_state->getValue('my_custom_field'));
 // }
 
+/**
+ * Implements hook_layout_builder_access().
+ */
+// function penchas_block_group_role_condition_layout_builder_access($layout_builder, $block, AccountInterface $account) {
+//   // Make sure the block is the one we want to control access for
+//   dump('iiiiiiiiiiiiiiiioooooo-'.$block->getPluginId());
+//   if ($block->getPluginId() == 'dashboard_blocks') {
+//     // Only allow users with the 'administrator' role to see this block
+//     // if (!$account->hasRole('administrator')) {
+//       \Drupal::logger('custom asd')->notice('  Access forbidden for non-administrator');
+//       return AccessResult::forbidden();
+//     // }
+//   }
 
+//   // Allow access for other cases
+//   return AccessResult::allowed();
+// }
+
+/**
+ * Implements block_plugin_access() to control block access.
+ */
+// function penchas_block_group_role_condition_block_plugin_access(BlockPluginInterface $block) {
+//   // Example: Only allow administrators to access a custom block
+//   dump('ddddddddddddddd-'.$block->getPluginId());
+//   if ($block instanceof BlockBase && $block->getPluginId() == 'dashboard_blocks') {
+//       return AccessResult::forbidden();
+
+//   }
+
+//   return AccessResult::allowed();
+// }
+
+// function penchas_block_group_role_condition_block_access(Block $block, $operation, AccountInterface $account) {
+//   // Your custom logic to check access for the block
+//   // dump('askdhas-'.$block->getPluginId());
+
+//   if ($block->getPluginId() == 'dashboard_blocks') {
+//     \Drupal::logger('custom')->notice('Custom block access check');
+
+//     // Access control logic here
+//     // return AccessResult::allowed();
+//     // dd('aksdhj no allowed');
+//     // return AccessResult::forbiddenIf(FALSE)->addCacheableDependency($block);
+//     \Drupal::logger('custom')->notice('123 Access forbidden for non-administrator');
+//     return AccessResult::forbidden();
+//     \Drupal::logger('custom')->notice('Access forbidden for non-administrator');
+
+//   }
+
+//   return AccessResult::neutral();
+
+// }
+
+/**
+ * Example function to get a view as a block and render it with pagination.
+ */
+// function penchas_block_group_role_condition_get_view_with_pagination() {
+//   // Get the view by its machine name.
+//   $view = Views::getView('my_events');
+//   dd($view);
+//   if ($view) {
+//     // Set the current page for pagination (get this from the URL or other source).
+//     // $view->setDisplay('block_1');
+//     $view->setExposedInput(['page' => \Drupal::request()->query->get('page')]);
+
+//     // Execute the view.
+//     $view_output = $view->render();
+//     return $view_output;
+//   }
+//   return '';
+// }
 
 /**
  * Implements hook_preprocess_block().
  */
-function penchas_block_group_role_condition_preprocess_block(&$variables) {
-  // Check if the block is the specific inline block we want to target.
-  if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
-    // Retrieve the roles specified in the block's field.
-    $field_values = $variables['content']['field_block_display_condition_wi'];
+// function penchas_block_group_role_condition_preprocess_block(&$variables) {
+//   $connection = Database::getConnection();
+//   // dump('test---------------'.$variables['plugin_id']);
+//   // Check if the block is the specific inline block we want to target.
+//   if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
+//     // Retrieve the roles specified in the block's field.
+//     $field_values = $variables['content']['field_block_display_condition_wi'];
 
-    if (!isset($field_values['#items'])) {
-      // If there are no field values, stop further processing.
-      return;
-    }
+//     if (!isset($field_values['#items'])) {
+//       // If there are no field values, stop further processing.
+//       return;
+//     }
 
-    $group_roles_arr = [];
-    foreach ($field_values['#items']->referencedEntities() as $value) {
-      $group_roles_arr[] = $value->id();
-    }
-    // Load the current user.
-    $current_user = \Drupal::currentUser();
-    $user_entity = \Drupal\user\Entity\User::load($current_user->id());
-    // dd($user_entity);
-    if (!$user_entity) {
-      // No user entity, so do not show the block.
-      $variables['#access'] = FALSE;
-      return;
-    }
-    foreach (get_all_group_roles() as $key => $value) {
-      if (array_key_exists($key, $group_roles_arr)) {
-        $variables['#access'] = TRUE;
-        break;
-      }else{
-        $variables['#access'] = FALSE;
-      }
-    }
-  }
-}
+//     $group_roles_arr = [];
+//     foreach ($field_values['#items']->referencedEntities() as $value) {
+//       $group_roles_arr[] = $value->id();
+//     }
+//     // Load the current user.
+//     $current_user = \Drupal::currentUser();
+//     $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+//     // dd($user_entity);
+
+//     $query = $connection->select('group_relationship_field_data', 'gr')
+//     ->fields('gr', ['id'])
+//     ->condition('entity_id', $current_user->id(), '=')
+//     ->condition('plugin_id', 'group_membership', '=');
+
+//     // Execute the query and fetch all results as an associative array.
+//     $results = $query->execute()->fetchAssoc('id');
+//     // if(!$results){
+//       if(!empty($results['id'])){
+//         $current_user_role_id = $results['id'];
+//         $query = $connection->select('group_relationship__group_roles', 'grr')
+//         ->fields('grr', ['group_roles_target_id'])
+//         ->condition('entity_id', $current_user_role_id, '=');
+//         $group_roles_results = $query->execute()->fetchAssoc('group_roles_target_id');
+//         if(!empty($group_roles_results)){
+//           // dd($group_roles_arr);
+//           $group_role = $group_roles_results['group_roles_target_id'];
+//           $variables['content'] = [];
+
+//         }
+//       }
+//     // }
+//     if (!$user_entity) {
+//       // No user entity, so do not show the block.
+//       $variables['#access'] = FALSE;
+//       return;
+//     }
+
+//     if(!empty($group_role)){
+//         $key = array_search($group_role, $group_roles_arr);
+//         if ($key !== false) {
+//           $variables['#access'] = TRUE;
+//         } else {
+//           $variables['content'] = [];
+//         }
+//     }
+//   }
+// }
 

@@ -1,0 +1,3 @@
+services:
+  pennchas_form_alter.reserve_room_mail_service:
+    class: \Drupal\pennchas_form_alter\Service\ReserveRoomEmailService

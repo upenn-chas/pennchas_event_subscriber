@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\node_form_extension\Service;
+namespace Drupal\pennchas_form_alter\Service;
 
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupType;
@@ -8,7 +8,7 @@ use Drupal\node\Entity\Node;
 use Drupal\user\Entity\Role;
 use Exception;
 
-class EmailService
+class ReserveRoomEmailService
 {
     protected $mailer;
 

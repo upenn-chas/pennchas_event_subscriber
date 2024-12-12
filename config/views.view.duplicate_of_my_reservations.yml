@@ -1,4 +1,4 @@
-uuid: 0f960930-2e6e-499a-88f9-cdcdbfaa2ca7
+uuid: 7cb0b682-c6f5-42d2-93ca-142b417dd2ef
 langcode: en
 status: true
 dependencies:
@@ -17,8 +17,8 @@ dependencies:
     - smart_date
     - user
     - views_bootstrap
-id: my_events
-label: 'My Events'
+id: duplicate_of_my_reservations
+label: 'Duplicate of My reservations'
 module: views
 description: ''
 tag: ''

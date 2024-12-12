@@ -25,39 +25,41 @@ class FindYourHouse extends BlockBase
 	public function build()
 	{
 		$config = \Drupal::config('find_your_house.settings');
-		if(empty($config)) {
+		if (empty($config)) {
 			return;
 		}
 		$go_button = $config->get('go_button') ?? 'Go';
 		$group_types = $config->get('group_types');
 		$link_text = $config->get('link_text') ?? 'Discover all our houses';
-		$link_url = $config->get('link_url')?? '#';
+		$link_url = $config->get('link_url') ?? '#';
 
-	  $group_storage = \Drupal::entityTypeManager()->getStorage('group');
-    $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
-    $groups = Group::loadMultiple($group_ids);
-    // Sort groups alphabetically by title
-    usort($groups, function ($a, $b) {
-      // Get titles of the groups
-      $title_a = $a->label(); // 'label' is the function to get the group title.
-      $title_b = $b->label();
+		$group_storage = \Drupal::entityTypeManager()->getStorage('group');
+		$group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
+		$groups = Group::loadMultiple($group_ids);
+		// Sort groups alphabetically by title
+		usort($groups, function ($a, $b) {
+			// Get titles of the groups
+			$title_a = $a->label(); // 'label' is the function to get the group title.
+			$title_b = $b->label();
 
-      // Compare titles alphabetically (case-insensitive)
-      return strcasecmp($title_a, $title_b);
-    });
+			// Compare titles alphabetically (case-insensitive)
+			return strcasecmp($title_a, $title_b);
+		});
 
 		$options = [];
-    $options_html = '';
+		$options_html = '';
 
 		foreach ($groups as $group) {
 			$options[$this->getGroupUrlAlias($group)] = $group->label();
-      $options_html .= '<li class="option"><span class="option-text" data-group-url="'.$this->getGroupUrlAlias($group).'">'.$group->label().'</span></li>';
+			$options_html .= '<li class="option"><span class="option-text" data-group-url="' . $this->getGroupUrlAlias($group) . '">' . $group->label() . '</span></li>';
 		}
-    $list_items = array(
-      'lastname', 'email', 'phone'
-    );
+		$list_items = array(
+			'lastname',
+			'email',
+			'phone'
+		);
 
-    $prefix = '<h2>Find Your College House</h2>';
+		$prefix = '<h2>Find Your College House</h2>';
 
 		$build = [
 			"#type" => "container",
@@ -79,7 +81,7 @@ class FindYourHouse extends BlockBase
 						'#title' => '',
 						'#empty_option' => $this->t('Select Your House Name'),
 						'#options' => $options,
-            '#attributes' => [
+						'#attributes' => [
 							'class' => ['hidden'],
 						],
 					],
@@ -108,14 +110,14 @@ class FindYourHouse extends BlockBase
 			],
 			'#attributes' => [
 				'class' => ['find_your_house form-group'],
-      ],
-      '#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div><ul class="options">'.$options_html.'</ul></div></div>',
-      // '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
-      // '#suffix' => '</span></li></ul></div><div class="form-action"><button type="submit">Go</button></div>'
-      // '#markup' => $prefix . $content
+			],
+			'#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div><ul class="options">' . $options_html . '</ul></div></div>',
+			// '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
+			// '#suffix' => '</span></li></ul></div><div class="form-action"><button type="submit">Go</button></div>'
+			// '#markup' => $prefix . $content
 		];
 
-    $build['#attached']['library'][] = 'find_your_house/find_your_house';
+		$build['#attached']['library'][] = 'find_your_house/find_your_house';
 		return $build;
 	}
 

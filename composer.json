@@ -112,6 +112,9 @@
         "patches": {
             "drupal/endroid_qr_code": {
                 "Endriod QR Code patch": "patches/endroid_qr_code.patch"
+            },
+            "drupal/duration_field": {
+                "Field Attributes": "patches/duration_number_attributes.patch"
             }
         }
     },

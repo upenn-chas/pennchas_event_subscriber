@@ -1,0 +1,11 @@
+uuid: e7ed9df6-52ef-4d5f-bb86-fdf80f5001c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.dashboard_view
+label: 'Dashboard view'
+description: "Display title with CTA's in mode."
+targetEntityType: block_content
+cache: true
