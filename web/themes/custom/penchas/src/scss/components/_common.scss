@@ -17,6 +17,9 @@
     }
   }
 }
+.container-lg {
+  max-width: 1350px;
+}
 
 .container-fluid {
   @include media-query('large') {

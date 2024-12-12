@@ -69,7 +69,6 @@ module:
   multiple_fields_remove_button: 0
   mysql: 0
   node: 0
-  node_form_extension: 0
   options: 0
   page_cache: 0
   path: 0

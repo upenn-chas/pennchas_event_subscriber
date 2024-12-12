@@ -1,0 +1,29 @@
+uuid: a52efe1e-2b19-42b8-89f1-63cbd22952ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_room_resv_created_approved
+    - field.storage.easy_email.field_reserve_room
+    - node.type.reserve_room
+id: easy_email.et_room_resv_created_approved.field_reserve_room
+field_name: field_reserve_room
+entity_type: easy_email
+bundle: et_room_resv_created_approved
+label: 'Reserve Room'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reserve_room: reserve_room
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -10,8 +10,6 @@ dependencies:
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_duration
-    - field.field.node.room.field_group
-    - field.field.node.room.field_description
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
@@ -58,9 +56,9 @@ hidden:
   field_amenities_technology: true
   field_available_to: true
   field_chas_tech_managed_space: true
+  field_description: true
   field_duration: true
   field_group: true
-  field_description: true
   field_group_ref: true
   field_legacy_policy_url: true
   field_legacy_resource_url: true

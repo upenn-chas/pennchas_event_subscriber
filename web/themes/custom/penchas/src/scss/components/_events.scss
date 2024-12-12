@@ -193,36 +193,330 @@
 
 /*dashboard events*/
 .dashboard-events {
+  padding-bottom: 110px;
+  @include media-query('tablet') {
+    padding: 0 !important;
+  }
   .row {
     margin: 0;
     ul {
-      border: 1px solid $primaryColor;
+      border: 1px solid #bfc7d6;
       padding: 0 20px;
       font-family: $teritoryFont;
       font-size: 14px;
       line-height: 19px;
+      .row {
+        margin: 0 -12px;
+      }
+    }
+
+    .block1 {
+      width: 185px;
+      @include media-query('tablet') {
+        order: 2;
+        width: 50%;
+      }
+    }
+    .block2 {
+      width: calc(100% - 370px);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      @include media-query('tablet') {
+        order: 3;
+        width: 50%;
+      }
+      .center-title {
+        margin-bottom: 5px;
+        a {
+          text-decoration: none;
+
+          font-weight: 700;
+        }
+      }
+    }
+    .block3 {
+      width: 185px;
+      @include media-query('tablet') {
+        order: 1;
+        width: 100%;
+      }
+      .approved-btn {
+        background: #75E588;
+        font-size: 12px;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 7px 14px 3px 14px;
+        border-radius: 10px;
+        &.pending {
+          background-color: #FFEB40;
+        }
+      }
+      .action-btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        @include media-query('tablet') {
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+      }
+      .bottom-btns {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: flex-end;
+        @include media-query('tablet') {
+          margin-top: 0;
+        }
+       div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+       }
+       img {
+        margin-top: -2px;
+       }
+        a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 
-  .view-header {
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-start;
-      gap: 10px;
-    }
-    li {
-      span {
-        font-size: 18px;
-        background: #011f5b;
-        padding: 11px 20px;
-        border-radius: 10px;
-        color: #fff;
-        border: 1px solid #011f5b;
+  .view-footer {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: $teritoryFont;
+    color: $primaryColor;
+  }
+  .view-my-reservations,
+  .view-display-id-my_pending_events  {
+    .view-header {
+      font-family: $teritoryFont;
+      font-size: 14px;
+      font-weight: 700;
+      @include media-query ('small'){
+        text-align: center;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        border-bottom: 1px solid #011f5b;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+        @include media-query ('small'){
+          margin-bottom: 20px;
+        }
+      }
+      li {
+        span {
+          font-size: 18px;
+          font-family: $teritoryFont;
+          background: #fff;
+          color: #011f5b;
+          padding: 13px 20px 9px 20px;
+          border-radius: 10px;
+          font-weight: 400;
+          border: 1px solid #011f5b;
+          @include media-query ('small'){
+            padding: 5px 10px 4px 10px;
+            font-size: 14px;
+          }
+        }
+        &:nth-child(2) {
+          span {
+            background: #011f5b;
+            color: #fff;
+          }
+        }
       }
 
     }
   }
+  .view-display-id-my_events_block {
+    .view-header {
+      font-family: $teritoryFont;
+      font-size: 14px;
+      font-weight: 700;
+      @include media-query ('small'){
+        text-align: center;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        border-bottom: 1px solid #011f5b;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+        @include media-query ('small'){
+          margin-bottom: 20px;
+        }
+      }
+      li {
+        span {
+          font-size: 18px;
+          background: #011f5b;
+          padding: 13px 20px 9px 20px;
+          border-radius: 10px;
+          color: #fff;
+          border: 1px solid #011f5b;
+          font-family: $teritoryFont;
+          font-weight: 400;
+          @include media-query ('small'){
+            padding: 5px 10px 4px 10px;
+            font-size: 14px;
+          }
+        }
+        &:nth-child(2) {
+          span {
+            background: #fff;
+            color: #011f5b;
+          }
+        }
+      }
+
+    }
+  }
+
+
+  .view-filters .views-exposed-form {
+    margin: 0 -15px;
+    .js-form-item-title {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      margin-right: 5px;
+      padding: 0 15px;
+      @include media-query('tablet') {
+        max-width: none;
+        width: 100%;
+      }
+      label {
+        position: static;
+        padding: 0;
+        -webkit-transform: none;
+        transform: none !important;
+        height: auto;
+        -webkit-transition: none;
+        transition: none;
+        border: 0;
+        margin: 0 0 5px 0;
+        background: none;
+        opacity: 1;
+        color: $primaryColor;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: normal;
+        @include media-query ('small'){
+          font-weight: 400;
+        }
+        &:after {
+          display: none
+        }
+      }
+      input {
+        border: 1px solid $primaryColor;
+        border-radius: 10px;
+        color: #4E638C;
+        padding: 0 15px;
+        height: 50px;
+        min-height: 50px;
+      }
+    }
+
+    .form-type-select {
+      width: 100%;
+      max-width: 370px;
+      @include media-query('tablet') {
+        padding: 0 15px;
+        max-width: none;
+        width: 100%;
+      }
+      label {
+        margin-bottom: 5px;
+        @include media-query ('small'){
+          font-weight: 400;
+        }
+      }
+      select {
+        border: 1px solid $primaryColor;
+        border-radius: 10px;
+        width: 100%;
+        color: #4E638C;
+        font-size: 18px;
+        font-family: $teritoryFont;
+        font-weight: 400;
+        height: 50px;
+      }
+    }
+
+    .form-actions {
+      margin: 0;
+      .btn.btn-primary {
+        &:before {
+          display: none;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+        font-size: 18px;
+        background: $primaryColor;
+        border-radius: 10px;
+        color: #fff;
+        border: 1px solid $primaryColor;
+        font-weight: 400;
+        padding: 0 20px;
+        height: 50px;
+        line-height: 50px;
+        margin-left: 20px;
+        @include media-query('tablet') {
+          margin-left: 15px;
+          height: 45px;
+          line-height: 45px;
+        }
+        &:hover {
+          background-color: #fff;
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+
+
+.dashboard-event-sidebar {
+ nav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      width: 100%;
+    }
+    a {
+      text-decoration: none;
+      font-family: $teritoryFont;
+      line-height: 20px;
+      color: $primaryColor;
+      text-transform: capitalize;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+ }
 }
