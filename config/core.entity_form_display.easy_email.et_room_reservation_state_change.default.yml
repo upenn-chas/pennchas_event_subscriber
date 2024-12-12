@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - easy_email.easy_email_type.et_room_reservation_state_change
+    - field.field.easy_email.et_room_reservation_state_change.field_message
     - field.field.easy_email.et_room_reservation_state_change.field_reserve_room
     - field.field.easy_email.et_room_reservation_state_change.field_state
   module:
@@ -89,6 +90,14 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_message:
+    type: string_textarea
+    weight: 28
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_reserve_room:

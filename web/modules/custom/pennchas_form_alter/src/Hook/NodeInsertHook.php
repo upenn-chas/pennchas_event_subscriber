@@ -26,9 +26,9 @@ class NodeInsertHook
         $message = t('Your request has been submitted and there is a possible three day wait time for approval.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
             $message = t('Your request has been accepted.');
-            $mailService->notifyCreated('et_room_resv_created_approved', $node);
+            $mailService->notifyCreated(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
         } else {
-            $mailService->notifyCreated('et_room_reservation_created', $node, $group, true);
+            $mailService->notifyCreated(Constant::RESERVER_ROOM_EMAIL_CREATED, $node, $group, true);
         }
         \Drupal::messenger()->addStatus($message);
     }

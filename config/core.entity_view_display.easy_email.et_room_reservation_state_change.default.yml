@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - easy_email.easy_email_type.et_room_reservation_state_change
+    - field.field.easy_email.et_room_reservation_state_change.field_message
     - field.field.easy_email.et_room_reservation_state_change.field_reserve_room
     - field.field.easy_email.et_room_reservation_state_change.field_state
   module:
@@ -81,6 +82,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_message:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_reserve_room:
     type: entity_reference_label

@@ -27,12 +27,14 @@ class NodePreSaveHook
         if ($node->isNew() || !$node->original->get('field_group')->getString()) {
             $node->set('field_group', $group->id());
         }
-        if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
-            $node->setPublished(true);
-            $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
-        } else {
-            $node->setPublished(false);
-            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+        if ($node->isNew()) {
+            if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
+                $node->setPublished(true);
+                $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
+            } else {
+                $node->setPublished(false);
+                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+            }
         }
     }
 

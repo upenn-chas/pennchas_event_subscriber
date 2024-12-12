@@ -5,6 +5,7 @@ namespace Drupal\pennchas_form_alter\Service;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupType;
 use Drupal\node\Entity\Node;
+use Drupal\pennchas_form_alter\Util\Constant;
 use Drupal\user\Entity\Role;
 use Exception;
 
@@ -25,14 +26,6 @@ class ReserveRoomEmailService
         }
     }
 
-    public function notifyOwnerAboutModeration(Node $node, string $state)
-    {
-        if ($state === 'published') {
-            $this->sendMail($node, 'et_room_reservation_approved', [$node->getOwnerId()]);
-        } else {
-            $this->sendModerationMail($node, $state);
-        }
-    }
 
     protected function sendEmailToModerators(Node $node, Group $group)
     {
@@ -40,7 +33,7 @@ class ReserveRoomEmailService
         $groupModeratorsId = $this->getGroupModerators('house1', [$group->id()]);
         $moderatorsId = array_unique(array_merge($globalModeratorsId, $groupModeratorsId));
         if ($moderatorsId) {
-            $this->sendMail($node, 'et_reserve_room_moderation', $moderatorsId);
+            $this->sendMail($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $moderatorsId);
         }
     }
 
@@ -70,7 +63,7 @@ class ReserveRoomEmailService
         $moderatorRoles = [];
 
         foreach ($groupRoles as $roleKey => $groupRole) {
-            if ($roleKey !== $groupTypeKey . '-admin' && $groupRole->hasPermission('use editorial transition publish')) {
+            if ($roleKey !== $groupTypeKey . '-admin' && $groupRole->hasPermission(Constant::PERMISSION_MODERATION)) {
                 $moderatorRoles[] = $roleKey;
             }
         }
@@ -93,7 +86,7 @@ class ReserveRoomEmailService
 
         $moderatorRoles = [];
         foreach ($roles as $key => $role) {
-            if ($key !== 'administrator' && $role->hasPermission('use editorial transition publish')) {
+            if ($key !== 'administrator' && $role->hasPermission(Constant::PERMISSION_MODERATION)) {
                 $moderatorRoles[] = $key;
             }
         }
@@ -110,24 +103,6 @@ class ReserveRoomEmailService
                 $email->set('label', $email->getSubject());
                 $email->set('field_reserve_room', $node);
                 $email->setRecipientIds($recipients);
-                $this->mailer->sendEmail($email, [], true, true);
-            }
-        } catch (Exception $e) {
-            \Drupal::logger('Node Event Form Ext')->error($e->getMessage(), $e->getTrace());
-        }
-    }
-
-    protected function sendModerationMail(Node $node, $state)
-    {
-        try {
-            $email = $this->mailer->createEmail([
-                'type' => 'et_room_reservation_state_change',
-                'label' => $node->getTitle() . ' is ' . $state
-            ]);
-            if ($email) {
-                $email->set('field_reserve_room', $node);
-                $email->set('field_state', $state);
-                $email->setRecipientIds([$node->getOwnerId()]);
                 $this->mailer->sendEmail($email, [], true, true);
             }
         } catch (Exception $e) {

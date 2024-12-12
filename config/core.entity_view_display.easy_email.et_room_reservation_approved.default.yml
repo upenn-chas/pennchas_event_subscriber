@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - easy_email.easy_email_type.et_room_reservation_approved
+    - field.field.easy_email.et_room_reservation_approved.field_message
     - field.field.easy_email.et_room_reservation_approved.field_reserve_room
+    - field.field.easy_email.et_room_reservation_approved.field_state
   module:
     - file
     - text
@@ -81,6 +83,13 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_message:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_reserve_room:
     type: entity_reference_label
     label: above
@@ -88,6 +97,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
     region: content
   from_address:
     type: string

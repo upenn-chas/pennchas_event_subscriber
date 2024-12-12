@@ -3,6 +3,7 @@
 namespace Drupal\pennchas_form_alter\Plugin\Validation\Constraint;
 
 use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\Role;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -40,6 +41,8 @@ class AllowRoomConstraintValidator extends ConstraintValidator
     {
 
         $roomAvailableTo = $room->get('field_available_to')->getString();
+        $term = Term::load($roomAvailableTo);
+        $roleName = $term->getName();
         
         $group = \Drupal::routeMatch()->getParameter('group');
         $member = $group->getMember($currentUser);
@@ -51,8 +54,8 @@ class AllowRoomConstraintValidator extends ConstraintValidator
         }
         $isAuthentic = false;
         foreach ($roles as $role) {
-            $umberaRoles = $role->getThirdPartySetting('umbera_roles', 'target_ids');
-            if ($umberaRoles && isset($umbera_roles[$roomAvailableTo])) {
+            $umberaRoles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
+            if ($umberaRoles && isset($umberaRoles[$roleName])) {
                 $isAuthentic = true;
                 break;
             }
