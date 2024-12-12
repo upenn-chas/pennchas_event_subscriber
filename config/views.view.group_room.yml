@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_group
+    - field.storage.node.field_max_room_booking_duration
+    - field.storage.node.field_maximum_occupancy
     - node.type.room
   module:
+    - duration_field
     - group
     - node
     - user
@@ -28,7 +31,7 @@ display:
           id: gid
           table: group_relationship_field_data
           field: gid
-          relationship: none
+          relationship: group_relationship
           group_type: group
           admin_label: ''
           entity_type: group_relationship
@@ -158,12 +161,16 @@ display:
           id: field_group
           table: node__field_group
           field: field_group
+        field_max_room_booking_duration:
+          id: field_max_room_booking_duration
+          table: node__field_max_room_booking_duration
+          field: field_max_room_booking_duration
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -397,15 +404,13 @@ display:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          uses_fields: false
       row:
         type: fields
         options:
           default_field_elements: true
-          inline:
-            gid: gid
-            title: title
-            field_group: field_group
-          separator: ' - '
+          inline: {  }
+          separator: ''
           hide_empty: false
       query:
         type: views_query
@@ -415,7 +420,26 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        group_relationship:
+          id: group_relationship
+          table: node_field_data
+          field: group_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content group relationship'
+          entity_type: node
+          plugin_id: group_relationship_to_entity_reverse
+          required: true
+          group_relation_plugins:
+            'group_node:room': 'group_node:room'
+            'group_node:article': '0'
+            'group_node:chas_event': '0'
+            'group_node:house_landing_page': '0'
+            'group_node:page': '0'
+            'group_node:program_community': '0'
+            'group_node:reserve_room': '0'
+            'group_node:webform': '0'
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -424,13 +448,13 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - route
-        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.field_group'
+        - 'config:field.storage.node.field_max_room_booking_duration'
+        - 'config:field.storage.node.field_maximum_occupancy'
   entity_reference_1:
     id: entity_reference_1
     display_title: 'Group Room View'
@@ -456,9 +480,9 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - route
-        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.field_group'
+        - 'config:field.storage.node.field_max_room_booking_duration'
+        - 'config:field.storage.node.field_maximum_occupancy'

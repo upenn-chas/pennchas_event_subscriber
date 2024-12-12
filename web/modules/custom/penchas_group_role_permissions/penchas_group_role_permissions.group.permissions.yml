@@ -1,0 +1,6 @@
+access my events:
+  title: "Access My Events Dashboard Page"
+  description: "Allow the user to access the dashboard page : my events."
+access my rerservations:
+  title: "Access My Rerservations Dashboard Page"
+  description: "Allow the user to access the dashboard page : my rerservations."

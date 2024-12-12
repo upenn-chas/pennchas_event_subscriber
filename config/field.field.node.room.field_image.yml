@@ -11,7 +11,7 @@ id: node.room.field_image
 field_name: field_image
 entity_type: node
 bundle: room
-label: Photos
+label: Photo
 description: ''
 required: true
 translatable: false

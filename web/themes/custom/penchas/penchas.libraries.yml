@@ -5,10 +5,9 @@ global-styling:
     js/bootstrap.min.js: { weight: -48 }
     js/barrio.js: {}
     js/slick.min.js: {}
-    js/custom.js?asdasd=zxc: {}
+    js/custom.js?vv=1.4: {}
   css:
     component:
-      # css/bootstrap.min.css: {}
       css/style.css: {}
       css/slick.css: {}
       dist/css/style.css: {}

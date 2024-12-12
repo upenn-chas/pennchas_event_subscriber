@@ -9,9 +9,9 @@ dependencies:
     - field.field.node.reserve_room.field_email
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
-    - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
+    - field.field.node.reserve_room.field_purpose_of_request
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
     - node.type.reserve_room
@@ -19,7 +19,6 @@ dependencies:
   module:
     - bootstrap_layout_builder
     - layout_builder
-    - layout_discovery
     - layout_builder_restrictions
     - smart_date
     - system
@@ -303,16 +302,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
-          de88f9be-e3b2-432f-99fb-27c5ff6ff27a:
-            uuid: de88f9be-e3b2-432f-99fb-27c5ff6ff27a
-            region: content
-            configuration:
-              id: 'extra_field_block:node:reserve_room:content_moderation_control'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 7
-            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -332,7 +321,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
-    region: content
+    region: blb_region_col_1
   field_anticipated_participants:
     type: number_integer
     label: above
@@ -372,13 +361,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_long_text:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_phone:
     type: string
     label: above
@@ -386,6 +368,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_purpose_of_request:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_room:
     type: entity_reference_label
@@ -407,4 +396,5 @@ hidden:
   field_event_ends_on: true
   field_group: true
   field_purpose_of_request: true
+  field_long_text: true
   links: true

@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
+    - field.field.node.room.field_description
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
@@ -126,6 +127,15 @@ content:
     third_party_settings: {  }
     weight: 8
     region: content
+  field_max_room_booking_duration:
+    type: duration_human_display
+    label: above
+    settings:
+      text_length: full
+      separator: space
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_maximum_occupancy:
     type: number_integer
     label: above
@@ -177,4 +187,5 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  body: true
   field_group_ref: true

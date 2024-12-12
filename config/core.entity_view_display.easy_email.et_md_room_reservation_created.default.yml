@@ -1,17 +1,17 @@
-uuid: b000de91-bfaf-4684-866c-dcf5a18b3285
+uuid: 99b77e0d-d40a-4379-8493-d51bde81152a
 langcode: en
 status: true
 dependencies:
   config:
-    - easy_email.easy_email_type.et_room_resv_created_approved
-    - field.field.easy_email.et_room_resv_created_approved.field_reserve_room
+    - easy_email.easy_email_type.et_md_room_reservation_created
+    - field.field.easy_email.et_md_room_reservation_created.field_reserve_room
   module:
     - file
     - text
     - user
-id: easy_email.et_room_resv_created_approved.default
+id: easy_email.et_md_room_reservation_created.default
 targetEntityType: easy_email
-bundle: et_room_resv_created_approved
+bundle: et_md_room_reservation_created
 mode: default
 content:
   attachment:
