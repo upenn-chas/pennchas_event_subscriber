@@ -170,6 +170,14 @@ content:
     third_party_settings: {  }
     weight: 20
     region: content
+  field_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_groups:
     type: entity_reference_label
     label: above

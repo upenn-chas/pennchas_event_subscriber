@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
-    - field.field.node.room.field_group_ref
     - field.field.node.room.field_images
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
@@ -131,7 +130,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_group: true
-  field_group_ref: true
   field_images: true
   field_link_1: true
   field_link_2: true

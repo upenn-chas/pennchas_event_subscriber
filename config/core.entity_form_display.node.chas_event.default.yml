@@ -135,6 +135,16 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  field_group:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_groups:
     type: entity_reference_autocomplete
     weight: 29
