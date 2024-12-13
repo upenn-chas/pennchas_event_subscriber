@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
+    - field.field.node.program_community.field_group
     - image.style.thumbnail
     - node.type.program_community
   module:
@@ -40,6 +41,12 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_group:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

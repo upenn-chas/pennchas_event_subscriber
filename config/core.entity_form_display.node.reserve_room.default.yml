@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
+    - field.field.node.reserve_room.field_group_ref
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
@@ -72,6 +73,12 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
+  field_group:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_long_text:
     type: string_textarea
     weight: 13
@@ -149,5 +156,5 @@ content:
     third_party_settings: {  }
 hidden:
   field_event_ends_on: true
-  field_group: true
+  field_group_ref: true
   moderation_state: true

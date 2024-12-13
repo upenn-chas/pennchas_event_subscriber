@@ -73,7 +73,7 @@ content:
     third_party_settings: {  }
   field_duration:
     type: duration_widget
-    weight: 26
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }

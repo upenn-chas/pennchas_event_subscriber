@@ -1,14 +1,14 @@
-uuid: 65fcc74f-e14a-4d34-a7b1-04232f5880d6
+uuid: fffc02a9-bcb0-4977-acd8-d8b009ba332d
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_group_ref
-    - node.type.room
-id: node.room.field_group_ref
+    - node.type.reserve_room
+id: node.reserve_room.field_group_ref
 field_name: field_group_ref
 entity_type: node
-bundle: room
+bundle: reserve_room
 label: 'Group Ref'
 description: ''
 required: false

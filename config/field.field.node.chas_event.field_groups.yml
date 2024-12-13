@@ -1,0 +1,29 @@
+uuid: 1ca139b1-2dff-41a0-9d9e-e14a1f32286a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_groups
+    - group.type.house1
+    - node.type.chas_event
+id: node.chas_event.field_groups
+field_name: field_groups
+entity_type: node
+bundle: chas_event
+label: Groups
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      house1: house1
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

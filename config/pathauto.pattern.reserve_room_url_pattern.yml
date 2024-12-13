@@ -1,0 +1,22 @@
+uuid: ac602fee-deb4-42f9-a805-c01eac40aa25
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: reserve_room_url_pattern
+label: 'Reserve Room URL pattern'
+type: 'canonical_entities:node'
+pattern: '[node:field_group:entity:field_house_machine_name]/reserve_room/[node:title]'
+selection_criteria:
+  77b5d769-8fd8-4b94-afd3-2cdca0e73c74:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 77b5d769-8fd8-4b94-afd3-2cdca0e73c74
+    context_mapping:
+      node: node
+    bundles:
+      reserve_room: reserve_room
+selection_logic: and
+weight: -5
+relationships: {  }

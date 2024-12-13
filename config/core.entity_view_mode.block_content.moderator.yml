@@ -1,0 +1,11 @@
+uuid: ed58fb6c-bbfa-4d1d-ba37-5c1fdf64c974
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.moderator
+label: Moderator
+description: 'Display for moderator dashboard.'
+targetEntityType: block_content
+cache: true
