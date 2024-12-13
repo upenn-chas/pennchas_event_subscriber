@@ -101,6 +101,7 @@ module:
   ultimate_cron: 0
   update: 0
   user: 0
+  userprotect: 0
   variationcache: 0
   view_alteration: 0
   views_bootstrap: 0
