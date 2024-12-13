@@ -1,0 +1,29 @@
+uuid: efaa0dbd-3aa2-4f08-8952-10f04e0b398b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group
+    - group.type.house1
+    - node.type.reserve_room
+id: node.reserve_room.field_group
+field_name: field_group
+entity_type: node
+bundle: reserve_room
+label: House
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      house1: house1
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
