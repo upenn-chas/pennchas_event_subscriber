@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - block_content.type.dashboard_blocks
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
@@ -12,7 +13,19 @@ dependencies:
     - field.field.user.user.layout_builder__layout
     - field.field.user.user.user_picture
     - image.style.thumbnail
+  content:
+    - 'block_content:dashboard_basic_block:1e9d6aad-0b2a-4da5-88ab-e27d234f7ba6'
+    - 'block_content:dashboard_basic_block:7e510f22-13f1-4e54-974f-ff7d5e675152'
+    - 'block_content:dashboard_basic_block:94288dd7-bede-4d92-a605-4eaa6ed5db0e'
+    - 'block_content:dashboard_basic_block:a230833d-4b35-40af-b710-aabce37f0955'
+    - 'block_content:dashboard_basic_block:d10207ec-0cb7-4854-84a2-3a6c7a5b5da5'
+    - 'block_content:dashboard_basic_block:dfec0950-da42-47a2-8b16-2a4373fba114'
+    - 'block_content:dashboard_basic_block:e2279dc0-e06d-4277-8261-1ae32eea21ba'
+    - 'block_content:dashboard_basic_item:4f5d2ba2-4e34-481f-89f8-c4ac89f52ff5'
+    - 'block_content:dashboard_basic_item:aea3519d-7a85-47c6-8447-4e44c75996a4'
+    - 'block_content:dashboard_basic_item:c01d55cb-c093-466a-82e7-d661eb12f002'
   module:
+    - block_content
     - bootstrap_layout_builder
     - image
     - layout_builder
@@ -27,7 +40,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          container_wrapper_classes: dashboard-accordions
+          container_wrapper_classes: ''
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -128,65 +141,764 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          98b5b79a-8dd2-4a05-9d80-90941122aee7:
-            uuid: 98b5b79a-8dd2-4a05-9d80-90941122aee7
+          cdf1e1ec-5f40-4566-ac18-a548eb29599d:
+            uuid: cdf1e1ec-5f40-4566-ac18-a548eb29599d
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'Staff test'
+              id: 'inline_block:basic'
+              label: 'test basic block content'
               label_display: visible
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 98
-              block_revision_id: 116
+              block_id: 96
+              block_revision_id: 114
               block_serialized: null
             weight: 0
             additional: {  }
-          d6a5e619-f0db-444f-ae79-cb0fb8e7b4aa:
-            uuid: d6a5e619-f0db-444f-ae79-cb0fb8e7b4aa
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_3'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: space
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
+          breakpoints:
+            desktop: blb_col_4_4_4
+            tablet: null
+            mobile: null
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-4
+              - null
+              - null
+            blb_region_col_2:
+              - col-lg-4
+              - null
+              - null
+            blb_region_col_3:
+              - col-lg-4
+              - null
+              - null
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          fc0f9552-161a-42b2-8da0-5fe60a962918:
+            uuid: fc0f9552-161a-42b2-8da0-5fe60a962918
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'Website content '
+              id: 'block_content:4f5d2ba2-4e34-481f-89f8-c4ac89f52ff5'
+              label: 'My Events'
               label_display: visible
-              provider: layout_builder
+              provider: block_content
+              status: true
+              info: ''
               view_mode: full
               context_mapping: {  }
-              block_id: 101
-              block_revision_id: 121
-              block_serialized: null
-            weight: 1
-            additional: {  }
-          2793f331-57ba-4fb6-befd-9f3ef8e3799a:
-            uuid: 2793f331-57ba-4fb6-befd-9f3ef8e3799a
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'RA Resources'
-              label_display: visible
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 102
-              block_revision_id: 122
-              block_serialized: null
             weight: 2
             additional: {  }
-          9e59e5e0-68c4-446b-a3c4-7d44bbc02f16:
-            uuid: 9e59e5e0-68c4-446b-a3c4-7d44bbc02f16
+          8b41d12a-e59b-457a-892b-92dd6bfafb11:
+            uuid: 8b41d12a-e59b-457a-892b-92dd6bfafb11
+            region: blb_region_col_2
+            configuration:
+              id: 'block_content:c01d55cb-c093-466a-82e7-d661eb12f002'
+              label: 'My Reservations'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 2
+            additional: {  }
+          dd7aeddb-86d4-4f33-9663-017e838e9e54:
+            uuid: dd7aeddb-86d4-4f33-9663-017e838e9e54
+            region: blb_region_col_3
+            configuration:
+              id: 'block_content:aea3519d-7a85-47c6-8447-4e44c75996a4'
+              label: 'Evalutions & Reports'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 2
+            additional: {  }
+          d0a95390-6b3b-4dae-938a-b5c01f9e074c:
+            uuid: d0a95390-6b3b-4dae-938a-b5c01f9e074c
+            region: content
+            configuration:
+              id: 'field_block:user:user:user_picture'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: content
+                  image_style: thumbnail
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1322bad3-5c05-4b7f-aab8-eb18facbedcb:
+            uuid: 1322bad3-5c05-4b7f-aab8-eb18facbedcb
+            region: content
+            configuration:
+              id: 'extra_field_block:user:user:member_for'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          02676454-9f9f-41d7-9d17-bede16ed7194:
+            uuid: 02676454-9f9f-41d7-9d17-bede16ed7194
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_full_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          dbf5dcf2-a8c6-471e-b196-7345a2f4c2cb:
+            uuid: dbf5dcf2-a8c6-471e-b196-7345a2f4c2cb
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_preferred_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          1143c3e7-dfb0-4c6c-8c48-673f9e1e5dd2:
+            uuid: 1143c3e7-dfb0-4c6c-8c48-673f9e1e5dd2
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_title_position'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          375c2478-1d54-4b10-92f0-e6be9ab7d68a:
+            uuid: 375c2478-1d54-4b10-92f0-e6be9ab7d68a
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_employee_number'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: space
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+          breakpoints:
+            desktop: blb_col_6_6
+            tablet: null
+            mobile: null
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-6
+              - null
+              - null
+            blb_region_col_2:
+              - col-lg-6
+              - null
+              - null
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          29b2bc6f-f45d-47f0-978b-3e8d0f77e401:
+            uuid: 29b2bc6f-f45d-47f0-978b-3e8d0f77e401
+            region: blb_region_col_1
+            configuration:
+              id: 'block_content:e2279dc0-e06d-4277-8261-1ae32eea21ba'
+              label: 'RA Resources'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 3
+            additional: {  }
+          71d30b27-2b9f-4667-8111-09cbd6c57e67:
+            uuid: 71d30b27-2b9f-4667-8111-09cbd6c57e67
+            region: blb_region_col_2
+            configuration:
+              id: 'block_content:dfec0950-da42-47a2-8b16-2a4373fba114'
+              label: 'Fresh Service Cheat Sheet'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 2
+            additional: {  }
+          4f53538d-4fe8-48a4-a0ea-dcdc1a83b2d9:
+            uuid: 4f53538d-4fe8-48a4-a0ea-dcdc1a83b2d9
+            region: blb_region_col_1
+            configuration:
+              id: 'block_content:1e9d6aad-0b2a-4da5-88ab-e27d234f7ba6'
+              label: 'Website Content'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 5
+            additional: {  }
+          66c49f63-216d-4012-bc10-bc440e572572:
+            uuid: 66c49f63-216d-4012-bc10-bc440e572572
             region: blb_region_col_1
             configuration:
               id: 'inline_block:dashboard_blocks'
-              label: 'Skills building'
+              label: 'utug Test Dashboard Block'
               label_display: visible
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 107
-              block_revision_id: 127
+              block_id: 97
+              block_revision_id: 115
               block_serialized: null
-            weight: 3
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: space
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: bs-bg-light
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          30b8f1b1-9487-451d-b9a6-5d841ea833f9:
+            uuid: 30b8f1b1-9487-451d-b9a6-5d841ea833f9
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Quick Links'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 83
+              block_revision_id: 100
+              block_serialized: null
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_4'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: bs-bg-light
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+            blb_region_col_4: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
+            blb_region_col_4: null
+          breakpoints:
+            desktop: blb_col_3_3_3_3
+            tablet: null
+            mobile: null
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-3
+              - null
+              - null
+            blb_region_col_2:
+              - col-lg-3
+              - null
+              - null
+            blb_region_col_3:
+              - col-lg-3
+              - null
+              - null
+            blb_region_col_4:
+              - col-lg-3
+              - null
+              - null
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          76a8b47f-6750-4e59-9643-eb9b7f94b8a9:
+            uuid: 76a8b47f-6750-4e59-9643-eb9b7f94b8a9
+            region: blb_region_col_1
+            configuration:
+              id: 'block_content:94288dd7-bede-4d92-a605-4eaa6ed5db0e'
+              label: 'Staff Information'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+          474ad9bf-dd13-42b3-8f47-791608174b4f:
+            uuid: 474ad9bf-dd13-42b3-8f47-791608174b4f
+            region: blb_region_col_2
+            configuration:
+              id: 'block_content:7e510f22-13f1-4e54-974f-ff7d5e675152'
+              label: 'Marketing Materials'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+          47e568ee-f1ee-4b32-883e-a506e2c79ad7:
+            uuid: 47e568ee-f1ee-4b32-883e-a506e2c79ad7
+            region: blb_region_col_3
+            configuration:
+              id: 'block_content:d10207ec-0cb7-4854-84a2-3a6c7a5b5da5'
+              label: 'CHAS Applications-VPN'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+          a3922a09-8e9e-4169-b0a3-2a659c18e9e8:
+            uuid: a3922a09-8e9e-4169-b0a3-2a659c18e9e8
+            region: blb_region_col_4
+            configuration:
+              id: 'block_content:a230833d-4b35-40af-b710-aabce37f0955'
+              label: 'Quick Contacts'
+              label_display: visible
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

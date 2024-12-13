@@ -1,0 +1,29 @@
+uuid: e169474c-9d49-4c1a-bb7f-563b392e415e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group
+    - group.type.house1
+    - node.type.chas_event
+id: node.chas_event.field_group
+field_name: field_group
+entity_type: node
+bundle: chas_event
+label: 'In which house will the event be held?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      house1: house1
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

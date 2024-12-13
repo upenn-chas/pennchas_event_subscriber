@@ -1,0 +1,36 @@
+uuid: d2eced8f-ae01-4754-b10e-d56efaac1f4b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dashboard_basic_block:0d25dea7-6d5f-45f3-b367-5f695ca758b2'
+  module:
+    - block_content
+    - penchas_block_group_role_condition
+    - system
+  theme:
+    - penchas
+id: penchas_raevaluationprocess
+theme: penchas
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:0d25dea7-6d5f-45f3-b367-5f695ca758b2'
+settings:
+  id: 'block_content:0d25dea7-6d5f-45f3-b367-5f695ca758b2'
+  label: 'RA Evaluation Process'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  penchas_block_group_role_condition_plugin:
+    id: penchas_block_group_role_condition_plugin
+    block_group_roles:
+      house1-house_director: house1-house_director
+    negate: null
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/153

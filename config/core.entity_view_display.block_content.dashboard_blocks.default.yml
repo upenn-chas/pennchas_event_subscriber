@@ -7,7 +7,6 @@ dependencies:
     - field.field.block_content.dashboard_blocks.body
     - field.field.block_content.dashboard_blocks.field_block_display_condition_wi
     - field.field.block_content.dashboard_blocks.field_call_to_actions
-    - field.field.block_content.dashboard_blocks.field_child_dashboard_blocks
   module:
     - link
     - text
@@ -23,6 +22,14 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_block_display_condition_wi:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_call_to_actions:
     type: link
     label: hidden
@@ -33,16 +40,6 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 1
-    region: content
-  field_child_dashboard_blocks:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: dashboard_view
-      link: false
-    third_party_settings: {  }
     weight: 2
     region: content
-hidden:
-  field_block_display_condition_wi: true
+hidden: {  }

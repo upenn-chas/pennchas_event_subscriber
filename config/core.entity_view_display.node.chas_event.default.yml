@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_group
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
     - field.field.node.chas_event.field_intended_audience_image
@@ -27,6 +28,7 @@ dependencies:
     - field.field.node.chas_event.field_intended_outcomes_remarks
     - field.field.node.chas_event.field_location_of_program
     - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_rsvp_link
     - node.type.chas_event
@@ -163,6 +165,14 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
+  field_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_intended_audience:
     type: list_default
     label: above
@@ -224,6 +234,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 18
+    region: content
+  field_participants:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
     region: content
   field_program_communities:
     type: entity_reference_label

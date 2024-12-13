@@ -1,0 +1,21 @@
+uuid: ef1cbd79-0d7b-46dc-bd50-f5b1c50d5a6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_participants
+    - node.type.chas_event
+  module:
+    - options
+id: node.chas_event.field_participants
+field_name: field_participants
+entity_type: node
+bundle: chas_event
+label: 'Intended participant year(s)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

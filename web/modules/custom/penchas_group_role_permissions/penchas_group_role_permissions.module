@@ -12,29 +12,29 @@ use Drupal\Core\Layout\LayoutEntityInterface;
 /**
  * Implements hook_block_info().
  */
-function penchas_group_role_permissions_block_info() {
-  $blocks = [];
+// function penchas_group_role_permissions_block_info() {
+//   $blocks = [];
 
-  $blocks['custom_view_block'] = array(
-    'info' => t('Custom View Block with Pagination'),
-  );
+//   $blocks['custom_view_block'] = array(
+//     'info' => t('Custom View Block with Pagination'),
+//   );
 
-  return $blocks;
-}
+//   return $blocks;
+// }
 
 /**
  * Adds the custom view block to a layout programmatically.
  */
-function penchas_group_role_permissions_add_block_to_layout($layout_id) {
-  // Load the layout entity.
-  $layout = LayoutBuilder::load($layout_id); // Replace with the specific layout ID.
+// function penchas_group_role_permissions_add_block_to_layout($layout_id) {
+//   // Load the layout entity.
+//   $layout = LayoutBuilder::load($layout_id); // Replace with the specific layout ID.
 
-  // Add the custom block to the layout region (e.g., content region).
-  $layout->addBlock('custom_view_block', 'content', 0); // Adjust region as needed.
+//   // Add the custom block to the layout region (e.g., content region).
+//   $layout->addBlock('custom_view_block', 'content', 0); // Adjust region as needed.
 
-  // Save the layout after the changes.
-  $layout->save();
-}
+//   // Save the layout after the changes.
+//   $layout->save();
+// }
 
 // Check if the current user can view a specific view.
 // function penchas_group_role_permissions_view_access() {

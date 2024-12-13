@@ -1,0 +1,36 @@
+uuid: fb18bb4a-bebe-45cc-8331-4bfe8e2e7d65
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dashboard_basic_block:dfec0950-da42-47a2-8b16-2a4373fba114'
+  module:
+    - block_content
+    - penchas_block_group_role_condition
+    - system
+  theme:
+    - penchas
+id: penchas_freshservicecheatsheet
+theme: penchas
+region: content
+weight: -12
+provider: null
+plugin: 'block_content:dfec0950-da42-47a2-8b16-2a4373fba114'
+settings:
+  id: 'block_content:dfec0950-da42-47a2-8b16-2a4373fba114'
+  label: 'Fresh Service Cheat Sheet'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  penchas_block_group_role_condition_plugin:
+    id: penchas_block_group_role_condition_plugin
+    block_group_roles:
+      house1-resident: house1-resident
+    negate: null
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/152
