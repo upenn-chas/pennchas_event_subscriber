@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_group
+    - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
     - field.field.node.chas_event.field_intended_audience_image
@@ -137,6 +138,16 @@ content:
   field_group:
     type: entity_reference_autocomplete
     weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_groups:
+    type: entity_reference_autocomplete
+    weight: 29
     region: content
     settings:
       match_operator: CONTAINS

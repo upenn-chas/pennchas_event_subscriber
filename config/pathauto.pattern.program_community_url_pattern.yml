@@ -1,0 +1,22 @@
+uuid: 4442ada5-6d8f-48de-8337-43aa7bcc1204
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: program_community_url_pattern
+label: 'Program community URL pattern'
+type: 'canonical_entities:node'
+pattern: '[node:field_group:entity:field_house_machine_name]/program_community/[node:title]'
+selection_criteria:
+  ed8abb82-0aee-4cb8-9f25-37f6a3f1259e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ed8abb82-0aee-4cb8-9f25-37f6a3f1259e
+    context_mapping:
+      node: node
+    bundles:
+      program_community: program_community
+selection_logic: and
+weight: -5
+relationships: {  }

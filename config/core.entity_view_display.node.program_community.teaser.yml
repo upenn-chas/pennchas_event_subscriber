@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
+    - field.field.node.program_community.field_group
     - node.type.program_community
   module:
     - image
@@ -40,4 +41,5 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_group: true

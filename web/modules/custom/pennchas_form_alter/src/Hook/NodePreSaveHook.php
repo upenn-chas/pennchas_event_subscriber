@@ -62,7 +62,7 @@ class NodePreSaveHook
             }
         }
 
-        $node->set('field_group_ref', $urlAlias);
+        // $node->set('field_group_ref', $urlAlias);
     }
 
     private function canByPassModeration(Group|null $group, $permission): bool

@@ -10,6 +10,7 @@ dependencies:
     - field.field.block_content.dashboard_basic_item.field_icon
   module:
     - color_field
+    - media
     - text
 id: block_content.dashboard_basic_item.default
 targetEntityType: block_content
@@ -41,11 +42,13 @@ content:
     weight: 2
     region: content
   field_icon:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content

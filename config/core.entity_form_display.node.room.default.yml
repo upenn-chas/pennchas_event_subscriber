@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
-    - field.field.node.room.field_group_ref
     - field.field.node.room.field_image
     - field.field.node.room.field_legacy_policy_url
     - field.field.node.room.field_legacy_resource_url
@@ -76,9 +75,16 @@ content:
     third_party_settings: {  }
   field_duration:
     type: duration_widget
-    weight: 26
+    weight: 19
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_group:
+    type: options_select
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_image:
     type: image_image
     weight: 16
@@ -180,7 +186,5 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  field_group: true
-  field_group_ref: true
   field_qr_code: true
   moderation_state: true

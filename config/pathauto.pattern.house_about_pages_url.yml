@@ -7,12 +7,12 @@ dependencies:
 id: house_about_pages_url
 label: 'House About pages URL'
 type: 'canonical_entities:node'
-pattern: '/[node:field_select_house:entity:field_house_machine_name]/[node:title]'
+pattern: '[node:field_select_house:entity:field_house_machine_name]/[node:title]'
 selection_criteria:
-  3b3e81e7-76fd-4842-8530-085e2e70b3ce:
+  ce3cc35c-c29b-4a74-8879-0f180b103366:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3b3e81e7-76fd-4842-8530-085e2e70b3ce
+    uuid: ce3cc35c-c29b-4a74-8879-0f180b103366
     context_mapping:
       node: node
     bundles:

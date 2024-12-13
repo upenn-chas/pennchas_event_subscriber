@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_group
+    - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_audience_attach
     - field.field.node.chas_event.field_intended_audience_image
@@ -172,6 +173,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_groups:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
     region: content
   field_intended_audience:
     type: list_default
