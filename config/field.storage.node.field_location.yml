@@ -1,17 +1,16 @@
-uuid: dc757461-d703-4b3c-95d5-e7c204f70cd4
+uuid: 744da5bd-7055-4f3b-9bfa-115029bd59d8
 langcode: en
 status: true
 dependencies:
   module:
+    - group
     - node
-id: node.field_room_gps_pin
-field_name: field_room_gps_pin
+id: node.field_location
+field_name: field_location
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: group
 module: core
 locked: false
 cardinality: 1

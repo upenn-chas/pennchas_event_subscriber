@@ -1,15 +1,17 @@
-uuid: bd23a338-e08e-49e3-bac0-1ae182241c43
+uuid: 98e5a07f-17ce-4fa2-9305-5c0420995040
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_location_of_program
-field_name: field_location_of_program
+id: node.field_text_box_2
+field_name: field_text_box_2
 entity_type: node
-type: string_long
+type: string
 settings:
+  max_length: 255
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

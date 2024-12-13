@@ -11,7 +11,16 @@ dependencies:
     - content_moderation
     - event_evaluation
     - node
+    - pennchas_form_alter
     - smart_date_recur
+third_party_settings:
+  pennchas_form_alter:
+    umbera_roles:
+      'Senior Staff': 'Senior Staff'
+      RA: RA
+      'Student Worker': 'Student Worker'
+      'Any Resident': 'Any Resident'
+      'Anyone with a Pennkey': 'Anyone with a Pennkey'
 id: chas_professional_staff
 label: 'CHAS Professional Staff'
 weight: -2

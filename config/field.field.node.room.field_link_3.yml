@@ -1,19 +1,19 @@
-uuid: 7e84d682-dfb2-4e05-8df6-7f78cfff70fc
+uuid: 069a347f-5ba3-4475-b1f0-24074b6f1d0e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_legacy_resource_url
+    - field.storage.node.field_link_3
     - node.type.room
   module:
     - link
-id: node.room.field_legacy_resource_url
-field_name: field_legacy_resource_url
+id: node.room.field_link_3
+field_name: field_link_3
 entity_type: node
 bundle: room
 label: 'Legacy Resource URL'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

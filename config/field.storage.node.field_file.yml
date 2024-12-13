@@ -1,12 +1,12 @@
-uuid: 1e7c7dcd-1957-48f8-ac7a-a2a5bcd5fde1
+uuid: 46b2fea3-96dc-4ab8-b41e-44eebdfe3cc4
 langcode: en
 status: true
 dependencies:
   module:
     - file
     - node
-id: node.field_intended_audience_attach
-field_name: field_intended_audience_attach
+id: node.field_file
+field_name: field_file
 entity_type: node
 type: file
 settings:

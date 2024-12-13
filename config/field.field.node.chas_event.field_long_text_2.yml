@@ -1,19 +1,19 @@
-uuid: 4cd5c61f-2351-4cfb-b6fe-3622459efc72
+uuid: 737d81f3-7c79-481b-8db8-af46db0a69c4
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_audience_floor
+    - field.storage.node.field_long_text_2
     - node.type.chas_event
-id: node.chas_event.field_audience_floor
-field_name: field_audience_floor
+id: node.chas_event.field_long_text_2
+field_name: field_long_text_2
 entity_type: node
 bundle: chas_event
-label: 'Which Floor(s)?'
+label: 'Please specify'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: string_long

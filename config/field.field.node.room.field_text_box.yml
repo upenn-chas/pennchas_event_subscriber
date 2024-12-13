@@ -1,12 +1,12 @@
-uuid: 67bff23d-8e45-4de5-926c-bcb1e11e6a08
+uuid: 8360a8d0-b34e-41ee-959e-82533daa3916
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_room_gps_pin
+    - field.storage.node.field_text_box
     - node.type.room
-id: node.room.field_room_gps_pin
-field_name: field_room_gps_pin
+id: node.room.field_text_box
+field_name: field_text_box
 entity_type: node
 bundle: room
 label: 'Room GPS Pin'

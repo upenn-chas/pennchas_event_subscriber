@@ -1,12 +1,12 @@
-uuid: d37a0b68-aaec-45b2-b142-1b74d56d69d4
+uuid: 15e91c39-e80b-4444-9c15-040a5e34248a
 langcode: en
 status: true
 dependencies:
   module:
     - link
     - node
-id: node.field_legacy_resource_url
-field_name: field_legacy_resource_url
+id: node.field_link_2
+field_name: field_link_2
 entity_type: node
 type: link
 settings: {  }

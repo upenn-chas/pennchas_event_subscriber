@@ -3,14 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.chas_event.body
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
     - field.field.node.chas_event.field_anticipated_cost
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
-    - field.field.node.chas_event.field_audience_floor
+    - field.field.node.chas_event.field_banner
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluation_notification
@@ -19,18 +18,18 @@ dependencies:
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_experiences_and_strategies
     - field.field.node.chas_event.field_feedback_form
-    - field.field.node.chas_event.field_group
+    - field.field.node.chas_event.field_file
     - field.field.node.chas_event.field_intended_audience
-    - field.field.node.chas_event.field_intended_audience_attach
-    - field.field.node.chas_event.field_intended_audience_image
-    - field.field.node.chas_event.field_intended_audience_other
     - field.field.node.chas_event.field_intended_outcomes
-    - field.field.node.chas_event.field_intended_outcomes_remarks
-    - field.field.node.chas_event.field_location_of_program
+    - field.field.node.chas_event.field_link_1
+    - field.field.node.chas_event.field_location
+    - field.field.node.chas_event.field_long_text
+    - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
-    - field.field.node.chas_event.field_rsvp_link
+    - field.field.node.chas_event.field_text_box
+    - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
   module:
     - file
@@ -56,7 +55,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 21
+    weight: 25
     region: content
   field_actual_program_expense:
     type: number_decimal
@@ -67,7 +66,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 20
+    weight: 24
     region: content
   field_actual_program_outcomes:
     type: string
@@ -75,7 +74,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 22
+    weight: 12
     region: content
   field_anticipated_cost:
     type: number_decimal
@@ -86,7 +85,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 14
+    weight: 17
     region: content
   field_anticipated_participants:
     type: number_integer
@@ -95,22 +94,25 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 15
+    weight: 18
     region: content
   field_areas_for_improvement:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 19
+    weight: 23
     region: content
-  field_audience_floor:
-    type: string
-    label: above
+  field_banner:
+    type: image
+    label: hidden
     settings:
-      link_to_entity: false
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 4
+    weight: 19
     region: content
   field_collaborators:
     type: email_mailto
@@ -125,7 +127,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_event_priority:
     type: entity_reference_label
@@ -133,7 +135,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 8
+    weight: 10
     region: content
   field_event_schedule:
     type: smartdate_default
@@ -156,22 +158,15 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 12
+    weight: 15
     region: content
-  field_experiences_and_strategies:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 11
-    region: content
-  field_group:
-    type: entity_reference_label
+  field_file:
+    type: file_default
     label: above
     settings:
-      link: true
+      use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 8
+    weight: 20
     region: content
   field_intended_audience:
     type: list_default
@@ -180,48 +175,41 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_intended_audience_attach:
-    type: file_default
-    label: above
-    settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    weight: 17
-    region: content
-  field_intended_audience_image:
-    type: image
-    label: above
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 16
-    region: content
-  field_intended_audience_other:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 7
-    region: content
   field_intended_outcomes:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 11
     region: content
-  field_intended_outcomes_remarks:
+  field_link_1:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_long_text:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 6
     region: content
-  field_location_of_program:
+  field_long_text_2:
     type: basic_string
     label: above
     settings: {  }
@@ -233,14 +221,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 18
+    weight: 21
     region: content
   field_participants:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 24
+    weight: 9
     region: content
   field_program_communities:
     type: entity_reference_label
@@ -248,19 +236,23 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
-  field_rsvp_link:
-    type: link
+  field_text_box:
+    type: string
     label: above
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 23
+    weight: 14
+    region: content
+  field_text_box_2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
     region: content
   links:
     settings: {  }
@@ -268,7 +260,7 @@ content:
     weight: 1
     region: content
 hidden:
-  body: true
   field_evaluation_notification: true
   field_event_ends_on: true
+  field_experiences_and_strategies: true
   field_feedback_form: true

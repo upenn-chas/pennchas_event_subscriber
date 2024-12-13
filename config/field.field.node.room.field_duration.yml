@@ -1,4 +1,4 @@
-uuid: 031b18d8-ba61-4523-b9b4-e61b56424892
+uuid: 42d977ce-9f25-4906-bbe9-6bb75efb8b59
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ id: node.room.field_duration
 field_name: field_duration
 entity_type: node
 bundle: room
-label: 'Max amount of time that room can be booked'
+label: 'Max amount of time that can be booked'
 description: ''
 required: false
 translatable: false

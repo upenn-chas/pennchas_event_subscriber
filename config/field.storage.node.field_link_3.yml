@@ -1,16 +1,16 @@
-uuid: d2026e4c-ef42-4856-8dc9-d06ed62f1e9d
+uuid: 6105c69c-a182-4311-b12a-71e34d7c50da
 langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
-id: node.field_intended_outcomes_remarks
-field_name: field_intended_outcomes_remarks
+id: node.field_link_3
+field_name: field_link_3
 entity_type: node
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

@@ -1,14 +1,14 @@
-uuid: eb848801-4d7d-445e-8d42-84e9d9ea1902
+uuid: debbdb43-2244-4abc-8048-79af402a7b2b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_rsvp_link
+    - field.storage.node.field_link_1
     - node.type.chas_event
   module:
     - link
-id: node.chas_event.field_rsvp_link
-field_name: field_rsvp_link
+id: node.chas_event.field_link_1
+field_name: field_link_1
 entity_type: node
 bundle: chas_event
 label: 'RSVP Link'

@@ -1,19 +1,19 @@
-uuid: 92b1c052-0dbb-4400-8dd0-77e3c39275b0
+uuid: 3c917fe4-b05a-40c7-a2b9-00999dd34882
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_legacy_policy_url
+    - field.storage.node.field_link_1
     - node.type.room
   module:
     - link
-id: node.room.field_legacy_policy_url
-field_name: field_legacy_policy_url
+id: node.room.field_link_1
+field_name: field_link_1
 entity_type: node
 bundle: room
-label: 'Legacy Policy URL'
+label: 'Policy URL'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -1,4 +1,4 @@
-uuid: 8c5ff556-979f-493d-9aa1-4fe8d4ff2aaa
+uuid: 8e6efef1-d1c5-420e-8057-4a6a9cb2977a
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - file
     - image
     - node
-id: node.field_intended_audience_image
-field_name: field_intended_audience_image
+id: node.field_images
+field_name: field_images
 entity_type: node
 type: image
 settings:
@@ -23,7 +23,7 @@ settings:
     height: null
 module: image
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

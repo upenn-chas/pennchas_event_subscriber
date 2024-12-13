@@ -11,20 +11,17 @@ dependencies:
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
-    - field.field.node.room.field_image
-    - field.field.node.room.field_legacy_policy_url
-    - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_images
+    - field.field.node.room.field_link_1
+    - field.field.node.room.field_link_2
+    - field.field.node.room.field_link_3
     - field.field.node.room.field_maximum_occupancy
-    - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
-    - field.field.node.room.field_room_gps_pin
-    - field.field.node.room.field_support_contact
-    - image.style.thumbnail
+    - field.field.node.room.field_text_box
+    - field.field.node.room.field_text_box_2
     - node.type.room
   module:
     - duration_field
-    - image
-    - link
     - path
     - text
 id: node.room.default
@@ -79,59 +76,12 @@ content:
     weight: 26
     region: content
     settings: {  }
-  field_image:
-    type: image_image
-    weight: 16
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_legacy_policy_url:
-    type: link_default
-    weight: 13
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_legacy_resource_url:
-    type: link_default
-    weight: 14
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_maximum_occupancy:
     type: number
     weight: 10
     region: content
     settings:
-      placeholder: ''
-    third_party_settings: {  }
-  field_policy_url:
-    type: link_default
-    weight: 12
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_room_gps_pin:
-    type: string_textfield
-    weight: 11
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_support_contact:
-    type: string_textfield
-    weight: 8
-    region: content
-    settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
   path:
@@ -182,5 +132,11 @@ content:
 hidden:
   field_group: true
   field_group_ref: true
+  field_images: true
+  field_link_1: true
+  field_link_2: true
+  field_link_3: true
   field_qr_code: true
+  field_text_box: true
+  field_text_box_2: true
   moderation_state: true

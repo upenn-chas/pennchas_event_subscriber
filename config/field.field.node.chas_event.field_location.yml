@@ -1,13 +1,13 @@
-uuid: e169474c-9d49-4c1a-bb7f-563b392e415e
+uuid: 05bdc05f-6974-4e20-8c81-6ac08a1d5840
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_group
+    - field.storage.node.field_location
     - group.type.house1
     - node.type.chas_event
-id: node.chas_event.field_group
-field_name: field_group
+id: node.chas_event.field_location
+field_name: field_location
 entity_type: node
 bundle: chas_event
 label: 'In which house will the event be held?'
@@ -22,7 +22,7 @@ settings:
     target_bundles:
       house1: house1
     sort:
-      field: _none
+      field: label
       direction: ASC
     auto_create: false
     auto_create_bundle: ''

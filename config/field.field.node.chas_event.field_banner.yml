@@ -1,19 +1,19 @@
-uuid: 9d516d2c-0e5b-4bca-bc04-49f35591c54a
+uuid: 48392983-17ec-4a7c-a027-c592e4149687
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
-    - node.type.room
+    - field.storage.node.field_banner
+    - node.type.chas_event
   module:
     - image
-id: node.room.field_image
-field_name: field_image
+id: node.chas_event.field_banner
+field_name: field_banner
 entity_type: node
-bundle: room
-label: Photos
+bundle: chas_event
+label: 'Highlight Image'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

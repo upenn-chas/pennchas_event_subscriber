@@ -11,15 +11,14 @@ dependencies:
     - field.field.node.room.field_duration
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
-    - field.field.node.room.field_image
-    - field.field.node.room.field_legacy_policy_url
-    - field.field.node.room.field_legacy_resource_url
+    - field.field.node.room.field_images
+    - field.field.node.room.field_link_1
+    - field.field.node.room.field_link_2
+    - field.field.node.room.field_link_3
     - field.field.node.room.field_maximum_occupancy
-    - field.field.node.room.field_policy_url
     - field.field.node.room.field_qr_code
-    - field.field.node.room.field_room_gps_pin
-    - field.field.node.room.field_support_contact
-    - image.style.wide
+    - field.field.node.room.field_text_box
+    - field.field.node.room.field_text_box_2
     - node.type.room
   module:
     - duration_field
@@ -81,7 +80,7 @@ content:
       text_length: full
       separator: space
     third_party_settings: {  }
-    weight: 14
+    weight: 28
     region: content
   field_group:
     type: entity_reference_label
@@ -91,18 +90,18 @@ content:
     third_party_settings: {  }
     weight: 15
     region: content
-  field_image:
+  field_images:
     type: image
-    label: hidden
+    label: above
     settings:
       image_link: ''
-      image_style: wide
+      image_style: ''
       image_loading:
-        attribute: eager
+        attribute: lazy
     third_party_settings: {  }
-    weight: 10
+    weight: 16
     region: content
-  field_legacy_policy_url:
+  field_link_1:
     type: link
     label: above
     settings:
@@ -112,9 +111,9 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 7
+    weight: 17
     region: content
-  field_legacy_resource_url:
+  field_link_2:
     type: link
     label: above
     settings:
@@ -124,7 +123,19 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 8
+    weight: 18
+    region: content
+  field_link_3:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_maximum_occupancy:
     type: number_integer
@@ -135,18 +146,6 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_policy_url:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_qr_code:
     type: endroid_qr_code_formatter
     label: above
@@ -154,21 +153,21 @@ content:
     third_party_settings: {  }
     weight: 13
     region: content
-  field_room_gps_pin:
+  field_text_box:
     type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 5
+    weight: 26
     region: content
-  field_support_contact:
+  field_text_box_2:
     type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 27
     region: content
   links:
     settings: {  }
@@ -178,3 +177,9 @@ content:
 hidden:
   content_moderation_control: true
   field_group_ref: true
+  field_image: true
+  field_legacy_policy_url: true
+  field_legacy_resource_url: true
+  field_policy_url: true
+  field_room_gps_pin: true
+  field_support_contact: true
