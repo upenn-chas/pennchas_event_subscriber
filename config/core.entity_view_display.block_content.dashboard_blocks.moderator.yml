@@ -15,8 +15,50 @@ dependencies:
     - text
 third_party_settings:
   layout_builder:
-    enabled: false
+    enabled: true
     allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          6401d093-c350-4b9a-863d-ed152b70b578:
+            uuid: 6401d093-c350-4b9a-863d-ed152b70b578
+            region: content
+            configuration:
+              id: 'field_block:block_content:dashboard_blocks:field_call_to_actions'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1e685891-be72-425f-965c-07f7d5349102:
+            uuid: 1e685891-be72-425f-965c-07f7d5349102
+            region: content
+            configuration:
+              id: 'field_block:block_content:dashboard_blocks:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
 id: block_content.dashboard_blocks.moderator
 targetEntityType: block_content
 bundle: dashboard_blocks

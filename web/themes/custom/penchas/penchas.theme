@@ -11,6 +11,8 @@ use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
 
+use Drupal\node\Entity\NodeType;
+
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
  *
@@ -36,14 +38,26 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
 }
 function penchas_preprocess_page(&$variables) {
   $variables['base_path'] = base_path();
+  // $url = \Drupal\Core\Url::fromRoute('<current>');
+  // $path = $url->getInternalPath();
+  // $variables['page_type__class'] = 'page';
+  // if (strpos($path, 'group') !== FALSE) {
+  //   $variables['page_type__class'] = 'is_group_page';
+  // }
 }
+
 function penchas_preprocess_html(&$variables) {
   $variables['base_path'] = base_path();
-
-  // dd('asdjh'.$themePath);
 }
+
 function penchas_preprocess_block(&$variables) {
   $variables['base_path'] = base_path();
+  // $variables['page_type__class'] = 'page';
+  // $url = \Drupal\Core\Url::fromRoute('<current>');
+  // $path = $url->getInternalPath();
+  // if (strpos($path, 'group') !== FALSE) {
+  //   $variables['page_type__class'] = 'is_group_page';
+  // }
   $login_url = \Drupal\Core\Url::fromRoute('user.login')->toString();
   // Pass the login URL to the template
   $variables['user_login_path'] = $login_url;

@@ -36,23 +36,26 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-{% set heading_alignment = '' %}
-
-{% if content.field_alignment %}
-  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
-{% endif %}
-{% if content.field_house_events %}
-  testin
-{% endif %}
-  {% block content %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
-  {% if label %}
-    <div class="section-title"><h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3></div>
-  {% endif %}
-  {{ title_suffix }}
-    <div{{ content_attributes.addClass('col-12 content') }}>
-      {{ content }}
+    {% if label %}
+      <h4{{ title_attributes }}>{{ label }}</h4>
+    {% endif %}
+    {{ title_suffix }}
+  {% block content %}
+    <div class="dashboard-tabs">
+      <div class="circle-color">
+        <span class="circel" style="background-color:{{content.field_circle_colour.0['#markup']}}"></span>
+        {{content.field_icon}}
+      </div>
+      <div class="right-content">
+      {% if content.field_heading %}
+          {{content.field_heading}}
+      {% endif %}
+      <div{{ content_attributes.addClass('content') }} >
+        {{ content.body }}      
+      </div>
+      </div>
     </div>
-</div>
   {% endblock %}
+</div>

@@ -79,6 +79,7 @@ module:
   penchas_node_alteration: 0
   pennchas_form_alter: 0
   recreate_block_content: 0
+  redirect: 0
   responsive_image: 0
   search: 0
   section_library: 0
@@ -100,6 +101,7 @@ module:
   twig_tweak: 0
   ultimate_cron: 0
   update: 0
+  url_redirect: 0
   user: 0
   userprotect: 0
   variationcache: 0

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_group
+    - field.field.node.program_community.field_tags
     - image.style.thumbnail
     - node.type.program_community
   module:
@@ -47,6 +48,16 @@ content:
     weight: 27
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_autocomplete_tags
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
@@ -98,5 +109,10 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }

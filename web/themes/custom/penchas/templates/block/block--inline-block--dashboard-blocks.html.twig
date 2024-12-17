@@ -41,15 +41,16 @@
   <div{{ content_attributes.addClass('contents') }}>
     {{ title_prefix }}
     {% if label %}
-      <h4{{ title_attributes }}>{{ label }}</h4>
+      <h5{{ title_attributes }}>{{ label }}</h5>
     {% endif %}
     {{ title_suffix }}
     {{ content|without('field_child_dashboard_blocks') }}
   </div>
   {% block content %}
-
-    <div class="field_child_dashboard_blocks">
-      {{content.field_child_dashboard_blocks}}
-    </div>
+    {% if content.field_child_dashboard_blocks %}
+      <div class="field_child_dashboard_blocks">
+        {{content.field_child_dashboard_blocks}}
+      </div>
+    {% endif %}
   {% endblock %}
 </div>

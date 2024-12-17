@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_group
+    - field.field.node.program_community.field_tags
     - node.type.program_community
   module:
     - image
@@ -33,6 +34,14 @@ content:
       image_style: ''
       image_loading:
         attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
     third_party_settings: {  }
     weight: 2
     region: content
