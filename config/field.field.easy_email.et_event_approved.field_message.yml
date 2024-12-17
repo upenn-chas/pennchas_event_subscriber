@@ -1,0 +1,19 @@
+uuid: 96ba332e-236c-4860-8164-c5e9d20a2dad
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_event_approved
+    - field.storage.easy_email.field_message
+id: easy_email.et_event_approved.field_message
+field_name: field_message
+entity_type: easy_email
+bundle: et_event_approved
+label: Message
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

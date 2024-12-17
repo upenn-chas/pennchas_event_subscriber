@@ -6,7 +6,8 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ModerationFormAlter;
 use Drupal\pennchas_form_alter\Hook\NodeInsertHook;
-use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
+use Drupal\pennchas_form_alter\Hook\NodePreInsertHook;
+use Drupal\pennchas_form_alter\Hook\NodePreUpdateHook;
 use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
@@ -23,13 +24,6 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $form['field_duration']['widget'][0]['duration']['#h']['#step'] = 1;
         $form['field_duration']['widget'][0]['duration']['#i']['#max'] = 30;
         $form['field_duration']['widget'][0]['duration']['#i']['#step'] = 30;
-        // dd($form['field_test']);
-        $form['field_test']['widget'][0]['value']['#date_part_order'] = [
-            "hour",
-            "minute"
-        ];
-        // $form['field_test']['widget'][0]['value']['#date_time_element'] = 'time';
-        // $form['field_test']['widget'][0]['value']['#date_time_format'] = 'H:i';
     } else if ($formId === 'content_moderation_entity_moderation_form') {
         $moderationFormAlter = new ModerationFormAlter();
         $form = $moderationFormAlter->alter($form, $formState);
@@ -68,25 +62,29 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
-        (new NodePreSaveHook())->handle($entity);
+        if ($entity->isNew()) {
+            (new NodePreInsertHook())->handle($entity);
+        } else {
+            (new NodePreUpdateHook())->handle($entity);
+        }
     }
 }
 
 function pennchas_form_alter_node_insert(Node $node)
 {
     $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM) {
+    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT) {
         (new NodeInsertHook())->handle($node);
     }
 }
 
-// function pennchas_form_alter_node_update(Node $node)
-// {
-//     $nodeType = $node->getType();
-//     if ($nodeType === Constant::NODE_RESERVE_ROOM) {
-//         (new NodeUpdateHook())->handle($node);
-//     }
-// }
+function pennchas_form_alter_node_update(Node $node)
+{
+    $nodeType = $node->getType();
+    if ($nodeType === Constant::NODE_EVENT) {
+        (new NodeUpdateHook())->handle($node);
+    }
+}
 
 
 function pennchas_form_alter_entity_type_alter(&$entityType)

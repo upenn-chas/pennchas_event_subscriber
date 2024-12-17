@@ -2,6 +2,7 @@
 
 namespace Drupal\pennchas_form_alter\Hook;
 
+use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Util\Constant;
@@ -13,22 +14,51 @@ class NodeInsertHook
         $nodeType = $node->getType();
         if ($nodeType === Constant::NODE_RESERVE_ROOM) {
             $this->handleReserveRoom($node);
+        } else if ($nodeType === Constant::NODE_EVENT) {
+            $this->handleEvent($node);
         } else if ($nodeType === Constant::NODE_ROOM) {
             $this->handleRoom($node);
         }
+    }
+
+    public function handleEvent(Node $node): void
+    {
+        \Drupal::messenger()->deleteAll();
+
+        $eventHousesId = $node->get('field_groups')->getValue();
+        $eventHouses = Group::loadMultiple(array_column($eventHousesId, 'target_id'));
+        foreach ($eventHouses as $house) {
+            $existingRelationship = $house->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
+        $eventHouse = $node->get('field_groups')->getValue();
+        $roomReservationMessage = 'Do you need a room reservation? <a href="#">click here</a>';
+        $message = t('Your event has been submited and there is a possible three day wait time for approval.' . ' ' . $roomReservationMessage);
+        $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
+        if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
+            $message = t('Your event has been accepted and published.' . ' ' . $roomReservationMessage);
+            $mailService->notifyAuthor(Constant::EVENT_EMAIL_MODERATOR_CREATED, $node);
+        } else {
+            $mailService->notifyAuthor(Constant::EVENT_EMAIL_CREATED, $node);
+            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $eventHouses[0]);
+        }
+        \Drupal::messenger()->addStatus($message);
     }
 
     protected function handleReserveRoom(Node $node)
     {
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
-        $mailService = \Drupal::service('pennchas_form_alter.reserve_room_mail_service');
+        $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         $message = t('Your request has been submitted and there is a possible three day wait time for approval.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
             $message = t('Your request has been accepted.');
-            $mailService->notifyCreated(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
+            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
         } else {
-            $mailService->notifyCreated(Constant::RESERVER_ROOM_EMAIL_CREATED, $node, $group, true);
+            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_CREATED, $node);
+            $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, $group);
         }
         \Drupal::messenger()->addStatus($message);
     }

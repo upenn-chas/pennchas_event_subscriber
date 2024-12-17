@@ -1,0 +1,19 @@
+uuid: db9de566-abdc-413c-8377-55fb46845778
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_moderation_state_change_notif
+    - field.storage.easy_email.field_message
+id: easy_email.et_moderation_state_change_notif.field_message
+field_name: field_message
+entity_type: easy_email
+bundle: et_moderation_state_change_notif
+label: Message
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

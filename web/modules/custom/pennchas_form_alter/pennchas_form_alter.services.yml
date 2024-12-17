@@ -1,3 +1,5 @@
 services:
-  pennchas_form_alter.reserve_room_mail_service:
-    class: \Drupal\pennchas_form_alter\Service\ReserveRoomEmailService
+  pennchas_form_alter.moderation_entity_email_service:
+    class: \Drupal\pennchas_form_alter\Service\ModerationEntityEmailService
+  pennchas_form_alter.qr_code_generator:
+    class: \Drupal\pennchas_form_alter\Service\QRCodeGenerator

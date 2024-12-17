@@ -9,8 +9,9 @@ use Drupal\pennchas_form_alter\Util\Constant;
 use Drupal\user\Entity\Role;
 use Exception;
 
-class ReserveRoomEmailService
+class ModerationEntityEmailService
 {
+
     protected $mailer;
 
     public function __construct()
@@ -18,22 +19,18 @@ class ReserveRoomEmailService
         $this->mailer = \Drupal::service('easy_email.handler');
     }
 
-    public function notifyCreated(string $templatId, Node $node, Group|null $group = null, $sendModerationEmail = false)
+    public function notifyAuthor(string $emailTemplatId, Node $node)
     {
-        $this->sendMail($node, $templatId, [$node->getOwnerId()]);
-        if($group && $sendModerationEmail) {
-            $this->sendEmailToModerators($node, $group);
-        }
+        $this->sendMail($node, $emailTemplatId, [$node->getOwnerId()]);
     }
 
-
-    protected function sendEmailToModerators(Node $node, Group $group)
+    public function notifyModerators(string $emailTemplatId, Node $node, Group|null $group)
     {
         $globalModeratorsId = $this->getUsersIdWithModerationPermission();
-        $groupModeratorsId = $this->getGroupModerators('house1', [$group->id()]);
+        $groupModeratorsId = $group ? $this->getGroupModerators('house1', [$group->id()]) : [];
         $moderatorsId = array_unique(array_merge($globalModeratorsId, $groupModeratorsId));
         if ($moderatorsId) {
-            $this->sendMail($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $moderatorsId);
+            $this->sendMail($node, $emailTemplatId, $moderatorsId);
         }
     }
 
@@ -86,7 +83,7 @@ class ReserveRoomEmailService
 
         $moderatorRoles = [];
         foreach ($roles as $key => $role) {
-            if ($key !== 'administrator' && $role->hasPermission(Constant::PERMISSION_MODERATION)) {
+            if ($role->hasPermission(Constant::PERMISSION_MODERATION)) {
                 $moderatorRoles[] = $key;
             }
         }
@@ -100,13 +97,13 @@ class ReserveRoomEmailService
                 'type' => $templateKey,
             ]);
             if ($email) {
-                $email->set('label', $email->getSubject());
-                $email->set('field_reserve_room', $node);
+                $nodeType = $node->getType();
+                $email->set($nodeType === Constant::NODE_EVENT ? 'field_event' : 'field_reserve_room', $node);
                 $email->setRecipientIds($recipients);
                 $this->mailer->sendEmail($email, [], true, true);
             }
         } catch (Exception $e) {
-            \Drupal::logger('Node Event Form Ext')->error($e->getMessage(), $e->getTrace());
+            \Drupal::logger('pennchas_form_alter')->error($e->getMessage(), $e->getTrace());
         }
     }
 }

@@ -3,12 +3,15 @@
 namespace Drupal\pennchas_form_alter\Hook;
 
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\pennchas_form_alter\Hook\Trait\EntityHookTrait;
 use Drupal\pennchas_form_alter\Util\Constant;
 
-class NodePreSaveHook
+class NodePreInsertHook
 {
+    use EntityHookTrait;
 
     public function handle(NodeInterface $node)
     {
@@ -17,7 +20,30 @@ class NodePreSaveHook
             $this->handleReserveRoom($node);
         } else if ($nodeType === Constant::NODE_ROOM) {
             $this->handleRoom($node);
+        } else if ($nodeType === Constant::NODE_EVENT) {
+            $this->handleEvent($node);
         }
+    }
+
+    protected function handleEvent(Node $node)
+    {
+        $eventFeedbackWebformId = 'event_feedback';
+        $node->set('field_feedback_form', [
+            'target_id' => $eventFeedbackWebformId
+        ]);
+        $eventHouseId = (int) $node->get('field_location')->getString();
+        $eventHouse = Group::load($eventHouseId);
+        $housesId = [$eventHouseId];
+        if ($this->canByPassModeration($eventHouse, Constant::PERMISSION_MODERATION)) {
+            $node->setPublished(true);
+            $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
+            $housesId = $this->getHouses($node);
+        } else {
+            $node->setPublished(false);
+            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+        }
+        $node->set('field_groups', $housesId);
+        $this->updateEventEndsOn($node);
     }
 
     protected function handleReserveRoom(Node $node)
@@ -65,11 +91,7 @@ class NodePreSaveHook
         // $node->set('field_group_ref', $urlAlias);
     }
 
-    private function canByPassModeration(Group|null $group, $permission): bool
-    {
-        $currentUser = \Drupal::currentUser();
-        return ($group) ? $group->hasPermission($permission, $currentUser) : $currentUser->hasPermission($permission);
-    }
+
 
     private function getGroupIdsByEntity($nid)
     {

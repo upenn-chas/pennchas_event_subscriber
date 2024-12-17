@@ -5,3 +5,17 @@ reserve_room_smart_date:
   dependencies:
     - core/jquery
     - core/drupal
+event_listeners:
+  version: 1.0
+  js:
+    js/event_listeners.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+default_select:
+  version: 1.0
+  js:
+    js/default_select.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

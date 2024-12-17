@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_moderation_state_change_notif
     - field.field.easy_email.et_moderation_state_change_notif.field_event
+    - field.field.easy_email.et_moderation_state_change_notif.field_message
     - field.field.easy_email.et_moderation_state_change_notif.field_state
   module:
     - file
@@ -99,6 +100,14 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_message:
+    type: string_textarea
+    weight: 28
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_state:

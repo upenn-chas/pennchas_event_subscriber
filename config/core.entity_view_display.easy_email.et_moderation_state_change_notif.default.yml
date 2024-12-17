@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_moderation_state_change_notif
     - field.field.easy_email.et_moderation_state_change_notif.field_event
+    - field.field.easy_email.et_moderation_state_change_notif.field_message
     - field.field.easy_email.et_moderation_state_change_notif.field_state
   module:
     - file
@@ -89,6 +90,13 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_message:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_state:
     type: string

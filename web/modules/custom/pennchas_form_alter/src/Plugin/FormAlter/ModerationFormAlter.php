@@ -30,31 +30,51 @@ class ModerationFormAlter
     public function moderationFormSubmit(array $form, FormStateInterface $formState)
     {
         $node = $formState->get('entity');
-        if($node instanceof NodeInterface) {
+        if ($node instanceof NodeInterface) {
             $moderationState = $formState->getValue('new_state');
             $message = $formState->getValue('revision_log');
             $nodeType = $node->getType();
-            if($nodeType === Constant::NODE_RESERVE_ROOM) {
+            if ($nodeType === Constant::NODE_RESERVE_ROOM) {
                 $template = Constant::RESERVER_ROOM_EMAIL_MODERATION;
-                if ($moderationState === 'published') {
+                if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
                     $template = Constant::RESERVER_ROOM_EMAIL_APPROVED;
-                } 
-                $this->sendMail($template, $node,  $moderationState, $message);
+                }
+                $this->sendMail($node, $template, [
+                    'field_reserve_room' => $node,
+                    'field_message' => $message,
+                    'field_state' => $moderationState
+                ]);
+            } else if ($nodeType === Constant::NODE_EVENT) {
+                $emailFields = [
+                    'field_event' => $node,
+                    'field_message' => $message,
+                    'field_state' => $moderationState
+                ];
+                $template = Constant::EVENT_EMAIL_MODERATION;
+                if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
+                    $template = Constant::EVENT_EMAIL_APPROVED;
+
+                    $qrCodeGenerator = \Drupal::service('pennchas_form_alter.qr_code_generator');
+                    $qrCodePath = $qrCodeGenerator->generateQrCode($node->toUrl()->toString() . '/feedback');
+                    $emailFields['field_qr_code'] = $qrCodePath;
+                }
+                $this->sendMail($node, $template, $emailFields);
             }
         }
     }
 
-    protected function sendMail(string $template, Node $node, string $state, string $message)
+    protected function sendMail(Node $node, string $template, array $attributes)
     {
         try {
             $email = $this->mailer->createEmail([
                 'type' => $template,
-                'label' => $node->getTitle() . ' is ' . $state
             ]);
             if ($email) {
-                $email->set('field_reserve_room', $node);
-                $email->set('field_message', $message);
-                $email->set('field_state', $state);
+                if ($attributes) {
+                    foreach ($attributes as $key => $value) {
+                        $email->set($key, $value);
+                    }
+                }
                 $email->setRecipientIds([$node->getOwnerId()]);
                 $this->mailer->sendEmail($email, [], true, true);
             }
