@@ -9,19 +9,15 @@ label: 'Basic Node title URL pattern'
 type: 'canonical_entities:node'
 pattern: '[node:content-type:name]/[node:title]'
 selection_criteria:
-  5dedeac3-9f87-4d81-aabe-07ecd861860f:
+  e288501b-aba4-40e1-a3ab-8d81f8324fc1:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 5dedeac3-9f87-4d81-aabe-07ecd861860f
+    uuid: e288501b-aba4-40e1-a3ab-8d81f8324fc1
     context_mapping:
       node: node
     bundles:
       article: article
-      chas_event: chas_event
-      house_landing_page: house_landing_page
       page: page
-      reserve_room: reserve_room
-      room: room
 selection_logic: and
 weight: -5
 relationships: {  }

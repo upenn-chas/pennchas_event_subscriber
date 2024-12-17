@@ -51,7 +51,9 @@ class NodePreInsertHook
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
         if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-            $node->set('field_group', $group->id());
+            if(isset($group)){
+                $node->set('field_group', $group->id());
+            }
         }
         if ($node->isNew()) {
             if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
