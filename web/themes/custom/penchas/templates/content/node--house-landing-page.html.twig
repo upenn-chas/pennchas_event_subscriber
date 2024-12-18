@@ -73,7 +73,6 @@
     'clearfix',
   ]
 %}
-
 {% set house_label = node.field_select_house.0.parent.entity.label.value %}
 {% set field_color = node.field_select_house.0.parent.entity.field_color.value %}
 {% set field_image = node.field_select_house.0.parent.entity.field_image.value %}
@@ -93,8 +92,8 @@
         <div class="breadcrumbs-block">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{base_path}}">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">{{house_label}} HOUSE</a></li>
+              <li class="breadcrumb-item"><a href="{{front_page_url}}/">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{front_page_url}}/group/{{node.field_select_house.0.parent.entity.id.value}}">{{house_label}} HOUSE</a></li>
               <li class="breadcrumb-item active" aria-current="page">About This House</li>
             </ol>
           </nav>

@@ -83,6 +83,10 @@
 .dashboard-accordions {
   padding-bottom: 125px;
   padding-top: 42px;
+  @include media-query('small') {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
   h2 {
     border-top: 1px solid $primaryColor;
     padding-top: 42px;

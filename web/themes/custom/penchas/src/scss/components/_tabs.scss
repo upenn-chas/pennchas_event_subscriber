@@ -83,11 +83,27 @@
     }
   }
 }
+
+.title-blue-bg {
+  background: #ebf2ff;
+  padding: 80px 0;
+  @include media-query ('mobile') {
+    padding: 40px 0;
+  }
+}
+
+.title-blue-bg.with-bottom-section {
+  padding-bottom: 0;
+}
+
 .blockdashboard-blocks {
-  padding: 80px 0 100px 0;
+  padding: 40px 0 100px 0;
+  @include media-query ('small') {
+    padding-bottom: 30px;
+  }
   background: #EBF2FF;
   .block-inline-blockdashboard-blocks {
-    @include media-query ('mobile') {
+    @include media-query ('small') {
       margin-bottom: 24px;
     }
   

@@ -699,7 +699,8 @@ article > header {
 		}
 	}
   header {
-    position: static;
+    position: relative;
+    top: 0 !important;
   }
 }
 

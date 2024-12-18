@@ -130,18 +130,18 @@ third_party_settings:
           remove_gutters: '1'
           context_mapping: {  }
         components:
-          2bae99c5-077a-48d9-ad4d-cc29d4c307a9:
-            uuid: 2bae99c5-077a-48d9-ad4d-cc29d4c307a9
+          5e20cb7e-d65b-43a1-9ad7-f5cd6cacabfb:
+            uuid: 5e20cb7e-d65b-43a1-9ad7-f5cd6cacabfb
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
-              label: 'Banner Info'
+              label: 'hero section '
               label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 313
-              block_revision_id: 330
+              block_id: 334
+              block_revision_id: 351
               block_serialized: null
             weight: 0
             additional: {  }
@@ -440,23 +440,19 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          bcea96ec-3181-408d-99d5-d1b49566f877:
-            uuid: bcea96ec-3181-408d-99d5-d1b49566f877
+          1b99d599-1c8f-44c4-b615-c4ca9b76fb75:
+            uuid: 1b99d599-1c8f-44c4-b615-c4ca9b76fb75
             region: blb_region_col_1
             configuration:
-              id: 'field_block:user:user:name'
-              label: Name
-              label_display: '0'
+              id: 'inline_block:basic'
+              label: 'Resources - '
+              label_display: visible
               provider: layout_builder
-              context_mapping:
-                entity: '@user.current_user_context:current_user'
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
+              view_mode: full
+              context_mapping: {  }
+              block_id: 333
+              block_revision_id: 350
+              block_serialized: null
             weight: 1
             additional: {  }
         third_party_settings: {  }
@@ -630,7 +626,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          container_wrapper_classes: ''
+          container_wrapper_classes: 'title-blue-bg with-bottom-section'
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -719,7 +715,7 @@ third_party_settings:
                 class: null
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
-          container: w-100
+          container: container
           section_classes: ''
           section_attributes: null
           regions_classes:
@@ -728,21 +724,21 @@ third_party_settings:
             blb_region_col_1: null
           breakpoints: {  }
           layout_regions_classes: {  }
-          remove_gutters: '1'
+          remove_gutters: '0'
           context_mapping: {  }
         components:
-          6c6c9a30-abc3-40de-beb5-c7b9965a5578:
-            uuid: 6c6c9a30-abc3-40de-beb5-c7b9965a5578
+          9c54614e-b5a1-4055-8497-f87263258650:
+            uuid: 9c54614e-b5a1-4055-8497-f87263258650
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
-              label: 'Quick Links'
-              label_display: visible
+              label: 'Quick Link'
+              label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 312
-              block_revision_id: 329
+              block_id: 315
+              block_revision_id: 332
               block_serialized: null
             weight: 0
             additional: {  }
@@ -751,7 +747,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_4'
         layout_settings:
           label: ''
-          container_wrapper_classes: blockdashboard-blocks
+          container_wrapper_classes: 'blockdashboard-blocks extra-top-title'
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -904,6 +900,36 @@ third_party_settings:
               context_mapping: {  }
               block_id: 298
               block_revision_id: 313
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          8e8556d4-1bf0-4867-93a9-24c26993661b:
+            uuid: 8e8556d4-1bf0-4867-93a9-24c26993661b
+            region: blb_region_col_3
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'CHAS Applications - VPN'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 316
+              block_revision_id: 333
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          b864b576-c069-4f64-acbc-286d29839006:
+            uuid: b864b576-c069-4f64-acbc-286d29839006
+            region: blb_region_col_4
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Emergency Cell Phone Numbers'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 317
+              block_revision_id: 334
               block_serialized: null
             weight: 0
             additional: {  }

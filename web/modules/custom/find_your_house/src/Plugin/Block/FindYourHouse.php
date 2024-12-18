@@ -101,7 +101,7 @@ class FindYourHouse extends BlockBase
 				],
 				'link' => [
 					'#type' => 'link',
-					'#url' => '',
+					'#url' => '/all-college-houses',
 					'#title' => $this->t($link_text),
 					'#attributes' => [
 						'class' => ['discover_all_houses'],

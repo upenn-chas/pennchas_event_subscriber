@@ -26,7 +26,7 @@ class AdminFindYourHouse extends ConfigFormBase {
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
         $config = $this->config('find_your_house.settings');
-        print_r($config->get());
+        echo "<pre>";print_r($config->get());echo "</pre>";
         $selected_group_types = $config->get('group_types') ?: [];
 
         $form['go_button'] = [
@@ -63,7 +63,7 @@ class AdminFindYourHouse extends ConfigFormBase {
         ];
 
         $form['link_url'] = [
-            '#type' => 'url',
+            '#type' => 'textfield',
             '#id' => 'admin_find_your_house_link_url',
             '#title' => $this->t('URL'),
             '#description' => $this->t('Link URL'),
@@ -82,14 +82,27 @@ class AdminFindYourHouse extends ConfigFormBase {
      * {@inheritDoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        // dpm($form_state->getValues());
-        $this->config('find_your_house.settings')
-        ->set('go_button', $form_state->getValue('go_button', 'Go'))
-        ->set('group_types', $form_state->getValue('group_types'))
-        ->set('link_text', $form_state->getValue('link_text', 'Discover all our houses'))
-        ->set('link_url', $form_state->getValue('link_url', '/'))
-        ->save();
+        // dd($form_state->getValues());die
+        // Get form values
+        $go_button = $form_state->getValue('go_button', 'Go');
+        $link_text = $form_state->getValue('link_text', 'Discover all our houses');
+        $link_url = $form_state->getValue('link_url', '/');
+        $group_types = $form_state->getValue('group_types', []);
 
+        // If no group types are selected, set a default (empty array or default group types)
+        if (empty($group_types)) {
+            $group_types = [];  // Or you can set default group types here if required.
+        }
+
+        // Save the values to the configuration
+        $this->config('find_your_house.settings')
+            ->set('go_button', $go_button)
+            ->set('group_types', $group_types)
+            ->set('link_text', $link_text)
+            ->set('link_url', $link_url)
+            ->save();
+
+        // Call the parent submit form to finalize
         parent::submitForm($form, $form_state);
     }
 }

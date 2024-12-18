@@ -39,7 +39,33 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-<div class="dashboard-events">
+<section class="hero-banner with-bottom-border">
+        <style>
+            .hero-banner .container:before {
+                background: #ffea3f;
+            }
+        </style>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="breadcrumbs-block">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{base_path}}">{{breadcrumb_home}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="banner-info items-gap">
+                        <h1>{{ title }}</h1>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+<div class="dashboard-reservations">
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
     {{ title_prefix }}
     {% if title %}

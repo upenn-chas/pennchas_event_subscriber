@@ -131,3 +131,13 @@ body {
 .user-logged-in nav.tabs ul {
   padding: 20px;
 }
+
+.heading-with-top-border h2 {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid #000;
+  @include media-query ('small') {
+    margin-top: 35px;
+    padding-top: 25px;
+  }
+}

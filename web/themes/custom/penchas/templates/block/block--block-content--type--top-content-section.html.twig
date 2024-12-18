@@ -37,7 +37,7 @@
     'hero-banner'
   ]
 %}
-{% block content %}
+
 <section {{ attributes.addClass(classes) }}>
   <style>
     .hero-banner .container:before {
@@ -53,14 +53,15 @@
               <h1{{ title_attributes }}>{{ label }}</h1
             {% endif %}
           {{ title_suffix }}
-            {{content.body}}
+          {% block content %}
+           {{content.body}}
+              {% endblock %}
             {{content.field_cta}}
         </div>
       </div>
       <div class="col-12 col-lg-6">
         <div class="hero-img">
         {{content.field_image}}
-          {# <img src="assets/images/hero-img.jpg" alt=""> #}
         </div>
       </div>
     </div>
@@ -73,9 +74,9 @@
       <div class="col-12 col-lg-6">
         <h2>Find Your College House</h2>
         {{ drupal_entity('block', 'penchas_findyourhouse') }}
-        <a href="" class="btn btn-primary">Discover Our All Houses</a>
+        <a href="/all-college-houses" class="btn btn-primary">Discover Our All Houses</a>
       </div>
     </div>
   </div>
 </section>
-  {% endblock %}
+

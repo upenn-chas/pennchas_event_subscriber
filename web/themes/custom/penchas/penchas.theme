@@ -37,17 +37,20 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   );
 }
 function penchas_preprocess_page(&$variables) {
-  $variables['base_path'] = base_path();
-  // $url = \Drupal\Core\Url::fromRoute('<current>');
-  // $path = $url->getInternalPath();
-  // $variables['page_type__class'] = 'page';
-  // if (strpos($path, 'group') !== FALSE) {
-  //   $variables['page_type__class'] = 'is_group_page';
-  // }
+  //$variables['base_path'] = base_path();
+  // $variables['breadcrumb_home'] = 'HOME';
+  // $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
+  // $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
+  // $variables['front_page_url'] = $front_page_path;
 }
 
 function penchas_preprocess_html(&$variables) {
   $variables['base_path'] = base_path();
+  $variables['breadcrumb_home'] = 'HOME';
+  $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
+  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
+  $variables['front_page_url'] = $front_page_path;
+  
 }
 
 function penchas_preprocess_block(&$variables) {
@@ -185,20 +188,20 @@ function penchas_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $as
 
 }
 
-function penchas_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-  if (!empty($breadcrumb)) {
-    // Adding the title of the current page to the breadcrumb.
-    $breadcrumb[] = drupal_get_title();
+// function penchas_breadcrumb($variables) {
+//   $breadcrumb = $variables['breadcrumb'];
+//   if (!empty($breadcrumb)) {
+//     // Adding the title of the current page to the breadcrumb.
+//     $breadcrumb[] = drupal_get_title();
 
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+//     // Provide a navigational heading to give context for breadcrumb links to
+//     // screen-reader users. Make the heading invisible with .element-invisible.
+//     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
-    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
-    return $output;
-  }
-}
+//     $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+//     return $output;
+//   }
+// }
 
 /**
  * Implements hook_theme_suggestions_views_view_alter().
@@ -214,6 +217,7 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
  */
 function penchas_preprocess_views_view(&$variables) {
   $variables['base_path'] = base_path();
+  $variables['breadcrumb_home'] = 'HOME';
   $view = $variables['view'];
   $id = $view->storage->id();
   if($id == 'team_members'){

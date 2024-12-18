@@ -41,18 +41,17 @@
 {% if content.field_alignment %}
   {% set heading_alignment = content.field_alignment[0]['#markup'] %}
 {% endif %}
-{% if content.field_house_events %}
-  testin
-{% endif %}
+{% if content.field_house_events|length > 2 %}
   {% block content %}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if label %}
-    <div class="section-title"><h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3></div>
-  {% endif %}
-  {{ title_suffix }}
-    <div{{ content_attributes.addClass('col-12 content') }}>
-      {{ content }}
-    </div>
-</div>
+  <div{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if label %}
+      <div class="section-title"><h3{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h3></div>
+    {% endif %}
+    {{ title_suffix }}
+      <div{{ content_attributes.addClass('col-12 content') }}>
+        {{ content }}
+      </div>
+  </div>
   {% endblock %}
+{% endif %}
