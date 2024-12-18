@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: group-menu-3
-label: 'Group menu 3'
+label: groupmenufisher3
 description: ''
 locked: false
