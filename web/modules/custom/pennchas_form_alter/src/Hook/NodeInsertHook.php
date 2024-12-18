@@ -28,6 +28,11 @@ class NodeInsertHook
         $eventHousesId = $node->get('field_groups')->getValue();
         $eventHouses = Group::loadMultiple(array_column($eventHousesId, 'target_id'));
         foreach ($eventHouses as $house) {
+            // $node_url = $house->get('field_house_machine_name')->value.'/'.$node->getTitle();
+            // \Drupal::service('path.alias_storage')->save([
+            //     'alias' => '/' . $node_url,
+            //     'source' => '/events/' . $node->id()
+            //   ]);
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $house->addRelationship($node, 'group_node:' . $node->getType());

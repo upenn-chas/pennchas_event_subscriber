@@ -1,0 +1,25 @@
+uuid: cb42c458-487b-433e-8d6d-e472cd169d8a
+langcode: en
+status: false
+dependencies:
+  module:
+    - announcements_feed
+    - system
+  theme:
+    - penchas
+id: penchas_announcementsfeed
+theme: penchas
+region: content
+weight: 0
+provider: null
+plugin: announce_block
+settings:
+  id: announce_block
+  label: 'Announcements Feed'
+  label_display: visible
+  provider: announcements_feed
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /user/1

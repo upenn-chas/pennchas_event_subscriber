@@ -70,7 +70,6 @@ img {
   background-size: cover !important;
 }
 
-
 .instagram-posts {
   iframe {
     width: 100%;
@@ -139,5 +138,50 @@ body {
   @include media-query ('small') {
     margin-top: 35px;
     padding-top: 25px;
+  }
+}
+
+.moderation-alert p {
+  background: #EBF2FF;
+  display: inline-flex;
+  padding: 20px 18px 14px 18px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: tablet-gothic;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  color: #011F5B;
+  font-weight: 600;
+  margin-bottom: 40px;
+  @media(max-width: 767px) {
+    font-weight: 400;
+    padding: 15px;
+    font-size: 12px;
+  }
+  svg {
+    position: relative;
+    top: -3px;
+  }
+}
+
+.user-roles {
+  pre {
+    margin: 0;
+    code {
+      font-family: tablet-gothic-compressed;
+      text-transform: capitalize;
+      font-size: 60px;
+      line-height: 60px;
+      font-weight: 700;
+      margin: 60px 0 0 0;
+      display: block;
+      border-top: 1px solid #011f5b;
+      padding-top: 40px;
+      @media(max-width: 1300px) {
+        font-size: 25px;
+        line-height: 38px;
+      }
+    }
   }
 }

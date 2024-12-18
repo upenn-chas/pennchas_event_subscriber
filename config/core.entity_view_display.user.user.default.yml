@@ -147,6 +147,127 @@ third_party_settings:
             additional: {  }
         third_party_settings: {  }
       -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: ''
+                video:
+                  media_id: ''
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: moderation-alert
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          e8d0f089-5afb-4e95-89dc-f991401cd2be:
+            uuid: e8d0f089-5afb-4e95-89dc-f991401cd2be
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Events subheading'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 341
+              block_revision_id: 358
+              block_serialized: null
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+      -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
           label: ''
@@ -325,14 +446,14 @@ third_party_settings:
           container_wrapper:
             bootstrap_styles:
               background:
-                background_type: null
+                background_type: video
               background_color:
                 class: null
               background_media:
                 image:
-                  media_id: null
+                  media_id: ''
                 video:
-                  media_id: null
+                  media_id: ''
                 background_options:
                   background_position: center
                   background_repeat: no-repeat
@@ -413,7 +534,7 @@ third_party_settings:
           section_classes: ''
           section_attributes: null
           regions_classes:
-            blb_region_col_1: ''
+            blb_region_col_1: user-roles
           regions_attributes:
             blb_region_col_1: null
           breakpoints: {  }
@@ -421,32 +542,13 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          fd3f2750-b212-4503-bad7-a4473c1836e2:
-            uuid: fd3f2750-b212-4503-bad7-a4473c1836e2
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:roles'
-              label: 'Resources - '
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: '@user.current_user_context:current_user'
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: inline
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
           1b99d599-1c8f-44c4-b615-c4ca9b76fb75:
             uuid: 1b99d599-1c8f-44c4-b615-c4ca9b76fb75
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
               label: 'Resources - '
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }

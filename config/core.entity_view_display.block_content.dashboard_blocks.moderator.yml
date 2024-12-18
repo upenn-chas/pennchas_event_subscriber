@@ -11,6 +11,7 @@ dependencies:
     - field.field.block_content.dashboard_blocks.field_child_dashboard_blocks
   module:
     - layout_builder
+    - layout_discovery
     - link
     - text
 third_party_settings:
@@ -42,21 +43,6 @@ third_party_settings:
                   target: ''
                 third_party_settings: {  }
             weight: 0
-            additional: {  }
-          1e685891-be72-425f-965c-07f7d5349102:
-            uuid: 1e685891-be72-425f-965c-07f7d5349102
-            region: content
-            configuration:
-              id: 'field_block:block_content:dashboard_blocks:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 1
             additional: {  }
         third_party_settings: {  }
 id: block_content.dashboard_blocks.moderator

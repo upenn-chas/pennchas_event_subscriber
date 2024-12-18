@@ -1,18 +1,18 @@
-uuid: f7a95982-027d-40ea-9be5-f654da93fcca
+uuid: d4ffac8b-c303-43f6-aa2d-8a7eebabaf52
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_color
+    - field.storage.group.field_circle_color
     - group.type.house1
   module:
     - options
-id: group.house1.field_color
-field_name: field_color
+id: group.house1.field_circle_color
+field_name: field_circle_color
 entity_type: group
 bundle: house1
-label: 'Background Color'
-description: 'Light tone colors'
+label: 'Circle Color'
+description: 'Dark tone of colors'
 required: false
 translatable: false
 default_value: {  }

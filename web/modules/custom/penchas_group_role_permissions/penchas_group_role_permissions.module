@@ -1,96 +1,55 @@
 <?php
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
-
-use Drupal\Core\Session\AccountInterface;
-
-use Drupal\views\Views;
-
-use Drupal\layout_builder\Entity\LayoutBuilder;
-use Drupal\Core\Layout\LayoutEntityInterface;
+use Drupal\Core\Render\BubbleableMetadata; 
+/**
+ * Implements hook_token_info().
+ */
+function penchas_group_role_permissions_token_info(): array {
+  $tokens = [];
+  $tokens['penchas_group_role_permissions']['event_subheading'] = [
+    'name' => t('event_subhead'),
+    'description' => t("Subheading for Dashboard."),
+    //'type' => 'hex',
+  ];
+  // $tokens['penchas_group_role_permissions']['rgb'] = [
+  //   'name' => t('RGB'),
+  //   'description' => t("RGB style color values."),
+  //   //'type' => 'rgb',
+  // ];
+  
+  return [
+    'types' => [
+      'penchas_group_role_permissions' => [
+        'name' => t('Dashboard'),
+        'description' => t('Custom Tokens for Dashboard pages'),
+        'needs-data' => 'penchas_group_role_permissions',
+      ]
+    ],
+    'tokens' => $tokens,
+  ];
+}
 
 /**
- * Implements hook_block_info().
+ * Implements hook_tokens().
  */
-// function penchas_group_role_permissions_block_info() {
-//   $blocks = [];
+function penchas_group_role_permissions_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
+  $replacements = [];
 
-//   $blocks['custom_view_block'] = array(
-//     'info' => t('Custom View Block with Pagination'),
-//   );
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'event_subheading':
+          $replacements[$original] = 'You have 3 events for moderation.';
 
-//   return $blocks;
-// }
+          break;
 
-/**
- * Adds the custom view block to a layout programmatically.
- */
-// function penchas_group_role_permissions_add_block_to_layout($layout_id) {
-//   // Load the layout entity.
-//   $layout = LayoutBuilder::load($layout_id); // Replace with the specific layout ID.
+        case 'hex:with_opacity':
+          $replacements[$original] = 'test2';
+          //dd($replacements);
 
-//   // Add the custom block to the layout region (e.g., content region).
-//   $layout->addBlock('custom_view_block', 'content', 0); // Adjust region as needed.
+          break;
 
-//   // Save the layout after the changes.
-//   $layout->save();
-// }
+      }
+    }
+  // }
 
-// Check if the current user can view a specific view.
-// function penchas_group_role_permissions_view_access() {
-//   $view = Views::getView('your_view_name');  // Replace with your view name
-
-//   // Ensure the view exists
-//   if ($view) {
-//     // Check if the current user has access to view it
-//     $user = \Drupal::currentUser();
-//     $access = $view->access('page', NULL, $user);
-
-//     if ($access) {
-//       return TRUE; // User has permission to render the view
-//     }
-//   }
-//   return FALSE; // User does not have permission to render the view
-// }
-
-
-/**
- * Example function that checks if the current user has a custom permission.
- */
-// function penchas_group_role_permissions_check_permission() {
-//   // Check if the current user has the 'access custom content' permission.
-//   if (\Drupal::currentUser()->hasPermission('access my rerservations') || \Drupal::currentUser()->hasPermission('access my events') ) {
-//     // The user has the permission.
-//     return TRUE;
-//   }
-//   else {
-//     // The user does not have the permission.
-//     return FALSE;
-//   }
-// }
-
-/**
- * Implements hook_entity_base_field_info().
- */
-function penchas_group_role_permissions_entity_base_field_info(EntityTypeInterface $entity_type) {
-  $fields = array();
-
-  // Add a 'Highlight' base field to all node types.
-  // dump($entity_type->id());
-  if ($entity_type->id() === 'node') {
-    // $fields['highlight'] = BaseFieldDefinition::create('boolean')
-    //   ->setLabel(t('Highlight'))
-    //   ->setDescription(t('Whether or not the node is highlighted.'))
-    //   ->setRevisionable(TRUE)
-    //   ->setTranslatable(TRUE)
-    //   ->setDisplayOptions('form', array(
-    //     'type' => 'boolean_checkbox',
-    //     'settings' => array(
-    //       'display_label' => TRUE,
-    //     ),
-    //   ))
-    //   ->setDisplayConfigurable('form', TRUE);
-  }
-
-  return $fields;
+  return $replacements;
 }

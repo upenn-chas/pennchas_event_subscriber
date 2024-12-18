@@ -1,0 +1,57 @@
+uuid: 0d8453f8-bb06-495c-aa2c-e5eb12cb785b
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_circle_color
+field_name: field_circle_color
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: afbaae
+      label: '#AFB8AE'
+    -
+      value: aobbd4
+      label: '#AOBBD4'
+    -
+      value: fddoa8
+      label: '#FDDOA8'
+    -
+      value: ffe4b1
+      label: '#FFE4B1'
+    -
+      value: c8c2d7
+      label: '#C8C2D7'
+    -
+      value: 9db7d1
+      label: '#9DB7D1'
+    -
+      value: a9c6ad
+      label: '#A9C6AD'
+    -
+      value: b4d3e3
+      label: '#B4D3E3'
+    -
+      value: d79a9a
+      label: '#D79A9A'
+    -
+      value: a8c588
+      label: '#A8C5DD'
+    -
+      value: f3d6a4
+      label: '#F3D6A4'
+    -
+      value: efb6ab
+      label: '#EFB6AB'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
