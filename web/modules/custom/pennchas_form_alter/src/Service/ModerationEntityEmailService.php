@@ -98,7 +98,7 @@ class ModerationEntityEmailService
             ]);
             if ($email) {
                 $nodeType = $node->getType();
-                $email->set($nodeType === Constant::NODE_EVENT ? 'field_event' : 'field_reserve_room', $node);
+                $email->set($nodeType === Constant::NODE_RESERVE_ROOM ? 'field_reserve_room' : 'field_event', $node);
                 $email->setRecipientIds($recipients);
                 $this->mailer->sendEmail($email, [], true, true);
             }

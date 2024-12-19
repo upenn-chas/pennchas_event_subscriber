@@ -1,0 +1,190 @@
+uuid: adc10bc6-fa2f-42eb-83a3-ca9c18e12e64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.notices.field_banner
+    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_file
+    - field.field.node.notices.field_groups
+    - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_text_box
+    - image.style.thumbnail
+    - node.type.notices
+  module:
+    - conditional_fields
+    - file
+    - image
+    - path
+    - smart_date
+id: node.notices.default
+targetEntityType: node
+bundle: notices
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings:
+      conditional_fields:
+        9decc7dc-2996-467f-b461-de8575380b4d:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_intended_audience
+          settings:
+            state: visible
+            reset: true
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "house_event\r\nfloor_event"
+            value_form:
+              -
+                value: house_event
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_event_datetime:
+    type: smartdate_inline
+    weight: 6
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      show_extra: false
+      hide_date: true
+      allday: false
+      remove_seconds: true
+      duration_overlay: false
+      separator: to
+    third_party_settings: {  }
+  field_file:
+    type: file_generic
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings:
+      conditional_fields:
+        86eed513-d16a-42fc-852a-8d15c640e8e3:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_intended_audience
+          settings:
+            state: visible
+            reset: true
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "house_event\r\nfloor_event"
+            value_form:
+              -
+                value: house_event
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_groups:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_marketing_blurb:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        019bc605-6aef-4b56-aaa7-0128d5be6706:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_intended_audience
+          settings:
+            state: visible
+            reset: true
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "house_event\r\nfloor_event"
+            value_form:
+              -
+                value: house_event
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_text_box:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  moderation_state: true
+  status: true

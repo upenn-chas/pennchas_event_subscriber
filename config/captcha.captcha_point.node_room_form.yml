@@ -1,0 +1,7 @@
+uuid: dca912f6-fa87-45b2-88c2-b9b3a884440a
+langcode: en
+status: false
+dependencies: {  }
+formId: node_room_form
+captchaType: default
+label: node_room_form

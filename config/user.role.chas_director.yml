@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.chas_event
+    - node.type.notices
     - node.type.page
     - node.type.reserve_room
     - node.type.room
@@ -21,19 +22,25 @@ permissions:
   - 'access content overview'
   - 'cancel smart date recur instances'
   - 'create chas_event content'
+  - 'create notices content'
   - 'create page content'
   - 'delete all revisions'
   - 'delete any chas_event content'
+  - 'delete any notices content'
   - 'delete any room content'
   - 'delete chas_event revisions'
+  - 'delete notices revisions'
   - 'delete own chas_event content'
+  - 'delete own notices content'
   - 'delete own page content'
   - 'delete own reserve_room content'
   - 'delete own room content'
   - 'delete room revisions'
   - 'edit any chas_event content'
+  - 'edit any notices content'
   - 'edit any room content'
   - 'edit own chas_event content'
+  - 'edit own notices content'
   - 'edit own page content'
   - 'edit own reserve_room content'
   - 'edit own room content'
@@ -42,8 +49,8 @@ permissions:
   - 'reschedule smart date recur instances'
   - 'revert all revisions'
   - 'revert chas_event revisions'
+  - 'revert notices revisions'
   - 'revert room revisions'
-  - 'use editorial transition archive'
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'
@@ -54,5 +61,6 @@ permissions:
   - 'view chas_event revisions'
   - 'view chas_event revisions'
   - 'view latest version'
+  - 'view notices revisions'
   - 'view own unpublished content'
   - 'view room revisions'

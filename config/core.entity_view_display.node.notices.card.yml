@@ -1,0 +1,48 @@
+uuid: 869c06c9-dba2-44d7-b606-269782e65982
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.notices.field_banner
+    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_file
+    - field.field.node.notices.field_groups
+    - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_text_box
+    - node.type.notices
+  module:
+    - image
+    - user
+id: node.notices.card
+targetEntityType: node
+bundle: notices
+mode: card
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_banner:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_event_datetime: true
+  field_file: true
+  field_groups: true
+  field_marketing_blurb: true
+  field_text_box: true

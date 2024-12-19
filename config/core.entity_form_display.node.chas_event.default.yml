@@ -156,7 +156,7 @@ content:
       max_depth: 0
     third_party_settings: {  }
   field_event_schedule:
-    type: smartdate_default
+    type: smartdate_inline
     weight: 18
     region: content
     settings:
@@ -170,12 +170,14 @@ content:
         custom
       show_extra: false
       hide_date: true
-      allday: true
-      remove_seconds: false
-      duration_overlay: true
+      allday: false
+      remove_seconds: true
+      duration_overlay: false
+      separator: to
     third_party_settings:
       smart_date_recur:
-        modal: true
+        modal: false
+        show_single: true
         allowed_recur_freq_values:
           MINUTELY: '0'
           HOURLY: '0'

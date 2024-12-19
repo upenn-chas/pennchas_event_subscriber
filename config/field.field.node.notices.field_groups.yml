@@ -1,0 +1,25 @@
+uuid: 79f9d1e7-5e31-4f31-8ec7-0109a933ecd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_groups
+    - node.type.notices
+id: node.notices.field_groups
+field_name: field_groups
+entity_type: node
+bundle: notices
+label: 'House Affected'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: filed_college_houses_view
+      display_name: field_college_houses_view
+      arguments: {  }
+field_type: entity_reference

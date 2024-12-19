@@ -16,6 +16,8 @@ class NodeInsertHook
             $this->handleReserveRoom($node);
         } else if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
+        } else if ($nodeType === Constant::NODE_NOTICES) {
+            $this->handleNotice($node);
         } else if ($nodeType === Constant::NODE_ROOM) {
             $this->handleRoom($node);
         }
@@ -38,7 +40,7 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-        $eventHouse = $node->get('field_groups')->getValue();
+        
         $roomReservationMessage = 'Do you need a room reservation? <a href="#">click here</a>';
         $message = t('Your event has been submited and there is a possible three day wait time for approval.' . ' ' . $roomReservationMessage);
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
@@ -50,6 +52,20 @@ class NodeInsertHook
             $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $eventHouses[0]);
         }
         \Drupal::messenger()->addStatus($message);
+    }
+
+    protected function handleNotice(Node $node)
+    {
+        $eventHousesId = $node->get('field_groups')->getValue();
+        $eventHouses = Group::loadMultiple(array_column($eventHousesId, 'target_id'));
+        foreach ($eventHouses as $house) {
+            $existingRelationship = $house->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
+        $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
+        $mailService->notifyAuthor(Constant::NOTICE_EMAIL_CREATED, $node);
     }
 
     protected function handleReserveRoom(Node $node)
