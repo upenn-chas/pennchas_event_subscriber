@@ -1989,6 +1989,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      title: 'My Events'
       fields:
         title:
           id: title
@@ -2682,6 +2683,7 @@ display:
           query_tags: {  }
       defaults:
         query: false
+        title: false
         use_more: false
         use_more_always: false
         use_more_text: false
@@ -2784,7 +2786,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: ''
+      title: 'My Pending Events'
       fields:
         title:
           id: title
@@ -3264,6 +3266,7 @@ display:
           plugin_id: moderation_state_filter
           operator: in
           value:
+            editorial-draft: editorial-draft
             editorial-pending: editorial-pending
           group: 1
           exposed: true
@@ -3289,7 +3292,6 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-              test: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -3355,7 +3357,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: "<ul class=\"tabs tab--primary layout-tabs events-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link is-active tabs__link\" data-wrap=\"my_events_block\" role=\"tab\" aria-controls=\"panel-my-events\" aria-selected=\"true\"><a href=\"/my-events-all\">My Events\r\n</a></span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_pending_events\" role=\"tab\" aria-controls=\"panel-pending-events\" aria-selected=\"false\" tabindex=\"-1\"><a href=\"/my-pending-events\">My Pending Events</a>\r\n</span></li>\r\n</ul>"
+            value: "<ul class=\"tabs tab--primary layout-tabs events-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_events_block\" role=\"tab\" aria-controls=\"panel-my-events\" aria-selected=\"true\"><a href=\"/my-events-all\">My Events\r\n</a></span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link  is-active tabs__link\" data-wrap=\"my_pending_events\" role=\"tab\" aria-controls=\"panel-pending-events\" aria-selected=\"true\" tabindex=\"-1\"><a href=\"/my-pending-events\">My Pending Events</a>\r\n</span></li>\r\n</ul>"
             format: full_html
           tokenize: false
         result:
