@@ -1,0 +1,29 @@
+uuid: 56cb9b93-c4ff-4e60-8a6e-38d2883c8aad
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_notice_event_created
+    - field.storage.easy_email.field_event
+    - node.type.notices
+id: easy_email.et_notice_event_created.field_event
+field_name: field_event
+entity_type: easy_email
+bundle: et_notice_event_created
+label: Event
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      notices: notices
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: chas_event
+field_type: entity_reference

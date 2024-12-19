@@ -1,0 +1,17 @@
+uuid: 0d438f8d-51ae-42a1-84cd-0fd316a752f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - node.type.notices
+  module:
+    - gnode
+    - node
+id: house1-group_node-notices
+group_type: house1
+content_plugin: 'group_node:notices'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

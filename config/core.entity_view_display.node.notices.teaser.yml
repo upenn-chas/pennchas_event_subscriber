@@ -1,0 +1,48 @@
+uuid: 86dc0dc6-a105-43c4-8b15-9528da90abbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.notices.field_banner
+    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_file
+    - field.field.node.notices.field_groups
+    - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_text_box
+    - node.type.notices
+  module:
+    - image
+    - user
+id: node.notices.teaser
+targetEntityType: node
+bundle: notices
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_banner:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_event_datetime: true
+  field_file: true
+  field_groups: true
+  field_marketing_blurb: true
+  field_text_box: true

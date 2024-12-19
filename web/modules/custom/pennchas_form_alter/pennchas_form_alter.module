@@ -10,12 +10,16 @@ use Drupal\pennchas_form_alter\Hook\NodePreInsertHook;
 use Drupal\pennchas_form_alter\Hook\NodePreUpdateHook;
 use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
+use Drupal\pennchas_form_alter\Plugin\FormAlter\NoticeFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
         $eventFormAlter = new EventFormAlter();
+        $form = $eventFormAlter->alter($form, $formState);
+    } else if ($formId === 'node_notices_form' || $formId === 'node_notices_edit_form') {
+        $eventFormAlter = new NoticeFormAlter();
         $form = $eventFormAlter->alter($form, $formState);
     } else if ($formId === 'user_role_form' || $formId === 'group_role_add_form' || $formId === 'group_role_edit_form') {
         pennchas_form_alter_role_form($form, $formState);
@@ -75,7 +79,7 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
 function pennchas_form_alter_node_insert(Node $node)
 {
     $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT) {
+    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT  || $nodeType === Constant::NODE_NOTICES) {
         (new NodeInsertHook())->handle($node);
     }
 }

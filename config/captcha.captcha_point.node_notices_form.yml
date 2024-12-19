@@ -1,0 +1,7 @@
+uuid: 29c37734-d78e-400f-8297-b6c7b18b5026
+langcode: en
+status: true
+dependencies: {  }
+formId: node_notices_form
+captchaType: recaptcha_v3/recaptcha_v3
+label: node_notices_form

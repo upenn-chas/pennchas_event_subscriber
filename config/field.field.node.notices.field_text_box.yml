@@ -1,0 +1,19 @@
+uuid: dc57daa4-8b7d-4c4e-a7c8-f5406634d1b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_box
+    - node.type.notices
+id: node.notices.field_text_box
+field_name: field_text_box
+entity_type: node
+bundle: notices
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

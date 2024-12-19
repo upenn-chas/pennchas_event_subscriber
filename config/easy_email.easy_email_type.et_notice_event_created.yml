@@ -1,0 +1,29 @@
+uuid: e86b303f-68ae-4a38-ba67-7a7eb955fb6f
+langcode: en
+status: true
+dependencies: {  }
+id: et_notice_event_created
+label: 'New Notice Event'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Notice: [easy_email:field_event:entity:title] created'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>New Notice Created:</p><p>Title: <a href="https://url]">[easy_email:field_event:entity:title]</a></p><p>Author: [easy_email:creator_uid:entity:display-name]</p><p>Created At: [easy_email:created:date:html_date]</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

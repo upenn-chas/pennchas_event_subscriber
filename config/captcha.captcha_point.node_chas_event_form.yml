@@ -1,0 +1,7 @@
+uuid: 88271e6d-ee05-4ee4-800d-7c91c2581b81
+langcode: en
+status: false
+dependencies: {  }
+formId: node_chas_event_form
+captchaType: default
+label: node_chas_event_form

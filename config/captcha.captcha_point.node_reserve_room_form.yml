@@ -1,0 +1,7 @@
+uuid: 6400af0c-a13c-4450-aae3-7e0a6a12ba62
+langcode: en
+status: false
+dependencies: {  }
+formId: node_reserve_room_form
+captchaType: default
+label: node_reserve_room_form

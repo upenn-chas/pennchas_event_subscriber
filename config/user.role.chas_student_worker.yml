@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.chas_event
+    - node.type.notices
     - node.type.page
     - node.type.reserve_room
     - workflows.workflow.editorial
@@ -20,13 +21,17 @@ permissions:
   - 'access content overview'
   - 'administer nodes'
   - 'create chas_event content'
+  - 'create notices content'
   - 'create page content'
   - 'delete own chas_event content'
   - 'delete own files'
+  - 'delete own notices content'
   - 'delete own reserve_room content'
   - 'edit own chas_event content'
+  - 'edit own notices content'
   - 'edit own reserve_room content'
   - 'event own evaluation'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
+  - 'view notices revisions'
   - 'view own unpublished content'

@@ -14,7 +14,6 @@ global_role: chas_director
 group_type: house1
 permissions:
   - 'event own evaluation'
-  - 'use editorial transition archive'
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'

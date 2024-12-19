@@ -8,6 +8,7 @@ final class Constant
     const NODE_RESERVE_ROOM = 'reserve_room';
     const NODE_EVENT = 'chas_event';
     const NODE_ROOM = 'room';
+    const NODE_NOTICES = 'notices';
 
     const MOD_STATUS_PUBLISHED = 'published';
     const MOD_STATUS_DRAFT = 'draft';
@@ -26,7 +27,7 @@ final class Constant
      * @var string
      */
     const EVT_HOUSE_EVENT = 'house_event';
-    
+
     /**
      * CHAS floor event
      * 
@@ -52,13 +53,13 @@ final class Constant
      * @var string
      */
     const RESERVER_ROOM_EMAIL_APPROVED = 'et_room_reservation_approved';
-    
+
     /**
      * Email template machine name for new reserve room request
      * @var string
      */
     const RESERVER_ROOM_EMAIL_CREATED = 'et_room_reservation_created';
-        
+
     /**
      * Email template machine name for new reserve room created by moderator
      * @var string
@@ -71,10 +72,6 @@ final class Constant
      */
     const RESERVER_ROOM_EMAIL_MODERATION = 'et_room_reservation_state_change';
 
-    
-    ////////////////////////////////
-
-
     /**
      * Email template machine name for moderator alert for new event
      * @var string
@@ -86,13 +83,13 @@ final class Constant
      * @var string
      */
     const EVENT_EMAIL_APPROVED = 'et_event_approved';
-    
+
     /**
      * Email template machine name for new event request
      * @var string
      */
     const EVENT_EMAIL_CREATED = 'et_new_event_host_notification';
-        
+
     /**
      * Email template machine name for new event created by moderator
      * @var string
@@ -105,4 +102,9 @@ final class Constant
      */
     const EVENT_EMAIL_MODERATION = 'et_moderation_state_change_notif';
 
+    /**
+     * Email template machine name for new event request
+     * @var string
+     */
+    const NOTICE_EMAIL_CREATED = 'et_notice_event_created';
 }
