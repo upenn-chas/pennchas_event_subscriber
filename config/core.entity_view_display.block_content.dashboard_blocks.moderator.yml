@@ -11,52 +11,16 @@ dependencies:
     - field.field.block_content.dashboard_blocks.field_child_dashboard_blocks
   module:
     - layout_builder
-    - layout_discovery
     - link
-    - text
 third_party_settings:
   layout_builder:
-    enabled: true
+    enabled: false
     allow_custom: false
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          6401d093-c350-4b9a-863d-ed152b70b578:
-            uuid: 6401d093-c350-4b9a-863d-ed152b70b578
-            region: content
-            configuration:
-              id: 'field_block:block_content:dashboard_blocks:field_call_to_actions'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: link
-                label: hidden
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: ''
-                  target: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
 id: block_content.dashboard_blocks.moderator
 targetEntityType: block_content
 bundle: dashboard_blocks
 mode: moderator
 content:
-  body:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
   field_call_to_actions:
     type: link
     label: hidden
@@ -70,5 +34,6 @@ content:
     weight: 0
     region: content
 hidden:
+  body: true
   field_block_display_condition_wi: true
   field_child_dashboard_blocks: true

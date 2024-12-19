@@ -1,14 +1,19 @@
 <?php
-use Drupal\Core\Render\BubbleableMetadata; 
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Database\Database;
 /**
  * Implements hook_token_info().
  */
 function penchas_group_role_permissions_token_info(): array {
   $tokens = [];
   $tokens['penchas_group_role_permissions']['event_subheading'] = [
-    'name' => t('event_subhead'),
-    'description' => t("Subheading for Dashboard."),
+    'name' => t('Subheading for Dashboard'),
+    'description' => t("Event Info Subheading for Dashboard pages."),
     //'type' => 'hex',
+  ];
+  $tokens['penchas_group_role_permissions']['user_assigned_role'] = [
+    'name' => t('Role - Drupal + Group'),
+    'description' => t("Dynamic role from Group and User profile role."),
   ];
   // $tokens['penchas_group_role_permissions']['rgb'] = [
   //   'name' => t('RGB'),
@@ -37,15 +42,45 @@ function penchas_group_role_permissions_tokens(string $type, array $tokens, arra
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'event_subheading':
-          $replacements[$original] = 'You have 3 events for moderation.';
+          $current_user_id = \Drupal::currentUser()->id(); 
+          $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+          $query->addExpression('COUNT(ms.content_entity_id)', 'event_count');
+          $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
+          $query->condition('ms.moderation_state', 'pending', '=');
+          $query->condition('fs.uid', $current_user_id, '=');
+          $query->condition('fs.type', 'chas_event', '=');
+          $result = $query->execute()->fetchField();
+          // $event_count = (int) $result;
 
+          $replacements[$original] = 'You have '.$result.' events for moderation.';
           break;
-
-        case 'hex:with_opacity':
-          $replacements[$original] = 'test2';
-          //dd($replacements);
-
-          break;
+        case 'user_assigned_role':
+          $group_roles = [];
+          $connection = Database::getConnection();
+          $current_user = \Drupal::currentUser();
+          $query = $connection->select('group_relationship_field_data', 'gr')
+              ->fields('gr', ['id'])
+              ->condition('entity_id', $current_user->id(), '=')
+              ->condition('plugin_id', 'group_membership', '=');
+          $results = $query->execute()->fetchAll();
+          if(!empty($results)){
+              foreach ($results as $result) {
+                $current_user_role_id = $result->id;
+                $role_query = $connection->select('group_relationship__group_roles', 'grr')
+                ->fields('grr', ['group_roles_target_id'])
+                ->condition('entity_id', $current_user_role_id, '=');
+                $group_roles_results = $role_query->execute()->fetchAll();
+                
+                if(!empty($group_roles_results)){
+                  foreach ($group_roles_results as $group_role_result) {
+                    $group_roles[$group_role_result->group_roles_target_id] = $group_role_result->group_roles_target_id;
+                  }
+                }
+              }
+            }
+            $group_roles_output = implode(',', $group_roles);
+            $replacements[$original] = $group_roles_output;
+            break;
 
       }
     }
