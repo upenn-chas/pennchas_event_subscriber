@@ -9,10 +9,8 @@ class EventFormAlter
     public function alter(array $form, FormStateInterface $formState)
     {
         $houseCount = count($form['field_college_houses']['widget']['#options']);
-
         if ($houseCount > 1) {
-            $form['#attached']['library'][] = 'pennchas_form_alter/event_listeners';
-            $form['field_college_houses']['widget']['#options'] = ['select_all' => t('All college houses')] + $form['field_college_houses']['widget']['#options'];
+            $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
         }
 
         if ($form['#form_id'] === 'node_chas_event_form') {

@@ -12,6 +12,13 @@ event_listeners:
   dependencies:
     - core/jquery
     - core/drupal
+eventListeners:
+  version: 1.0
+  js:
+    js/eventListeners.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
 notice_select_all:
   version: 1.0
   js:
