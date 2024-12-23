@@ -1,0 +1,70 @@
+uuid: 317286e0-3008-4b15-b296-897331ba1b92
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.room.body
+    - field.field.node.room.field_address
+    - field.field.node.room.field_amenities_technology
+    - field.field.node.room.field_available_to
+    - field.field.node.room.field_chas_tech_managed_space
+    - field.field.node.room.field_circle_color
+    - field.field.node.room.field_duration
+    - field.field.node.room.field_evaluation_notification
+    - field.field.node.room.field_group
+    - field.field.node.room.field_group_ref
+    - field.field.node.room.field_images
+    - field.field.node.room.field_link_1
+    - field.field.node.room.field_link_2
+    - field.field.node.room.field_link_3
+    - field.field.node.room.field_maximum_occupancy
+    - field.field.node.room.field_qr_code
+    - field.field.node.room.field_text_box
+    - field.field.node.room.field_text_box_2
+    - node.type.room
+  module:
+    - color_field
+    - user
+id: node.room.full
+targetEntityType: node
+bundle: room
+mode: full
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_circle_color:
+    type: color_field_formatter_text
+    label: above
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_address: true
+  field_amenities_technology: true
+  field_available_to: true
+  field_chas_tech_managed_space: true
+  field_duration: true
+  field_evaluation_notification: true
+  field_group: true
+  field_group_ref: true
+  field_images: true
+  field_link_1: true
+  field_link_2: true
+  field_link_3: true
+  field_maximum_occupancy: true
+  field_qr_code: true
+  field_text_box: true
+  field_text_box_2: true

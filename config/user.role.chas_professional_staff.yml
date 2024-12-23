@@ -12,6 +12,7 @@ dependencies:
     - content_moderation
     - event_evaluation
     - node
+    - penchas_group_role_permissions
     - pennchas_form_alter
     - smart_date_recur
 third_party_settings:
@@ -28,6 +29,8 @@ weight: -2
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access my events'
+  - 'access my rerservations'
   - 'cancel smart date recur instances'
   - 'create chas_event content'
   - 'create notices content'

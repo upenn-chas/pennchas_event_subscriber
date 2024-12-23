@@ -1,0 +1,22 @@
+uuid: e0a366c5-0bce-44b7-8767-0c5fbf4d4fb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_circle_color
+    - node.type.room
+  module:
+    - color_field
+id: node.room.field_circle_color
+field_name: field_circle_color
+entity_type: node
+bundle: room
+label: 'Circle Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

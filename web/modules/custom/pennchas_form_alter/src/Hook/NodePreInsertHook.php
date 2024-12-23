@@ -43,6 +43,12 @@ class NodePreInsertHook
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
         $node->set('field_groups', $housesId);
+        if (count($housesId) == 1){
+            $eventHouse_data = Group::load($housesId[0]);
+            $group_machine_name = $eventHouse_data->get('field_house_machine_name')->value;
+            $node->set('field_group_ref', $group_machine_name);
+            // dd($node);
+        }
         $this->updateEventEndsOn($node);
     }
 

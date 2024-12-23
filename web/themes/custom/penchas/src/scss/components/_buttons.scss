@@ -7,6 +7,7 @@ button {
   }
 }
 
+ 
 .btn {
   @extend button;
   font-size: 20px;
@@ -52,6 +53,9 @@ button {
     bottom: -2px;
     background-color: $redHighlightColor
   }
+  &:active {
+    background: none;
+  }
 
   &.with-arrow {
     &:hover {
@@ -70,6 +74,9 @@ button {
   }
   a{
     text-decoration: none;
+    &:active {
+      background: none;
+    }
   }
 }
 
@@ -91,6 +98,9 @@ button {
     background: $primaryColor;
     color: #fff;
   }
+  &:active {
+    background: none;
+  }
 }
 
 .btn.btn-teritory {
@@ -111,6 +121,9 @@ button {
     line-height: 50px;
     font-size: 18px;
   }
+  &:active {
+    background: $primaryColor;
+  }
 
 
   &.with-arrow {
@@ -130,6 +143,9 @@ button {
   }
   a{
     text-decoration: none;
+    &:active {
+      background: $primaryColor;
+    }
   }
 }
 
@@ -149,39 +165,40 @@ a.arrow-link {
 
 
 .blue-filled {
-  background: #011F5B;
+  background: $primaryColor;
   font-size: 20px;
   font-weight: 700;
   color: #fff;
   border-radius: 10px;
   padding: 18px 20px 16px 20px;
-  font-family: tablet-gothic;
+  font-family: $teritoryFont;
   text-decoration: none;
-  border: 1px solid #011F5B;
+  border: 1px solid $primaryColor;
   &:hover {
-    color: #011F5B;
+    color: $primaryColor;
     background: #fff;
   }
 }
 
 .blue-tpt {
   background: #fff;
-  border: 1px solid #011F5B;
+  border: 1px solid $primaryColor;
   font-size: 20px;
   font-weight: 700;
-  color: #011F5B;
+  color: $primaryColor;
   border-radius: 10px;
   padding: 18px 20px 16px 20px;
-  font-family: tablet-gothic;
+  font-family: $teritoryFont;
   text-decoration: none;
+  display: inline-block;
   &:hover {
     color: #fff;
-    background: #011F5B;
+    background: $primaryColor;
   }
 }
 
 .blue-circel {
-  border: 1px solid #000;
+  border: 1px solid $primaryColor;
   height: 60px;
   width: 60px;
   display: inline-flex;

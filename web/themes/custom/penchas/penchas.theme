@@ -218,6 +218,8 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
 function penchas_preprocess_views_view(&$variables) {
   $variables['base_path'] = base_path();
   $variables['breadcrumb_home'] = 'HOME';
+  $variables['breadcrumb_dashboard'] = 'Dashboard';
+  $variables['breadcrumb_dashboard_link'] = '/user';
   $view = $variables['view'];
   $id = $view->storage->id();
   if($id == 'team_members'){

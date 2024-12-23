@@ -96,14 +96,14 @@
   .slider__counter {
     position: absolute;
     top: 90px;
-    color: #92b7ff;
+    color: $lightBlue;
     font-family: tablet-gothic;
     font-size: 14px;
     left: calc(50% + 60px);
 
     @include media-query('mobile') {      
       top: auto;
-      color: #92b7ff;      
+      color: $lightBlue;      
       font-size: 12px;
       left: 28px;
       bottom: 219px;

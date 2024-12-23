@@ -1,0 +1,19 @@
+uuid: 1fb15b38-3bd0-41f0-bdef-f8715eedcd03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_ref
+    - node.type.room
+id: node.room.field_group_ref
+field_name: field_group_ref
+entity_type: node
+bundle: room
+label: 'Group Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -120,8 +120,11 @@
     border: 1px solid $primaryColor;
     padding: 65px 85px;
     margin-top: -1px;
+    @include media-query('tablet') {
+      padding: 35px 35px;
+    }
     @include media-query('small') {
-      padding: 30px 24px;
+      padding: 30px 24px 0px 24px;
     }
 
   }
@@ -129,6 +132,11 @@
     width: calc(50% - 13px);
     @include media-query('tablet') {
       width: 100%;
+    }
+    &.no-child-blocks {
+      .contents:after {
+        display: none;
+      }
     }
     .contents {
       border: 1px solid $primaryColor;
@@ -188,13 +196,31 @@
     width: 50%;
     max-width: 470px;
     margin-bottom: 50px;
+    @include media-query ('ipad') {
+      width: 47%;
+    }
+    @include media-query ('tablet') {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
     h4 {
       border-bottom: 1px solid $primaryColor;
       padding-bottom: 10px;
       margin-bottom: 20px;
       font-size: 48px;
       text-transform: capitalize;
-      line-height: 58px;
+      line-height: 58px;    
+      height: 60px; 
+      @include media-query ('tablet') {
+        height: auto;
+        display: -webkit-box;
+        -webkit-line-clamp: inherit;
+        -webkit-box-orient: inherit;
+        overflow: visible;
+        font-size: 36px;
+        line-height: 42px;
+      }
     }
     .btn.btn-primary::before {
       display: none;

@@ -8,8 +8,11 @@ dependencies:
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
+    - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
+    - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
+    - field.field.node.room.field_group_ref
     - field.field.node.room.field_images
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
@@ -20,6 +23,7 @@ dependencies:
     - field.field.node.room.field_text_box_2
     - node.type.room
   module:
+    - color_field
     - duration_field
     - path
     - text
@@ -70,11 +74,33 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_circle_color:
+    type: color_field_widget_html5
+    weight: 122
+    region: content
+    settings:
+      show_extra: false
+    third_party_settings: {  }
   field_duration:
     type: duration_widget
     weight: 19
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_evaluation_notification:
+    type: boolean_checkbox
+    weight: 52
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_group_ref:
+    type: string_textfield
+    weight: 51
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_maximum_occupancy:
     type: number
@@ -127,6 +153,11 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   field_group: true

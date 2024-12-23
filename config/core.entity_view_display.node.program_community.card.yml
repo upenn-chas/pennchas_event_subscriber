@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_group
+    - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
     - node.type.program_community
   module:
@@ -44,5 +45,6 @@ content:
     region: content
 hidden:
   field_group: true
+  field_group_ref: true
   field_tags: true
   links: true

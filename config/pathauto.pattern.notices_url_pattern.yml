@@ -1,0 +1,22 @@
+uuid: 4945e9ba-41ca-4364-8fad-ce7432ed1e3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: notices_url_pattern
+label: 'Notices URL Pattern'
+type: 'canonical_entities:node'
+pattern: '[node:field_group_ref:value]/notices/[node:title]'
+selection_criteria:
+  87c040ce-44c1-41b2-9e38-ec64b015764c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 87c040ce-44c1-41b2-9e38-ec64b015764c
+    context_mapping:
+      node: node
+    bundles:
+      notices: notices
+selection_logic: and
+weight: -5
+relationships: {  }
