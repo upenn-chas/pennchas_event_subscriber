@@ -29,11 +29,17 @@
  * @ingroup themeable
  */
 #}
+
+{% set child_block_existed = 'no-child-blocks' %}
+{% if content.field_child_dashboard_blocks|length > 2 %}
+  {% set child_block_existed = 'child-blocks-existed' %}
+{% endif %}
 {%
   set classes = [
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
+    child_block_existed
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
@@ -46,10 +52,12 @@
     {{ content|without('field_child_dashboard_blocks') }}
   </div>
   {% block content %}
-    {% if content.field_child_dashboard_blocks %}
-      <div class="field_child_dashboard_blocks">
-        {{content.field_child_dashboard_blocks}}
-      </div>
+    {% if content.field_child_dashboard_blocks|length > 2 %}
+      {% if content.field_child_dashboard_blocks %}
+        <div class="field_child_dashboard_blocks">
+          {{content.field_child_dashboard_blocks}}
+        </div>
+      {% endif %}
     {% endif %}
   {% endblock %}
 </div>

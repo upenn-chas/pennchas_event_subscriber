@@ -13,12 +13,15 @@ dependencies:
     - event_evaluation
     - file
     - node
+    - penchas_group_role_permissions
 id: chas_student_worker
 label: 'CHAS Student Worker'
 weight: -5
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access my events'
+  - 'access my rerservations'
   - 'administer nodes'
   - 'create chas_event content'
   - 'create notices content'

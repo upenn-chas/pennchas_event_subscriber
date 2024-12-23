@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.notices.field_banner
     - field.field.node.notices.field_event_datetime
     - field.field.node.notices.field_file
+    - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_text_box
@@ -43,6 +44,7 @@ content:
 hidden:
   field_event_datetime: true
   field_file: true
+  field_group_ref: true
   field_groups: true
   field_marketing_blurb: true
   field_text_box: true

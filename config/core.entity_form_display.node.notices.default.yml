@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.notices.field_banner
     - field.field.node.notices.field_event_datetime
     - field.field.node.notices.field_file
+    - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_text_box
@@ -101,6 +102,14 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
+  field_group_ref:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_groups:
     type: options_buttons
     weight: 5

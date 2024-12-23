@@ -7,12 +7,12 @@ dependencies:
 id: chas_events_url_pattern_with_house
 label: 'CHAS events URL pattern'
 type: 'canonical_entities:node'
-pattern: '[node:field_groups:0:target_id]/events/[node:title]'
+pattern: '[node:field_group_ref:value]/events/[node:title]'
 selection_criteria:
-  ecd0d4c2-1bb7-45cd-840e-ccc70306119b:
+  66cd068c-bde8-41bc-8e5a-a529cb77e6d1:
     id: 'entity_bundle:node'
     negate: false
-    uuid: ecd0d4c2-1bb7-45cd-840e-ccc70306119b
+    uuid: 66cd068c-bde8-41bc-8e5a-a529cb77e6d1
     context_mapping:
       node: node
     bundles:

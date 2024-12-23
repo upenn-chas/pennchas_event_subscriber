@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
+    - field.field.node.reserve_room.field_groups
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
@@ -407,5 +408,6 @@ hidden:
   field_event_ends_on: true
   field_group: true
   field_group_ref: true
+  field_groups: true
   field_purpose_of_request: true
   links: true

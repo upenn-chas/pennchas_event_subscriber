@@ -13,6 +13,7 @@ dependencies:
     - content_moderation
     - event_evaluation
     - node
+    - penchas_group_role_permissions
     - smart_date_recur
 id: chas_director
 label: 'CHAS Director'
@@ -20,6 +21,8 @@ weight: -3
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access my events'
+  - 'access my rerservations'
   - 'cancel smart date recur instances'
   - 'create chas_event content'
   - 'create notices content'

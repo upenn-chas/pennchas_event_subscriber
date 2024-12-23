@@ -9,8 +9,11 @@ dependencies:
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
     - field.field.node.room.field_chas_tech_managed_space
+    - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
+    - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
+    - field.field.node.room.field_group_ref
     - field.field.node.room.field_images
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
@@ -21,6 +24,7 @@ dependencies:
     - field.field.node.room.field_text_box_2
     - node.type.room
   module:
+    - color_field
     - user
 id: node.room.teaser
 targetEntityType: node
@@ -31,6 +35,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
+    region: content
+  field_circle_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 2
     region: content
   links:
     settings: {  }
@@ -44,7 +57,9 @@ hidden:
   field_available_to: true
   field_chas_tech_managed_space: true
   field_duration: true
+  field_evaluation_notification: true
   field_group: true
+  field_group_ref: true
   field_images: true
   field_link_1: true
   field_link_2: true

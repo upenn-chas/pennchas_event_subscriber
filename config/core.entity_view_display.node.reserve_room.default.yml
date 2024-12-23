@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
+    - field.field.node.reserve_room.field_groups
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
@@ -80,7 +81,15 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 103
+    weight: 26
+    region: content
+  field_groups:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
     region: content
   field_long_text:
     type: basic_string

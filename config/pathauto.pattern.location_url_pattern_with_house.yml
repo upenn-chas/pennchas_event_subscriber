@@ -7,12 +7,12 @@ dependencies:
 id: location_url_pattern_with_house
 label: 'Room URL pattern with House'
 type: 'canonical_entities:node'
-pattern: '[node:field_group:entity:field_house_machine_name]/rooms/[node:title]'
+pattern: '[node:field_group_ref:value]/rooms/[node:title]'
 selection_criteria:
-  597c5ad1-fd55-485f-af7c-856852e7fb6c:
+  6e0c38c2-7ddb-421d-a77c-4c44ea21f73e:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 597c5ad1-fd55-485f-af7c-856852e7fb6c
+    uuid: 6e0c38c2-7ddb-421d-a77c-4c44ea21f73e
     context_mapping:
       node: node
     bundles:

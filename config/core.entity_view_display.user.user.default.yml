@@ -723,6 +723,21 @@ third_party_settings:
               block_serialized: null
             weight: 3
             additional: {  }
+          a3bd0e93-65c1-4695-8174-d77b699caccf:
+            uuid: a3bd0e93-65c1-4695-8174-d77b699caccf
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'College House Technology Help'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 345
+              block_revision_id: 377
+              block_serialized: null
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'

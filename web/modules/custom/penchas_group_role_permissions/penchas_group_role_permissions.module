@@ -11,15 +11,14 @@ function penchas_group_role_permissions_token_info(): array {
     'description' => t("Event Info Subheading for Dashboard pages."),
     //'type' => 'hex',
   ];
-  $tokens['penchas_group_role_permissions']['user_assigned_role'] = [
-    'name' => t('Role - Drupal + Group'),
-    'description' => t("Dynamic role from Group and User profile role."),
-  ];
-  // $tokens['penchas_group_role_permissions']['rgb'] = [
-  //   'name' => t('RGB'),
-  //   'description' => t("RGB style color values."),
-  //   //'type' => 'rgb',
+  // $tokens['penchas_group_role_permissions']['user_assigned_role'] = [
+  //   'name' => t('Role - Drupal + Group'),
+  //   'description' => t("Dynamic role from Group and User profile role."),
   // ];
+  $tokens['penchas_group_role_permissions']['user_dashboard_name'] = [
+    'name' => t('User Name'),
+    'description' => t("Preferred name from user profile. Fallback name will be Full name from User Profile."),
+  ];
   
   return [
     'types' => [
@@ -43,44 +42,54 @@ function penchas_group_role_permissions_tokens(string $type, array $tokens, arra
       switch ($name) {
         case 'event_subheading':
           $current_user_id = \Drupal::currentUser()->id(); 
-          $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-          $query->addExpression('COUNT(ms.content_entity_id)', 'event_count');
-          $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
-          $query->condition('ms.moderation_state', 'pending', '=');
-          $query->condition('fs.uid', $current_user_id, '=');
-          $query->condition('fs.type', 'chas_event', '=');
-          $result = $query->execute()->fetchField();
-          // $event_count = (int) $result;
 
-          $replacements[$original] = 'You have '.$result.' events for moderation.';
+          $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+          $query->fields('ms', ['content_entity_id']);
+          $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
+          $query->condition('ms.uid', $current_user_id, '=');
+          $query->condition('ms.moderation_state', 'draft', '=');
+          $query->condition('fs.type', 'chas_event', '=');
+          $result = $query->execute()->fetchCol();
+
+          $total_count = count($result);
+          $replacements[$original] = 'You have '.$total_count.' events for moderation.';
           break;
-        case 'user_assigned_role':
-          $group_roles = [];
-          $connection = Database::getConnection();
-          $current_user = \Drupal::currentUser();
-          $query = $connection->select('group_relationship_field_data', 'gr')
-              ->fields('gr', ['id'])
-              ->condition('entity_id', $current_user->id(), '=')
-              ->condition('plugin_id', 'group_membership', '=');
-          $results = $query->execute()->fetchAll();
-          if(!empty($results)){
-              foreach ($results as $result) {
-                $current_user_role_id = $result->id;
-                $role_query = $connection->select('group_relationship__group_roles', 'grr')
-                ->fields('grr', ['group_roles_target_id'])
-                ->condition('entity_id', $current_user_role_id, '=');
-                $group_roles_results = $role_query->execute()->fetchAll();
+        case 'user_dashboard_name':
+          $current_user_id = \Drupal::currentUser()->id();
+          $current_user = \Drupal\user\Entity\User::load($current_user_id);
+          $user_name = $current_user->field_preferred_name->value;
+          if(empty($user_name)){
+            $user_name = $current_user->field_full_name->value;
+          }
+          $replacements[$original] = $user_name;
+          break;
+        // case 'user_assigned_role':
+        //   $group_roles = [];
+        //   $connection = Database::getConnection();
+        //   $current_user = \Drupal::currentUser();
+        //   $query = $connection->select('group_relationship_field_data', 'gr')
+        //       ->fields('gr', ['id'])
+        //       ->condition('entity_id', $current_user->id(), '=')
+        //       ->condition('plugin_id', 'group_membership', '=');
+        //   $results = $query->execute()->fetchAll();
+        //   if(!empty($results)){
+        //       foreach ($results as $result) {
+        //         $current_user_role_id = $result->id;
+        //         $role_query = $connection->select('group_relationship__group_roles', 'grr')
+        //         ->fields('grr', ['group_roles_target_id'])
+        //         ->condition('entity_id', $current_user_role_id, '=');
+        //         $group_roles_results = $role_query->execute()->fetchAll();
                 
-                if(!empty($group_roles_results)){
-                  foreach ($group_roles_results as $group_role_result) {
-                    $group_roles[$group_role_result->group_roles_target_id] = $group_role_result->group_roles_target_id;
-                  }
-                }
-              }
-            }
-            $group_roles_output = implode(',', $group_roles);
-            $replacements[$original] = $group_roles_output;
-            break;
+        //         if(!empty($group_roles_results)){
+        //           foreach ($group_roles_results as $group_role_result) {
+        //             $group_roles[$group_role_result->group_roles_target_id] = $group_role_result->group_roles_target_id;
+        //           }
+        //         }
+        //       }
+        //     }
+        //     $group_roles_output = implode(',', $group_roles);
+        //     $replacements[$original] = $group_roles_output;
+        //     break;
 
       }
     }

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_group
+    - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
     - node.type.program_community
   module:
@@ -41,6 +42,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_group_ref:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 26
     region: content
   field_tags:
     type: entity_reference_label

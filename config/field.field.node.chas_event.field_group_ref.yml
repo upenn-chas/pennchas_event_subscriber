@@ -1,0 +1,19 @@
+uuid: 2d543e17-5d55-4d4f-a297-352235477e36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_ref
+    - node.type.chas_event
+id: node.chas_event.field_group_ref
+field_name: field_group_ref
+entity_type: node
+bundle: chas_event
+label: 'Group Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_group
+    - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
     - image.style.thumbnail
     - node.type.program_community
@@ -48,6 +49,14 @@ content:
     weight: 27
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_group_ref:
+    type: string_textfield
+    weight: 51
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags
