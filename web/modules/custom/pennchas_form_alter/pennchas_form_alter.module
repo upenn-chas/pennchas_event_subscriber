@@ -33,7 +33,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $form = $moderationFormAlter->alter($form, $formState);
     } else if ($formId === 'node_reserve_room_form') {
         $group = \Drupal::routeMatch()->getParameter('group');
-        if(isset($group)){
+        if (isset($group)) {
             $form['field_room']['widget']['#options'] = _get_group_rooms($group->id());
         }
     } else if ($formId === 'node_reserve_room_edit_form') {
