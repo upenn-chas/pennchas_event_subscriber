@@ -57,39 +57,37 @@ function penchas_preprocess_html(&$variables) {
 function penchas_preprocess_block(&$variables) {
 
   $connection = Database::getConnection();
+  $variables['dashboard_access'] = FALSE;
   // Check if the block is the specific inline block we want to target.
   if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
-    // $block = $variables;
-    // dump($block);
-    // $block_content = \Drupal\block_content\Entity\BlockContent::load($block->id());
-    // $field_value = $block_content->get('field_block_display_condition_wi')->value;
-    // Retrieve the roles specified in the block's field.
-    // $field_values = $variables['content']['field_block_display_condition_wi'];
-    // $variables['content'] = 'testing new ';
-    // dump($variables['content']['#block_content']);
+    $field_values = $variables['content']['field_block_display_condition_wi'];
+
     // $block_content = BlockContent::load($block_content_id);
     // if (!isset($field_values['#items'])) {
-    //   // If there are no field values, stop further processing.
-    //   return;
-    // }
+      //   // If there are no field values, stop further processing.
+      //   return;
+      // }
+      
+      $group_roles_arr = [];
+      $group_conditions = $variables['content']['#block_content']->get('field_block_display_condition_wi')->getValue();
+      foreach ($group_conditions as $value) {
+        $group_roles_arr[] = $value['target_id'];
+      }
+      $variables['dashboard_access'] = TRUE;
 
-    // $group_roles_arr = [];
-    // foreach ($field_values['#items']->referencedEntities() as $value) {
-    //   $group_roles_arr[] = $value->id();
-    // }
-    // // dump($field_values);
-    // // Load the current user.
-    // $current_user = \Drupal::currentUser();
-    // $user_entity = \Drupal\user\Entity\User::load($current_user->id());
-    // // dd($user_entity);
+      // // Load the current user.
+      $current_user = \Drupal::currentUser();
+      // $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+      // // dd($user_entity);
 
-    // $query = $connection->select('group_relationship_field_data', 'gr')
-    // ->fields('gr', ['id'])
-    // ->condition('entity_id', $current_user->id(), '=')
-    // ->condition('plugin_id', 'group_membership', '=');
+      $query = $connection->select('group_relationship_field_data', 'gr')
+      ->fields('gr', ['id'])
+      ->condition('entity_id', $current_user->id(), '=')
+      ->condition('plugin_id', 'group_membership', '=');
 
-    // // Execute the query and fetch all results as an associative array.
-    // $results = $query->execute()->fetchAssoc('id');
+      // // Execute the query and fetch all results as an associative array.
+      $results = $query->execute()->fetchAssoc('id');
+      // dump($results);
     // // if(!$results){
     // // dump($results);
     //   if(!empty($results['id'])){
