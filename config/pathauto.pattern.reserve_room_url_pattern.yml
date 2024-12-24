@@ -7,12 +7,12 @@ dependencies:
 id: reserve_room_url_pattern
 label: 'Reserve Room URL pattern'
 type: 'canonical_entities:node'
-pattern: '[node:field_group_ref:value]/reserve_room/[node:title]'
+pattern: '[node:field_group_ref:value]/roomreservation/[node:title]'
 selection_criteria:
-  59a528e2-fcf1-40e0-8628-3b5fdaa54514:
+  68f25692-51c6-4f3e-ad46-f30a2d6dc3c4:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 59a528e2-fcf1-40e0-8628-3b5fdaa54514
+    uuid: 68f25692-51c6-4f3e-ad46-f30a2d6dc3c4
     context_mapping:
       node: node
     bundles:

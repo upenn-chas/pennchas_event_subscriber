@@ -132,30 +132,58 @@
   text-align: center;
 }
 
-#layout-builder-modal button.button,
-#layout-builder-modal input[value="Remove"].button {
-  margin: unset; 
-  color: unset;
-  border-radius: 8px;
-  background-color: #fff !important;
-  background-image: url("data:image/svg+xml,%3csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M2.344 2.343l11.313 11.313M2.344 13.657L13.657 2.343' stroke='%2355565B' stroke-width='3'/%3e%3c/svg%3e") !important;
-  background-repeat: no-repeat;
-  font-weight: unset;
-  font-family: unset;
-  border: unset;
-  width: unset;
-  min-width: unset;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+// #layout-builder-modal button.button,
+// #layout-builder-modal input[value="Remove"].button {
+//   margin: unset; 
+//   color: unset;
+//   border-radius: 8px;
+//   background-color: #fff !important;
+//   background-image: url("data:image/svg+xml,%3csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M2.344 2.343l11.313 11.313M2.344 13.657L13.657 2.343' stroke='%2355565B' stroke-width='3'/%3e%3c/svg%3e") !important;
+//   background-repeat: no-repeat;
+//   font-weight: unset;
+//   font-family: unset;
+//   border: unset;
+//   width: unset;
+//   min-width: unset;
+//   background-position: center !important;
+//   background-repeat: no-repeat !important;
+// }
+
+// #layout-builder-modal button.button,
+// #layout-builder-modal input[value="Remove"].button:hover {
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: 0.75rem;
+//   background-color: #fff;
+//   background-image: url("data:image/svg+xml,%3csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M2.344 2.343l11.313 11.313M2.344 13.657L13.657 2.343' stroke='%2355565B' stroke-width='3'/%3e%3c/svg%3e");
+// }
+
+#layout-builder-modal button.button--primary:before, 
+#layout-builder-modal input[type="submit"].button--primary:before {
+  display: none;
 }
 
-#layout-builder-modal button.button,
-#layout-builder-modal input[value="Remove"].button:hover {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 0.75rem;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M2.344 2.343l11.313 11.313M2.344 13.657L13.657 2.343' stroke='%2355565B' stroke-width='3'/%3e%3c/svg%3e");
+#layout-builder-modal label {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: normal;
+  background: none;
+  border-radius: 0;
+  position: static !important;
+  transform: none;
+}
+#layout-builder-modal label:after {
+  display: none;
+}
+#layout-builder-modal .form-type-color input {
+  width: 50px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+}
+
+#layout-builder-modal .btn.btn-primary::before {
+  display: none;
 }
 
 #layout-builder-modal .js-media-library-selection .js-media-library-item {
