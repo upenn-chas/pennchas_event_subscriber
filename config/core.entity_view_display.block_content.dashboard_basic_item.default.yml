@@ -6,10 +6,12 @@ dependencies:
     - block_content.type.dashboard_basic_item
     - field.field.block_content.dashboard_basic_item.body
     - field.field.block_content.dashboard_basic_item.field_circle_colour
+    - field.field.block_content.dashboard_basic_item.field_cta
     - field.field.block_content.dashboard_basic_item.field_heading
     - field.field.block_content.dashboard_basic_item.field_icon
   module:
     - color_field
+    - link
     - media
     - text
 id: block_content.dashboard_basic_item.default
@@ -32,6 +34,18 @@ content:
       opacity: true
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_heading:
     type: string

@@ -50,7 +50,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: string_textfield
-    weight: 9
+    weight: 8
     region: content
     settings:
       size: 60
@@ -58,53 +58,45 @@ content:
     third_party_settings: {  }
   field_amenities_technology:
     type: options_buttons
-    weight: 17
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_available_to:
     type: options_buttons
-    weight: 18
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_chas_tech_managed_space:
     type: options_buttons
-    weight: 15
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_circle_color:
     type: color_field_widget_html5
-    weight: 122
+    weight: 16
     region: content
     settings:
       show_extra: false
     third_party_settings: {  }
   field_duration:
     type: duration_widget
-    weight: 19
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_evaluation_notification:
     type: boolean_checkbox
-    weight: 52
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
-  field_group_ref:
-    type: string_textfield
-    weight: 51
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_maximum_occupancy:
     type: number
-    weight: 10
+    weight: 9
     region: content
     settings:
       placeholder: ''
@@ -155,12 +147,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_group: true
+  field_group_ref: true
   field_images: true
   field_link_1: true
   field_link_2: true

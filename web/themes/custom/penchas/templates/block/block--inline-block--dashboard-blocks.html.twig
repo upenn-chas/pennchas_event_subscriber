@@ -42,6 +42,7 @@
     child_block_existed
   ]
 %}
+  {% block content %}
 <div{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('contents') }}>
     {{ title_prefix }}
@@ -49,9 +50,9 @@
       <h5{{ title_attributes }}>{{ label }}</h5>
     {% endif %}
     {{ title_suffix }}
+    {# {{ content }} #}
     {{ content|without('field_child_dashboard_blocks') }}
   </div>
-  {% block content %}
     {% if content.field_child_dashboard_blocks|length > 2 %}
       {% if content.field_child_dashboard_blocks %}
         <div class="field_child_dashboard_blocks">
@@ -59,5 +60,5 @@
         </div>
       {% endif %}
     {% endif %}
-  {% endblock %}
 </div>
+  {% endblock %}

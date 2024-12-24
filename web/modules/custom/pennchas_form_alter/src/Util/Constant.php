@@ -6,6 +6,7 @@ namespace Drupal\pennchas_form_alter\Util;
 final class Constant
 {
     const NODE_RESERVE_ROOM = 'reserve_room';
+    const NODE_PROGRAM_COMMUNITY = 'program_community';
     const NODE_EVENT = 'chas_event';
     const NODE_ROOM = 'room';
     const NODE_NOTICES = 'notices';
