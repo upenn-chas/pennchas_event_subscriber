@@ -166,6 +166,10 @@ body {
 }
 
 .user-roles {
+  @media(max-width: 767px) {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
   pre {
     margin: 0;
     code {
@@ -174,13 +178,17 @@ body {
       font-size: 60px;
       line-height: 60px;
       font-weight: 700;
-      margin: 60px 0 0 0;
+      margin: 80px 0 0 0;
       display: block;
       border-top: 1px solid $primaryColor;
       padding-top: 40px;
       @media(max-width: 1300px) {
         font-size: 25px;
         line-height: 38px;
+      }
+      @media(max-width: 991px) {
+        margin-top: 10px;
+        padding-top: 20px;
       }
     }
   }
