@@ -20,6 +20,10 @@ class NodePreInsertHook
             $this->handleReserveRoom($node);
         } else if ($nodeType === Constant::NODE_ROOM) {
             $this->handleRoom($node);
+        } else if ($nodeType === Constant::NODE_NOTICES) {
+            $this->handleNotice($node);
+        } else if ($nodeType === Constant::NODE_PROGRAM_COMMUNITY) {
+            $this->handleProgramCommunity($node);
         } else if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
         }
@@ -52,6 +56,31 @@ class NodePreInsertHook
         $this->updateEventEndsOn($node);
     }
 
+    protected function handleNotice(Node $node)
+    {
+        $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
+        $nid = $node->id();
+        $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
+        $groupId = $this->getGroupIdsByEntity($nid);
+        $group = null;
+        if ($groupId) {
+            $group = Group::load($groupId);
+        } else {
+            $group = \Drupal::routeMatch()->getParameter('group');
+        }
+        if ($group) {
+            $groupMachineName = $group->get('field_house_machine_name')->value;
+            if ($group->hasField('field_house_machine_name')) {
+                $node->set('field_group_ref', $groupMachineName);
+            }
+            if ($node->isNew() || !$node->original->get('field_group')->getString()) {
+                $node->set('field_groups', $group->id());
+                $group_machine_name = $group->get('field_house_machine_name')->value;
+                $node->set('field_group_ref', $group_machine_name);    
+            }
+        }
+    }
+
     protected function handleReserveRoom(Node $node)
     {
         $request = \Drupal::routeMatch();
@@ -59,6 +88,9 @@ class NodePreInsertHook
         if ($node->isNew() || !$node->original->get('field_group')->getString()) {
             if(isset($group)){
                 $node->set('field_group', $group->id());
+                $eventHouse_data = Group::load($group->id());
+                $group_machine_name = $eventHouse_data->get('field_house_machine_name')->value;
+                $node->set('field_group_ref', $group_machine_name);
             }
         }
         if ($node->isNew()) {
@@ -72,6 +104,7 @@ class NodePreInsertHook
         }
     }
 
+    
     protected function handleRoom(Node $node)
     {
         $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
@@ -85,21 +118,48 @@ class NodePreInsertHook
             $group = \Drupal::routeMatch()->getParameter('group');
         }
         if ($group) {
+            $groupMachineName = $group->get('field_house_machine_name')->value;
             if ($group->hasField('field_house_machine_name')) {
-                $groupMachineName = $group->get('field_house_machine_name')->value;
                 if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
             if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-                $node->set('field_group', $group->id());
+                $node->set('field_group', $group->id());                
             }
+            $node->set('field_group_ref', $groupMachineName);
         }
 
         // $node->set('field_group_ref', $urlAlias);
     }
 
+    protected function handleProgramCommunity(Node $node)
+    {
+        $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
+        $nid = $node->id();
+        $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
+        $groupId = $this->getGroupIdsByEntity($nid);
+        $group = null;
+        if ($groupId) {
+            $group = Group::load($groupId);
+        } else {
+            $group = \Drupal::routeMatch()->getParameter('group');
+        }
+        if ($group) {
+            $groupMachineName = $group->get('field_house_machine_name')->value;
+            if ($group->hasField('field_house_machine_name')) {
+                if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
+                    $urlAlias = $groupMachineName . $urlAlias;
+                }
+            }
+            if ($node->isNew() || !$node->original->get('field_group')->getString()) {
+                $node->set('field_group', $group->id());                
+            }
+            $node->set('field_group_ref', $groupMachineName);
+        }
 
+        // $node->set('field_group_ref', $urlAlias);
+    }
 
     private function getGroupIdsByEntity($nid)
     {
