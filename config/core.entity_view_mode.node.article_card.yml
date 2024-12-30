@@ -1,0 +1,11 @@
+uuid: 3d8ea652-21e4-4be6-8c13-ad6fa0416501
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.article_card
+label: 'Article Card'
+description: ''
+targetEntityType: node
+cache: true

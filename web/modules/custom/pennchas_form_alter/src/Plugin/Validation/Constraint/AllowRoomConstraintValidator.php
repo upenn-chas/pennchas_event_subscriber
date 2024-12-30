@@ -45,6 +45,7 @@ class AllowRoomConstraintValidator extends ConstraintValidator
         $roleName = $term->getName();
         
         $group = \Drupal::routeMatch()->getParameter('group');
+        
         $member = $group->getMember($currentUser);
         $roles = [];
         if ($member) {

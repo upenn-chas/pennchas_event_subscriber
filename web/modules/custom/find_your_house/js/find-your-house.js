@@ -1,5 +1,18 @@
 (function ($) {
   'use strict';
+  
+  jQuery(document).ready(function(){
+    jQuery('#block-penchas-findyourhouse .select-btn').on('click', function(){
+      console.log('askdhasd test ');
+      jQuery(this).parent().toggleClass('active');
+    });
+    jQuery('#block-penchas-findyourhouse .select-menu ul.options .option').on('click', function(){
+      console.log('asdasd');
+      jQuery('.sBtn-text').html(jQuery(this).find('span').text());
+      jQuery('#customer_find_your_house_group').val(jQuery(this).find('span').attr('data-group-url'));
+      // jQuery('#block-penchas-findyourhouse .select-menu').toggleClass('active');
+    });
+  });
   Drupal.behaviors.find_your_house = {
       attach: function (context, settings) {
           // jQuery("#block-penchas-findyourhouse .select-menu ul.options li").on("click", function (event) {
@@ -7,16 +20,7 @@
           //   // alert('jhagsd');
           //   jQuery('#block-penchas-findyourhouse .select-menu').addClass('closed').removeClass('active');
           // });
-          jQuery('#block-penchas-findyourhouse .select-btn').on('click', function(){
-            console.log('askdhasd');
-            jQuery(this).parent().toggleClass('active');
-          });
-          jQuery('#block-penchas-findyourhouse .select-menu ul.options .option').on('click', function(){
-            console.log('asdasd');
-            jQuery('.sBtn-text').html(jQuery(this).find('span').text());
-            jQuery('#customer_find_your_house_group').val(jQuery(this).find('span').attr('data-group-url'));
-            // jQuery('#block-penchas-findyourhouse .select-menu').toggleClass('active');
-          });
+          
       }
   };
 

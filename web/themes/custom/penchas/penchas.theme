@@ -13,6 +13,7 @@ use Drupal\file\Entity\File;
 
 use Drupal\node\Entity\NodeType;
 use Drupal\Core\Database\Database;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -37,12 +38,29 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   );
 }
-function penchas_preprocess_page(&$variables) {
-  //$variables['base_path'] = base_path();
-  // $variables['breadcrumb_home'] = 'HOME';
-  // $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
-  // $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
-  // $variables['front_page_url'] = $front_page_path;
+function penchas_preprocess_node(&$variables) {
+  $variables['base_path'] = base_path();
+  $variables['breadcrumb_home'] = 'HOME';
+  $variables['breadcrumb_dashboard'] = 'Dashboard';
+  $variables['breadcrumb_dashboard_link'] = '/user';
+  $variables['primary_color'] = '#ffea3f';
+  $variables['room_reservation_heading'] = 'My Room Reservations';
+  $current_user = \Drupal::currentUser();
+  $edit_link = '';
+  
+  $variables['event_detail_breadcrumbs'] = '';
+  $node = \Drupal::routeMatch()->getParameter('node');
+ 
+  if ($node instanceof NodeInterface) {
+    if ($node->bundle() == 'chas_event') {
+      if ($current_user->isAuthenticated()) {
+        $variables['is_logged_in'] = TRUE;
+        $variables['attributes']['class'][] = 'logged-in-user';
+        $edit_link = '<li><a href=""><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg">Edit</a></li><li><a href=""><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg">Moderate</a></li>';
+      }
+      $variables['event_detail_breadcrumbs'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="/"><img src="'.base_path().'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'.$edit_link.'</ul></div></div>';
+    }
+  }
 }
 
 function penchas_preprocess_html(&$variables) {
@@ -59,65 +77,64 @@ function penchas_preprocess_block(&$variables) {
   $connection = Database::getConnection();
   $variables['dashboard_access'] = FALSE;
   // Check if the block is the specific inline block we want to target.
-  if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
-    $field_values = $variables['content']['field_block_display_condition_wi'];
+  // if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
+  //   $field_values = $variables['content']['field_block_display_condition_wi'];
 
-    // $block_content = BlockContent::load($block_content_id);
-    // if (!isset($field_values['#items'])) {
-      //   // If there are no field values, stop further processing.
-      //   return;
-      // }
+  //   // $block_content = BlockContent::load($block_content_id);
+  //   if (!isset($field_values['#items'])) {
+  //     // If there are no field values, stop further processing.
+  //     return;
+  //   }
       
-      $group_roles_arr = [];
-      $group_conditions = $variables['content']['#block_content']->get('field_block_display_condition_wi')->getValue();
-      foreach ($group_conditions as $value) {
-        $group_roles_arr[] = $value['target_id'];
-      }
-      $variables['dashboard_access'] = TRUE;
+  //     $group_roles_arr = [];
+  //     $group_conditions = $variables['content']['#block_content']->get('field_block_display_condition_wi')->getValue();
+  //     foreach ($group_conditions as $value) {
+  //       $group_roles_arr[] = $value['target_id'];
+  //     }
+  //     $variables['dashboard_access'] = TRUE;
 
-      // // Load the current user.
-      $current_user = \Drupal::currentUser();
-      // $user_entity = \Drupal\user\Entity\User::load($current_user->id());
-      // // dd($user_entity);
+  //     // // Load the current user.
+  //     $current_user = \Drupal::currentUser();
+  //     // $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+  //     // // dd($user_entity);
 
-      $query = $connection->select('group_relationship_field_data', 'gr')
-      ->fields('gr', ['id'])
-      ->condition('entity_id', $current_user->id(), '=')
-      ->condition('plugin_id', 'group_membership', '=');
+  //     $query = $connection->select('group_relationship_field_data', 'gr')
+  //     ->fields('gr', ['id'])
+  //     ->condition('entity_id', $current_user->id(), '=')
+  //     ->condition('plugin_id', 'group_membership', '=');
 
-      // // Execute the query and fetch all results as an associative array.
-      $results = $query->execute()->fetchAssoc('id');
-      // dump($results);
-    // // if(!$results){
-    // // dump($results);
-    //   if(!empty($results['id'])){
-    //     $current_user_role_id = $results['id'];
-    //     $query = $connection->select('group_relationship__group_roles', 'grr')
-    //     ->fields('grr', ['group_roles_target_id'])
-    //     ->condition('entity_id', $current_user_role_id, '=');
-    //     $group_roles_results = $query->execute()->fetchAssoc('group_roles_target_id');
-    //     if(!empty($group_roles_results)){
-    //       $group_role = $group_roles_results['group_roles_target_id'];
-    //       $variables['content'] = [];
+  //     // // Execute the query and fetch all results as an associative array.
+  //     $results = $query->execute()->fetchAssoc('id');
+  //     // dump($results);
+  //   if(!$results){
+  //     if(!empty($results['id'])){
+  //       $current_user_role_id = $results['id'];
+  //       $query = $connection->select('group_relationship__group_roles', 'grr')
+  //       ->fields('grr', ['group_roles_target_id'])
+  //       ->condition('entity_id', $current_user_role_id, '=');
+  //       $group_roles_results = $query->execute()->fetchAssoc('group_roles_target_id');
+  //       if(!empty($group_roles_results)){
+  //         $group_role = $group_roles_results['group_roles_target_id'];
+  //         $variables['content'] = [];
           
-    //     }
-    //   }
-    //   // }
-    //   if (!$user_entity) {
-    //     // No user entity, so do not show the block.
-    //     $variables['#access'] = FALSE;
-    //     return;
-    //   }
+  //       }
+  //     }
+  //   }
+  //   if (!$user_entity) {
+  //     // No user entity, so do not show the block.
+  //     $variables['#access'] = FALSE;
+  //     return;
+  //   }
       
-    // if(!empty($group_role)){
-    //     $key = array_search($group_role, $group_roles_arr);
-    //     if ($key !== false) {
-    //       $variables['#access'] = TRUE;
-    //     } else {
-    //       $variables['content'] = [];
-    //     }
-    // }
-  }
+  //   if(!empty($group_role)){
+  //       $key = array_search($group_role, $group_roles_arr);
+  //       if ($key !== false) {
+  //         $variables['#access'] = TRUE;
+  //       } else {
+  //         $variables['content'] = [];
+  //       }
+  //   }
+  // }
 
   $variables['base_path'] = base_path();
   // $variables['page_type__class'] = 'page';

@@ -73,28 +73,41 @@
     'clearfix',
   ]
 %}
-<article{{ attributes.addClass(classes) }}>
-  <header>
-    {{ title_prefix }}
-    {% if label and not page %}
-      <h2{{ title_attributes.addClass('node__title') }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-      </h2>
-    {% endif %}
-    {{ title_suffix }}
-    {% if display_submitted %}
-      <div class="node__meta">
-        {{ author_picture }}
-        {% block submitted %}
-          <em{{ author_attributes }}>
-            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-          </em>
-        {% endblock %}
-        {{ metadata }}
-      </div>
-    {% endif %}
-  </header>
 
+<section class="hero-banner without-image small">
+    <style>
+        .hero-banner .container:before {
+            background: {{primary_color}};
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="breadcrumbs-block">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{base_path}}">{{breadcrumb_home}}</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{breadcrumb_dashboard_link}}">{{breadcrumb_dashboard}}</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                {{room_reservation_heading}}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="banner-info items-gap">
+                    <h1>
+                        {{room_reservation_heading}}
+                    </h1>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {{ content }}
   </div>

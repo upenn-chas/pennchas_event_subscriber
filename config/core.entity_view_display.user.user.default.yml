@@ -738,6 +738,21 @@ third_party_settings:
               block_serialized: null
             weight: 4
             additional: {  }
+          09e6d900-dba7-4358-8ca9-764fd437aede:
+            uuid: 09e6d900-dba7-4358-8ca9-764fd437aede
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: testst
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 347
+              block_revision_id: 380
+              block_serialized: null
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'

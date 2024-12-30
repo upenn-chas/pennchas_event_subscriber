@@ -75,7 +75,9 @@
         "drupal/redirect": "^1.10",
         "drupal/token_filter": "^2.2",
         "drupal/captcha": "^2.0",
-        "drupal/recaptcha_v3": "^2.0"
+        "drupal/recaptcha_v3": "^2.0",
+        "drupal/element_class_formatter": "^2.1",
+        "drupal/twig_attributes": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
