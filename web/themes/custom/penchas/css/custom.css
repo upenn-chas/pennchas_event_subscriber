@@ -10,3 +10,4 @@
 .tb-megamenu-item span.dropdown-toggle.tb-megamenu-no-link.nav-link {
   cursor: pointer;
 }
+.search-form #edit-help-link, .search-form #edit-advanced{display:none}

@@ -52,12 +52,12 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          container_wrapper_classes: space
+          container_wrapper_classes: 'space event-details-wrap'
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
               background:
-                background_type: null
+                background_type: video
               background_color:
                 class: null
               background_media:
@@ -83,16 +83,16 @@ third_party_settings:
             blb_region_col_2: null
           breakpoints:
             desktop: blb_col_8_4
-            tablet: blb_col_8_4
+            tablet: blb_col_12
             mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
               - col-lg-8
-              - col-md-8
+              - col-md-12
               - col-12
             blb_region_col_2:
               - col-lg-4
-              - col-md-4
+              - col-md-12
               - col-12
           remove_gutters: '0'
           context_mapping: {  }

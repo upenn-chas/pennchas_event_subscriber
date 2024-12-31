@@ -100,3 +100,32 @@
     }
   }
 }
+
+.news-n-announcement{ 
+  @media(max-width: 991px){
+    padding-left: 12px;
+    padding-right: 12px;
+    .row.views-row.clearfix{
+      margin: auto;
+    }
+  }
+  .view-header{ 
+    .section-title {
+      padding-bottom: 0;
+      @media(max-width: 991px){
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+  }
+  .news-card{ 
+    .news-card-left {
+      min-height: 129px;
+    }
+  }
+  .col-12.col-lg-6.views-col.col-1, .col-12.col-lg-6.views-col.col-2 {
+    @media(max-width: 991px){
+      width: 100% !important;
+    }
+  }
+}

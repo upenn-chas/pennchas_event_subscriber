@@ -41,6 +41,21 @@
 #}
 
 <section class="hero-banner" style="background-color: #{{group.field_color.value}};">
+  {% if group.field_color.value %}
+  <style>
+  .layout-builder-components .program-box:hover:before {
+    background-color: #{{group.field_color.value}};
+    border-color: #{{group.field_color.value}};
+  }
+  </style>
+  {% endif %}
+  {% if group.field_circle_color.value %}
+  <style>
+    .hero-banner .container:before {
+      background: #{{group.field_circle_color.value}};
+     }
+  </style>
+  {% endif %}
   <div class="container" {{ attributes }}>
     <div class="row">
       <div class="col-12 col-lg-6">

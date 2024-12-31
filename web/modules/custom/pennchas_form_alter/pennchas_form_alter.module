@@ -13,6 +13,9 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\NoticeFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
 
+use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\group\Entity\Group;
+
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
@@ -190,4 +193,38 @@ function _get_group_rooms(int $groupId)
         $roomOptions[$room->id()] = $room->getTitle();
     }
     return $roomOptions;
+}
+
+/**
+ * Implements hook_query_TAG_alter(): tag search_$type with $type node_search.
+ */
+function pennchas_form_alter_query_search_node_search_alter(AlterableInterface $query) {
+    // For testing purposes, restrict the query to node type 'article' only.
+    
+    $current_user = \Drupal::currentUser();
+    if ($current_user->isAuthenticated()) {
+			$group_storage = \Drupal::entityTypeManager()->getStorage('group');
+			$group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
+			$groups = Group::loadMultiple($group_ids);
+			foreach ($groups as $group) {
+				
+			}
+			// Query to check if the current user is a member of any group
+			// $membership = \Drupal::service('group.membership_loader')->getMemberships($groups, $current_user);
+			// dd($membership);
+			// $query->condition('n.type', 'reserve_room', '!=');
+			// Check if the user has any memberships
+			// if (!empty($membership)) {
+			// 	// The user is a member of at least one group
+			// 	$variables['is_member_of_group'] = TRUE;
+			// } else {
+			// 	// The user is not a member of any group
+			// 	$variables['is_member_of_group'] = FALSE;
+			// }
+    }else{
+			$query->condition('n.type', 'reserve_room', '!=');
+			$query->condition('n.type', 'room', '!=');
+			$query->condition('n.type', 'notices', '!=');
+			$query->condition('n.type', 'program_community', '!=');
+		}
 }

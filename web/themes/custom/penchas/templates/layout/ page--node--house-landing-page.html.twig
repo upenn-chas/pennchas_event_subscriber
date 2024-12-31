@@ -73,6 +73,7 @@
 <div id="page-wrapper">
   <div id="page">
       {% include directory ~ '/templates/layout/header.html.twig' %}
+
     {% if page.highlighted %}
       <div class="highlighted">
         <aside class="{{ container }} section clearfix" role="complementary">
@@ -92,7 +93,7 @@
     <div id="main-wrapper" class="layout-main-wrapper clearfix">
       {% block content %}
        {# class="{{ container }}" #}
-        <div id="main" class="{{ container }}">
+        <div id="main" >
           {{ page.breadcrumb }}
 
           {#  #}

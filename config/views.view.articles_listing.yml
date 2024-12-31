@@ -686,7 +686,7 @@ display:
         row: false
         fields: false
         header: false
-      css_class: news-card
+      css_class: news-n-announcement
       header:
         area:
           id: area

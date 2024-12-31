@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.informational_block
+    - block_content.type.link
     - core.base_field_override.node.reserve_room.title
     - core.entity_view_mode.node.moderator
     - field.field.node.reserve_room.field_anticipated_participants
@@ -28,6 +31,58 @@ third_party_settings:
     enabled: true
     allow_custom: false
     sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: room-reservation-title
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: ''
+                video:
+                  media_id: ''
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          e253fe43-bf5b-42f6-8fbf-834be3894495:
+            uuid: e253fe43-bf5b-42f6-8fbf-834be3894495
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Your Room Reservation Request Submission'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 350
+              block_revision_id: 383
+              block_serialized: null
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
@@ -69,7 +124,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:title'
-              label: Title
+              label: 'Title:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -80,13 +135,13 @@ third_party_settings:
                 label: inline
                 settings:
                   class: ''
-                  tag: div
+                  tag: span
                   link: false
                   link_class: ''
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
           5c86effa-cef1-479b-b99b-f8b1038dce67:
             uuid: 5c86effa-cef1-479b-b99b-f8b1038dce67
@@ -125,7 +180,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           de06979b-b32d-4419-8e7e-3f64c1475b55:
             uuid: de06979b-b32d-4419-8e7e-3f64c1475b55
@@ -146,7 +201,7 @@ third_party_settings:
                   class: ''
                   tag: span
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           656d476d-0fd0-49cc-b8f9-69cea20a055c:
             uuid: 656d476d-0fd0-49cc-b8f9-69cea20a055c
@@ -165,7 +220,7 @@ third_party_settings:
                 settings:
                   class: ''
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           61533cd9-8378-4bed-b090-1301d44cb196:
             uuid: 61533cd9-8378-4bed-b090-1301d44cb196
@@ -183,13 +238,13 @@ third_party_settings:
                 label: hidden
                 settings:
                   class: ''
-                  tag: p
+                  tag: span
                   link: false
                   link_class: ''
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           915b334a-0cc6-4cce-ba9c-e2a03bec4638:
             uuid: 915b334a-0cc6-4cce-ba9c-e2a03bec4638
@@ -208,7 +263,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           c5bb029a-4878-4b1e-878a-b182209572e4:
             uuid: c5bb029a-4878-4b1e-878a-b182209572e4
@@ -228,7 +283,262 @@ third_party_settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-            weight: 6
+            weight: 7
+            additional: {  }
+          8986d5aa-40d2-46bc-83d1-14557f63eb60:
+            uuid: 8986d5aa-40d2-46bc-83d1-14557f63eb60
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: Heading
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 351
+              block_revision_id: 384
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          c3fdffff-6bc9-40bf-b2b6-abf5381bcd40:
+            uuid: c3fdffff-6bc9-40bf-b2b6-abf5381bcd40
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Bottom text'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 352
+              block_revision_id: 385
+              block_serialized: null
+            weight: 8
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: bottom-space
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: ''
+                video:
+                  media_id: ''
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          e332de1e-3b4b-4103-a27e-723c991581d7:
+            uuid: e332de1e-3b4b-4103-a27e-723c991581d7
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:link'
+              label: 'Add to Calendar link'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 353
+              block_revision_id: 386
+              block_serialized: null
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_3'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: space
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
+          breakpoints:
+            desktop: blb_col_4_4_4
+            tablet: null
+            mobile: null
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-4
+              - null
+              - null
+            blb_region_col_2:
+              - col-lg-4
+              - null
+              - null
+            blb_region_col_3:
+              - col-lg-4
+              - null
+              - null
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          abe2f8c9-221e-4fcf-a49e-04f06b3b6699:
+            uuid: abe2f8c9-221e-4fcf-a49e-04f06b3b6699
+            region: blb_region_col_2
+            configuration:
+              id: 'inline_block:informational_block'
+              label: 'Contrary to popular belief,'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 354
+              block_revision_id: 387
+              block_serialized: null
+              block_uuid: null
+            weight: 4
+            additional: {  }
+          08df4ced-2987-4c2f-a022-0a9daa9ee930:
+            uuid: 08df4ced-2987-4c2f-a022-0a9daa9ee930
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:informational_block'
+              label: 'Lorem Ipsum '
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 355
+              block_revision_id: 388
+              block_serialized: null
+              block_uuid: null
+            weight: 4
+            additional: {  }
+          5645658f-3aa5-4d07-ab28-81608c04dba8:
+            uuid: 5645658f-3aa5-4d07-ab28-81608c04dba8
+            region: blb_region_col_3
+            configuration:
+              id: 'inline_block:informational_block'
+              label: 'Lorem Ipsum '
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 356
+              block_revision_id: 389
+              block_serialized: null
+              block_uuid: null
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

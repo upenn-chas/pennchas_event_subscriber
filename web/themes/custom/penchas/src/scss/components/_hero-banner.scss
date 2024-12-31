@@ -163,7 +163,13 @@
       }
     }
   }
-
+  &.without-image.small{ 
+    .internal-links{
+      @media(max-width: 1300px){
+        position: absolute;
+      }
+    }  
+  }
 }
 
 .path-frontpage {

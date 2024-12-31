@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
+    - field.field.node.reserve_room.layout_builder__layout
     - node.type.reserve_room
   module:
     - path
@@ -173,4 +174,5 @@ content:
 hidden:
   field_event_ends_on: true
   field_group_ref: true
+  layout_builder__layout: true
   moderation_state: true

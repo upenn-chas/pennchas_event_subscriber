@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
+    - field.field.node.program_community.layout_builder__layout
     - node.type.program_community
   module:
     - image
@@ -54,3 +55,4 @@ content:
 hidden:
   field_group: true
   field_group_ref: true
+  layout_builder__layout: true

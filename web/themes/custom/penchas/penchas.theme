@@ -40,6 +40,7 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
 }
 function penchas_preprocess_node(&$variables) {
   $variables['base_path'] = base_path();
+  $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
   $variables['breadcrumb_dashboard_link'] = '/user';
@@ -53,12 +54,21 @@ function penchas_preprocess_node(&$variables) {
  
   if ($node instanceof NodeInterface) {
     if ($node->bundle() == 'chas_event') {
+      $calendar_link = base_path();
       if ($current_user->isAuthenticated()) {
+        // dd($node->field_groups);
+        $eventHouseId = (int) $node->get('field_location')->getString();
+        $housesId = [$eventHouseId];
+        if (count($housesId) == 1){
+          $calendar_link = base_path().'group/'.$eventHouseId.'/calendar';
+        }
         $variables['is_logged_in'] = TRUE;
         $variables['attributes']['class'][] = 'logged-in-user';
-        $edit_link = '<li><a href=""><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg">Edit</a></li><li><a href=""><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg">Moderate</a></li>';
+        $edit_url = \Drupal\Core\Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
+        $node_edit_url = $edit_url->toString();
+        $edit_link = '<li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg">Edit</a></li><li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg">Moderate</a></li>';
       }
-      $variables['event_detail_breadcrumbs'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="/"><img src="'.base_path().'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'.$edit_link.'</ul></div></div>';
+      $variables['event_detail_breadcrumbs'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="'.$calendar_link.'"><img src="'.base_path().'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'.$edit_link.'</ul></div></div>';
     }
   }
 }

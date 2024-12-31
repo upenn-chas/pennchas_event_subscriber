@@ -3,13 +3,12 @@ langcode: en
 status: true
 dependencies:
   module:
-    - penchas_block_group_role_condition
     - system
   theme:
     - penchas
 id: penchas_dashboardblock
 theme: penchas
-region: content
+region: none
 weight: 0
 provider: null
 plugin: dashbaord_block
@@ -17,7 +16,7 @@ settings:
   id: dashbaord_block
   label: 'Dashboard Block'
   label_display: visible
-  provider: penchas_block_group_role_condition
+  provider: core
   block_group_roles: house1-chas_professional_staff
 visibility:
   request_path:

@@ -198,8 +198,8 @@ body {
   padding: 30px;
   border-radius: 10px;
   max-width: 875px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px 18px;
+
   &.blue{
     background: #EBF2FF;
   }
@@ -219,6 +219,8 @@ body {
     font-family: $teritoryFont;
     position: relative;
     padding-left: 45px;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
     @include media-query ('mobile') {
       padding-left: 0px;
       text-align: center;
@@ -275,11 +277,42 @@ body {
       }
     }
   }
+  .layout-builder__layout{ 
+    .col-12 {
+      padding: 0;
+    }
+  }
 
+  .block-layout-builder {
+    display: flex;
+    align-content: center;
+    gap: 20px;
+    h2 {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 6;
+      margin-bottom: 0;
+      padding: 3px 0;
+      font-weight: 600;
+      width: 100px;
+      font-family: tablet-gothic;
+    }
+    .content{
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
+      font-family: tablet-gothic;
+    }
+  }
+  .btns-wrapper {
+    text-align: center;
+  }
   .footer-note {
     padding-left: 45px;
     padding-top: 30px;
     border-top: 1px solid $primaryColor;
+    padding-left: 0;
+    margin-top: 30px;
     @include media-query ('mobile') {
       padding-left: 0px;
       padding-top: 20px;
@@ -288,6 +321,9 @@ body {
       font-weight: 700;
       font-family: $teritoryFont;
       padding-left: 0;
+      padding-bottom: 0;
+      font-size: 16px;
+      line-height: 22px;
       @include media-query ('mobile') {
         text-align: left;
         padding-top: 0;
@@ -298,6 +334,19 @@ body {
     }
     p {
       font-family: $teritoryFont;
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 0;
     }
+  }
+
+}
+
+.room-reservation-title {
+  padding-top: 80px;
+  h2 {
+    margin-bottom: 0;
+    font-size: 36px;
+    line-height: 36px;
   }
 }

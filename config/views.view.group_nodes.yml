@@ -2,6 +2,14 @@ uuid: a754c262-85f1-47f2-92f5-f6bc6610c9ac
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.article
+    - node.type.chas_event
+    - node.type.notices
+    - node.type.page
+    - node.type.program_community
+    - node.type.reserve_room
+    - node.type.room
   module:
     - gnode
     - group
@@ -165,7 +173,7 @@ display:
           entity_field: uid
           plugin_id: field
           label: 'Authored by'
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -721,16 +729,17 @@ display:
           hide_alter_empty: true
           destination: true
           fields:
-            view_group_relationship: view_group_relationship
-            edit_group_relationship: edit_group_relationship
-            delete_group_relationship: delete_group_relationship
             edit_node: edit_node
             delete_node: delete_node
-            operations: operations
             title: '0'
             type: '0'
+            uid: '0'
             status: '0'
             changed: '0'
+            view_group_relationship: '0'
+            edit_group_relationship: '0'
+            delete_group_relationship: '0'
+            operations: '0'
       pager:
         type: full
         options:
@@ -881,7 +890,14 @@ display:
           entity_field: type
           plugin_id: bundle
           operator: in
-          value: {  }
+          value:
+            article: article
+            page: page
+            chas_event: chas_event
+            notices: notices
+            program_community: program_community
+            reserve_room: reserve_room
+            room: room
           group: 1
           exposed: true
           expose:
@@ -890,6 +906,8 @@ display:
             description: ''
             use_operator: false
             operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: type
             required: false
             remember: false
@@ -897,9 +915,14 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              content_editor: '0'
               administrator: '0'
-              group_admin: '0'
-            reduce: false
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

@@ -616,6 +616,93 @@
   }
 }
 
+.event-details-breadcrumbs{
+  margin-top: 25px; 
+  .event-breadcrumbs{ 
+    ul{ 
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;      
+      justify-content: flex-start;
+      gap: 40px;
+      a {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: tablet-gothic;
+        text-transform: uppercase;
+        text-decoration: none;
+        position: relative;
+        display: block;
+        padding-left: 15px;
+      }
+    }
+  }
+  
+}
+.event-details-wrap{
+  padding-top: 40px !important;
+  .block-field-blocknodechas-eventtitle {
+    margin-bottom: 30px;
+  }
+  .block-field-blocknodechas-eventfield-event-schedule{ 
+    .field__item {
+      margin-bottom: 10px;
+      .smart-date--date, .smart-date--time{ 
+        .datetime {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-family: tablet-gothic;
+          font-weight: 600;
+          display: inline-block;
+          margin-right: 10px;
+        }        
+      }
+    }
+  }
+  .block-field-blocknodechas-eventfield-text-box-2{
+    margin-bottom: 30px;
+    .event-detail-location{
+      font-size: 12px;
+      text-transform: uppercase;
+      font-family: tablet-gothic;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  .block-field-blocknodechas-eventfield-marketing-blurb{
+    p.event-detail-left{
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+  .block-field-blocknodechas-eventfield-link-1 {
+    float: left;
+    margin-right: 30px;
+    @media(max-width: 767px){
+      margin-bottom: 20px;
+    }
+    .blue-filled {
+      display: inline-block;
+    }
+  }
+  .block-inline-blocklink.btns-wrapper {
+    float: left;
+    margin-right: 30px;
+    @media(max-width: 991px){
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  } 
+  .block-field-blocknodechas-eventfield-banner {
+    @media(max-width: 991px){
+      margin-top: 20px;
+    }
+  } 
+}
+
 
 
 .event-detail-left {
