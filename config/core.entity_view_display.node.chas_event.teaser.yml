@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_outcomes
+    - field.field.node.chas_event.field_is_campus_wide
     - field.field.node.chas_event.field_link_1
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
@@ -112,6 +113,7 @@ hidden:
   field_intended_audience_attach: true
   field_intended_audience_other: true
   field_intended_outcomes: true
+  field_is_campus_wide: true
   field_link_1: true
   field_location: true
   field_long_text_2: true

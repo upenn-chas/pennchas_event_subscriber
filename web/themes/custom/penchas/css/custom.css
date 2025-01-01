@@ -11,3 +11,7 @@
   cursor: pointer;
 }
 .search-form #edit-help-link, .search-form #edit-advanced{display:none}
+
+.view-filters {
+  display: block !important;
+}

@@ -47,12 +47,14 @@ class NodePreInsertHook
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
         $node->set('field_groups', $housesId);
-        if (count($housesId) == 1){
+        $houseCount = count($housesId);
+        if ($houseCount === 1){
             $eventHouse_data = Group::load($housesId[0]);
             $group_machine_name = $eventHouse_data->get('field_house_machine_name')->value;
             $node->set('field_group_ref', $group_machine_name);
             // dd($node);
         }
+        $node->set('field_is_campus_wide', $houseCount >= 14);
         $this->updateEventEndsOn($node);
     }
 
@@ -79,6 +81,7 @@ class NodePreInsertHook
                 $node->set('field_group_ref', $group_machine_name);    
             }
         }
+        $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
     }
 
     protected function handleReserveRoom(Node $node)

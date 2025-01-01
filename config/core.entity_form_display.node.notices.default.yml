@@ -4,10 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.notices.field_banner
-    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_event_schedule
     - field.field.node.notices.field_file
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
+    - field.field.node.notices.field_is_campus_wide
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_text_box
     - image.style.thumbnail
@@ -18,6 +19,7 @@ dependencies:
     - image
     - path
     - smart_date
+    - smart_date_recur
 id: node.notices.default
 targetEntityType: node
 bundle: notices
@@ -56,7 +58,7 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-  field_event_datetime:
+  field_event_schedule:
     type: smartdate_inline
     weight: 6
     region: content
@@ -75,7 +77,17 @@ content:
       remove_seconds: true
       duration_overlay: false
       separator: to
-    third_party_settings: {  }
+    third_party_settings:
+      smart_date_recur:
+        modal: false
+        show_single: true
+        allowed_recur_freq_values:
+          MINUTELY: '0'
+          HOURLY: '0'
+          DAILY: DAILY
+          WEEKLY: WEEKLY
+          MONTHLY: MONTHLY
+          YEARLY: YEARLY
   field_file:
     type: file_generic
     weight: 9
@@ -102,14 +114,6 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-  field_group_ref:
-    type: string_textfield
-    weight: 26
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_groups:
     type: options_buttons
     weight: 5
@@ -195,5 +199,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_group_ref: true
+  field_is_campus_wide: true
   moderation_state: true
   status: true

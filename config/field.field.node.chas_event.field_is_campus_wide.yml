@@ -1,0 +1,23 @@
+uuid: 5eb5bbeb-2888-41b6-bff9-827467ebf5da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_campus_wide
+    - node.type.chas_event
+id: node.chas_event.field_is_campus_wide
+field_name: field_is_campus_wide
+entity_type: node
+bundle: chas_event
+label: 'Campus wide'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

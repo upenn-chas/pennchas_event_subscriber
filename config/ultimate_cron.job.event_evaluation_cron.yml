@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: event_evaluation_cron
 weight: 0
 module: event_evaluation
-callback: 'event_evaluation#cron'
+callback: event_evaluation_cron
 scheduler:
   id: simple
 launcher:

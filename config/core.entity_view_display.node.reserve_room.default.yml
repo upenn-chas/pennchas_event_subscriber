@@ -224,6 +224,201 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 11
             additional: {  }
+          52a8d8e9-03c0-4b86-aefd-a490a1c8be42:
+            uuid: 52a8d8e9-03c0-4b86-aefd-a490a1c8be42
+            region: content
+            configuration:
+              id: 'extra_field_block:node:reserve_room:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 12
+            additional: {  }
+          3094553e-4134-4b83-94f2-b4ab229e778d:
+            uuid: 3094553e-4134-4b83-94f2-b4ab229e778d
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_room'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: true
+                third_party_settings: {  }
+            weight: 13
+            additional: {  }
+          d2f2969d-b065-49e5-8b90-d062eb2e0d92:
+            uuid: d2f2969d-b065-49e5-8b90-d062eb2e0d92
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_event_schedule'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: smartdate_default
+                label: above
+                settings:
+                  timezone_override: ''
+                  format_type: medium
+                  format: default
+                  force_chronological: false
+                  add_classes: false
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                third_party_settings: {  }
+            weight: 14
+            additional: {  }
+          b6ccd7aa-ea95-42b1-b040-483e89c4e694:
+            uuid: b6ccd7aa-ea95-42b1-b040-483e89c4e694
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_support_contact'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 15
+            additional: {  }
+          2b18f6db-c112-4deb-b5b7-27f5515e1137:
+            uuid: 2b18f6db-c112-4deb-b5b7-27f5515e1137
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_email'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 16
+            additional: {  }
+          a6074606-61f0-423e-9935-b56f7e41ab6e:
+            uuid: a6074606-61f0-423e-9935-b56f7e41ab6e
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_phone'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 17
+            additional: {  }
+          b2d2616d-1aec-4893-afd9-c573efd172cb:
+            uuid: b2d2616d-1aec-4893-afd9-c573efd172cb
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_anticipated_participants'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 18
+            additional: {  }
+          b92d821c-b19a-4fe8-b321-6f05104a7d5e:
+            uuid: b92d821c-b19a-4fe8-b321-6f05104a7d5e
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_long_text'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 19
+            additional: {  }
+          478afb90-4bcd-42bf-963b-b2b179b9cc88:
+            uuid: 478afb90-4bcd-42bf-963b-b2b179b9cc88
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_group'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 20
+            additional: {  }
+          2fe3e40b-27db-46ec-b866-f77b35c22a4b:
+            uuid: 2fe3e40b-27db-46ec-b866-f77b35c22a4b
+            region: content
+            configuration:
+              id: 'extra_field_block:node:reserve_room:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 21
+            additional: {  }
+          08019b04-f269-4905-acdc-dea6f5854680:
+            uuid: 08019b04-f269-4905-acdc-dea6f5854680
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_groups'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 22
+            additional: {  }
+          7ca14ecd-3070-4382-9cad-6400d6fef684:
+            uuid: 7ca14ecd-3070-4382-9cad-6400d6fef684
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_group_ref'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 23
+            additional: {  }
         third_party_settings: {  }
 id: node.reserve_room.default
 targetEntityType: node
@@ -337,3 +532,4 @@ content:
     region: content
 hidden:
   field_event_ends_on: true
+  layout_builder__layout: true

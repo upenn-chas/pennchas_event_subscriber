@@ -1,14 +1,19 @@
-uuid: 5c841943-71ef-4a7b-add7-93e1c7123b51
+uuid: 2e90fda4-dc9d-4dac-a354-882fc8e92048
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_event_datetime
+    - field.storage.node.field_event_schedule
     - node.type.notices
   module:
     - smart_date
-id: node.notices.field_event_datetime
-field_name: field_event_datetime
+    - smart_date_recur
+third_party_settings:
+  smart_date_recur:
+    allow_recurring: false
+    month_limit: 12
+id: node.notices.field_event_schedule
+field_name: field_event_schedule
 entity_type: node
 bundle: notices
 label: 'Start/End Date and Time'

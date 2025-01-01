@@ -5,15 +5,17 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.notices.field_banner
-    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_event_schedule
     - field.field.node.notices.field_file
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
+    - field.field.node.notices.field_is_campus_wide
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_text_box
     - node.type.notices
   module:
     - image
+    - smart_date
     - user
 id: node.notices.teaser
 targetEntityType: node
@@ -36,15 +38,38 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_event_schedule:
+    type: smartdate_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: date_and_month
+      force_chronological: false
+      add_classes: true
+      time_wrapper: false
+      localize: false
+      parts:
+        start: start
+        end: end
+        duration: '0'
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings: {  }
+    weight: 0
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 3
     region: content
 hidden:
-  field_event_datetime: true
   field_file: true
   field_group_ref: true
   field_groups: true
+  field_is_campus_wide: true
   field_marketing_blurb: true
   field_text_box: true

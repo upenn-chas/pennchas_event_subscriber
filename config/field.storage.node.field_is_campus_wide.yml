@@ -1,16 +1,15 @@
-uuid: 6c812c10-0d26-4350-845a-1d3fecf38ecc
+uuid: 167b9968-f33f-4ca5-bd3c-ba4fb27cffff
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - smart_date
-id: node.field_event_datetime
-field_name: field_event_datetime
+id: node.field_is_campus_wide
+field_name: field_is_campus_wide
 entity_type: node
-type: smartdate
+type: boolean
 settings: {  }
-module: smart_date
+module: core
 locked: false
 cardinality: 1
 translatable: true

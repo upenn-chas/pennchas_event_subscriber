@@ -1,15 +1,13 @@
-uuid: 87f19eda-bfcf-4614-aa9f-f99facccbaa4
+uuid: bbf5a562-7ce6-4ee8-87dd-14c64a2e91e4
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.field_event_schedule
-    - field.storage.node.field_intended_audience
-    - field.storage.node.field_is_campus_wide
     - node.type.chas_event
     - node.type.notices
+    - workflows.workflow.editorial
   module:
-    - better_exposed_filters
     - content_moderation
     - fullcalendar_view
     - group
@@ -18,8 +16,8 @@ dependencies:
     - smart_date
     - user
     - views_fields_combine
-id: event_calendar
-label: 'Event Calendar'
+id: calendar_view
+label: 'Calendar View'
 module: views
 description: ''
 tag: ''
@@ -32,7 +30,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Event Calendar'
+      title: 'Event Calendar View'
       fields:
         title:
           id: title
@@ -209,75 +207,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
+          type: content_moderation_state
+          settings: {  }
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        gid:
-          id: gid
-          table: group_relationship_field_data
-          field: gid
-          relationship: group_relationship
-          group_type: group
-          admin_label: ''
-          entity_type: group_relationship
-          entity_field: gid
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -289,12 +221,12 @@ display:
           field_api_classes: false
         type:
           id: type
-          table: node_field_data
+          table: group_relationship_field_data
           field: type
-          relationship: none
+          relationship: group_relationship
           group_type: group
           admin_label: ''
-          entity_type: node
+          entity_type: group_relationship
           entity_field: type
           plugin_id: field
           label: ''
@@ -403,7 +335,6 @@ display:
           hide_alter_empty: true
           combined_fields:
             title: title
-            gid: gid
             type: type
             field_event_schedule: 0
             moderation_state: 0
@@ -416,140 +347,13 @@ display:
             - br
           hide_empty_combined_fields: 1
           combined_fields_add_labels: 0
-        field_intended_audience:
-          id: field_intended_audience
-          table: node__field_intended_audience
-          field: field_intended_audience
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: list_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_is_campus_wide:
-          id: field_is_campus_wide
-          table: node__field_is_campus_wide
-          field: field_is_campus_wide
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
-          settings:
-            format: yes-no
-            format_custom_false: ''
-            format_custom_true: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
       pager:
         type: none
         options:
           offset: 0
           items_per_page: 0
       exposed_form:
-        type: bef
+        type: basic
         options:
           submit_button: Apply
           reset_button: false
@@ -558,79 +362,6 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: basic_html
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 500
-              autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-              reset_button_always_show: false
-            filter:
-              field_is_campus_wide_value:
-                plugin_id: bef
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
-              type:
-                plugin_id: bef
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
-              field_event_schedule_end_value:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-              field_event_schedule_value_1:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-              field_intended_audience_value:
-                plugin_id: bef
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
       access:
         type: perm
         options:
@@ -640,15 +371,17 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        field_event_schedule_value:
-          id: field_event_schedule_value
-          table: node__field_event_schedule
-          field: field_event_schedule_value
+        created:
+          id: created
+          table: node_field_data
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: created
           plugin_id: date
-          order: ASC
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
@@ -665,7 +398,7 @@ display:
           entity_type: group_relationship
           entity_field: gid
           plugin_id: group_id
-          default_action: empty
+          default_action: ignore
           exception:
             value: all
             title_enable: false
@@ -692,120 +425,17 @@ display:
           break_phrase: false
           not: false
       filters:
-        field_intended_audience_value:
-          id: field_intended_audience_value
-          table: node__field_intended_audience
-          field: field_intended_audience_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: list_field
-          operator: or
-          value:
-            community_event: community_event
-            house_event: house_event
-            floor_event: floor_event
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_intended_audience_value_op
-            label: 'House Event'
-            description: ''
-            use_operator: false
-            operator: field_intended_audience_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: event_type
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: 'House Events'
-            description: ''
-            identifier: event_type
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: '2'
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'Exclude House Events'
-                operator: or
-                value:
-                  community_event: community_event
-                  floor_event: floor_event
-              2:
-                title: 'Include House Events'
-                operator: or
-                value:
-                  community_event: community_event
-                  house_event: house_event
-                  floor_event: floor_event
-          reduce_duplicates: false
-        field_is_campus_wide_value:
-          id: field_is_campus_wide_value
-          table: node__field_is_campus_wide
-          field: field_is_campus_wide_value
-          relationship: none
-          group_type: group
-          admin_label: ''
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
           plugin_id: boolean
-          operator: '='
-          value: All
+          value: '1'
           group: 1
-          exposed: true
           expose:
-            operator_id: ''
-            label: 'Events Open to All College House Resedents'
-            description: ''
-            use_operator: false
-            operator: field_is_campus_wide_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: campus_wide
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-          is_grouped: false
-          group_info:
-            label: 'Events Open to All College House Residents'
-            description: ''
-            identifier: campus_wide
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'Campus Wise'
-                operator: '='
-                value: '0'
+            operator: ''
         type:
           id: type
           table: node_field_data
@@ -824,13 +454,13 @@ display:
           exposed: true
           expose:
             operator_id: type_op
-            label: Notices
+            label: 'Content type'
             description: ''
             use_operator: false
             operator: type_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: content_type
+            identifier: type
             required: false
             remember: false
             multiple: false
@@ -847,56 +477,44 @@ display:
             reduce: false
           is_grouped: true
           group_info:
-            label: 'Content type'
+            label: Notices
             description: ''
             identifier: type
             optional: true
             widget: select
             multiple: false
             remember: false
-            default_group: '2'
+            default_group: '1'
             default_group_multiple: {  }
             group_items:
               1:
-                title: 'Exclude Notices'
+                title: Notices
                 operator: in
                 value:
-                  chas_event: chas_event
-                  all: '0'
-                  article: '0'
-                  page: '0'
-                  house_landing_page: '0'
-                  notices: '0'
-                  program_community: '0'
-                  reserve_room: '0'
-                  room: '0'
-                  webform: '0'
-              2:
-                title: 'Include Notices'
-                operator: in
-                value:
-                  chas_event: chas_event
                   notices: notices
                   all: '0'
                   article: '0'
                   page: '0'
+                  chas_event: '0'
                   house_landing_page: '0'
                   program_community: '0'
                   reserve_room: '0'
                   room: '0'
                   webform: '0'
-        status:
-          id: status
+        moderation_state:
+          id: moderation_state
           table: node_field_data
-          field: status
+          field: moderation_state
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          operator: '='
-          value: '1'
+          plugin_id: moderation_state_filter
+          operator: in
+          value:
+            editorial-draft: editorial-draft
+            editorial-published: editorial-published
+            editorial-pending: editorial-pending
           group: 1
           exposed: false
           expose:
@@ -913,6 +531,7 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -925,15 +544,15 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_event_schedule_end_value:
-          id: field_event_schedule_end_value
+        field_event_schedule_value:
+          id: field_event_schedule_value
           table: node__field_event_schedule
-          field: field_event_schedule_end_value
+          field: field_event_schedule_value
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: date
-          operator: '<='
+          operator: '='
           value:
             min: ''
             max: ''
@@ -943,14 +562,14 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_event_schedule_end_value_op
-            label: End
+            operator_id: field_event_schedule_value_op
+            label: 'Event Schedule - Start'
             description: ''
             use_operator: false
-            operator: field_event_schedule_end_value_op
+            operator: field_event_schedule_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: end
+            identifier: field_event_schedule_value
             required: false
             remember: false
             multiple: false
@@ -979,32 +598,27 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_event_schedule_value_1:
-          id: field_event_schedule_value_1
-          table: node__field_event_schedule
-          field: field_event_schedule_value
+        field_intended_audience_value:
+          id: field_intended_audience_value
+          table: node__field_intended_audience
+          field: field_intended_audience_value
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: date
-          operator: '>='
-          value:
-            min: ''
-            max: ''
-            value: today
-            type: offset
-            granularity: month
+          plugin_id: list_field
+          operator: or
+          value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_event_schedule_value_1_op
-            label: Start
+            operator_id: field_intended_audience_value_op
+            label: 'Intended Audience/Participant Group (field_intended_audience)'
             description: ''
             use_operator: false
-            operator: field_event_schedule_value_1_op
+            operator: field_intended_audience_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: start
+            identifier: field_intended_audience_value
             required: false
             remember: false
             multiple: false
@@ -1018,9 +632,7 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
+            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -1033,10 +645,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-      filter_groups:
-        operator: OR
-        groups:
-          1: AND
+          reduce_duplicates: false
       style:
         type: fullcalendar_view_display
         options:
@@ -1044,24 +653,24 @@ display:
           defaultDate: ''
           start: field_event_schedule
           end: ''
-          title: fields_combine
+          title: title
           left_buttons: 'prev,next today'
-          right_buttons: 'dayGridMonth,timeGridWeek'
+          right_buttons: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
           default_view: dayGridMonth
-          default_mobile_view: dayGridMonth
+          default_mobile_view: listYear
           mobile_width: '768'
           firstDay: '0'
-          nav_links: 0
+          nav_links: 1
           timeFormat: 'hh:mm a'
           allowEventOverlap: 1
-          updateAllowed: 0
-          updateConfirm: 0
+          updateAllowed: 1
+          updateConfirm: 1
           defaultLanguage: en
           languageSelector: 0
           dialogWindow: 0
           openEntityInNewTab: 1
           createEventLink: 0
-          eventLimit: '4'
+          eventLimit: '2'
           tax_field: ''
           vocabularies: ''
           color_bundle:
@@ -1077,12 +686,12 @@ display:
           rrule: ''
           dialogModal: false
           dialogCanvas: false
-          duration: field_event_schedule
+          duration: ''
           slotDuration: '00:30:00'
           minTime: '00:00:00'
           maxTime: '23:59:59'
           bundle_type: ''
-          classes: event-calendar
+          classes: ''
           fetchGoogleHolidays: 0
           googleHolidaysSettings:
             googleCalendarAPIKey: ''
@@ -1119,7 +728,7 @@ display:
             'group_node:reserve_room': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
-      use_ajax: true
+      css_class: ''
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -1133,15 +742,13 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
-        - 'config:field.storage.node.field_intended_audience'
-        - 'config:field.storage.node.field_is_campus_wide'
-  page_1:
-    id: page_1
+        - 'config:workflow_list'
+  event_calendar:
+    id: event_calendar
     display_title: Page
     display_plugin: page
     position: 1
     display_options:
-      exposed_block: false
       display_extenders: {  }
       path: group/%group/calendar
     cache_metadata:
@@ -1154,5 +761,4 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
-        - 'config:field.storage.node.field_intended_audience'
-        - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'

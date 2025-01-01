@@ -15,6 +15,9 @@ final class Constant
     const MOD_STATUS_DRAFT = 'draft';
     const MOD_STATUS_DELETE = 'delete';
 
+    const VIEW_EXPOSED_FORM_ID = 'views_exposed_form';
+    const VIEW_EVENT_CALENDAR = 'event_calendar';
+
     /**
      * CHAS community event
      * 

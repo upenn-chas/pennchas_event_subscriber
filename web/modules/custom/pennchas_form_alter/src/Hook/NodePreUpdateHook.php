@@ -39,5 +39,6 @@ class NodePreUpdateHook
         }
         $node->field_groups =  $housesId;
         $this->updateEventEndsOn($node);
+        $node->set('field_is_campus_wide', count($node->get('field_group')->getValue()) >= 14);
     }
 }

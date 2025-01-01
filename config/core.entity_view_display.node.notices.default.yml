@@ -4,10 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.notices.field_banner
-    - field.field.node.notices.field_event_datetime
+    - field.field.node.notices.field_event_schedule
     - field.field.node.notices.field_file
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
+    - field.field.node.notices.field_is_campus_wide
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_text_box
     - node.type.notices
@@ -35,9 +36,9 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 18
+    weight: 2
     region: content
-  field_event_datetime:
+  field_event_schedule:
     type: smartdate_default
     label: above
     settings:
@@ -49,15 +50,16 @@ content:
       time_wrapper: true
       localize: false
       parts:
-        - start
-        - end
+        start: start
+        end: end
+        duration: '0'
       duration:
         separator: ' | '
         unit: ''
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_file:
     type: file_default
@@ -65,7 +67,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 19
+    weight: 3
     region: content
   field_group_ref:
     type: string
@@ -73,7 +75,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 26
+    weight: 6
     region: content
   field_groups:
     type: entity_reference_label
@@ -81,14 +83,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 25
+    weight: 5
     region: content
   field_marketing_blurb:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 20
+    weight: 4
     region: content
   field_text_box:
     type: string
@@ -96,11 +98,12 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 13
+    weight: 0
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 7
     region: content
-hidden: {  }
+hidden:
+  field_is_campus_wide: true
