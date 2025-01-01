@@ -231,8 +231,8 @@ function pennchas_form_alter_query_search_node_search_alter(AlterableInterface $
     $associated_groups = [];
     $query = $connection->select('group_relationship_field_data', 'gr')
       ->fields('gr', ['gid'])
-      //   ->condition('entity_id', $current_user->id(), '=')
-      ->condition('entity_id', '40', '=')
+        ->condition('entity_id', $current_user->id(), '=')
+      // ->condition('entity_id', '40', '=')
       ->condition('plugin_id', 'group_membership', '=');
     $results = $query->execute()->fetchAll();
     if($results){
