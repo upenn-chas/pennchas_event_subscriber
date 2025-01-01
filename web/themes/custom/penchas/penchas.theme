@@ -39,6 +39,7 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   );
 }
 function penchas_preprocess_node(&$variables) {
+  $variables['node_access'] = 'testin';
   $variables['base_path'] = base_path();
   $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';

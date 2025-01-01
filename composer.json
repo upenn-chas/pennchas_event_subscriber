@@ -122,6 +122,9 @@
             },
             "drupal/duration_field": {
                 "Field Attributes": "patches/duration_number_attributes.patch"
+            },
+            "drupal/group":{
+                "Search API Query alter" : "https://www.drupal.org/files/issues/2020-07-10/group-3158301-2.patch"
             }
         }
     },

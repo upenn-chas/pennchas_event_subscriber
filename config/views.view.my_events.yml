@@ -421,7 +421,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access my events'
+          perm: 'edit own chas_event content'
       cache:
         type: tag
         options: {  }
@@ -2526,6 +2526,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+      access:
+        type: group_permission
+        options:
+          group_permission: 'view group_node:chas_event entity'
       filters:
         status:
           id: status
@@ -2682,6 +2686,7 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        access: false
         query: false
         title: false
         use_more: false
@@ -2772,10 +2777,11 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - route.group
         - url
         - url.query_args
+        - user.group_permissions
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_college_houses'
         - 'config:field.storage.node.field_marketing_blurb'
