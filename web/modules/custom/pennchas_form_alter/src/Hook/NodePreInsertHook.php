@@ -75,7 +75,7 @@ class NodePreInsertHook
             if ($group->hasField('field_house_machine_name')) {
                 $node->set('field_group_ref', $groupMachineName);
             }
-            if ($node->isNew() || !$node->original->get('field_group')->getString()) {
+            if ($node->isNew() || !$node->original->get('field_groups')->getString()) {
                 $node->set('field_groups', $group->id());
                 $group_machine_name = $group->get('field_house_machine_name')->value;
                 $node->set('field_group_ref', $group_machine_name);    

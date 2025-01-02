@@ -21,6 +21,11 @@ function penchas_group_role_permissions_token_info(): array {
     'name' => t('User Name'),
     'description' => t("Preferred name from user profile. Fallback name will be Full name from User Profile."),
   ];
+
+  // $tokens['penchas_custom_global']['calendar_link'] = [
+  //   'name' => t('Link'),
+  //   'description' => t("Link to add the "),
+  // ];
   
   return [
     'types' => [

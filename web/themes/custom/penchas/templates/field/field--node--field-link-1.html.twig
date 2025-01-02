@@ -61,7 +61,7 @@
     </div>
   {% else %}
     {% for item in items %}
-        <a class="blue-filled" href="{{item.content.0['#url'].toString()}}">RSVP to this Event</a>
+        <a class="blue-filled" href="{{item.content['#url'].toString()}}">RSVP to this Event</a>
     {% endfor %}
   {% endif %}
 {% else %}

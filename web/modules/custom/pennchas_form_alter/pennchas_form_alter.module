@@ -229,19 +229,19 @@ function pennchas_form_alter_query_search_node_search_alter(AlterableInterface $
   if ($current_user->isAuthenticated()) {
     $connection = Database::getConnection();
     $associated_groups = [];
-    $query = $connection->select('group_relationship_field_data', 'gr')
-      ->fields('gr', ['gid'])
-        ->condition('entity_id', $current_user->id(), '=')
-      // ->condition('entity_id', '40', '=')
-      ->condition('plugin_id', 'group_membership', '=');
-    $results = $query->execute()->fetchAll();
-    if($results){
-      foreach ($results as $key => $result) {
-        $associated_groups[] = $result->gid;
-      }
-    }
-    $variables['is_member_of_group'] = implode(',', $associated_groups);
-    $variables['node_access'] = FALSE;
+    // $query = $connection->select('group_relationship_field_data', 'gr')
+    //   ->fields('gr', ['gid'])
+    //     ->condition('entity_id', $current_user->id(), '=')
+    //   // ->condition('entity_id', '40', '=')
+    //   ->condition('plugin_id', 'group_membership', '=');
+    // $results = $query->execute()->fetchAll();
+    // if($results){
+    //   foreach ($results as $key => $result) {
+    //     $associated_groups[] = $result->gid;
+    //   }
+    // }
+    // $variables['is_member_of_group'] = implode(',', $associated_groups);
+    // $variables['node_access'] = FALSE;
     // $query->condition('n.type', 'reserve_room', '!=');
     // Check if the user has any memberships
     // if (!empty($membership)) {
@@ -251,10 +251,11 @@ function pennchas_form_alter_query_search_node_search_alter(AlterableInterface $
     // 	// The user is not a member of any group
     // 	$variables['is_member_of_group'] = FALSE;
     // }
+    // $query->condition('n.type', 'program_community', '!=');
   }else{
     $query->condition('n.type', 'reserve_room', '!=');
-    $query->condition('n.type', 'room', '!=');
-    $query->condition('n.type', 'notices', '!=');
+    // $query->condition('n.type', 'room', '!=');
+    // $query->condition('n.type', 'notices', '!=');
     $query->condition('n.type', 'program_community', '!=');
   }
 }

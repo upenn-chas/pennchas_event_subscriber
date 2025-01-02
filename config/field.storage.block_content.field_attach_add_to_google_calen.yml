@@ -1,0 +1,18 @@
+uuid: 6d9f451b-fe12-406b-881e-784ea706eb3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_attach_add_to_google_calen
+field_name: field_attach_add_to_google_calen
+entity_type: block_content
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

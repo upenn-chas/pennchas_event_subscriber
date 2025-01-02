@@ -1,0 +1,23 @@
+uuid: ee682c50-03ef-4793-908d-367452c7e50c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link
+    - field.storage.block_content.field_attach_add_to_google_calen
+id: block_content.link.field_attach_add_to_google_calen
+field_name: field_attach_add_to_google_calen
+entity_type: block_content
+bundle: link
+label: 'Attach Add to google Calendar link'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
