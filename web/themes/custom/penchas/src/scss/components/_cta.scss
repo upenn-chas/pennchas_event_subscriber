@@ -39,8 +39,25 @@
       }
     }
   }
+  .cta-left{
+    @include media-query('tablet') {
+      width: 100%;
+    }
+  }
+  .cta-right{
+    @include media-query('tablet') {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
-
+.cta-right{ 
+  a{
+    &:hover{
+      border-color: #011f5b;
+    }
+  }
+}
 .space {
 	&.cta-boxes {
 		&.layout {

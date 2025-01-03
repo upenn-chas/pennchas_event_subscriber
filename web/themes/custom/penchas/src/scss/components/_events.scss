@@ -758,3 +758,17 @@
     height: auto;
   }
 }
+
+.block-field-blocknodeprogram-communityfield-tags {
+	.field--name-field-tags {
+		display: flex;
+		h3 {
+			line-height: 1.5;
+		}
+		.links {
+			&.field__items {
+				line-height: normal;
+			}
+		}
+	}
+}

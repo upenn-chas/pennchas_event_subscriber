@@ -2,6 +2,8 @@ uuid: f57ec804-37ce-4047-aa6b-32cbdf2a83b6
 langcode: en
 status: true
 dependencies:
+  module:
+    - user
   theme:
     - penchas
 _core:
@@ -19,4 +21,11 @@ settings:
   provider: core
   primary: true
   secondary: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
-    - field.field.node.reserve_room.field_groups
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
@@ -22,6 +21,7 @@ dependencies:
   module:
     - bootstrap_layout_builder
     - layout_builder
+    - layout_builder_restrictions
     - smart_date
     - user
 third_party_settings:
@@ -339,6 +339,15 @@ third_party_settings:
             weight: 0
             additional: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 id: node.reserve_room.default
 targetEntityType: node
 bundle: reserve_room
@@ -403,14 +412,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 26
-    region: content
-  field_groups:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 25
     region: content
   field_long_text:
     type: basic_string

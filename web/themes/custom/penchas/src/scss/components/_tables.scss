@@ -1,0 +1,13 @@
+.field-multiple-table {
+	td {
+		vertical-align: middle;
+		&.has-multiple-fields-remove-button {
+			.js-form-item {
+				margin-bottom: 0 !important;
+			}
+			button {
+				display: none;        
+			}
+		}
+	}
+}
