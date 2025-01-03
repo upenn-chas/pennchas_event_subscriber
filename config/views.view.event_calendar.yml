@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_is_campus_wide
     - node.type.chas_event
     - node.type.notices
+    - workflows.workflow.editorial
   module:
     - better_exposed_filters
     - content_moderation
@@ -562,19 +563,30 @@ display:
           text_input_required_format: basic_html
           bef:
             general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
+              autosubmit: true
+              autosubmit_exclude_textfield: true
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
             filter:
+              field_intended_audience_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
               field_is_campus_wide_value:
-                plugin_id: bef
+                plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
@@ -584,11 +596,8 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
               type:
-                plugin_id: bef
+                plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
@@ -598,9 +607,6 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
               field_event_schedule_end_value:
                 plugin_id: default
                 advanced:
@@ -617,20 +623,6 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              field_intended_audience_value:
-                plugin_id: bef
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
       access:
         type: perm
         options:
@@ -692,239 +684,6 @@ display:
           break_phrase: false
           not: false
       filters:
-        field_intended_audience_value:
-          id: field_intended_audience_value
-          table: node__field_intended_audience
-          field: field_intended_audience_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: list_field
-          operator: or
-          value:
-            community_event: community_event
-            house_event: house_event
-            floor_event: floor_event
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_intended_audience_value_op
-            label: 'House Event'
-            description: ''
-            use_operator: false
-            operator: field_intended_audience_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: event_type
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: 'House Events'
-            description: ''
-            identifier: event_type
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: '2'
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'Exclude House Events'
-                operator: or
-                value:
-                  community_event: community_event
-                  floor_event: floor_event
-              2:
-                title: 'Include House Events'
-                operator: or
-                value:
-                  community_event: community_event
-                  house_event: house_event
-                  floor_event: floor_event
-          reduce_duplicates: false
-        field_is_campus_wide_value:
-          id: field_is_campus_wide_value
-          table: node__field_is_campus_wide
-          field: field_is_campus_wide_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: boolean
-          operator: '='
-          value: All
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'Events Open to All College House Resedents'
-            description: ''
-            use_operator: false
-            operator: field_is_campus_wide_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: campus_wide
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-          is_grouped: false
-          group_info:
-            label: 'Events Open to All College House Residents'
-            description: ''
-            identifier: campus_wide
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'Campus Wise'
-                operator: '='
-                value: '0'
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value:
-            chas_event: chas_event
-            notices: notices
-          group: 1
-          exposed: true
-          expose:
-            operator_id: type_op
-            label: Notices
-            description: ''
-            use_operator: false
-            operator: type_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: content_type
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: 'Content type'
-            description: ''
-            identifier: type
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: '2'
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'Exclude Notices'
-                operator: in
-                value:
-                  chas_event: chas_event
-                  all: '0'
-                  article: '0'
-                  page: '0'
-                  house_landing_page: '0'
-                  notices: '0'
-                  program_community: '0'
-                  reserve_room: '0'
-                  room: '0'
-                  webform: '0'
-              2:
-                title: 'Include Notices'
-                operator: in
-                value:
-                  chas_event: chas_event
-                  notices: notices
-                  all: '0'
-                  article: '0'
-                  page: '0'
-                  house_landing_page: '0'
-                  program_community: '0'
-                  reserve_room: '0'
-                  room: '0'
-                  webform: '0'
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         field_event_schedule_end_value:
           id: field_event_schedule_end_value
           table: node__field_event_schedule
@@ -1033,10 +792,288 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            chas_event: chas_event
+            notices: notices
+          group: 2
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Notices
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: content_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Content type'
+            description: ''
+            identifier: content_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Notices
+                operator: in
+                value:
+                  chas_event: chas_event
+                  notices: notices
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
+              2:
+                title: 'Exclude Notices'
+                operator: 'not in'
+                value:
+                  chas_event: chas_event
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  notices: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderation_state_filter
+          operator: in
+          value:
+            editorial-draft: editorial-draft
+            editorial-published: editorial-published
+            editorial-pending: editorial-pending
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_is_campus_wide_value:
+          id: field_is_campus_wide_value
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 3
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Events Open to All College House Resedents'
+            description: ''
+            use_operator: false
+            operator: field_is_campus_wide_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: campus_wide
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+          is_grouped: false
+          group_info:
+            label: 'Events Open to All College House Residents'
+            description: ''
+            identifier: campus_wide
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Campus Wise'
+                operator: '='
+                value: '0'
+        field_intended_audience_value:
+          id: field_intended_audience_value
+          table: node__field_intended_audience
+          field: field_intended_audience_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            community_event: community_event
+            house_event: house_event
+            floor_event: floor_event
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_intended_audience_value_op
+            label: 'House Event'
+            description: ''
+            use_operator: false
+            operator: field_intended_audience_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: event_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'House Events'
+            description: ''
+            identifier: event_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '2'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Exclude House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  floor_event: floor_event
+              2:
+                title: 'Include House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  house_event: house_event
+                  floor_event: floor_event
+          reduce_duplicates: false
       filter_groups:
-        operator: OR
+        operator: AND
         groups:
           1: AND
+          2: AND
+          3: AND
       style:
         type: fullcalendar_view_display
         options:
@@ -1135,6 +1172,7 @@ display:
         - 'config:field.storage.node.field_event_schedule'
         - 'config:field.storage.node.field_intended_audience'
         - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'
   page_1:
     id: page_1
     display_title: Page
@@ -1156,3 +1194,4 @@ display:
         - 'config:field.storage.node.field_event_schedule'
         - 'config:field.storage.node.field_intended_audience'
         - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'

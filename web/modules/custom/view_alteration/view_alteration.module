@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Entity\Query\QueryInterface;
 use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
@@ -42,18 +43,19 @@ function view_alteration_views_pre_view(ViewExecutable $view, $displayId, array 
 /**
  * Implements hook_views_query_alter().
  */
-function view_alteration_views_query_alttter(ViewExecutable $view, Sql $query)
+function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
 {
   if ($view->id() == 'event_calendar') {
     // dd($query->where);
-    $eventType = \Drupal::request()->query->get('event_type');
-    // $startDate = \Drupal::request()->query->get('start');
-    // $endDate = \Drupal::request()->query->get('end');
-    $contentType = \Drupal::request()->query->get('content_type');
-    $campusWide = \Drupal::request()->query->get('campus_wide');
-    $tables = $query->tables;
 
-    if (!$eventType) {
+    // $eventType = \Drupal::request()->query->get('event_type');
+    // // $startDate = \Drupal::request()->query->get('start');
+    // // $endDate = \Drupal::request()->query->get('end');
+    // $contentType = \Drupal::request()->query->get('content_type');
+    // $campusWide = \Drupal::request()->query->get('campus_wide');
+    // $tables = $query->tables;
+
+    if (false && $eventType) {
       if (!isset($tables['node_field_data']['node__field_intended_audience'])) {
         $query->queueTable(
           'node__field_intended_audience',
@@ -91,13 +93,45 @@ function view_alteration_views_query_alttter(ViewExecutable $view, Sql $query)
     // $query->addWhere(0, 'node__field_event_schedule.field_event_schedule_value', $startDate, '>=');
     // $query->addWhere(0, 'node__field_event_schedule.field_event_schedule_end_value', $endDate, '<=');
 
-    if ($contentType) {
-      $query->addWhere(0, 'node_field_data.type', ['chas_event', 'notices'], 'IN');
-    } else {
-      $query->addWhere(0, 'node_field_data.type', 'chas_event', '=');
-    }
+    $secondGroup = $query->where[2];
+    $thirdGroup = $query->where[3];
 
-    if (!isset($tables['node_field_data']['node__field_is_campus_wide'])) {
+    $subGroup = new Condition("OR");
+    $groupOne = $subGroup->andConditionGroup();
+
+
+    foreach($secondGroup as $cons) {
+      foreach($cons as $con) {
+        $groupOne->condition($con['field'], $con['value'], $con['operator']);
+      }
+    }
+    $subGroup->condition($groupOne);
+
+    $groupTwo = $subGroup->andConditionGroup();
+    foreach($thirdGroup as $cons) {
+      foreach($cons as $con) {
+        $groupTwo->condition($con['field'], $con['value'], ($con['field'] instanceof Condition)? null: $con['operator']);
+      }
+    }
+    $subGroup->condition($groupTwo);
+
+
+
+    $query->where[2]['conditions'] = $subGroup;
+    $query->where[2]['args'] = [];
+    $query->where[2]['type'] = 'AND';
+    
+
+    unset($query->where[3]);
+
+    dd($query->where);
+    // if ($contentType) {
+    //   $query->addWhere(0, 'node_field_data.type', ['chas_event', 'notices'], 'IN');
+    // } else {
+    //   $query->addWhere(0, 'node_field_data.type', 'chas_event', '=');
+    // }
+
+    if (false && !isset($tables['node_field_data']['node__field_is_campus_wide'])) {
       $query->addTable(
         'node__field_is_campus_wide',
         null,
@@ -118,20 +152,18 @@ function view_alteration_views_query_alttter(ViewExecutable $view, Sql $query)
         ])
       );
     }
-    if (!$campusWide) {
+    if (false  && !$campusWide) {
       $query->addWhere(0, 'node__field_is_campus_wide.field_is_campus_wide_value', 1, '!=');
     } else {
-      $campusConditionGroup = $query->setWhereGroup('OR');
-      $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 1, '=');
-      $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 0, '=');
-      $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', null, 'IS');
+      // $campusConditionGroup = $query->setWhereGroup('OR');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 1, '=');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 0, '=');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', null, 'IS');
     }
   }
 }
 
-function view_alteration_views_pre_execute(ViewExecutable $view)
+function view_alteration_query_views_event_calendar_alterrr(Drupal\Core\Database\Query\AlterableInterface $query)
 {
-  if ($view->id() === 'event_calendar') {
-    // dd($view->build_info['query']);
-  }
+  dd($query);
 }

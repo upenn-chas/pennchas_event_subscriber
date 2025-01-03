@@ -10,43 +10,62 @@
         let viewSettings = drupalSettings.fullCalendarView[viewIndex];
         let calendarOptions = JSON.parse(viewSettings.calendar_options);
         // delete calendarOptions.events;
+        
+        calendarOptions.events = (info, successCallback, failureCallback) => {
+          console.log(info);
+          let startDate = info.start.toISOString().split("T")[0];
+          let endDate = info.end.toISOString().split("T")[0];
+
+          let startDateInput = $('.views-exposed-form input[name="start"]');
+          let endDateInput = $('.views-exposed-form input[name="end"]');
+
+          let existingStartDate = startDateInput.val();
+          let existingEndDate = endDateInput.val();
+
+          if (
+            existingStartDate !== startDate ||
+            existingEndDate !== endDate
+          ) {
+            startDateInput.val(startDate);
+            endDateInput.val(endDate).change();
+          }
+        };
         calendarOptions.datesSet = (info) => {
           getEvents(info);
-
         };
 
-        calendarOptions.eventSources = [
-          {
-            events: (info, successCallback, failureCallback) => {
-              console.log(info);
-              let startDate = info.start.toISOString().split("T")[0];
-              let endDate = info.end.toISOString().split("T")[0];
+        // calendarOptions.eventSources = [
+        //   {
+        //     events: (info, successCallback, failureCallback) => {
+        //       console.log(info);
+        //       let startDate = info.start.toISOString().split("T")[0];
+        //       let endDate = info.end.toISOString().split("T")[0];
 
-              let startDateInput = $('.views-exposed-form input[name="start"]');
-              let endDateInput = $('.views-exposed-form input[name="end"]');
+        //       let startDateInput = $('.views-exposed-form input[name="start"]');
+        //       let endDateInput = $('.views-exposed-form input[name="end"]');
 
-              let existingStartDate = startDateInput.val();
-              let existingEndDate = endDateInput.val();
+        //       let existingStartDate = startDateInput.val();
+        //       let existingEndDate = endDateInput.val();
 
-              if (
-                existingStartDate !== startDate ||
-                existingEndDate !== endDate
-              ) {
-                startDateInput.val(startDate);
-                endDateInput.val(endDate).change();
-              }
-            },
-            // url: "/views/ajax",
-            // method: "GET",
-            // extraParams: {
-            //   _wrapper_format: "drupal_ajax",
-            //   ...getParameters(),
-            // },
-            // failure: (e) => {
-            //   console.log(e);
-            // },
-          },
-        ];
+        //       if (
+        //         existingStartDate !== startDate ||
+        //         existingEndDate !== endDate
+        //       ) {
+        //         startDateInput.val(startDate);
+        //         endDateInput.val(endDate).change();
+        //       }
+        //     },
+        //     // url: "/views/ajax",
+        //     // method: "GET",
+        //     // extraParams: {
+        //     //   _wrapper_format: "drupal_ajax",
+        //     //   ...getParameters(),
+        //     // },
+        //     // failure: (e) => {
+        //     //   console.log(e);
+        //     // },
+        //   },
+        // ];
         calendarOptions.loading = (isLoading) => {
           if (isLoading) {
             $(".event-calendar .events-calendar_loader").css("display", "flex");
@@ -60,7 +79,11 @@
         calendarOptions.fixedWeekCount = false;
         // console.log(drupalSettings, Object.keys(drupalSettings), drupalSettings.calendar)
         // drupalSettings.fullCalendarView[viewIndex].destroy();
-        drupalSettings.calendar = [];
+        if(drupalSettings.calendar) {
+          drupalSettings.calendar[viewIndex].destroy();
+        } else {
+          drupalSettings.calendar = [];
+        }
         drupalSettings.calendar[viewIndex] = new FullCalendar.Calendar(
           calendarEl,
           calendarOptions
