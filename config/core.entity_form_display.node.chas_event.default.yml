@@ -146,6 +146,19 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
+  field_evaluation_notification:
+    type: boolean_checkbox
+    weight: 27
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_event_ends_on:
+    type: datetime_timestamp
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_event_priority:
     type: term_reference_tree
     weight: 14
@@ -515,8 +528,6 @@ hidden:
   field_actual_program_expense: true
   field_actual_program_outcomes: true
   field_areas_for_improvement: true
-  field_evaluation_notification: true
-  field_event_ends_on: true
   field_feedback_form: true
   field_group_ref: true
   field_groups: true

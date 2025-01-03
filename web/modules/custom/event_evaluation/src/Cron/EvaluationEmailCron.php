@@ -34,9 +34,9 @@ class EvaluationEmailCron
             foreach ($nodes as $node) {
                 try {
                     $this->sendEvaluationEmailLink($node);
-                    $node->set('field_evaluation_notification', 1);
+                    $node->set('field_evaluation_notification', TRUE);
                     $node->save();
-                    $this->logger->info('Sent evaluation form link: '. $node->getTitle());
+                    $this->logger->info('Sent evaluation form link: ' . $node->getTitle());
                 } catch (\Exception $e) {
                     $this->logger->error($e->getMessage(), $e->getTrace());
                 }
@@ -54,6 +54,9 @@ class EvaluationEmailCron
         ]);
         if ($email) {
             $email->set('field_event', $node);
+            $email->set('field_url', \Drupal\Core\Url::fromRoute('event_evaluation_operation_option', [
+                'node' => $node->id(),
+            ], ['absolute' => true])->toString());
             $email->setRecipientIds([$node->getOwnerId()]);
             $this->mailer->sendEmail($email, [], true, true);
         }

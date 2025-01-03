@@ -5,8 +5,10 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_event_evaluation_email
     - field.field.easy_email.et_event_evaluation_email.field_event
+    - field.field.easy_email.et_event_evaluation_email.field_url
   module:
     - file
+    - link
     - text
 id: easy_email.et_event_evaluation_email.default
 targetEntityType: easy_email
@@ -99,6 +101,14 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   from_address:
     type: string_textfield

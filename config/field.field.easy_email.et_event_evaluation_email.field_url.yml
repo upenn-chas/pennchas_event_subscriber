@@ -1,0 +1,23 @@
+uuid: f209ebed-0d65-45f2-99df-b2e5841df23f
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_event_evaluation_email
+    - field.storage.easy_email.field_url
+  module:
+    - link
+id: easy_email.et_event_evaluation_email.field_url
+field_name: field_url
+entity_type: easy_email
+bundle: et_event_evaluation_email
+label: URL
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

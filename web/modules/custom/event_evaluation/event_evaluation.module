@@ -40,21 +40,6 @@ function event_evaluation_views_pre_view(ViewExecutable $view, $display_id, &$ar
     }
 }
 
-/**
- * Implements hook_views_post_render().
- * 
- * Set the event title as the view title.
- */
-function event_evaluation_views_post_render($view)
-{
-    if ($view->id() === EVENT_EVALUTION_VIEW_ID && $view->current_display === EVENT_EVALUTION_VIEW_DISPLAY_ID) {
-        $node_id = \Drupal::routeMatch()->getParameter('node');
-        $node = \Drupal\node\Entity\Node::load($node_id);
-        if ($node) {
-            $view->setTitle("Evaluate: {$node->getTitle()}");
-        }
-    }
-}
 
 /**
  * Implements hook_entity_operation_alter().
@@ -99,9 +84,8 @@ function isUserAuthorized($node)
     $current_user_id = $current_user->id();
     $owner_id = $node->getOwnerId();
     $group_memberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
-
     if ($group_memberships) {
-        $node_groups = $node->get('field_college_houses')->getValue();
+        $node_groups = $node->get('field_groups')->getValue();
 
         foreach ($node_groups as $node_group) {
             $group = Group::load($node_group['target_id']);
@@ -111,7 +95,6 @@ function isUserAuthorized($node)
         }
         return false;
     }
-
     return $current_user->hasPermission('event own evaluation') && $owner_id === $current_user_id;
 }
 

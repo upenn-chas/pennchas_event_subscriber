@@ -11,7 +11,6 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
-    - event_evaluation
     - node
     - penchas_group_role_permissions
     - smart_date_recur
@@ -49,7 +48,6 @@ permissions:
   - 'edit own page content'
   - 'edit own reserve_room content'
   - 'edit own room content'
-  - 'event own evaluation'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
   - 'revert all revisions'

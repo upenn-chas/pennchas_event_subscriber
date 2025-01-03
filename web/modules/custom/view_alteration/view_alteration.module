@@ -124,7 +124,7 @@ function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
 
     unset($query->where[3]);
 
-    dd($query->where);
+    // dd($query->where);
     // if ($contentType) {
     //   $query->addWhere(0, 'node_field_data.type', ['chas_event', 'notices'], 'IN');
     // } else {
@@ -165,5 +165,5 @@ function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
 
 function view_alteration_query_views_event_calendar_alterrr(Drupal\Core\Database\Query\AlterableInterface $query)
 {
-  dd($query);
+  //dd($query);
 }

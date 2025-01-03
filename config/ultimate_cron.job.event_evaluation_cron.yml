@@ -1,4 +1,4 @@
-uuid: d15c9f2a-6161-4537-9803-88430705fe47
+uuid: c83f56a2-6b89-4237-8541-1fed37072f47
 langcode: en
 status: true
 dependencies:
@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: event_evaluation_cron
 weight: 0
 module: event_evaluation
-callback: event_evaluation_cron
+callback: 'event_evaluation#cron'
 scheduler:
   id: simple
 launcher:

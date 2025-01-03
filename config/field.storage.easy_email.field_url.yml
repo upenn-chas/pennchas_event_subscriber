@@ -1,0 +1,19 @@
+uuid: 3e057172-9fe1-4bbb-a8e9-44f7439eeef5
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_email
+    - link
+id: easy_email.field_url
+field_name: field_url
+entity_type: easy_email
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -5,8 +5,10 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_event_evaluation_email
     - field.field.easy_email.et_event_evaluation_email.field_event
+    - field.field.easy_email.et_event_evaluation_email.field_url
   module:
     - file
+    - link
     - text
     - user
 id: easy_email.et_event_evaluation_email.default
@@ -88,6 +90,18 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   from_address:
     type: string
