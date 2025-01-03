@@ -9,7 +9,7 @@ id: node.chas_event.field_anticipated_cost
 field_name: field_anticipated_cost
 entity_type: node
 bundle: chas_event
-label: 'Anticipated cost '
+label: '$ Anticipated cost '
 description: ''
 required: true
 translatable: false
@@ -18,6 +18,6 @@ default_value_callback: ''
 settings:
   min: 0.0
   max: null
-  prefix: $
+  prefix: ''
   suffix: ''
 field_type: decimal

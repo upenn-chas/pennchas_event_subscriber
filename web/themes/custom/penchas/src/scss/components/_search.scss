@@ -252,3 +252,45 @@
     }
   }
 }
+
+.search-form {
+	.form-type-search {
+		label {
+			display: none;
+		}
+	}
+	.form-wrapper {
+		.form-submit {
+			background: rgb(1, 31, 91);
+			font-size: 20px;
+			color: rgb(255, 255, 255);
+			border: 0px;
+			border-radius: 10px;
+			font-family: tablet-gothic;
+			font-weight: 400;
+			padding: 13px 15px;
+			&:before {
+				display: none;
+			}
+		}
+	} 
+}
+
+.node_search-results {
+	padding-top: 15px;
+	padding-bottom: 30px;
+	.list-group-item {
+		margin-bottom: 20px;
+		border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+		border-radius: 5px;
+		padding: 25px 20px;
+		h3 {
+			font-size: 30px;
+			font-weight: 6;
+			margin-bottom: 0;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}

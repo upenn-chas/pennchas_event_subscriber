@@ -14,6 +14,8 @@ use Drupal\file\Entity\File;
 use Drupal\node\Entity\NodeType;
 use Drupal\Core\Database\Database;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -38,8 +40,93 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   );
 }
+function process_submenu($submenu) {
+  $submenu_items = '';
+
+  foreach ($submenu as $item) {
+    $submenu_items .= '<li class="navigation__item nav-item">';
+    $submenu_items .= '<a href="'.$item->link->getUrlObject()->toString().'" class="nav-link nav-link--">'.$item->link->getTitle().'</a>';
+    $submenu_items .= '</li>';
+  }
+
+  return $submenu_items;
+}
+
+function penchas_preprocess_node_edit_form(&$variables) {
+  $variables['base_path'] = base_path();
+  $group_banner_html = '<br/>';
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_parts = explode('/', trim($current_path, '/'));
+  if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
+    if (strpos($path_parts[4], 'group_node') !== false) {
+      $bundle_type = str_replace('group_node:', '', $path_parts[4]);
+      if($bundle_type == 'reserve_room' || $bundle_type == 'room'){
+        if($bundle_type == 'reserve_room'){
+          $label = "Room Reservations";
+        }else if($bundle_type == 'room'){
+          $label = "Room";
+        }
+        $group_id = $path_parts[1];
+        if($group_id){
+          $groupData = Group::load($group_id);
+          $url_path = $groupData->toUrl()->toString();
+          $field_bg_color = $groupData->get('field_color')->value;
+          $field_circle_color = $groupData->get('field_circle_color')->value;
+          $field_menus = $groupData->get('field_menus');
+          $simplified_menu_html = '';
+          foreach ($field_menus as $key => $group_menu) {
+            
+            // Load the menu using the menu_link_tree service
+            $menu_tree = \Drupal::service('menu.link_tree');
+            $menu_name = $group_menu->target_id;
+            
+            // Fetch the menu tree data
+            $menu_data = $menu_tree->load($menu_name,new MenuTreeParameters());
+            
+            foreach ($menu_data as $item) {
+              $simplified_menu_html .= '<div class="dropdown">';
+              $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >'.$item->link->getTitle().'</a>';
+              $simplified_menu_html .= '<div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <ul class="clearfix nav">';
+              $simplified_menu_html .= process_submenu($item->subtree);
+              
+              $simplified_menu_html .= '</ul></div></div>';
+            }
+          }
+          $field_heading = $groupData->get('field_heading')->value;
+          $group_label = $groupData->get('label')->value;
+          $group_banner_html = '<section class="hero-banner" style="background-color: #'.$field_bg_color.';">'
+                                .'<style>.hero-banner .container:before {background: #'.$field_circle_color.'}</style>'
+                                .'<div class="container">'
+                                  .'<div class="row">'
+                                    .'<div class="col-12 col-lg-6">'
+                                      .'<div class="breadcrumbs-block">'
+                                        .'<nav aria-label="breadcrumb">'
+                                          .'<ol class="breadcrumb">'
+                                            .'<li class="breadcrumb-item"><a href="/">Home</a></li>'
+                                            .'<li class="breadcrumb-item"><a href="'.$url_path.'">'.$group_label.' House</a></li>'
+                                            .'<li class="breadcrumb-item active" aria-current="page">'.$label.'</li>'
+                                         .' </ol>'
+                                        .'</nav>'
+                                      .'</div>'
+                                      .'<div class="banner-info">'
+                                        .'<h1>'.$label.'</h1>'
+                                      .'</div>'
+                                      .'<div class="internal-links">'.$simplified_menu_html.'</div>'
+                                    .'</div>'
+                                  .'</div>'
+                                .'</div>'
+                              .'</section>';
+    
+        }
+      }
+    }
+  }
+  
+  $variables['group_banner_info'] = $group_banner_html;
+
+}
 function penchas_preprocess_node(&$variables) {
-  $variables['node_access'] = 'testin';
   $variables['base_path'] = base_path();
   $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';
@@ -67,7 +154,7 @@ function penchas_preprocess_node(&$variables) {
         $variables['attributes']['class'][] = 'logged-in-user';
         $edit_url = \Drupal\Core\Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
         $node_edit_url = $edit_url->toString();
-        $edit_link = '<li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg">Edit</a></li><li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg">Moderate</a></li>';
+        $edit_link = '<li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li><li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
       }
       $variables['event_detail_breadcrumbs'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="'.$calendar_link.'"><img src="'.base_path().'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'.$edit_link.'</ul></div></div>';
     }
@@ -82,6 +169,7 @@ function penchas_preprocess_html(&$variables) {
   $variables['front_page_url'] = $front_page_path;
   
 }
+
 
 function penchas_preprocess_block(&$variables) {
 
