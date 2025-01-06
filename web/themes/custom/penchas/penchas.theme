@@ -54,7 +54,7 @@ function process_submenu($submenu) {
 
 function penchas_preprocess_node_edit_form(&$variables) {
   $variables['base_path'] = base_path();
-  $group_banner_html = '<br/>';
+  $group_banner_html = 'Edit form<br/>';
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
@@ -95,7 +95,7 @@ function penchas_preprocess_node_edit_form(&$variables) {
           }
           $field_heading = $groupData->get('field_heading')->value;
           $group_label = $groupData->get('label')->value;
-          $group_banner_html = '<section class="hero-banner" style="background-color: #'.$field_bg_color.';">'
+          $group_banner_html = '<section class="hero-banner without-image" style="background-color: #'.$field_bg_color.';">'
                                 .'<style>.hero-banner .container:before {background: #'.$field_circle_color.'}</style>'
                                 .'<div class="container">'
                                   .'<div class="row">'

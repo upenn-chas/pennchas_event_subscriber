@@ -193,3 +193,8 @@
     margin-top: 54px;
   }
 }
+
+.hero-banner + .container {
+  z-index: 1;
+  position: relative;
+}

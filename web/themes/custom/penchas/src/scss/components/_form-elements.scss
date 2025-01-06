@@ -332,13 +332,29 @@ label {
 		}
 	}
 }
-
-.node-chas-event-edit-form, .node-notices-edit-form, .node-chas-event-form, .node-reserve-room-form, .node-room-form, .comment-comment-form{
-	margin-top: 30px;
+.node-notices-form {
+  .tabledrag-toggle-weight-wrapper {
+    display: none;
+  }
+}
+.js-form-item-field-event-schedule-0-time-wrapper-value-date {
+  margin-right: 5px;
+}
+.node-chas-event-edit-form, 
+.node-notices-edit-form, 
+.node-chas-event-form, 
+.node-reserve-room-form, 
+.node-room-form, 
+.comment-comment-form{ 
   margin-bottom: 30px;
+
+  .row:has(.col-md-8) {
+    margin-top: 30px;
+  }
 	* {
 		font-family: tablet-gothic;
 	}
+
 	table {
 		&.field-multiple-table {  
 			tbody {
