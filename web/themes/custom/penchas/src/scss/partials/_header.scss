@@ -736,3 +736,19 @@ article > header {
 .node__content.clearfix {
   margin-top: 0;
 }
+
+@include media-query ('tablet'){
+  body .tb-megamenu {
+    .nav-collapse {
+      .dropdown-menu {
+        background-color: transparent;
+        padding-left:18px;
+        padding-right:18px;
+      }
+    }
+  }
+  .user-logged-in .menu--account ul.nav li .nav-link--user {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
