@@ -1,5 +1,5 @@
 event_feedback.page:
-  path: node/{node}/feedback
+  path: /feedback/node/{node}
   defaults:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::feedback'
     _title: ''

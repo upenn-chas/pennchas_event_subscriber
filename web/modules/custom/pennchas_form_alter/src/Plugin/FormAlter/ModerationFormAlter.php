@@ -53,10 +53,12 @@ class ModerationFormAlter
                 $template = Constant::EVENT_EMAIL_MODERATION;
                 if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
                     $template = Constant::EVENT_EMAIL_APPROVED;
-
-                    $qrCodeGenerator = \Drupal::service('pennchas_form_alter.qr_code_generator');
-                    $qrCodePath = $qrCodeGenerator->generateQrCode($node->toUrl()->toString() . '/feedback');
-                    $emailFields['field_qr_code'] = $qrCodePath;
+                    $feedbackUrl = \Drupal\Core\Url::fromRoute('event_feedback.page', [
+                        'node' => $node->id(),
+                    ], ['absolute' => true])->toString();
+                    $emailFields['field_url'] = $feedbackUrl;
+                    $qrCodePath = \Drupal::service('pennchas_form_alter.qr_code_generator')->generateQrCode($feedbackUrl);
+                    $emailFields['field_image'] = $qrCodePath;
                 }
                 $this->sendMail($node, $template, $emailFields);
             }

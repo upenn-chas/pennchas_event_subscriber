@@ -1,0 +1,19 @@
+uuid: abb7d5b9-7194-4ecb-84cd-3b4fdafd0ad3
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_event_approved
+    - field.storage.easy_email.field_image
+id: easy_email.et_event_approved.field_image
+field_name: field_image
+entity_type: easy_email
+bundle: et_event_approved
+label: Image
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

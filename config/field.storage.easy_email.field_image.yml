@@ -1,11 +1,11 @@
-uuid: 9c37912a-2307-47dc-87a5-d12ab773b71d
+uuid: 6a3aa24e-3c8f-469b-ba8b-876ed524238d
 langcode: en
 status: true
 dependencies:
   module:
     - easy_email
-id: easy_email.field_qr_code
-field_name: field_qr_code
+id: easy_email.field_image
+field_name: field_image
 entity_type: easy_email
 type: string
 settings:

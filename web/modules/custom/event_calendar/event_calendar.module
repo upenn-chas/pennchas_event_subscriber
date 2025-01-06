@@ -1,19 +1,150 @@
 <?php
+
+use Drupal\Core\Database\Query\Condition;
+use Drupal\views\Plugin\views\query\Sql;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+
 /**
-* Implements template_preprocess_views_view_fullcalendar().
-*/
-function event_calendar_preprocess_views_view_fullcalendar(array &$variables) {
-    if ($variables['view']->id() === 'event_calendar') {
-        $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
-    }
+ * Implements template_preprocess_views_view_fullcalendar().
+ */
+function event_calendar_preprocess_views_view_fullcalendar(array &$variables)
+{
+  if ($variables['view']->id() === 'event_calendar') {
+    $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
+  }
 }
 
 /**
  * Implements hook_theme().
  */
-function event_calendar_theme($existing, $type, $theme, $path) {
-    // dd($existing);
-    return [
-      'views-view-fullcalendar' => []
-    ];
+function event_calendar_theme($existing, $type, $theme, $path)
+{
+  // dd($existing);
+  return [
+    'views-view-fullcalendar' => []
+  ];
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function event_calendar_views_query_alterr(ViewExecutable $view, Sql $query)
+{
+  if ($view->id() == 'event_calendar') {
+    // dd($query->where);
+
+    // $eventType = \Drupal::request()->query->get('event_type');
+    // // $startDate = \Drupal::request()->query->get('start');
+    // // $endDate = \Drupal::request()->query->get('end');
+    // $contentType = \Drupal::request()->query->get('content_type');
+    // $campusWide = \Drupal::request()->query->get('campus_wide');
+    // $tables = $query->tables;
+
+    if (false && $eventType) {
+      if (!isset($tables['node_field_data']['node__field_intended_audience'])) {
+        $query->queueTable(
+          'node__field_intended_audience',
+          null,
+          Views::pluginManager('join')->createInstance('standard', [
+            'type' => 'LEFT',
+            'table' => 'node__field_intended_audience',
+            'alias' => 'node__field_intended_audience',
+            'left_field' => 'nid',
+            'field' => 'entity_id',
+            'left_table' => 'node_field_data',
+            'extra' => [
+              [
+                'field' => 'deleted',
+                'value' => 0,
+                'numeric' => true
+              ]
+            ],
+          ])
+        );
+      }
+      $evenTypeConditionGroup = $query->setWhereGroup('OR');
+      $query->addWhere($evenTypeConditionGroup, 'node_field_data.type', 'notices', '=');
+      $query->addWhere($evenTypeConditionGroup, 'node__field_intended_audience.field_intended_audience_value', ['floor_event', 'community_event'], 'IN');
+    }
+
+    // if($startDate && $endDate) {
+    //   $startDate = strtotime($startDate .' 00:00:00');
+    //   $endDate = strtotime($endDate .' 23:59:59');
+    // } else {
+    //   $startDate = strtotime(date('01-m-Y 00:00:00'));
+    //   $endDate = strtotime(date('t-m-Y 23:59:59'));
+    // }
+
+    // $query->addWhere(0, 'node__field_event_schedule.field_event_schedule_value', $startDate, '>=');
+    // $query->addWhere(0, 'node__field_event_schedule.field_event_schedule_end_value', $endDate, '<=');
+
+    $secondGroup = $query->where[2];
+    $thirdGroup = $query->where[3];
+
+    $subGroup = new Condition("OR");
+    $groupOne = $subGroup->andConditionGroup();
+
+
+    foreach ($secondGroup as $cons) {
+      foreach ($cons as $con) {
+        $groupOne->condition($con['field'], $con['value'], $con['operator']);
+      }
+    }
+    $subGroup->condition($groupOne);
+
+    // $groupTwo = $subGroup->andConditionGroup();
+    // foreach ($thirdGroup as $cons) {
+    //   foreach ($cons as $con) {
+    //     $groupTwo->condition($con['field'], $con['value'], ($con['field'] instanceof Condition) ? null : $con['operator']);
+    //   }
+    // }
+    // $subGroup->condition($groupTwo);
+
+
+
+    $query->where[2]['conditions'] = $subGroup;
+    $query->where[2]['args'] = null;
+    $query->where[2]['type'] = null;
+
+
+    unset($query->where[3]);
+
+    // dd($query->where);
+    // if ($contentType) {
+    //   $query->addWhere(0, 'node_field_data.type', ['chas_event', 'notices'], 'IN');
+    // } else {
+    //   $query->addWhere(0, 'node_field_data.type', 'chas_event', '=');
+    // }
+
+    if (false && !isset($tables['node_field_data']['node__field_is_campus_wide'])) {
+      $query->addTable(
+        'node__field_is_campus_wide',
+        null,
+        Views::pluginManager('join')->createInstance('standard', [
+          'type' => 'INNER',
+          'table' => 'node__field_is_campus_wide',
+          'alias' => 'node__field_is_campus_wide',
+          'left_field' => 'nid',
+          'field' => 'entity_id',
+          'left_table' => 'node_field_data',
+          'extra' => [
+            [
+              'field' => 'deleted',
+              'value' => 0,
+              'numeric' => true
+            ]
+          ],
+        ])
+      );
+    }
+    if (false  && !$campusWide) {
+      $query->addWhere(0, 'node__field_is_campus_wide.field_is_campus_wide_value', 1, '!=');
+    } else {
+      // $campusConditionGroup = $query->setWhereGroup('OR');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 1, '=');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', 0, '=');
+      // $query->addWhere($campusConditionGroup, 'node__field_is_campus_wide.field_is_campus_wide_value', null, 'IS');
+    }
   }
+}

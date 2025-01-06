@@ -26,7 +26,7 @@ class QRCodeGenerator
         $qrCodePath = $this->getQRCodeFilePath();
         try {
             $this->qrcodeGenerator->writeFile($content, $qrCodePath);
-            return \Drupal::service('file_url_generator')->generate($qrCodePath)->toString();
+            return \Drupal::service('file_url_generator')->generateAbsoluteString($qrCodePath);
         } catch (Exception $e) {
             \Drupal::logger('QR Code Generator Service')->error($e->getMessage(), $e->getTrace());
         }
