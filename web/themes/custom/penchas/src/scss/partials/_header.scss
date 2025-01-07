@@ -126,6 +126,7 @@ header {
               text-decoration: none;
               text-transform: capitalize;
               margin-right: 30px;
+             
             }
           }
         }
@@ -500,6 +501,16 @@ article > header {
                       background: #ffea3f;
                       color: #011f5b;
                   }
+                  &:active,
+                  &:visited,
+                  &:focus-visible,
+                  &::-moz-focus-inner ,
+                  &:focus {
+                    background: #fff;
+                    color: #011f5b;
+                    filter: none;
+                    opacity: 1;
+                  }
                 }
               }
             }
@@ -738,17 +749,22 @@ article > header {
 }
 
 @include media-query ('tablet'){
-  body .tb-megamenu {
-    .nav-collapse {
-      .dropdown-menu {
-        background-color: transparent;
-        padding-left:18px;
-        padding-right:18px;
+  body {
+    .tb-megamenu {
+      .nav-collapse {
+        .dropdown-menu {
+          background-color: transparent;
+          padding-left:18px;
+          padding-right:18px;
+        }
       }
     }
+ 
   }
   .user-logged-in .menu--account ul.nav li .nav-link--user {
     padding-left: 0;
     padding-right: 0;
   }
+
+
 }
