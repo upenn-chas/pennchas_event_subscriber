@@ -347,6 +347,7 @@ function penchas_preprocess_block(&$variables) {
       // You can access fields like this:
     $field_value = $block->get('info')->value; // Replace 'field_name' with your field machine name.
 
+    
     // Or render the entire content for a block.
     $content = \Drupal::entityTypeManager()
       ->getViewBuilder('block_content')
