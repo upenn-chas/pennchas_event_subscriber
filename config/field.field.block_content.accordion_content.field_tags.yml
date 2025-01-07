@@ -1,0 +1,21 @@
+uuid: c165adbb-70b3-4906-ac68-6003598e4287
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+    - field.storage.block_content.field_tags
+  module:
+    - options
+id: block_content.accordion_content.field_tags
+field_name: field_tags
+entity_type: block_content
+bundle: accordion_content
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

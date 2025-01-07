@@ -55,6 +55,7 @@
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field__items accordion') }} id="accordionExample">
       {% for item in items %}
+        
         <div{{ item.attributes.addClass('field__item') }}></div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="heading{{ loop.index }}">

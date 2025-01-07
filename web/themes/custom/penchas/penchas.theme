@@ -143,7 +143,7 @@ function penchas_preprocess_node(&$variables) {
   if ($node instanceof NodeInterface) {
     if ($node->bundle() == 'chas_event') {
       $calendar_link = base_path();
-      if ($current_user->isAuthenticated() && !$current_user->hasRole('administrator')) {
+      if ($current_user->isAuthenticated() ) {
         $moderator_link = '';
         $eventHouseId = (int) $node->get('field_location')->getString();
         // dump($eventHouseId);

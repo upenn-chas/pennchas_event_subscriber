@@ -1,13 +1,15 @@
-<h1>{{ node.title.value }} hosted by {{ node.uid.entity.name.value }} </h1>
-<p>Thank you for attending, {{ node.title.value }} on 
-  {% for eventDate in eventDates %} 
-    {{ eventDate|date("d M Y") }}
-    {{ not loop.last ? ', ' }}
-  {% endfor %}! 
-  We’d love to learn more about your experience!</p>
-<div class="message-container">
-  <p>{{ message }}</p>
-</div>
-<div class="webform-container">
-  {{ webform }}
+<div class="space">
+  <h1>{{ node.title.value }} hosted by {{ node.uid.entity.name.value }} </h1>
+  <p>Thank you for attending, {{ node.title.value }} on 
+    {% for eventDate in eventDates %} 
+      {{ eventDate|date("d M Y") }}
+      {{ not loop.last ? ', ' }}
+    {% endfor %}! 
+    We’d love to learn more about your experience!</p>
+  <div class="message-container">
+    <p>{{ message }}</p>
+  </div>
+  <div class="webform-container">
+    {{ webform }}
+  </div>
 </div>
