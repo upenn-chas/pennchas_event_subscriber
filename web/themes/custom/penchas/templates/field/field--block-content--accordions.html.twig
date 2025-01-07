@@ -62,6 +62,9 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
               {{item.content['#block_content'].info.value}}
             </button>
+            <div class="tags">
+              {{item.content['field_tags']}}
+            </div>
           </h2>
           <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample" style="">
             <div class="accordion-body">
