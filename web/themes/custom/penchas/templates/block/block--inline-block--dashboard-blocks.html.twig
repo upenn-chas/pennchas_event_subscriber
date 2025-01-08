@@ -42,7 +42,7 @@
     child_block_existed
   ]
 %}
-  {% if dashboard_access %}
+{% if verify_role_access(content.field_block_display_condition_wi) %}
     {% block content %}
     <div{{ attributes.addClass(classes) }}>
       <div{{ content_attributes.addClass('contents') }}>
@@ -52,6 +52,7 @@
         {% endif %}
         {{ title_suffix }}
         {# {{ content }} #}
+        {# {{ verify_role_access(content.field_block_display_condition_wi) }} #}
         {{ content|without('field_child_dashboard_blocks') }}
       </div>
         {% if content.field_child_dashboard_blocks|length > 2 %}
@@ -63,4 +64,4 @@
         {% endif %}
     </div>
     {% endblock %}
-{% endif %}
+{% endif %} 

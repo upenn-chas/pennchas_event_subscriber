@@ -15,7 +15,7 @@ use Drupal\Core\Layout\LayoutBuilderInterface;
 
 use Drupal\block\BlockPluginInterface;
 use Drupal\Core\Block\BlockBase;
-
+use Drupal\block\BlockInterface;
 use Drupal\views\Views;
 
 
@@ -144,18 +144,17 @@ function get_all_group_roles(){
  * Implements hook_preprocess_block().
  */
 // function penchas_block_group_role_condition_preprocess_block(&$variables) {
-//   $connection = Database::getConnection();
-//   // dump('test---------------'.$variables['plugin_id']);
+  
 //   // Check if the block is the specific inline block we want to target.
 //   if ($variables['plugin_id'] === 'inline_block:dashboard_blocks') {
 //     // Retrieve the roles specified in the block's field.
 //     $field_values = $variables['content']['field_block_display_condition_wi'];
-
+    
 //     if (!isset($field_values['#items'])) {
 //       // If there are no field values, stop further processing.
 //       return;
 //     }
-
+    
 //     $group_roles_arr = [];
 //     foreach ($field_values['#items']->referencedEntities() as $value) {
 //       $group_roles_arr[] = $value->id();
@@ -163,13 +162,12 @@ function get_all_group_roles(){
 //     // Load the current user.
 //     $current_user = \Drupal::currentUser();
 //     $user_entity = \Drupal\user\Entity\User::load($current_user->id());
-//     // dd($user_entity);
-
+//     $connection = Database::getConnection();
 //     $query = $connection->select('group_relationship_field_data', 'gr')
 //     ->fields('gr', ['id'])
 //     ->condition('entity_id', $current_user->id(), '=')
 //     ->condition('plugin_id', 'group_membership', '=');
-
+    
 //     // Execute the query and fetch all results as an associative array.
 //     $results = $query->execute()->fetchAssoc('id');
 //     // if(!$results){
@@ -182,25 +180,76 @@ function get_all_group_roles(){
 //         if(!empty($group_roles_results)){
 //           // dd($group_roles_arr);
 //           $group_role = $group_roles_results['group_roles_target_id'];
-//           $variables['content'] = [];
-
+//           // $variables['content'] = [];
 //         }
 //       }
-//     // }
-//     if (!$user_entity) {
-//       // No user entity, so do not show the block.
-//       $variables['#access'] = FALSE;
-//       return;
-//     }
-
-//     if(!empty($group_role)){
+//       // }
+//       if (!$user_entity) {
+//         // No user entity, so do not show the block.
+//         $variables['custom_access'] = FALSE;
+//         return;
+//       }
+//       if(!empty($group_role)){
+      
 //         $key = array_search($group_role, $group_roles_arr);
 //         if ($key !== false) {
-//           $variables['#access'] = TRUE;
+//           $variables['custom_access'] = TRUE;
 //         } else {
-//           $variables['content'] = [];
+//           $variables['custom_access'] = FALSE;
 //         }
 //     }
 //   }
+// }
+
+
+/**
+ * Implements hook_block_access().
+ */
+// function penchas_block_group_role_condition_block_access(BlockInterface $block) {
+//   // Check if the block is the specific inline block we want to target.
+//   dump($block->getPluginId());
+//   if ($block->getPluginId() === 'inline_block:dashboard_blocks') {
+//     // Load the current user.
+//     $current_user = \Drupal::currentUser();
+    
+//     // Query to retrieve the current user's group membership.
+//     $connection = \Drupal::database();
+//     $query = $connection->select('group_relationship_field_data', 'gr')
+//       ->fields('gr', ['id'])
+//       ->condition('entity_id', $current_user->id())
+//       ->condition('plugin_id', 'group_membership');
+    
+//     $results = $query->execute()->fetchAssoc();
+    
+//     if (!empty($results['id'])) {
+//       // Get the group role for the user.
+//       $current_user_role_id = $results['id'];
+//       $query = $connection->select('group_relationship__group_roles', 'grr')
+//         ->fields('grr', ['group_roles_target_id'])
+//         ->condition('entity_id', $current_user_role_id);
+      
+//       $group_roles_results = $query->execute()->fetchAssoc();
+      
+//       // Check if the user has the required group role.
+//       if (!empty($group_roles_results['group_roles_target_id'])) {
+//         $group_role = $group_roles_results['group_roles_target_id'];
+
+//         // Retrieve the roles from the block's field.
+//         $field_values = $block->getConfiguration()['field_block_display_condition_wi'];
+//         $group_roles_arr = [];
+//         foreach ($field_values as $value) {
+//           $group_roles_arr[] = $value->id();
+//         }
+
+//         // Check if the user's group role matches one of the specified roles.
+//         if (in_array($group_role, $group_roles_arr)) {
+//           return \Drupal\Core\Access\AccessResult::allowed(); // Grant access
+//         }
+//       }
+//     }
+//   }
+
+//   // Default block access behavior
+//   return \Drupal\Core\Access\AccessResult::forbidden(); // Deny access if no conditions match
 // }
 

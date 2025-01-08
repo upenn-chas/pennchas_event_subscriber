@@ -380,4 +380,24 @@ body {
       }
     }
   }
+
+  .block-field-blocknodenoticesfield-file {
+    .field--name-field-file {
+      font-size: 20px;
+      .field__label {
+        font-weight: 700;
+      }
+    }
+    @include media-query ('mobile') {
+      margin-bottom: 35px;
+    }
+  }
+
+  .block-field-blocknodenoticesfield-banner {
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+    }
+  }
 }

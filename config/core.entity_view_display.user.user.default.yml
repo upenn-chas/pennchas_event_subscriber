@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.dashboard_basic_item
+    - block_content.type.dashboard_blocks
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_full_name
     - field.field.user.user.field_preferred_name
@@ -12,6 +15,7 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - bootstrap_layout_builder
     - image
     - layout_builder
     - layout_builder_restrictions
@@ -22,28 +26,238 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: layout_builder_blank
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-        components: {  }
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          f056358b-25b8-445f-8323-53bcad4cac91:
+            uuid: f056358b-25b8-445f-8323-53bcad4cac91
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Lorem Ipsum 22'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 366
+              block_revision_id: 399
+              block_serialized: null
+            weight: 1
+            additional: {  }
+          25c1cf08-0803-4873-8b69-c4e44b7e840d:
+            uuid: 25c1cf08-0803-4873-8b69-c4e44b7e840d
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Lorem Ipsum 22'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 367
+              block_revision_id: 400
+              block_serialized: null
+            weight: 2
+            additional: {  }
+          fec577f1-e209-4fe2-a5eb-eb10da0a3903:
+            uuid: fec577f1-e209-4fe2-a5eb-eb10da0a3903
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_basic_item'
+              label: 'my events'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 368
+              block_revision_id: 401
+              block_serialized: null
+            weight: 3
+            additional: {  }
+          64bf48e9-a964-4743-bd93-63f3ef1d82fb:
+            uuid: 64bf48e9-a964-4743-bd93-63f3ef1d82fb
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Resources - '
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 375
+              block_revision_id: 408
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          37985294-20d7-483e-8301-c80460e943b0:
+            uuid: 37985294-20d7-483e-8301-c80460e943b0
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: Resources
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 376
+              block_revision_id: 409
+              block_serialized: null
+            weight: 4
+            additional: {  }
+          76aa8ac4-e70c-46b6-a3f3-9dcb7583a136:
+            uuid: 76aa8ac4-e70c-46b6-a3f3-9dcb7583a136
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: Resources
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 377
+              block_revision_id: 410
+              block_serialized: null
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: dashboard-accordions
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          501079c2-91a0-4d05-b9de-57c200a0a656:
+            uuid: 501079c2-91a0-4d05-b9de-57c200a0a656
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Quick Links'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 369
+              block_revision_id: 402
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          7d07c3d2-d1c6-412e-aaa2-222c135ac707:
+            uuid: 7d07c3d2-d1c6-412e-aaa2-222c135ac707
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Lorem Ipsum 22'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 370
+              block_revision_id: 403
+              block_serialized: null
+            weight: 1
+            additional: {  }
+          063fe8e0-cfb4-44b1-879d-19a1fba59110:
+            uuid: 063fe8e0-cfb4-44b1-879d-19a1fba59110
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Quick Links'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 371
+              block_revision_id: 404
+              block_serialized: null
+            weight: 3
+            additional: {  }
+          2d2a443e-8088-4a69-8881-05065b51c1fc:
+            uuid: 2d2a443e-8088-4a69-8881-05065b51c1fc
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Lorem Ipsum 22'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 372
+              block_revision_id: 405
+              block_serialized: null
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      allowed_layouts:
-        - 'bootstrap_layout_builder:blb_col_1'
-        - 'bootstrap_layout_builder:blb_col_2'
-        - 'bootstrap_layout_builder:blb_col_3'
-        - 'bootstrap_layout_builder:blb_col_4'
+      allowed_layouts: {  }
       denylisted_blocks: {  }
       allowlisted_blocks: {  }
       restricted_categories: {  }
     entity_view_mode_restriction_by_region:
-      allowed_layouts:
-        - 'bootstrap_layout_builder:blb_col_1'
-        - 'bootstrap_layout_builder:blb_col_2'
-        - 'bootstrap_layout_builder:blb_col_3'
-        - 'bootstrap_layout_builder:blb_col_4'
+      allowed_layouts: {  }
 _core:
   default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
 id: user.user.default

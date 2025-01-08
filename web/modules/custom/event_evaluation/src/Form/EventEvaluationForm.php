@@ -26,7 +26,7 @@ class EventEvaluationForm extends FormBase
      *  {@inheritDoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state)
-    {
+    {   
         $form['areas_for_improvement'] = [
             '#type' => 'textarea',
             '#title' => $this->t('Areas for improvement'),

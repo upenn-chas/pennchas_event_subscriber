@@ -68,7 +68,7 @@
           </h2>
           <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample" style="">
             <div class="accordion-body">
-              {{ item.content }}
+              {{ item.content|without('field_tags') }}
             </div>
           </div>
         </div>

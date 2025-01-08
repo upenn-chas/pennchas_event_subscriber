@@ -43,8 +43,14 @@
   {% set heading_alignment = content.field_alignment[0]['#markup'] %}
 {% endif %}
 
-{% block content %}
+
+
 <section {{ attributes.addClass(classes) }} style="background-color: #ebf1ff;">
+{{ title_prefix }}
+            {% if label %}
+              
+            {% endif %}
+            {{ title_suffix }}
   <div class="container-fluid">
     <div {{ content_attributes.addClass('content row') }}>
       <div class="col-12 col-lg-6 bg-img">
@@ -60,15 +66,18 @@
             {% endif %}
             {{ title_suffix }}
           </div>
+          {% block content %}
           <div class="news-cards">
           {{content.field_news}}
             <div class="btn-wrapper">
               {{ content.field_cta }}
             </div>
+
           </div>
+          {% endblock %}
         </div>
       </div>
     </div>
   </div>
 </section>
-{% endblock %}
+

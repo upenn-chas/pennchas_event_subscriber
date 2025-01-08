@@ -253,7 +253,7 @@ function pennchas_form_alter_query_search_node_search_alter(AlterableInterface $
     // }
     // $query->condition('n.type', 'program_community', '!=');
   }else{
-    $query->condition('n.type', 'reserve_room', '!=');
+    // $query->condition('n.type', 'reserve_room', '!=');
     // $query->condition('n.type', 'room', '!=');
     // $query->condition('n.type', 'notices', '!=');
     // $query->condition('n.type', 'program_community', '!=');
