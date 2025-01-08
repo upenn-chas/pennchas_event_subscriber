@@ -45,14 +45,20 @@
   <style>
   .layout-builder-components .program-box:hover:before {
     background-color: #{{group.field_color.value}};
-    border-color: #{{group.field_color.value}};
+    border-color: #{{group.field_color.value}}  !important;
+  }
+  .accordion-item:has(.accordion-button:not(.collapsed)){
+    background-color: #{{group.field_color.value}}  !important;
   }
   </style>
   {% endif %}
   {% if group.field_circle_color.value %}
   <style>
     .hero-banner .container:before {
-      background: #{{group.field_circle_color.value}};
+      background: #{{group.field_circle_color.value}}  !important;
+     }
+     .block-inline-blockaccordions .item-list li{
+      background: #{{group.field_circle_color.value}} !important;
      }
   </style>
   {% endif %}

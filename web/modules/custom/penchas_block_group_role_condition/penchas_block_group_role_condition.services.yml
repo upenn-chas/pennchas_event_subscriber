@@ -1,0 +1,5 @@
+services:
+  penchas_block_group_role_condition.twig_extension:
+    class: 'Drupal\penchas_block_group_role_condition\TwigExtension'
+    tags:
+      - { name: twig.extension }

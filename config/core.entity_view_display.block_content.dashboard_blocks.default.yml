@@ -23,6 +23,13 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_block_display_condition_wi:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_call_to_actions:
     type: link
     label: hidden
@@ -44,5 +51,4 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-hidden:
-  field_block_display_condition_wi: true
+hidden: {  }

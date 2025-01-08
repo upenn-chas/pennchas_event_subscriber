@@ -15,6 +15,7 @@
       color: $primaryColor;
       padding: 13px 30px 7px 30px;
       position: relative;
+      text-transform: capitalize;
       @include media-query('small') {
         padding: 13px 20px 7px 20px;
       }
@@ -255,8 +256,72 @@
 
 .block-inline-blockaccordions {
   margin: 25px 0;
-  h2 {
+  h2.accordion-header{
     text-transform: capitalize;
     margin: 0 0 25px 0;
+    overflow: hidden;
+    button {
+      padding-bottom: 0;
+    }
+    &:has(.tags) button{
+      &:before {
+        top: 47px;
+        right: 34px;
+        @include media-query('mobile') {
+          top: 44px;
+          right: 25px;
+        }
+      }
+      &:after {
+        top: 60px;
+        right: 21px;
+
+        @include media-query('mobile') {
+          top: 55px;
+          right: 14px;
+        }
+      }
+    }
+  }
+
+  h2 { 
+    text-transform: capitalize;
+  }
+
+
+
+  .field--name-field-tags {
+    margin: 0;
+  }
+  .item-list {
+    padding-left: 30px;
+    padding-right: 30px;
+    @include media-query('mobile') {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .list-group {
+      display: block;
+      overflow: hidden;
+      margin: 0;
+    }
+    li {
+      border: 0;
+      padding: 8px 10px;
+      font-size: 12px;
+      background: #76a7ff;
+      border-radius: 10px;          
+      font-weight: 600;
+      line-height: normal;
+      display: inherit;
+      font-family: $teritoryFont;
+      color: $primaryColor;
+      float: left;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .accordion-item:has(.accordion-button:not(.collapsed)) {
+    background-color: #EBF2FF;
   }
 }
