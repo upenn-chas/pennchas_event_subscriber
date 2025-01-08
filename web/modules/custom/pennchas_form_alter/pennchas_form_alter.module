@@ -47,7 +47,6 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
     } else if ($formId === 'node_room_delete_form') {
         $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
     } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID && \Drupal::request()->get('view_id') === Constant::VIEW_EVENT_CALENDAR) {
-        // dd($form);
 
         if(isset($form['start']) && isset($form['start']['#attributes'])) {
             unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
@@ -70,7 +69,6 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             $form['content_type']['#default_value'] = 1;
             $form['content_type']['#value'] = 1;
         }
-        // dd($form);
     }
 }
 

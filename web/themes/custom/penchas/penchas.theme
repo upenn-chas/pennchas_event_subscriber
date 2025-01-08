@@ -421,7 +421,11 @@ function penchas_preprocess_views_view(&$variables) {
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
   $variables['breadcrumb_dashboard_link'] = '/user';
+  $current_user = \Drupal::currentUser();
+  $variables['breadcrumb_reports'] = 'Reports';
+  $variables['breadcrumb_reports_link'] = "/user/{$current_user->id()}/reports";
   $view = $variables['view'];
+  $variables['title'] = $view->getTitle();
   $id = $view->storage->id();
   if($id == 'team_members'){
     $variables['display_id'] = $view->current_display;
