@@ -84,6 +84,41 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 2
             additional: {  }
+          d60ce5b7-9b88-4b8a-871b-4d3aa057c1a0:
+            uuid: d60ce5b7-9b88-4b8a-871b-4d3aa057c1a0
+            region: content
+            configuration:
+              id: 'extra_field_block:node:chas_event:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+          afc91959-0528-4801-bc24-ae5510ea5d06:
+            uuid: afc91959-0528-4801-bc24-ae5510ea5d06
+            region: content
+            configuration:
+              id: 'field_block:node:chas_event:field_long_text'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          9b3d15b3-a9b0-4e1d-bc83-64bf97e758f2:
+            uuid: 9b3d15b3-a9b0-4e1d-bc83-64bf97e758f2
+            region: content
+            configuration:
+              id: 'extra_field_block:node:chas_event:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
