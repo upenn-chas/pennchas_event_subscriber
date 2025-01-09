@@ -14,7 +14,14 @@ dependencies:
     - file
     - node
     - penchas_group_role_permissions
+    - pennchas_form_alter
     - smart_date_recur
+third_party_settings:
+  pennchas_form_alter:
+    umbera_roles:
+      'Senior Staff': 'Senior Staff'
+      RA: RA
+      'Anyone with a Pennkey': 'Anyone with a Pennkey'
 id: chas_technology
 label: 'CHAS Technology'
 weight: -4
