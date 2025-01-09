@@ -2529,7 +2529,7 @@ display:
       access:
         type: group_permission
         options:
-          group_permission: 'view group_node:chas_event entity'
+          group_permission: 'access content overview'
       filters:
         status:
           id: status

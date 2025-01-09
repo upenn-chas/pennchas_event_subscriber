@@ -1,5 +1,0 @@
-services:
-  node_event_form_ext.mail_service:
-    class: \Drupal\node_event_form_ext\Service\EventEmailService
-  node_event_form_ext.qr_code_generator:
-    class: \Drupal\node_event_form_ext\Service\QRCodeGenerator

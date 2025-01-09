@@ -23,7 +23,7 @@ content:
     region: content
   field_events_by_group_ref:
     type: viewsreference_formatter
-    label: hidden
+    label: above
     settings:
       plugin_types:
         - block

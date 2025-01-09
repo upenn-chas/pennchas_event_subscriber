@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.accordion_content
     - field.field.block_content.accordion_content.field_description
-    - field.field.block_content.accordion_content.field_tags
   module:
     - text
 id: block_content.accordion_content.default
@@ -20,12 +19,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_tags:
-    type: options_buttons
-    weight: 26
-    region: content
-    settings: {  }
     third_party_settings: {  }
   info:
     type: string_textfield

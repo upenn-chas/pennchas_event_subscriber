@@ -78,7 +78,9 @@
         "drupal/recaptcha_v3": "^2.0",
         "drupal/element_class_formatter": "^2.1",
         "drupal/twig_attributes": "^2.0",
-        "drupal/better_exposed_filters": "^7.0"
+        "drupal/better_exposed_filters": "^7.0",
+        "drupal/views_data_export": "^1.5",
+        "drupal/custom_view_filters": "^2.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -123,6 +125,9 @@
             },
             "drupal/duration_field": {
                 "Field Attributes": "patches/duration_number_attributes.patch"
+            },
+            "drupal/core": {
+                "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch"
             }
         }
     },

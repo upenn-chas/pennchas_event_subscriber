@@ -46,31 +46,43 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
     } else if ($formId === 'node_room_delete_form') {
         $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
-    } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID && \Drupal::request()->get('view_id') === Constant::VIEW_EVENT_CALENDAR) {
-        // dd($form);
+    } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
+        $viewId = \Drupal::request()->get('view_id');
+        if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
+            if (isset($form['start']) && isset($form['start']['#attributes'])) {
+                unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
+            }
+            if (isset($form['end']) && isset($form['end']['#attributes'])) {
+                unset($form['end']['#attributes']['data-bef-auto-submit-exclude']);
+            }
 
-        if(isset($form['start']) && isset($form['start']['#attributes'])) {
-            unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
-        }
-        if(isset($form['end']) && isset($form['end']['#attributes'])) {
-            unset($form['end']['#attributes']['data-bef-auto-submit-exclude']);
-        }
+            if (isset($form['event_type'])) {
+                $form['event_type']['#default_value'] = 1;
+                $form['event_type']['#value'] = 1;
+            }
 
-        if(isset($form['event_type'])) {
-            $form['event_type']['#default_value'] = 1;
-            $form['event_type']['#value'] = 1;
-        }
+            if (isset($form['campus_wide'])) {
+                $form['campus_wide']['#default_value'] = 1;
+                $form['campus_wide']['#value'] = 1;
+            }
 
-        if(isset($form['campus_wide'])) {
-            $form['campus_wide']['#default_value'] = 1;
-            $form['campus_wide']['#value'] = 1;
-        }
+            if (isset($form['content_type'])) {
+                $form['content_type']['#default_value'] = 1;
+                $form['content_type']['#value'] = 1;
+            }
+        } else if ($viewId === 'reports_view') {
+            if(isset($form['moderation_state'])) {
+                unset($form['moderation_state']['#options']['All']);
+            }
 
-        if(isset($form['content_type'])) {
-            $form['content_type']['#default_value'] = 1;
-            $form['content_type']['#value'] = 1;
+            if(isset($form['exposed_from_date'])) {
+                $form['exposed_from_date']['#title'] = t('From');
+            }
+
+            if(isset($form['exposed_to_date'])) {
+                $form['exposed_to_date']['#title'] = t('To');
+            }
         }
-        // dd($form);
     }
 }
 
@@ -155,7 +167,7 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
 function pennchas_form_alter_role_form(array &$form, FormStateInterface $formState)
 {
     $umberaRoles = [];
-    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
+    $terms = \Drupal::entityTypeManager()->accessCheck(false)->getStorage('taxonomy_term')->loadTree('role_category');
 
     if (!empty($terms)) {
         foreach ($terms as $term) {

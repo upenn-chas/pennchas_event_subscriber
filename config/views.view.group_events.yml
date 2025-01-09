@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
     - node.type.chas_event
   module:
     - group
@@ -189,20 +188,17 @@ display:
       style:
         type: views_bootstrap_grid
         options:
+          grouping: {  }
           row_class: ''
           default_row_class: true
-          uses_fields: false
-          grid_class: ' events grid-4'
+          grid_class: ''
           col_xs: none
           col_sm: none
           col_md: none
           col_lg: none
           col_xl: none
       row:
-        type: 'entity:node'
-        options:
-          relationship: none
-          view_mode: teaser
+        type: fields
       query:
         type: views_query
         options:
@@ -229,8 +225,6 @@ display:
             'group_node:program_community': '0'
             'group_node:reserve_room': '0'
             'group_node:room': '0'
-      css_class: ''
-      group_by: true
       header: {  }
       footer: {  }
       display_extenders: {  }

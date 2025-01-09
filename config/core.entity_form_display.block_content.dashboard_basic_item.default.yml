@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.dashboard_basic_item
     - field.field.block_content.dashboard_basic_item.body
-    - field.field.block_content.dashboard_basic_item.field_block_display_condition_wi
     - field.field.block_content.dashboard_basic_item.field_circle_colour
     - field.field.block_content.dashboard_basic_item.field_cta
     - field.field.block_content.dashboard_basic_item.field_heading
@@ -29,12 +28,6 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  field_block_display_condition_wi:
-    type: options_buttons
-    weight: 3
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_circle_colour:
     type: color_field_widget_html5

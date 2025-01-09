@@ -14,6 +14,9 @@ const EVENT_EVALUTION_VIEW_DISPLAY_ID = 'event_evaluate_page_view';
 function event_evaluation_views_pre_view(ViewExecutable $view, $display_id, &$args)
 {
     if ($view->id() === EVENT_EVALUTION_VIEW_ID && $display_id === EVENT_EVALUTION_VIEW_DISPLAY_ID) {
+        if(!count($args)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
         $node_id = $args[0];
         $node = Node::load($node_id);
         if (!$node) {
@@ -31,10 +34,7 @@ function event_evaluation_views_pre_view(ViewExecutable $view, $display_id, &$ar
             '#type' => 'container',
             '#id' => 'event_evaluation_form_continer',
             'form_wrapper' => [
-                '#type' => 'markup',
-                '#markup' => \Drupal::service('renderer')->render(
-                    \Drupal::formBuilder()->getForm(new \Drupal\event_evaluation\Form\EventEvaluationForm($node))
-                )
+                \Drupal::formBuilder()->getForm(new \Drupal\event_evaluation\Form\EventEvaluationForm($node))
             ]
         ];
     }
