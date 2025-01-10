@@ -168,7 +168,8 @@ function penchas_preprocess_node(&$variables) {
 
         if($node->get('moderation_state')){
           if($node->get('moderation_state')->value == 'draft'){
-            $moderator_link = '<li><a href="#content-moderation-entity-moderation-form"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+            // $moderator_link = '<li><a href="#content-moderation-entity-moderation-form"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+            $moderator_link = '<li><a href="'.base_path().'moderate/event/'.$node->id().'"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
           }
         }
 
@@ -351,6 +352,7 @@ function penchas_preprocess_block(&$variables) {
     // Or render the entire content for a block.
     $content = \Drupal::entityTypeManager()
       ->getViewBuilder('block_content')
+      ->accessCheck(false)
       ->view($block);
 
     // Do something with the content, e.g., return or output.

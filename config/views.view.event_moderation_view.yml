@@ -1,16 +1,14 @@
-uuid: c5ee79f2-0a02-4cc3-8e17-e72ebb15b844
+uuid: 6ffb3273-0a06-4845-9f0a-d0fdfd866200
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.full
+    - core.entity_view_mode.node.moderator
     - node.type.chas_event
-    - workflows.workflow.editorial
   module:
-    - content_moderation
     - node
-id: event_evaluation_view
-label: 'Event Evaluation View'
+id: event_moderation_view
+label: 'Event Moderation View'
 module: views
 description: 'Provide the event evaluation interface'
 tag: ''
@@ -150,47 +148,6 @@ display:
           break_phrase: false
           not: false
       filters:
-        moderation_state:
-          id: moderation_state
-          table: node_field_data
-          field: moderation_state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: moderation_state_filter
-          operator: in
-          value:
-            editorial-published: editorial-published
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         type:
           id: type
           table: node_field_data
@@ -211,7 +168,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: full
+          view_mode: moderator
       query:
         type: views_query
         options:
@@ -232,17 +189,16 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-      tags:
-        - 'config:workflow_list'
-  event_evaluate_page_view:
-    id: event_evaluate_page_view
-    display_title: 'Event Evaluation Page '
+      tags: {  }
+  event_moderate_page_view:
+    id: event_moderate_page_view
+    display_title: 'Event moderate Page '
     display_plugin: page
     position: 1
     display_options:
       display_description: ''
       display_extenders: {  }
-      path: evaluate/node/%node
+      path: moderate/event/%node
     cache_metadata:
       max-age: -1
       contexts:
@@ -251,5 +207,4 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-      tags:
-        - 'config:workflow_list'
+      tags: {  }

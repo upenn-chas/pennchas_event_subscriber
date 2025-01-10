@@ -40,9 +40,9 @@ class ModerationEntityEmailService
 
         if ($roleWithModerationPermission) {
             $users = \Drupal::entityQuery('user')
+                ->accessCheck(false)
                 ->condition('status', 1)
                 ->condition('roles', $roleWithModerationPermission, 'IN')
-                ->accessCheck(false)
                 ->execute();
             return $users ? array_keys($users) : [];
         }

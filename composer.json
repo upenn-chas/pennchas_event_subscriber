@@ -126,6 +126,9 @@
             },
             "drupal/duration_field": {
                 "Field Attributes": "patches/duration_number_attributes.patch"
+            },
+            "drupal/core": {
+                "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch"
             }
         }
     },

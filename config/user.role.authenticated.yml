@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.webform_default
+    - node.type.reserve_room
   module:
     - comment
     - contact
@@ -12,6 +13,7 @@ dependencies:
     - filter
     - group
     - media
+    - node
     - search
     - shortcut
     - system
@@ -27,7 +29,12 @@ permissions:
   - 'access group overview'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'create reserve_room content'
+  - 'delete any reserve_room content'
   - 'delete own files'
+  - 'delete own reserve_room content'
+  - 'edit any reserve_room content'
+  - 'edit own reserve_room content'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'

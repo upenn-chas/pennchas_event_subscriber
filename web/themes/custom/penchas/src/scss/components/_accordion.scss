@@ -258,10 +258,14 @@
   margin: 25px 0;
   h2.accordion-header{
     text-transform: capitalize;
-    margin: 0 0 25px 0;
+    margin: 0 0 8px 0;
     overflow: hidden;
     button {
       padding-bottom: 0;
+    }
+
+    .tags {
+      margin-bottom: 15px;
     }
     &:has(.tags) button{
       &:before {

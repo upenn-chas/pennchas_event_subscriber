@@ -354,43 +354,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          c497a713-4bd4-4e68-afdb-7699b8280099:
-            uuid: c497a713-4bd4-4e68-afdb-7699b8280099
-            region: content
-            configuration:
-              id: 'extra_field_block:node:room:content_moderation_control'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 2
-            additional: {  }
-          d082ade3-1a79-4a7a-8f36-a37c246ff242:
-            uuid: d082ade3-1a79-4a7a-8f36-a37c246ff242
-            region: content
-            configuration:
-              id: 'extra_field_block:node:room:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 3
-            additional: {  }
-          2413d8ca-f3ac-4e8e-94c1-ce1b4ce4ddf7:
-            uuid: 2413d8ca-f3ac-4e8e-94c1-ce1b4ce4ddf7
-            region: content
-            configuration:
-              id: 'field_block:node:room:field_circle_color'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: color_field_formatter_text
-                label: above
-                settings:
-                  format: hex
-                  opacity: true
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }

@@ -168,7 +168,7 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
 function pennchas_form_alter_role_form(array &$form, FormStateInterface $formState)
 {
     $umberaRoles = [];
-    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
+    $terms = \Drupal::entityTypeManager()->accessCheck(false)->getStorage('taxonomy_term')->loadTree('role_category');
 
     if (!empty($terms)) {
         foreach ($terms as $term) {

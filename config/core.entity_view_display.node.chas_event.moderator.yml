@@ -35,91 +35,18 @@ dependencies:
     - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
   module:
+    - file
+    - image
     - layout_builder
     - layout_builder_restrictions
-    - layout_discovery
+    - link
+    - options
+    - smart_date
     - user
 third_party_settings:
   layout_builder:
-    enabled: true
+    enabled: false
     allow_custom: false
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          40441ea4-c61e-4214-bf55-a8c6a682cbf9:
-            uuid: 40441ea4-c61e-4214-bf55-a8c6a682cbf9
-            region: content
-            configuration:
-              id: 'extra_field_block:node:chas_event:content_moderation_control'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 0
-            additional: {  }
-          c34d066b-4d27-4232-9cf4-eb94d61b917a:
-            uuid: c34d066b-4d27-4232-9cf4-eb94d61b917a
-            region: content
-            configuration:
-              id: 'field_block:node:chas_event:field_long_text'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: basic_string
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          ac28c213-2a41-4a5a-b2e6-0e12ea418cf6:
-            uuid: ac28c213-2a41-4a5a-b2e6-0e12ea418cf6
-            region: content
-            configuration:
-              id: 'extra_field_block:node:chas_event:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 2
-            additional: {  }
-          d60ce5b7-9b88-4b8a-871b-4d3aa057c1a0:
-            uuid: d60ce5b7-9b88-4b8a-871b-4d3aa057c1a0
-            region: content
-            configuration:
-              id: 'extra_field_block:node:chas_event:content_moderation_control'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 3
-            additional: {  }
-          afc91959-0528-4801-bc24-ae5510ea5d06:
-            uuid: afc91959-0528-4801-bc24-ae5510ea5d06
-            region: content
-            configuration:
-              id: 'field_block:node:chas_event:field_long_text'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: basic_string
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          9b3d15b3-a9b0-4e1d-bc83-64bf97e758f2:
-            uuid: 9b3d15b3-a9b0-4e1d-bc83-64bf97e758f2
-            region: content
-            configuration:
-              id: 'extra_field_block:node:chas_event:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 5
-            additional: {  }
-        third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
@@ -147,47 +74,250 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 26
     region: content
-  field_long_text:
+  field_actual_program_attendance:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_actual_program_expense:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_actual_program_outcomes:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_anticipated_cost:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_anticipated_participants:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_areas_for_improvement:
     type: basic_string
-    label: above
+    label: inline
     settings: {  }
     third_party_settings: {  }
     weight: 6
     region: content
+  field_banner:
+    type: image
+    label: inline
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_collaborators:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_college_houses:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_evaluation_notification:
+    type: boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_event_ends_on:
+    type: timestamp
+    label: inline
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_event_priority:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_event_schedule:
+    type: smartdate_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        - start
+        - end
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_file:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_intended_audience:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_intended_outcomes:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_link_1:
+    type: link
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_long_text:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_long_text_2:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_marketing_blurb:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_participants:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_program_communities:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_text_box:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_text_box_2:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 19
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 25
     region: content
 hidden:
-  field_actual_program_attendance: true
-  field_actual_program_expense: true
-  field_actual_program_outcomes: true
-  field_anticipated_cost: true
-  field_anticipated_participants: true
-  field_areas_for_improvement: true
-  field_banner: true
-  field_collaborators: true
-  field_college_houses: true
-  field_evaluation_notification: true
-  field_event_ends_on: true
-  field_event_priority: true
-  field_event_schedule: true
   field_feedback_form: true
-  field_file: true
   field_group: true
   field_group_ref: true
   field_groups: true
-  field_intended_audience: true
-  field_intended_outcomes: true
   field_is_campus_wide: true
-  field_link_1: true
-  field_location: true
-  field_long_text_2: true
-  field_marketing_blurb: true
-  field_participants: true
-  field_program_communities: true
-  field_text_box: true
-  field_text_box_2: true
