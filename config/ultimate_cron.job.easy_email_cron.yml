@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: easy_email_cron
 weight: 0
 module: easy_email
-callback: 'easy_email#cron'
+callback: easy_email_cron
 scheduler:
   id: simple
 launcher:

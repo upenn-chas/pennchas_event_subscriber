@@ -1,0 +1,30 @@
+uuid: bff682b4-4331-4477-a123-af1125f4cf8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_tags
+field_name: field_tags
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: first_year
+      label: 'First Year'
+    -
+      value: upperclass
+      label: Upperclass
+    -
+      value: credit_available
+      label: 'Credit Available'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

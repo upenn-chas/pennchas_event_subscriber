@@ -5,7 +5,9 @@ dependencies:
   config:
     - block_content.type.accordion_content
     - field.field.block_content.accordion_content.field_description
+    - field.field.block_content.accordion_content.field_tags
   module:
+    - element_class_formatter
     - text
 id: block_content.accordion_content.default
 targetEntityType: block_content
@@ -18,5 +20,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_tags:
+    type: list_string_list_class
+    label: hidden
+    settings:
+      list_type: ul
+      class: tags
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden: {  }
