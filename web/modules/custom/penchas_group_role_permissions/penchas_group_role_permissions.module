@@ -2,6 +2,9 @@
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Database\Database;
 use SimpleSAML\Auth\Simple;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\group\Entity\Group;
 
 /**
  * Implements hook_token_info().
@@ -135,4 +138,23 @@ function penchas_group_role_permissions_tokens(string $type, array $tokens, arra
   // }
 
   return $replacements;
+}
+
+function penchas_group_role_permissions_permission(){
+  $user = \Drupal::currentUser();
+  // dd($user);
+  $groups = \Drupal::service('entity_type.manager')
+    ->getStorage('group')
+    ->loadByProperties(['uid' => $user->id()]);
+  
+  foreach ($groups as $group) {
+    if ($group->hasPermission('access my events')) {
+      return AccessResult::allowed();
+    }
+  }
+  // if ($user->hasPermission('access my events')) {
+  //   return AccessResult::allowed();
+  // }else {
+    // return AccessResult::forbidden();
+  // }
 }

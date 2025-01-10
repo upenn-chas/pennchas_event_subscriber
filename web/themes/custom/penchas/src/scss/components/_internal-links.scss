@@ -39,6 +39,18 @@
         font-size: 14px;
 
       }
+
+      &.hide-in-mobile {
+        display: block;
+        @include media-query('mobile') {
+          display: none;
+        }
+      }
+      &.hide-in-desktop {
+        @media(min-width: 768px) {
+          display: none;
+        }
+      }
       &:after {
         content: "";
         display: block;
