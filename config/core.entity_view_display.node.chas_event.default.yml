@@ -36,7 +36,6 @@ dependencies:
     - node.type.chas_event
   module:
     - bootstrap_layout_builder
-    - field_group
     - file
     - image
     - layout_builder
@@ -160,7 +159,7 @@ third_party_settings:
                   timezone_override: ''
                   format: full_date
                   force_chronological: false
-                  add_classes: true
+                  add_classes: false
                   time_wrapper: true
                   localize: false
                   parts:
@@ -278,58 +277,6 @@ third_party_settings:
             weight: 7
             additional: {  }
         third_party_settings: {  }
-      -
-        layout_id: 'bootstrap_layout_builder:blb_col_1'
-        layout_settings:
-          label: ''
-          container_wrapper_classes: ''
-          container_wrapper_attributes: null
-          container_wrapper:
-            bootstrap_styles:
-              background:
-                background_type: null
-              background_color:
-                class: null
-              background_media:
-                image:
-                  media_id: null
-                video:
-                  media_id: null
-                background_options:
-                  background_position: center
-                  background_repeat: no-repeat
-                  background_attachment: not_fixed
-                  background_size: cover
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
-          section_attributes: null
-          regions_classes:
-            blb_region_col_1: ''
-          regions_attributes:
-            blb_region_col_1: null
-          breakpoints: {  }
-          layout_regions_classes: {  }
-          remove_gutters: '0'
-          context_mapping: {  }
-        components:
-          0da694bc-5930-42d5-8a86-a18a46184a8a:
-            uuid: 0da694bc-5930-42d5-8a86-a18a46184a8a
-            region: blb_region_col_1
-            configuration:
-              id: 'extra_field_block:node:chas_event:content_moderation_control'
-              label: 'Moderation control'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                settings: {  }
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
@@ -349,26 +296,6 @@ third_party_settings:
         - 'bootstrap_layout_builder:blb_col_3'
         - 'bootstrap_layout_builder:blb_col_4'
         - 'bootstrap_layout_builder:blb_col_6'
-  field_group:
-    group_test:
-      children: {  }
-      label: Test
-      parent_name: ''
-      region: hidden
-      weight: 20
-      format_type: html_element
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        element: div
-        show_label: false
-        label_element: h3
-        label_element_classes: ''
-        attributes: ''
-        effect: none
-        speed: fast
 id: node.chas_event.default
 targetEntityType: node
 bundle: chas_event

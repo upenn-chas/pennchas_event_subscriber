@@ -1,16 +1,16 @@
-uuid: 6ffb3273-0a06-4845-9f0a-d0fdfd866200
+uuid: 65a53b33-5ac5-43c4-b567-4d4cb932583b
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.moderator
     - node.type.chas_event
   module:
+    - group
     - node
-id: event_moderation_view
-label: 'Event Moderation View'
+id: chas_event_lists
+label: 'Chas Event Lists'
 module: views
-description: 'Provide the event evaluation interface'
+description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -21,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: ''
+      title: 'Chas Event Lists'
       fields:
         title:
           id: title
@@ -71,27 +71,9 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: full
+        type: none
         options:
           offset: 0
-          pagination_heading_level: h4
-          items_per_page: 1
-          total_pages: 1
-          id: 0
-          tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -103,51 +85,43 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: group_permission
+        options:
+          group_permission: 'access my events'
       cache:
         type: tag
         options: {  }
       empty: {  }
-      sorts: {  }
-      arguments:
-        nid:
-          id: nid
+      sorts:
+        created:
+          id: created
           table: node_field_data
-          field: nid
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
-          default_action: 'not found'
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: true
-          title: 'Event: {{ arguments.nid }} '
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          summary_options:
-            base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
         type:
           id: type
           table: node_field_data
@@ -157,18 +131,15 @@ display:
           plugin_id: bundle
           value:
             chas_event: chas_event
-          group: 1
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       style:
         type: default
       row:
-        type: 'entity:node'
+        type: fields
         options:
-          relationship: none
-          view_mode: moderator
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       query:
         type: views_query
         options:
@@ -186,25 +157,24 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
+        - route.group
+        - user.group_permissions
         - 'user.node_grants:view'
       tags: {  }
-  event_moderate_page_view:
-    id: event_moderate_page_view
-    display_title: 'Event moderate Page '
+  page_1:
+    id: page_1
+    display_title: Page
     display_plugin: page
     position: 1
     display_options:
-      display_description: ''
       display_extenders: {  }
-      path: moderate/event/%node
+      path: chas-event-lists
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
+        - route.group
+        - user.group_permissions
         - 'user.node_grants:view'
       tags: {  }

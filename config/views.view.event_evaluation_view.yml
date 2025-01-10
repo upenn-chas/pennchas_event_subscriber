@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.full
+    - core.entity_view_mode.node.moderator
     - node.type.chas_event
     - workflows.workflow.editorial
   module:
@@ -211,7 +211,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: full
+          view_mode: moderator
       query:
         type: views_query
         options:

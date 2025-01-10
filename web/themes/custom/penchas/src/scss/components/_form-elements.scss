@@ -563,6 +563,14 @@ label {
 .block-field-blocknodearticlefield-chas-news {
   padding-bottom: 30px;
 }
+
+.view-id-event_moderation_view {
+  padding-top: 20px;
+  .node--unpublished {
+    padding: 20px 0 0 0;
+  }
+ 
+}
 .node--view-mode-moderator .field--label-inline {
   border: 1px solid #ccc;
   margin-bottom: 15px;
@@ -571,10 +579,11 @@ label {
 }
 
 .node--view-mode-moderator .field--label-inline .field__item {
-  font-weight: 700;
+ 
 }
 .node--view-mode-moderator .field--label-inline .field__label {
   margin-right: 10px;
+  font-weight: 700;
 }
 
 

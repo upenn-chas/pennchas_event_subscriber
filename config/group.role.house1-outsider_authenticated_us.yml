@@ -13,5 +13,7 @@ scope: outsider
 global_role: authenticated
 group_type: house1
 permissions:
+  - 'access my events'
+  - 'access my rerservations'
   - 'view group'
   - 'view group_node:room entity'

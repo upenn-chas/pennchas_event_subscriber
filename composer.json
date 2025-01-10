@@ -80,7 +80,8 @@
         "drupal/twig_attributes": "^2.0",
         "drupal/better_exposed_filters": "^7.0",
         "drupal/views_data_export": "^1.5",
-        "drupal/custom_view_filters": "^2.1"
+        "drupal/custom_view_filters": "^2.1",
+        "drupal/verf": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

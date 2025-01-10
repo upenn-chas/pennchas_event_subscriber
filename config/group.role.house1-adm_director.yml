@@ -15,6 +15,7 @@ group_type: house1
 permissions:
   - 'access content overview'
   - 'access group_node overview'
+  - 'access my events'
   - 'create group_node:chas_event entity'
   - 'create group_node:notices entity'
   - 'create group_node:page entity'
