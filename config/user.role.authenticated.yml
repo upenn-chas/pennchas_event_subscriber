@@ -6,6 +6,7 @@ dependencies:
     - filter.format.basic_html
     - filter.format.webform_default
     - node.type.reserve_room
+    - node.type.room
   module:
     - comment
     - contact
@@ -41,3 +42,4 @@ permissions:
   - 'use text format basic_html'
   - 'use text format webform_default'
   - 'view media'
+  - 'view room revisions'

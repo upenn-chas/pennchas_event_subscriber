@@ -20,7 +20,6 @@ weight: -5
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access my events'
   - 'access my rerservations'
   - 'administer nodes'
   - 'create chas_event content'

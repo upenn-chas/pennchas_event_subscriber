@@ -57,12 +57,16 @@
  */
 #}
 {# is_member_of_group: {{dump(is_member_of_group)}} #}
-{{ title_prefix }}
-<h3{{ title_attributes }}>
-  <a href="{{ url }}">{{ title }}</a>
-</h3>
-{{ title_suffix }}
-<p>{{ result.custom_field }}</p>
-{% if snippet %}
-  <p{{ content_attributes }}>{{ snippet }}</p>
+{# {{ dump(result.extra.node_access) }} #}
+
+{% if result.extra.node_access == 'TRUE' %}
+  {{ title_prefix }}
+  <h3{{ title_attributes }}>
+    <a href="{{ url }}">{{ title }}</a>
+  </h3>
+  {{ title_suffix }}
+  <p>{{ result.custom_field }}</p>
+  {% if snippet %}
+    <p{{ content_attributes }}>{{ snippet }}</p>
+  {% endif %}
 {% endif %}

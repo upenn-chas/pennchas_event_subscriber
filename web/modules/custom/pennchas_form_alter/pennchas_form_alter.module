@@ -234,6 +234,57 @@ function _get_group_rooms(int $groupId)
     return $roomOptions;
 }
 
+// function pennchas_form_alter_preprocess_search_result(array &$variables) {
+//     dd($variables);
+//     // // Loop through the results and modify them as needed.
+//     // foreach ($results as &$result) {
+//     //   // For example, add custom text to the search result title.
+//     //   if ($result['title'] == 'Some Specific Title') {
+//     //     $result['title'] = 'Modified Title';
+//     //   }
+  
+//     //   // You can also alter other properties such as the URL, snippet, etc.
+//     //   $result['snippet'] = 'This is a custom snippet for the result.';
+//     // }
+//   }
+/**
+ * Implements search_api_result_alter().
+ */
+function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
+    
+    $variables = [];
+    $current_user = \Drupal::currentUser();
+    $variables['node_access'] = 'TRUE';
+    if ($node->bundle() == 'reserve_room') {
+      $connection = Database::getConnection();
+      $variables['node_access'] = 'FALSE';
+      if ($current_user->isAuthenticated()) {
+        $variables['node_access'] = 'TRUE';
+        $query = $connection->select('group_relationship_field_data', 'gr')
+        ->fields('gr', ['gid'])
+            ->condition('entity_id', $current_user->id(), '=')
+        // ->condition('entity_id', $node->id(), '=')
+        ->condition('plugin_id', 'group_membership', '=');
+        $results = $query->execute()->fetchAll();
+        dump($results);
+        if($results){
+
+        }
+      }
+    }
+    return $variables;
+}
+
+// function pennchas_form_alter_search_api_result_alter(array &$results) {
+//     foreach ($results as &$result) {
+//       // Example: Modify the title of search results.
+//       if ($result->getId() && $result->get('type') == 'article') {
+//         $result->set('title', 'Modified Title: ' . $result->get('title'));
+//       }
+//     }
+//   }
+  
+
 /**
  * Implements hook_query_TAG_alter(): tag search_$type with $type node_search.
  */

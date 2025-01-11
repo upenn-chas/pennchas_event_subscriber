@@ -1,12 +1,17 @@
 <?php
+
+/**
+ * @file
+ */
+
+use Drupal\user\Entity\User;
 use Drupal\Core\Render\BubbleableMetadata;
-use Drupal\Core\Database\Database;
 use SimpleSAML\Auth\Simple;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\group\Entity\Group;
-use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
+use Drupal\group\GroupManager;
 
 /**
  * Implements hook_token_info().
@@ -16,7 +21,7 @@ function penchas_group_role_permissions_token_info(): array {
   $tokens['penchas_group_role_permissions']['event_subheading'] = [
     'name' => t('Subheading for Dashboard'),
     'description' => t("Event Info Subheading for Dashboard pages."),
-    //'type' => 'hex',
+    // 'type' => 'hex',
   ];
   // $tokens['penchas_group_role_permissions']['user_assigned_role'] = [
   //   'name' => t('Role - Drupal + Group'),
@@ -31,14 +36,13 @@ function penchas_group_role_permissions_token_info(): array {
   //   'name' => t('Link'),
   //   'description' => t("Link to add the "),
   // ];
-  
   return [
     'types' => [
       'penchas_group_role_permissions' => [
         'name' => t('Dashboard'),
         'description' => t('Custom Tokens for Dashboard pages'),
         'needs-data' => 'penchas_group_role_permissions',
-      ]
+      ],
     ],
     'tokens' => $tokens,
   ];
@@ -51,7 +55,8 @@ function penchas_group_role_get_saml_response() {
   // Initialize the SimpleSAMLphp authentication source.
   var_dump('control came here');
   dd('shajsdhjsahdsajhd');
-  $authSource = new Simple('default-sp'); // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
+  // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
+  $authSource = new Simple('default-sp');
 
   // Ensure the user is authenticated.
   if ($authSource->isAuthenticated()) {
@@ -75,100 +80,147 @@ function penchas_group_role_get_saml_response() {
   }
 }
 
-
 /**
  * Implements hook_tokens().
  */
 function penchas_group_role_permissions_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
   $replacements = [];
 
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'event_subheading':
-          $current_user_id = \Drupal::currentUser()->id(); 
+  foreach ($tokens as $name => $original) {
+    switch ($name) {
+      case 'event_subheading':
+        $current_user_id = \Drupal::currentUser()->id();
 
-          $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-          $query->fields('ms', ['content_entity_id']);
-          $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
-          $query->condition('ms.uid', $current_user_id, '=');
-          $query->condition('ms.moderation_state', 'draft', '=');
-          $query->condition('fs.type', 'chas_event', '=');
-          $result = $query->execute()->fetchCol();
+        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+        $query->fields('ms', ['content_entity_id']);
+        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
+        $query->condition('ms.uid', $current_user_id, '=');
+        $query->condition('ms.moderation_state', 'draft', '=');
+        $query->condition('fs.type', 'chas_event', '=');
+        $result = $query->execute()->fetchCol();
 
-          $total_count = count($result);
-          $replacements[$original] = 'You have '.$total_count.' events for moderation.';
-          break;
-        case 'user_dashboard_name':
-          $current_user_id = \Drupal::currentUser()->id();
-          $current_user = \Drupal\user\Entity\User::load($current_user_id);
-          $user_name = $current_user->field_preferred_name->value;
-          if(empty($user_name)){
-            $user_name = $current_user->field_full_name->value;
-          }
-          $replacements[$original] = $user_name;
-          break;
-        // case 'user_assigned_role':
-        //   $group_roles = [];
-        //   $connection = Database::getConnection();
-        //   $current_user = \Drupal::currentUser();
-        //   $query = $connection->select('group_relationship_field_data', 'gr')
-        //       ->fields('gr', ['id'])
-        //       ->condition('entity_id', $current_user->id(), '=')
-        //       ->condition('plugin_id', 'group_membership', '=');
-        //   $results = $query->execute()->fetchAll();
-        //   if(!empty($results)){
-        //       foreach ($results as $result) {
-        //         $current_user_role_id = $result->id;
-        //         $role_query = $connection->select('group_relationship__group_roles', 'grr')
-        //         ->fields('grr', ['group_roles_target_id'])
-        //         ->condition('entity_id', $current_user_role_id, '=');
-        //         $group_roles_results = $role_query->execute()->fetchAll();
-                
-        //         if(!empty($group_roles_results)){
-        //           foreach ($group_roles_results as $group_role_result) {
-        //             $group_roles[$group_role_result->group_roles_target_id] = $group_role_result->group_roles_target_id;
-        //           }
-        //         }
-        //       }
-        //     }
-        //     $group_roles_output = implode(',', $group_roles);
-        //     $replacements[$original] = $group_roles_output;
-        //     break;
+        $total_count = count($result);
+        $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
+        break;
 
-      }
+      case 'user_dashboard_name':
+        $current_user_id = \Drupal::currentUser()->id();
+        $current_user = User::load($current_user_id);
+        $user_name = $current_user->field_preferred_name->value;
+        if (empty($user_name)) {
+          $user_name = $current_user->field_full_name->value;
+        }
+        $replacements[$original] = $user_name;
+        break;
+
+      // Case 'user_assigned_role':
+      //   $group_roles = [];
+      //   $connection = Database::getConnection();
+      //   $current_user = \Drupal::currentUser();
+      //   $query = $connection->select('group_relationship_field_data', 'gr')
+      //       ->fields('gr', ['id'])
+      //       ->condition('entity_id', $current_user->id(), '=')
+      //       ->condition('plugin_id', 'group_membership', '=');
+      //   $results = $query->execute()->fetchAll();
+      //   if(!empty($results)){
+      //       foreach ($results as $result) {
+      //         $current_user_role_id = $result->id;
+      //         $role_query = $connection->select('group_relationship__group_roles', 'grr')
+      //         ->fields('grr', ['group_roles_target_id'])
+      //         ->condition('entity_id', $current_user_role_id, '=');
+      //         $group_roles_results = $role_query->execute()->fetchAll();
+      // if(!empty($group_roles_results)){
+      //           foreach ($group_roles_results as $group_role_result) {
+      //             $group_roles[$group_role_result->group_roles_target_id] = $group_role_result->group_roles_target_id;
+      //           }
+      //         }
+      //       }
+      //     }
+      //     $group_roles_output = implode(',', $group_roles);
+      //     $replacements[$original] = $group_roles_output;
+      //     break;.
     }
+  }
   // }
-
   return $replacements;
 }
 
-function penchas_group_role_permissions_permission(){
+/**
+ *
+ */
+function penchas_group_role_permissions_permission() {
   $user = \Drupal::currentUser();
   // dd($user);
   // $groups = \Drupal::service('entity_type.manager')
   //   ->getStorage('group')
   //   ->loadByProperties(['uid' => $user->id()]);
-  
-  // foreach ($groups as $group) {
+  // Foreach ($groups as $group) {
   //   if ($group->hasPermission('access my events')) {
   //     return AccessResult::allowed();
   //   }
   // }
   if ($user->hasPermission('access my events')) {
     return AccessResult::allowed();
-  }else {
+  }
+  else {
     return AccessResult::forbidden();
   }
 }
 
+/**
+ *
+ */
 function penchas_group_role_permissions_node_access(Node $node, $op, AccountInterface $account) {
-  // Check if the operation is 'view' and the node is restricted
-  if ($op == 'view' && $node->bundle() == 'chas_event' && !user_has_permission($account, 'view restricted node')) {
-    return AccessResult::forbidden();
+
+  $nid = $node->id();
+  if ($node->bundle() == 'chas_event') {
+    $query = \Drupal::database()->select('node_field_data', 'n');
+    $query->leftJoin('group_relationship_field_data', 'gr', 'n.nid = gr.entity_id');
+    $query->fields('gr',['gid']);
+    $query->condition('n.type', 'chas_event');
+    $result = $query->execute()->fetchCol();
+    // dd($result);
+    foreach($result as $items => $item){
+      if (!user_has_permission($account, 'access my events')) {
+        // dd(check_user_group_permission($account, $item, 'access my events'));
+        // if (!check_user_group_permission($account, $item, 'access my events')) {
+          return AccessResult::forbidden();
+        // }
+      }
+    }
   }
 
   return AccessResult::allowed();
 }
+
+/**
+ *
+ */
+// function check_user_group_permission(AccountInterface $account, $group_id, $permission) {
+//   // Load the group entity by group ID.
+//   $group = Group::load($group_id);
+//   if ($group) {
+//     // Get all group memberships for the user.
+//     // $memberships = \Drupal::service('group.query')->getGroupMemberships($account);
+//     $group_manager = \Drupal::service('group.manager');
+
+//     $group_memberships = $group_manager->getGroupsByUser($account);
+//     // Check if the user is a member of the given group.
+//     foreach ($group_memberships as $group) {
+//     // Compare the group's ID.
+//       if ($group->id() == $group_id) {
+//         $roles = $group->getMemberRoles($account);
+//         foreach ($roles as $role) {
+//           if ($role->hasPermission($permission)) {
+//             return TRUE;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   return FALSE;
+// }
 
 /**
  * Custom function to check user permissions.

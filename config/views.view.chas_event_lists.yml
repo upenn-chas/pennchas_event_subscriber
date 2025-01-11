@@ -5,8 +5,8 @@ dependencies:
   config:
     - node.type.chas_event
   module:
-    - group
     - node
+    - user
 id: chas_event_lists
 label: 'Chas Event Lists'
 module: views
@@ -85,9 +85,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: group_permission
+        type: perm
         options:
-          group_permission: 'access my events'
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -157,9 +157,8 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - route.group
-        - user.group_permissions
         - 'user.node_grants:view'
+        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -174,7 +173,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - route.group
-        - user.group_permissions
         - 'user.node_grants:view'
+        - user.permissions
       tags: {  }

@@ -119,6 +119,11 @@
     top: 38px;
     left: -20px;
     li {
+      &.hide-in-desktop {
+        @media(min-width: 768px) {
+          display: none;
+        }
+      }
       a {
         padding: 7px 0;
         color :$primaryColor;
