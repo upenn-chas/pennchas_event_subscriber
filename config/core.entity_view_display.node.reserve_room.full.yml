@@ -10,7 +10,10 @@ dependencies:
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
+    - field.field.node.reserve_room.field_last_moderated_by
+    - field.field.node.reserve_room.field_last_moderation_message
     - field.field.node.reserve_room.field_long_text
+    - field.field.node.reserve_room.field_moderation_finished_at
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
@@ -128,4 +131,7 @@ content:
     region: content
 hidden:
   field_event_ends_on: true
+  field_last_moderated_by: true
+  field_last_moderation_message: true
+  field_moderation_finished_at: true
   layout_builder__layout: true

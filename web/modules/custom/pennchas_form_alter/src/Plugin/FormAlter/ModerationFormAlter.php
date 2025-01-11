@@ -23,7 +23,6 @@ class ModerationFormAlter
             $form['new_state']['#options']['pending'] = 'Pending';
         }
         $form['#submit'][] = [$this, 'moderationFormSubmit'];
-
         return $form;
     }
 
@@ -31,9 +30,11 @@ class ModerationFormAlter
     {
         $node = $formState->get('entity');
         if ($node instanceof NodeInterface) {
+            $nodeType = $node->getType();
+            $node = Node::load($node->id());
             $moderationState = $formState->getValue('new_state');
             $message = $formState->getValue('revision_log');
-            $nodeType = $node->getType();
+            $this->updateNodeModerationDetails($node, $moderationState, $message);
             if ($nodeType === Constant::NODE_RESERVE_ROOM) {
                 $template = Constant::RESERVER_ROOM_EMAIL_MODERATION;
                 if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
@@ -83,5 +84,18 @@ class ModerationFormAlter
         } catch (\Exception $e) {
             \Drupal::logger('pennchas_form_alter')->error($e->getMessage(), $e->getTrace());
         }
+    }
+
+    protected function updateNodeModerationDetails(Node $node, $state, $message)
+    {
+        $node->set('field_last_moderated_by', \Drupal::currentUser()->id());
+        $node->set('field_last_moderation_message', $message);
+        $node->set('moderation_state', $state);
+        if ($state === Constant::MOD_STATUS_PUBLISHED || $state === Constant::MOD_STATUS_DENIED) {
+            $node->set('field_moderation_finished_at', time());
+        } else {
+            $node->set('field_moderation_finished_at', null);
+        }
+        $node->save();
     }
 }

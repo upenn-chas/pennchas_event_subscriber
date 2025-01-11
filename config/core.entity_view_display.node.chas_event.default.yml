@@ -24,11 +24,14 @@ dependencies:
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_outcomes
     - field.field.node.chas_event.field_is_campus_wide
+    - field.field.node.chas_event.field_last_moderated_by
+    - field.field.node.chas_event.field_last_moderation_message
     - field.field.node.chas_event.field_link_1
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box
@@ -456,6 +459,22 @@ content:
     third_party_settings: {  }
     weight: 10
     region: content
+  field_last_moderated_by:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 28
+    region: blb_region_col_1
+  field_last_moderation_message:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 29
+    region: blb_region_col_1
   field_link_1:
     type: link
     label: above
@@ -497,6 +516,25 @@ content:
     third_party_settings: {  }
     weight: 20
     region: content
+  field_moderation_finished_at:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 30
+    region: blb_region_col_1
   field_participants:
     type: list_default
     label: above
