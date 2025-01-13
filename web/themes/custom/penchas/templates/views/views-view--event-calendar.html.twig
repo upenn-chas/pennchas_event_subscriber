@@ -27,6 +27,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+
 <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
   {{ title_prefix }}
   {% if title %}
@@ -54,8 +55,10 @@
     </div>
   {% endif %}
 
+
   {% if rows %}
     <div class="calendar-container view-content row">
+    <div class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
       {{ rows }}
     </div>
   {% elseif empty %}

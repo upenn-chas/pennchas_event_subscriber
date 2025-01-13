@@ -10,9 +10,9 @@ use Drupal\views\Views;
  */
 function event_calendar_preprocess_views_view_fullcalendar(array &$variables)
 {
-  if ($variables['view']->id() === 'event_calendar') {
-    $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
-  }
+  // if ($variables['view']->id() === 'event_calendar') {
+  //   $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
+  // }
 }
 
 /**
