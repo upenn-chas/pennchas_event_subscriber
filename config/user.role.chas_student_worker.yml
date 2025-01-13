@@ -14,6 +14,11 @@ dependencies:
     - file
     - node
     - penchas_group_role_permissions
+    - pennchas_form_alter
+third_party_settings:
+  pennchas_form_alter:
+    umbera_roles:
+      'Anyone with a Pennkey': 'Anyone with a Pennkey'
 id: chas_student_worker
 label: 'CHAS Student Worker'
 weight: -5

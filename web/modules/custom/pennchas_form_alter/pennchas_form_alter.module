@@ -44,7 +44,12 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $node  = $formState->getFormObject()->getEntity();
         $groupId = (int) $node->get('field_group')->getString();
         $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
-    } else if ($formId === 'node_room_delete_form') {
+    } else if (
+        $formId === 'node_room_delete_form'
+        || $formId === 'node_chas_event_delete_form'
+        || $formId === 'node_reserve_room_delete_form'
+        || $formId === 'node_notices_delete_form'
+    ) {
         $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
     } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
         $viewId = \Drupal::request()->get('view_id');
@@ -70,17 +75,19 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
                 $form['content_type']['#default_value'] = 1;
                 $form['content_type']['#value'] = 1;
             }
-        } else if ($viewId === 'moderation_reports'
-            || $viewId === 'room_reservation_reports') {
-            if(isset($form['moderation_state'])) {
+        } else if (
+            $viewId === 'moderation_reports'
+            || $viewId === 'room_reservation_reports'
+        ) {
+            if (isset($form['moderation_state'])) {
                 unset($form['moderation_state']['#options']['All']);
             }
 
-            if(isset($form['exposed_from_date'])) {
+            if (isset($form['exposed_from_date'])) {
                 $form['exposed_from_date']['#title'] = t('From');
             }
 
-            if(isset($form['exposed_to_date'])) {
+            if (isset($form['exposed_to_date'])) {
                 $form['exposed_to_date']['#title'] = t('To');
             }
         }
@@ -91,10 +98,12 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
 {
     $node = $formState->getFormObject()->getEntity();
     if ($node instanceof Node && $node->hasField('moderation_state')) {
-        if ($node->get('moderation_state')->getString() !== Constant::MOD_STATUS_DELETE) {
+        $currentState = $node->get('moderation_state')->getString();
+        if ($currentState !== Constant::MOD_STATUS_DELETE) {
             $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
             $node->setUnpublished();
-            $node->setRevisionLogMessage(t('Deleted'));
+            $node->setNewRevision(true);
+            $node->setRevisionLogMessage($currentState);
             $node->save();
 
             \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
@@ -168,7 +177,7 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
 function pennchas_form_alter_role_form(array &$form, FormStateInterface $formState)
 {
     $umberaRoles = [];
-    $terms = \Drupal::entityTypeManager()->accessCheck(false)->getStorage('taxonomy_term')->loadTree('role_category');
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
 
     if (!empty($terms)) {
         foreach ($terms as $term) {
