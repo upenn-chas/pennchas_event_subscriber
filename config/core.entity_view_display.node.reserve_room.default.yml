@@ -12,10 +12,7 @@ dependencies:
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
-    - field.field.node.reserve_room.field_last_moderated_by
-    - field.field.node.reserve_room.field_last_moderation_message
     - field.field.node.reserve_room.field_long_text
-    - field.field.node.reserve_room.field_moderation_finished_at
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
@@ -82,65 +79,6 @@ third_party_settings:
               block_revision_id: 391
               block_serialized: null
             weight: 0
-            additional: {  }
-          7a43226c-33fb-400a-9d13-a22b05bdb371:
-            uuid: 7a43226c-33fb-400a-9d13-a22b05bdb371
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_last_moderated_by'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          f96b8f79-f597-42db-ac42-4480984081de:
-            uuid: f96b8f79-f597-42db-ac42-4480984081de
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_last_moderation_message'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          24cb3813-a1b5-47e6-83b2-4909fe3ccfcd:
-            uuid: 24cb3813-a1b5-47e6-83b2-4909fe3ccfcd
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_moderation_finished_at'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: timestamp
-                label: above
-                settings:
-                  date_format: medium
-                  custom_date_format: ''
-                  timezone: ''
-                  tooltip:
-                    date_format: long
-                    custom_date_format: ''
-                  time_diff:
-                    enabled: false
-                    future_format: '@interval hence'
-                    past_format: '@interval ago'
-                    granularity: 2
-                    refresh: 60
-                third_party_settings: {  }
-            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
@@ -475,22 +413,6 @@ content:
     third_party_settings: {  }
     weight: 26
     region: content
-  field_last_moderated_by:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 28
-    region: blb_region_col_1
-  field_last_moderation_message:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 29
-    region: blb_region_col_1
   field_long_text:
     type: basic_string
     label: above
@@ -498,25 +420,6 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
-  field_moderation_finished_at:
-    type: timestamp
-    label: above
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-      tooltip:
-        date_format: long
-        custom_date_format: ''
-      time_diff:
-        enabled: false
-        future_format: '@interval hence'
-        past_format: '@interval ago'
-        granularity: 2
-        refresh: 60
-    third_party_settings: {  }
-    weight: 30
-    region: blb_region_col_1
   field_phone:
     type: string
     label: above

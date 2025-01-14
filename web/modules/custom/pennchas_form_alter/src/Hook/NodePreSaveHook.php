@@ -9,7 +9,7 @@ use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Hook\Trait\EntityHookTrait;
 use Drupal\pennchas_form_alter\Util\Constant;
 
-class NodePreInsertHook
+class NodePreSaveHook
 {
     use EntityHookTrait;
 
@@ -31,6 +31,7 @@ class NodePreInsertHook
 
     protected function handleEvent(Node $node)
     {
+        // dump('presave call here');
         $eventFeedbackWebformId = 'event_feedback';
         $node->set('field_feedback_form', [
             'target_id' => $eventFeedbackWebformId
@@ -139,7 +140,7 @@ class NodePreInsertHook
 
     protected function handleProgramCommunity(Node $node)
     {
-        // dump('call hereat insert hook');
+        // dump('presave call here prpgam');
         $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
         $nid = $node->id();
         $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
@@ -150,6 +151,7 @@ class NodePreInsertHook
         } else {
             $group = \Drupal::routeMatch()->getParameter('group');
         }
+        // dd($group);
         if ($group) {
             $groupMachineName = $group->get('field_house_machine_name')->value;
             if ($group->hasField('field_house_machine_name')) {
@@ -157,12 +159,19 @@ class NodePreInsertHook
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
-            if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-                $node->set('field_group', $group->id());              
+            // dd($node->hasField('field_group'));
+            // dd($urlAlias);
+            $current_user = \Drupal::currentUser();
+            if ($current_user->hasRole('administrator')) {
+              // if (!$node->original->get('field_group')->getString()) {
+              if($node->hasField('field_group')){
+                  if(!empty($node->get('field_group'))){
+                      // $node->set('field_group', $group->id());            
+                      $node->set('field_group_ref', $groupMachineName);
+                  }
+              }
             }
-            dd($group);
-            $node->set('field_group_ref', $groupMachineName);
-        }
+          }
 
         // $node->set('field_group_ref', $urlAlias);
     }

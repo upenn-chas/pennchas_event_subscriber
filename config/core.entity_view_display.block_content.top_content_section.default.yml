@@ -9,13 +9,11 @@ dependencies:
     - field.field.block_content.top_content_section.field_circle_colour
     - field.field.block_content.top_content_section.field_cta
     - field.field.block_content.top_content_section.field_image
-    - field.field.block_content.top_content_section.field_view_reference
   module:
     - color_field
     - image
     - link
     - text
-    - viewsreference
 id: block_content.top_content_section.default
 targetEntityType: block_content
 bundle: top_content_section
@@ -68,14 +66,5 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 3
-    region: content
-  field_view_reference:
-    type: viewsreference_formatter
-    label: hidden
-    settings:
-      plugin_types:
-        - block
-    third_party_settings: {  }
-    weight: 6
     region: content
 hidden: {  }

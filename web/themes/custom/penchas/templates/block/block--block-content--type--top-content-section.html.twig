@@ -39,9 +39,15 @@
 %}
 
 <section {{ attributes.addClass(classes) }}>
+{{ title_prefix }}
+  {% if label %}
+    
+  {% endif %}
+  {{ title_suffix }}
+{% block content %}
   <style>
     .hero-banner .container:before {
-      background: #ffea3f;
+      background: {{content.field_circle_colour.0['#markup']}};
      }
   </style>
   <div class="container">
@@ -53,9 +59,9 @@
               <h1{{ title_attributes }}>{{ label }}</h1
             {% endif %}
           {{ title_suffix }}
-          {% block content %}
+          
            {{content.body}}
-              {% endblock %}
+             
             {{content.field_cta}}
         </div>
       </div>
@@ -68,7 +74,7 @@
   </div>
 </section>
 
-<section class="search-area space" style="background-color: #92b7ff">
+<section class="search-area space" style="background-color: {{content.field_background_color.0['#markup']}}">
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6">
@@ -79,4 +85,4 @@
     </div>
   </div>
 </section>
-
+ {% endblock %}

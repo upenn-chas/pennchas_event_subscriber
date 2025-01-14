@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: announcements_feed_cron
 weight: 0
 module: announcements_feed
-callback: 'announcements_feed#cron'
+callback: announcements_feed_cron
 scheduler:
   id: simple
 launcher:

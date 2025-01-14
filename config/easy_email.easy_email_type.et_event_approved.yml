@@ -14,7 +14,7 @@ replyToAddress: ''
 subject: 'Event [easy_email:field_event:entity:title] is approved'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi [easy_email:field_event:entity:author:display-name],</p><p>Your event has been approved with the following details:</p><ul><li><strong>Title:</strong> [easy_email:field_event:entity:title]</li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Intended Audience/Participant Group: </strong>[easy_email:field_event:entity:field_intended_audience]</li><li><strong>In Which House Event is held:</strong> [easy_email:field_event:entity:field_location:entity]</li><li><strong>Experiences and Strategies:</strong> [easy_email:field_event:entity:field_text_box]</li><li><strong>Anticipated cost: </strong>[easy_email:field_event:entity:field_anticipated_cost]</li><li><strong>Anticipated number of participants:</strong> [easy_email:field_event:entity:field_anticipated_participants]</li></ul><p><strong>Moderator Message: </strong>[easy_email:field_message]</p>'
+  value: '<p>Dear [easy_email:field_event:entity:author:display-name],</p><p>Your event, "[easy_email:field_event:entity:title]" has been approved.</p><p>Feedback form: [easy_email:field_url]</p><p><img src="[easy_email:field_image]" alt="qr-code"></p><p>&nbsp;</p><p>Thank You</p>'
   format: full_html
 bodyPlain: ''
 generateBodyPlain: false

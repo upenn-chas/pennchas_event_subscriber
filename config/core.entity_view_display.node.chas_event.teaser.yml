@@ -24,14 +24,11 @@ dependencies:
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_outcomes
     - field.field.node.chas_event.field_is_campus_wide
-    - field.field.node.chas_event.field_last_moderated_by
-    - field.field.node.chas_event.field_last_moderation_message
     - field.field.node.chas_event.field_link_1
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
-    - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box
@@ -117,13 +114,10 @@ hidden:
   field_intended_audience_other: true
   field_intended_outcomes: true
   field_is_campus_wide: true
-  field_last_moderated_by: true
-  field_last_moderation_message: true
   field_link_1: true
   field_location: true
   field_long_text_2: true
   field_marketing_blurb: true
-  field_moderation_finished_at: true
   field_participants: true
   field_program_communities: true
   field_text_box: true

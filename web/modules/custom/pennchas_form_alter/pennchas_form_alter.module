@@ -7,6 +7,7 @@ use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ModerationFormAlter;
 use Drupal\pennchas_form_alter\Hook\NodeInsertHook;
 use Drupal\pennchas_form_alter\Hook\NodePreInsertHook;
+use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
 use Drupal\pennchas_form_alter\Hook\NodePreUpdateHook;
 use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
@@ -18,6 +19,11 @@ use Drupal\group\Entity\Group;
 use Drupal\Core\Database\Database;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId){
+    if($formId === 'node_program_community_form'){
+        if (!\Drupal::currentUser()->hasRole('administrator')) {
+            $form['field_group']['#access'] = false;
+        }
+    }
     if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
         $eventFormAlter = new EventFormAlter();
         $form = $eventFormAlter->alter($form, $formState);
@@ -119,6 +125,7 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
         if ($entity->isNew()) {
+            // (new NodePreSaveHook())->handle($entity); (// this will work for Admin. But needs to fix corrections)
             (new NodePreInsertHook())->handle($entity);
         } else {
             (new NodePreUpdateHook())->handle($entity);
