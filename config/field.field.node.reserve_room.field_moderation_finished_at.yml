@@ -1,0 +1,19 @@
+uuid: b091ad38-6f74-4da6-84a9-d30fcd9dccb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_moderation_finished_at
+    - node.type.reserve_room
+id: node.reserve_room.field_moderation_finished_at
+field_name: field_moderation_finished_at
+entity_type: node
+bundle: reserve_room
+label: 'Moderation Finished At'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
