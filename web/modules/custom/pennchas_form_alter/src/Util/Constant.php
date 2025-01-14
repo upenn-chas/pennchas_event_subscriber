@@ -14,6 +14,7 @@ final class Constant
     const MOD_STATUS_PUBLISHED = 'published';
     const MOD_STATUS_DRAFT = 'draft';
     const MOD_STATUS_DELETE = 'delete';
+    const MOD_STATUS_DENIED = 'denied';
 
     const VIEW_EXPOSED_FORM_ID = 'views_exposed_form';
     const VIEW_EVENT_CALENDAR = 'event_calendar';

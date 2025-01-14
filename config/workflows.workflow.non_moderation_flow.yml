@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.notices
     - node.type.room
   module:
     - content_moderation
@@ -29,5 +30,6 @@ type_settings:
   transitions: {  }
   entity_types:
     node:
+      - notices
       - room
   default_moderation_state: published

@@ -41,6 +41,7 @@ class NodePreInsertHook
         if ($this->canByPassModeration($eventHouse, Constant::PERMISSION_MODERATION)) {
             $node->setPublished(true);
             $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
+            $node->set('field_moderation_finished_at', time());
             $housesId = $this->getHouses($node);
         } else {
             $node->setPublished(false);

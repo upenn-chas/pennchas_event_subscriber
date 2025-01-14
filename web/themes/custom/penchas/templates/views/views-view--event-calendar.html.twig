@@ -27,6 +27,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+
 <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
   {{ title_prefix }}
   {% if title %}
@@ -45,10 +46,8 @@
         {{ exposed }}
       </div>
     {% endif %}
-    {% set currentPath = path('<current>') %}
-    {% set groupId = currentPath|split('/')[2] %}
-    <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': groupId , plugin_id: 'group_node:notices'}) }}">Add Notices</a>
-    <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': groupId , plugin_id: 'group_node:chas_event'}) }}">Add Event</a>
+    <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': group_id , plugin_id: 'group_node:notices'}) }}">Add Notices</a>
+    <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': group_id , plugin_id: 'group_node:chas_event'}) }}">Add Event</a>
   </div>
   {% if attachment_before %}
     <div class="attachment attachment-before">
@@ -56,8 +55,10 @@
     </div>
   {% endif %}
 
+
   {% if rows %}
     <div class="calendar-container view-content row">
+    <div class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
       {{ rows }}
     </div>
   {% elseif empty %}
