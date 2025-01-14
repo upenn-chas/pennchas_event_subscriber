@@ -160,7 +160,7 @@ class NodePreInsertHook
             if ($node->isNew() || !$node->original->get('field_group')->getString()) {
                 $node->set('field_group', $group->id());              
             }
-            dd($group);
+            // dd($group);
             $node->set('field_group_ref', $groupMachineName);
         }
 
