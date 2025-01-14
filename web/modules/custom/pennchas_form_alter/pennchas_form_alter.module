@@ -247,6 +247,7 @@ function _get_group_rooms(int $groupId)
 //     //   $result['snippet'] = 'This is a custom snippet for the result.';
 //     // }
 //   }
+
 /**
  * Implements search_api_result_alter().
  */
