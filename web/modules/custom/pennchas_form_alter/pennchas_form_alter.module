@@ -17,8 +17,7 @@ use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\group\Entity\Group;
 use Drupal\Core\Database\Database;
 
-function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
-{
+function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId){
     if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
         $eventFormAlter = new EventFormAlter();
         $form = $eventFormAlter->alter($form, $formState);
