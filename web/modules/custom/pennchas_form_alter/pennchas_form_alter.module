@@ -272,6 +272,7 @@ function _get_group_rooms(int $groupId)
  * Implements search_api_result_alter().
  */
 function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
+    
     $variables = [];
     $variables['node_access'] =  'FALSE';
     $connection = Database::getConnection();
