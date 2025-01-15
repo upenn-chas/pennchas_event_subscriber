@@ -6,9 +6,15 @@ dependencies:
     - field.storage.group_relationship.group_roles
     - field.storage.user.field_full_name
   module:
+    - better_exposed_filters
+    - csv_serialization
     - group
+    - rest
+    - serialization
     - user
+    - verf
     - views_bootstrap
+    - views_data_export
 id: users_reports
 label: 'Users Reports'
 module: views
@@ -23,7 +29,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Users Reports'
+      title: 'Users Report'
       fields:
         name:
           id: name
@@ -35,16 +41,34 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Name
+          label: Pennkey
           exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
             word_boundary: false
             ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -60,7 +84,8 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: user_name
-          settings: {  }
+          settings:
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -441,8 +466,8 @@ display:
           label: 'Last login'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{{ login__value ? login : '' }}"
             make_link: false
             path: ''
             absolute: false
@@ -486,7 +511,7 @@ display:
             custom_date_format: ''
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -563,7 +588,7 @@ display:
             custom_date_format: ''
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -572,6 +597,73 @@ display:
               granularity: 2
               refresh: 60
               description: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        status:
+          id: status
+          table: users_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: status
+          plugin_id: field
+          label: Status
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Inactive
+            format_custom_true: Active
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -602,7 +694,7 @@ display:
             offset: false
             offset_label: Offset
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
           reset_button: false
@@ -611,6 +703,51 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              gid_verf:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              mail:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              status:
+                plugin_id: default
+                advanced:
+                  sort_options: true
+                  rewrite:
+                    filter_rewrite_values: "Yes|Active\r\nNo|Inactive"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: perm
         options:
@@ -622,19 +759,349 @@ display:
       sorts: {  }
       arguments: {  }
       filters:
+        gid_verf:
+          id: gid_verf
+          table: group_relationship_field_data
+          field: gid_verf
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          plugin_id: verf
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gid_verf_op
+            label: House
+            description: ''
+            use_operator: false
+            operator: gid_verf_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          verf_target_bundles:
+            house1: house1
+          show_unpublished: 0
+        mail:
+          id: mail
+          table: users_field_data
+          field: mail
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: mail
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: mail_op
+            label: Email
+            description: ''
+            use_operator: false
+            operator: mail_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: mail
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         status:
           id: status
           table: users_field_data
           field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: user
           entity_field: status
           plugin_id: boolean
-          value: '1'
+          operator: '='
+          value: All
           group: 1
+          exposed: true
           expose:
-            operator: ''
+            operator_id: ''
+            label: Status
+            description: ''
+            use_operator: false
+            operator: status_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: status
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        custom_roles_filter:
+          id: custom_roles_filter
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_1:
+          id: custom_roles_filter_1
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_2:
+          id: custom_roles_filter_2
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_3:
+          id: custom_roles_filter_3
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_4:
+          id: custom_roles_filter_4
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_5:
+          id: custom_roles_filter_5
+          table: user__roles
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_6:
+          id: custom_roles_filter_6
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_7:
+          id: custom_roles_filter_7
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_8:
+          id: custom_roles_filter_8
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_9:
+          id: custom_roles_filter_9
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_10:
+          id: custom_roles_filter_10
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_11:
+          id: custom_roles_filter_11
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_12:
+          id: custom_roles_filter_12
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_13:
+          id: custom_roles_filter_13
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_14:
+          id: custom_roles_filter_14
+          table: views
+          field: custom_roles_filter
+          plugin_id: custom_roles_filter
+        custom_roles_filter_15:
+          id: custom_roles_filter_15
+          table: users_field_data
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+        custom_roles_filter_16:
+          id: custom_roles_filter_16
+          table: users_field_data
+          field: custom_roles_filter
+          entity_type: user
+          plugin_id: custom_roles_filter
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
       style:
         type: views_bootstrap_table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: 1
+          sticky: 0
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            name: name
+            field_full_name: field_full_name
+            gid: gid
+            group_roles: group_roles
+            roles_target_id: roles_target_id
+            nothing: nothing
+            mail: mail
+            login: login
+            created: created
+            status: status
+          info:
+            name:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            field_full_name:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            gid:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            group_roles:
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            roles_target_id:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            mail:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            login:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            created:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            status:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+          default: '-1'
+          empty_table: 1
+          responsive: 1
+          bootstrap_styles:
+            striped: 0
+            bordered: 0
+            hover: 0
+            condensed: 0
       row:
         type: fields
       query:
@@ -658,7 +1125,18 @@ display:
           required: false
           group_relation_plugins:
             group_membership: '0'
-      header: {  }
+      header:
+        display_link:
+          id: display_link
+          table: views
+          field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: display_link
+          label: Export
+          empty: false
+          display_id: data_export_1
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -666,11 +1144,58 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - user.permissions
       tags:
         - 'config:field.storage.group_relationship.group_roles'
         - 'config:field.storage.user.field_full_name'
+        - 'config:views.view.users_reports'
+        - group_list
+  data_export_1:
+    id: data_export_1
+    display_title: 'Data export'
+    display_plugin: data_export
+    position: 2
+    display_options:
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+      display_extenders: {  }
+      path: dashboard/reports/users/export
+      displays:
+        page_1: page_1
+        default: '0'
+      filename: users_report.csv
+      automatic_download: true
+      store_in_public_file_directory: false
+      custom_redirect_path: false
+      redirect_to_display: page_1
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user.permissions
+      tags:
+        - 'config:field.storage.group_relationship.group_roles'
+        - 'config:field.storage.user.field_full_name'
+        - 'config:views.view.users_reports'
+        - group_list
   page_1:
     id: page_1
     display_title: Page
@@ -678,14 +1203,17 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: user/%user/reports/users
+      path: dashboard/reports/users
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - user.permissions
       tags:
         - 'config:field.storage.group_relationship.group_roles'
         - 'config:field.storage.user.field_full_name'
+        - 'config:views.view.users_reports'
+        - group_list

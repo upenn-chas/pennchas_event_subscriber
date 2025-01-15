@@ -71,15 +71,14 @@ class EventEvaluationForm extends FormBase
     {
         $node_id = \Drupal::routeMatch()->getParameter('node');
         $node = \Drupal\node\Entity\Node::load($node_id);
-
-        $actual_expense = $node->get('field_actual_program_expense');
-        $revision_log_message = $actual_expense? $this->t('Evaluation Updated') : $this->t('Added Evaluation');
-
+        
         $node->set('field_areas_for_improvement', $form_state->getValue('areas_for_improvement'));
         $node->set('field_actual_program_expense', $form_state->getValue('actual_program_expense'));
         $node->set('field_actual_program_attendance', $form_state->getValue('actual_program_attendance'));
         $node->set('field_actual_program_outcomes', $form_state->getValue('actual_program_outcomes'));
-        $node->setRevisionLogMessage($revision_log_message);
+        $node->set('field_evaluated_by', \Drupal::currentUser()->id());
+        $node->set('field_evaluated_on', time());
+        $node->setRevisionLogMessage($this->t('Evaluated the event'));
 
         $node->save();
 

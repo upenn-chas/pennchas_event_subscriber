@@ -515,10 +515,15 @@ hidden:
   field_actual_program_expense: true
   field_actual_program_outcomes: true
   field_areas_for_improvement: true
+  field_evaluated_by: true
+  field_evaluated_on: true
   field_evaluation_notification: true
   field_event_ends_on: true
   field_feedback_form: true
   field_group_ref: true
   field_groups: true
   field_is_campus_wide: true
+  field_last_moderated_by: true
+  field_last_moderation_message: true
+  field_moderation_finished_at: true
   moderation_state: true

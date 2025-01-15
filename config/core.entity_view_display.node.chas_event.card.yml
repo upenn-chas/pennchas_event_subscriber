@@ -72,6 +72,8 @@ hidden:
   field_areas_for_improvement: true
   field_collaborators: true
   field_college_houses: true
+  field_evaluated_by: true
+  field_evaluated_on: true
   field_evaluation_notification: true
   field_event_ends_on: true
   field_event_priority: true
@@ -84,11 +86,14 @@ hidden:
   field_intended_audience: true
   field_intended_outcomes: true
   field_is_campus_wide: true
+  field_last_moderated_by: true
+  field_last_moderation_message: true
   field_link_1: true
   field_location: true
   field_long_text: true
   field_long_text_2: true
   field_marketing_blurb: true
+  field_moderation_finished_at: true
   field_participants: true
   field_program_communities: true
   field_text_box: true

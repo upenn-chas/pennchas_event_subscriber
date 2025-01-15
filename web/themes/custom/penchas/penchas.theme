@@ -425,7 +425,7 @@ function penchas_preprocess_views_view(&$variables) {
   $variables['breadcrumb_dashboard_link'] = '/user';
   $current_user = \Drupal::currentUser();
   $variables['breadcrumb_reports'] = 'Reports';
-  $variables['breadcrumb_reports_link'] = "/user/{$current_user->id()}/reports";
+  $variables['breadcrumb_reports_link'] = "/dashboard/reports";
   $view = $variables['view'];
   $variables['title'] = $view->getTitle();
   $id = $view->storage->id();

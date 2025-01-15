@@ -70,6 +70,9 @@ hidden:
   field_event_ends_on: true
   field_group: true
   field_group_ref: true
+  field_last_moderated_by: true
+  field_last_moderation_message: true
+  field_moderation_finished_at: true
   field_phone: true
   field_purpose_of_request: true
   field_room: true

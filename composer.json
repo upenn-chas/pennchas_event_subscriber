@@ -128,7 +128,8 @@
                 "Field Attributes": "patches/duration_number_attributes.patch"
             },
             "drupal/core": {
-                "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch"
+                "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch",
+                "Views filter of timestamp type": "https://www.drupal.org/files/issues/2024-11-19/core_views-timestamp_date_filter-3204558-13.patch"
             }
         }
     },

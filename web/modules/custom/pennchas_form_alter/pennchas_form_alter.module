@@ -83,6 +83,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         } else if (
             $viewId === 'moderation_reports'
             || $viewId === 'room_reservation_reports'
+            || $viewId === 'contents_change_report'
         ) {
             if (isset($form['moderation_state'])) {
                 unset($form['moderation_state']['#options']['All']);
@@ -94,6 +95,10 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
 
             if (isset($form['exposed_to_date'])) {
                 $form['exposed_to_date']['#title'] = t('To');
+            }
+
+            if (isset($form['type'])) {
+                unset($form['type']['#options']['All']);
             }
         }
     }

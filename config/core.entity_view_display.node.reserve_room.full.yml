@@ -128,4 +128,7 @@ content:
     region: content
 hidden:
   field_event_ends_on: true
+  field_last_moderated_by: true
+  field_last_moderation_message: true
+  field_moderation_finished_at: true
   layout_builder__layout: true

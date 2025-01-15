@@ -1,0 +1,19 @@
+uuid: 30530576-fdae-4da6-b0a1-f48e2ab5542a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evaluated_on
+    - node.type.chas_event
+id: node.chas_event.field_evaluated_on
+field_name: field_evaluated_on
+entity_type: node
+bundle: chas_event
+label: 'Evaluated On'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
