@@ -6,8 +6,12 @@ dependencies:
     - block_content.type.basic
     - block_content.type.dashboard_basic_item
     - block_content.type.dashboard_blocks
+    - field.field.user.user.field_edu_person_entitlement
+    - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
+    - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
+    - field.field.user.user.field_last_name
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
@@ -151,6 +155,69 @@ third_party_settings:
               block_serialized: null
             weight: 5
             additional: {  }
+          04946f8c-070f-4844-9161-1a6e646e014e:
+            uuid: 04946f8c-070f-4844-9161-1a6e646e014e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_first_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          02b977a7-d467-4f8e-b4a6-a1b24707b76e:
+            uuid: 02b977a7-d467-4f8e-b4a6-a1b24707b76e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_last_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          23c5ac96-fa55-46ee-996d-3bb100d42dc2:
+            uuid: 23c5ac96-fa55-46ee-996d-3bb100d42dc2
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_edu_person_principal_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+          83a5ced7-a6e7-442f-a164-458d0b21b5c8:
+            uuid: 83a5ced7-a6e7-442f-a164-458d0b21b5c8
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_edu_person_entitlement'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'
@@ -265,6 +332,21 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_edu_person_entitlement:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: blb_region_col_1
+  field_edu_person_principal_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 14
+    region: blb_region_col_1
   field_employee_number:
     type: string
     label: above
@@ -273,6 +355,14 @@ content:
     third_party_settings: {  }
     weight: 9
     region: content
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: blb_region_col_1
   field_full_name:
     type: string
     label: above
@@ -281,6 +371,14 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: blb_region_col_1
   field_preferred_name:
     type: string
     label: above

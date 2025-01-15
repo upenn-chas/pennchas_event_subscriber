@@ -129,6 +129,9 @@
             },
             "drupal/core": {
                 "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch"
+            },
+            "drupal/simplesamlphp_auth": {
+                "Get dynamically values and Updated in drupal": "patches/simple_auth.patch"
             }
         }
     },
