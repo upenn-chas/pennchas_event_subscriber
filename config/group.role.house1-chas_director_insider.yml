@@ -36,7 +36,5 @@ permissions:
   - 'use editorial transition publish'
   - 'view group'
   - 'view group_node:notices entity'
-  - 'view group_node:reserve_room entity'
-  - 'view group_node:room entity'
   - 'view latest version'
   - 'view own unpublished group'
