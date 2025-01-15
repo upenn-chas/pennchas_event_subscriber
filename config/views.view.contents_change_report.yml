@@ -491,11 +491,11 @@ display:
           label: 'Content Path'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a href="{{ view_node }}" target="_blank">{{ view_node }}</a>'
             make_link: false
             path: ''
-            absolute: false
+            absolute: true
             external: false
             replace_spaces: false
             path_case: none

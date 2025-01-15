@@ -1570,7 +1570,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ url('event_evaluation_operation_option', { 'node': nid }) }}"
+            text: "{% set eval_url = url('event_evaluation_operation_option', { 'node': nid }) %}\r\n<a href=\"{{ eval_url }}\" target=\"_blank\">{{ eval_url }}</a>"
             make_link: false
             path: ''
             absolute: false
@@ -1619,8 +1619,8 @@ display:
           label: 'Event Path'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a href="{{ view_node }}" target="_blank">{{ view_node }}</a>'
             make_link: false
             path: ''
             absolute: false
