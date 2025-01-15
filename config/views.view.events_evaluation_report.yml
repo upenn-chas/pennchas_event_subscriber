@@ -1741,7 +1741,18 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="no-records">No records</div>'
+          tokenize: false
       sorts:
         field_evaluated_on_value:
           id: field_evaluated_on_value
@@ -2198,6 +2209,7 @@ display:
           required: false
           group_relation_plugins:
             group_membership: '0'
+      use_ajax: true
       header:
         display_link:
           id: display_link
