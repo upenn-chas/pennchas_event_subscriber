@@ -1,0 +1,20 @@
+uuid: ca119aa9-bc32-4c3b-88fb-f75ed99e595d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_edu_person_entitlement
+  module:
+    - user
+id: user.user.field_edu_person_entitlement
+field_name: field_edu_person_entitlement
+entity_type: user
+bundle: user
+label: 'House(s) Affiliation - eduPersonEntitlement'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

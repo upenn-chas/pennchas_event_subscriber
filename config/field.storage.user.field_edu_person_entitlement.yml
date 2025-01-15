@@ -1,0 +1,19 @@
+uuid: e62f6fb4-ac3c-4c9a-b9f2-1fe29179396a
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_edu_person_entitlement
+field_name: field_edu_person_entitlement
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

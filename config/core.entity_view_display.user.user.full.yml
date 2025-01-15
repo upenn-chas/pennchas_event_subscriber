@@ -4,8 +4,12 @@ status: false
 dependencies:
   config:
     - core.entity_view_mode.user.full
+    - field.field.user.user.field_edu_person_entitlement
+    - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
+    - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
+    - field.field.user.user.field_last_name
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
@@ -94,4 +98,8 @@ content:
     weight: 0
     region: content
 hidden:
+  field_edu_person_entitlement: true
+  field_edu_person_principal_name: true
+  field_first_name: true
+  field_last_name: true
   layout_builder__layout: true

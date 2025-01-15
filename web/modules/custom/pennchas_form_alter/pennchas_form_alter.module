@@ -273,6 +273,7 @@ function _get_group_rooms(int $groupId)
  */
 function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
     $variables = [];
+    $variables['node_access'] =  'FALSE';
     $connection = Database::getConnection();
     $nid = $node->get('nid')->value;
     $current_user = \Drupal::currentUser();
