@@ -144,35 +144,46 @@ class NodePreSaveHook
         $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
         $nid = $node->id();
         $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
-        $groupId = $this->getGroupIdsByEntity($nid);
-        $group = null;
-        if ($groupId) {
-            $group = Group::load($groupId);
-        } else {
-            $group = \Drupal::routeMatch()->getParameter('group');
-        }
-        // dd($group);
-        if ($group) {
+        $current_user = \Drupal::currentUser();
+        if ($current_user->hasRole('administrator')) {
+            $groupName = $node->get('field_group')->getValue();
+            $group_id = $groupName[0]['target_id'];
+            $group = Group::load($group_id);
             $groupMachineName = $group->get('field_house_machine_name')->value;
+            
             if ($group->hasField('field_house_machine_name')) {
                 if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
-            // dd($node->hasField('field_group'));
-            // dd($urlAlias);
-            $current_user = \Drupal::currentUser();
-            if ($current_user->hasRole('administrator')) {
-              // if (!$node->original->get('field_group')->getString()) {
-              if($node->hasField('field_group')){
-                  if(!empty($node->get('field_group'))){
-                      // $node->set('field_group', $group->id());            
-                      $node->set('field_group_ref', $groupMachineName);
-                  }
-              }
+            if($node->hasField('field_group')){
+                if(!empty($node->get('field_group'))){           
+                    $node->set('field_group_ref', $groupMachineName);
+                    // dd($node);
+                }
             }
-          }
-
+        }else{
+            $groupId = $this->getGroupIdsByEntity($nid);
+            $group = null;
+            if ($groupId) {
+                $group = Group::load($groupId);
+            } else {
+                $group = \Drupal::routeMatch()->getParameter('group');
+            }
+            if ($group) {
+                $groupMachineName = $group->get('field_house_machine_name')->value;
+                if ($group->hasField('field_house_machine_name')) {
+                    if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
+                        $urlAlias = $groupMachineName . $urlAlias;
+                    }
+                }
+                if ($node->isNew() || !$node->original->get('field_group')->getString()) {
+                    $node->set('field_group', $group->id());              
+                }
+                // dd($group);
+                $node->set('field_group_ref', $groupMachineName);
+            }
+        }
         // $node->set('field_group_ref', $urlAlias);
     }
 
