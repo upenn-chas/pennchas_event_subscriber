@@ -253,7 +253,6 @@
   }
 }
 
-
 .block-inline-blockaccordions {
   margin: 25px 0;
   h2.accordion-header{
@@ -267,6 +266,7 @@
     .tags {
       margin-bottom: 15px;
     }
+
     &:has(.tags) button{
       &:before {
         top: 47px;
@@ -291,8 +291,6 @@
   h2 { 
     text-transform: capitalize;
   }
-
-
 
   .field--name-field-tags {
     margin: 0;
