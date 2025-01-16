@@ -176,6 +176,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
