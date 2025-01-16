@@ -157,9 +157,8 @@ class NodePreSaveHook
                 }
             }
             if($node->hasField('field_group')){
-                if(!empty($node->get('field_group'))){           
+                if(!empty($node->get('field_group'))){ 
                     $node->set('field_group_ref', $groupMachineName);
-                    // dd($node);
                 }
             }
         }else{

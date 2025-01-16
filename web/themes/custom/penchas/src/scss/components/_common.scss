@@ -403,6 +403,9 @@ body {
 }
 
 @media(max-width: 767px) {
+  .hide-in-mobile {
+    display: none;
+  }
   .no-gutters {
     margin: 0;
     > .col-12 {
