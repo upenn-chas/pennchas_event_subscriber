@@ -401,3 +401,19 @@ body {
     }
   }
 }
+
+@media(max-width: 767px) {
+  .no-gutters {
+    margin: 0;
+    > .col-12 {
+      padding: 0;
+    }
+  }
+
+  .row.row-offcanvas.row-offcanvas-left {
+    margin: 0;
+    main {
+      padding: 0;
+    }
+  }
+}

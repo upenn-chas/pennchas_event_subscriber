@@ -130,7 +130,7 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
         if ($entity->isNew()) {
-            // (new NodePreSaveHook())->handle($entity); (// this will work for Admin. But needs to fix corrections)
+            // (new NodePreSaveHook())->handle($entity); //(this will work for Admin. But needs to fix corrections)
             (new NodePreInsertHook())->handle($entity);
         } else {
             (new NodePreUpdateHook())->handle($entity);
@@ -274,41 +274,35 @@ function _get_group_rooms(int $groupId)
 function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
     
     $variables = [];
-    $variables['node_access'] =  'FALSE';
     $connection = Database::getConnection();
     $nid = $node->get('nid')->value;
     $current_user = \Drupal::currentUser();
     if($nid){
         if($current_user->hasRole('authenticated')){
             $query = $connection->select('group_relationship_field_data', 'gr');
-            // $query->innerjoin('groups_field_data', 'gfd', 'gr.gid = gfd.id');
-            $query->condition('gr.uid', $current_user->id());
+            $query->condition('gr.entity_id', $current_user->id());
+            $query->condition('gr.plugin_id', 'group_membership');
             $query->fields('gr', ['gid']);
-            $results = $query->execute()->fetchAll();
-            if(isset($results)){
+            $results = $query->execute()->fetchCol();
+            if(!empty($results)){
                 foreach ($results as $key => $result) {
-                    $gid = $result->gid;
                     $query = $connection->select('group_relationship_field_data', 'gr');
-                    $query->condition('gr.gid', $gid);
-                    $query->condition('gr.uid', $current_user->id());
+                    $query->condition('gr.gid', $result);
                     $query->condition('gr.entity_id', $nid);
-                    // $query->orConditionGroup();
-                    // $query->condition('gr.plugin_id', 'group_membership');
                     $query->fields('gr');
                     $node_results = $query->execute()->fetchAll();
                     if(!empty($node_results)){
                         $variables['node_access'] =  'TRUE';
-                    }else{
-                        $query = $connection->select('group_relationship_field_data', 'gr');
-                        $query->condition('gr.gid', $gid);
-                        $query->condition('gr.entity_id', $nid);
-                        $query->fields('gr');
-                        $node_results = $query->execute()->fetchAll();
-                        if(!empty($node_results)){
-                            $variables['node_access'] =  'TRUE';
-                        }
+                        break;
                     }
                 }
+            }else{
+                $query = $connection->select('node_field_data', 'nf');
+                $query->fields('nf');
+                $query->condition('nf.nid', $nid);
+                $query->condition('nf.type','reserve_room','!=');
+                $node_results = $query->execute()->fetchAll();
+                $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
             }
         }else{
             $query = $connection->select('node_field_data', 'nf');
@@ -316,9 +310,7 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
             $query->condition('nf.nid', $nid);
             $query->condition('nf.type','reserve_room','!=');
             $node_results = $query->execute()->fetchAll();
-            if($node_results){
-                $variables['node_access'] =  'TRUE';
-            }
+            $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
         }
     }
 

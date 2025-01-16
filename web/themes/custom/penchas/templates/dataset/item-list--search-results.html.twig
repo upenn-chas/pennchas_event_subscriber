@@ -39,8 +39,10 @@
    {%- if items -%}
     <{{ list_type }}{{ attributes }}>
       {%- for item in items -%}
-      
-      {%- if item.value['#result']['extra'] != null -%}
+      {%- set extra = item.value['#result']['extra'] -%}
+      {%- if extra is empty or extra['node_access'] == 'FALSE' -%}
+        {# Skip this item if extra is empty or node_access is 'FALSE' #}
+      {%- else -%}
         <li{{ item.attributes.addClass('list-group-item') }}>{{ item.value }}</li>
       {%- endif -%}
       {%- endfor -%}

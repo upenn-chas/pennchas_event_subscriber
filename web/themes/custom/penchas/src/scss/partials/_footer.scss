@@ -239,7 +239,7 @@ footer {
 }
 .footer-copyright {
   margin-top: 30px;
-  @include media-query('mobile') {
+  @include media-query('tablet') {
     margin-top: 52px;
   } 
 	h2 {
@@ -275,4 +275,9 @@ footer {
 			}
 		}
 	}
+}
+@include media-query('tablet') {
+  .menu--footer-2 {
+    margin-top: 50px;
+  }
 }
