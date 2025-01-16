@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_event_schedule
     - field.storage.node.field_intended_audience
     - field.storage.node.field_is_campus_wide
+    - group.type.house1
     - node.type.chas_event
     - node.type.notices
     - workflows.workflow.editorial
@@ -676,11 +677,16 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: 'entity:group'
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            bundles:
+              house1: house1
+            access: false
+            operation: view
+            multiple: 0
           break_phrase: false
           not: false
       filters:

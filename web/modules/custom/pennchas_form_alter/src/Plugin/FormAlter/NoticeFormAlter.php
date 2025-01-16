@@ -3,16 +3,44 @@
 namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupMembership;
 
 class NoticeFormAlter
 {
     public function alter(array $form, FormStateInterface $formState)
     {
+        $form['field_groups']['widget']['#options'] = $this->getOptions();
         $houseCount = count($form['field_groups']['widget']['#options']);
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/notice_select_all';
             $form['field_groups']['widget']['#options'] = ['select_all' => t('All college houses')] + $form['field_groups']['widget']['#options'];
         }
         return $form;
+    }
+
+    protected function getOptions()
+    {
+        $options = [];
+
+        $currentUser = \Drupal::currentUser();
+        $groupMemberships = GroupMembership::loadByUser($currentUser);
+        if ($groupMemberships) {
+            foreach ($groupMemberships as $groupMembership) {
+                $gid = $groupMembership->get('gid')->getString();
+                $group = Group::load($gid);
+                $options[$group->id()] = $group->label();
+            }
+        } else {
+            $groupsId =  \Drupal::entityQuery('group')
+                ->condition('type', 'house1')
+                ->condition('status', 1)->accessCheck(true)->execute();
+            $groups = Group::loadMultiple($groupsId);
+
+            foreach ($groups as $group) {
+                $options[$group->id()] = $group->label();
+            }
+        }
+        return $options;
     }
 }
