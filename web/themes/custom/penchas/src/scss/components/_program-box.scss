@@ -14,6 +14,7 @@
     width: calc(100% - 40px);
     height: calc(100% + 80px);
     border: 1px solid $primaryColor;
+    transition: all ease-in-out 0.3s;
 
     @include media-query('tablet') {      
       left: 20px;
@@ -22,8 +23,6 @@
       height: calc(100% + 40px);   
     }
   }
-
-
 
   .program-img {
     width: 200px;
@@ -80,8 +79,10 @@
       position: absolute; 
       height: 30px;
       width: 30px;
+      transition: all ease-in-out 0.3s;
       @include media-query('tablet') {
        left: 20px; 
+       transition: all ease-in-out 0.3s;
       }
     }
     .field--type-text-with-summary{ 
@@ -120,6 +121,7 @@
     &:before {
       background-color: #ebf1ff;
       border-color: #ebf1ff;
+      transition: all ease-in-out 0.3s;
     }
 
     h5 {
@@ -130,7 +132,7 @@
 
     .arrow-link {
       left: 60px;
-     
+      transition: all ease-in-out 0.3s;
       svg {
         path {
           stroke: $redHighlightColor;

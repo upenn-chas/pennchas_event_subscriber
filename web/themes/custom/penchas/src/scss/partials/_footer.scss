@@ -81,6 +81,13 @@ footer {
           position: absolute;
           left: 0;
           bottom: -3px;
+          transition: all ease-in-out 0.3s;
+        }
+        &:hover {
+          &:after {
+            transition: all ease-in-out 0.3s;
+            width: 0%;
+          }
         }
       }
       &:last-child{

@@ -1,0 +1,17 @@
+uuid: fe66d746-3603-4c0b-a208-830356870b02
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - node.type.article
+  module:
+    - gnode
+    - node
+id: house1-group_node-article
+group_type: house1
+content_plugin: 'group_node:article'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

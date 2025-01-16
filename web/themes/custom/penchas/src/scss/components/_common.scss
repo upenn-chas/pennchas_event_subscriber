@@ -402,10 +402,94 @@ body {
   }
 }
 
-@media(max-width: 767px) {
+
+.js-pager__items.pagination .page-item, 
+.js-pager__items.pagination .page-item .page-link {
+  border-color: #011f5b;
+  color: #011f5b;
+  text-decoration: none;
+}
+.action-container + .view-content.row {
+  margin: 0;
+  overflow: scroll;
+  width: 100%;
+}
+
+
+[id^="views-exposed-form-users-reports-page-"] ,
+[id^="views-exposed-form-room-reservation-reports-page-"] ,
+[id^="views-exposed-form-moderation-reports-page-"] ,
+[id^="views-exposed-form-moderation-reports-event-"] ,
+[id^="views-exposed-form-events-evaluation-report-page-"] ,
+[id^="views-exposed-form-contents-change-report-page-"] {
+  .d-flex {
+    gap: 15px;
+  }
+
+  .js-form-item {
+    @include media-query('mobile') {
+      width: 100%;
+    }
+  }
+  .form-control {
+    min-height: 38px;
+    height: auto;
+    max-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+    border-radius: 6px;
+    border-color: #dee2e6;
+    font-size: 16px;
+  }
+
+  .js-form-type-textfield {
+    display: flex;      
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+      
+  
+    input {
+      min-height: 38px;
+      height: auto;
+      max-height: 38px;
+      padding-top: 0;
+      padding-bottom: 0;
+      line-height: normal;
+      border-radius: 6px;
+      border-color: #dee2e6;
+    }
+    label {
+      padding-top: 0;
+      padding-bottom: 0;
+      height: auto; 
+      margin-bottom: 0;
+      background: none;
+      padding: 0;
+      transform: none !important;
+      position: static;
+    
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+
+[id^="views-exposed-form-contents-change-report-page-"] {
+  align-items: flex-end;
+  display: flex;
+}
+
+@media(max-width: 991px) {
   .hide-in-mobile {
     display: none;
   }
+}
+
+@media(max-width: 767px) {
   .no-gutters {
     margin: 0;
     > .col-12 {
