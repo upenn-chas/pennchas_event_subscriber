@@ -345,6 +345,7 @@ function penchas_preprocess_block(&$variables) {
     ->loadByProperties(['type' => $block_type]);
     // Loop through the blocks and get content.
     foreach ($block_content as $block) {
+      
       // You can access fields like this:
     $field_value = $block->get('info')->value; // Replace 'field_name' with your field machine name.
 
