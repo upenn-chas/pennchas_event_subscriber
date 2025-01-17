@@ -223,6 +223,9 @@
 .node{
   .field--type-image{
     margin: 0;
+    img {
+      height: auto;
+    }
   }
 }
 

@@ -15,5 +15,31 @@
 .reports {
   table {
     font-size: 16px;
+    width: 1600px;    
+    thead {
+      tr {
+        th {
+          border-left: 1px solid #ccc;
+          border-top: 1px solid #ccc;
+          &:last-child{
+            border-right: 1px solid #ccc;
+          }
+        }
+      }
+    }
+    tr {
+      td {
+        border-left: 1px solid #ccc;
+        &:last-child{
+          border-right: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}
+.reports:has([id^="views-exposed-form-events-evaluation-report-page-"]) {
+  table {
+    max-width: none;
+    width: 3500px;
   }
 }
