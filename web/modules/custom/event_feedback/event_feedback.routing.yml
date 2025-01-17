@@ -9,3 +9,10 @@ event_feedback.page:
     parameters:
       node:
         type: entity:node
+event_feedback.report:
+  path: /dashboard/reports/participations-survey
+  defaults:
+    _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::report'
+    _title: ''
+  requirements:
+    _user_is_logged_in: 'TRUE'

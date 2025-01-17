@@ -9,6 +9,8 @@ use Drupal\webform\Entity\Webform;
 
 class EventFeedbackController extends ControllerBase
 {
+    protected $eventFeedbackWebformId = 'event_feedback';
+
     public function feedback(Node $node)
     {
         if ($node->getType() !== 'chas_event') {
@@ -23,8 +25,7 @@ class EventFeedbackController extends ControllerBase
             ];
         }
 
-        $eventFeedbackWebformId = 'event_feedback';
-        $webform = Webform::load($eventFeedbackWebformId);
+        $webform = Webform::load($this->eventFeedbackWebformId);
 
         if (!$webform) {
             return [
@@ -38,7 +39,7 @@ class EventFeedbackController extends ControllerBase
         }
         array_unique($eventDates);
 
-        if($this->hasUserAlreadySubmitted($eventFeedbackWebformId, $node->id())) {
+        if($this->hasUserAlreadySubmitted($this->eventFeedbackWebformId, $node->id())) {
             return [
                 '#theme' => 'event_feedback_page',
                 '#node' => $node,
@@ -60,6 +61,22 @@ class EventFeedbackController extends ControllerBase
                 '#type' => 'webform',
                 '#webform' => $webform->id(),
             ],
+        ];
+    }
+
+    public function report()
+    {
+        $webform = Webform::load($this->eventFeedbackWebformId);
+        // dd($webform);
+
+        $tableHeaders = [
+            'Event',
+            'Respondants',
+        ];
+        return [
+            '#theme' => 'report',
+            '#title' => $this->t('Participations Survey Report'),
+            '#rows' => \Drupal::theme('table', $tableHeaders, [])
         ];
     }
 

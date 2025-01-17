@@ -96,6 +96,7 @@ class ModerationFormAlter
         } else {
             $node->set('field_moderation_finished_at', null);
         }
+        $node->setNewRevision(false);
         $node->save();
     }
 }

@@ -84,6 +84,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             $viewId === 'moderation_reports'
             || $viewId === 'room_reservation_reports'
             || $viewId === 'contents_change_report'
+            || $viewId === 'events_evaluation_report'
         ) {
             if (isset($form['moderation_state'])) {
                 unset($form['moderation_state']['#options']['All']);

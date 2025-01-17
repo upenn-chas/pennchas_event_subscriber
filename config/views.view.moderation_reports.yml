@@ -90,7 +90,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -110,7 +110,7 @@ display:
           admin_label: ''
           entity_type: node
           plugin_id: moderation_state_field
-          label: 'Current state'
+          label: 'Current State'
           exclude: false
           alter:
             alter_text: false
@@ -174,7 +174,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: field
-          label: 'When Created'
+          label: 'Created On'
           exclude: false
           alter:
             alter_text: false
@@ -218,11 +218,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: report_date_and_time
             custom_date_format: 'Y-m-d H:i'
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -251,7 +251,7 @@ display:
           entity_type: node
           entity_field: uid
           plugin_id: field
-          label: 'Who Created'
+          label: 'Created By'
           exclude: false
           alter:
             alter_text: false
@@ -314,7 +314,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Duration of pending state'
+          label: 'Duration of Pending State'
           exclude: false
           alter:
             alter_text: true
@@ -363,7 +363,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'When Approved or Denied'
+          label: 'Approved or Denied On'
           exclude: false
           alter:
             alter_text: false
@@ -407,11 +407,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: report_date_and_time
             custom_date_format: 'Y-m-d H:i'
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -438,7 +438,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Who Moderate'
+          label: Moderator
           exclude: false
           alter:
             alter_text: false
@@ -501,7 +501,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Last Log Message'
+          label: 'Last Moderator Message'
           exclude: false
           alter:
             alter_text: false
@@ -557,7 +557,7 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
@@ -567,6 +567,8 @@ display:
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -575,6 +577,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 5
       exposed_form:
         type: bef
         options:

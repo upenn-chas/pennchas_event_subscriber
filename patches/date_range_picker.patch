@@ -1,0 +1,86 @@
+diff --git a/src/Plugin/views/filter/DateRangePickerFilter.php b/src/Plugin/views/filter/DateRangePickerFilter.php
+index 6206852..6814e51 100644
+--- a/src/Plugin/views/filter/DateRangePickerFilter.php
++++ b/src/Plugin/views/filter/DateRangePickerFilter.php
+@@ -88,7 +88,7 @@ class DateRangePickerFilter extends FilterPluginBase {
+ 
+     if (!$this->options['exposed']) {
+       // Administrative value.
+-      $this->queryFilter($this->options['granular_field_name'], $this->options['node_from_date'] . '_' . $this->options['node_to_date']);
++      $this->queryFilter($this->options['granular_field_name'], $this->options['node_from_date'] . '_' . $this->options['node_to_date'], $this->options['timestamp']);
+     }
+     else {
+       // Exposed value.
+@@ -96,7 +96,7 @@ class DateRangePickerFilter extends FilterPluginBase {
+         return;
+       }
+ 
+-      $this->queryFilter($this->options['granular_field_name'], $this->value[0]);
++      $this->queryFilter($this->options['granular_field_name'], $this->value[0], $this->options['timestamp']);
+     }
+   }
+ 
+@@ -108,7 +108,7 @@ class DateRangePickerFilter extends FilterPluginBase {
+    * @param string $dates
+    *   Date from and date to.
+    */
+-  private function queryFilter($fieldName, $dates) {
++  private function queryFilter($fieldName, $dates, $timestamp = false) {
+ 
+     $array_date = explode("_", $dates);
+     $dateFrom = $array_date[0];
+@@ -135,7 +135,10 @@ class DateRangePickerFilter extends FilterPluginBase {
+         $this->query->addWhere("AND", "node_field_data.{$fieldName}", $lastTime, "<=");
+       }
+       else {
+-
++        if($timestamp) {
++          $dateFrom = strtotime($dateFrom . ' 00:00:00');
++          $dateTo = strtotime($dateTo . ' 23:59:59');
++        }
+         $this->query->addTable("node__{$fieldName}");
+         $this->query->addWhere("AND", "node__{$fieldName}.{$fieldName}_value", $dateFrom, ">=");
+         $this->query->addWhere("AND", "node__{$fieldName}.{$fieldName}_value", $dateTo, "<=");
+@@ -149,6 +152,9 @@ class DateRangePickerFilter extends FilterPluginBase {
+         $this->query->addWhere("AND", "node_field_data.{$fieldName}", $firstTime, ">=");
+       }
+       else {
++        if($timestamp) {
++          $dateFrom = strtotime($dateFrom . ' 00:00:00');
++        }
+         $this->query->addTable("node__{$fieldName}");
+         $this->query->addWhere("AND", "node__{$fieldName}.{$fieldName}_value", $dateFrom, ">=");
+       }
+@@ -161,6 +167,9 @@ class DateRangePickerFilter extends FilterPluginBase {
+         $this->query->addWhere("AND", "node_field_data.{$fieldName}", $lastTime, "<=");
+       }
+       else {
++        if($timestamp) {
++          $dateTo = strtotime($dateTo . ' 23:59:59');
++        }
+         $this->query->addTable("node__{$fieldName}");
+         $this->query->addWhere("AND", "node__{$fieldName}.{$fieldName}_value", $dateTo, "<=");
+       }
+@@ -221,6 +230,7 @@ class DateRangePickerFilter extends FilterPluginBase {
+     $options['node_from_date'] = ['default' => ''];
+     $options['node_to_date'] = ['default' => ''];
+     $options['granular_field_name'] = ['default' => ''];
++    $options['timestamp'] = ['default' => false];
+ 
+     return $options;
+   }
+@@ -237,6 +247,14 @@ class DateRangePickerFilter extends FilterPluginBase {
+       '#required' => TRUE,
+     ];
+ 
++    $form['timestamp'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Timestamp'),
++      '#description' => $this->t('whether to render the value as a timestamp for custom fields, i.e., fields other than created and changed.'),
++      '#default_value' => $this->options['timestamp'] ?? NULL,
++      '#required' => FALSE,
++    ];
++
+     parent::buildOptionsForm($form, $form_state);
+   }
+ 
