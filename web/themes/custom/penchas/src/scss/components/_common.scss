@@ -339,7 +339,6 @@ body {
       margin-bottom: 0;
     }
   }
-
 }
 
 .room-reservation-title {
@@ -441,6 +440,8 @@ body {
     border-radius: 6px;
     border-color: #dee2e6;
     font-size: 16px;
+    padding-top: 2px !important;
+    padding-bottom: 0 !important;
   }
 
   .js-form-type-textfield {
@@ -459,6 +460,8 @@ body {
       line-height: normal;
       border-radius: 6px;
       border-color: #dee2e6;
+      padding-top: 2px !important;
+      padding-bottom: 0 !important;
     }
     label {
       padding-top: 0;
@@ -475,13 +478,70 @@ body {
       }
     }
   }
+  .btn.btn-primary {
+    color: #fff;
+    font-weight: 400; 
+    border: 1px solid #011f5b;
+    font-size: 16px;
+    padding: 6px 20px;
+    border-radius: 4px;
+    background: #011f5b;
+    &:hover {
+      color: #011f5b;
+      background: #fff;
+    }
+    &:before {
+      display: none;
+    }
+  }
+  
+  
 }
+
 
 
 [id^="views-exposed-form-contents-change-report-page-"] {
   align-items: flex-end;
   display: flex;
+   
 }
+
+.view-filters + .view-content.row{
+  margin: 0;
+}
+
+.view-users-reports {
+  padding-top: 30px;
+}
+
+.view-users-reports,
+.action-container {
+  .view-header {
+    border-bottom: 1px solid #011f5b;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    .views-display-link {
+      color: #011f5b;
+      border: 1px solid #011f5b;
+      font-size: 16px;
+      padding: 15px 20px 12px 20px;
+      border-radius: 4px;
+      background: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: $teritoryFont;
+      line-height: normal;
+      display: inline-block;
+      &:hover {
+        color: #fff;
+        background: #011f5b;
+      }
+    }
+  }
+}
+
 
 @media(max-width: 991px) {
   .hide-in-mobile {

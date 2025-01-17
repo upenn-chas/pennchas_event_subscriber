@@ -16,7 +16,12 @@
     //   });
     // });
 
-
+    console.log('tetsing');
+    // Check if the ol element with the class node_search-results is empty
+    if (jQuery('.node_search-results').children().length === 0) {
+        // If it's empty, display a no result found message
+        jQuery('.node_search-results').html('<li class="list-group-item">No results found</li>');
+    }
     /*custom accordion starts */
 
     function adjustContentWidth() {
