@@ -794,7 +794,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: All
+                title: '- Any -'
                 operator: in
                 value:
                   editorial-draft: editorial-draft
@@ -1454,7 +1454,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: All
+                title: '- Any -'
                 operator: in
                 value:
                   editorial-draft: editorial-draft
