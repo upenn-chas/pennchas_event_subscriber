@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_program_communities
-    - group.relationship_type.house1-26dda3a47e3baa4a8c59fd010
     - node.type.chas_event
 id: node.chas_event.field_program_communities
 field_name: field_program_communities
@@ -17,13 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:group_relationship'
+  handler: views
   handler_settings:
-    target_bundles:
-      house1-26dda3a47e3baa4a8c59fd010: house1-26dda3a47e3baa4a8c59fd010
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: event_form_communities_list_view
+      display_name: field_program_communities_view
+      arguments: {  }
 field_type: entity_reference
