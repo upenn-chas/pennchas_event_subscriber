@@ -67,16 +67,20 @@ class EventFeedbackController extends ControllerBase
     public function report()
     {
         $webform = Webform::load($this->eventFeedbackWebformId);
-        // dd($webform);
+        dd($webform->getElementsOriginalDecoded());
 
         $tableHeaders = [
-            'Event',
-            'Respondants',
+            'Header 1',
+            'Header 2',
+            'Header 3',
+            'Header 4',
+            'Header 5'
         ];
+
         return [
-            '#theme' => 'report',
+            '#theme' => 'report_page',
             '#title' => $this->t('Participations Survey Report'),
-            '#rows' => \Drupal::theme('table', $tableHeaders, [])
+            '#header' => $tableHeaders,
         ];
     }
 

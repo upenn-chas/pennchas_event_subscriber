@@ -1,19 +1,20 @@
-uuid: bdef4207-89e2-418c-adc1-ff879466bdeb
+uuid: 0fac4df0-6ac4-45ea-b2ba-3a85f95bc0f5
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.storage.node.field_groups
     - field.storage.node.field_last_moderated_by
     - field.storage.node.field_last_moderation_message
     - field.storage.node.field_moderation_finished_at
-    - node.type.chas_event
+    - field.storage.node.field_room
+    - node.type.reserve_room
   module:
     - better_exposed_filters
     - content_moderation
     - csv_serialization
     - custom_view_filters
+    - group
     - node
     - rest
     - serialization
@@ -21,8 +22,8 @@ dependencies:
     - verf
     - views_bootstrap
     - views_data_export
-id: moderation_reports
-label: 'Moderation Reports'
+id: rooms_reservation_moderation_reports
+label: 'Rooms Reservation Moderation Reports'
 module: views
 description: ''
 tag: ''
@@ -37,15 +38,81 @@ display:
     display_options:
       title: 'Export: Event Moderation Report'
       fields:
-        field_groups:
-          id: field_groups
-          table: node__field_groups
-          field: field_groups
+        gid:
+          id: gid
+          table: group_relationship_field_data
+          field: gid
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          entity_field: gid
+          plugin_id: field
+          label: House
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns:
+            target_id: target_id
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_room:
+          id: field_room
+          table: node__field_room
+          field: field_room
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: House(s)
+          label: Room
           exclude: false
           alter:
             alter_text: false
@@ -89,7 +156,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: false
+            link: true
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -726,24 +793,25 @@ display:
           granularity: second
       arguments: {  }
       filters:
-        field_groups_target_id_verf:
-          id: field_groups_target_id_verf
-          table: node__field_groups
-          field: field_groups_target_id_verf
-          relationship: none
+        gid_verf:
+          id: gid_verf
+          table: group_relationship_field_data
+          field: gid_verf
+          relationship: group_relationship
           group_type: group
           admin_label: ''
+          entity_type: group_relationship
           plugin_id: verf
           operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_groups_target_id_verf_op
+            operator_id: gid_verf_op
             label: House
             description: ''
             use_operator: false
-            operator: field_groups_target_id_verf_op
+            operator: gid_verf_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: gid
@@ -788,7 +856,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            chas_event: chas_event
+            reserve_room: reserve_room
           group: 1
           exposed: false
           expose:
@@ -1084,7 +1152,27 @@ display:
           distinct: true
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        group_relationship:
+          id: group_relationship
+          table: node_field_data
+          field: group_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content group relationship'
+          entity_type: node
+          plugin_id: group_relationship_to_entity_reverse
+          required: true
+          group_relation_plugins:
+            'group_node:reserve_room': 'group_node:reserve_room'
+            'group_node:article': '0'
+            'group_node:chas_event': '0'
+            'group_node:house_landing_page': '0'
+            'group_node:notices': '0'
+            'group_node:page': '0'
+            'group_node:program_community': '0'
+            'group_node:room': '0'
+            'group_node:webform': '0'
       use_ajax: true
       group_by: false
       header:
@@ -1111,18 +1199,18 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
-        - 'config:views.view.moderation_reports'
+        - 'config:field.storage.node.field_room'
+        - 'config:views.view.rooms_reservation_moderation_reports'
         - 'config:workflow_list'
         - group_list
   data_export_1:
     id: data_export_1
-    display_title: 'Events Export'
+    display_title: 'Data export'
     display_plugin: data_export
-    position: 3
+    position: 4
     display_options:
       style:
         type: data_export
@@ -1138,20 +1226,13 @@ display:
             encoding: utf8
             utf8_bom: '0'
             use_serializer_encode_only: false
-      defaults:
-        filters: true
-        filter_groups: true
-      display_description: ''
       display_extenders: {  }
-      path: dashboard/reports/events-moderation/export
-      displays:
-        event_moderation: event_moderation
-        default: '0'
-      filename: events_moderation_report.csv
+      path: dashboard/reports/rooms-reservations-moderation/export
+      filename: room_reservation_moderation_report.csv
       automatic_download: true
       store_in_public_file_directory: false
       custom_redirect_path: false
-      redirect_to_display: event_moderation
+      redirect_to_display: none
       include_query_params: false
     cache_metadata:
       max-age: -1
@@ -1163,31 +1244,28 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
-        - 'config:views.view.moderation_reports'
+        - 'config:field.storage.node.field_room'
+        - 'config:views.view.rooms_reservation_moderation_reports'
         - 'config:workflow_list'
         - group_list
-  event_moderation:
-    id: event_moderation
-    display_title: Event
+  page_1:
+    id: page_1
+    display_title: 'Room Reservation'
     display_plugin: page
-    position: 1
+    position: 3
     display_options:
-      title: 'Events Moderation Report'
+      title: 'Rooms Reservations Moderation Report'
       defaults:
         title: false
-        use_ajax: false
+        relationships: true
         fields: true
-        filters: true
-        filter_groups: true
         header: true
-      use_ajax: true
       display_description: ''
       display_extenders: {  }
-      path: dashboard/reports/events-moderation
+      path: dashboard/reports/rooms-reservations-moderation
     cache_metadata:
       max-age: -1
       contexts:
@@ -1198,10 +1276,10 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
-        - 'config:views.view.moderation_reports'
+        - 'config:field.storage.node.field_room'
+        - 'config:views.view.rooms_reservation_moderation_reports'
         - 'config:workflow_list'
         - group_list
