@@ -1,27 +1,31 @@
-uuid: 18259c62-86fd-4243-88bf-ce63fa8e368c
+uuid: 7e20d5ef-2235-42dd-9525-43d83ee61b4e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group_relationship.group_roles
-    - field.storage.user.field_full_name
+    - field.storage.node.field_event_schedule
+    - field.storage.node.field_intended_audience
+    - field.storage.node.field_is_campus_wide
+    - node.type.chas_event
+    - node.type.notices
+    - workflows.workflow.editorial
   module:
     - better_exposed_filters
-    - csv_serialization
+    - content_moderation
+    - fullcalendar_view
     - group
-    - rest
-    - serialization
+    - node
+    - options
+    - smart_date
     - user
-    - verf
-    - views_bootstrap
-    - views_data_export
-id: users_reports
-label: 'Users Reports'
+    - views_fields_combine
+id: duplicate_of_event_calendar
+label: 'Duplicate of Event Calendar'
 module: views
 description: ''
 tag: ''
-base_table: users_field_data
-base_field: uid
+base_table: node_field_data
+base_field: nid
 display:
   default:
     id: default
@@ -29,46 +33,28 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Users Report'
+      title: 'Event Calendar'
       fields:
-        name:
-          id: name
-          table: users_field_data
-          field: name
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: name
+          entity_type: node
+          entity_field: title
           plugin_id: field
-          label: Pennkey
+          label: ''
           exclude: false
           alter:
             alter_text: false
-            text: ''
             make_link: false
-            path: ''
             absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
             word_boundary: false
             ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
             strip_tags: false
             trim: false
-            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -83,7 +69,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: user_name
+          type: string
           settings:
             link_to_entity: true
           group_column: value
@@ -96,15 +82,15 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_full_name:
-          id: field_full_name
-          table: user__field_full_name
-          field: field_full_name
+        field_event_schedule:
+          id: field_event_schedule
+          table: node__field_event_schedule
+          field: field_event_schedule
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Full name'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -137,7 +123,85 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: smartdate_default
+          settings:
+            timezone_override: ''
+            format: default
+            force_chronological: false
+            add_classes: false
+            time_wrapper: true
+            localize: false
+            parts:
+              start: start
+              end: end
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderation_state_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -169,7 +233,7 @@ display:
           entity_type: group_relationship
           entity_field: gid
           plugin_id: field
-          label: House
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -224,16 +288,18 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        group_roles:
-          id: group_roles
-          table: group_relationship__group_roles
-          field: group_roles
-          relationship: group_relationship
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: type
           plugin_id: field
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -287,72 +353,19 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        roles_target_id:
-          id: roles_target_id
-          table: user__roles
-          field: roles_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: roles
-          plugin_id: user_roles
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: separator
-          separator: ', '
-        nothing:
-          id: nothing
+        fields_combine:
+          id: fields_combine
           table: views
-          field: nothing
+          field: fields_combine
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: custom
-          label: Roles
+          plugin_id: field_combiner
+          label: ''
           exclude: false
           alter:
             alter_text: true
-            text: "{{ roles_target_id is empty ? group_roles : roles_target_id }}\r\n"
+            text: "<span class=\"event_title\">{{ title }}</span>\r\n<span>{{ gid }}</span>\r\n{% if moderation_state != 'published' %}\r\n<span class=\"event_moderation_state\">{{ moderation_state }}</span>\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -381,26 +394,39 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
-        mail:
-          id: mail
-          table: users_field_data
-          field: mail
+          hide_alter_empty: true
+          combined_fields:
+            title: title
+            gid: gid
+            type: type
+            field_event_schedule: 0
+            moderation_state: 0
+          separator: ''
+          separator_allowed_tags:
+            - a
+            - em
+            - strong
+            - span
+            - br
+          hide_empty_combined_fields: 1
+          combined_fields_add_labels: 0
+        field_intended_audience:
+          id: field_intended_audience
+          table: node__field_intended_audience
+          field: field_intended_audience
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: mail
           plugin_id: field
-          label: Email
-          exclude: false
+          label: ''
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -432,7 +458,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -441,7 +467,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: basic_string
+          type: list_default
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -453,95 +479,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        login:
-          id: login
-          table: users_field_data
-          field: login
+        field_is_campus_wide:
+          id: field_is_campus_wide
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: login
           plugin_id: field
-          label: 'Last login'
-          exclude: false
-          alter:
-            alter_text: true
-            text: "{{ login__value ? login : '' }}"
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: timestamp
-          settings:
-            date_format: medium
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: ''
-              custom_date_format: ''
-            time_diff:
-              enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: 2
-              refresh: 60
-              description: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        created:
-          id: created
-          table: users_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: created
-          plugin_id: field
-          label: 'Created On'
-          exclude: false
+          label: ''
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -573,84 +520,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: timestamp
-          settings:
-            date_format: medium
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: ''
-              custom_date_format: ''
-            time_diff:
-              enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: 2
-              refresh: 60
-              description: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        status:
-          id: status
-          table: users_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: status
-          plugin_id: field
-          label: Status
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -661,9 +531,9 @@ display:
           click_sort_column: value
           type: boolean
           settings:
-            format: custom
-            format_custom_false: Inactive
-            format_custom_true: Active
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -675,24 +545,10 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: none
         options:
           offset: 0
-          pagination_heading_level: h4
-          items_per_page: 10
-          total_pages: null
-          id: 0
-          tags:
-            next: ››
-            previous: ‹‹
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
+          items_per_page: 0
       exposed_form:
         type: bef
         options:
@@ -707,18 +563,18 @@ display:
           text_input_required_format: basic_html
           bef:
             general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
+              autosubmit: true
+              autosubmit_exclude_textfield: true
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
             filter:
-              gid_verf:
+              field_intended_audience_value:
                 plugin_id: default
                 advanced:
                   sort_options: false
@@ -729,7 +585,29 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              mail:
+              field_is_campus_wide_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              type:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_event_schedule_end_value:
                 plugin_id: default
                 advanced:
                   placeholder_text: ''
@@ -737,13 +615,10 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              status:
+              field_event_schedule_value_1:
                 plugin_id: default
                 advanced:
-                  sort_options: true
-                  rewrite:
-                    filter_rewrite_values: "Yes|Active\r\nNo|Inactive"
-                    filter_rewrite_values_key: false
+                  placeholder_text: ''
                   collapsible: false
                   collapsible_disable_automatic_open: false
                   is_secondary: false
@@ -751,99 +626,91 @@ display:
       access:
         type: perm
         options:
-          perm: 'access user profiles'
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
+      empty: {  }
+      sorts:
+        field_event_schedule_value:
+          id: field_event_schedule_value
+          table: node__field_event_schedule
+          field: field_event_schedule_value
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text_custom
-          empty: true
-          content: '<div class="no-records">No records</div>'
-          tokenize: false
-      sorts: {  }
-      arguments: {  }
-      filters:
-        gid_verf:
-          id: gid_verf
+          plugin_id: date
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      arguments:
+        gid:
+          id: gid
           table: group_relationship_field_data
-          field: gid_verf
+          field: gid
           relationship: group_relationship
           group_type: group
           admin_label: ''
           entity_type: group_relationship
-          plugin_id: verf
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: gid_verf_op
-            label: House
-            description: ''
-            use_operator: false
-            operator: gid_verf_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: gid
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          verf_target_bundles:
-            house1: house1
-          show_unpublished: 0
-        mail:
-          id: mail
-          table: users_field_data
-          field: mail
+          entity_field: gid
+          plugin_id: group_id
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: raw
+          default_argument_options:
+            index: 1
+            use_alias: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        field_event_schedule_end_value:
+          id: field_event_schedule_end_value
+          table: node__field_event_schedule
+          field: field_event_schedule_end_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: mail
-          plugin_id: string
-          operator: '='
-          value: ''
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: date
+            granularity: month
           group: 1
           exposed: true
           expose:
-            operator_id: mail_op
-            label: Email
+            operator_id: field_event_schedule_end_value_op
+            label: End
             description: ''
             use_operator: false
-            operator: mail_op
+            operator: field_event_schedule_end_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: mail
+            identifier: end
             required: false
             remember: false
             multiple: false
@@ -857,6 +724,8 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
+            min_placeholder: ''
+            max_placeholder: ''
             placeholder: ''
           is_grouped: false
           group_info:
@@ -870,29 +739,243 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_event_schedule_value_1:
+          id: field_event_schedule_value_1
+          table: node__field_event_schedule
+          field: field_event_schedule_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: offset
+            granularity: month
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_schedule_value_1_op
+            label: Start
+            description: ''
+            use_operator: false
+            operator: field_event_schedule_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            chas_event: chas_event
+            notices: notices
+          group: 2
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Notices
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: content_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Content type'
+            description: ''
+            identifier: content_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Notices
+                operator: in
+                value:
+                  chas_event: chas_event
+                  notices: notices
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
+              2:
+                title: 'Exclude Notices'
+                operator: in
+                value:
+                  chas_event: chas_event
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  notices: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
         status:
           id: status
-          table: users_field_data
+          table: node_field_data
           field: status
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
+          entity_type: node
           entity_field: status
           plugin_id: boolean
           operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderation_state_filter
+          operator: in
+          value:
+            editorial-draft: editorial-draft
+            editorial-published: editorial-published
+            editorial-pending: editorial-pending
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_is_campus_wide_value:
+          id: field_is_campus_wide_value
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
           value: All
-          group: 1
+          group: 3
           exposed: true
           expose:
             operator_id: ''
-            label: Status
+            label: 'Events Open to All College House Resedents'
             description: ''
             use_operator: false
-            operator: status_op
+            operator: field_is_campus_wide_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: status
+            identifier: campus_wide
             required: false
             remember: false
             multiple: false
@@ -908,211 +991,141 @@ display:
               chas_professional_staff: '0'
           is_grouped: false
           group_info:
-            label: ''
+            label: 'Events Open to All College House Residents'
             description: ''
-            identifier: ''
+            identifier: campus_wide
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
-        custom_roles_filter:
-          id: custom_roles_filter
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_1:
-          id: custom_roles_filter_1
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_2:
-          id: custom_roles_filter_2
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_3:
-          id: custom_roles_filter_3
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_4:
-          id: custom_roles_filter_4
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_5:
-          id: custom_roles_filter_5
-          table: user__roles
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_6:
-          id: custom_roles_filter_6
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_7:
-          id: custom_roles_filter_7
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_8:
-          id: custom_roles_filter_8
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_9:
-          id: custom_roles_filter_9
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_10:
-          id: custom_roles_filter_10
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_11:
-          id: custom_roles_filter_11
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_12:
-          id: custom_roles_filter_12
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_13:
-          id: custom_roles_filter_13
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_14:
-          id: custom_roles_filter_14
-          table: views
-          field: custom_roles_filter
-          plugin_id: custom_roles_filter
-        custom_roles_filter_15:
-          id: custom_roles_filter_15
-          table: users_field_data
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
-        custom_roles_filter_16:
-          id: custom_roles_filter_16
-          table: users_field_data
-          field: custom_roles_filter
-          entity_type: user
-          plugin_id: custom_roles_filter
+            group_items:
+              1:
+                title: 'Campus Wise'
+                operator: '='
+                value: '0'
+        field_intended_audience_value:
+          id: field_intended_audience_value
+          table: node__field_intended_audience
+          field: field_intended_audience_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            community_event: community_event
+            house_event: house_event
+            floor_event: floor_event
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_intended_audience_value_op
+            label: 'House Event'
+            description: ''
+            use_operator: false
+            operator: field_intended_audience_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: event_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'House Events'
+            description: ''
+            identifier: event_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '2'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Exclude House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  floor_event: floor_event
+              2:
+                title: 'Include House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  house_event: house_event
+                  floor_event: floor_event
+          reduce_duplicates: false
       filter_groups:
         operator: AND
         groups:
           1: AND
-          2: OR
+          2: AND
+          3: AND
       style:
-        type: views_bootstrap_table
+        type: fullcalendar_view_display
         options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          override: 1
-          sticky: 0
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            name: name
-            field_full_name: field_full_name
-            gid: gid
-            group_roles: group_roles
-            roles_target_id: roles_target_id
-            nothing: nothing
-            mail: mail
-            login: login
-            created: created
-            status: status
-          info:
-            name:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            field_full_name:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            gid:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            group_roles:
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            roles_target_id:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            nothing:
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            mail:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            login:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            created:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            status:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-          default: '-1'
-          empty_table: 1
-          responsive: 1
-          bootstrap_styles:
-            striped: 0
-            bordered: 0
-            hover: 0
-            condensed: 0
+          default_date_source: now
+          defaultDate: ''
+          start: field_event_schedule
+          end: ''
+          title: fields_combine
+          left_buttons: 'prev,next today'
+          right_buttons: 'dayGridMonth,timeGridWeek'
+          default_view: dayGridMonth
+          default_mobile_view: dayGridMonth
+          mobile_width: '768'
+          firstDay: '0'
+          nav_links: 0
+          timeFormat: 'hh:mm a'
+          allowEventOverlap: 1
+          updateAllowed: 0
+          updateConfirm: 0
+          defaultLanguage: en
+          languageSelector: 0
+          dialogWindow: 0
+          openEntityInNewTab: 1
+          createEventLink: 0
+          eventLimit: '4'
+          tax_field: ''
+          vocabularies: ''
+          color_bundle:
+            article: '#3a87ad'
+            chas_event: '#3a87ad'
+            house_landing_page: '#3a87ad'
+            notices: '#3a87ad'
+            page: '#3a87ad'
+            program_community: '#3a87ad'
+            reserve_room: '#3a87ad'
+            room: '#3a87ad'
+            webform: '#3a87ad'
+          rrule: ''
+          dialogModal: false
+          dialogCanvas: false
+          duration: field_event_schedule
+          slotDuration: '00:30:00'
+          minTime: '00:00:00'
+          maxTime: '23:59:59'
+          bundle_type: chas_event
+          classes: event-calendar
+          fetchGoogleHolidays: 0
+          googleHolidaysSettings:
+            googleCalendarAPIKey: ''
+            googleCalendarGroup: ''
+            renderGoogleHolidaysAsBackground: 0
       row:
         type: fields
       query:
@@ -1126,28 +1139,26 @@ display:
       relationships:
         group_relationship:
           id: group_relationship
-          table: users_field_data
+          table: node_field_data
           field: group_relationship
           relationship: none
           group_type: group
-          admin_label: 'User group relationship'
-          entity_type: user
+          admin_label: 'Content group relationship'
+          entity_type: node
           plugin_id: group_relationship_to_entity_reverse
-          required: false
+          required: true
           group_relation_plugins:
-            group_membership: '0'
-      header:
-        display_link:
-          id: display_link
-          table: views
-          field: display_link
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: display_link
-          label: Export
-          empty: false
-          display_id: data_export_1
+            'group_node:chas_event': 'group_node:chas_event'
+            'group_node:notices': 'group_node:notices'
+            'group_node:article': '0'
+            'group_node:house_landing_page': '0'
+            'group_node:page': '0'
+            'group_node:program_community': '0'
+            'group_node:reserve_room': '0'
+            'group_node:room': '0'
+            'group_node:webform': '0'
+      use_ajax: true
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -1156,75 +1167,32 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.group_relationship.group_roles'
-        - 'config:field.storage.user.field_full_name'
-        - 'config:views.view.users_reports'
-        - group_list
-  data_export_1:
-    id: data_export_1
-    display_title: 'Data export'
-    display_plugin: data_export
-    position: 2
-    display_options:
-      style:
-        type: data_export
-        options:
-          formats:
-            csv: csv
-          csv_settings:
-            delimiter: ','
-            enclosure: '"'
-            escape_char: \
-            strip_tags: true
-            trim: true
-            encoding: utf8
-            utf8_bom: '0'
-            use_serializer_encode_only: false
-      display_extenders: {  }
-      path: dashboard/reports/users/export
-      displays:
-        page_1: page_1
-        default: '0'
-      filename: users_report.csv
-      automatic_download: true
-      store_in_public_file_directory: false
-      custom_redirect_path: false
-      redirect_to_display: page_1
-      include_query_params: false
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
-      tags:
-        - 'config:field.storage.group_relationship.group_roles'
-        - 'config:field.storage.user.field_full_name'
-        - 'config:views.view.users_reports'
-        - group_list
+        - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'
   page_1:
     id: page_1
     display_title: Page
     display_plugin: page
     position: 1
     display_options:
+      exposed_block: false
       display_extenders: {  }
-      path: dashboard/reports/users
+      path: group/%group/calendar-2
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
+        - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.group_relationship.group_roles'
-        - 'config:field.storage.user.field_full_name'
-        - 'config:views.view.users_reports'
-        - group_list
+        - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'

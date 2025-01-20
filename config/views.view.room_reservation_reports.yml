@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_group
     - field.storage.node.field_room
     - node.type.reserve_room
     - workflows.workflow.editorial
@@ -35,69 +34,6 @@ display:
     display_options:
       title: 'Rooms Reservations Report'
       fields:
-        field_group:
-          id: field_group
-          table: node__field_group
-          field: field_group
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: House
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_room:
           id: field_room
           table: node__field_room
@@ -171,7 +107,7 @@ display:
           entity_type: node
           entity_field: uid
           plugin_id: field
-          label: 'Requested by'
+          label: 'Authored by'
           exclude: false
           alter:
             alter_text: false
@@ -236,7 +172,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: field
-          label: 'Requested On'
+          label: 'Authored on'
           exclude: false
           alter:
             alter_text: false
@@ -280,11 +216,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: report_date_and_time
+            date_format: medium
             custom_date_format: ''
             timezone: ''
             tooltip:
-              date_format: ''
+              date_format: long
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -582,7 +518,7 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: full
+        type: mini
         options:
           offset: 0
           pagination_heading_level: h4
@@ -592,8 +528,6 @@ display:
           tags:
             next: ››
             previous: ‹‹
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -602,7 +536,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 5
       exposed_form:
         type: bef
         options:
@@ -672,57 +605,6 @@ display:
           plugin_id: bundle
           value:
             reserve_room: reserve_room
-          group: 1
-        field_group_target_id_verf:
-          id: field_group_target_id_verf
-          table: node__field_group
-          field: field_group_target_id_verf
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: verf
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_group_target_id_verf_op
-            label: 'House '
-            description: ''
-            use_operator: false
-            operator: field_group_target_id_verf_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_group
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            reduce: 0
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          verf_target_bundles:
-            house1: house1
-          show_unpublished: 0
         field_room_target_id_verf:
           id: field_room_target_id_verf
           table: node__field_room
@@ -921,10 +803,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       style:
         type: views_bootstrap_table
         options:
@@ -1046,11 +924,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'
-        - group_list
         - node_list
   data_export_1:
     id: data_export_1
@@ -1093,11 +969,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'
-        - group_list
         - node_list
   page_1:
     id: page_1
@@ -1118,9 +992,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'
-        - group_list
         - node_list

@@ -190,115 +190,117 @@ function penchas_preprocess_html(&$variables) {
   $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
   $variables['front_page_url'] = $front_page_path;
-
+  $current_uri = \Drupal::request()->getRequestUri();
+  
   /* SAML resposne testing starts */
-  // get all group roles 
-  // $group_role_query = \Drupal::database()->select('group_relationship__group_roles', 'gr')
-  // ->distinct()  // Apply DISTINCT
-  // ->fields('gr', ['group_roles_target_id']); 
-  // // ->leftJoin('groups_field_data', 'gf', 'gf.id = gr.entity_id');
+  if($current_uri == '/all-college-houses'){
+    // get all group roles 
+    // $group_role_query = \Drupal::database()->select('group_relationship__group_roles', 'gr')
+    // ->distinct()  // Apply DISTINCT
+    // ->fields('gr', ['group_roles_target_id']); 
+    // // ->leftJoin('groups_field_data', 'gf', 'gf.id = gr.entity_id');
 
-  // $result = $group_role_query->execute();
+    // $result = $group_role_query->execute();
 
-  // // Initialize an array to store the results.
-  // $group_roles_target_ids = [];
-  // foreach ($result as $row) {
-  //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
-  // }
-  $query = \Drupal::entityQuery('group_role');
-  $role_ids = $query->execute();
-  $group_roles = GroupRole::loadMultiple($role_ids);
-  foreach ($group_roles as $role) {
-    $group_roles_target_ids[] = $role->id();
-  }
-  // dd($group_roles_target_ids);
-  
-  // get all Drupal user role
-  // $user_roles_query = \Drupal::database()->select('user__roles', 'ur')
-  // ->distinct()  // Apply DISTINCT
-  // ->fields('ur', ['roles_target_id']); 
-  // $user_role_result = $user_roles_query->execute();
-  // $user_roles_target_ids = [];
-  // foreach ($user_role_result as $row) {
-  //   $user_roles_target_ids[] = $row->roles_target_id;  // Collect the 'group_roles_target_id' values.
-  // }
-  // Get all user roles using the entity query.
-  $query = \Drupal::entityQuery('user_role');
-  $role_ids = $query->execute();
-  $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
-  foreach ($drupal_user_roles as $role) {
-    $drupal_user_roles[] = $role->id();
-  }
-
-  // dd($user_roles_target_ids);
-
-  // get all groups IDs by machine names
-  $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
-  ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
-  $gf_result = $group_machine_name_query->execute()->fetchAll();
-  $groups_data = [];
-  foreach ($gf_result as $row) {
-    $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
-  }
-
-  
-  
-  $personentitlement = [
-    "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
-    "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
-    "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
-    "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
-    "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
-    "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
-  ];
-  
-  foreach ($personentitlement as $row => $value) {
-    $array = explode('.', $value);
-    $last_string = end($array);
-    // var_dump($last_string);
-    // first check if any group is existed then 
-  
-    // check if any role existed in group roles 
-  
-    // check if any role existed in Drupal roles.
-  
-    // Asign that user into group
-    if (array_key_exists($last_string, $groups_data)) {
-      $group_ids[] = $groups_data[$last_string];
+    // // Initialize an array to store the results.
+    // $group_roles_target_ids = [];
+    // foreach ($result as $row) {
+    //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
+    // }
+    $query = \Drupal::entityQuery('group_role');
+    $role_ids = $query->execute();
+    $group_roles = GroupRole::loadMultiple($role_ids);
+    foreach ($group_roles as $role) {
+      $group_roles_target_ids[] = $role->id();
     }
-    if (in_array($last_string, $drupal_user_roles)) {
-      $drupal_user_roles_ids[] = $last_string;
+    // dd($group_roles_target_ids);
+    
+    // get all Drupal user role
+    // $user_roles_query = \Drupal::database()->select('user__roles', 'ur')
+    // ->distinct()  // Apply DISTINCT
+    // ->fields('ur', ['roles_target_id']); 
+    // $user_role_result = $user_roles_query->execute();
+    // $user_roles_target_ids = [];
+    // foreach ($user_role_result as $row) {
+    //   $user_roles_target_ids[] = $row->roles_target_id;  // Collect the 'group_roles_target_id' values.
+    // }
+    // Get all user roles using the entity query.
+    $query = \Drupal::entityQuery('user_role');
+    $role_ids = $query->execute();
+    $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
+    foreach ($drupal_user_roles as $role) {
+      $drupal_user_roles[] = $role->id();
     }
-    if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
-      $group_user_roles_ids[] = $last_string;
+
+    // dd($user_roles_target_ids);
+
+    // get all groups IDs by machine names
+    $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
+    ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
+    $gf_result = $group_machine_name_query->execute()->fetchAll();
+    $groups_data = [];
+    foreach ($gf_result as $row) {
+      $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
     }
-  }
-  // dd($group_roles_target_ids);
-  // dump($group_ids);
-  // dump($drupal_user_roles_ids);
-  // dump($group_user_roles_ids);
 
-  // dd($groups_data);
+    
+    
+    $personentitlement = [
+      "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
+      "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
+      "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
+      "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
+      "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
+      "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
+    ];
+    
+    foreach ($personentitlement as $row => $value) {
+      $array = explode('.', $value);
+      $last_string = end($array);
+      // var_dump($last_string);
+      // first check if any group is existed then 
+    
+      // check if any role existed in group roles 
+    
+      // check if any role existed in Drupal roles.
+    
+      // Asign that user into group
+      if (array_key_exists($last_string, $groups_data)) {
+        $group_ids[] = $groups_data[$last_string];
+      }
+      if (in_array($last_string, $drupal_user_roles)) {
+        $drupal_user_roles_ids[] = $last_string;
+      }
+      if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
+        $group_user_roles_ids[] = $last_string;
+      }
+    }
+    // dd($group_roles_target_ids);
+    // dump($group_ids);
+    // dump($drupal_user_roles_ids);
+    // dump($group_user_roles_ids);
 
-  if (isset($group_ids)) {
-    foreach ($group_ids as $key => $group_id) {
-      if(isset($group_user_roles_ids)){
-        foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
-          
-          // insertion into tables "group_user_roles_ids" and get ID ,
-          // Add row into  "group_relationship" with relation of above inserted ID (from table "group_user_roles_ids").
-          // Add row into "group_relationship__group_roles" with relation of above inserted ID (from atble "group_user_roles_ids").
-  
-          // Exmaple : 1094 in table "group_user_roles_ids"
+    // dd($groups_data);
+
+    if (isset($group_ids)) {
+      foreach ($group_ids as $key => $group_id) {
+        if(isset($group_user_roles_ids)){
+          foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
+            
+            // insertion into tables "group_user_roles_ids" and get ID ,
+            // Add row into  "group_relationship" with relation of above inserted ID (from table "group_user_roles_ids").
+            // Add row into "group_relationship__group_roles" with relation of above inserted ID (from atble "group_user_roles_ids").
+    
+            // Exmaple : 1094 in table "group_user_roles_ids"
+          }
+
         }
+        if(isset($drupal_user_roles_ids)){
 
-      }
-      if(isset($drupal_user_roles_ids)){
-
+        }
       }
     }
   }
-  
   
 
 

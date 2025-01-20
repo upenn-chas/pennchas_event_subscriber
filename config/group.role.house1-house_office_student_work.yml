@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - group.type.house1
+  module:
+    - pennchas_form_alter
+third_party_settings:
+  pennchas_form_alter:
+    umbera_roles:
+      RA: RA
+      'Student Worker': 'Student Worker'
 id: house1-house_office_student_work
 label: 'House Office Student Worker'
 weight: -4

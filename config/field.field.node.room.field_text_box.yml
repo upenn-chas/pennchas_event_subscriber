@@ -11,7 +11,7 @@ entity_type: node
 bundle: room
 label: 'Room GPS Pin'
 description: 'Enter GPS coordinates in the format "latitude,longitude". <i>(e.g., 37.7749,-122.4194)</i>'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
