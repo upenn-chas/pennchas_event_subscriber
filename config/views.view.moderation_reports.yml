@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.storage.node.field_groups
     - field.storage.node.field_last_moderated_by
     - field.storage.node.field_last_moderation_message
     - field.storage.node.field_moderation_finished_at
     - node.type.chas_event
-    - node.type.reserve_room
   module:
     - better_exposed_filters
     - content_moderation
@@ -18,6 +18,7 @@ dependencies:
     - rest
     - serialization
     - user
+    - verf
     - views_bootstrap
     - views_data_export
 id: moderation_reports
@@ -36,6 +37,69 @@ display:
     display_options:
       title: 'Export: Event Moderation Report'
       fields:
+        field_groups:
+          id: field_groups
+          table: node__field_groups
+          field: field_groups
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: House(s)
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         title:
           id: title
           table: node_field_data
@@ -90,7 +154,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -110,7 +174,7 @@ display:
           admin_label: ''
           entity_type: node
           plugin_id: moderation_state_field
-          label: 'Current state'
+          label: 'Current State'
           exclude: false
           alter:
             alter_text: false
@@ -174,7 +238,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: field
-          label: 'When Created'
+          label: 'Created On'
           exclude: false
           alter:
             alter_text: false
@@ -218,11 +282,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: report_date_and_time
             custom_date_format: 'Y-m-d H:i'
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -251,7 +315,7 @@ display:
           entity_type: node
           entity_field: uid
           plugin_id: field
-          label: 'Who Created'
+          label: 'Created By'
           exclude: false
           alter:
             alter_text: false
@@ -314,7 +378,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Duration of pending state'
+          label: 'Duration of Pending State'
           exclude: false
           alter:
             alter_text: true
@@ -363,7 +427,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'When Approved or Denied'
+          label: 'Approved or Denied On'
           exclude: false
           alter:
             alter_text: false
@@ -407,11 +471,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: report_date_and_time
             custom_date_format: 'Y-m-d H:i'
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -438,7 +502,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Who Moderate'
+          label: Moderator
           exclude: false
           alter:
             alter_text: false
@@ -501,7 +565,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Last Log Message'
+          label: 'Last Moderator Message'
           exclude: false
           alter:
             alter_text: false
@@ -557,7 +621,7 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
@@ -567,6 +631,8 @@ display:
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -575,6 +641,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 5
       exposed_form:
         type: bef
         options:
@@ -659,6 +726,56 @@ display:
           granularity: second
       arguments: {  }
       filters:
+        field_groups_target_id_verf:
+          id: field_groups_target_id_verf
+          table: node__field_groups
+          field: field_groups_target_id_verf
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: verf
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_groups_target_id_verf_op
+            label: House
+            description: ''
+            use_operator: false
+            operator: field_groups_target_id_verf_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          verf_target_bundles:
+            house1: house1
+          show_unpublished: 0
         type:
           id: type
           table: node_field_data
@@ -671,7 +788,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            reserve_room: reserve_room
+            chas_event: chas_event
           group: 1
           exposed: false
           expose:
@@ -791,7 +908,7 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: All
+                title: '- Any -'
                 operator: in
                 value:
                   editorial-draft: editorial-draft
@@ -994,230 +1111,19 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
+        - 'config:views.view.moderation_reports'
         - 'config:workflow_list'
+        - group_list
   data_export_1:
     id: data_export_1
     display_title: 'Events Export'
     display_plugin: data_export
     position: 3
     display_options:
-      filters:
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value:
-            chas_event: chas_event
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: Title
-            description: ''
-            use_operator: false
-            operator: title_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: title
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        moderation_state:
-          id: moderation_state
-          table: node_field_data
-          field: moderation_state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: moderation_state_filter
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: moderation_state_op
-            label: 'Moderation state'
-            description: null
-            use_operator: false
-            operator: moderation_state_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: moderation_state
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: 'Moderation state'
-            description: ''
-            identifier: moderation_state
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: '1'
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: All
-                operator: in
-                value:
-                  editorial-draft: editorial-draft
-                  editorial-published: editorial-published
-                  editorial-denied: editorial-denied
-                  editorial-pending: editorial-pending
-              2:
-                title: Draft
-                operator: in
-                value:
-                  editorial-draft: editorial-draft
-              3:
-                title: Pending
-                operator: in
-                value:
-                  editorial-pending: editorial-pending
-              4:
-                title: Approved
-                operator: in
-                value:
-                  editorial-published: editorial-published
-              5:
-                title: Denied
-                operator: in
-                value:
-                  editorial-denied: editorial-denied
-        date_range_picker:
-          id: date_range_picker
-          table: node_field_data
-          field: date_range_picker
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: date_range_picker_filter
-          operator: '='
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'Date range picker filter'
-            description: ''
-            use_operator: false
-            operator: date_range_picker_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: period
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          node_from_date: ''
-          node_to_date: ''
-          granular_field_name: created
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       style:
         type: data_export
         options:
@@ -1233,8 +1139,8 @@ display:
             utf8_bom: '0'
             use_serializer_encode_only: false
       defaults:
-        filters: false
-        filter_groups: false
+        filters: true
+        filter_groups: true
       display_description: ''
       display_extenders: {  }
       path: dashboard/reports/events-moderation/export
@@ -1257,60 +1163,13 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
+        - 'config:views.view.moderation_reports'
         - 'config:workflow_list'
-  data_export_2:
-    id: data_export_2
-    display_title: 'Room Reservation Export'
-    display_plugin: data_export
-    position: 5
-    display_options:
-      title: 'Export: Room reservation Moderation Report'
-      style:
-        type: data_export
-        options:
-          formats:
-            csv: csv
-          csv_settings:
-            delimiter: ','
-            enclosure: '"'
-            escape_char: \
-            strip_tags: true
-            trim: true
-            encoding: utf8
-            utf8_bom: '0'
-            use_serializer_encode_only: false
-      defaults:
-        title: false
-      display_description: ''
-      display_extenders: {  }
-      path: dashboard/reports/rooms-reservations-moderation/export
-      displays:
-        page_1: page_1
-        default: '0'
-        event_moderation: '0'
-      filename: rooms_reservations_moderation_report.csv
-      automatic_download: true
-      store_in_public_file_directory: false
-      custom_redirect_path: false
-      redirect_to_display: page_1
-      include_query_params: false
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.field_last_moderated_by'
-        - 'config:field.storage.node.field_last_moderation_message'
-        - 'config:field.storage.node.field_moderation_finished_at'
-        - 'config:workflow_list'
+        - group_list
   event_moderation:
     id: event_moderation
     display_title: Event
@@ -1318,247 +1177,15 @@ display:
     position: 1
     display_options:
       title: 'Events Moderation Report'
-      filters:
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value:
-            chas_event: chas_event
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: Title
-            description: ''
-            use_operator: false
-            operator: title_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: title
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        moderation_state:
-          id: moderation_state
-          table: node_field_data
-          field: moderation_state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: moderation_state_filter
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: moderation_state_op
-            label: 'Moderation state'
-            description: null
-            use_operator: false
-            operator: moderation_state_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: moderation_state
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: 'Moderation state'
-            description: ''
-            identifier: moderation_state
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: '1'
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: All
-                operator: in
-                value:
-                  editorial-draft: editorial-draft
-                  editorial-published: editorial-published
-                  editorial-denied: editorial-denied
-                  editorial-pending: editorial-pending
-              2:
-                title: Draft
-                operator: in
-                value:
-                  editorial-draft: editorial-draft
-              3:
-                title: Pending
-                operator: in
-                value:
-                  editorial-pending: editorial-pending
-              4:
-                title: Approved
-                operator: in
-                value:
-                  editorial-published: editorial-published
-              5:
-                title: Denied
-                operator: in
-                value:
-                  editorial-denied: editorial-denied
-        date_range_picker:
-          id: date_range_picker
-          table: node_field_data
-          field: date_range_picker
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: date_range_picker_filter
-          operator: '='
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'Date range picker filter'
-            description: ''
-            use_operator: false
-            operator: date_range_picker_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: period
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          node_from_date: ''
-          node_to_date: ''
-          granular_field_name: created
-        date_range_picker_1:
-          id: date_range_picker_1
-          table: node_field_data
-          field: date_range_picker
-          entity_type: node
-          plugin_id: date_range_picker_filter
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       defaults:
         title: false
         use_ajax: false
         fields: true
-        filters: false
-        filter_groups: false
-        header: false
+        filters: true
+        filter_groups: true
+        header: true
       use_ajax: true
       display_description: ''
-      header:
-        display_link:
-          id: display_link
-          table: views
-          field: display_link
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: display_link
-          label: Export
-          empty: false
-          display_id: data_export_1
       display_extenders: {  }
       path: dashboard/reports/events-moderation
     cache_metadata:
@@ -1571,46 +1198,10 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
         - 'config:field.storage.node.field_last_moderation_message'
         - 'config:field.storage.node.field_moderation_finished_at'
+        - 'config:views.view.moderation_reports'
         - 'config:workflow_list'
-  page_1:
-    id: page_1
-    display_title: 'Room Reservation'
-    display_plugin: page
-    position: 3
-    display_options:
-      title: 'Rooms Reservations Moderation Report'
-      defaults:
-        title: false
-        header: false
-      display_description: ''
-      header:
-        display_link:
-          id: display_link
-          table: views
-          field: display_link
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: display_link
-          label: Export
-          empty: false
-          display_id: data_export_2
-      display_extenders: {  }
-      path: dashboard/reports/rooms-reservations-moderation
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.field_last_moderated_by'
-        - 'config:field.storage.node.field_last_moderation_message'
-        - 'config:field.storage.node.field_moderation_finished_at'
-        - 'config:workflow_list'
+        - group_list

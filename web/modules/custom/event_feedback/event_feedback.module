@@ -10,6 +10,12 @@ function event_feedback_theme($existing, $type, $theme, $path)
                 'eventDates' => NULL
             ],
             'template' => 'event-feedback-page'
+        ],
+        'report_page' => [
+            'variables' => [
+                'header' => []
+            ],
+            'template' => 'report-page'
         ]
     ];
 }

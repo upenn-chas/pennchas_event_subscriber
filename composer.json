@@ -83,7 +83,8 @@
         "drupal/custom_view_filters": "^2.1",
         "drupal/verf": "^2.0",
         "drupal/metatag": "^2.1",
-        "drupal/rename_admin_paths": "^3.0"
+        "drupal/rename_admin_paths": "^3.0",
+        "drupal/publication_date": "^3.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
