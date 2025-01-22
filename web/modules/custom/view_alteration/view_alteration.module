@@ -46,9 +46,3 @@ function view_alteration_views_data_alter(array &$data)
         ];
     }
 }
-
-function view_alteration_views_query_alter(ViewExecutable $view, Sql $query) {
-    if ($view->id() == 'contents_delete_report') {
-        // dd($query);
-    }
-}
