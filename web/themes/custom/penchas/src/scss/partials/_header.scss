@@ -111,6 +111,7 @@ header {
   .right-menu {
     .offcanvas-body {
         justify-content: flex-end;
+        align-items: center;
         nav{
           ul{
             li.nav-item{
@@ -468,8 +469,8 @@ article > header {
     top: 0;
     left: 0;
     width: 100%;
-    background: #EBF2FF;
-}
+    background: #EBF2FF; 
+  }
   .offcanvas-body {
     padding: 0;
     nav {
@@ -695,6 +696,7 @@ article > header {
 						color: #011F5B;
 						text-decoration: none;
 						font-family: 'tablet-gothic';
+            padding: 18px 16px 18px 0px;
             &.nav-link-- {
                 padding: 19px;
                 padding-left: 0;
@@ -718,7 +720,32 @@ article > header {
     z-index: 3;
   }
 }
-
+.menu--account {
+  li {
+    .nav-link--dashboard-login {       
+      font-family: $teritoryFont;       
+      color: $primaryColor;
+      padding: 15px 20px;   
+      font-weight: 700; 
+      text-decoration: none;
+      border: 1px solid $primaryColor;
+      border-radius: 10px;
+      margin: 0 30px 0 0;
+      transition: all ease-in-out 0.3s;
+      text-align: center;
+      @include media-query ('mobile') {
+        margin-right: 0;
+        color: #fff;
+        background-color: $primaryColor;
+      }
+      &:hover {
+        color: #fff;
+        background-color: $primaryColor;
+        transition: all ease-in-out 0.3s;
+      }
+    }
+  }
+}
 
 /*for MAC's*/
 .mac-os{

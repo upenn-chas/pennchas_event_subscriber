@@ -10,8 +10,11 @@ use Drupal\views\Views;
  */
 function event_calendar_preprocess_views_view_fullcalendar(array &$variables)
 {
-  // if ($variables['view']->id() === 'event_calendar') {
-  //   $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
+  if ($variables['view']->id() === 'event_calendar') {
+    // $variables['#attached']['library'][] = 'event_calendar/event_calendar_custom';
+  }
+  // if ($variables['view']->id() === 'calendar') {
+  //   $variables['#attached']['library'][] = 'event_calendar/calendar_view';
   // }
 }
 
@@ -39,7 +42,7 @@ function event_calendar_theme($existing, $type, $theme, $path)
 /**
  * Implements hook_views_query_alter().
  */
-function event_calendar_views_query_alterr(ViewExecutable $view, Sql $query)
+function event_calendar_views_query_alterss(ViewExecutable $view, Sql $query)
 {
   if ($view->id() == 'event_calendar') {
     // dd($query->where);

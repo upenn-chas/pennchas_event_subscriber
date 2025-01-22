@@ -203,7 +203,7 @@ function penchas_preprocess_html(&$variables) {
     // $result = $group_role_query->execute();
 
     // // Initialize an array to store the results.
-    // $group_roles_target_ids = [];
+    $group_roles_target_ids = [];
     // foreach ($result as $row) {
     //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
     // }
@@ -242,8 +242,6 @@ function penchas_preprocess_html(&$variables) {
     foreach ($gf_result as $row) {
       $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
     }
-
-    
     
     $personentitlement = [
       "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
@@ -280,7 +278,7 @@ function penchas_preprocess_html(&$variables) {
     // dump($drupal_user_roles_ids);
     // dump($group_user_roles_ids);
 
-    // dd($groups_data);
+    // dump($groups_data);
 
     if (isset($group_ids)) {
       foreach ($group_ids as $key => $group_id) {
@@ -290,7 +288,7 @@ function penchas_preprocess_html(&$variables) {
             // insertion into tables "group_user_roles_ids" and get ID ,
             // Add row into  "group_relationship" with relation of above inserted ID (from table "group_user_roles_ids").
             // Add row into "group_relationship__group_roles" with relation of above inserted ID (from atble "group_user_roles_ids").
-    
+            
             // Exmaple : 1094 in table "group_user_roles_ids"
           }
 

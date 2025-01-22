@@ -631,21 +631,7 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts:
-        field_event_schedule_value:
-          id: field_event_schedule_value
-          table: node__field_event_schedule
-          field: field_event_schedule_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: date
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-          granularity: second
+      sorts: {  }
       arguments:
         gid:
           id: gid
@@ -683,60 +669,6 @@ display:
           break_phrase: false
           not: false
       filters:
-        field_event_schedule_end_value:
-          id: field_event_schedule_end_value
-          table: node__field_event_schedule
-          field: field_event_schedule_end_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: date
-          operator: '<='
-          value:
-            min: ''
-            max: ''
-            value: today
-            type: date
-            granularity: month
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_event_schedule_end_value_op
-            label: End
-            description: ''
-            use_operator: false
-            operator: field_event_schedule_end_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: end
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         field_event_schedule_value_1:
           id: field_event_schedule_value_1
           table: node__field_event_schedule
@@ -1067,6 +999,49 @@ display:
                   house_event: house_event
                   floor_event: floor_event
           reduce_duplicates: false
+        field_event_schedule_value:
+          id: field_event_schedule_value
+          table: node__field_event_schedule
+          field: field_event_schedule_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+            granularity: second
+          group: 1
+          exposed: true
+          expose:
+            label: 'Event Schedule - Start'
+            description: null
+            use_operator: false
+            operator: field_event_schedule_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_schedule_value
+            required: false
+            remember: false
+            multiple: false
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -1175,6 +1150,423 @@ display:
         - 'config:workflow_list'
   page_1:
     id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      filters:
+        field_event_schedule_value_1:
+          id: field_event_schedule_value_1
+          table: node__field_event_schedule
+          field: field_event_schedule_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: offset
+            granularity: month
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_schedule_value_1_op
+            label: Start
+            description: ''
+            use_operator: false
+            operator: field_event_schedule_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            chas_event: chas_event
+            notices: notices
+          group: 2
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Notices
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: content_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Content type'
+            description: ''
+            identifier: content_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Notices
+                operator: in
+                value:
+                  chas_event: chas_event
+                  notices: notices
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
+              2:
+                title: 'Exclude Notices'
+                operator: 'not in'
+                value:
+                  chas_event: chas_event
+                  all: '0'
+                  article: '0'
+                  page: '0'
+                  house_landing_page: '0'
+                  notices: '0'
+                  program_community: '0'
+                  reserve_room: '0'
+                  room: '0'
+                  webform: '0'
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderation_state_filter
+          operator: in
+          value:
+            editorial-draft: editorial-draft
+            editorial-published: editorial-published
+            editorial-pending: editorial-pending
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_is_campus_wide_value:
+          id: field_is_campus_wide_value
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 3
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Events Open to All College House Resedents'
+            description: ''
+            use_operator: false
+            operator: field_is_campus_wide_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: campus_wide
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+          is_grouped: false
+          group_info:
+            label: 'Events Open to All College House Residents'
+            description: ''
+            identifier: campus_wide
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Campus Wise'
+                operator: '='
+                value: '0'
+        field_intended_audience_value:
+          id: field_intended_audience_value
+          table: node__field_intended_audience
+          field: field_intended_audience_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            community_event: community_event
+            house_event: house_event
+            floor_event: floor_event
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_intended_audience_value_op
+            label: 'House Event'
+            description: ''
+            use_operator: false
+            operator: field_intended_audience_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: event_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'House Events'
+            description: ''
+            identifier: event_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '2'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Exclude House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  floor_event: floor_event
+              2:
+                title: 'Include House Events'
+                operator: or
+                value:
+                  community_event: community_event
+                  house_event: house_event
+                  floor_event: floor_event
+          reduce_duplicates: false
+        field_event_schedule_value:
+          id: field_event_schedule_value
+          table: node__field_event_schedule
+          field: field_event_schedule_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+            granularity: second
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_schedule_value_op
+            label: 'Event Schedule - Start'
+            description: ''
+            use_operator: false
+            operator: field_event_schedule_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_schedule_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
+      defaults:
+        filters: false
+        filter_groups: false
+      exposed_block: false
+      display_extenders: {  }
+      path: group/%group/calendar
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - route
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'
+  page_2:
+    id: page_2
     display_title: Page
     display_plugin: page
     position: 1

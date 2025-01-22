@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_event_schedule
+    - field.storage.node.field_intended_audience
+    - field.storage.node.field_is_campus_wide
     - node.type.chas_event
     - node.type.notices
   module:
-    - fullcalendar_view
+    - calendar_view
     - group
     - node
+    - options
     - smart_date
     - user
 id: calendar
@@ -26,7 +29,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Calendar
+      title: 'Current View'
       fields:
         title:
           id: title
@@ -204,25 +207,140 @@ display:
           date_format: fallback
           custom_date_format: ''
           timezone: ''
+        field_is_campus_wide:
+          id: field_is_campus_wide
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: default
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_intended_audience:
+          id: field_intended_audience
+          table: node__field_intended_audience
+          field: field_intended_audience
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
-        type: mini
+        type: calendar_month
         options:
           offset: 0
-          pagination_heading_level: h4
-          items_per_page: 10
-          total_pages: null
-          id: 0
-          tags:
-            next: ››
-            previous: ‹‹
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
+          display_reset: 0
+          use_previous_next: 1
+          label_format: F
       exposed_form:
         type: basic
         options:
@@ -357,57 +475,115 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_is_campus_wide_value:
+          id: field_is_campus_wide_value
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Campus wide (field_is_campus_wide)'
+            description: ''
+            use_operator: false
+            operator: field_is_campus_wide_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_is_campus_wide_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_intended_audience_value:
+          id: field_intended_audience_value
+          table: node__field_intended_audience
+          field: field_intended_audience_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            house_event: house_event
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_intended_audience_value_op
+            label: 'Intended Audience/Participant Group (field_intended_audience)'
+            description: ''
+            use_operator: false
+            operator: field_intended_audience_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_intended_audience_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
       style:
-        type: fullcalendar_view_display
+        type: calendar_month
         options:
-          default_date_source: now
-          defaultDate: ''
-          start: field_event_schedule
-          end: field_event_schedule_end_value
-          title: title
-          left_buttons: 'prev,next today'
-          right_buttons: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
-          default_view: dayGridMonth
-          default_mobile_view: listYear
-          mobile_width: '768'
-          firstDay: '0'
-          nav_links: 1
-          timeFormat: 'hh:mm a'
-          allowEventOverlap: 1
-          updateAllowed: 1
-          updateConfirm: 1
-          defaultLanguage: en
-          languageSelector: 0
-          dialogWindow: 0
-          openEntityInNewTab: 1
-          createEventLink: 0
-          eventLimit: '2'
-          tax_field: ''
-          vocabularies: ''
-          color_bundle:
-            article: '#3a87ad'
-            chas_event: '#3a87ad'
-            house_landing_page: '#3a87ad'
-            notices: '#3a87ad'
-            page: '#3a87ad'
-            program_community: '#3a87ad'
-            reserve_room: '#3a87ad'
-            room: '#3a87ad'
-            webform: '#3a87ad'
-          rrule: ''
-          dialogModal: false
-          dialogCanvas: false
-          duration: ''
-          slotDuration: '00:30:00'
-          minTime: '00:00:00'
-          maxTime: '23:59:59'
-          bundle_type: ''
-          classes: ''
-          fetchGoogleHolidays: 0
-          googleHolidaysSettings:
-            googleCalendarAPIKey: ''
-            googleCalendarGroup: ''
-            renderGoogleHolidaysAsBackground: 0
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          calendar_fields:
+            field_event_schedule: field_event_schedule
+            field_event_schedule_end_value: field_event_schedule_end_value
+          calendar_display_rows: false
+          calendar_weekday_start: false
+          calendar_timestamp: 'this month'
+          calendar_title: '[date:custom:F Y]'
+          calendar_row_title: ''
       row:
         type: fields
       query:
@@ -440,6 +616,7 @@ display:
             'group_node:room': '0'
             'group_node:webform': '0'
       use_ajax: true
+      group_by: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -450,11 +627,12 @@ display:
         - 'languages:language_interface'
         - route
         - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
   page_1:
     id: page_1
     display_title: Page
@@ -471,8 +649,9 @@ display:
         - 'languages:language_interface'
         - route
         - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
