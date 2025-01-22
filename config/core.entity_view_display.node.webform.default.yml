@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.body
+    - field.field.node.webform.field_blocks_ref
     - field.field.node.webform.webform
     - node.type.webform
   module:
@@ -24,6 +25,14 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -36,4 +45,5 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
-hidden: {  }
+hidden:
+  published_at: true

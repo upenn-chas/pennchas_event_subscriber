@@ -11,8 +11,11 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_banner
+    - field.field.node.chas_event.field_blocks_ref
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
+    - field.field.node.chas_event.field_evaluated_by
+    - field.field.node.chas_event.field_evaluated_on
     - field.field.node.chas_event.field_evaluation_notification
     - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
@@ -24,11 +27,14 @@ dependencies:
     - field.field.node.chas_event.field_intended_audience
     - field.field.node.chas_event.field_intended_outcomes
     - field.field.node.chas_event.field_is_campus_wide
+    - field.field.node.chas_event.field_last_moderated_by
+    - field.field.node.chas_event.field_last_moderation_message
     - field.field.node.chas_event.field_link_1
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box
@@ -70,6 +76,7 @@ hidden:
   field_anticipated_cost: true
   field_anticipated_participants: true
   field_areas_for_improvement: true
+  field_blocks_ref: true
   field_collaborators: true
   field_college_houses: true
   field_evaluated_by: true
@@ -98,3 +105,4 @@ hidden:
   field_program_communities: true
   field_text_box: true
   field_text_box_2: true
+  published_at: true

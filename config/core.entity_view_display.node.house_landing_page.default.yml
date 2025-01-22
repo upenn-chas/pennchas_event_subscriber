@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.field_blocks_ref
     - field.field.node.house_landing_page.field_menus
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
@@ -81,6 +82,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          a6afbe94-46e1-49b8-be03-3624633cbf6e:
+            uuid: a6afbe94-46e1-49b8-be03-3624633cbf6e
+            region: content
+            configuration:
+              id: 'field_block:node:house_landing_page:field_blocks_ref'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -117,6 +134,14 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
   field_menus:
     type: entity_reference_label
     label: above
@@ -140,3 +165,4 @@ content:
     region: content
 hidden:
   layout_builder__layout: true
+  published_at: true

@@ -4,12 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.reserve_room.field_anticipated_participants
+    - field.field.node.reserve_room.field_blocks_ref
     - field.field.node.reserve_room.field_email
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
+    - field.field.node.reserve_room.field_last_moderated_by
+    - field.field.node.reserve_room.field_last_moderation_message
     - field.field.node.reserve_room.field_long_text
+    - field.field.node.reserve_room.field_moderation_finished_at
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
@@ -17,6 +21,7 @@ dependencies:
     - node.type.reserve_room
   module:
     - path
+    - publication_date
     - smart_date
     - smart_date_recur
 id: node.reserve_room.default
@@ -32,7 +37,7 @@ content:
     third_party_settings: {  }
   field_anticipated_participants:
     type: number
-    weight: 11
+    weight: 12
     region: content
     settings:
       placeholder: ''
@@ -76,7 +81,7 @@ content:
           YEARLY: YEARLY
   field_long_text:
     type: string_textarea
-    weight: 13
+    weight: 14
     region: content
     settings:
       rows: 5
@@ -84,7 +89,7 @@ content:
     third_party_settings: {  }
   field_phone:
     type: string_textfield
-    weight: 10
+    weight: 11
     region: content
     settings:
       size: 60
@@ -117,6 +122,12 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 5
@@ -133,7 +144,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 12
+    weight: 13
     region: content
     settings:
       size: 60
@@ -150,11 +161,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_blocks_ref: true
   field_event_ends_on: true
   field_group: true
   field_group_ref: true

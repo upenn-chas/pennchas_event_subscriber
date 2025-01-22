@@ -1,0 +1,29 @@
+uuid: cdc1eef3-59eb-4829-bdb1-b10f0b50d86f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+    - field.storage.node.field_blocks_ref
+    - node.type.notices
+id: node.notices.field_blocks_ref
+field_name: field_blocks_ref
+entity_type: node
+bundle: notices
+label: 'Blocks Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      video_block: video_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

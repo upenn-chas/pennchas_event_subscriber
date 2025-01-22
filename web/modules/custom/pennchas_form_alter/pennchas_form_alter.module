@@ -17,269 +17,212 @@ use Drupal\pennchas_form_alter\Util\Constant;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\group\Entity\Group;
 use Drupal\Core\Database\Database;
+use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
-function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId){
-    if($formId === 'node_program_community_form'){
-        if (!\Drupal::currentUser()->hasRole('administrator')) {
-            $form['field_group']['#access'] = false;
-        }
+function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
+{
+  if ($formId === 'node_program_community_form') {
+    if (!\Drupal::currentUser()->hasRole('administrator')) {
+      $form['field_group']['#access'] = false;
     }
-    if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
-        $eventFormAlter = new EventFormAlter();
-        $form = $eventFormAlter->alter($form, $formState);
-    } else if ($formId === 'node_notices_form' || $formId === 'node_notices_edit_form') {
-        $eventFormAlter = new NoticeFormAlter();
-        $form = $eventFormAlter->alter($form, $formState);
-    } else if ($formId === 'user_role_form' || $formId === 'group_role_add_form' || $formId === 'group_role_edit_form') {
-        $role_type = $form['id']['#value'];
-        pennchas_form_alter_role_form($form, $formState);
-        $options = [
-            'senior_staff' => t('Senior Staff'),
-            'ra' => t('RA'),
-            'student_worker' => t('Student Worker'),
-            'any_resident' => t('Any Resident'),
-            'anyone_with_pennkey' => t('Anyone with a Pennkey'),
-        ];
-      
-        $form['umbrella_roles'] = [
-            '#type' => 'checkboxes',
-            '#title' => t('Umbera Roles'),
-            '#description' => t('Choose an option from the dropdown list.'),
-            '#options' => $options,
-            '#default_value' => \Drupal::state()->get('custom_group_role_config_'.$role_type) ?: [],
-            '#required' => TRUE,
-        ];
-      
-          // Optionally, add a custom submit handler to save the selected value.
-          $form['actions']['submit']['#submit'] = ['umbrella_role_submit_handler'];
-    } else if ($formId === 'node_room_form' || $formId === 'node_room_edit_form') {
-        $form['field_duration']['widget'][0]['duration']['#h']['#max'] = 23;
-        $form['field_duration']['widget'][0]['duration']['#h']['#step'] = 1;
-        $form['field_duration']['widget'][0]['duration']['#i']['#max'] = 30;
-        $form['field_duration']['widget'][0]['duration']['#i']['#step'] = 30;
-    } else if ($formId === 'content_moderation_entity_moderation_form') {
-        $moderationFormAlter = new ModerationFormAlter();
-        $form = $moderationFormAlter->alter($form, $formState);
-    } else if ($formId === 'node_reserve_room_form') {
-        $group = \Drupal::routeMatch()->getParameter('group');
-        if (isset($group)) {
-            $form['field_room']['widget']['#options'] = _get_group_rooms($group->id());
-        }
-    } else if ($formId === 'node_reserve_room_edit_form') {
-        $node  = $formState->getFormObject()->getEntity();
-        $groupId = (int) $node->get('field_group')->getString();
-        $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
+  } else if ($formId === 'node_chas_event_form' || $formId === 'node_chas_event_edit_form') {
+    $eventFormAlter = new EventFormAlter();
+    $form = $eventFormAlter->alter($form, $formState);
+  } else if ($formId === 'node_notices_form' || $formId === 'node_notices_edit_form') {
+    $eventFormAlter = new NoticeFormAlter();
+    $form = $eventFormAlter->alter($form, $formState);
+  } else if ($formId === 'user_role_form' || $formId === 'group_role_add_form' || $formId === 'group_role_edit_form') {
+    $userFormAlter = new UserFormAlter();
+    $form = $userFormAlter->alter($form, $formState);
+  } else if ($formId === 'node_room_form' || $formId === 'node_room_edit_form') {
+    $form['field_duration']['widget'][0]['duration']['#h']['#max'] = 23;
+    $form['field_duration']['widget'][0]['duration']['#h']['#step'] = 1;
+    $form['field_duration']['widget'][0]['duration']['#i']['#max'] = 30;
+    $form['field_duration']['widget'][0]['duration']['#i']['#step'] = 30;
+  } else if ($formId === 'content_moderation_entity_moderation_form') {
+    $moderationFormAlter = new ModerationFormAlter();
+    $form = $moderationFormAlter->alter($form, $formState);
+  } else if ($formId === 'node_reserve_room_form') {
+    $group = \Drupal::routeMatch()->getParameter('group');
+    if (isset($group)) {
+      $form['field_room']['widget']['#options'] = _get_group_rooms($group->id());
+    }
+  } else if ($formId === 'node_reserve_room_edit_form') {
+    $node  = $formState->getFormObject()->getEntity();
+    $groupId = (int) $node->get('field_group')->getString();
+    $form['field_room']['widget']['#options'] = _get_group_rooms($groupId);
+  } else if (
+    $formId === 'node_room_delete_form'
+    || $formId === 'node_chas_event_delete_form'
+    || $formId === 'node_reserve_room_delete_form'
+    || $formId === 'node_notices_delete_form'
+  ) {
+    $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
+  } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
+    $viewId = \Drupal::request()->get('view_id');
+    if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
+      if (isset($form['start']) && isset($form['start']['#attributes'])) {
+        unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
+      }
+      if (isset($form['end']) && isset($form['end']['#attributes'])) {
+        unset($form['end']['#attributes']['data-bef-auto-submit-exclude']);
+      }
+
+      if (isset($form['event_type'])) {
+        $form['event_type']['#default_value'] = 1;
+        $form['event_type']['#value'] = 1;
+      }
+
+      if (isset($form['campus_wide'])) {
+        $form['campus_wide']['#default_value'] = 1;
+        $form['campus_wide']['#value'] = 1;
+      }
+
+      if (isset($form['content_type'])) {
+        $form['content_type']['#default_value'] = 1;
+        $form['content_type']['#value'] = 1;
+      }
     } else if (
-        $formId === 'node_room_delete_form'
-        || $formId === 'node_chas_event_delete_form'
-        || $formId === 'node_reserve_room_delete_form'
-        || $formId === 'node_notices_delete_form'
+      $viewId === 'moderation_reports'
+      || $viewId === 'room_reservation_reports'
+      || $viewId === 'contents_change_report'
+      || $viewId === 'videos_link_report'
+      || $viewId === 'events_evaluation_report'
+      || $viewId === 'contents_delete_report'
     ) {
-        $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
-    } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
-        $viewId = \Drupal::request()->get('view_id');
-        if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
-            if (isset($form['start']) && isset($form['start']['#attributes'])) {
-                unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
-            }
-            if (isset($form['end']) && isset($form['end']['#attributes'])) {
-                unset($form['end']['#attributes']['data-bef-auto-submit-exclude']);
-            }
+      if (isset($form['moderation_state'])) {
+        unset($form['moderation_state']['#options']['All']);
+      }
 
-            if (isset($form['event_type'])) {
-                $form['event_type']['#default_value'] = 1;
-                $form['event_type']['#value'] = 1;
-            }
+      if (isset($form['exposed_from_date'])) {
+        $form['exposed_from_date']['#title'] = t('From');
+      }
 
-            if (isset($form['campus_wide'])) {
-                $form['campus_wide']['#default_value'] = 1;
-                $form['campus_wide']['#value'] = 1;
-            }
+      if (isset($form['exposed_to_date'])) {
+        $form['exposed_to_date']['#title'] = t('To');
+      }
 
-            if (isset($form['content_type'])) {
-                $form['content_type']['#default_value'] = 1;
-                $form['content_type']['#value'] = 1;
-            }
-        } else if (
-            $viewId === 'moderation_reports'
-            || $viewId === 'room_reservation_reports'
-            || $viewId === 'contents_change_report'
-            || $viewId === 'events_evaluation_report'
-        ) {
-            if (isset($form['moderation_state'])) {
-                unset($form['moderation_state']['#options']['All']);
-            }
-
-            if (isset($form['exposed_from_date'])) {
-                $form['exposed_from_date']['#title'] = t('From');
-            }
-
-            if (isset($form['exposed_to_date'])) {
-                $form['exposed_to_date']['#title'] = t('To');
-            }
-
-            if (isset($form['type'])) {
-                unset($form['type']['#options']['All']);
-            }
-        }
+      if (isset($form['type'])) {
+        unset($form['type']['#options']['All']);
+      }
     }
-}
-
-function umbrella_role_submit_handler($form, \Drupal\Core\Form\FormStateInterface $form_state) {
-    $selected_options = array_filter($form_state->getValue('umbrella_roles'));
-    $role_type = $form['id']['#value'];
-    // dd($role_type);
-    \Drupal::state()->set('custom_group_role_config_'.$role_type, $selected_options);
   }
+}
 
 function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formState)
 {
-    $node = $formState->getFormObject()->getEntity();
-    if ($node instanceof Node && $node->hasField('moderation_state')) {
-        $currentState = $node->get('moderation_state')->getString();
-        if ($currentState !== Constant::MOD_STATUS_DELETE) {
-            $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
-            $node->setUnpublished();
-            $node->setNewRevision(true);
-            $node->setRevisionLogMessage($currentState);
-            $node->save();
+  $node = $formState->getFormObject()->getEntity();
+  if ($node instanceof Node && $node->hasField('moderation_state')) {
+    $currentState = $node->get('moderation_state')->getString();
+    if ($currentState !== Constant::MOD_STATUS_DELETE) {
+      $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
+      $node->setUnpublished();
+      $node->setNewRevision(true);
+      $node->setRevisionLogMessage($currentState);
+      $node->save();
 
-            \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
-        } else {
-            \Drupal::messenger()->addStatus(t('Node %title has already been deleted.', ['%title' => $node->getTitle()]));
-        }
-        $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
+      \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
     } else {
-        \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
+      \Drupal::messenger()->addStatus(t('Node %title has already been deleted.', ['%title' => $node->getTitle()]));
     }
+    $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
+  } else {
+    \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
+  }
 }
 
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
-    if ($entity instanceof NodeInterface) {
-        if ($entity->isNew()) {
-            (new NodePreSaveHook())->handle($entity); //(this will work for Admin. But needs to fix corrections)
-            // (new NodePreInsertHook())->handle($entity);
-        } else {
-            (new NodePreUpdateHook())->handle($entity);
-        }
+  if ($entity instanceof NodeInterface) {
+    if ($entity->isNew()) {
+      (new NodePreSaveHook())->handle($entity); //(this will work for Admin. But needs to fix corrections)
+      // (new NodePreInsertHook())->handle($entity);
+    } else {
+      (new NodePreUpdateHook())->handle($entity);
     }
+  }
 }
 
 function pennchas_form_alter_node_insert(Node $node)
 {
-    $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT  || $nodeType === Constant::NODE_NOTICES) {
-        (new NodeInsertHook())->handle($node);
-    }
+  $nodeType = $node->getType();
+  if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT  || $nodeType === Constant::NODE_NOTICES) {
+    (new NodeInsertHook())->handle($node);
+  }
 }
 
 function pennchas_form_alter_node_update(Node $node)
 {
-    $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_EVENT) {
-        (new NodeUpdateHook())->handle($node);
-    }
+
+  $nodeType = $node->getType();
+  if ($nodeType === Constant::NODE_EVENT) {
+    (new NodeUpdateHook())->handle($node);
+  }
 }
 
 
 function pennchas_form_alter_entity_type_alter(&$entityType)
 {
-    if (isset($entityType['group_role'])) {
-        $entityKeys = $entityType['group_role']->get('entity_keys');
-        $entityKeys['umbera_roles'] = 'umbera_roles';
-        $entityType['group_role']->set('entity_keys', $entityKeys);
-    }
+  if (isset($entityType['group_role'])) {
+    $entityKeys = $entityType['group_role']->get('entity_keys');
+    $entityKeys['umbera_roles'] = 'umbera_roles';
+    $entityType['group_role']->set('entity_keys', $entityKeys);
+  }
 }
 
 function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
-    if ($bundle === Constant::NODE_RESERVE_ROOM) {
-        if (isset($fields['field_room'])) {
-            $fields['field_room']->addConstraint('AllowRoomConstraint');
-        }
-
-        if (isset($fields['field_event_schedule'])) {
-            $fields['field_event_schedule']->addConstraint('RoomAvailableConstraint');
-        }
-
-        if (isset($fields['field_anticipated_participants'])) {
-            $fields['field_anticipated_participants']->addConstraint('RoomMaxGuestConstraint');
-        }
-    } else if ($bundle === Constant::NODE_ROOM) {
-        if (isset($fields['field_room_gps_pin'])) {
-            $fields['field_room_gps_pin']->addConstraint('GeoCoordinatesConstraint');
-        }
+  if ($bundle === Constant::NODE_RESERVE_ROOM) {
+    if (isset($fields['field_room'])) {
+      $fields['field_room']->addConstraint('AllowRoomConstraint');
     }
-}
 
-function pennchas_form_alter_role_form(array &$form, FormStateInterface $formState)
-{
-    $umberaRoles = [];
-    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('role_category');
-
-    if (!empty($terms)) {
-        foreach ($terms as $term) {
-            $umberaRoles[$term->name] = $term->name;
-        }
-
-        $role = $formState->getFormObject()->getEntity();
-        $existingUmbera_roles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
-
-        $form['umbera_roles'] = [
-            '#type' => 'checkboxes',
-            '#title' => t('Umbera Roles'),
-            '#default_value' => $existingUmbera_roles ?: '',
-            '#options' => $umberaRoles
-        ];
-
-        $form['actions']['submit']['#submit'][] = 'role_form_submit_handler';
+    if (isset($fields['field_event_schedule'])) {
+      $fields['field_event_schedule']->addConstraint('RoomAvailableConstraint');
     }
+
+    if (isset($fields['field_anticipated_participants'])) {
+      $fields['field_anticipated_participants']->addConstraint('RoomMaxGuestConstraint');
+    }
+  } else if ($bundle === Constant::NODE_ROOM) {
+    if (isset($fields['field_room_gps_pin'])) {
+      $fields['field_room_gps_pin']->addConstraint('GeoCoordinatesConstraint');
+    }
+  }
 }
 
 function pennchas_form_alter_entity_operation_alter(array &$operations, EntityInterface $entity)
 {
-    if ($entity instanceof NodeInterface) {
-        if (!$entity->isPublished() && $entity->get('moderation_state')->getString() === Constant::MOD_STATUS_DELETE) {
-            if (isset($operations['edit'])) {
-                unset($operations['edit']);
-            }
-            if (isset($operations['delete'])) {
-                unset($operations['delete']);
-            }
-        }
+  if ($entity instanceof NodeInterface) {
+    if (!$entity->isPublished() && $entity->get('moderation_state')->getString() === Constant::MOD_STATUS_DELETE) {
+      if (isset($operations['edit'])) {
+        unset($operations['edit']);
+      }
+      if (isset($operations['delete'])) {
+        unset($operations['delete']);
+      }
     }
-}
-
-function role_form_submit_handler(&$form, FormStateInterface $formState)
-{
-    $umberaRoles = $formState->getValue('umbera_roles');
-    $umberaRoles = array_filter($umberaRoles);
-    if ($umberaRoles) {
-        $role = $formState->getFormObject()->getEntity();
-        $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umberaRoles);
-        $role->save();
-    }
+  }
 }
 
 function _get_group_rooms(int $groupId)
 {
-    $roomsIds = \Drupal::entityQuery('node')
-        ->accessCheck(false)
-        ->condition('type', 'room')
-        ->condition('status', 1)
-        ->condition('field_group', $groupId)
-        ->execute();
+  $roomsIds = \Drupal::entityQuery('node')
+    ->accessCheck(false)
+    ->condition('type', 'room')
+    ->condition('status', 1)
+    ->condition('field_group', $groupId)
+    ->execute();
 
-    $rooms = Node::loadMultiple($roomsIds);
+  $rooms = Node::loadMultiple($roomsIds);
 
-    $roomOptions = [
-        '' => '- Select a value -'
-    ];
-    foreach ($rooms as $room) {
-        $roomOptions[$room->id()] = $room->getTitle();
-    }
-    return $roomOptions;
+  $roomOptions = [
+    '' => '- Select a value -'
+  ];
+  foreach ($rooms as $room) {
+    $roomOptions[$room->id()] = $room->getTitle();
+  }
+  return $roomOptions;
 }
 
 // function pennchas_form_alter_preprocess_search_result(array &$variables) {
@@ -290,7 +233,7 @@ function _get_group_rooms(int $groupId)
 //     //   if ($result['title'] == 'Some Specific Title') {
 //     //     $result['title'] = 'Modified Title';
 //     //   }
-  
+
 //     //   // You can also alter other properties such as the URL, snippet, etc.
 //     //   $result['snippet'] = 'This is a custom snippet for the result.';
 //     // }
@@ -299,61 +242,59 @@ function _get_group_rooms(int $groupId)
 /**
  * Implements search_api_result_alter().
  */
-function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
-    // Initialize variables
-    $variables = [];
-    $connection = Database::getConnection();
-    $nid = $node->id();
-    $current_user = \Drupal::currentUser();
-    $user_roles = $current_user->getRoles();
-    $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
- 
-    // Check if the user has one of the allowed roles
-    if (array_intersect($user_roles, $allowed_roles)) {
-        // $query = $connection->select('node_field_data', 'nf');
-        // $query->fields('nf');
-        // $query->condition('nf.nid', $nid);
-        // $node_results = $query->execute()->fetchAll();
-        $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
-    }elseif ($current_user->hasRole('authenticated')) {
+function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
+{
+  // Initialize variables
+  $variables = [];
+  $connection = Database::getConnection();
+  $nid = $node->id();
+  $current_user = \Drupal::currentUser();
+  $user_roles = $current_user->getRoles();
+  $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+
+  // Check if the user has one of the allowed roles
+  if (array_intersect($user_roles, $allowed_roles)) {
+    // $query = $connection->select('node_field_data', 'nf');
+    // $query->fields('nf');
+    // $query->condition('nf.nid', $nid);
+    // $node_results = $query->execute()->fetchAll();
+    $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
+  } elseif ($current_user->hasRole('authenticated')) {
+    $query = $connection->select('group_relationship_field_data', 'gr');
+    $query->condition('gr.entity_id', $current_user->id());
+    $query->condition('gr.plugin_id', 'group_membership');
+    $query->fields('gr', ['gid']);
+    $group_results = $query->execute()->fetchCol();
+
+    if (!empty($group_results)) {
+      // If the user is part of groups, check if the node is in any of those groups
+      foreach ($group_results as $group_id) {
         $query = $connection->select('group_relationship_field_data', 'gr');
-        $query->condition('gr.entity_id', $current_user->id());
-        $query->condition('gr.plugin_id', 'group_membership');
-        $query->fields('gr', ['gid']);
-        $group_results = $query->execute()->fetchCol();
-        
-        if (!empty($group_results)) {
-            // If the user is part of groups, check if the node is in any of those groups
-            foreach ($group_results as $group_id) {
-                $query = $connection->select('group_relationship_field_data', 'gr');
-                $query->condition('gr.gid', $group_id);
-                $query->condition('gr.entity_id', $nid);
-                $query->fields('gr');
-                $node_results = $query->execute()->fetchAll();
-                if (!empty($node_results)) {
-                    $variables['node_access'] = 'TRUE';
-                    break; 
-                }
-            }
-        }
-        else {
-            $query = $connection->select('node_field_data', 'nf');
-            $query->fields('nf');
-            $query->condition('nf.nid', $nid);
-            $query->condition('nf.type', 'reserve_room', '!=');
-            $node_results = $query->execute()->fetchAll();
-            $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
-        }
-    }else {
-        $query = $connection->select('node_field_data', 'nf');
-        $query->fields('nf');
-        $query->condition('nf.nid', $nid);
-        $query->condition('nf.type', 'reserve_room', '!=');
+        $query->condition('gr.gid', $group_id);
+        $query->condition('gr.entity_id', $nid);
+        $query->fields('gr');
         $node_results = $query->execute()->fetchAll();
-        $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+        if (!empty($node_results)) {
+          $variables['node_access'] = 'TRUE';
+          break;
+        }
+      }
+    } else {
+      $query = $connection->select('node_field_data', 'nf');
+      $query->fields('nf');
+      $query->condition('nf.nid', $nid);
+      $query->condition('nf.type', 'reserve_room', '!=');
+      $node_results = $query->execute()->fetchAll();
+      $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
     }
+  } else {
+    $query = $connection->select('node_field_data', 'nf');
+    $query->fields('nf');
+    $query->condition('nf.nid', $nid);
+    $query->condition('nf.type', 'reserve_room', '!=');
+    $node_results = $query->execute()->fetchAll();
+    $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+  }
 
-    return $variables;
+  return $variables;
 }
-
-

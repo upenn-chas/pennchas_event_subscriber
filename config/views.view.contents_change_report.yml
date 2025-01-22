@@ -5,6 +5,7 @@ dependencies:
   module:
     - better_exposed_filters
     - csv_serialization
+    - custom_view_filters
     - group
     - node
     - rest
@@ -206,17 +207,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        changed:
-          id: changed
+        created:
+          id: created
           table: node_field_data
-          field: changed
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: changed
+          entity_field: created
           plugin_id: field
-          label: 'Changed On'
+          label: 'Created On'
           exclude: false
           alter:
             alter_text: false
@@ -241,7 +242,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -260,7 +261,84 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: custom
+            date_format: report_date_and_time
+            custom_date_format: 'D, Y-m-d H:i'
+            timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
+              description: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: field
+          label: 'Changed On'
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ created|date('dmYgi') != changed__value|date('dmYgi') ? changed : '' }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: report_date_and_time
             custom_date_format: 'Y-m-d H:i'
             timezone: ''
             tooltip:
@@ -361,8 +439,8 @@ display:
           label: 'Revision Log Message'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ revision_log|raw }} {{ created|raw }}'
             make_link: false
             path: ''
             absolute: false
@@ -610,7 +688,7 @@ display:
           output_url_as_text: true
           absolute: true
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
@@ -618,8 +696,10 @@ display:
           total_pages: null
           id: 0
           tags:
-            next: ››
-            previous: ‹‹
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -628,6 +708,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 5
       exposed_form:
         type: bef
         options:
@@ -687,6 +768,16 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              date_range_picker:
+                plugin_id: default
+                advanced:
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
@@ -957,6 +1048,57 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        date_range_picker:
+          id: date_range_picker
+          table: node_field_data
+          field: date_range_picker
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: date_range_picker_filter
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Changed On'
+            description: ''
+            use_operator: false
+            operator: date_range_picker_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: changed_on
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          node_from_date: ''
+          node_to_date: ''
+          granular_field_name: changed
+          timestamp: 0
         status:
           id: status
           table: node_field_data

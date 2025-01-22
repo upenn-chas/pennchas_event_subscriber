@@ -1,0 +1,18 @@
+uuid: c9a0428c-00f6-45ff-b3de-62f7c45422df
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - media.type.remote_video
+  module:
+    - groupmedia
+    - media
+id: house1-group_media-remote_video
+group_type: house1
+content_plugin: 'group_media:remote_video'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
+  tracking_enabled: 0

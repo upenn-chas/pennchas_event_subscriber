@@ -1,0 +1,8 @@
+uuid: 67172f9f-f3ef-41ff-ab6b-b19c2951520b
+langcode: en
+status: true
+dependencies: {  }
+id: report_date_and_time
+label: 'Report Date and Time'
+locked: false
+pattern: 'D, Y-m-d H:i'

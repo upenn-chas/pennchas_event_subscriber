@@ -7,12 +7,16 @@ dependencies:
     - block_content.type.link
     - core.base_field_override.node.reserve_room.title
     - field.field.node.reserve_room.field_anticipated_participants
+    - field.field.node.reserve_room.field_blocks_ref
     - field.field.node.reserve_room.field_email
     - field.field.node.reserve_room.field_event_ends_on
     - field.field.node.reserve_room.field_event_schedule
     - field.field.node.reserve_room.field_group
     - field.field.node.reserve_room.field_group_ref
+    - field.field.node.reserve_room.field_last_moderated_by
+    - field.field.node.reserve_room.field_last_moderation_message
     - field.field.node.reserve_room.field_long_text
+    - field.field.node.reserve_room.field_moderation_finished_at
     - field.field.node.reserve_room.field_phone
     - field.field.node.reserve_room.field_room
     - field.field.node.reserve_room.field_support_contact
@@ -79,6 +83,22 @@ third_party_settings:
               block_revision_id: 391
               block_serialized: null
             weight: 0
+            additional: {  }
+          d69eaa0f-bed6-44f9-b7b5-68e29ff8bf4e:
+            uuid: d69eaa0f-bed6-44f9-b7b5-68e29ff8bf4e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_blocks_ref'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -367,6 +387,14 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 27
+    region: blb_region_col_1
   field_email:
     type: basic_string
     label: above
@@ -456,3 +484,4 @@ hidden:
   field_last_moderation_message: true
   field_moderation_finished_at: true
   layout_builder__layout: true
+  published_at: true
