@@ -143,13 +143,13 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
   }
 }
 
-function pennchas_form_alter_node_insert(Node $node)
-{
-  $nodeType = $node->getType();
-  if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT  || $nodeType === Constant::NODE_NOTICES) {
-    (new NodeInsertHook())->handle($node);
-  }
-}
+// function pennchas_form_alter_node_insert(Node $node)
+// {
+//   $nodeType = $node->getType();
+//   if ($nodeType === Constant::NODE_RESERVE_ROOM || $nodeType === Constant::NODE_ROOM || $nodeType === Constant::NODE_EVENT  || $nodeType === Constant::NODE_NOTICES) {
+//     (new NodeInsertHook())->handle($node);
+//   }
+// }
 
 function pennchas_form_alter_node_update(Node $node)
 {
@@ -240,61 +240,142 @@ function _get_group_rooms(int $groupId)
 //   }
 
 /**
+ * Implements hook_query_alter() to exclude a specific node type from search results.
+ */
+// function pennchas_form_alter_query_alter(SearchQueryInterface  $query) {
+    
+//     $excluded_node_type = 'reserve_room';
+//     $query->condition('node_field_data.type', $excluded_node_type, '!=');
+// }
+/**
+ * Implements hook_query_alter() to exclude a node type from the search.
+ */
+// function pennchas_form_alter_query_alter(\Drupal\Core\Entity\Query\QueryInterface $query) {
+//     // Check if the query is for the search index (search results).
+//       // Specify the node type to exclude (e.g., 'article').
+//       $excluded_node_type = 'reserve_room';
+  
+//       // Add a condition to exclude nodes of the type 'article'.
+//       $query->condition('node_field_data.type', $excluded_node_type, '!=');
+    
+//   }
+  
+
+  
+/**
  * Implements search_api_result_alter().
  */
-function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
-{
-  // Initialize variables
-  $variables = [];
-  $connection = Database::getConnection();
-  $nid = $node->id();
-  $current_user = \Drupal::currentUser();
-  $user_roles = $current_user->getRoles();
-  $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+// function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
+//     // Initialize variables
+//     $variables = [];
+//     $connection = Database::getConnection();
+//     $nid = $node->id();
+//     $current_user = \Drupal::currentUser();
+//     $user_roles = $current_user->getRoles();
+//     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+ 
+//     // Check if the user has one of the allowed roles
+//     if (array_intersect($user_roles, $allowed_roles)) {
+//         // $query = $connection->select('node_field_data', 'nf');
+//         // $query->fields('nf');
+//         // $query->condition('nf.nid', $nid);
+//         // $node_results = $query->execute()->fetchAll();
+//         $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
+//     }elseif ($current_user->hasRole('authenticated')) {
+//         $query = $connection->select('group_relationship_field_data', 'gr');
+//         $query->condition('gr.entity_id', $current_user->id());
+//         $query->condition('gr.plugin_id', 'group_membership');
+//         $query->fields('gr', ['gid']);
+//         $group_results = $query->execute()->fetchCol();
+        
+//         if (!empty($group_results)) {
+//             // If the user is part of groups, check if the node is in any of those groups
+//             foreach ($group_results as $group_id) {
+//                 $query = $connection->select('group_relationship_field_data', 'gr');
+//                 $query->condition('gr.gid', $group_id);
+//                 $query->condition('gr.entity_id', $nid);
+//                 $query->fields('gr');
+//                 $node_results = $query->execute()->fetchAll();
+//                 if (!empty($node_results)) {
+//                     $variables['node_access'] = 'TRUE';
+//                     break; 
+//                 }
+//             }
+//         }
+//         else {
+//             $query = $connection->select('node_field_data', 'nf');
+//             $query->fields('nf');
+//             $query->condition('nf.nid', $nid);
+//             $query->condition('nf.type', 'reserve_room', '!=');
+//             $node_results = $query->execute()->fetchAll();
+//             $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+//         }
+//     }else {
+//         $query = $connection->select('node_field_data', 'nf');
+//         $query->fields('nf');
+//         $query->condition('nf.nid', $nid);
+//         $query->condition('nf.type', 'reserve_room', '!=');
+//         $node_results = $query->execute()->fetchAll();
+//         $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+//     }
 
-  // Check if the user has one of the allowed roles
-  if (array_intersect($user_roles, $allowed_roles)) {
-    // $query = $connection->select('node_field_data', 'nf');
-    // $query->fields('nf');
-    // $query->condition('nf.nid', $nid);
-    // $node_results = $query->execute()->fetchAll();
-    $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
-  } elseif ($current_user->hasRole('authenticated')) {
-    $query = $connection->select('group_relationship_field_data', 'gr');
-    $query->condition('gr.entity_id', $current_user->id());
-    $query->condition('gr.plugin_id', 'group_membership');
-    $query->fields('gr', ['gid']);
-    $group_results = $query->execute()->fetchCol();
+//     return $variables;
+// }
 
-    if (!empty($group_results)) {
-      // If the user is part of groups, check if the node is in any of those groups
-      foreach ($group_results as $group_id) {
-        $query = $connection->select('group_relationship_field_data', 'gr');
-        $query->condition('gr.gid', $group_id);
-        $query->condition('gr.entity_id', $nid);
-        $query->fields('gr');
-        $node_results = $query->execute()->fetchAll();
-        if (!empty($node_results)) {
-          $variables['node_access'] = 'TRUE';
-          break;
-        }
-      }
-    } else {
-      $query = $connection->select('node_field_data', 'nf');
-      $query->fields('nf');
-      $query->condition('nf.nid', $nid);
-      $query->condition('nf.type', 'reserve_room', '!=');
-      $node_results = $query->execute()->fetchAll();
-      $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
-    }
-  } else {
-    $query = $connection->select('node_field_data', 'nf');
-    $query->fields('nf');
-    $query->condition('nf.nid', $nid);
-    $query->condition('nf.type', 'reserve_room', '!=');
-    $node_results = $query->execute()->fetchAll();
-    $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
-  }
 
-  return $variables;
-}
+// function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
+// {
+//   // Initialize variables
+//   $variables = [];
+//   $connection = Database::getConnection();
+//   $nid = $node->id();
+//   $current_user = \Drupal::currentUser();
+//   $user_roles = $current_user->getRoles();
+//   $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+
+//   // Check if the user has one of the allowed roles
+//   if (array_intersect($user_roles, $allowed_roles)) {
+//     // $query = $connection->select('node_field_data', 'nf');
+//     // $query->fields('nf');
+//     // $query->condition('nf.nid', $nid);
+//     // $node_results = $query->execute()->fetchAll();
+//     $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
+//   } elseif ($current_user->hasRole('authenticated')) {
+//     $query = $connection->select('group_relationship_field_data', 'gr');
+//     $query->condition('gr.entity_id', $current_user->id());
+//     $query->condition('gr.plugin_id', 'group_membership');
+//     $query->fields('gr', ['gid']);
+//     $group_results = $query->execute()->fetchCol();
+
+//     if (!empty($group_results)) {
+//       // If the user is part of groups, check if the node is in any of those groups
+//       foreach ($group_results as $group_id) {
+//         $query = $connection->select('group_relationship_field_data', 'gr');
+//         $query->condition('gr.gid', $group_id);
+//         $query->condition('gr.entity_id', $nid);
+//         $query->fields('gr');
+//         $node_results = $query->execute()->fetchAll();
+//         if (!empty($node_results)) {
+//           $variables['node_access'] = 'TRUE';
+//           break;
+//         }
+//       }
+//     } else {
+//       $query = $connection->select('node_field_data', 'nf');
+//       $query->fields('nf');
+//       $query->condition('nf.nid', $nid);
+//       $query->condition('nf.type', 'reserve_room', '!=');
+//       $node_results = $query->execute()->fetchAll();
+//       $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+//     }
+//   } else {
+//     $query = $connection->select('node_field_data', 'nf');
+//     $query->fields('nf');
+//     $query->condition('nf.nid', $nid);
+//     $query->condition('nf.type', 'reserve_room', '!=');
+//     $node_results = $query->execute()->fetchAll();
+//     $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+//   }
+
+//   return $variables;
+// }

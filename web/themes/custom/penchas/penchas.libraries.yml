@@ -5,7 +5,7 @@ global-styling:
     js/bootstrap.min.js: { weight: -48 }
     js/barrio.js: {}
     js/slick.min.js: {}
-    js/custom.js?vv=1.4: {}
+    js/custom.js?vv=2.2: {}
   css:
     component:
       css/style.css: {}
@@ -16,3 +16,4 @@ global-styling:
     - core/jquery
     - core/drupal
     - core/once
+    - core/drupal.dialog.ajax

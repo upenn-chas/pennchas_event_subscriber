@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.link
+    - block_content.type.basic
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -64,7 +64,7 @@ third_party_settings:
           container_wrapper:
             bootstrap_styles:
               background:
-                background_type: video
+                background_type: null
               background_color:
                 class: null
               background_media:
@@ -89,42 +89,23 @@ third_party_settings:
             blb_region_col_1: null
             blb_region_col_2: null
           breakpoints:
-            desktop: blb_col_8_4
-            tablet: blb_col_12
-            mobile: blb_col_12
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: null
           layout_regions_classes:
             blb_region_col_1:
-              - col-lg-8
-              - col-md-12
-              - col-12
+              - col-lg-9
+              - col-md-9
+              - null
             blb_region_col_2:
-              - col-lg-4
-              - col-md-12
-              - col-12
+              - col-lg-3
+              - col-md-3
+              - null
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          1aead26e-041f-4dbb-affb-a385d6c27b3b:
-            uuid: 1aead26e-041f-4dbb-affb-a385d6c27b3b
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:chas_event:field_banner'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: image
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: ''
-                  image_loading:
-                    attribute: lazy
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          5d89cca8-8f3b-4233-8cb8-5b91d5335e9c:
-            uuid: 5d89cca8-8f3b-4233-8cb8-5b91d5335e9c
+          85d50de6-45dc-4d49-bf96-d2dd267d3665:
+            uuid: 85d50de6-45dc-4d49-bf96-d2dd267d3665
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:title'
@@ -145,10 +126,10 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 1
+            weight: 0
             additional: {  }
-          82a38b1d-2fa8-48a8-ba83-5b4bf77f143f:
-            uuid: 82a38b1d-2fa8-48a8-ba83-5b4bf77f143f
+          7c9840ff-e7e0-4088-bb7a-afaf1480e752:
+            uuid: 7c9840ff-e7e0-4088-bb7a-afaf1480e752
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_event_schedule'
@@ -178,58 +159,10 @@ third_party_settings:
                     decimals: 2
                     suffix: h
                 third_party_settings: {  }
-            weight: 2
+            weight: 1
             additional: {  }
-          30d4c93a-6a92-4e96-853f-171a0e933c20:
-            uuid: 30d4c93a-6a92-4e96-853f-171a0e933c20
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_marketing_blurb'
-              label: 'Marketing blurb'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: hidden
-                settings:
-                  class: event-detail-left
-                  tag: p
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          2b84e9a5-0708-4e9b-aefa-f7c69d713a7c:
-            uuid: 2b84e9a5-0708-4e9b-aefa-f7c69d713a7c
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_link_1'
-              label: 'RSVP Link'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: link_class
-                label: hidden
-                settings:
-                  class: blue-filled
-                  trim_length: 1
-                  url_only: false
-                  url_plain: false
-                  rel: nofollow
-                  target: _blank
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
-          6e8b38a7-033f-4067-b884-0c33e0ab13f2:
-            uuid: 6e8b38a7-033f-4067-b884-0c33e0ab13f2
+          7830a9c3-0cec-49c0-8d11-f2211160cad0:
+            uuid: 7830a9c3-0cec-49c0-8d11-f2211160cad0
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_text_box_2'
@@ -250,53 +183,91 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 3
+            weight: 2
             additional: {  }
-          deb7225a-fb74-4cbc-9fef-82ba201a8196:
-            uuid: deb7225a-fb74-4cbc-9fef-82ba201a8196
+          6be30408-3f27-481e-b2b1-bbb86573ef26:
+            uuid: 6be30408-3f27-481e-b2b1-bbb86573ef26
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:link'
-              label: 'Add to Calendar link'
+              id: 'field_block:node:chas_event:field_marketing_blurb'
+              label: 'Marketing blurb'
               label_display: '0'
               provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 348
-              block_revision_id: 381
-              block_serialized: null
-            weight: 6
-            additional: {  }
-          94dd89ec-1c48-45e3-940c-dcb0900c2ceb:
-            uuid: 94dd89ec-1c48-45e3-940c-dcb0900c2ceb
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:link'
-              label: 'Arrow link'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 349
-              block_revision_id: 382
-              block_serialized: null
-            weight: 7
-            additional: {  }
-          a28fc8ec-6af9-4933-bb10-ddc4b08537d1:
-            uuid: a28fc8ec-6af9-4933-bb10-ddc4b08537d1
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_blocks_ref'
-              label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: entity_reference_label
-                label: above
+                type: wrapper_class
+                label: hidden
                 settings:
-                  link: true
+                  class: event-detail-left
+                  tag: p
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
-            weight: 8
+            weight: 3
+            additional: {  }
+          34ea9f33-b1ae-4be8-905f-28065e725773:
+            uuid: 34ea9f33-b1ae-4be8-905f-28065e725773
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:chas_event:field_banner'
+              label: 'Highlight Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1d166753-ae72-4237-8e47-e2c75e4b068a:
+            uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_link_1'
+              label: 'RSVP to this event'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          3810e36a-64b0-48f7-aca1-df6f727a088b:
+            uuid: 3810e36a-64b0-48f7-aca1-df6f727a088b
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Add to Calendar'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 381
+              block_revision_id: 416
+              block_serialized: null
+            weight: 5
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -394,14 +365,6 @@ content:
     third_party_settings: {  }
     weight: 18
     region: content
-  field_blocks_ref:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 27
-    region: blb_region_col_1
   field_collaborators:
     type: email_mailto
     label: above
@@ -564,6 +527,7 @@ content:
     weight: 1
     region: content
 hidden:
+  field_blocks_ref: true
   field_evaluated_by: true
   field_evaluated_on: true
   field_evaluation_notification: true

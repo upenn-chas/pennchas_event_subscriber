@@ -8,4 +8,5 @@ description: "The house in the university\t"
 new_revision: true
 creator_membership: true
 creator_wizard: false
-creator_roles: {  }
+creator_roles:
+  - house1-admin
