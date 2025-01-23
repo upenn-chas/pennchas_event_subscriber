@@ -9,14 +9,71 @@
 
 
   jQuery(document).ready(function () {
-    // jQuery(".dashboard-accordions .contents").on("click", function () {
-    //   console.log(' m clicke 15d');
-    //   jQuery(this).on('click', function () {
-    //     console.log(' m clicked');
-    //   });
-    // });
+    console.log('selectedValue test');
+    redirectToLink();
+    function redirectToLink() {
+      var selectedValue = document.getElementById('redirect-dropdown').value;
+      console.log('selectedValue', selectedValue);
+      // if (selectedValue) {
+      //   window.location.href = selectedValue;
+      // }
+    }
+    jQuery('.calendar-view-day__rows').each(function() {
+      var jQueryliElements = jQuery(this).find('li');
+      var liCount = jQueryliElements.length;
+    
+      // If there are multiple <li> elements, show the first one and a "More" button
+      if (liCount > 1) {
+        // Display the first <li> content
+        jQuery(this).find('li:first').show();
+        jQuery(this).find('li').not(':first').hide();
+        // Display the "More" button with the count of remaining <li> elements
+        jQuery(this).find('li:first').after('<div id="more-button-container"><span class="use-ajax" id="more-btn">' + (liCount - 1) + ' more</span></div>');
+      } else {
+        // If only one <li>, just show it
+        jQuery(this).find('li').show();
+      }
+    });
 
-    console.log('tetsing');
+    jQuery(document).on('click', '#more-btn', function() { 
+      var allLiTitles = '';
+  
+      jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
+        var title = jQuery(this).find('.title').text();
+        allLiTitles += '<p>' + title + '</p>';
+      });
+      openModalWithContent(allLiTitles);
+    });
+
+    function openModalWithContent(content) {
+      // Check if a modal already exists or create one
+      var modal = jQuery('#ajax-modal');
+      if (modal.length === 0) {
+        // If modal doesn't exist, create one
+        modal = jQuery('<div id="ajax-modal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><div id="modal-body"></div></div></div>');
+        jQuery('body').append(modal);
+      }
+    
+      // Append content to the modal body
+      jQuery('#modal-body').html(content);
+    
+      // Display the modal
+      modal.show();
+    
+      // Close modal when the close button is clicked
+      jQuery('.close-btn').on('click', function() {
+        modal.hide();
+      });
+    
+      // Close modal when clicking outside of it
+      jQuery(window).on('click', function(event) {
+        if (event.target === modal[0]) {
+          modal.hide();
+        }
+      });
+    }
+    
+
     // Check if the ol element with the class node_search-results is empty
     if (jQuery('.node_search-results').children().length === 0) {
         // If it's empty, display a no result found message

@@ -538,6 +538,9 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
  * Implements hook_preprocess_views_view().
  */
 function penchas_preprocess_views_view(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  $group_id = $route_match->getParameter('group');
+  $variables['current_group_id'] = $group_id;
   $variables['base_path'] = base_path();
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';

@@ -40,56 +40,71 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
-  {{ title_prefix }}
-  {% if title %}
-    {{ title }}
-  {% endif %}
-  {{ title_suffix }}
-  {% if header %}
-    <div class="view-header">
-      {{ header }}
-    </div>
-  {% endif %}
-  {% if exposed %}
-    <div class="view-filters">
-      {{ exposed }}
-    </div>
-  {% endif %}
-  {% if attachment_before %}
-    <div class="attachment attachment-before">
-      {{ attachment_before }}
-    </div>
-  {% endif %}
-  {% if pager %}
-    {{ pager }}
-  {% endif %}
-  {% if rows %}
-    <div class="view-content row">
-      {{ rows }}
-    </div>
-  {% elseif empty %}
-    <div class="view-empty">
-      {{ empty }}
-    </div>
-  {% endif %}
+  <div class="container">
+    {{ title_prefix }}
+    {% if title %}
+      {{ title }}
+    {% endif %}
+    {{ title_suffix }}
+    <div class="row">
+      <div class="col-md-3">
+        {% if header %}
+          <div class="view-header">
+            {{ header }}
+          </div>
+        {% endif %}
+        <div>
+            <select id="redirect-dropdown" onchange="redirectToLink()">
+              <option><a href="group/{{current_group_id}}/calendar">Events</a></option>
+              <option><a href="group/{{current_group_id}}/room-reservation-calendar">Reservation</a></option>
+            </select>
+          </div>
+        {% if exposed %}
+          <div class="view-filters">
+            {{ exposed }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-md-9">
+        {% if attachment_before %}
+          <div class="attachment attachment-before">
+            {{ attachment_before }}
+          </div>
+        {% endif %}
+        {% if pager %}
+          {{ pager }}
+        {% endif %}
+        {% if rows %}
+          <div class="view-content row">
+            {{ rows }}
+          </div>
+        {% elseif empty %}
+          <div class="view-empty">
+            {{ empty }}
+          </div>
+        {% endif %}
 
+        
+        {% if attachment_after %}
+          <div class="attachment attachment-after">
+            {{ attachment_after }}
+          </div>
+        {% endif %}
+        {% if more %}
+          {{ more }}
+        {% endif %}
+        {% if footer %}
+          <div class="view-footer">
+            {{ footer }}
+          </div>
+        {% endif %}
+        {% if feed_icons %}
+          <div class="feed-icons">
+            {{ feed_icons }}
+          </div>
+        {% endif %}
+      </div>
+  </div>
   
-  {% if attachment_after %}
-    <div class="attachment attachment-after">
-      {{ attachment_after }}
-    </div>
-  {% endif %}
-  {% if more %}
-    {{ more }}
-  {% endif %}
-  {% if footer %}
-    <div class="view-footer">
-      {{ footer }}
-    </div>
-  {% endif %}
-  {% if feed_icons %}
-    <div class="feed-icons">
-      {{ feed_icons }}
-    </div>
-  {% endif %}
+  
 </div>
