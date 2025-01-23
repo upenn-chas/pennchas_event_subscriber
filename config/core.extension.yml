@@ -19,6 +19,7 @@ module:
   ckeditor5: 0
   color_field: 0
   comment: 0
+  complete_webform_exporter: 0
   conditional_fields: 0
   config: 0
   contact: 0
@@ -124,12 +125,15 @@ module:
   variationcache: 0
   verf: 0
   view_alteration: 0
+  views_aggregator: 0
   views_bootstrap: 0
   views_data_export: 0
   views_fields_combine: 0
   views_ui: 0
   viewsreference: 0
   webform: 0
+  webform_devel: 0
+  webform_example_custom_form: 0
   webform_node: 0
   webform_ui: 0
   workflows: 0
