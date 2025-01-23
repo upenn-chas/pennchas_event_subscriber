@@ -1,0 +1,8 @@
+uuid: 76c4a63c-6a3e-42a6-b663-665b7031abb2
+langcode: en
+status: true
+dependencies: {  }
+id: video_block
+label: 'Video Block'
+revision: true
+description: 'Use this block to create video block.'

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
+    - field.field.node.room.field_blocks_ref
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
@@ -22,8 +23,10 @@ dependencies:
     - field.field.node.room.field_text_box
     - field.field.node.room.field_text_box_2
     - field.field.node.room.layout_builder__layout
+    - field.field.user.user.field_title_position
     - node.type.room
   module:
+    - bootstrap_layout_builder
     - color_field
     - duration_field
     - endroid_qr_code
@@ -674,6 +677,14 @@ content:
     third_party_settings: {  }
     weight: 12
     region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 31
+    region: blb_region_col_1
   field_chas_tech_managed_space:
     type: boolean
     label: above
@@ -818,3 +829,4 @@ hidden:
   field_room_gps_pin: true
   field_support_contact: true
   layout_builder__layout: true
+  published_at: true

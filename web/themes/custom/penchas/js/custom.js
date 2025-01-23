@@ -9,15 +9,17 @@
 
 
   jQuery(document).ready(function () {
-    console.log('selectedValue test');
-    redirectToLink();
-    function redirectToLink() {
-      var selectedValue = document.getElementById('redirect-dropdown').value;
-      console.log('selectedValue', selectedValue);
-      // if (selectedValue) {
-      //   window.location.href = selectedValue;
-      // }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const c_type = urlParams.get('c_type');
+    if(c_type){
+      jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
     }
+    jQuery('.redirect-dropdown').on('change', function(){
+      if (jQuery(this).val()) {
+        window.location.href = jQuery(this).val();
+      }
+    });
     jQuery('.calendar-view-day__rows').each(function() {
       var jQueryliElements = jQuery(this).find('li');
       var liCount = jQueryliElements.length;

@@ -1,0 +1,29 @@
+uuid: 569730c9-1193-43b0-bb19-1a660a95b4a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+    - field.storage.node.field_blocks_ref
+    - node.type.program_community
+id: node.program_community.field_blocks_ref
+field_name: field_blocks_ref
+entity_type: node
+bundle: program_community
+label: 'Blocks Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      video_block: video_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

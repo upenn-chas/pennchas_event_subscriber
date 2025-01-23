@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_blocks_ref
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_image
     - field.field.node.page.field_menus
@@ -155,6 +156,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
+          c689eb3e-b082-4552-9c60-9462679cd519:
+            uuid: c689eb3e-b082-4552-9c60-9462679cd519
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_blocks_ref'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -197,6 +214,14 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
   field_circle_color:
     type: color_field_formatter_text
     label: above
@@ -232,3 +257,4 @@ content:
     region: content
 hidden:
   layout_builder__layout: true
+  published_at: true

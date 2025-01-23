@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -7,8 +9,8 @@ use Drupal\views\ViewExecutable;
  */
 function view_alteration_page_attachments(array &$attachments)
 {
-  // Attach the custom JavaScript file for AJAX Views pager.
-  $attachments['#attached']['library'][] = 'view_alteration/ajax_pager';
+    // Attach the custom JavaScript file for AJAX Views pager.
+    $attachments['#attached']['library'][] = 'view_alteration/ajax_pager';
 }
 
 /**
@@ -16,14 +18,14 @@ function view_alteration_page_attachments(array &$attachments)
  */
 function view_alteration_theme()
 {
-  return [
-    'ajax_pager' => [
-      'version' => '1.0',
-      'js' => [
-        'js/ajax_pager.js',
-      ],
-    ],
-  ];
+    return [
+        'ajax_pager' => [
+            'version' => '1.0',
+            'js' => [
+                'js/ajax_pager.js',
+            ],
+        ],
+    ];
 }
 
 /**
@@ -31,16 +33,16 @@ function view_alteration_theme()
  */
 function view_alteration_views_data_alter(array &$data)
 {
-  // dd($data);
-  if (isset($data['group_relationship__group_roles']) && isset($data['user__roles'])) {
-    $data['users_field_data']['custom_roles_filter'] = [
-      'title' => t('Custom Roles filter'),
-      'filter' => [
-        'title' => t('Custom Roles filter'),
-        'help' => t('Custom Roles filter'),
-        'field' => 'roles',
-        'id' => 'custom_roles_filter',
-      ],
-    ];
-  }
+    // dd($data);
+    if (isset($data['group_relationship__group_roles']) && isset($data['user__roles'])) {
+        $data['users_field_data']['custom_roles_filter'] = [
+            'title' => t('Custom Roles filter'),
+            'filter' => [
+                'title' => t('Custom Roles filter'),
+                'help' => t('Custom Roles filter'),
+                'field' => 'roles',
+                'id' => 'custom_roles_filter',
+            ],
+        ];
+    }
 }

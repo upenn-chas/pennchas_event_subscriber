@@ -1,0 +1,29 @@
+uuid: 49ae0048-0f20-4146-af0a-30db964fe25b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+    - field.storage.node.field_blocks_ref
+    - node.type.reserve_room
+id: node.reserve_room.field_blocks_ref
+field_name: field_blocks_ref
+entity_type: node
+bundle: reserve_room
+label: 'Blocks Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      video_block: video_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

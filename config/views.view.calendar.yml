@@ -164,7 +164,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ title }}</a>'
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="test{{ view_node }}">{{ title }}</a>'
             make_link: false
             path: ''
             absolute: false
@@ -470,7 +470,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n<div class=\"field_event_schedule_start_end_value\"> {{ field_event_schedule_value }}</div><div class=\"title\">{{ title }} </div>\r\n<div class=\"field_intended_audience\"> {{ field_intended_audience }}</div>"
+            text: "<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n<div class=\"field_event_schedule_start_end_value\"> {{ field_event_schedule_value }}</div><div class=\"title\">{{ title }} </div>\r\n<div class=\"field_intended_audience\"> {{ field_intended_audience }}</div>\r\n<div class=\"rsvp-link\">{{ field_link_1 }}</div>"
             make_link: false
             path: ''
             absolute: false
@@ -512,8 +512,8 @@ display:
         options:
           offset: 0
           display_reset: 0
-          use_previous_next: 1
-          label_format: F
+          use_previous_next: 0
+          label_format: M
       exposed_form:
         type: bef
         options:
@@ -875,7 +875,20 @@ display:
       use_ajax: true
       group_by: true
       header: {  }
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<a class=\"blue-filled\" href=\"{{ path('entity.group_relationship.create_form', {'group': current_group_id , plugin_id: 'group_node:reserve_room'}) }}\">Reserve a Room</a>\r\n\r\n<a class=\"blue-filled\" href=\"{{ path('entity.group_relationship.create_form', {'group': current_group_id , plugin_id: 'group_node:chas_event'}) }}\">Add Event</a>"
+            format: basic_html
+          tokenize: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1

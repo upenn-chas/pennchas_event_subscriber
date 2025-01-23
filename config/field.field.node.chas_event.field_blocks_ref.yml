@@ -1,0 +1,29 @@
+uuid: 9ab9e69a-075d-427c-b936-f66847b2e42a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+    - field.storage.node.field_blocks_ref
+    - node.type.chas_event
+id: node.chas_event.field_blocks_ref
+field_name: field_blocks_ref
+entity_type: node
+bundle: chas_event
+label: 'Blocks Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      video_block: video_block
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

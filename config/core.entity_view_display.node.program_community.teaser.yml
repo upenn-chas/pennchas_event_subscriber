@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
+    - field.field.node.program_community.field_blocks_ref
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
@@ -53,6 +54,8 @@ content:
     weight: 0
     region: content
 hidden:
+  field_blocks_ref: true
   field_group: true
   field_group_ref: true
   layout_builder__layout: true
+  published_at: true

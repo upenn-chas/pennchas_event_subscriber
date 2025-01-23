@@ -35,6 +35,7 @@ permissions:
   - 'use editorial transition pending'
   - 'use editorial transition publish'
   - 'view group'
+  - 'view group_node:chas_event entity'
   - 'view group_node:notices entity'
   - 'view latest version'
   - 'view own unpublished group'

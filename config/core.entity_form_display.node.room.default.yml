@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
+    - field.field.node.room.field_blocks_ref
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
@@ -27,6 +28,7 @@ dependencies:
     - color_field
     - duration_field
     - path
+    - publication_date
     - text
 id: node.room.default
 targetEntityType: node
@@ -59,38 +61,38 @@ content:
     third_party_settings: {  }
   field_amenities_technology:
     type: options_buttons
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_available_to:
     type: options_buttons
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_chas_tech_managed_space:
     type: options_buttons
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_circle_color:
     type: color_field_widget_html5
-    weight: 16
+    weight: 17
     region: content
     settings:
       show_extra: false
     third_party_settings: {  }
   field_duration:
     type: duration_widget
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   field_evaluation_notification:
     type: boolean_checkbox
-    weight: 15
+    weight: 16
     region: content
     settings:
       display_label: true
@@ -114,6 +116,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -148,11 +156,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_blocks_ref: true
   field_group: true
   field_group_ref: true
   field_images: true

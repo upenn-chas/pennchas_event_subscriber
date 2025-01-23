@@ -384,3 +384,55 @@ display:
       tags:
         - 'config:field.storage.node.field_event_schedule'
         - 'config:workflow_list'
+  page_2:
+    id: page_2
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      pager:
+        type: calendar_week
+        options:
+          offset: 0
+          display_reset: 0
+          use_previous_next: 0
+          label_format: '\w\e\e\k W'
+      style:
+        type: calendar_week
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          calendar_fields:
+            field_event_schedule: field_event_schedule
+          calendar_display_rows: false
+          calendar_weekday_start: false
+          calendar_timestamp: 'this month'
+          calendar_title: '[date:custom:F Y]'
+          calendar_row_title: ''
+          calendar_work_week: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      defaults:
+        pager: false
+        style: false
+        row: false
+      display_extenders: {  }
+      path: group/%group/weekly-room-reservation-calendar
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - route
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_event_schedule'
+        - 'config:workflow_list'

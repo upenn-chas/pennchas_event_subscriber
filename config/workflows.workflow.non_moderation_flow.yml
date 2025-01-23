@@ -27,7 +27,14 @@ type_settings:
       weight: 1
       published: true
       default_revision: true
-  transitions: {  }
+  transitions:
+    published:
+      label: Published
+      from:
+        - draft
+        - published
+      to: published
+      weight: 0
   entity_types:
     node:
       - notices

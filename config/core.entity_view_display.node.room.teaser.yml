@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
+    - field.field.node.room.field_blocks_ref
     - field.field.node.room.field_chas_tech_managed_space
     - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
@@ -56,6 +57,7 @@ hidden:
   field_address: true
   field_amenities_technology: true
   field_available_to: true
+  field_blocks_ref: true
   field_chas_tech_managed_space: true
   field_duration: true
   field_evaluation_notification: true
@@ -70,3 +72,4 @@ hidden:
   field_text_box: true
   field_text_box_2: true
   layout_builder__layout: true
+  published_at: true

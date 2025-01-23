@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_banner
+    - field.field.node.program_community.field_blocks_ref
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_tags
@@ -15,6 +16,7 @@ dependencies:
     - content_moderation
     - image
     - path
+    - publication_date
     - text
 id: node.program_community.default
 targetEntityType: node
@@ -23,7 +25,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 10
+    weight: 11
     region: content
     settings:
       rows: 9
@@ -47,7 +49,7 @@ content:
     third_party_settings: {  }
   field_group:
     type: options_select
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -79,6 +81,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -113,10 +121,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_blocks_ref: true
   field_group_ref: true
   layout_builder__layout: true
