@@ -1,10 +1,12 @@
-<table class="custom-table">
+<table border="1" class="table custom-table">
   <thead>
-    <tr>
-      {% for column in header %}
-        <th>{{ column }}</th>
-      {% endfor %}
-    </tr>
+    {% for headerRows in header %}
+      <tr>
+      {% for row in headerRows %}
+        <th colspan="{{ row.cspan }}">{{ row.title }}</th>
+      {% endfor %}       
+      </tr>
+    {% endfor %}
   </thead>
   <tbody>
     {% if rows %}
