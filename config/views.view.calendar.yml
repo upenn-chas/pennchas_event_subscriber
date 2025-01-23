@@ -875,20 +875,7 @@ display:
       use_ajax: true
       group_by: true
       header: {  }
-      footer:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "<a class=\"blue-filled\" href=\"{{ path('entity.group_relationship.create_form', {'group': current_group_id , plugin_id: 'group_node:reserve_room'}) }}\">Reserve a Room</a>\r\n\r\n<a class=\"blue-filled\" href=\"{{ path('entity.group_relationship.create_form', {'group': current_group_id , plugin_id: 'group_node:chas_event'}) }}\">Add Event</a>"
-            format: basic_html
-          tokenize: false
+      footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1

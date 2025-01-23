@@ -9,12 +9,13 @@
 
 
   jQuery(document).ready(function () {
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const c_type = urlParams.get('c_type');
-    if(c_type){
-      jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
-    }
+    setInterval(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const c_type = urlParams.get('c_type');
+      if(c_type){
+        jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
+      }
+    }, 100);
     jQuery('.redirect-dropdown').on('change', function(){
       if (jQuery(this).val()) {
         window.location.href = jQuery(this).val();

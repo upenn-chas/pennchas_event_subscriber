@@ -15,6 +15,7 @@ module:
   breakpoint: 0
   calendar_view: 0
   captcha: 0
+  checklistapi: 0
   ckeditor5: 0
   color_field: 0
   comment: 0
@@ -41,6 +42,7 @@ module:
   event_calendar: 0
   event_evaluation: 0
   event_feedback: 0
+  feeds: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -95,6 +97,7 @@ module:
   rest: 0
   search: 0
   section_library: 0
+  seo_checklist: 0
   serialization: 0
   shortcut: 0
   simplify_menu: 0
