@@ -16,74 +16,45 @@ use Drupal\group\GroupManager;
 /**
  * Implements hook_token_info().
  */
-function penchas_group_role_permissions_token_info(): array {
+function penchas_custom_token_token_info(): array {
   $tokens = [];
-  $tokens['penchas_group_role_permissions']['event_subheading'] = [
+  $tokens['penchas_custom_token']['event_subheading'] = [
     'name' => t('Subheading for Dashboard'),
     'description' => t("Event Info Subheading for Dashboard pages."),
-    // 'type' => 'hex',
   ];
-  // $tokens['penchas_group_role_permissions']['user_assigned_role'] = [
-  //   'name' => t('Role - Drupal + Group'),
-  //   'description' => t("Dynamic role from Group and User profile role."),
-  // ];
-  $tokens['penchas_group_role_permissions']['user_dashboard_name'] = [
+  $tokens['penchas_custom_token']['user_dashboard_name'] = [
     'name' => t('User Name'),
     'description' => t("Preferred name from user profile. Fallback name will be Full name from User Profile."),
   ];
 
-  // $tokens['penchas_custom_global']['calendar_link'] = [
-  //   'name' => t('Link'),
-  //   'description' => t("Link to add the "),
-  // ];
+  $tokens['penchas_global']['current_house'] = [
+    'name' => t('Current House'),
+    'description' => t("Get the current house name by current Node"),
+    // 'type' => 'hex',
+  ];
+  
   return [
     'types' => [
-      'penchas_group_role_permissions' => [
+      'penchas_custom_token' => [
         'name' => t('Dashboard'),
         'description' => t('Custom Tokens for Dashboard pages'),
-        'needs-data' => 'penchas_group_role_permissions',
+        'needs-data' => 'penchas_custom_token',
+      ],
+      'penchas_global' => [
+        'name' => t('Penchas Global'),
+        'description' => t('Custom tokens for Penchas'),
+        'needs-data' => 'penchas_global',
       ],
     ],
     'tokens' => $tokens,
   ];
 }
 
-/**
- * Function to get SimpleSAMLphp response after login.
- */
-function penchas_group_role_get_saml_response() {
-  // Initialize the SimpleSAMLphp authentication source.
-  var_dump('control came here');
-  dd('shajsdhjsahdsajhd');
-  // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
-  $authSource = new Simple('default-sp');
-
-  // Ensure the user is authenticated.
-  if ($authSource->isAuthenticated()) {
-    // Fetch the attributes from the SAML response.
-    $attributes = $authSource->getAttributes();
-    // Example: Accessing specific attributes.
-    $user_id = $attributes['uid'][0] ?? NULL;
-    $user_email = $attributes['mail'][0] ?? NULL;
-
-    // Return or process the response attributes.
-    return [
-      'uid' => $user_id,
-      'mail' => $user_email,
-      'attributes' => $attributes,
-    ];
-  }
-  else {
-    // Optionally handle the case where the user is not authenticated.
-    \Drupal::messenger()->addError(t('User is not authenticated via SimpleSAMLphp.'));
-    return NULL;
-  }
-}
 
 /**
  * Implements hook_tokens().
  */
-function penchas_group_role_permissions_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
+function penchas_custom_token_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
   $replacements = [];
 
   foreach ($tokens as $name => $original) {
@@ -103,7 +74,11 @@ function penchas_group_role_permissions_tokens(string $type, array $tokens, arra
         $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
         break;
 
-      case 'user_dashboard_name':
+        case 'penchas_global':
+          $replacements[$original] = 'testingcall';
+          break;
+  
+        case 'user_dashboard_name':
         $current_user_id = \Drupal::currentUser()->id();
         $current_user = User::load($current_user_id);
         $user_name = $current_user->field_preferred_name->value;
@@ -148,17 +123,8 @@ function penchas_group_role_permissions_tokens(string $type, array $tokens, arra
 /**
  *
  */
-function penchas_group_role_permissions_permission() {
+function penchas_custom_token_permission() {
   $user = \Drupal::currentUser();
-  // dd($user);
-  // $groups = \Drupal::service('entity_type.manager')
-  //   ->getStorage('group')
-  //   ->loadByProperties(['uid' => $user->id()]);
-  // Foreach ($groups as $group) {
-  //   if ($group->hasPermission('access my events')) {
-  //     return AccessResult::allowed();
-  //   }
-  // }
   if ($user->hasPermission('access my events')) {
     return AccessResult::allowed();
   }
@@ -170,7 +136,7 @@ function penchas_group_role_permissions_permission() {
 /**
  *
  */
-function penchas_group_role_permissions_node_access(Node $node, $op, AccountInterface $account) {
+function penchas_custom_token_node_access(Node $node, $op, AccountInterface $account) {
 
   $nid = $node->id();
   if ($node->bundle() == 'chas_event') {
@@ -181,9 +147,9 @@ function penchas_group_role_permissions_node_access(Node $node, $op, AccountInte
     $result = $query->execute()->fetchCol();
     // dd($result);
     foreach($result as $items => $item){
-      if (!user_has_permission__($account, 'access my events')) {
-        // dd(check_user_group_permission__($account, $item, 'access my events'));
-        // if (!check_user_group_permission__($account, $item, 'access my events')) {
+      if (!user_has_permission($account, 'access my events')) {
+        // dd(check_user_group_permission($account, $item, 'access my events'));
+        // if (!check_user_group_permission($account, $item, 'access my events')) {
           return AccessResult::forbidden();
         // }
       }
@@ -196,7 +162,7 @@ function penchas_group_role_permissions_node_access(Node $node, $op, AccountInte
 /**
  *
  */
-function check_user_group_permission__(AccountInterface $account, $group_id, $permission) {
+function check_user_group_permission(AccountInterface $account, $group_id, $permission) {
   // Load the group entity by group ID.
   $group = Group::load($group_id);
   // dd($account);
@@ -226,6 +192,6 @@ function check_user_group_permission__(AccountInterface $account, $group_id, $pe
 /**
  * Custom function to check user permissions.
  */
-function user_has_permission__(AccountInterface $account, $permission) {
+function user_has_permission(AccountInterface $account, $permission) {
   return $account->hasPermission($permission);
 }

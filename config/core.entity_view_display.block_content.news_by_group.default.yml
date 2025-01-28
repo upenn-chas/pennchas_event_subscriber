@@ -1,0 +1,33 @@
+uuid: 7403dc28-b374-4a03-bbae-94d8d80726ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_by_group
+    - field.field.block_content.news_by_group.body
+    - field.field.block_content.news_by_group.field_events_by_group_ref
+  module:
+    - text
+    - viewsreference
+id: block_content.news_by_group.default
+targetEntityType: block_content
+bundle: news_by_group
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_events_by_group_ref:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

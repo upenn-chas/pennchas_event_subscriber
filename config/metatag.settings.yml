@@ -1,9 +1,16 @@
 _core:
   default_config_hash: DrYt8PcXA0xB3C3L1SvtefnkO5SwUonhY3n4Ld8yun4
-entity_type_groups: {  }
-separator: ''
+entity_type_groups:
+  node:
+    reserve_room:
+      basic: basic
+      advanced: advanced
+separator: ','
 tag_trim_method: beforeValue
-tag_trim_maxlength: {  }
-tag_scroll_max_height: ''
 use_maxlength: true
+tag_trim_maxlength:
+  metatag_maxlength_title: null
+  metatag_maxlength_description: null
+  metatag_maxlength_abstract: null
+tag_scroll_max_height: ''
 tag_trim_end: '|.,-:;/+&([{"'''

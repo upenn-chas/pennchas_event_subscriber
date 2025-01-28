@@ -1,0 +1,32 @@
+uuid: 6e903627-1711-493a-a3dc-a34ef5fa6e67
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:informational_block:8f524d64-a576-4a8e-85e3-5601d5bb3511'
+  module:
+    - block_content
+    - group
+  theme:
+    - penchas
+id: penchas_connectwithchas
+theme: penchas
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:8f524d64-a576-4a8e-85e3-5601d5bb3511'
+settings:
+  id: 'block_content:8f524d64-a576-4a8e-85e3-5601d5bb3511'
+  label: 'Connect with CHAS'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  group_role_condition_plugin:
+    id: group_role_condition_plugin
+    block_display_condition: 0
+    block_group_roles:
+      house1: {  }
+    negate: 0

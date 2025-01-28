@@ -1,21 +1,22 @@
-uuid: 5b3f51ea-e28b-445e-a380-fed322db7db5
+uuid: 83f6f980-0a97-4108-9d8e-8a137af44053
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.program_communities_selection
-    - field.field.block_content.program_communities_selection.body
-    - field.field.block_content.program_communities_selection.field_program_community
+    - block_content.type.news_by_group
+    - field.field.block_content.news_by_group.body
+    - field.field.block_content.news_by_group.field_events_by_group_ref
   module:
     - text
-id: block_content.program_communities_selection.default
+    - viewsreference
+id: block_content.news_by_group.default
 targetEntityType: block_content
-bundle: program_communities_selection
+bundle: news_by_group
 mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 1
+    weight: 26
     region: content
     settings:
       rows: 9
@@ -23,9 +24,9 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_program_community:
-    type: entity_reference_autocomplete
-    weight: 0
+  field_events_by_group_ref:
+    type: viewsreference_autocomplete
+    weight: 27
     region: content
     settings:
       match_operator: CONTAINS
@@ -35,7 +36,7 @@ content:
     third_party_settings: {  }
   info:
     type: string_textfield
-    weight: 2
+    weight: -5
     region: content
     settings:
       size: 60

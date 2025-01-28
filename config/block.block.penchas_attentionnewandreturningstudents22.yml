@@ -6,6 +6,7 @@ dependencies:
     - 'block_content:alert_banner:cc2cafe3-1a54-4176-acee-da0ec9429140'
   module:
     - block_content
+    - penchas_block_group_role_condition
     - system
   theme:
     - penchas
@@ -28,3 +29,10 @@ visibility:
     id: request_path
     negate: false
     pages: /about
+  penchas_block_group_role_condition_plugin:
+    id: penchas_block_group_role_condition_plugin
+    block_group_roles:
+      house1-chas_professional_staff: house1-chas_professional_staff
+      house1-chas_tech_student_worker: house1-chas_tech_student_worker
+      house1-house_coordinator: house1-house_coordinator
+    negate: null

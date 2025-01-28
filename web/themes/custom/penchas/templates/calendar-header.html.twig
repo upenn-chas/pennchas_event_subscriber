@@ -1,0 +1,37 @@
+<section class="hero-banner without-image small">
+    <style>
+        .hero-banner .container:before {
+            background: #{{current_group_circle_color}};
+        }
+    </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="breadcrumbs-block">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="{{base_path}}">{{breadcrumb_home}}</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="{{base_path}}group/{{current_group_id}}">{{current_group_label}} House</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="{{base_path}}group/{{current_group_id}}">{{get_involved}}</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    {{house_calendar}}
+                  </li>
+                </ol>
+              </nav>
+          </div>
+          <div class="banner-info items-gap">
+            <h1>
+              {{house_calendar}}
+            </h1>
+          </div>
+          {{simplified_menu_html|t}}
+        </div>
+      </div>
+    </div>
+  </section>

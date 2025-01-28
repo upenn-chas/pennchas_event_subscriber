@@ -87,6 +87,7 @@ module:
   path: 0
   path_alias: 0
   penchas_block_group_role_condition: 0
+  penchas_custom_token: 0
   penchas_group_role_permissions: 0
   penchas_node_alteration: 0
   pennchas_form_alter: 0

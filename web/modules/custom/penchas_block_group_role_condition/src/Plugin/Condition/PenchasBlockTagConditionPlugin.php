@@ -96,22 +96,34 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
       return FALSE; // No user entity, so the condition fails.
     }
 
+    // Initialize arrays to hold the roles.
+    $user_roles = array_merge($user_entity->getRoles(), []); // Start with the user's roles.
+
     // Get group memberships for the user.
     $memberships = \Drupal::service('group.membership_loader')->loadByUser($user_entity);
 
-    $user_roles = [];
     foreach ($memberships as $membership) {
       $roles = $membership->getRoles();
-
+      
       foreach ($roles as $role) {
         if ($role instanceof GroupRole) {
-          $user_roles[] = $role->id();
+          $user_roles[] = $role->id(); // Add group roles to the user roles.
         }
       }
     }
 
-    $matching_roles = array_intersect($user_roles, $configured_roles);
+    // Flatten the configured roles array into a simple list (if it's nested).
+    $configured_roles_flat = [];
+    foreach ($configured_roles as $group => $roles) {
+      $configured_roles_flat = array_merge($configured_roles_flat,  (array) $roles);
+    }
+
+    // Compare user roles with configured roles.
+    $matching_roles = array_intersect($user_roles, $configured_roles_flat);
+
+    // Return the matching roles (or perform further logic).
     return $matching_roles;
+
 
 
 

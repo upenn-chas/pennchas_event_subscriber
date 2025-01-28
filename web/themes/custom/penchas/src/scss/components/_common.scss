@@ -412,17 +412,37 @@ body {
   margin: 0;
   overflow: scroll;
   width: 100%;
+  margin-bottom: 30px;
+  max-height: 600px;
 }
 
+.js-pager__items {
+	&.pagination {
+    padding: 0 0 20px 0;
+		.page-item {
+			&.active {
+				.page-link {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
 
 [id^="views-exposed-form-users-reports-page-"] ,
 [id^="views-exposed-form-room-reservation-reports-page-"] ,
 [id^="views-exposed-form-moderation-reports-page-"] ,
 [id^="views-exposed-form-moderation-reports-event-"] ,
 [id^="views-exposed-form-events-evaluation-report-page-"] ,
-[id^="views-exposed-form-contents-change-report-page-"] {
+[id^="views-exposed-form-contents-change-report-page-"] ,
+[id^="views-exposed-form-rooms-reservation-moderation-reports-page-"] ,
+[id^="views-exposed-form-videos-link-report-page-"] ,
+[id^="views-exposed-form-contents-delete-report-page-"] {
   .d-flex {
-    gap: 15px;
+    gap: 12px;
+    @media(max-width: 767px){
+      gap: 0 12px;
+    }
   }
 
   .js-form-item {
@@ -542,6 +562,18 @@ body {
   }
 }
 
+
+.reports:has(table.table){ 
+  .hero-banner {
+    &.without-image {
+      &.small {
+        .col-lg-6 {
+          min-height: 120px;
+        }
+      }
+    }
+  }  
+}
 
 @media(max-width: 991px) {
   .hide-in-mobile {

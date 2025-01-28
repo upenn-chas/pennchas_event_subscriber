@@ -1,21 +1,22 @@
-uuid: 5b3f51ea-e28b-445e-a380-fed322db7db5
+uuid: 483f2065-a832-4044-b844-e82e2bb07436
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.program_communities_selection
-    - field.field.block_content.program_communities_selection.body
-    - field.field.block_content.program_communities_selection.field_program_community
+    - block_content.type.programs_by_group
+    - field.field.block_content.programs_by_group.body
+    - field.field.block_content.programs_by_group.field_view_reference
   module:
     - text
-id: block_content.program_communities_selection.default
+    - viewsreference
+id: block_content.programs_by_group.default
 targetEntityType: block_content
-bundle: program_communities_selection
+bundle: programs_by_group
 mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 1
+    weight: 26
     region: content
     settings:
       rows: 9
@@ -23,8 +24,8 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_program_community:
-    type: entity_reference_autocomplete
+  field_view_reference:
+    type: viewsreference_autocomplete
     weight: 0
     region: content
     settings:
@@ -35,7 +36,7 @@ content:
     third_party_settings: {  }
   info:
     type: string_textfield
-    weight: 2
+    weight: -5
     region: content
     settings:
       size: 60

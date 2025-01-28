@@ -1,0 +1,31 @@
+uuid: 674cad31-3f9e-48d6-9b78-94dedd7cd58e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.programs_by_group
+    - field.storage.block_content.field_view_reference
+  module:
+    - viewsreference
+id: block_content.programs_by_group.field_view_reference
+field_name: field_view_reference
+entity_type: block_content
+bundle: programs_by_group
+label: 'View Block reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: true
+  plugin_types:
+    default: default
+  preselect_views:
+    programs_by_group: programs_by_group
+  enabled_settings:
+    argument: argument
+field_type: viewsreference

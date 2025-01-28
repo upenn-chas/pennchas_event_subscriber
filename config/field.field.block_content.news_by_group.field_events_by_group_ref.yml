@@ -1,0 +1,38 @@
+uuid: db22171d-0ffa-4a22-bbec-f17ce80ef307
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_by_group
+    - field.storage.block_content.field_events_by_group_ref
+    - views.view.news_by_group
+  module:
+    - viewsreference
+id: block_content.news_by_group.field_events_by_group_ref
+field_name: field_events_by_group_ref
+entity_type: block_content
+bundle: news_by_group
+label: 'News by group ref'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 01298736-c8c1-422f-a006-ebf9dbc0c9ab
+    display_id: block_1
+    data: 'a:6:{s:6:"header";N;s:8:"argument";N;s:5:"title";N;s:5:"limit";N;s:6:"offset";N;s:5:"pager";N;}'
+    options:
+      argument: ''
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    news_by_group: news_by_group
+  enabled_settings:
+    argument: argument
+field_type: viewsreference

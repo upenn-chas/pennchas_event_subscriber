@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: program_communities_card
-label: 'Program communities Card '
+label: 'Program communities Card View'
 revision: false
 description: 'Display the program communities in grid card columns. Added option to set background color, heading, subheading and CTA under the section. '

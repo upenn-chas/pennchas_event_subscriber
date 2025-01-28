@@ -31,7 +31,7 @@ export function compileSCSS() {
 
 // Watch Files for Changes
 export function watchFiles() {
-  gulp.watch(paths.scss.src, compileSCSS);
+  gulp.watch(paths.scss.src, { usePolling: true }, compileSCSS);
 }
 
 // Define the default task

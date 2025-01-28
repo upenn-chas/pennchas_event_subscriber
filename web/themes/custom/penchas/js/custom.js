@@ -30,7 +30,7 @@
         // Display the first <li> content
         jQuery(this).find('li:first').show();
         jQuery(this).find('li').not(':first').hide();
-        // Display the "More" button with the count of remaining <li> elements
+        // Display the "More" button with the count of  remaining <li> elements
         jQuery(this).find('li:first').after('<div id="more-button-container"><span class="use-ajax" id="more-btn">' + (liCount - 1) + ' more</span></div>');
       } else {
         // If only one <li>, just show it
@@ -40,12 +40,15 @@
 
     jQuery(document).on('click', '#more-btn', function() { 
       var allLiTitles = '';
-  
+
+      var eventDate = jQuery(this).closest('.calendar-view-day').find('time').text();
       jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
         var title = jQuery(this).find('.title').text();
-        allLiTitles += '<p>' + title + '</p>';
+        var eventTime = jQuery(this).find('.field_event_schedule_start_end_value').text();
+        allLiTitles += '<p>' + eventTime + '<strong> ' + title + '</strong>' + '</p>';
       });
-      openModalWithContent(allLiTitles);
+      var modalContent = '<h2>' + eventDate + '</h2>' + allLiTitles;
+      openModalWithContent(modalContent);
     });
 
     function openModalWithContent(content) {
@@ -53,7 +56,7 @@
       var modal = jQuery('#ajax-modal');
       if (modal.length === 0) {
         // If modal doesn't exist, create one
-        modal = jQuery('<div id="ajax-modal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><div id="modal-body"></div></div></div>');
+        modal = jQuery('<div id="ajax-modal" class="modal calendar-modal"><div class="modal-content"><span class="close-btn">&times;</span><div id="modal-body"></div></div></div>');
         jQuery('body').append(modal);
       }
     
@@ -76,7 +79,55 @@
       });
     }
     
-
+    // if('#views-exposed-form-calendar-page-1'){
+    //   jQuery(this).find('.form-radios').hide();
+    // }
+    // When the General Events/Notice checkbox is clicked
+    // jQuery('#edit-type-exclude-notices').on('change', function() {
+    //   // Check if the checkbox is checked
+    //   if (jQuery(this).prop('checked')) {
+    //     // If checked, check the CHAS Event radio button
+    //     jQuery('#edit-type-chas-event').prop('checked', true);
+    //     jQuery('#edit-type-all').prop('checked', false);
+    //   } else {
+    //     // If unchecked, uncheck the CHAS Event radio button
+    //     jQuery('#edit-type-all').prop('checked', true);
+    //     jQuery('#edit-type-chas-event').prop('checked', false);
+    //   }
+    // });
+    // const urlParams = new URLSearchParams(window.location.search);
+    //   const type = urlParams.get('type');
+    //   if(type == 'chas_event'){
+    //     jQuery('#edit-type-chas-event').prop('checked', true);
+    //     jQuery('#edit-type-exclude-notices').prop('checked', true);
+    //   }else{
+    //     jQuery('#edit-type-chas-event').prop('checked', false);
+    //     jQuery('#edit-type-exclude-notices').prop('checked', false);
+    //   }
+      // When the General Events/Notice checkbox is clicked
+    jQuery('#edit-type-exclude-notices').on('change', function() {
+      alert('asdkjhasd');
+      // jQuery('#edit-type-all').prop('checked', false);
+      // jQuery('#edit-type-all').prop('checked', false);
+      // jQuery('#edit-type-chas-event').trigger('change');
+      // jQuery('#edit-type-notices').trigger('change');
+      
+      // Check if the checkbox is checked
+      // if (jQuery(this).prop('checked')) {
+      //   // If checked, check the CHAS Event radio button
+        
+      //   jQuery('#edit-type-all').prop('checked', false);
+  
+      //   // Trigger change event for CHAS Event radio button
+      // } else {
+      //   // If unchecked, uncheck the CHAS Event radio button
+      //   jQuery('#edit-type-all').prop('checked', true);
+      //   jQuery('#edit-type-chas-event').prop('checked', false);
+      //   // jQuery('#edit-type-exclude-notices').prop('checked', false);
+      //   // Trigger change event for All radio button
+      // }
+    });
+    
     // Check if the ol element with the class node_search-results is empty
     if (jQuery('.node_search-results').children().length === 0) {
         // If it's empty, display a no result found message
@@ -115,6 +166,17 @@
     });
 
     /*custom accordion ends */
+
+   
+    // Change the text of the table header cells
+    jQuery('thead th').eq(0).text('SUN');
+    jQuery('thead th').eq(1).text('MON');
+    jQuery('thead th').eq(2).text('TUE');
+    jQuery('thead th').eq(3).text('WED');
+    jQuery('thead th').eq(4).text('THU');
+    jQuery('thead th').eq(5).text('FRI');
+    jQuery('thead th').eq(6).text('SAT');
+   
 
     var $section1 = jQuery('#block-penchas-attentionnewandreturningstudents');
     var $section2 = jQuery('#block-penchas-attentionnewandreturningstudents22');

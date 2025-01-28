@@ -1,251 +1,383 @@
-.view-event-calendar {
+// .view-event-calendar {
 
-  .view-content.row {
-    margin: 0;
-  }
+//   .view-content.row {
+//     margin: 0;
+//   }
 
-  .view-filters {
-   display: none; 
-  }
-  .event-calendar {
-    display: flex;
-    max-width: 1326px;
-    margin: 0 auto;  
-    margin-top: 60px;
-    margin-bottom: 60px;
+//   .view-filters {
+//    display: none; 
+//   }
+//   .event-calendar {
+//     display: flex;
+//     max-width: 1326px;
+//     margin: 0 auto;  
+//     margin-top: 60px;
+//     margin-bottom: 60px;
+//     border-top: 1px solid $primaryColor;
+//     padding-top: 20px;
+//     @include media-query ('large') {
+//       padding-left: 15px;
+//       padding-right: 15px;
+//     }
+//     @include media-query ('ipad') {
+//       flex-wrap: wrap;
+//     }
+//   }
+//   .calendar-filter {
+//     width: 250px;
+//     @include media-query ('ipad') {
+//       width: 100%;
+//       max-width: 350px;
+//       margin-bottom: 30px;
+//     }
+//     .btn-teritory {
+//       width: 100%;
+//       margin-bottom: 20px;
+//     }
+
+//     .event-types {
+//       border-bottom: 1px solid $primaryColor;
+//       padding-bottom: 14px;
+//       margin-bottom: 30px;
+//     }
+
+//     .form-item.checkbox {
+//       margin-bottom: 4px;
+
+//       label{
+//         font-size: 16px;
+//         padding-left: 25px;
+//         &:before {
+//           width: 16px;
+//           height: 16px;
+//           top: 2px;
+//         }
+//         &:after {           
+//           height: 6px;
+//           width: 10px;          
+//           left: 3px;
+//           top: 6px;           
+//         }
+//       }
+//     }
+
+//     .calendar-filter-title {
+//       font-size: 30px;
+//       text-transform: capitalize;
+//       font-family: tablet-gothic-compressed;
+//       font-weight: 800;
+//       letter-spacing: normal;
+//       margin: 12px 0 20px 0;
+//     }
+
+//   }
+//   .calendar-container {
+//     width: calc(100% - 280px);
+//     margin-left: 30px;
+//     @include media-query ('ipad') {
+//       width: 100%;
+//       margin-left: 0px;
+//     }
+//   }
+
+//   .fc-scroller {
+//     height: auto !important;
+//   }
+
+//   .fc-toolbar {
+//     h2 {     
+//       margin: 0;
+//       text-transform: uppercase;
+//       font-size: 36px;
+//       position: relative;
+//       line-height: normal;
+//       top: 7px;
+//     }
+//     .fc-left {
+//       display: inline-flex;
+//       flex-direction: row-reverse;
+//       .fc-today-button {
+//         background: none;
+//         color: $primaryColor;
+//         opacity: 1;
+//         text-transform: capitalize;
+//         padding: 9px 18px;
+//         border-radius: 8px;
+//         margin-left: 0;
+//         margin-right: 30px;
+//         font-family: $teritoryFont;
+//         &:hover {
+//           color: #fff;
+//           background: $primaryColor;
+//         }
+//       }
+
+//       .fc-button-group {
+//         button {
+//           background: none;
+//           border: 0;
+//           border-radius: 0;
+//           padding: 0;
+//           &:focus {
+//             border: 0;
+//             box-shadow: none;
+//             outline: none;
+//           }
+//           span {
+//             &:before {
+//               display: none;
+//             }
+//           }
+//           .fc-icon-chevron-left {
+//             display: inline-block;
+//             height: 25px;
+//             width: 30px;
+//             background: url("./../assets/images/arrow-style1.jpg")no-repeat;
+//             background-position: center;            
+//             margin-right: 5px;
+//             background-size: 30px;
+//           }
+//           .fc-icon-chevron-right {
+//             display: inline-block;
+//             height: 25px;
+//             width: 30px;
+//             background: url("./../assets/images/arrow-style1.jpg")no-repeat;
+//             background-position: center;
+//             margin-left: 5px;
+//             transform: scaleX(-1);
+//             background-size: 30px;
+//           }
+//         }
+//       }
+//     }
+//     .fc-center {
+//       margin-right: auto;
+//       margin-left: 30px;
+//     }
+//   }
+// }
+
+
+// .fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
+//   border-color: #BEC6D5;
+// }
+
+// .fc-event-container {
+//   a {
+//     background-color: transparent !important;
+//     border: 0;
+//     border-radius: 0;
+//     color: $primaryColor;
+//     font-size: 12px;
+//     font-family: $teritoryFont;
+//     &:hover {
+//       background-color: transparent !important;
+//     border: 0;
+//     border-radius: 0;
+//     color: $primaryColor;
+//     }
+//     .event_title  {
+//       font-weight: 600;
+//     }
+//   }
+// }
+
+// .fc-ltr .fc-dayGrid-view .fc-day-top .fc-day-number {
+//   float: none;
+//   font-size: 12px;
+//   font-weight: 600;
+//   font-family: $teritoryFont;
+// }
+
+// .fc-ltr .fc-dayGrid-view .fc-day-top.fc-past {
+//   opacity: 1;
+//   .fc-day-number {
+//     font-weight: 400;
+//     opacity: 1;
+//   }
+// }
+
+// .fc-content-skeleton {
+//   td {
+//     text-align: center;
+//   }
+// }
+
+// .fc-dayGrid-view {
+//   .fc-body {
+//     .fc-row {
+//       max-height: 150px;
+//     }
+//   }
+// }
+
+
+// .fc-row {
+//   .fc-content-skeleton {
+//     tbody {
+//       td.fc-day-top {
+//         padding: 5px 8px 0px 8px;
+//         text-align: center;
+//       }
+//     }
+//     tbody {
+//       td {
+//         padding: 0 8px 8px 8px;
+//         text-align: left;
+//       }
+//     }
+//   }
+  
+// }
+// .fc-head {
+//   .fc-head-container.fc-widget-header {
+//     border-top: 0;
+//     border: 0;
+//     .fc-row.fc-widget-header {
+//       border-color :transparent;
+//     }
+//   }
+// }
+// .fc-unthemed {
+//   thead {
+//     border-color: transparent;
+//   }
+//   th {
+//     text-transform: uppercase;    
+//     font-size: 12px;
+//     font-family: $teritoryFont;
+//     border-color: transparent;
+//   }
+// }
+
+.calender-page {
+  h5 {
     border-top: 1px solid $primaryColor;
     padding-top: 20px;
-    @include media-query ('large') {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-    @include media-query ('ipad') {
-      flex-wrap: wrap;
-    }
+    margin-top: 20px;
   }
-  .calendar-filter {
+
+  .calender-left {
     width: 250px;
-    @include media-query ('ipad') {
-      width: 100%;
-      max-width: 350px;
-      margin-bottom: 30px;
-    }
-    .btn-teritory {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .event-types {
-      border-bottom: 1px solid $primaryColor;
-      padding-bottom: 14px;
-      margin-bottom: 30px;
-    }
-
-    .form-item.checkbox {
-      margin-bottom: 4px;
-
-      label{
-        font-size: 16px;
-        padding-left: 25px;
-        &:before {
-          width: 16px;
-          height: 16px;
-          top: 2px;
-        }
-        &:after {           
-          height: 6px;
-          width: 10px;          
-          left: 3px;
-          top: 6px;           
-        }
-      }
-    }
-
-    .calendar-filter-title {
-      font-size: 30px;
-      text-transform: capitalize;
-      font-family: tablet-gothic-compressed;
-      font-weight: 800;
-      letter-spacing: normal;
-      margin: 12px 0 20px 0;
-    }
-
+    
   }
-  .calendar-container {
-    width: calc(100% - 280px);
-    margin-left: 30px;
-    @include media-query ('ipad') {
+  .calender-right {
+    width: calc(100% - 255px);
+    margin-left: 5px;
+    @include media-query ('tablet') {
       width: 100%;
-      margin-left: 0px;
+      margin-left: 0;
     }
-  }
-
-  .fc-scroller {
-    height: auto !important;
-  }
-
-  .fc-toolbar {
-    h2 {     
-      margin: 0;
-      text-transform: uppercase;
-      font-size: 36px;
-      position: relative;
-      line-height: normal;
-      top: 7px;
+    .select-outer {
+      display: inline-block;
     }
-    .fc-left {
+
+    .pager__items {
       display: inline-flex;
-      flex-direction: row-reverse;
-      .fc-today-button {
-        background: none;
-        color: $primaryColor;
-        opacity: 1;
-        text-transform: capitalize;
-        padding: 9px 18px;
-        border-radius: 8px;
-        margin-left: 0;
-        margin-right: 30px;
+      padding: 0;
+      list-style-type: none;
+      .pager__current { 
+        order: 1;
+        border: 1px solid $primaryColor;
+        border-radius: 10px;
+        padding: 12px 15px 9px 15px;
         font-family: $teritoryFont;
-        &:hover {
-          color: #fff;
-          background: $primaryColor;
-        }
+        font-size: 18px;
+        font-weight: 400;
       }
 
-      .fc-button-group {
-        button {
-          background: none;
-          border: 0;
-          border-radius: 0;
-          padding: 0;
-          &:focus {
-            border: 0;
-            box-shadow: none;
-            outline: none;
-          }
-          span {
-            &:before {
-              display: none;
-            }
-          }
-          .fc-icon-chevron-left {
-            display: inline-block;
-            height: 25px;
-            width: 30px;
-            background: url("./../assets/images/arrow-style1.jpg")no-repeat;
-            background-position: center;            
-            margin-right: 5px;
-            background-size: 30px;
-          }
-          .fc-icon-chevron-right {
-            display: inline-block;
-            height: 25px;
-            width: 30px;
-            background: url("./../assets/images/arrow-style1.jpg")no-repeat;
-            background-position: center;
-            margin-left: 5px;
-            transform: scaleX(-1);
-            background-size: 30px;
-          }
-        }
+      .pager__previous {
+        order: 2;
       }
-    }
-    .fc-center {
-      margin-right: auto;
-      margin-left: 30px;
-    }
-  }
-}
-
-
-.fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
-  border-color: #BEC6D5;
-}
-
-.fc-event-container {
-  a {
-    background-color: transparent !important;
-    border: 0;
-    border-radius: 0;
-    color: $primaryColor;
-    font-size: 12px;
-    font-family: $teritoryFont;
-    &:hover {
-      background-color: transparent !important;
-    border: 0;
-    border-radius: 0;
-    color: $primaryColor;
-    }
-    .event_title  {
-      font-weight: 600;
-    }
-  }
-}
-
-.fc-ltr .fc-dayGrid-view .fc-day-top .fc-day-number {
-  float: none;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: $teritoryFont;
-}
-
-.fc-ltr .fc-dayGrid-view .fc-day-top.fc-past {
-  opacity: 1;
-  .fc-day-number {
-    font-weight: 400;
-    opacity: 1;
-  }
-}
-
-.fc-content-skeleton {
-  td {
-    text-align: center;
-  }
-}
-
-.fc-dayGrid-view {
-  .fc-body {
-    .fc-row {
-      max-height: 150px;
-    }
-  }
-}
-
-
-.fc-row {
-  .fc-content-skeleton {
-    tbody {
-      td.fc-day-top {
-        padding: 5px 8px 0px 8px;
-        text-align: center;
+      .pager__next {
+        order: 3;
       }
-    }
-    tbody {
-      td {
-        padding: 0 8px 8px 8px;
-        text-align: left;
+      .js-form-item {
+        margin: 0 !important;
+        padding: 0;
       }
     }
   }
-  
-}
-.fc-head {
-  .fc-head-container.fc-widget-header {
-    border-top: 0;
-    border: 0;
-    .fc-row.fc-widget-header {
-      border-color :transparent;
+  .calendar-view-table {
+    caption {
+      padding: 0;
+      font-family: $secondaryFont;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $primaryColor;
+      font-size: 36px;
+      line-height: 36px;
     }
   }
 }
-.fc-unthemed {
+
+.calendar-view-table .next-month, 
+.calendar-view-table .previous-month {
+  background-color: #fff;
+}
+ 
+.calendar-view-table.table > :not(caption) > * > * {
+  border-left: 1px solid #bec6d5;
+  border-bottom: 1px solid #bec6d5;
+  box-shadow: none;
+  border-right: 0;
+  border-top: 0;
+}
+
+.calendar-view-table.table tr td:last-child {
+  border-right: 1px solid #BEC6D5;
+}
+.calendar-view-table {
   thead {
-    border-color: transparent;
+    th {
+      background: none;
+      color: $primaryColor;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-family: $teritoryFont;
+      border-left: 0 !important;       
+      padding: 0;
+      text-align: center;
+      font-weight: 400;
+
+    }
   }
-  th {
-    text-transform: uppercase;    
-    font-size: 12px;
+  .calendar-view-day {
+    padding: 0;
+  }
+  .calendar-view-day__row {
+    padding: 0;
+    border: 0; 
+    border-radius: 0;
+    * {
+      font-family: $teritoryFont;
+      font-size: 12px;
+      color: $primaryColor;
+      margin-bottom: 0;
+    }
+  }
+
+  .calendar-view-day__rows {
+    gap: 0;
+  }
+
+  .calendar-view-day__number {
+    margin: 0;
+    height: auto;
+    width: 100%;
+    background: none !important;
+    padding: 0;
+    font-size: 13px;
+    color: $primaryColor;
+    border-radius: 0;
     font-family: $teritoryFont;
-    border-color: transparent;
+    font-weight: 600;
+  }
+
+  #more-button-container {
+    cursor: pointer;
+    font-family: $teritoryFont;
+    font-size: 12px;
+    color: $primaryColor;
   }
 }

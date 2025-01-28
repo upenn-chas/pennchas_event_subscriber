@@ -14,6 +14,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+{% include directory ~ '/templates/calendar-header.html.twig' with {'current_group_id': current_group_id}  %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
@@ -39,6 +40,7 @@
         <div>
         {% if exposed %}
           <div class="view-filters">
+          
             {{ exposed }}
           </div>
         {% endif %}
