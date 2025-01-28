@@ -57,6 +57,7 @@ module:
   group: 0
   group_permissions: 0
   group_relationship_tokens: 0
+  group_role_condition_plugin: 0
   groupmedia: 0
   help: 0
   history: 0
