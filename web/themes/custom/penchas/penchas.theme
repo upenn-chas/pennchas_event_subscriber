@@ -595,7 +595,9 @@ function penchas_preprocess_views_view(&$variables) {
   
   $current_uri = \Drupal::request()->getRequestUri();
   $uri_parts = explode('/', $current_uri);
-  $variables['group_machine_label'] = $uri_parts['2'];
+  if(isset($uri_parts)){
+    $variables['group_machine_label'] = $uri_parts['2'];
+  }
   // dd($uri_parts['2']);
   // $label = $current_uri->attributes->get('group');
   

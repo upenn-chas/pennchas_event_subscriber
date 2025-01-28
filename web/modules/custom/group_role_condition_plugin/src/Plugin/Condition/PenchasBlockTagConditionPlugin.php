@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\penchas_block_group_role_condition\Plugin\Condition;
+namespace Drupal\group_role_condition_plugin\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -12,7 +12,7 @@ use Drupal\group\Entity\GroupContent;
  * This main class which add ability to determine device.
  *
  * @Condition(
- *   id = "penchas_block_group_role_condition_plugin",
+ *   id = "group_role_condition_plugin",
  *   label = @Translation("Group Role Condition"),
  * )
  */
