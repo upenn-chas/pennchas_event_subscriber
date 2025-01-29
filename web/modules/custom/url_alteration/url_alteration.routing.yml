@@ -1,0 +1,7 @@
+# url_alteration.node_add_page:
+#   path: '/custom/add/page'  # This is the dynamic path
+#   defaults:
+#     _controller: 'Drupal\url_alteration\Controller\NodeFormController::renderForm'
+#     _title: 'Add Page'
+#   requirements:
+#     _permission: 'create page content'

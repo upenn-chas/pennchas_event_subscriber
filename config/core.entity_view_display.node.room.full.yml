@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.room.title
     - core.entity_view_mode.node.full
     - field.field.node.room.body
+    - field.field.node.room.feeds_item
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -401,6 +402,7 @@ content:
     region: content
 hidden:
   body: true
+  feeds_item: true
   field_address: true
   field_amenities_technology: true
   field_available_to: true

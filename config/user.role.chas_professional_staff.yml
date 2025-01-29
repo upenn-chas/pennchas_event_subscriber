@@ -11,7 +11,7 @@ dependencies:
   module:
     - content_moderation
     - node
-    - penchas_group_role_permissions
+    - penchas_custom_token
     - pennchas_form_alter
     - smart_date_recur
 third_party_settings:

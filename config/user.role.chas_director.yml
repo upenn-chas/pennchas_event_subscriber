@@ -12,7 +12,7 @@ dependencies:
   module:
     - content_moderation
     - node
-    - penchas_group_role_permissions
+    - penchas_custom_token
     - smart_date_recur
 id: chas_director
 label: 'CHAS Director'

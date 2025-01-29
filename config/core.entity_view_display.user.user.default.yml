@@ -33,7 +33,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          container_wrapper_classes: ''
+          container_wrapper_classes: space
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -65,158 +65,193 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          f056358b-25b8-445f-8323-53bcad4cac91:
-            uuid: f056358b-25b8-445f-8323-53bcad4cac91
+          cd91ccb1-0ac7-49d8-a61e-b6e8b1c3f288:
+            uuid: cd91ccb1-0ac7-49d8-a61e-b6e8b1c3f288
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'Lorem Ipsum 22'
-              label_display: visible
-              provider: layout_builder
-              view_mode: default
-              context_mapping: {  }
-              block_id: 366
-              block_revision_id: 399
-              block_serialized: null
-            weight: 1
-            additional: {  }
-          25c1cf08-0803-4873-8b69-c4e44b7e840d:
-            uuid: 25c1cf08-0803-4873-8b69-c4e44b7e840d
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'Lorem Ipsum 22'
-              label_display: visible
-              provider: layout_builder
-              view_mode: default
-              context_mapping: {  }
-              block_id: 367
-              block_revision_id: 400
-              block_serialized: null
-            weight: 2
-            additional: {  }
-          fec577f1-e209-4fe2-a5eb-eb10da0a3903:
-            uuid: fec577f1-e209-4fe2-a5eb-eb10da0a3903
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:dashboard_basic_item'
-              label: 'my events'
-              label_display: visible
+              id: 'inline_block:basic'
+              label: 'Draft Event dynamic token'
+              label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 368
-              block_revision_id: 401
-              block_serialized: null
-            weight: 3
-            additional: {  }
-          64bf48e9-a964-4743-bd93-63f3ef1d82fb:
-            uuid: 64bf48e9-a964-4743-bd93-63f3ef1d82fb
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: 'Resources - '
-              label_display: visible
-              provider: layout_builder
-              view_mode: default
-              context_mapping: {  }
-              block_id: 375
-              block_revision_id: 408
+              block_id: 398
+              block_revision_id: 433
               block_serialized: null
             weight: 0
             additional: {  }
-          37985294-20d7-483e-8301-c80460e943b0:
-            uuid: 37985294-20d7-483e-8301-c80460e943b0
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_3'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: bs-mb-4
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
+          breakpoints:
+            desktop: blb_col_4_4_4
+            tablet: blb_col_4_4_4
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-4
+              - col-md-4
+              - col-12
+            blb_region_col_2:
+              - col-lg-4
+              - col-md-4
+              - col-12
+            blb_region_col_3:
+              - col-lg-4
+              - col-md-4
+              - col-12
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          3cedc073-7353-44a3-a679-b1b893621eb7:
+            uuid: 3cedc073-7353-44a3-a679-b1b893621eb7
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: Resources
-              label_display: visible
+              id: 'inline_block:dashboard_basic_item'
+              label: 'My Events'
+              label_display: '0'
               provider: layout_builder
-              view_mode: default
+              view_mode: full
               context_mapping: {  }
-              block_id: 376
-              block_revision_id: 409
+              block_id: 409
+              block_revision_id: 444
               block_serialized: null
-            weight: 4
+              block_uuid: null
+            weight: 2
             additional: {  }
-          76aa8ac4-e70c-46b6-a3f3-9dcb7583a136:
-            uuid: 76aa8ac4-e70c-46b6-a3f3-9dcb7583a136
-            region: blb_region_col_1
+          8e3537ac-038a-48e0-aa7f-fe0dc473069b:
+            uuid: 8e3537ac-038a-48e0-aa7f-fe0dc473069b
+            region: blb_region_col_2
             configuration:
-              id: 'inline_block:dashboard_blocks'
-              label: Resources
-              label_display: visible
+              id: 'inline_block:dashboard_basic_item'
+              label: 'My Room Reservation'
+              label_display: '0'
               provider: layout_builder
-              view_mode: default
+              view_mode: full
               context_mapping: {  }
-              block_id: 377
-              block_revision_id: 410
+              block_id: 410
+              block_revision_id: 445
               block_serialized: null
-            weight: 5
+              block_uuid: null
+            weight: 2
             additional: {  }
-          04946f8c-070f-4844-9161-1a6e646e014e:
-            uuid: 04946f8c-070f-4844-9161-1a6e646e014e
-            region: blb_region_col_1
+          c3ee409f-3253-4523-bb33-ad55952cba0d:
+            uuid: c3ee409f-3253-4523-bb33-ad55952cba0d
+            region: blb_region_col_3
             configuration:
-              id: 'field_block:user:user:field_first_name'
+              id: 'inline_block:dashboard_basic_item'
+              label: 'Evaluations & Reports'
               label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          02b977a7-d467-4f8e-b4a6-a1b24707b76e:
-            uuid: 02b977a7-d467-4f8e-b4a6-a1b24707b76e
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:field_last_name'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 7
-            additional: {  }
-          23c5ac96-fa55-46ee-996d-3bb100d42dc2:
-            uuid: 23c5ac96-fa55-46ee-996d-3bb100d42dc2
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:field_edu_person_principal_name'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 9
-            additional: {  }
-          83a5ced7-a6e7-442f-a164-458d0b21b5c8:
-            uuid: 83a5ced7-a6e7-442f-a164-458d0b21b5c8
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:field_edu_person_entitlement'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: basic_string
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 10
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 411
+              block_revision_id: 446
+              block_serialized: null
+              block_uuid: null
+            weight: 2
             additional: {  }
         third_party_settings: {  }
       -
@@ -255,65 +290,239 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          501079c2-91a0-4d05-b9de-57c200a0a656:
-            uuid: 501079c2-91a0-4d05-b9de-57c200a0a656
+          d34f2ae7-04e3-46d6-ab65-d3ebdf13fbe3:
+            uuid: d34f2ae7-04e3-46d6-ab65-d3ebdf13fbe3
             region: blb_region_col_1
             configuration:
               id: 'inline_block:dashboard_blocks'
-              label: 'Quick Links'
+              label: 'Website Content'
               label_display: visible
               provider: layout_builder
               view_mode: default
               context_mapping: {  }
-              block_id: 369
-              block_revision_id: 402
+              block_id: 400
+              block_revision_id: 435
               block_serialized: null
             weight: 0
             additional: {  }
-          7d07c3d2-d1c6-412e-aaa2-222c135ac707:
-            uuid: 7d07c3d2-d1c6-412e-aaa2-222c135ac707
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'Lorem Ipsum 22'
-              label_display: visible
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 370
-              block_revision_id: 403
-              block_serialized: null
-            weight: 1
-            additional: {  }
-          063fe8e0-cfb4-44b1-879d-19a1fba59110:
-            uuid: 063fe8e0-cfb4-44b1-879d-19a1fba59110
+          fe4252e4-a586-41c4-8f8e-c88dbb210dbd:
+            uuid: fe4252e4-a586-41c4-8f8e-c88dbb210dbd
             region: blb_region_col_1
             configuration:
               id: 'inline_block:dashboard_blocks'
-              label: 'Quick Links'
+              label: 'Working With Partners'
               label_display: visible
               provider: layout_builder
               view_mode: default
               context_mapping: {  }
-              block_id: 371
-              block_revision_id: 404
+              block_id: 403
+              block_revision_id: 438
               block_serialized: null
             weight: 3
             additional: {  }
-          2d2a443e-8088-4a69-8881-05065b51c1fc:
-            uuid: 2d2a443e-8088-4a69-8881-05065b51c1fc
+          653c4818-291d-422e-99e3-1c74e551d7ea:
+            uuid: 653c4818-291d-422e-99e3-1c74e551d7ea
             region: blb_region_col_1
             configuration:
               id: 'inline_block:dashboard_blocks'
-              label: 'Lorem Ipsum 22'
+              label: 'CHAS Tech Admin'
               label_display: visible
               provider: layout_builder
               view_mode: default
               context_mapping: {  }
-              block_id: 372
-              block_revision_id: 405
+              block_id: 401
+              block_revision_id: 436
               block_serialized: null
-            weight: 4
+            weight: 1
+            additional: {  }
+          b95a69d0-d8d4-4529-8622-d087c7885461:
+            uuid: b95a69d0-d8d4-4529-8622-d087c7885461
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'RA Resources'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 402
+              block_revision_id: 437
+              block_serialized: null
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: blockdashboard-blocks
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: ''
+                video:
+                  media_id: ''
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          b7b7d37d-b263-43e8-a69b-02566cf7a68e:
+            uuid: b7b7d37d-b263-43e8-a69b-02566cf7a68e
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Quick Links'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 404
+              block_revision_id: 439
+              block_serialized: null
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_4'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: blockdashboard-blocks
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+            blb_region_col_4: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
+            blb_region_col_4: null
+          breakpoints:
+            desktop: blb_col_3_3_3_3
+            tablet: blb_col_3_3_3_3
+            mobile: null
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-3
+              - col-md-3
+              - null
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - null
+            blb_region_col_3:
+              - col-lg-3
+              - col-md-3
+              - null
+            blb_region_col_4:
+              - col-lg-3
+              - col-md-3
+              - null
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          4bbc947e-6463-4240-8d7c-43fee4af966c:
+            uuid: 4bbc947e-6463-4240-8d7c-43fee4af966c
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Staff Contacts'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 405
+              block_revision_id: 440
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          214e394d-3812-45e7-8e32-aaa29726eb89:
+            uuid: 214e394d-3812-45e7-8e32-aaa29726eb89
+            region: blb_region_col_2
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Communications Info'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 406
+              block_revision_id: 441
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          a30ddd05-b9fa-492d-852d-4bb87462f4f1:
+            uuid: a30ddd05-b9fa-492d-852d-4bb87462f4f1
+            region: blb_region_col_3
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'CHAS Applications - VPN'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 407
+              block_revision_id: 442
+              block_serialized: null
+            weight: 0
+            additional: {  }
+          3ec317c4-acc4-4aca-93da-a3126ff965ce:
+            uuid: 3ec317c4-acc4-4aca-93da-a3126ff965ce
+            region: blb_region_col_4
+            configuration:
+              id: 'inline_block:dashboard_blocks'
+              label: 'Emergency Cell Phone Numbers'
+              label_display: visible
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: 408
+              block_revision_id: 443
+              block_serialized: null
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

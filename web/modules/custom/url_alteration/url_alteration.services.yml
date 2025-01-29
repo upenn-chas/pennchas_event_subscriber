@@ -1,0 +1,11 @@
+# services:
+#   url_alteration.node_form_controller:
+#     class: Drupal\url_alteration\Controller\NodeFormController
+#     arguments: ['@form_builder']  # Injecting only the form builder service.
+#     tags:
+#       - { name: 'controller.service_arguments' }
+services:
+  url_alteration.route_subscriber:
+    class: Drupal\url_alteration\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

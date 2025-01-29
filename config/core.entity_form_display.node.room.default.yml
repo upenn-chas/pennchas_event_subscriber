@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.room.body
+    - field.field.node.room.feeds_item
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -161,6 +162,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  feeds_item: true
   field_blocks_ref: true
   field_group: true
   field_group_ref: true

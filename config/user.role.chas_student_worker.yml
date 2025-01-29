@@ -13,7 +13,7 @@ dependencies:
     - event_evaluation
     - file
     - node
-    - penchas_group_role_permissions
+    - penchas_custom_token
     - pennchas_form_alter
 third_party_settings:
   pennchas_form_alter:

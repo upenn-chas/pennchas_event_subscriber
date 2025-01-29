@@ -323,59 +323,55 @@ function _get_group_rooms(int $groupId)
 // }
 
 
-// function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
-// {
-//   // Initialize variables
-//   $variables = [];
-//   $connection = Database::getConnection();
-//   $nid = $node->id();
-//   $current_user = \Drupal::currentUser();
-//   $user_roles = $current_user->getRoles();
-//   $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
+  // Initialize variables
+  $variables = [];
+  $connection = Database::getConnection();
+  $nid = $node->id();
+  $current_user = \Drupal::currentUser();
+  $user_roles = $current_user->getRoles();
+  $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
 
-//   // Check if the user has one of the allowed roles
-//   if (array_intersect($user_roles, $allowed_roles)) {
-//     // $query = $connection->select('node_field_data', 'nf');
-//     // $query->fields('nf');
-//     // $query->condition('nf.nid', $nid);
-//     // $node_results = $query->execute()->fetchAll();
-//     $variables['node_access'] = 'TRUE'; //!empty($node_results) ? 'TRUE' : 'FALSE';
-//   } elseif ($current_user->hasRole('authenticated')) {
-//     $query = $connection->select('group_relationship_field_data', 'gr');
-//     $query->condition('gr.entity_id', $current_user->id());
-//     $query->condition('gr.plugin_id', 'group_membership');
-//     $query->fields('gr', ['gid']);
-//     $group_results = $query->execute()->fetchCol();
+  // Check if the user has one of the allowed roles
+  if (array_intersect($user_roles, $allowed_roles)) {
+    $variables['node_access'] = 'TRUE';
+  } elseif ($current_user->hasRole('authenticated')) {
+    $query = $connection->select('group_relationship_field_data', 'gr');
+    $query->condition('gr.entity_id', $current_user->id());
+    $query->condition('gr.plugin_id', 'group_membership');
+    $query->fields('gr', ['gid']);
+    $group_results = $query->execute()->fetchCol();
 
-//     if (!empty($group_results)) {
-//       // If the user is part of groups, check if the node is in any of those groups
-//       foreach ($group_results as $group_id) {
-//         $query = $connection->select('group_relationship_field_data', 'gr');
-//         $query->condition('gr.gid', $group_id);
-//         $query->condition('gr.entity_id', $nid);
-//         $query->fields('gr');
-//         $node_results = $query->execute()->fetchAll();
-//         if (!empty($node_results)) {
-//           $variables['node_access'] = 'TRUE';
-//           break;
-//         }
-//       }
-//     } else {
-//       $query = $connection->select('node_field_data', 'nf');
-//       $query->fields('nf');
-//       $query->condition('nf.nid', $nid);
-//       $query->condition('nf.type', 'reserve_room', '!=');
-//       $node_results = $query->execute()->fetchAll();
-//       $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
-//     }
-//   } else {
-//     $query = $connection->select('node_field_data', 'nf');
-//     $query->fields('nf');
-//     $query->condition('nf.nid', $nid);
-//     $query->condition('nf.type', 'reserve_room', '!=');
-//     $node_results = $query->execute()->fetchAll();
-//     $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
-//   }
+    if (!empty($group_results)) {
+      // If the user is part of groups, check if the node is in any of those groups
+      foreach ($group_results as $group_id) {
+        $query = $connection->select('group_relationship_field_data', 'gr');
+        $query->condition('gr.gid', $group_id);
+        $query->condition('gr.entity_id', $nid);
+        $query->condition('gr.plugin_id', 'group_node:reserve_room', '!=');
+        $query->fields('gr');
+        $node_results = $query->execute()->fetchAll();
+        if (!empty($node_results)) {
+          $variables['node_access'] = 'TRUE';
+          break;
+        }
+      }
+    } else {
+      $query = $connection->select('node_field_data', 'nf');
+      $query->fields('nf');
+      $query->condition('nf.nid', $nid);
+      $query->condition('nf.type', 'reserve_room', '!=');
+      $node_results = $query->execute()->fetchAll();
+      $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+    }
+  } else {
+    $query = $connection->select('node_field_data', 'nf');
+    $query->fields('nf');
+    $query->condition('nf.nid', $nid);
+    $query->condition('nf.type', 'reserve_room', '!=');
+    $node_results = $query->execute()->fetchAll();
+    $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
+  }
 
-//   return $variables;
-// }
+  return $variables;
+}

@@ -1,0 +1,6 @@
+name: "URL Alteration"
+description: "Extension to alter URLs to dynamic custom path."
+type: module
+core_version_requirement: ^10
+version: 1.0
+package: Custom

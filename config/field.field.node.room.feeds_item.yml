@@ -1,0 +1,23 @@
+uuid: af7de165-2ee4-4bb6-8b47-a77505e513a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.room
+  module:
+    - feeds
+id: node.room.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: room
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

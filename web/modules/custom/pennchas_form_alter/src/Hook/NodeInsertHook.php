@@ -11,7 +11,7 @@ class NodeInsertHook
 {
     function handle(NodeInterface $node)
     {
-        dd($node->get('layout_builder__layout')->getValue());
+        // dd($node->get('layout_builder__layout')->getValue());
         $nodeType = $node->getType();
         if ($nodeType === Constant::NODE_RESERVE_ROOM) {
             $this->handleReserveRoom($node);

@@ -248,19 +248,26 @@ function penchas_preprocess_html(&$variables) {
 
     // Special handling for 'chas_event' and 'notices' bundles
     if ($node->bundle() == 'notices') {
-      $event_house_id = (int) $node->get('field_groups')->getString();
-      $group_machine_name = get_group_label($event_house_id);
-      if ($group_machine_name) {
-        $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-      }
+      $event_house_id = $node->get('field_groups')->getString();
+      $event_house_ids = explode(',', $event_house_id);
+        if (count($event_house_ids) == 1){
+          $group_machine_name = get_group_label($event_house_id);
+          if ($group_machine_name) {
+            $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+          }
+        }
     }
 
     // Special handling for 'chas_event' and 'notices' bundles
     if ($node->bundle() == 'chas_event') {
-      $event_house_id = (int) $node->get('field_location')->getString();
-      $group_machine_name = get_group_label($event_house_id);
-      if ($group_machine_name) {
-        $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+      $eventHousesId = $node->get('field_groups')->getValue();
+      if (count($eventHousesId) == 1){
+        // $event_house_id = (int) $node->get('field_location')->getString();
+        // $housesId = [$event_house_id];
+        $group_machine_name = get_group_label($eventHousesId[0]['target_id']);
+        if ($group_machine_name) {
+          $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+        }
       }
     }
 

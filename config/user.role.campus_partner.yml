@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - file
-    - penchas_group_role_permissions
+    - penchas_custom_token
 id: campus_partner
 label: 'Campus Partner'
 weight: -6

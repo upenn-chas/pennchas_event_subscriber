@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.room.body
+    - field.field.node.room.feeds_item
     - field.field.node.room.field_address
     - field.field.node.room.field_amenities_technology
     - field.field.node.room.field_available_to
@@ -825,6 +826,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  feeds_item: true
   field_image: true
   field_room_gps_pin: true
   field_support_contact: true

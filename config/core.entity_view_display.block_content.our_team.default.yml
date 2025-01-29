@@ -1,0 +1,31 @@
+uuid: ae9954b9-3696-4e14-ae82-26a99a9c14d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.our_team
+    - field.field.block_content.our_team.body
+    - field.field.block_content.our_team.field_team_categories
+  module:
+    - text
+id: block_content.our_team.default
+targetEntityType: block_content
+bundle: our_team
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_team_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }
