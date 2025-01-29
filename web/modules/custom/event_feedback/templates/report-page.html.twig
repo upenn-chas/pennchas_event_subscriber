@@ -1,26 +1,65 @@
-<table border="1" class="table custom-table">
-  <thead>
-    {% for headerRows in header %}
-      <tr>
-      {% for row in headerRows %}
-        <th colspan="{{ row.cspan }}">{{ row.title }}</th>
-      {% endfor %}       
-      </tr>
-    {% endfor %}
-  </thead>
-  <tbody>
+<div class="reports">
+  <div class="view" id="participants-survey">
+    <section class="hero-banner without-image small">
+      <style>
+        .hero-banner .container:before {
+            background: #ffea3f;
+        }
+      </style>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="breadcrumbs-block">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="/dashboard/reports">Reports</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      {{ title }}
+                    </li>
+                  </ol>
+                </nav>
+            </div>
+            <div class="banner-info items-gap">
+              <h1>
+                {{ title }}
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="action-container">
+      {% if header %}
+        <div class="view-header">
+          {{ header }}
+        </div>
+      {% endif %}
+
+      {% if exposed %}
+        <div class="view-filters">
+          {{ exposed }}
+        </div>
+      {% endif %}
+    </div>
     {% if rows %}
-      {% for row in rows %}
-        <tr>
-          {% for cell in row %}
-            {% if loop.index0 < 2 %} {# The first two cells are headers. #}
-              <th>{{ cell }}</th>
-            {% else %}
-              <td>{{ cell }}</td>
-            {% endif %}
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    {% endif  %}
-  </tbody>
-</table>
+      <div class="view-content row" id="report-table-container">
+        {{ rows }}
+      </div>
+    {% endif %}
+    {% if pager %}
+      {{ pager }}
+    {% endif %}
+  </div>
+</div>
+
+
+
+
