@@ -334,7 +334,12 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
 
   // Check if the user has one of the allowed roles
   if (array_intersect($user_roles, $allowed_roles)) {
-    $variables['node_access'] = 'TRUE';
+    $query = $connection->select('node_field_data', 'nf');
+    $query->fields('nf');
+    $query->condition('nf.nid', $nid);
+    $query->condition('nf.type', 'reserve_room', '!=');
+    $node_results = $query->execute()->fetchAll();
+    $variables['node_access'] = !empty($node_results) ? 'TRUE' : 'FALSE';
   } elseif ($current_user->hasRole('authenticated')) {
     $query = $connection->select('group_relationship_field_data', 'gr');
     $query->condition('gr.entity_id', $current_user->id());
