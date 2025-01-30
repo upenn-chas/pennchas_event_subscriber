@@ -79,7 +79,7 @@ class EventFeedbackController extends ControllerBase
         }
         array_unique($eventDates);
 
-        if (false && $this->hasUserAlreadySubmitted($this->eventFeedbackWebformId, $node->id())) {
+        if ($this->hasUserAlreadySubmitted($this->eventFeedbackWebformId, $node->id())) {
             return [
                 '#theme' => 'event_feedback_page',
                 '#node' => $node,
