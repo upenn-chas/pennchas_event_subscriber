@@ -148,6 +148,14 @@
       adjustContentWidth();
     });
 
+    jQuery('.calendar-view-table thead th').eq(0).text('SUN');
+    jQuery('.calendar-view-table thead th').eq(1).text('MON');
+    jQuery('.calendar-view-table thead th').eq(2).text('TUE');
+    jQuery('.calendar-view-table thead th').eq(3).text('WED');
+    jQuery('.calendar-view-table thead th').eq(4).text('THU');
+    jQuery('.calendar-view-table thead th').eq(5).text('FRI');
+    jQuery('.calendar-view-table thead th').eq(6).text('SAT');
+
     jQuery(".dashboard-accordions .field_child_dashboard_blocks").hide();
     jQuery(".dashboard-accordions .field_child_dashboard_blocks.open .contents").show();
 
@@ -166,17 +174,6 @@
     });
 
     /*custom accordion ends */
-
-   
-    // Change the text of the table header cells
-    // jQuery('thead th').eq(0).text('SUN');
-    // jQuery('thead th').eq(1).text('MON');
-    // jQuery('thead th').eq(2).text('TUE');
-    // jQuery('thead th').eq(3).text('WED');
-    // jQuery('thead th').eq(4).text('THU');
-    // jQuery('thead th').eq(5).text('FRI');
-    // jQuery('thead th').eq(6).text('SAT');
-   
 
     var $section1 = jQuery('#block-penchas-attentionnewandreturningstudents');
     var $section2 = jQuery('#block-penchas-attentionnewandreturningstudents22');

@@ -252,7 +252,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           3810e36a-64b0-48f7-aca1-df6f727a088b:
             uuid: 3810e36a-64b0-48f7-aca1-df6f727a088b
@@ -267,7 +267,7 @@ third_party_settings:
               block_id: 381
               block_revision_id: 416
               block_serialized: null
-            weight: 5
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

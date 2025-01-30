@@ -1,0 +1,26 @@
+<table class="table cols-23 report-table">
+    <thead>
+    {% for theader in table_header %}
+        <tr>
+        {% for cell in theader %}
+            <th colspan="{{ cell.cspan }}">{{ cell.title }}</th>
+        {% endfor %}       
+        </tr>
+    {% endfor %}
+    </thead>
+    <tbody>
+    {% if table_body %}
+        {% for tbody in table_body %}
+            <tr>
+            {% for cell in tbody %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+        <td colspan="{{ ccount }}"><div class="no-records">No records</div></td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

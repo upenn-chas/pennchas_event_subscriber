@@ -1,0 +1,4 @@
+services:
+  event_feedback.event_feedback_controller:
+    class: 'Drupal\event_feedback\Controller\EventFeedbackController'
+    arguments: ['@renderer']

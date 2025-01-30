@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_available_to
     - node.type.room
-    - taxonomy.vocabulary.role_category
 id: node.room.field_available_to
 field_name: field_available_to
 entity_type: node
@@ -19,8 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
-    target_bundles:
-      role_category: role_category
+    target_bundles: {  }
     sort:
       field: name
       direction: asc

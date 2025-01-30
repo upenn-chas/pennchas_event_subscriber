@@ -605,18 +605,22 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
  */
 function penchas_preprocess_views_view(&$variables) {
   
-  $route_match = \Drupal::routeMatch();
-  // dd($route_match);
-  $groupData = $route_match->getParameter('group');
-  $variables['current_group_id'] = $groupData;
+  // $route_match = \Drupal::routeMatch();
+  // // dd($route_match);
+  // $groupData = $route_match->getParameter('group');
+  // $variables['current_group_id'] = $groupData;
   
   $current_uri = \Drupal::request()->getRequestUri();
   $uri_parts = explode('/', $current_uri);
   if(isset($uri_parts)){
     $variables['group_machine_label'] = $uri_parts['2'];
+    $connection = Database::getConnection();
+    $query = $connection->select('group__field_house_machine_name', 'hm');
+    $query->fields('hm',['entity_id']);
+    $query->condition('hm.field_house_machine_name_value', $uri_parts['2']);
+    $group_results = $query->execute()->fetchObject();
+    $groupData = $group_results->entity_id;
   }
-  // dd($uri_parts['2']);
-  // $label = $current_uri->attributes->get('group');
   
   $variables['base_path'] = base_path();
   $variables['get_involved'] = 'Get Involved';
@@ -636,8 +640,7 @@ function penchas_preprocess_views_view(&$variables) {
         General Events/Notice</label></div>';
 
     if($groupData){
-      // dd($groupData);
-      // $groupData = Group::load($groupData);
+      $groupData = Group::load($groupData);
       $url_path = $groupData->toUrl()->toString();
       $field_menus = $groupData->get('field_menus');
       $simplified_menu_html = '';
@@ -681,8 +684,7 @@ function penchas_preprocess_views_view(&$variables) {
         foreach ($team_filters[0]['value'] as $key => $team_filter) {
           if($key != 'all'){
             $team_filters_arr .= '<li class="nav-item" role="presentation">
-                  <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a>
-                </li>';
+              <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a></li>';
           }
         }
       }
