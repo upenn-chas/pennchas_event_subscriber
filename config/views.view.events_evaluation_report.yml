@@ -1768,8 +1768,8 @@ display:
           plugin_id: standard
           order: DESC
           expose:
-            label: ''
-            field_identifier: ''
+            label: 'Evaluated On (field_evaluated_on)'
+            field_identifier: field_evaluated_on_value
           exposed: false
       arguments: {  }
       filters:
