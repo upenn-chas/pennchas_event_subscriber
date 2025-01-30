@@ -19,6 +19,7 @@ use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\user\Entity\User;
 use Drupal\group\Entity\GroupMembership;
 use Drupal\group\Entity\GroupRole;
+use Drupal\group\GroupManager;
 use Drupal\node\Entity\Node;
 
 /**
@@ -286,108 +287,117 @@ function penchas_preprocess_html(&$variables) {
   $current_uri = \Drupal::request()->getRequestUri();
   
   /* SAML resposne testing starts */
-  if($current_uri == '/all-college-houses'){
-    // get all group roles 
-    // $group_role_query = \Drupal::database()->select('group_relationship__group_roles', 'gr')
-    // ->distinct()  // Apply DISTINCT
-    // ->fields('gr', ['group_roles_target_id']); 
-    // // ->leftJoin('groups_field_data', 'gf', 'gf.id = gr.entity_id');
+  // if($current_uri == '/all-college-houses'){
 
-    // $result = $group_role_query->execute();
-
-    // // Initialize an array to store the results.
-    $group_roles_target_ids = [];
-    // foreach ($result as $row) {
-    //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
-    // }
-    $query = \Drupal::entityQuery('group_role');
-    $role_ids = $query->execute();
-    $group_roles = GroupRole::loadMultiple($role_ids);
-    foreach ($group_roles as $role) {
-      $group_roles_target_ids[] = $role->id();
-    }
-    // dd($group_roles_target_ids);
+  //   // Initialize an array to store the results.
+  //   $group_roles_target_ids = [];
+  //   $connection = Database::getConnection();
+  //   $current_user = \Drupal::currentUser();
+  //   $uid = $current_user->id(); 
+  //   $user = \Drupal\user\Entity\User::load($uid);
+  //   $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
+  //   $personentitlement = explode(", ", $personentitlement_values);
+  //   // foreach ($result as $row) {
+  //   //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
+  //   // }
+  //   $query = \Drupal::entityQuery('group_role');
+  //   $role_ids = $query->execute();
+  //   $group_roles = GroupRole::loadMultiple($role_ids);
+  //   foreach ($group_roles as $role) {
+  //     $group_roles_target_ids[] = $role->id();
+  //   }
     
-    // get all Drupal user role
-    // $user_roles_query = \Drupal::database()->select('user__roles', 'ur')
-    // ->distinct()  // Apply DISTINCT
-    // ->fields('ur', ['roles_target_id']); 
-    // $user_role_result = $user_roles_query->execute();
-    // $user_roles_target_ids = [];
-    // foreach ($user_role_result as $row) {
-    //   $user_roles_target_ids[] = $row->roles_target_id;  // Collect the 'group_roles_target_id' values.
-    // }
-    // Get all user roles using the entity query.
-    $query = \Drupal::entityQuery('user_role');
-    $role_ids = $query->execute();
-    $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
-    foreach ($drupal_user_roles as $role) {
-      $drupal_user_roles[] = $role->id();
-    }
+  //   $query = \Drupal::entityQuery('user_role');
+  //   $role_ids = $query->execute();
+  //   $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
+  //   foreach ($drupal_user_roles as $role) {
+  //     $drupal_user_roles[] = $role->id();
+  //   }
 
-    // dd($user_roles_target_ids);
-
-    // get all groups IDs by machine names
-    $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
-    ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
-    $gf_result = $group_machine_name_query->execute()->fetchAll();
-    $groups_data = [];
-    foreach ($gf_result as $row) {
-      $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
-    }
+  //   // get all groups IDs by machine names
+  //   $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
+  //   ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
+  //   $gf_result = $group_machine_name_query->execute()->fetchAll();
+  //   $groups_data = [];
+  //   foreach ($gf_result as $row) {
+  //     $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
+  //   }
     
-    $personentitlement = [
-      "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
-      "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
-      "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
-      "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
-      "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
-      "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
-    ];
-    
-    foreach ($personentitlement as $row => $value) {
-      $array = explode('.', $value);
-      $last_string = end($array);
-      // var_dump($last_string);
-      // first check if any group is existed then 
-    
-      // check if any role existed in group roles 
-    
-      // check if any role existed in Drupal roles.
-    
-      // Asign that user into group
-      if (array_key_exists($last_string, $groups_data)) {
-        $group_ids[] = $groups_data[$last_string];
-      }
-      if (in_array($last_string, $drupal_user_roles)) {
-        $drupal_user_roles_ids[] = $last_string;
-      }
-      if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
-        $group_user_roles_ids[] = $last_string;
-      }
-    }
-    if (isset($group_ids)) {
-      foreach ($group_ids as $key => $group_id) {
-        if(isset($group_user_roles_ids)){
-          foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
-            
-            // insertion into tables "group_user_roles_ids" and get ID ,
-            // Add row into  "group_relationship" with relation of above inserted ID (from table "group_user_roles_ids").
-            // Add row into "group_relationship__group_roles" with relation of above inserted ID (from atble "group_user_roles_ids").
-            
-            // Exmaple : 1094 in table "group_user_roles_ids"
-          }
+  //   // $personentitlement = [
+  //   //   "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
+  //   //   "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
+  //   //   "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
+  //   //   "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
+  //   //   "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
+  //   //   "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
+  //   // ];
+  //   // dd($personentitlement);
+  //   foreach ($personentitlement as $row => $value) {
+  //     $array = explode('.', $value);
+  //     $last_string = end($array);
+  //     // Asign that user into group
+  //     if (array_key_exists($last_string, $groups_data)) {
+  //       $group_ids[] = $groups_data[$last_string];
+  //     }
+  //     if (in_array($last_string, $drupal_user_roles)) {
+  //       $drupal_user_roles_ids[] = $last_string;
+  //     }
+  //     if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
+  //       $group_user_roles_ids[] = $last_string;
+  //     }
+  //   }
+  //   if (isset($group_ids)) {
+  //     foreach ($group_ids as $key => $group_id) {
+  //       if(isset($group_user_roles_ids)){
+  //         foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
+  //           $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
+  //           $query->fields('gr');
+  //           $query->condition('gr.entity_id', $uid);
+  //           $query->condition('gr.gid', $group_id); 
+  //           $group_results = $query->execute()->fetchObject();
+  //           if(!empty($group_results)){
+  //             if($group_results->plugin_id == 'group_membership'){
+  //               $groupData = Group::load($group_id);
+  //               if ($groupData->getMember($user)) {
+  //                 $groupData->removeMember($user);
+                  
+  //                 $values = ['group_roles' => []];
+  //                 foreach ($group_user_roles_ids as $role_id) {
+  //                     // Add each role to the group member
+  //                     $values['group_roles'][] = 'house1-' . $role_id;
+  //                 }
+  //                 if (!$groupData->getMember($user)) {
+  //                   $groupData->addMember($user, $values);
+  //                 }
+  //               }
+  //             }
+  //           }else{
+  //             // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
+  //             $values = ['group_roles' => []];  
+  //             foreach ($group_user_roles_ids as $role_id) {
+  //                 // Add each role to the group member
+  //                 $values['group_roles'][] = 'house1-' . $role_id;
+  //             }
+  //             $groupData = Group::load($group_id);
+  //             if (!$groupData->getMember($user)) {
+  //               $groupData->addMember($user, $values);
+  //             }
 
-        }
-        if(isset($drupal_user_roles_ids)){
+  //           }
 
-        }
-      }
-    }
-  }
-  
-
-
+  //           if ($user) {
+  //             foreach ($drupal_user_roles_ids as $role) {
+  //               if (!$user->hasRole($role)) {
+  //                 $user->addRole($role);
+  //               }
+  //             }
+  //             $user->save();
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   /* SAML resposne testing ends */
 
@@ -595,18 +605,22 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
  */
 function penchas_preprocess_views_view(&$variables) {
   
-  $route_match = \Drupal::routeMatch();
-  // dd($route_match);
-  $groupData = $route_match->getParameter('group');
-  $variables['current_group_id'] = $groupData;
+  // $route_match = \Drupal::routeMatch();
+  // // dd($route_match);
+  // $groupData = $route_match->getParameter('group');
+  // $variables['current_group_id'] = $groupData;
   
   $current_uri = \Drupal::request()->getRequestUri();
   $uri_parts = explode('/', $current_uri);
   if(isset($uri_parts)){
     $variables['group_machine_label'] = $uri_parts['2'];
+    $connection = Database::getConnection();
+    $query = $connection->select('group__field_house_machine_name', 'hm');
+    $query->fields('hm',['entity_id']);
+    $query->condition('hm.field_house_machine_name_value', $uri_parts['2']);
+    $group_results = $query->execute()->fetchObject();
+    $groupData = $group_results->entity_id;
   }
-  // dd($uri_parts['2']);
-  // $label = $current_uri->attributes->get('group');
   
   $variables['base_path'] = base_path();
   $variables['get_involved'] = 'Get Involved';
@@ -626,8 +640,7 @@ function penchas_preprocess_views_view(&$variables) {
         General Events/Notice</label></div>';
 
     if($groupData){
-      // dd($groupData);
-      // $groupData = Group::load($groupData);
+      $groupData = Group::load($groupData);
       $url_path = $groupData->toUrl()->toString();
       $field_menus = $groupData->get('field_menus');
       $simplified_menu_html = '';
@@ -671,8 +684,7 @@ function penchas_preprocess_views_view(&$variables) {
         foreach ($team_filters[0]['value'] as $key => $team_filter) {
           if($key != 'all'){
             $team_filters_arr .= '<li class="nav-item" role="presentation">
-                  <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a>
-                </li>';
+              <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a></li>';
           }
         }
       }

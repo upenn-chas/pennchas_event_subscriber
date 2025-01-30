@@ -144,7 +144,7 @@
                 "Views filter of timestamp type": "https://www.drupal.org/files/issues/2024-11-19/core_views-timestamp_date_filter-3204558-13.patch"
             },
             "drupal/simplesamlphp_auth": {
-                "Get dynamically values and Updated in drupal": "patches/simple_auth.patch"
+                "Get dynamically values and Updated in drupal with roles": "patches/simple_grouper.patch"
             }
         }
     },
