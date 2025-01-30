@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - group.type.house1
-    - user.role.chas_technology
 id: house1-chas_technology
 label: 'CHAS Technology'
 weight: 3
 admin: false
-scope: outsider
-global_role: chas_technology
+scope: individual
+global_role: null
 group_type: house1
 permissions:
   - 'access content overview'
