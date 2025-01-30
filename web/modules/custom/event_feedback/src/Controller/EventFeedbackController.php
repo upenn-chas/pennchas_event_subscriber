@@ -120,27 +120,19 @@ class EventFeedbackController extends ControllerBase
             '#title' => $this->t('Participations Survey Report'),
             '#rows' => $rows,
             '#header' => [
-                '#markup' => '<a target="_blank" href="' . Url::fromRoute('event_feedback.report_export', [], ['absolute' =>  true])->toString() . '">' . $this->t('Export') . '</a>',
+                '#markup' => '<a target="_blank" class="views-display-link" href="' . Url::fromRoute('event_feedback.report_export')->toString() . '">' . $this->t('Export') . '</a>',
             ],
             '#pager' => ['#type' => 'pager']
         ];
     }
 
-    public function reportExport()
-    {
-        $request = \Drupal::request()->request->all();
-        $webform = Webform::load($this->eventFeedbackWebformId);
-        $tableHeaderData = $this->buildTableHeader($webform);
-        return $this->buildCSVData($request, $tableHeaderData);
-    }
-
     public function buildTable($filters, $page = 0, $includeTotal = false)
     {
         $webform = Webform::load($this->eventFeedbackWebformId);
-        $tableHeaderData = $this->buildTableHeader($webform);
+        $tableHeaderData = $this->buildHeaderForTable($webform);
         $result = $this->getParticipantsData($filters, $page);
         $total = $result['total'];
-        $rows = $this->processData($result, $tableHeaderData['indexes'], $tableHeaderData['default']);
+        $rows = $this->processDataForTable($result, $tableHeaderData['indexes'], $tableHeaderData['default']);
 
         $tableData = [
             '#theme' => 'report_table',
@@ -155,7 +147,15 @@ class EventFeedbackController extends ControllerBase
         return $tableData;
     }
 
-    private function buildTableHeader(Webform $webform)
+    public function reportExport()
+    {
+        $request = \Drupal::request()->request->all();
+        $webform = Webform::load($this->eventFeedbackWebformId);
+        $tableHeaderData = $this->buildHeaderForCSV($webform);
+        return $this->buildCSVData($request, $tableHeaderData);
+    }
+
+    private function buildHeaderForTable(Webform $webform)
     {
         $tableHeaders = [
             [
@@ -224,26 +224,111 @@ class EventFeedbackController extends ControllerBase
         ];
     }
 
-    protected function buildCSVData($filters, $tableHeaderData)
+    private function processDataForTable($result, $keyColumnMap, $defaultRow)
+    {
+        $submissionRows = $this->processSubmissionDataForTable($result['submissions'], $keyColumnMap, $defaultRow);
+
+        $rows = [];
+        foreach ($result['events'] as $event) {
+            $row = $submissionRows[$event['nid']];
+            $row[0] = $event['houses'];
+            $row[1] = $event['title'];
+            $row[2] = $event['respondant'];
+            $rows[] = $row;
+        }
+
+        return $rows;
+    }
+
+    private function processSubmissionDataForTable($submissionData, $keyColumnMap, $defaultRow)
+    {
+        $submissionRows = [];
+        foreach ($submissionData as $submission) {
+            $nid = $submission['entity_id'];
+            $rowIndex = $keyColumnMap["{$submission['name']}:{$submission['value']}"];
+            if (!isset($submissionRows[$nid])) {
+                $submissionRows[$nid] = $defaultRow;
+            }
+            $submissionRows[$nid][$rowIndex] += $submission['count'];
+        }
+        return $submissionRows;
+    }
+
+    private function buildHeaderForCSV(Webform $webform)
+    {
+        $tableHeaders = [
+            [
+                'House(s)',
+                'Event',
+                'Respondants'
+            ],
+            [
+                '',
+                '',
+                ''
+            ]
+        ];
+        $keyIndexes = [
+            'houses' => 0,
+            'event' => 1,
+            'repondants' => 2
+        ];
+        $defaultRowValues = [
+            '',
+            '',
+            0
+        ];
+        $colIndex = count($defaultRowValues);
+
+        $webformElements = $webform->getElementsOriginalDecoded();
+        foreach ($webformElements as $key => $ele) {
+            if ($ele['#type'] === 'radios' || $ele['#type'] === 'checkboxes') {
+                $firstRowTitle = true;
+                foreach ($ele['#options'] as $optKey => $opt) {
+                    if($firstRowTitle) {
+                        $firstRowTitle = false;
+                        $tableHeaders[0][$colIndex] = $ele['#title'];
+                    } else {
+                        $tableHeaders[0][$colIndex] = '';
+                    }
+                    $keyIndexes["{$key}:{$optKey}"] = $colIndex;
+                    $defaultRowValues[$colIndex] = 0;
+                    $tableHeaders[1][$colIndex++] = $opt;
+                }
+            }
+        }
+
+        return [
+            'header' => $tableHeaders,
+            'indexes' => $keyIndexes,
+            'default' => $defaultRowValues
+        ];
+    }
+
+    private function buildCSVData($filters, $tableHeaderData)
     {
         $result = $this->getParticipantsData($filters, -1);
-        $submissionRows = $this->processSubmissionData($result['submissions'], $tableHeaderData['indexes'], $tableHeaderData['default']);
+        $summaryData = $this->processSubmissionDataAndFooter($result['submissions'], $tableHeaderData['indexes'], $tableHeaderData['default']);
 
         $csvFile = new StreamedResponse();
-        $csvFile->setCallback(function () use ($tableHeaderData, $result, $submissionRows) {
+        $csvFile->setCallback(function () use ($tableHeaderData, $result, $summaryData) {
             $handler = fopen('php://output', 'w');
 
             foreach ($tableHeaderData['header'] as $header) {
-                fputcsv($handler, array_column($header, 'title'));
+                fputcsv($handler, $header);
             }
 
             foreach ($result['events'] as $event) {
-                $row = $submissionRows[$event['nid']];
+                $row = $summaryData[0][$event['nid']];
                 $row[0] = $event['houses'];
                 $row[1] = $event['title'];
                 $row[2] = $event['respondant'];
+                $summaryData[1][2] += $row[2];
                 fputcsv($handler, $row);
             }
+
+            $summaryData[1][1] = 'Total';
+            fputcsv($handler, $summaryData[1]);
 
             fclose($handler);
         });
@@ -253,7 +338,26 @@ class EventFeedbackController extends ControllerBase
         return $csvFile;
     }
 
-    protected function getParticipantsData($filters, $page)
+    private function processSubmissionDataAndFooter($submissionData, $keyColumnMap, $defaultRow)
+    {
+        $submissionRows = [];
+        $footer = $defaultRow;
+        foreach ($submissionData as $submission) {
+            $nid = $submission['entity_id'];
+            $rowIndex = $keyColumnMap["{$submission['name']}:{$submission['value']}"];
+            if (!isset($submissionRows[$nid])) {
+                $submissionRows[$nid] = $defaultRow;
+            }
+            $submissionRows[$nid][$rowIndex] += $submission['count'];
+            $footer[$rowIndex] += $submission['count'];
+        }
+        return [
+            0 => $submissionRows,
+            1 => $footer
+        ];
+    }
+
+    private function getParticipantsData($filters, $page)
     {
         $connection = Database::getConnection();
 
@@ -339,36 +443,6 @@ class EventFeedbackController extends ControllerBase
             'submissions' => $submissionData,
             'total' => $eventsCount
         ];
-    }
-
-    private function processData($result, $keyColumnMap, $defaultRow)
-    {
-        $submissionRows = $this->processSubmissionData($result['submissions'], $keyColumnMap, $defaultRow);
-
-        $rows = [];
-        foreach ($result['events'] as $event) {
-            $row = $submissionRows[$event['nid']];
-            $row[0] = $event['houses'];
-            $row[1] = $event['title'];
-            $row[2] = $event['respondant'];
-            $rows[] = $row;
-        }
-
-        return $rows;
-    }
-
-    private function processSubmissionData($submissionData, $keyColumnMap, $defaultRow)
-    {
-        $submissionRows = [];
-        foreach ($submissionData as $submission) {
-            $nid = $submission['entity_id'];
-            $rowIndex = $keyColumnMap["{$submission['name']}:{$submission['value']}"];
-            if (!isset($submissionRows[$nid])) {
-                $submissionRows[$nid] = $defaultRow;
-            }
-            $submissionRows[$nid][$rowIndex] += $submission['count'];
-        }
-        return $submissionRows;
     }
 
     private function hasUserAlreadySubmitted($webformId, $nodeId)

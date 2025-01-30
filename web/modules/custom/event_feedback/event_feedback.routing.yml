@@ -13,7 +13,7 @@ event_feedback.report:
   path: /dashboard/reports/participations-survey
   defaults:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::report'
-    _title: ''
+    _title: 'Participations Survey Report'
   requirements:
     _user_is_logged_in: 'TRUE'
 event_feedback.report_export:
