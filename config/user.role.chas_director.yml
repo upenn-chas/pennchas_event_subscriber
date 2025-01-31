@@ -10,15 +10,18 @@ dependencies:
     - node.type.room
     - workflows.workflow.editorial
   module:
+    - complete_webform_exporter
     - content_moderation
     - node
     - penchas_custom_token
     - smart_date_recur
+    - webform
 id: chas_director
 label: 'CHAS Director'
 weight: -3
 is_admin: null
 permissions:
+  - 'access any webform configuration'
   - 'access content overview'
   - 'access my events'
   - 'access my rerservations'
@@ -39,6 +42,7 @@ permissions:
   - 'delete own reserve_room content'
   - 'delete own room content'
   - 'delete room revisions'
+  - 'download any webform submission managed files'
   - 'edit any chas_event content'
   - 'edit any notices content'
   - 'edit any reserve_room content'
@@ -61,6 +65,7 @@ permissions:
   - 'use editorial transition publish'
   - 'view all revisions'
   - 'view any unpublished content'
+  - 'view any webform submission'
   - 'view chas_event revisions'
   - 'view chas_event revisions'
   - 'view latest version'

@@ -1,6 +1,8 @@
 .tab-outer {
   width: 100%;
-  overflow: scroll;
+  @include media-query('mobile') {
+    overflow: scroll;
+  }
 }
 
 .nav-tabs {

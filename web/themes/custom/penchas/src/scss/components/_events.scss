@@ -7,12 +7,21 @@
   }
   &.grid-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    article {
+      padding: 0;
+    }
   }
   &.grid-3 {
     grid-template-columns: 1fr 1fr 1fr;
+    article {
+      padding: 0;
+    }
   }
   &.grid-2 {
     grid-template-columns: 1fr 1fr;
+    article {
+      padding: 0;
+    }
   }
 
   .event-img {
