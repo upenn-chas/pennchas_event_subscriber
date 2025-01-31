@@ -9,7 +9,7 @@ id: group.house1.field_house_machine_name
 field_name: field_house_machine_name
 entity_type: group
 bundle: house1
-label: 'House Machine Name'
+label: 'Grouper Name'
 description: ''
 required: true
 translatable: false

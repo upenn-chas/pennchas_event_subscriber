@@ -8,7 +8,7 @@
   border-bottom: 1px solid $primaryColor;
   @include media-query('tablet') {
     flex-wrap: nowrap;
-    width: 600px;    
+    width: 700px;    
   }
   
   .nav-item {
@@ -34,7 +34,21 @@
       color: #fff;
     }
   }
-
+  .bef-link {
+    font-family: $teritoryFont;
+    padding: 14px 20px 12px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 1px solid #011f5b;
+    background-color: #fff;  
+    color: #011f5b;
+    text-decoration: none;
+    display: inline-block;
+    &.bef-link--selected {
+      background-color: #011f5b;
+      color: #fff;
+    }
+  }
  
 }
 

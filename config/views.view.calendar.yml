@@ -950,7 +950,51 @@ display:
     display_options:
       exposed_block: false
       display_extenders: {  }
-      path: group/%/calendar_view
+      path: group/%/calendar
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_event_schedule'
+        - 'config:field.storage.node.field_intended_audience'
+        - 'config:field.storage.node.field_is_campus_wide'
+        - 'config:workflow_list'
+  page_2:
+    id: page_2
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      style:
+        type: calendar_week
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          calendar_fields:
+            field_event_schedule_value: field_event_schedule_value
+            field_event_schedule_end_value: field_event_schedule_end_value
+            field_event_schedule: '0'
+          calendar_display_rows: false
+          calendar_weekday_start: false
+          calendar_timestamp: 'this month'
+          calendar_title: '[date:custom:F Y]'
+          calendar_row_title: ''
+          calendar_work_week: false
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        style: false
+        row: false
+      exposed_block: false
+      display_extenders: {  }
+      path: group/%/weekly-calendar
     cache_metadata:
       max-age: -1
       contexts:
