@@ -15,7 +15,7 @@ categories: {  }
 elements: |-
   event_like_rating:
     '#type': radios
-    '#title': 'On a scale of “loved it!” to “did not enjoy it”, how did you like the event?'
+    '#title': 'On a scale of "loved it!" to "did not enjoy it", how did you like the event?'
     '#options':
       4: 'loved it'
       3: 'enjoyed it'

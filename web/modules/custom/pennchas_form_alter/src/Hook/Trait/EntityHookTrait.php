@@ -47,7 +47,9 @@ trait EntityHookTrait
 
         if ($eventType === Constant::EVT_COMMUNITY_EVENT) {
             $programsGroupRelationshipsId = array_column($node->get('field_program_communities')->getValue(), 'target_id');
-            $programsGroupRelationship = GroupRelationship::loadMultiple($programsGroupRelationshipsId);
+            $programsGroupRelationship = \Drupal::entityTypeManager()
+                ->getStorage('group_relationship')
+                ->loadMultiple($programsGroupRelationshipsId);
             foreach ($programsGroupRelationship as $gr) {
                 $gid = (int) $gr->get('gid')->getString();
                 $housesId[$gid] = $gid;

@@ -10,6 +10,7 @@ dependencies:
     - node
     - rest
     - serialization
+    - url_alteration
     - user
     - verf
     - views_bootstrap
@@ -733,6 +734,16 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
+            sort:
+              plugin_id: default
+              advanced:
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
+                is_secondary: false
             filter:
               gid_verf:
                 plugin_id: default
@@ -764,10 +775,9 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              status:
+              date_range_picker:
                 plugin_id: default
                 advanced:
-                  sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
@@ -775,9 +785,10 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              date_range_picker:
+              status:
                 plugin_id: default
                 advanced:
+                  sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
@@ -817,9 +828,9 @@ display:
           plugin_id: date
           order: DESC
           expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
+            label: Changed
+            field_identifier: changed
+          exposed: true
           granularity: second
       arguments: {  }
       filters:
@@ -1289,6 +1300,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1332,6 +1345,8 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1352,6 +1367,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
