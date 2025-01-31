@@ -14,6 +14,7 @@ use Drupal\user\EntityOwnerTrait;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\group\Entity\GroupRelationshipType;
+use Drupal\group\Entity\GroupRelationshipTypeInterface;
 
 /**
  * Defines the relationship entity.

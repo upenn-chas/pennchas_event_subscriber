@@ -17,12 +17,16 @@ class UserFormAlter
             'any_resident' => t('Any Resident'),
             'anyone_with_pennkey' => t('Anyone with a Pennkey'),
         ];
-        $roleType = $form['id']['#value'];
+        if($form['form_id']['#value'] == 'user_role_form'){
+            $roleType = $form['id']['#default_value'];
+        }else if($form['form_id']['#value'] == 'group_role_edit_form'){
+            $roleType = $form['id']['#value'];
+        }
 
 
         $form['umbera_roles'] = [
             '#type' => 'checkboxes',
-            '#title' => t('Umbera Roles'),
+            '#title' => t('Umbrella Roles'),
             '#description' => t('Choose an option from the dropdown list.'),
             '#options' => $options,
             '#default_value' => \Drupal::state()->get('custom_group_role_config_' . $roleType) ?: [],

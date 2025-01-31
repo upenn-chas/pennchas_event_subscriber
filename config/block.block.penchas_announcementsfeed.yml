@@ -10,7 +10,7 @@ dependencies:
 id: penchas_announcementsfeed
 theme: penchas
 region: content
-weight: 0
+weight: -10
 provider: null
 plugin: announce_block
 settings:

@@ -6,13 +6,13 @@ dependencies:
     - 'block_content:informational_block:8f524d64-a576-4a8e-85e3-5601d5bb3511'
   module:
     - block_content
-    - group
+    - group_role_condition_plugin
   theme:
     - penchas
 id: penchas_connectwithchas
 theme: penchas
 region: content
-weight: 0
+weight: -14
 provider: null
 plugin: 'block_content:8f524d64-a576-4a8e-85e3-5601d5bb3511'
 settings:

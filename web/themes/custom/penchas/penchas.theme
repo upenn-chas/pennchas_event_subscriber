@@ -10,7 +10,7 @@ use Drupal\group\Entity\Group;
 use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
-
+use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\NodeType;
 use Drupal\Core\Database\Database;
 use Drupal\node\NodeInterface;
@@ -606,20 +606,36 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
 function penchas_preprocess_views_view(&$variables) {
   
   // $route_match = \Drupal::routeMatch();
-  // // dd($route_match);
   // $groupData = $route_match->getParameter('group');
   // $variables['current_group_id'] = $groupData;
-  
-  $current_uri = \Drupal::request()->getRequestUri();
-  $uri_parts = explode('/', $current_uri);
-  if(isset($uri_parts)){
-    $variables['group_machine_label'] = $uri_parts['2'];
-    $connection = Database::getConnection();
-    $query = $connection->select('group__field_house_machine_name', 'hm');
-    $query->fields('hm',['entity_id']);
-    $query->condition('hm.field_house_machine_name_value', $uri_parts['2']);
-    $group_results = $query->execute()->fetchObject();
-    $groupData = $group_results->entity_id;
+
+  $view = $variables['view'];
+  $id = $view->storage->id();
+  if($id == 'our_team_list'){
+    $exposed_filter = $view->exposed_data;
+    if (isset($exposed_filter['field_user_categories_target_id'])) {
+      $filter_value = reset($exposed_filter['field_user_categories_target_id']); // Get the first (and possibly only) value
+      $term = Term::load($filter_value);
+      if ($term) {
+        // Get the name of the term
+        $team_name = $term->getName();
+        $variables['team_name'] = $team_name;
+      }
+    }
+  }
+  if($id == 'calendar'){
+    $current_uri = \Drupal::request()->getRequestUri();
+    $uri_parts = explode('/', $current_uri);
+    $uri_parts = array_filter($uri_parts);
+    if(isset($uri_parts)){
+      $variables['group_machine_label'] = $uri_parts['2'];
+      $connection = Database::getConnection();
+      $query = $connection->select('group__field_house_machine_name', 'hm');
+      $query->fields('hm',['entity_id']);
+      $query->condition('hm.field_house_machine_name_value', $uri_parts['2']);
+      $group_results = $query->execute()->fetchObject();
+      $groupData = $group_results->entity_id;
+    }
   }
   
   $variables['base_path'] = base_path();
@@ -632,7 +648,7 @@ function penchas_preprocess_views_view(&$variables) {
   $current_user = \Drupal::currentUser();
   $variables['breadcrumb_reports'] = 'Reports';
   $variables['breadcrumb_reports_link'] = "/dashboard/reports";
-  $view = $variables['view'];
+  
   $variables['title'] = $view->getTitle();
   $id = $view->storage->id();
   // if($id == 'calendar'){
