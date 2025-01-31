@@ -6,7 +6,7 @@ dependencies:
     - 'block_content:informational_block:30f5e792-eba8-4944-98df-b1ed5fcba64f'
   module:
     - block_content
-    - group
+    - group_role_condition_plugin
   theme:
     - penchas
 id: penchas_signatureprograms

@@ -17,6 +17,7 @@ dependencies:
     - node
     - options
     - smart_date
+    - url_alteration
     - user
     - views_fields_combine
 id: event_calendar
@@ -1592,7 +1593,7 @@ display:
         filter_groups: false
       exposed_block: false
       display_extenders: {  }
-      path: group/%group/calendar
+      path: group/%group/calendar_view
     cache_metadata:
       max-age: -1
       contexts:
@@ -1615,7 +1616,7 @@ display:
     display_options:
       exposed_block: false
       display_extenders: {  }
-      path: group/%group/calendar
+      path: group/%group/calendar_view_2
     cache_metadata:
       max-age: -1
       contexts:

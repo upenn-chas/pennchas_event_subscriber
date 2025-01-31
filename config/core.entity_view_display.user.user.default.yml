@@ -6,12 +6,14 @@ dependencies:
     - block_content.type.basic
     - block_content.type.dashboard_basic_item
     - block_content.type.dashboard_blocks
+    - field.field.user.user.field_description
     - field.field.user.user.field_edu_person_entitlement
     - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_phone_no
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
@@ -23,6 +25,7 @@ dependencies:
     - image
     - layout_builder
     - layout_builder_restrictions
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -79,6 +82,37 @@ third_party_settings:
               block_revision_id: 433
               block_serialized: null
             weight: 0
+            additional: {  }
+          eb967abc-75f5-400e-8d9d-8c38cd08ce22:
+            uuid: eb967abc-75f5-400e-8d9d-8c38cd08ce22
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          0afc40df-e1e9-478e-8e27-199f6bb18b14:
+            uuid: 0afc40df-e1e9-478e-8e27-199f6bb18b14
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_phone_no'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
@@ -541,6 +575,13 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: blb_region_col_1
   field_edu_person_entitlement:
     type: basic_string
     label: above
@@ -587,6 +628,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 12
+    region: blb_region_col_1
+  field_phone_no:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 18
     region: blb_region_col_1
   field_preferred_name:
     type: string

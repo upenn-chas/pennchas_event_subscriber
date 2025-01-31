@@ -55,10 +55,14 @@
     }
     h4 {
       margin: 0;
+      text-transform: capitalize;
     }
     p {
       margin: 0;
-      font-style: italic;
+      strong {
+        display: block;
+        font-style: italic;
+      }
     }
   }
 
@@ -162,10 +166,37 @@
   }
 }
 
-.team-tabs {
-  &.space {
-    @include media-query('small') {
-      padding-bottom: 20px;
+// .team-tabs {
+//   &.space {
+//     @include media-query('small') {
+//       padding-bottom: 20px;
+//     }
+//   }
+// }
+
+.view-our-team-list {
+ .view-filters {
+  padding: 0;
+ }
+ .view-filters + .view-content.row {
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+ }
+  fieldset {
+    width: 100%;
+    display: block;
+    @include media-query ('mobile') {
+      padding: 0 20px;
     }
+    legend {
+      display: none;
+    }
+  }
+  .contextual {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
   }
 }

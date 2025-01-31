@@ -125,3 +125,127 @@
     margin: 0 0 8px 0;
   }
 }
+
+
+.ui-dialog:has(.node--type-chas-event) {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  max-width: 400px;
+  .ui-dialog-titlebar {
+    padding: 0;
+    background: none;
+    border: 0;
+    
+    .ui-dialog-title {
+      display: none;
+    }
+  }
+
+  .ui-dialog-titlebar-close {
+    background-color: transparent;
+    border: 0;
+    background-image: url(../../images/close.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    opacity: 1;
+    z-index: 111;
+    cursor: pointer;
+  }
+
+  .event-details-breadcrumbs  {
+    margin-top: 0;
+  }
+
+  
+  .ui-dialog-content {
+    padding: 0;
+    article,
+    .node--unpublished {
+      padding: 18px 30px 30px 30px;
+    }
+
+    .event-details-wrap {
+      padding-top: 15px !important;
+    }
+
+    .block-field-blocknodechas-eventtitle {
+      margin-bottom: 10px;
+    }
+
+    .event-breadcrumbs {
+      li:first-child {
+        display: none;
+      }
+      ul {
+        
+        a {
+          color: $primaryColor; 
+          display: inline-flex;
+          align-items: center;
+          gap: 3px;
+          padding-left: 0;
+          img {
+            position: relative;
+            top: -2px;
+          }
+        }
+      }
+    }
+    h1 {
+      font-size: 48px;
+      line-height: 48px;
+      color : $primaryColor;
+    }
+    .container {
+      padding: 0;
+    }
+    .field--name-field-event-schedule {
+      img {
+        margin-right: 15px;
+      }
+      time {
+        color: $primaryColor;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: underline;
+       text-decoration-color: $lightBlue;
+       font-family: $teritoryFont;
+      }
+    }
+    .field--name-field-text-box-2 {
+      img {
+        margin-right: 15px;
+      }
+      .event-detail-location {
+        color: $primaryColor;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: $lightBlue;
+        font-family: $teritoryFont;
+      }
+    }
+    .event-details-wrap .block-field-blocknodechas-eventfield-text-box-2 {
+      margin-bottom: 15px;
+    }
+
+    .content {
+      color: $primaryColor;
+      font-family: $primaryFont;
+      a {
+        color: #fff;
+        &:hover {
+          color: $primaryColor;
+        }
+      }
+    }
+
+   
+
+  }
+}
+
+ 

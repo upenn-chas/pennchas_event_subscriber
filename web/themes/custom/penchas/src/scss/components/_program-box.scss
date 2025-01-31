@@ -6,6 +6,9 @@
   @include media-query('tablet') {    
     margin-bottom: 90px;
   }
+  @include media-query('mobile') {    
+    margin-bottom: 70px;
+  }
   &:before {
     content: "";
     position: absolute;

@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_description
     - field.field.user.user.field_edu_person_entitlement
     - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
     - field.field.user.user.field_last_name
+    - field.field.user.user.field_phone_no
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
@@ -19,6 +21,7 @@ dependencies:
     - image
     - path
     - term_reference_tree
+    - text
     - user
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
@@ -31,6 +34,16 @@ content:
     weight: 0
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea_with_summary
+    weight: 15
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
     third_party_settings: {  }
   field_edu_person_entitlement:
     type: string_textarea
@@ -80,6 +93,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_phone_no:
+    type: string_textfield
+    weight: 16
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_preferred_name:
     type: string_textfield
     weight: 5
@@ -103,7 +124,7 @@ content:
     settings:
       start_minimized: false
       leaves_only: false
-      select_parents: false
+      select_parents: true
       cascading_selection: 0
       max_depth: 0
     third_party_settings: {  }
