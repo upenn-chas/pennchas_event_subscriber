@@ -97,7 +97,6 @@ module:
   recaptcha_v3: 0
   recreate_block_content: 0
   redirect: 0
-  rename_admin_paths: 0
   responsive_image: 0
   rest: 0
   search: 0

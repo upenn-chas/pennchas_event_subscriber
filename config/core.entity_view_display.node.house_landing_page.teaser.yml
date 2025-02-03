@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.house_landing_page.body
+    - field.field.node.house_landing_page.feeds_item
     - field.field.node.house_landing_page.field_blocks_ref
     - field.field.node.house_landing_page.field_menus
     - field.field.node.house_landing_page.field_select_house
@@ -32,6 +33,7 @@ content:
     weight: 100
     region: content
 hidden:
+  feeds_item: true
   field_blocks_ref: true
   field_menus: true
   field_select_house: true

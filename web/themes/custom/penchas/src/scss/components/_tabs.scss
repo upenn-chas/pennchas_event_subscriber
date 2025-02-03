@@ -123,11 +123,9 @@
 }
 
 .blockdashboard-blocks {
-  padding: 40px 0 100px 0;
-    background: #EBF2FF;
-  @include media-query ('small') {
-    padding-bottom: 30px;
-  }
+  padding: 40px 0 0px 0;
+  background: #EBF2FF;
+ 
 
   .block-inline-blockdashboard-blocks {
     @include media-query ('small') {

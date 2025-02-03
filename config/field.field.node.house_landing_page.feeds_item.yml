@@ -1,0 +1,23 @@
+uuid: b5ffcf01-ff60-4d9a-8b0e-0cf68622b6e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.house_landing_page
+  module:
+    - feeds
+id: node.house_landing_page.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: house_landing_page
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item
