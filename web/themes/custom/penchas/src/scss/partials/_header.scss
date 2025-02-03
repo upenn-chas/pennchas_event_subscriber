@@ -288,22 +288,18 @@ header {
                   }
                 }
                 .form-actions {
-                    position: absolute;
-                    right: 58px;
-                    top: 0;
+                  position: absolute;
+                  right: 13px;
+                  top: 48px;
                     button {
                       font-size: 0;
-                      &:before {
-                        content: "";
-                        background-image: url(/themes/custom/penchas/images/icons/search-icon.png);
-                        position: absolute;
-                        top: 40px;
-                        width: 50px;
-                        height: 50px;
-                        background-color: transparent;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                    }
+                      background-image: url(/themes/custom/penchas/images/icons/search-icon.png);                      
+                      width: 24px;
+                      height: 24px;
+                      background-color: transparent;
+                      background-repeat: no-repeat;
+                      background-position: center;                       
+                    
                   }
                 }
               }

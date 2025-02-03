@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.webform_default
+    - node.type.chas_event
     - node.type.reserve_room
     - node.type.room
   module:
@@ -41,5 +42,6 @@ permissions:
   - 'skip comment approval'
   - 'use text format basic_html'
   - 'use text format webform_default'
+  - 'view chas_event revisions'
   - 'view media'
   - 'view room revisions'

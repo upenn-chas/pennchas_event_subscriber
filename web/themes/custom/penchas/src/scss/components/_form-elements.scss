@@ -347,7 +347,6 @@ label {
 .node-room-form, 
 .comment-comment-form{ 
   margin-bottom: 30px;
-
   .row:has(.col-md-8) {
     margin-top: 30px;
   }
@@ -537,7 +536,7 @@ label {
   padding-left: 0;
   padding-right: 10px;
 }
-.user-login-form{ 
+.user-login-form { 
   padding-top: 30px;
   padding-bottom: 30px;
   .form-submit{
@@ -587,5 +586,21 @@ label {
 }
 
 
-
+.node-reserve-room-form {
+  .field--name-field-room {
+    .js-form-type-select {
+      label {
+        font-size: 36px;
+        font-weight: 900;
+        text-transform: none;
+        margin-bottom: 20px;
+      }
+      select {
+        height: 50px;
+        color: #4E638C;
+        border-color: #011F5B;
+      }
+    }
+  }
+}
 

@@ -109,6 +109,7 @@
 	}
 	.section-title {
 		padding-bottom: 42px;
+    margin-bottom: 0;
 	}
 }
 .program-card {
@@ -153,5 +154,9 @@
     object-fit: cover;
     object-position: center;
 	}
+}
+
+.node--type-program-community:has(.program-card ) {
+  margin-bottom: 40px;
 }
 

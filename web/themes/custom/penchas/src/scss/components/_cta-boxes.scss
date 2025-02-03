@@ -30,8 +30,7 @@
 .cta-box {
   text-align: center;
   position: relative;
-  padding-top: 60px;
-  margin-top: 50px;
+  padding-top: 60px; 
 
   @include media-query('tablet') {
     margin-bottom: 40px;

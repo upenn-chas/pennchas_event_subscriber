@@ -75,9 +75,11 @@
 <div class="news-card">
               <div class="news-card-left">
                 <div class="news-head">
-                  <div class="tags">
-                    {{content.field_chas_news}}
-                  </div>
+                  {% if content.field_chas_news['#items'] %}
+                    <div class="tags">
+                      {{content.field_chas_news}}
+                    </div>
+                  {% endif %}
                   <span>{{node.getCreatedTime|format_date('custom', 'd.n.Y')}}</span>
                 </div>
                 <h5><a href="{{ url }}">{{ label }}</a></h5>
