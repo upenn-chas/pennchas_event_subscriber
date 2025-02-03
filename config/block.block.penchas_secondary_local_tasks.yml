@@ -9,7 +9,7 @@ _core:
 id: penchas_secondary_local_tasks
 theme: penchas
 region: breadcrumb
-weight: -11
+weight: -14
 provider: null
 plugin: local_tasks_block
 settings:

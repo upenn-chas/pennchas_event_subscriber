@@ -9,7 +9,7 @@ _core:
 id: penchas_primary_admin_actions
 theme: penchas
 region: breadcrumb
-weight: -12
+weight: -15
 provider: null
 plugin: local_actions_block
 settings:

@@ -605,6 +605,12 @@ body {
   }  
 }
 
+.hide-techs {
+  .field--name-field-block-display-condition-wi {
+    display: none;
+  }
+}
+
 @media(max-width: 991px) {
   .hide-in-mobile {
     display: none;

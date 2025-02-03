@@ -24,9 +24,10 @@ content:
     weight: 0
     region: content
   field_block_display_condition_wi:
-    type: entity_reference_entity_id
+    type: entity_reference_label
     label: hidden
-    settings: {  }
+    settings:
+      link: false
     third_party_settings: {  }
     weight: 3
     region: content

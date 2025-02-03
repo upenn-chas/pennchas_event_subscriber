@@ -14,6 +14,7 @@ dependencies:
     - group
     - node
     - smart_date
+    - url_alteration
     - user
     - views_bootstrap
 id: my_events
