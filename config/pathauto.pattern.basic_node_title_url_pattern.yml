@@ -9,15 +9,14 @@ label: 'Basic Node title URL pattern'
 type: 'canonical_entities:node'
 pattern: '[node:content-type:name]/[node:title]'
 selection_criteria:
-  e288501b-aba4-40e1-a3ab-8d81f8324fc1:
+  1974ee26-6224-40f1-a23f-60fdb5d73ce4:
     id: 'entity_bundle:node'
     negate: false
-    uuid: e288501b-aba4-40e1-a3ab-8d81f8324fc1
+    uuid: 1974ee26-6224-40f1-a23f-60fdb5d73ce4
     context_mapping:
       node: node
     bundles:
       article: article
-      page: page
 selection_logic: and
 weight: -5
 relationships: {  }

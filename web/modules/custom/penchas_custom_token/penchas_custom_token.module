@@ -28,6 +28,14 @@ function penchas_custom_token_token_info(): array {
     'name' => t('Subheading for Dashboard'),
     'description' => t("Event Info Subheading for Dashboard pages."),
   ];
+  $tokens['penchas_custom_token']['penchas_myevent'] = [
+    'name' => t('My Pending Event for Dashboard'),
+    'description' => t("My Pending Event for Dashboard."),
+  ];
+  $tokens['penchas_custom_token']['penchas_my_reservation'] = [
+    'name' => t('My Pending reservation for Dashboard'),
+    'description' => t("My Pending reservation for Dashboard."),
+  ];
   $tokens['penchas_custom_token']['user_dashboard_name'] = [
     'name' => t('User Name'),
     'description' => t("Preferred name from user profile. Fallback name will be Full name from User Profile."),
@@ -62,11 +70,11 @@ function penchas_custom_token_token_info(): array {
  */
 function penchas_custom_token_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
   $replacements = [];
+  $current_user_id = \Drupal::currentUser()->id();
 
   foreach ($tokens as $name => $original) {
     switch ($name) {
       case 'event_subheading':
-        $current_user_id = \Drupal::currentUser()->id();
 
         $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
         $query->fields('ms', ['content_entity_id']);
@@ -80,11 +88,37 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
         $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
         break;
 
-        case 'penchas_global':
+      case 'penchas_myevent':
+        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+        $query->fields('ms', ['content_entity_id']);
+        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
+        $query->condition('ms.uid', $current_user_id, '=');
+        $query->condition('ms.moderation_state', 'draft', '=');
+        $query->condition('fs.type', 'chas_event', '=');
+        $result = $query->execute()->fetchCol();
+
+        $total_count = count($result);
+        $replacements[$original] = $total_count . ' events pending.';
+        break;
+
+      case 'penchas_my_reservation':
+        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+        $query->fields('ms', ['content_entity_id']);
+        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
+        $query->condition('ms.uid', $current_user_id, '=');
+        $query->condition('ms.moderation_state', 'draft', '=');
+        $query->condition('fs.type', 'reserve_room', '=');
+        $result = $query->execute()->fetchCol();
+
+        $total_count = count($result);
+        $replacements[$original] = $total_count . ' pending moderation.';
+        break;
+
+      case 'penchas_global':
           $replacements[$original] = 'testingcall';
           break;
   
-        case 'user_dashboard_name':
+      case 'user_dashboard_name':
         $current_user_id = \Drupal::currentUser()->id();
         $current_user = User::load($current_user_id);
         $user_name = $current_user->field_preferred_name->value;
@@ -144,23 +178,34 @@ function penchas_custom_token_permission() {
  */
 function penchas_custom_token_node_access(Node $node, $op, AccountInterface $account) {
 
-  $nid = $node->id();
-  if ($node->bundle() == 'chas_event') {
-    $query = \Drupal::database()->select('node_field_data', 'n');
-    $query->leftJoin('group_relationship_field_data', 'gr', 'n.nid = gr.entity_id');
-    $query->fields('gr',['gid']);
-    $query->condition('n.type', 'chas_event');
-    $result = $query->execute()->fetchCol();
-    // dd($result);
-    foreach($result as $items => $item){
-      if (!user_has_permission($account, 'access my events')) {
-        // dd(check_user_group_permission($account, $item, 'access my events'));
-        // if (!check_user_group_permission($account, $item, 'access my events')) {
-          return AccessResult::forbidden();
-        // }
+  if ($node instanceof NodeInterface) {
+    $nid = $node->id();
+    $current_uri = \Drupal::request()->getRequestUri();
+    $user = \Drupal::currentUser();
+    if($current_uri == '/dashboard'){
+      if (!$user->isAuthenticated()) {
+        return AccessResult::forbidden();
       }
     }
   }
+  // if ($node->bundle() == 'chas_event') {
+  //   $query = \Drupal::database()->select('node_field_data', 'n');
+  //   $query->leftJoin('group_relationship_field_data', 'gr', 'n.nid = gr.entity_id');
+  //   $query->fields('gr',['gid']);
+  //   $query->condition('n.type', 'chas_event');
+  //   $result = $query->execute()->fetchCol();
+  //   // dd($result);
+  //   foreach($result as $items => $item){
+  //     if (!user_has_permission($account, 'access my events')) {
+  //       // dd(check_user_group_permission($account, $item, 'access my events'));
+  //       // if (!check_user_group_permission($account, $item, 'access my events')) {
+  //         return AccessResult::forbidden();
+  //       // }
+  //     }
+  //   }
+  // }
+
+  
 
   return AccessResult::allowed();
 }
