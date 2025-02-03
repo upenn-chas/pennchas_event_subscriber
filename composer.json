@@ -90,7 +90,9 @@
         "drupal/feeds": "^3.0",
         "drupal/seo_checklist": "^5.2",
         "drupal/views_aggregator": "^2.1",
-        "drupal/complete_webform_exporter": "^1.0"
+        "drupal/complete_webform_exporter": "^1.0",
+        "drupal/eca": "^2.1",
+        "drupal/bpmn_io": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
