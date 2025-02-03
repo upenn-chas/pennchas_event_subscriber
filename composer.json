@@ -92,7 +92,9 @@
         "drupal/views_aggregator": "^2.1",
         "drupal/complete_webform_exporter": "^1.0",
         "drupal/webform_views": "^5.5",
-        "drupal/views_list_sort": "^1.5"
+        "drupal/views_list_sort": "^1.5",
+        "drupal/eca": "^2.1",
+        "drupal/bpmn_io": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
