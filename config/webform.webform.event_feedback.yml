@@ -194,7 +194,9 @@ access:
     users: {  }
     permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - administrator
+      - chas_director
     users: {  }
     permissions: {  }
   update_any:

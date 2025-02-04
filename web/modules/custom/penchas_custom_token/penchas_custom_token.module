@@ -178,7 +178,7 @@ function penchas_custom_token_permission() {
  */
 function penchas_custom_token_node_access(Node $node, $op, AccountInterface $account) {
 
-  if ($node instanceof NodeInterface) {
+  if ($node) {
     $nid = $node->id();
     $current_uri = \Drupal::request()->getRequestUri();
     $user = \Drupal::currentUser();
