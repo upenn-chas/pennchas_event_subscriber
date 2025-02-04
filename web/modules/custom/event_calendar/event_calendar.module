@@ -24,7 +24,8 @@ function event_calendar_preprocess_views_view_fullcalendar(array &$variables)
 function event_calendar_preprocess_views_view(&$variables)
 {
   if ($variables['id'] === 'event_calendar') {
-    $variables['group_id'] = $variables['view']->argument['gid']->argument;
+    // dd($variables['view']->argument['field_short_name_value']->argument);
+    $variables['group_id'] = $variables['view']->argument['field_short_name_value']->argument;
   }
 }
 

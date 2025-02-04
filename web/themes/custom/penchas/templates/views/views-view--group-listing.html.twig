@@ -39,7 +39,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-{% include directory ~ '/templates/listing-header.html.twig' with {'current_group_label': current_group_label } %}
+{% include directory ~ '/templates/listing-header.html.twig' with {'short_name': short_name } %}
 
 <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
   {{ title_prefix }}

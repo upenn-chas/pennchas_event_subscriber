@@ -608,6 +608,9 @@ function penchas_preprocess_views_view(&$variables) {
   // $route_match = \Drupal::routeMatch();
   // $groupData = $route_match->getParameter('group');
   // $variables['current_group_id'] = $groupData;
+  if ($variables['id'] === 'event_calendar') {
+    $variables['group_id'] = $variables['view']->argument['field_short_name_value']->argument;
+  }
 
   $view = $variables['view'];
   $id = $view->storage->id();
@@ -624,16 +627,19 @@ function penchas_preprocess_views_view(&$variables) {
     }
   }
   $groupData = '';
-  if($id == 'calendar'){
+  
+  if($id == 'calendar' || $id == 'room_reservation_calendar' || $id == 'group_listing'){
     $current_uri = \Drupal::request()->getRequestUri();
     $uri_parts = explode('/', $current_uri);
     $uri_parts = array_filter($uri_parts);
+    
     if(isset($uri_parts)){
-      $variables['group_machine_label'] = $uri_parts['2'];
+      // $variables['group_machine_label'] = $uri_parts['2'];
+      $variables['short_name'] = $uri_parts['2'];
       $connection = Database::getConnection();
-      $query = $connection->select('group__field_house_machine_name', 'hm');
+      $query = $connection->select('group__field_short_name', 'hm');
       $query->fields('hm',['entity_id']);
-      $query->condition('hm.field_house_machine_name_value', $uri_parts['2']);
+      $query->condition('hm.field_short_name_value', $uri_parts['2']);
       $group_results = $query->execute()->fetchObject();
       $groupData = $group_results->entity_id;
     }
@@ -658,6 +664,7 @@ function penchas_preprocess_views_view(&$variables) {
 
     if($groupData){
       $groupData = Group::load($groupData);
+      $variables['current_group_id'] = $groupData->id();
       $url_path = $groupData->toUrl()->toString();
       $field_menus = $groupData->get('field_menus');
       $simplified_menu_html = '';

@@ -14,7 +14,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-{% include directory ~ '/templates/calendar-header.html.twig' with {'current_group_id': current_group_id}  %}
+{% include directory ~ '/templates/calendar-header.html.twig' with {'short_name': short_name}  %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
@@ -28,12 +28,12 @@
           
           <div>
             <select class="redirect-dropdown" onchange="redirectToLink()">
-              <option value="{{base_path}}group/{{current_group_id}}/room-reservation-calendar">Reservation</option>
-              <option value="{{base_path}}group/{{current_group_id}}/calendar_view">Events</option>
+              <option value="{{base_path}}group/{{short_name}}/room-reservation-calendar">Reservation</option>
+              <option value="{{base_path}}group/{{short_name}}/calendar_view">Events</option>
             </select>
           </div>
 
-          {# <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': current_group_id , plugin_id: 'group_node:reserve_room'}) }}">Reserve a Room</a> #}
+          {# <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': short_name , plugin_id: 'group_node:reserve_room'}) }}">Reserve a Room</a> #}
         </div>
       </div>
       <div class="col-md-9">
@@ -46,8 +46,8 @@
         {% endif %}
           <div>
             <select class="redirect-dropdown" onchange="redirectToLink()">
-              <option data-class="monthly" value="{{base_path}}group/{{current_group_id}}/room-reservation-calendar?c_type=monthly">Monthly</option>
-              <option data-class="weekly" value="{{base_path}}group/{{current_group_id}}/weekly-room-reservation-calendar?c_type=weekly">Weekly</option>
+              <option data-class="monthly" value="{{base_path}}group/{{short_name}}/room-reservation-calendar?c_type=monthly">Monthly</option>
+              <option data-class="weekly" value="{{base_path}}group/{{short_name}}/weekly-room-reservation-calendar?c_type=weekly">Weekly</option>
             </select>
           </div>
         </div>
