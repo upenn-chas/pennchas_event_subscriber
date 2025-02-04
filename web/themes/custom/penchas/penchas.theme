@@ -623,6 +623,7 @@ function penchas_preprocess_views_view(&$variables) {
       }
     }
   }
+  $groupData = '';
   if($id == 'calendar'){
     $current_uri = \Drupal::request()->getRequestUri();
     $uri_parts = explode('/', $current_uri);
