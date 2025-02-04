@@ -8,6 +8,7 @@ dependencies:
   module:
     - group
     - node
+    - url_alteration
     - user
 id: group_listing
 label: 'Group listing'
@@ -96,10 +97,10 @@ display:
       empty: {  }
       sorts: {  }
       arguments:
-        field_house_machine_name_value:
-          id: field_house_machine_name_value
-          table: group__field_house_machine_name
-          field: field_house_machine_name_value
+        field_short_name_value:
+          id: field_short_name_value
+          table: group__field_short_name
+          field: field_short_name_value
           relationship: gid
           group_type: group
           admin_label: ''

@@ -7,12 +7,12 @@ dependencies:
 id: group_url_patthern
 label: 'Group URL patthern'
 type: 'canonical_entities:group'
-pattern: '[group:field_house_machine_name:value]'
+pattern: '[group:field_short_name:value]'
 selection_criteria:
-  a7284d87-e45b-499a-b224-52022e27871b:
+  f3057621-5377-4256-a483-f0dbf86f87fc:
     id: 'entity_bundle:group'
     negate: false
-    uuid: a7284d87-e45b-499a-b224-52022e27871b
+    uuid: f3057621-5377-4256-a483-f0dbf86f87fc
     context_mapping:
       group: group
     bundles:
