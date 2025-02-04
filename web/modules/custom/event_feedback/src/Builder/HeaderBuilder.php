@@ -88,7 +88,7 @@ class HeaderBuilder
         ];
         $columnIndexes['event_report'] = $colIndex;
         $defaultRowValues[$colIndex++] = '';
-        
+
         $header[0][$colIndex] = [
             'title' => t('Event Evaluation'),
             'cspan' => 0,
@@ -150,7 +150,7 @@ class HeaderBuilder
                 }
             }
         }
-        
+
         $header[0][$colIndex] = t('Event Report');
         $header[1][$colIndex] = '';
         $columnIndexes['event_report'] = $colIndex;
@@ -160,7 +160,7 @@ class HeaderBuilder
         $header[1][$colIndex] = '';
         $columnIndexes['event_evaluation'] = $colIndex;
         $defaultRowValues[$colIndex] = '';
-        
+
 
         return [
             'header' => $header,

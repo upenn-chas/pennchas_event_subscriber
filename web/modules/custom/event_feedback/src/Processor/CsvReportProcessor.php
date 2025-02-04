@@ -35,12 +35,13 @@ class CsvReportProcessor
     {
         $data = $header;
         foreach ($events as $event) {
-            $row = $submissions[$event['nid']];
+            $nid = $event['nid'];
+            $row = $submissions[$nid];
             $row[$columnIndexes['houses']] = $event['houses'];
             $row[$columnIndexes['event']] = $event['title'];
             $row[$columnIndexes['repondants']] = $event['respondant'];
-            $row[$columnIndexes['event_report']] = '';
-            $row[$columnIndexes['event_evaluation']] = $event['evaluated'] !== NULL ? Url::fromRoute('event_evaluation_operation_option', ['node' => $event['nid']], ['absolute' => true])->toString() : '';
+            $row[$columnIndexes['event_report']] = Url::fromRoute('view.event_survey_report.page_1', ['node' => $nid], ['absolute' => true])->toString();
+            $row[$columnIndexes['event_evaluation']] = $event['evaluated'] !== NULL ? Url::fromRoute('event_evaluation_operation_option', ['node' => $nid], ['absolute' => true])->toString() : '';
             $data[] = $row;
             $footer[2] += $row[2];
         }

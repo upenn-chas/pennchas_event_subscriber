@@ -1,4 +1,7 @@
 <?php
+
+use Drupal\views\ViewExecutable;
+
 function event_feedback_theme($existing, $type, $theme, $path)
 {
     return [
@@ -25,9 +28,24 @@ function event_feedback_theme($existing, $type, $theme, $path)
             'variables' => [
                 'table_header' => [],
                 'table_body' => [],
+                'table_footer' => [],
                 'ccount' => 0
             ],
             'template' => 'report-table'
         ]
     ];
+}
+
+function event_feedback_views_pre_render(ViewExecutable $view) {
+    if($view->id() === 'event_survey_report' && $view->current_display === 'attachment_1') {
+        $webformHeader = [];
+        
+        foreach($view->field as $field) {
+            $webformHeader[$field->definition['webform_submission_field']] = $field->position;
+        }
+
+        $eventId = (int) $view->args[0];
+        $footer = \Drupal::service('event_feedback.per_event_report_service')->buildFooterData($eventId, 'event_feedback', $webformHeader);
+        $view->style_plugin->options['caption'] = $footer;
+    }
 }

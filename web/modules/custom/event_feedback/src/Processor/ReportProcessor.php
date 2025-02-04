@@ -11,15 +11,19 @@ class ReportProcessor
         $formattedSubmissionData = $this->formatSubmissionData($dbData['submissions'], $headerDetails['indexes'], $headerDetails['default']);
         $data = [];
         $columnIndexes = $headerDetails['indexes'];
+        $title = t('Link');
         foreach ($dbData['events'] as $event) {
-            $row = $formattedSubmissionData[$event['nid']];
+            $nid = $event['nid'];
+            $row = $formattedSubmissionData[$nid];
             $row[$columnIndexes['houses']] = $event['houses'];
             $row[$columnIndexes['event']] = $event['title'];
             $row[$columnIndexes['repondants']] = $event['respondant'];
-            $row[$columnIndexes['event_report']] = '';
-            if($event['evaluated'] !== NULL) {
-                $evaluationUrl = Url::fromRoute('event_evaluation_operation_option', ['node' => $event['nid']])->toString();
-                $title = t('Link');
+            $perEventReportUrl = Url::fromRoute('view.event_survey_report.page_1', ['node' => $nid])->toString();
+            $row[$columnIndexes['event_report']] = [
+                '#markup' => "<a href='{$perEventReportUrl}' target='_blank'>{$title}</a>"
+            ];
+            if ($event['evaluated'] !== NULL) {
+                $evaluationUrl = Url::fromRoute('event_evaluation_operation_option', ['node' => $nid])->toString();
                 $row[$columnIndexes['event_evaluation']] =  [
                     '#markup' => "<a href='{$evaluationUrl}' target='_blank'>{$title}</a>"
                 ];
