@@ -54,6 +54,16 @@
  
 }
 
+.view-our-team-list {
+  .view-filters {
+    .nav-tabs {
+      li:first-child {
+        display: none;
+      }
+    }
+  }
+}
+
 .dashboard-tabs {
   border: 1px solid $primaryColor;
   padding: 30px;

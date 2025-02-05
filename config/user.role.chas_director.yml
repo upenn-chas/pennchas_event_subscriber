@@ -8,21 +8,21 @@ dependencies:
     - node.type.page
     - node.type.reserve_room
     - node.type.room
-    - node.type.webform
     - workflows.workflow.editorial
   module:
     - complete_webform_exporter
+    - config
     - content_moderation
     - node
     - penchas_custom_token
     - smart_date_recur
     - webform
+    - webform_node
 id: chas_director
 label: 'CHAS Director'
 weight: -3
 is_admin: null
 permissions:
-  - 'access any webform configuration'
   - 'access content overview'
   - 'access my events'
   - 'access my rerservations'
@@ -53,6 +53,7 @@ permissions:
   - 'edit own page content'
   - 'edit own reserve_room content'
   - 'edit own room content'
+  - 'export configuration'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
   - 'revert all revisions'
@@ -73,4 +74,4 @@ permissions:
   - 'view notices revisions'
   - 'view own unpublished content'
   - 'view room revisions'
-  - 'view webform revisions'
+  - 'view webform submissions any node'

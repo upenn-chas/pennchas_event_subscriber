@@ -9,10 +9,6 @@ dependencies:
     - field.storage.user.user_picture
     - image.style.medium
     - taxonomy.vocabulary.user_categories
-  content:
-    - 'taxonomy_term:user_categories:2891da47-874e-42b2-8cac-84d453f0c0d8'
-    - 'taxonomy_term:user_categories:d28b0f28-3c17-4d1c-bf8b-50c6cce2f97f'
-    - 'taxonomy_term:user_categories:dbe631fc-0153-4621-a5d1-b16d3fd3c531'
   module:
     - better_exposed_filters
     - image
@@ -537,17 +533,14 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: taxonomy_index_tid
-          operator: and
-          value:
-            94: 94
-            95: 95
-            98: 98
+          operator: or
+          value: {  }
           group: 1
           exposed: true
           expose:
             operator_id: field_user_categories_target_id_op
-            label: ''
-            description: ''
+            label: 'User categories (field_user_categories)'
+            description: null
             use_operator: false
             operator: field_user_categories_target_id_op
             operator_limit_selection: false
@@ -558,14 +551,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
             reduce: false
           is_grouped: true
           group_info:
@@ -581,17 +566,17 @@ display:
             group_items:
               1:
                 title: 'Leadership Team'
-                operator: and
+                operator: or
                 value:
                   94: '94'
               2:
                 title: 'Central Office'
-                operator: and
+                operator: or
                 value:
                   95: '95'
               3:
                 title: 'House Administrators'
-                operator: and
+                operator: or
                 value:
                   98: '98'
           reduce_duplicates: false
@@ -600,6 +585,10 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: default
         options:

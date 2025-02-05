@@ -1,0 +1,14 @@
+progress:
+  '#changed': 1738734572
+  '#changed_by': '1'
+  '#completed_items': 3
+  '#items':
+    install_and_enable_redirect_module:
+      '#completed': 1738734566
+      '#uid': '1'
+    install_and_enable_pathauto_module:
+      '#completed': 1738734566
+      '#uid': '1'
+    install_and_enable_metatag_module:
+      '#completed': 1738734566
+      '#uid': '1'
