@@ -568,17 +568,17 @@ display:
                 title: 'Leadership Team'
                 operator: or
                 value:
-                  94: '94'
+                  74: '74'
               2:
                 title: 'Central Office'
                 operator: or
                 value:
-                  95: '95'
+                  75: '75'
               3:
                 title: 'House Administrators'
                 operator: or
                 value:
-                  98: '98'
+                  78: '78'
           reduce_duplicates: false
           vid: user_categories
           type: select

@@ -45,3 +45,4 @@ permissions:
   - 'view chas_event revisions'
   - 'view media'
   - 'view room revisions'
+  - 'view user email addresses'
