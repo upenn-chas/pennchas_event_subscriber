@@ -12,7 +12,6 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\group\GroupManager;
-
 use Drupal\Core\Url;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\Reference;
