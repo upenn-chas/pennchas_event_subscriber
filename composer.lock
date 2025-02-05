@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0199cca5f927cce33887a3884a142c4b",
+    "content-hash": "f3db58928f2aba82b7d9ed607814e529",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5030,27 +5030,27 @@
             }
         },
         {
-            "name": "drupal/menu_item_role_access",
-            "version": "2.4.0",
+            "name": "drupal/menu_per_role",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/menu_item_role_access.git",
-                "reference": "8.x-2.4"
+                "url": "https://git.drupalcode.org/project/menu_per_role.git",
+                "reference": "8.x-1.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/menu_item_role_access-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "33a9990922304948c38b465eb69daaf61e6f798b"
+                "url": "https://ftp.drupal.org/files/projects/menu_per_role-8.x-1.8.zip",
+                "reference": "8.x-1.8",
+                "shasum": "4e7c27df2dfa3e4365b6069c78ffd11741f45c21"
             },
             "require": {
-                "drupal/core": "^10.1 || ^11"
+                "drupal/core": "^10.2 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1727189435",
+                    "version": "8.x-1.8",
+                    "datestamp": "1726948034",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5063,18 +5063,30 @@
             ],
             "authors": [
                 {
-                    "name": "liampower",
-                    "homepage": "https://www.drupal.org/user/3016225"
+                    "name": "AlexisWilke",
+                    "homepage": "https://www.drupal.org/user/356197"
                 },
                 {
-                    "name": "littlepixiez",
-                    "homepage": "https://www.drupal.org/user/2568718"
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "fago",
+                    "homepage": "https://www.drupal.org/user/16747"
+                },
+                {
+                    "name": "grimreaper",
+                    "homepage": "https://www.drupal.org/user/2388214"
+                },
+                {
+                    "name": "neerajskydiver",
+                    "homepage": "https://www.drupal.org/user/227792"
                 }
             ],
-            "description": "Provide role based access to menu items.",
-            "homepage": "https://www.drupal.org/project/menu_item_role_access",
+            "description": "Allows restricting access to menu items per role.",
+            "homepage": "https://www.drupal.org/project/menu_per_role",
             "support": {
-                "source": "https://git.drupalcode.org/project/menu_item_role_access"
+                "source": "https://git.drupalcode.org/project/menu_per_role"
             }
         },
         {
