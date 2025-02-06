@@ -11,6 +11,7 @@ dependencies:
     - group
     - rest
     - serialization
+    - url_alteration
     - user
     - verf
     - views_bootstrap
@@ -770,7 +771,23 @@ display:
           empty: true
           content: '<div class="no-records">No records</div>'
           tokenize: false
-      sorts: {  }
+      sorts:
+        login:
+          id: login
+          table: users_field_data
+          field: login
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: login
+          plugin_id: date
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
       arguments: {  }
       filters:
         gid_verf:
@@ -994,8 +1011,8 @@ display:
               empty_column: 0
               responsive: ''
             login:
-              sortable: 0
-              default_sort_order: asc
+              sortable: 1
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: 0
@@ -1014,7 +1031,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: '-1'
+          default: login
           empty_table: 1
           responsive: 1
           bootstrap_styles:
@@ -1045,6 +1062,7 @@ display:
           required: false
           group_relation_plugins:
             group_membership: '0'
+      use_ajax: true
       header:
         display_link:
           id: display_link

@@ -202,7 +202,7 @@ class HeaderBuilder
         $defaultRowValues = [
             0,
             '',
-            ''
+            []
         ];
 
         $colIndex = 0;

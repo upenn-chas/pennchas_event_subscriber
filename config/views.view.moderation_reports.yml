@@ -1001,6 +1001,7 @@ display:
           summary: ''
           description: ''
           columns:
+            field_groups: field_groups
             title: title
             moderation_state: moderation_state
             created: created
@@ -1010,6 +1011,11 @@ display:
             field_last_moderated_by: field_last_moderated_by
             field_last_moderation_message: field_last_moderation_message
           info:
+            field_groups:
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
             title:
               sortable: 0
               default_sort_order: asc
@@ -1025,8 +1031,8 @@ display:
               empty_column: 0
               responsive: ''
             created:
-              sortable: 0
-              default_sort_order: asc
+              sortable: 1
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: 0
@@ -1064,7 +1070,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: '-1'
+          default: created
           empty_table: 1
           responsive: 1
           bootstrap_styles:

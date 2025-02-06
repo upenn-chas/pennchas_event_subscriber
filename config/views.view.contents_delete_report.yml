@@ -14,6 +14,7 @@ dependencies:
     - node
     - rest
     - serialization
+    - url_alteration
     - user
     - verf
     - views_bootstrap
@@ -776,8 +777,8 @@ display:
               empty_column: 0
               responsive: ''
             changed:
-              sortable: 0
-              default_sort_order: asc
+              sortable: 1
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: 0
@@ -789,7 +790,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: '-1'
+          default: changed
           empty_table: 1
           responsive: 1
           bootstrap_styles:
