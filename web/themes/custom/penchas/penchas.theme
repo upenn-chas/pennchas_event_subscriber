@@ -524,7 +524,7 @@ function penchas_preprocess_block(&$variables) {
       $group_path = '/group/' . $group->id();
       $alias_manager = \Drupal::service('path_alias.manager');
       $url = $alias_manager->getAliasByPath($group_path);
-      $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_house_machine_name')->value.'">'.
+      $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_short_name')->value.'">'.
                           '<div class="program-card"><a href="'.$url.'"></a>'.
                               '<div class="program-card-img">'.
                                 '<img src="'.$file_path.'" alt="'.$image_alt.'" title="'.$image_title.'">'.

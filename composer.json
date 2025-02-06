@@ -95,7 +95,8 @@
         "drupal/eca": "^2.1",
         "drupal/bpmn_io": "^2.0",
         "drupal/menu_per_role": "^1.8",
-        "drupal/menu_item_role_access": "^2.4"
+        "drupal/menu_item_role_access": "^2.4",
+        "drupal/advagg": "^6.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

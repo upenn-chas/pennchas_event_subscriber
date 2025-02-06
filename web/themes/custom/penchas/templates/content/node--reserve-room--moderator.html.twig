@@ -91,9 +91,11 @@
                             <li class="breadcrumb-item">
                                 <a href="{{base_path}}">{{breadcrumb_home}}</a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{base_path}}group/{{node.field_group.0.entity.id.value}}">{{node.field_group.0.entity.label.value}} {{house_string}}</a>
-                            </li>
+                            {% if node.field_group.0.entity.id.value %}
+                              <li class="breadcrumb-item">
+                                  <a href="{{base_path}}group/{{node.field_group.0.entity.id.value}}">{{node.field_group.0.entity.label.value}} {{house_string}}</a>
+                              </li>
+                            {% endif %}
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{room_reservation_heading}}
                             </li>
