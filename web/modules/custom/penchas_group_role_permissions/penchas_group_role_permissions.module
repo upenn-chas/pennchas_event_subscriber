@@ -17,34 +17,34 @@ use Drupal\group\GroupManager;
 /**
  * Function to get SimpleSAMLphp response after login.
  */
-function penchas_group_role_get_saml_response() {
-  // Initialize the SimpleSAMLphp authentication source.
-  var_dump('control came here');
-  dd('shajsdhjsahdsajhd');
-  // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
-  $authSource = new Simple('default-sp');
+// function penchas_group_role_get_saml_response() {
+//   // Initialize the SimpleSAMLphp authentication source.
+//   var_dump('control came here');
+//   dd('shajsdhjsahdsajhd');
+//   // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
+//   $authSource = new Simple('default-sp');
 
-  // Ensure the user is authenticated.
-  if ($authSource->isAuthenticated()) {
-    // Fetch the attributes from the SAML response.
-    $attributes = $authSource->getAttributes();
-    // Example: Accessing specific attributes.
-    $user_id = $attributes['uid'][0] ?? NULL;
-    $user_email = $attributes['mail'][0] ?? NULL;
+//   // Ensure the user is authenticated.
+//   if ($authSource->isAuthenticated()) {
+//     // Fetch the attributes from the SAML response.
+//     $attributes = $authSource->getAttributes();
+//     // Example: Accessing specific attributes.
+//     $user_id = $attributes['uid'][0] ?? NULL;
+//     $user_email = $attributes['mail'][0] ?? NULL;
 
-    // Return or process the response attributes.
-    return [
-      'uid' => $user_id,
-      'mail' => $user_email,
-      'attributes' => $attributes,
-    ];
-  }
-  else {
-    // Optionally handle the case where the user is not authenticated.
-    \Drupal::messenger()->addError(t('User is not authenticated via SimpleSAMLphp.'));
-    return NULL;
-  }
-}
+//     // Return or process the response attributes.
+//     return [
+//       'uid' => $user_id,
+//       'mail' => $user_email,
+//       'attributes' => $attributes,
+//     ];
+//   }
+//   else {
+//     // Optionally handle the case where the user is not authenticated.
+//     \Drupal::messenger()->addError(t('User is not authenticated via SimpleSAMLphp.'));
+//     return NULL;
+//   }
+// }
 
 /**
  *
