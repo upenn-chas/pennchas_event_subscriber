@@ -23,3 +23,14 @@ event_feedback.report_export:
     _title: ''
   requirements:
     _user_is_logged_in: 'TRUE'
+event_feedback.per_event_report_export:
+  path: /dashboard/reports/event-survey/{node}/export
+  defaults:
+    _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::perEventReportExport'
+    _title: ''
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      node:
+        type: entity:node

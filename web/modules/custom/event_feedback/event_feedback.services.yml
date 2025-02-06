@@ -10,7 +10,10 @@ services:
     arguments: ['@event_feedback.report_repository', '@event_feedback.csv_report_processor', '@event_feedback.report_header_builder']
   event_feedback.per_event_report_service:
     class: 'Drupal\event_feedback\Service\PerEventReportService'
-    arguments: ['@event_feedback.report_repository', '@event_feedback.per_event_report_processor']
+    arguments: ['@event_feedback.report_repository', '@event_feedback.per_event_report_footer_processor']
+  event_feedback.csv_per_event_report_service:
+    class: 'Drupal\event_feedback\Service\CsvPerEventReportService'
+    arguments: ['@event_feedback.report_repository', '@event_feedback.csv_per_event_report_processor', '@event_feedback.per_event_report_footer_processor', '@event_feedback.report_header_builder']
   event_feedback.report_repository:
     class: 'Drupal\event_feedback\Repository\ReportRepository'
     arguments: ['@database']
@@ -20,8 +23,11 @@ services:
   event_feedback.csv_report_processor:
     class: 'Drupal\event_feedback\Processor\CsvReportProcessor'
     arguments: []
-  event_feedback.per_event_report_processor:
-    class: 'Drupal\event_feedback\Processor\PerEventReportProcessor'
+  event_feedback.per_event_report_footer_processor:
+    class: 'Drupal\event_feedback\Processor\PerEventReportFooterProcessor'
+    arguments: []
+  event_feedback.csv_per_event_report_processor:
+    class: 'Drupal\event_feedback\Processor\CsvPerEventReportProcessor'
     arguments: []
   event_feedback.report_header_builder:
     class: 'Drupal\event_feedback\Builder\HeaderBuilder'

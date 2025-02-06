@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\node\Entity\Node;
+use Drupal\views\ResultRow;
 use Drupal\views\ViewExecutable;
 
 function event_feedback_theme($existing, $type, $theme, $path)
@@ -36,16 +38,42 @@ function event_feedback_theme($existing, $type, $theme, $path)
     ];
 }
 
-function event_feedback_views_pre_render(ViewExecutable $view) {
-    if($view->id() === 'event_survey_report' && $view->current_display === 'attachment_1') {
-        $webformHeader = [];
-        
-        foreach($view->field as $field) {
-            $webformHeader[$field->definition['webform_submission_field']] = $field->position;
-        }
+
+function event_feedback_views_pre_render(ViewExecutable $view)
+{
+    $display = $view->current_display;
+    if ($view->id() === 'event_survey_report' && $display === 'attachment_1') {
 
         $eventId = (int) $view->args[0];
+
+        $intendedOutcomes =  _get_indented_outcomes($eventId);
+        $webformHeader = [];
+        foreach ($view->field as &$field) {
+            $fieldKey = $field->definition['webform_submission_field'];
+            $webformHeader[$fieldKey] = $field->position;
+            if ($fieldKey === 'event_intended_to') {
+                $field->options['label'] .= ", {$intendedOutcomes}?";
+            }
+        }
         $footer = \Drupal::service('event_feedback.per_event_report_service')->buildFooterData($eventId, 'event_feedback', $webformHeader);
         $view->style_plugin->options['caption'] = $footer;
     }
+}
+
+
+function _get_indented_outcomes($eventId)
+{
+    $event = Node::load($eventId);
+    $intendedOutcomeField = $event->get('field_intended_outcomes');
+    $intendedOutcomeValue = $intendedOutcomeField->getValue();
+    $fieldSettings = $intendedOutcomeField->getDataDefinition()->getSettings();
+    $allowedValues = $fieldSettings['allowed_values'];
+
+    $intendedOutcomes = [];
+
+    foreach ($intendedOutcomeValue as $value) {
+        $intendedOutcomes[] = $allowedValues[$value['value']];
+    }
+
+    return implode(' | ', $intendedOutcomes);
 }

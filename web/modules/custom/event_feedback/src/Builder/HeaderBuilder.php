@@ -13,6 +13,7 @@ class HeaderBuilder
         return match ($headerType) {
             'report' => $this->reportHeader($webformId),
             'csv' => $this->csvHeader($webformId),
+            'csvEvent' => $this->csvEvent($webformId),
             default => throw new InvalidArgumentException("'{$headerType}' is invlaid header type.")
         };
     }
@@ -22,6 +23,10 @@ class HeaderBuilder
         $webformElements = $this->getWebformElements($webformId);
         $header = [
             [
+                [
+                    'title' => t('Event Report'),
+                    'cspan' => 0,
+                ],
                 [
                     'title' => t('House(s)'),
                     'cspan' => 0,
@@ -47,15 +52,21 @@ class HeaderBuilder
                 [
                     'title' => '',
                     'cspan' => 0,
+                ],
+                [
+                    'title' => '',
+                    'cspan' => 0,
                 ]
             ]
         ];
         $columnIndexes = [
-            'houses' => 0,
-            'event' => 1,
-            'repondants' => 2
+            'event_report' => 0,
+            'houses' => 1,
+            'event' => 2,
+            'repondants' => 3
         ];
         $defaultRowValues = [
+            '',
             '',
             '',
             0
@@ -65,7 +76,7 @@ class HeaderBuilder
         foreach ($webformElements as $key => $ele) {
             if ($ele['#type'] === 'radios' || $ele['#type'] === 'checkboxes') {
                 $header[0][] = [
-                    'title' => $ele['#title'],
+                    'title' => $key === 'event_intended_to' ? 'Achieved intended outcomes?' : $ele['#title'],
                     'cspan' => count($ele['#options'])
                 ];
                 foreach ($ele['#options'] as $optKey => $opt) {
@@ -78,16 +89,6 @@ class HeaderBuilder
                 }
             }
         }
-        $header[0][$colIndex] = [
-            'title' => t('Event Report'),
-            'cspan' => 0,
-        ];
-        $header[1][$colIndex] = [
-            'title' => '',
-            'cspan' => 0,
-        ];
-        $columnIndexes['event_report'] = $colIndex;
-        $defaultRowValues[$colIndex++] = '';
 
         $header[0][$colIndex] = [
             'title' => t('Event Evaluation'),
@@ -112,22 +113,26 @@ class HeaderBuilder
         $webformElements = $this->getWebformElements($webformId);
         $header = [
             [
-                'House(s)',
-                'Event',
-                'Respondants'
+                t('Event Report'),
+                t('House(s)'),
+                t('Event'),
+                t('Respondants')
             ],
             [
+                '',
                 '',
                 '',
                 ''
             ]
         ];
         $columnIndexes = [
-            'houses' => 0,
-            'event' => 1,
-            'repondants' => 2
+            'event_report' => 0,
+            'houses' => 1,
+            'event' => 2,
+            'repondants' => 3
         ];
         $defaultRowValues = [
+            '',
             '',
             '',
             0
@@ -140,7 +145,7 @@ class HeaderBuilder
                 foreach ($ele['#options'] as $optKey => $opt) {
                     if ($flag) {
                         $flag = false;
-                        $header[0][$colIndex] = $ele['#title'];
+                        $header[0][$colIndex] = $key === 'event_intended_to' ? 'Achieved intended outcomes?' : $ele['#title'];
                     } else {
                         $header[0][$colIndex] = '';
                     }
@@ -151,16 +156,34 @@ class HeaderBuilder
             }
         }
 
-        $header[0][$colIndex] = t('Event Report');
-        $header[1][$colIndex] = '';
-        $columnIndexes['event_report'] = $colIndex;
-        $defaultRowValues[$colIndex++] = '';
-
         $header[0][$colIndex] = t('Event Evaluation');
         $header[1][$colIndex] = '';
         $columnIndexes['event_evaluation'] = $colIndex;
         $defaultRowValues[$colIndex] = '';
 
+
+        return [
+            'header' => $header,
+            'indexes' => $columnIndexes,
+            'default' => $defaultRowValues
+        ];
+    }
+
+    protected function csvEvent(string $webformId)
+    {
+        $webformElements = $this->getWebformElements($webformId);
+        $header = [];
+        $columnIndexes = [];
+        $defaultRowValues = [
+            0,'',''
+        ];
+
+        $colIndex = 0;
+        unset($webformElements['actions']);
+        foreach ($webformElements as $key => $ele) {
+            $header[$colIndex] = $ele['#title'];
+            $columnIndexes[$key] = $colIndex++;
+        }
 
         return [
             'header' => $header,

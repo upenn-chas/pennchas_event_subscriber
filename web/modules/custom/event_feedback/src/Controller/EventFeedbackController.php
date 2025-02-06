@@ -162,6 +162,24 @@ class EventFeedbackController extends ControllerBase
         return $csvFile;
     }
 
+    public function perEventReportExport(Node $node)
+    {
+        $data = \Drupal::service('event_feedback.csv_per_event_report_service')->build($node->id(), $this->eventFeedbackWebformId, $node);
+
+        $csvFile = new StreamedResponse();
+        $csvFile->setCallback(function () use ($data) {
+            $handler = fopen('php://output', 'w');
+            foreach($data as $row) {
+                fputcsv($handler, $row);
+            }
+            fclose($handler);
+        });
+        
+        $csvFile->headers->set('Content-Type', 'text/csv; charset=UTF-8');
+        $csvFile->headers->set('Content-Disposition', 'attachment; filename="event_survey_report.csv"');
+        return $csvFile;
+    }
+
     private function hasUserAlreadySubmitted($webformId, $nodeId)
     {
         return (bool) \Drupal::entityQuery('webform_submission')

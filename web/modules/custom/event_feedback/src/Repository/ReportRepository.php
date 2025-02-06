@@ -112,7 +112,7 @@ class ReportRepository
         return (int) $count[0];
     }
 
-    public function getEventSubmissions(int $eventId, string $webformId)
+    public function getEventSubmissionSummary(int $eventId, string $webformId)
     {
         $query = $this->connection->select('webform_submission', 'ws');
         $query->innerJoin('webform_submission_data', 'wsd', 'wsd.sid = ws.sid');
@@ -123,6 +123,22 @@ class ReportRepository
         $query->addExpression('count(wsd.value)', 'value_count');
         $query->groupBy('wsd.name');
         $query->groupBy('wsd.value');
+        $query->orderBy('ws.created', 'DESC');
+
+        $submissionData = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+
+        return [
+            'data' => $submissionData,
+        ];
+    }
+
+    public function getEventSubmissions(int $eventId, string $webformId)
+    {
+        $query = $this->connection->select('webform_submission', 'ws');
+        $query->innerJoin('webform_submission_data', 'wsd', 'wsd.sid = ws.sid');
+        $query->condition('ws.webform_id', $webformId);
+        $query->condition('ws.entity_id', $eventId);
+        $query->fields('wsd', ['name', 'value', 'sid']);
         $query->orderBy('ws.created', 'DESC');
 
         $submissionData = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
