@@ -4,8 +4,14 @@ namespace Drupal\event_feedback\Processor;
 
 use Drupal\node\Entity\Node;
 
+/**
+ * Per event survey report data processor
+ */
 class CsvPerEventReportProcessor
 {
+    /**
+     * Process the data and return the data for export
+     */
     public function process(array $dbData, array $headerDetails, array $footer, array $webformElements, Node $node)
     {
         $formattedData = $this->formatData($dbData, $headerDetails['indexes'], $headerDetails['default'], $webformElements);

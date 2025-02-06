@@ -2,7 +2,9 @@
 
 namespace Drupal\event_feedback\Processor;
 
-
+/**
+ * Per event report footer processor
+ */
 class PerEventReportFooterProcessor
 {
     public function process(array $dbData, array $columnIndexes, $total, array $webformElements)

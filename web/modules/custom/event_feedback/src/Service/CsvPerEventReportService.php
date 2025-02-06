@@ -9,6 +9,9 @@ use Drupal\event_feedback\Repository\ReportRepository;
 use Drupal\node\Entity\Node;
 use Drupal\webform\Entity\Webform;
 
+/**
+ * Service to build the data for per event survey export
+ */
 class CsvPerEventReportService
 {
     protected ReportRepository $repository;

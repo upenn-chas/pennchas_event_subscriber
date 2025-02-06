@@ -4,6 +4,9 @@ namespace Drupal\event_feedback\Repository;
 
 use Drupal\Core\Database\Connection;
 
+/**
+ * Common repository to get feedback data for reports
+ */
 class ReportRepository
 {
     protected Connection $connection;
