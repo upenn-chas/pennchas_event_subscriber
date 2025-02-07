@@ -7,8 +7,8 @@ use Drupal\Core\Entity\EntityInterface;
  */
 function penchas_node_alteration_entity_view_mode_alter(&$view_mode, EntityInterface $entity, $context) {
   $type = $entity->bundle();
-
-  if($type == 'reserve_room'){
-    $view_mode = 'moderator';
+  if ($type == 'reserve_room') {
+    // Directly check if the status is 1 or not.
+    $view_mode = ($entity->get('status')->value == 1) ? 'default' : 'moderator';
   }
 }

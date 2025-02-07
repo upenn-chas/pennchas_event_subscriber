@@ -193,7 +193,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: file_link_class
-                label: inline
+                label: hidden
                 settings:
                   use_description_as_link_text: true
                   class: link-attachment
@@ -221,20 +221,22 @@ third_party_settings:
             additional: {  }
           2e8229f2-bf98-40e6-a8c0-16bb5495da7e:
             uuid: 2e8229f2-bf98-40e6-a8c0-16bb5495da7e
-            region: blb_region_col_1
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:notices:field_media_image'
+              label: Image
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_entity_view
-                label: above
+                label: hidden
                 settings:
                   view_mode: default
-                  link: false
                 third_party_settings: {  }
-            weight: 7
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
