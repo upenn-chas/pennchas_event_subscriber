@@ -52,7 +52,7 @@ class NodePreSaveHook
         $houseCount = count($housesId);
         if ($houseCount === 1){
             $eventHouse_data = Group::load($housesId[0]);
-            $group_machine_name = $eventHouse_data->get('field_house_machine_name')->value;
+            $group_machine_name = $eventHouse_data->get('field_short_name')->value;
             $node->set('field_group_ref', $group_machine_name);
             // dd($node);
         }
@@ -73,13 +73,13 @@ class NodePreSaveHook
             $group = \Drupal::routeMatch()->getParameter('group');
         }
         if ($group) {
-            $groupMachineName = $group->get('field_house_machine_name')->value;
-            if ($group->hasField('field_house_machine_name')) {
+            $groupMachineName = $group->get('field_short_name')->value;
+            if ($group->hasField('field_short_name')) {
                 $node->set('field_group_ref', $groupMachineName);
             }
             if ($node->isNew() || !$node->original->get('field_groups')->getString()) {
                 $node->set('field_groups', $group->id());
-                $group_machine_name = $group->get('field_house_machine_name')->value;
+                $group_machine_name = $group->get('field_short_name')->value;
                 $node->set('field_group_ref', $group_machine_name);    
             }
         }
@@ -94,7 +94,7 @@ class NodePreSaveHook
             if(isset($group)){
                 $node->set('field_group', $group->id());
                 $eventHouse_data = Group::load($group->id());
-                $group_machine_name = $eventHouse_data->get('field_house_machine_name')->value;
+                $group_machine_name = $eventHouse_data->get('field_short_name')->value;
                 $node->set('field_group_ref', $group_machine_name);
             }
         }
@@ -123,8 +123,8 @@ class NodePreSaveHook
             $group = \Drupal::routeMatch()->getParameter('group');
         }
         if ($group) {
-            $groupMachineName = $group->get('field_house_machine_name')->value;
-            if ($group->hasField('field_house_machine_name')) {
+            $groupMachineName = $group->get('field_short_name')->value;
+            if ($group->hasField('field_short_name')) {
                 if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
@@ -149,9 +149,9 @@ class NodePreSaveHook
             $groupName = $node->get('field_group')->getValue();
             $group_id = $groupName[0]['target_id'];
             $group = Group::load($group_id);
-            $groupMachineName = $group->get('field_house_machine_name')->value;
+            $groupMachineName = $group->get('field_short_name')->value;
             
-            if ($group->hasField('field_house_machine_name')) {
+            if ($group->hasField('field_short_name')) {
                 if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
@@ -170,8 +170,8 @@ class NodePreSaveHook
                 $group = \Drupal::routeMatch()->getParameter('group');
             }
             if ($group) {
-                $groupMachineName = $group->get('field_house_machine_name')->value;
-                if ($group->hasField('field_house_machine_name')) {
+                $groupMachineName = $group->get('field_short_name')->value;
+                if ($group->hasField('field_short_name')) {
                     if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                         $urlAlias = $groupMachineName . $urlAlias;
                     }

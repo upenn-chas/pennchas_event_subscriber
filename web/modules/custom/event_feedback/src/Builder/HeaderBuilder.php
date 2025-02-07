@@ -6,8 +6,17 @@ use Drupal\webform\Entity\Webform;
 use Exception;
 use InvalidArgumentException;
 
+/**
+ * Build the header for different occasions.
+ */
 class HeaderBuilder
 {
+    /**
+     * Facade function. Return the header
+     * 
+     * @var string $webformId
+     * @var string $headerType
+     */
     public function buildHeader(string $webformId, string $headerType)
     {
         return match ($headerType) {
@@ -18,6 +27,11 @@ class HeaderBuilder
         };
     }
 
+    /**
+     * Build a header for the participant survey report
+     * 
+     * @var string $webformId
+     */
     protected function reportHeader(string $webformId)
     {
         $webformElements = $this->getWebformElements($webformId);
@@ -108,6 +122,11 @@ class HeaderBuilder
         ];
     }
 
+    /**
+     * Build a header for the participant survey report export data
+     * 
+     * @var string $webformId
+     */
     protected function csvHeader(string $webformId)
     {
         $webformElements = $this->getWebformElements($webformId);
@@ -169,13 +188,21 @@ class HeaderBuilder
         ];
     }
 
+    /**
+     * Build a header for the per event survey report export data
+     * 
+     * @var string $webformId
+     */
+
     protected function csvEvent(string $webformId)
     {
         $webformElements = $this->getWebformElements($webformId);
         $header = [];
         $columnIndexes = [];
         $defaultRowValues = [
-            0,'',''
+            0,
+            '',
+            []
         ];
 
         $colIndex = 0;
@@ -191,6 +218,12 @@ class HeaderBuilder
             'default' => $defaultRowValues
         ];
     }
+
+    /**
+     * Get the webform elements
+     * 
+     * @var string $webformId
+     */
 
     protected function getWebformElements(string $webformId)
     {

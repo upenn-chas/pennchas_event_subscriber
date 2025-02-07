@@ -18,6 +18,7 @@ dependencies:
     - node
     - rest
     - serialization
+    - url_alteration
     - user
     - verf
     - views_bootstrap
@@ -1069,6 +1070,8 @@ display:
           summary: ''
           description: ''
           columns:
+            gid: gid
+            field_room: field_room
             title: title
             moderation_state: moderation_state
             created: created
@@ -1078,6 +1081,20 @@ display:
             field_last_moderated_by: field_last_moderated_by
             field_last_moderation_message: field_last_moderation_message
           info:
+            gid:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            field_room:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
             title:
               sortable: 0
               default_sort_order: asc
@@ -1093,8 +1110,8 @@ display:
               empty_column: 0
               responsive: ''
             created:
-              sortable: 0
-              default_sort_order: asc
+              sortable: 1
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: 0
@@ -1132,7 +1149,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: '-1'
+          default: created
           empty_table: 1
           responsive: 1
           bootstrap_styles:

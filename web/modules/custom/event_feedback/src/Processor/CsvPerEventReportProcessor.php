@@ -4,8 +4,14 @@ namespace Drupal\event_feedback\Processor;
 
 use Drupal\node\Entity\Node;
 
+/**
+ * Per event survey report data processor
+ */
 class CsvPerEventReportProcessor
 {
+    /**
+     * Process the data and return the data for export
+     */
     public function process(array $dbData, array $headerDetails, array $footer, array $webformElements, Node $node)
     {
         $formattedData = $this->formatData($dbData, $headerDetails['indexes'], $headerDetails['default'], $webformElements);
@@ -20,18 +26,34 @@ class CsvPerEventReportProcessor
             $sid = $submission['sid'];
             $name = $submission['name'];
             $value = $submission['value'];
-            $rowIndex = $columnIndexes[$name];
 
+            if (!isset($columnIndexes[$name])) {
+                continue;
+            }
+
+            $rowIndex = $columnIndexes[$name];
             if (!isset($submissionRows[$sid])) {
                 $submissionRows[$sid] = $defaultValue;
             }
+            $row = &$submissionRows[$sid];
 
-            if ($name === 'why_choose_event') {
-                $submissionRows[$sid][$rowIndex] .= ($submissionRows[$sid][$rowIndex] === '' ? '' : ', ') . $webformElements[$name]['#options'][$value];
-            } else if ($name === 'event_like_rating') {
-                $submissionRows[$sid][$rowIndex] = $value;
-            } else {
-                $submissionRows[$sid][$rowIndex] = $webformElements[$name]['#options'][$value];
+            switch ($name) {
+                case 'why_choose_event':
+                    $row[$rowIndex][] = $webformElements[$name]['#options'][$value] ?? $value;
+                    break;
+                case 'event_like_rating':
+                    $row[$rowIndex] = $value;
+                    break;
+                default:
+                    $row[$rowIndex] = $webformElements[$name]['#options'][$value] ?? $value;
+                    break;
+            }
+        }
+        foreach ($submissionRows as &$row) {
+            foreach ($row as $key => &$value) {
+                if (is_array($value)) {
+                    $value = implode(', ', $value);
+                }
             }
         }
 

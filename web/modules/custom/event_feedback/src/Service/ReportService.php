@@ -6,6 +6,9 @@ use Drupal\event_feedback\Builder\HeaderBuilder;
 use Drupal\event_feedback\Processor\ReportProcessor;
 use Drupal\event_feedback\Repository\ReportRepository;
 
+/**
+ * Service to build the data for participant survey report
+ */
 class ReportService
 {
     protected ReportRepository $repository;

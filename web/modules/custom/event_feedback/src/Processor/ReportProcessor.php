@@ -4,6 +4,9 @@ namespace Drupal\event_feedback\Processor;
 
 use Drupal\Core\Url;
 
+/**
+ * Participant survey report data processor
+ */
 class ReportProcessor
 {
     public function process(array $dbData, array $headerDetails)

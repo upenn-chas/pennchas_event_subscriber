@@ -6,6 +6,9 @@ use Drupal\event_feedback\Processor\PerEventReportFooterProcessor;
 use Drupal\event_feedback\Repository\ReportRepository;
 use Drupal\webform\Entity\Webform;
 
+/**
+ * Service to build the data for per event survey report
+ */
 class PerEventReportService
 {
     protected ReportRepository $repository;
