@@ -1,4 +1,36 @@
 <?php
+
+/**
+ * Database settings:
+ *
+ * The $databases array specifies the database connection or
+ * connections that Drupal may use.  Drupal is able to connect
+ * to multiple databases, including multiple types of databases,
+ * during the same request.
+ *
+ * One example of the simplest connection array is shown below. To use the
+ * sample settings, copy and uncomment the code below between the @code and
+ * @endcode lines and paste it after the $databases declaration. You will need
+ * to replace the database username and password and possibly the host and port
+ * with the appropriate credentials for your database system.
+ *
+ * The next section describes how to customize the $databases array for more
+ * specific needs.
+ *
+ * @code
+ * $databases['default']['default'] = [
+ *   'database' => 'database_name',
+ *   'username' => 'sql_username',
+ *   'password' => 'sql_password',
+ *   'host' => 'localhost',
+ *   'port' => '3306',
+ *   'driver' => 'mysql',
+ *   'prefix' => '',
+ *   'collation' => 'utf8mb4_general_ci',
+ * ];
+ * @endcode
+ */
+
 $config['recaptcha_v3.settings']['site_key'] = '6LeJHJ8qAAAAAApHFIjYa8lypKlaVbf1RxsgdzCj';
 $config['recaptcha_v3.settings']['secret_key'] = '6LeJHJ8qAAAAALyeRIub9_k4cmszXvAPOkV2Azc6';
 
@@ -6,3 +38,4 @@ $config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = 'smtp
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'oktad;Kneb63GlovUthid';
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
+

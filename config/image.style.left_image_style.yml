@@ -1,0 +1,14 @@
+uuid: 2971caaa-af70-4ddb-9d17-19bc2e353a30
+langcode: en
+status: true
+dependencies: {  }
+name: left_image_style
+label: 'left image style'
+effects:
+  88dcf571-32ae-4f30-8081-6ffd26adb2fa:
+    uuid: 88dcf571-32ae-4f30-8081-6ffd26adb2fa
+    id: image_resize
+    weight: 1
+    data:
+      width: 675
+      height: 786

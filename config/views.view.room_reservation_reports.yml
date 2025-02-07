@@ -937,7 +937,6 @@ display:
           summary: ''
           description: ''
           columns:
-            field_group: field_group
             field_room: field_room
             uid: uid
             created: created
@@ -947,13 +946,6 @@ display:
             field_event_schedule_duration: field_event_schedule_duration
             title: title
           info:
-            field_group:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
             field_room:
               sortable: 0
               default_sort_order: asc
@@ -976,8 +968,8 @@ display:
               empty_column: 0
               responsive: ''
             field_event_schedule_value:
-              sortable: 1
-              default_sort_order: desc
+              sortable: 0
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: 0
@@ -1010,7 +1002,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: field_event_schedule_value
+          default: '-1'
           empty_table: 1
           responsive: 1
           bootstrap_styles:
@@ -1029,7 +1021,6 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      use_ajax: true
       group_by: false
       header:
         display_link:
