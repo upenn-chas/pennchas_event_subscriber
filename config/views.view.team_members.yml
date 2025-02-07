@@ -1,6 +1,6 @@
 uuid: 7fea4edd-9093-4a1a-b208-0615dd59720f
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.taxonomy_term.field_email_address

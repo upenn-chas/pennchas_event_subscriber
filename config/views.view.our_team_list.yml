@@ -426,7 +426,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"staff\">\r\n\t  <div class=\"staff-img\">\r\n\t    {{ user_picture }} \r\n\t  </div>\r\n\t  <div class=\"staff-name\">\r\n\t    <h4>{{ name }}</h4>\r\n\t    <p><strong>{{ field_title_position }}</strong></p>\r\n\t   {{ field_description }}\r\n\t    <div class=\"contact-details\">\r\n\t      <ul>\r\n\t        <li><a href=\"mailto:namesurname@upenn.edu\" class=\"email\">{{ mail }}</a></li>\r\n\t        <li><a href=\"tel:2159759064\" class=\"phone\">{{ field_phone_no }}</a></li>\r\n\t      </ul>\r\n\t    </div>\r\n\t  </div>\r\n\t</div>"
+            text: "<div class=\"staff\">\r\n\t  <div class=\"staff-img\">\r\n\t    {{ user_picture }} \r\n\t  </div>\r\n\t  <div class=\"staff-name\">\r\n\t    <h4>{{ name }}</h4>\r\n\t    <p><strong>{{ field_title_position }}</strong></p>\r\n\t   {{ field_description }}\r\n\t    <div class=\"contact-details\">\r\n\t      <ul>\r\n\t        <li><a href=\"{{ mail }}\" class=\"email\">{{ mail }}</a></li>\r\n\t        <li><a href=\"tel:{{ field_phone_no }}\" class=\"phone\">{{ field_phone_no }}</a></li>\r\n\t      </ul>\r\n\t    </div>\r\n\t  </div>\r\n\t</div>"
             make_link: false
             path: ''
             absolute: false
