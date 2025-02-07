@@ -3,13 +3,12 @@ langcode: en
 status: true
 dependencies: {  }
 id: smtp
-label: MailHog
+label: SMTP
 plugin: smtp
 configuration:
-  user: mailhog
-  pass: mailhog
-  host: mailer
-  port: 1025
+  user: ''
+  pass: ''
+  port: null
   query:
     verify_peer: true
     local_domain: ''

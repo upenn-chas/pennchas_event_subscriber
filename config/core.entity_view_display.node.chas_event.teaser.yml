@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_cost
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
-    - field.field.node.chas_event.field_banner
     - field.field.node.chas_event.field_blocks_ref
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
@@ -21,7 +20,6 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
-    - field.field.node.chas_event.field_file
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -34,6 +32,8 @@ dependencies:
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
+    - field.field.node.chas_event.field_media_file
+    - field.field.node.chas_event.field_media_image
     - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
@@ -50,17 +50,6 @@ targetEntityType: node
 bundle: chas_event
 mode: teaser
 content:
-  field_banner:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_event_schedule:
     type: smartdate_default
     label: hidden
@@ -127,7 +116,6 @@ hidden:
   field_event_ends_on: true
   field_event_priority: true
   field_feedback_form: true
-  field_file: true
   field_group_ref: true
   field_groups: true
   field_intended_audience_attach: true
