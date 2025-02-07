@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_cost
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
+    - field.field.node.chas_event.field_banner
     - field.field.node.chas_event.field_blocks_ref
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
@@ -20,6 +21,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_file
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -32,8 +34,6 @@ dependencies:
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
-    - field.field.node.chas_event.field_media_file
-    - field.field.node.chas_event.field_media_image
     - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
@@ -41,6 +41,8 @@ dependencies:
     - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
   module:
+    - file
+    - image
     - layout_builder
     - layout_builder_restrictions
     - link
@@ -101,6 +103,17 @@ content:
     third_party_settings: {  }
     weight: 14
     region: content
+  field_banner:
+    type: image
+    label: inline
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_collaborators:
     type: basic_string
     label: inline
@@ -145,6 +158,14 @@ content:
         suffix: h
     third_party_settings: {  }
     weight: 11
+    region: content
+  field_file:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_intended_audience:
     type: list_default

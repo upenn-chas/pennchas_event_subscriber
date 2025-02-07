@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_cost
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
+    - field.field.node.chas_event.field_banner
     - field.field.node.chas_event.field_blocks_ref
     - field.field.node.chas_event.field_collaborators
     - field.field.node.chas_event.field_college_houses
@@ -19,6 +20,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_file
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -31,8 +33,6 @@ dependencies:
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
     - field.field.node.chas_event.field_marketing_blurb
-    - field.field.node.chas_event.field_media_file
-    - field.field.node.chas_event.field_media_image
     - field.field.node.chas_event.field_moderation_finished_at
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
@@ -41,6 +41,8 @@ dependencies:
     - node.type.chas_event
   module:
     - bootstrap_layout_builder
+    - file
+    - image
     - layout_builder
     - layout_builder_restrictions
     - link
@@ -206,6 +208,28 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          34ea9f33-b1ae-4be8-905f-28065e725773:
+            uuid: 34ea9f33-b1ae-4be8-905f-28065e725773
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:chas_event:field_banner'
+              label: 'Highlight Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
           1d166753-ae72-4237-8e47-e2c75e4b068a:
             uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
             region: blb_region_col_1
@@ -250,6 +274,20 @@ third_party_settings:
                     attribute: lazy
                 third_party_settings: {  }
             weight: 0
+          3810e36a-64b0-48f7-aca1-df6f727a088b:
+            uuid: 3810e36a-64b0-48f7-aca1-df6f727a088b
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Add to Calendar'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 381
+              block_revision_id: 416
+              block_serialized: null
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -336,6 +374,17 @@ content:
     third_party_settings: {  }
     weight: 22
     region: content
+  field_banner:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 18
+    region: content
   field_collaborators:
     type: email_mailto
     label: above
@@ -381,6 +430,14 @@ content:
         suffix: h
     third_party_settings: {  }
     weight: 14
+    region: content
+  field_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_group_ref:
     type: string
@@ -453,24 +510,6 @@ content:
     third_party_settings: {  }
     weight: 20
     region: content
-  field_media_file:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 28
-    region: blb_region_col_1
-  field_media_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 27
-    region: blb_region_col_1
   field_participants:
     type: list_default
     label: above
