@@ -70,11 +70,11 @@
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
+    'clearfix container',
   ]
 %}
 
-<section class="hero-banner without-image small">
+<section class="hero-banner without-image small" style="background-color: #{{node.field_group.0.entity.field_color.value}};">
     {% if node.field_group.0.entity.field_circle_color.value %}
         <style>
             .hero-banner .container:before {
