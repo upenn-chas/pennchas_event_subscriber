@@ -17,11 +17,11 @@ dependencies:
     - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
-    - field.field.node.room.field_images
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
     - field.field.node.room.field_link_3
     - field.field.node.room.field_maximum_occupancy
+    - field.field.node.room.field_media_images
     - field.field.node.room.field_qr_code
     - field.field.node.room.field_text_box
     - field.field.node.room.field_text_box_2
@@ -126,25 +126,6 @@ third_party_settings:
                   tag: span
                 third_party_settings: {  }
             weight: 2
-            additional: {  }
-          59f107cf-ff55-4970-a4c5-cda1a31d1fd0:
-            uuid: 59f107cf-ff55-4970-a4c5-cda1a31d1fd0
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_available_to'
-              label: 'Available To'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: inline
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 3
             additional: {  }
           d2ee82c4-206a-4c3c-a94d-1a33f5703963:
             uuid: d2ee82c4-206a-4c3c-a94d-1a33f5703963
@@ -412,11 +393,11 @@ hidden:
   field_evaluation_notification: true
   field_group: true
   field_group_ref: true
-  field_images: true
   field_link_1: true
   field_link_2: true
   field_link_3: true
   field_maximum_occupancy: true
+  field_media_images: true
   field_qr_code: true
   field_text_box: true
   field_text_box_2: true

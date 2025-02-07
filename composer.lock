@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "950ebec50bd0a254d63b6c7360527196",
+    "content-hash": "4bd897316176497560eee1d0a0a8d2fd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6091,17 +6091,17 @@
         },
         {
             "name": "drupal/smart_date",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/smart_date.git",
-                "reference": "4.2.1"
+                "reference": "4.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/smart_date-4.2.1.zip",
-                "reference": "4.2.1",
-                "shasum": "fec1d70ec64626a47e67c25f05daa3ba6a8b8a0b"
+                "url": "https://ftp.drupal.org/files/projects/smart_date-4.2.2.zip",
+                "reference": "4.2.2",
+                "shasum": "c66711299d80ae71bec85836d42c87c1220b1bef"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11",
@@ -6117,8 +6117,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.2.1",
-                    "datestamp": "1731590994",
+                    "version": "4.2.2",
+                    "datestamp": "1738839300",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6233,17 +6233,17 @@
         },
         {
             "name": "drupal/svg_image_field",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/svg_image_field.git",
-                "reference": "2.3.3"
+                "reference": "2.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/svg_image_field-2.3.3.zip",
-                "reference": "2.3.3",
-                "shasum": "0bd2ff25e745be388cf2106e363120bf746aa8fc"
+                "url": "https://ftp.drupal.org/files/projects/svg_image_field-2.3.4.zip",
+                "reference": "2.3.4",
+                "shasum": "c4452fb1b63b7bb15c807748fe30bd76e641e718"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10 || ^11",
@@ -6251,13 +6251,14 @@
                 "php": ">=8.0"
             },
             "require-dev": {
-                "drupal/stage_file_proxy": "^2.0"
+                "drupal/stage_file_proxy": "^2.0 || ^3.0",
+                "drush/drush": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.3.3",
-                    "datestamp": "1716285826",
+                    "version": "2.3.4",
+                    "datestamp": "1738841344",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -20968,13 +20969,13 @@
     "stability-flags": {
         "pantheon-upstreams/upstream-configuration": 20,
         "upenn/penn403": 20,
+        "drupal/advagg": 15,
+        "drupal/conditional_fields": 15,
         "drupal/gcontent_moderation": 20,
         "drupal/viewsreference": 10,
         "drupal/group_permissions": 15,
-        "drupal/ultimate_cron": 15,
-        "drupal/conditional_fields": 15,
         "drupal/publication_date": 5,
-        "drupal/advagg": 15
+        "drupal/ultimate_cron": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,

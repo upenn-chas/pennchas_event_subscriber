@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
-    - field.field.node.article.field_image
+    - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
     - node.type.article
@@ -18,7 +18,6 @@ dependencies:
     - comment
     - layout_builder
     - layout_builder_restrictions
-    - responsive_image
     - text
     - user
 third_party_settings:
@@ -144,25 +143,6 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          e5716435-527a-4252-9371-987f2e38e9bf:
-            uuid: e5716435-527a-4252-9371-987f2e38e9bf
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:article:field_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: responsive_image
-                label: hidden
-                settings:
-                  responsive_image_style: ''
-                  image_link: ''
-                  image_loading:
-                    attribute: eager
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
           1934f7ee-94b2-4c66-881a-4404e923697f:
             uuid: 1934f7ee-94b2-4c66-881a-4404e923697f
             region: blb_region_col_1
@@ -270,17 +250,6 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
-  field_image:
-    type: responsive_image
-    label: hidden
-    settings:
-      responsive_image_style: ''
-      image_link: ''
-      image_loading:
-        attribute: eager
-    third_party_settings: {  }
-    weight: -1
-    region: content
   field_tags:
     type: entity_reference_entity_view
     label: hidden
@@ -297,5 +266,6 @@ content:
     region: content
 hidden:
   field_blocks_ref: true
+  field_media_image: true
   layout_builder__layout: true
   published_at: true

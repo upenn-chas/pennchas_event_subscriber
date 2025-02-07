@@ -1,0 +1,29 @@
+uuid: 22f9b541-822a-410a-8be5-e205645315ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_images
+    - media.type.image
+    - node.type.room
+id: node.room.field_media_images
+field_name: field_media_images
+entity_type: node
+bundle: room
+label: Photos
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

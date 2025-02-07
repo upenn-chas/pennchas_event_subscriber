@@ -31,6 +31,16 @@
  * @endcode
  */
 
+ $databases['default']['default'] = [
+    'database' => 'penchas_feb',
+    'username' => 'root',
+    'password' => 'Admin@1234',
+    'host' => 'localhost',
+    'port' => '3306',
+    'driver' => 'mysql',
+    'prefix' => '',
+    'collation' => 'utf8mb4_general_ci',
+  ];
 $config['recaptcha_v3.settings']['site_key'] = '6LeJHJ8qAAAAAApHFIjYa8lypKlaVbf1RxsgdzCj';
 $config['recaptcha_v3.settings']['secret_key'] = '6LeJHJ8qAAAAALyeRIub9_k4cmszXvAPOkV2Azc6';
 
@@ -39,3 +49,5 @@ $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'okta
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
 
+$config['system.logging']['error_level'] = 'verbose';
+$settings['hash_salt'] = '8f9a3427cd8d1237e9a745ce1738bc0ea9237f0a7b6b2d45d4c8b443404f02c7';

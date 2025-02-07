@@ -3,6 +3,7 @@
 namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\field\Entity\FieldConfig;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
 
@@ -10,13 +11,7 @@ class UserFormAlter
 {
     public function alter(array $form, FormStateInterface $formState)
     {
-        $options = [
-            'senior_staff' => t('SeniorStaff'),
-            'ra' => t('RA'),
-            'student_worker' => t('Student Worker'),
-            'any_resident' => t('Any Resident'),
-            'anyone_with_pennkey' => t('Anyone with a Pennkey'),
-        ];
+        $options = $this->getUmbrellaRoles();
         if($form['form_id']['#value'] == 'user_role_form'){
             $roleType = $form['id']['#default_value'];
         }else if($form['form_id']['#value'] == 'group_role_edit_form'){
@@ -43,14 +38,12 @@ class UserFormAlter
         \Drupal::state()->set('custom_group_role_config_' . $roleType, $selectedOptions);
     }
 
-    function role_form_submit_handler(&$form, FormStateInterface $formState)
+    protected function getUmbrellaRoles()
     {
-        $umberaRoles = $formState->getValue('umbera_roles');
-        $umberaRoles = array_filter($umberaRoles);
-        if ($umberaRoles) {
-            $role = $formState->getFormObject()->getEntity();
-            $role->setThirdPartySetting('pennchas_form_alter', 'umbera_roles', $umberaRoles);
-            $role->save();
+        $config = FieldConfig::loadByName('node', 'room', 'field_available_to');
+        if(!$config) {
+            return [];
         }
+        return $config->getSetting('allowed_values');
     }
 }

@@ -8,13 +8,11 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
-    - field.field.node.article.field_image
+    - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
-    - image.style.medium
     - node.type.article
   module:
-    - image
     - layout_builder
     - layout_builder_restrictions
     - text
@@ -55,17 +53,6 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: medium
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
-    region: content
   field_tags:
     type: entity_reference_label
     label: hidden
@@ -82,5 +69,6 @@ content:
 hidden:
   comment: true
   field_blocks_ref: true
+  field_media_image: true
   layout_builder__layout: true
   published_at: true

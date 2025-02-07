@@ -16,11 +16,11 @@ dependencies:
     - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
-    - field.field.node.room.field_images
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
     - field.field.node.room.field_link_3
     - field.field.node.room.field_maximum_occupancy
+    - field.field.node.room.field_media_images
     - field.field.node.room.field_qr_code
     - field.field.node.room.field_text_box
     - field.field.node.room.field_text_box_2
@@ -65,11 +65,11 @@ hidden:
   field_evaluation_notification: true
   field_group: true
   field_group_ref: true
-  field_images: true
   field_link_1: true
   field_link_2: true
   field_link_3: true
   field_maximum_occupancy: true
+  field_media_images: true
   field_qr_code: true
   field_text_box: true
   field_text_box_2: true

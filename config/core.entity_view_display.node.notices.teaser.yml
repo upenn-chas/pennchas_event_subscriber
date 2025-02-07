@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.notices.field_banner
     - field.field.node.notices.field_blocks_ref
     - field.field.node.notices.field_event_schedule
     - field.field.node.notices.field_file
@@ -12,11 +11,11 @@ dependencies:
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_is_campus_wide
     - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_media_image
     - field.field.node.notices.field_text_box
     - field.field.node.notices.layout_builder__layout
     - node.type.notices
   module:
-    - image
     - smart_date
     - user
 id: node.notices.teaser
@@ -28,17 +27,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: -20
-    region: content
-  field_banner:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 2
     region: content
   field_event_schedule:
     type: smartdate_default
@@ -75,6 +63,7 @@ hidden:
   field_groups: true
   field_is_campus_wide: true
   field_marketing_blurb: true
+  field_media_image: true
   field_text_box: true
   layout_builder__layout: true
   published_at: true
