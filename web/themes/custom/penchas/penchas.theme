@@ -148,15 +148,6 @@ function penchas_preprocess_node(&$variables) {
   if ($node instanceof NodeInterface) {
 
     $node = $variables['node'];
-
-    // Check if the node has a moderation state.
-    if ($node->hasField('moderation_state')) {
-      // Get the moderation state value.
-      $moderation_state = $node->get('moderation_state')->value;
-      // Add a variable based on moderation state.
-      $variables['node_moderation_state'] = $moderation_state;
-    }
-
     if ($node->bundle() == 'chas_event') {
       $calendar_link = base_path();
       if ($current_user->isAuthenticated() ) {
@@ -429,14 +420,16 @@ function penchas_preprocess_block(&$variables) {
     // Check if the node exists and is an instance of the Node class.
     if ($node && $node instanceof \Drupal\node\NodeInterface) {
       $node_title = $node->getTitle();
-      if($node->get('field_event_schedule')->getValue()){
-        $node_event_schedule = $node->get('field_event_schedule')->getValue();
-        $node_start_date = $node_event_schedule[0]['value'];
-        $node_end_date = $node_event_schedule[0]['end_value'];
+      if ($node->bundle() == 'reserve_room' || $node->bundle() == 'chas_event') {
+        if($node->get('field_event_schedule')->getValue()){
+          $node_event_schedule = $node->get('field_event_schedule')->getValue();
+          $node_start_date = $node_event_schedule[0]['value'];
+          $node_end_date = $node_event_schedule[0]['end_value'];
+        }
+        // Get the node URL.
+        $node_url = $node->toUrl()->toString();
+        $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text='.$node_title.'&dates='.date('YmjThms', $node_start_date).'/'.date('YmjThms', $node_end_date);
       }
-      // Get the node URL.
-      $node_url = $node->toUrl()->toString();
-      $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text='.$node_title.'&dates='.date('YmjThms', $node_start_date).'/'.date('YmjThms', $node_end_date);
     }
   }
 
