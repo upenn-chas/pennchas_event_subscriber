@@ -15,6 +15,7 @@ dependencies:
     - group
     - node
     - smart_date
+    - url_alteration
     - user
     - views_bootstrap
 id: my_reservations
@@ -2008,7 +2009,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: 'My Pending Reservations'
+      title: ''
       fields:
         title:
           id: title
@@ -2607,7 +2608,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: 'My Reservations'
+      title: ''
       fields:
         title:
           id: title

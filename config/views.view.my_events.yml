@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_event_schedule
     - field.storage.node.field_marketing_blurb
     - node.type.chas_event
+    - user.role.authenticated
     - workflows.workflow.editorial
   module:
     - content_moderation
@@ -1990,7 +1991,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: 'My Events'
+      title: ''
       fields:
         title:
           id: title
@@ -2528,9 +2529,10 @@ display:
           empty_zero: false
           hide_alter_empty: false
       access:
-        type: group_permission
+        type: role
         options:
-          group_permission: 'view group_node:chas_event entity'
+          role:
+            authenticated: authenticated
       filters:
         status:
           id: status
@@ -2778,11 +2780,10 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - route.group
         - url
         - url.query_args
-        - user.group_permissions
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_college_houses'
         - 'config:field.storage.node.field_marketing_blurb'
@@ -2793,7 +2794,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: 'My Pending Events'
+      title: ''
       fields:
         title:
           id: title

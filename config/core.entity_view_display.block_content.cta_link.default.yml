@@ -1,0 +1,29 @@
+uuid: 23945a0d-336e-4e6b-b2fd-beb3b9a70871
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_link
+    - field.field.block_content.cta_link.body
+    - field.field.block_content.cta_link.field_cta
+  module:
+    - link
+id: block_content.cta_link.default
+targetEntityType: block_content
+bundle: cta_link
+mode: default
+content:
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
