@@ -8,14 +8,12 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
-    - field.field.node.article.field_image
+    - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
-    - image.style.wide
     - node.type.article
   module:
     - comment
-    - image
     - layout_builder
     - layout_discovery
     - text
@@ -46,25 +44,6 @@ third_party_settings:
                   pager_id: 0
                 third_party_settings: {  }
             weight: 4
-            additional: {  }
-          f3f8f900-7d34-42a6-81b7-fe5a9480fe64:
-            uuid: f3f8f900-7d34-42a6-81b7-fe5a9480fe64
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: image
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: wide
-                  image_loading:
-                    attribute: eager
-                third_party_settings: {  }
-            weight: 6
             additional: {  }
           09be4390-b81f-43c0-8d69-531b5f42f51a:
             uuid: 09be4390-b81f-43c0-8d69-531b5f42f51a
@@ -156,6 +135,23 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 13
             additional: {  }
+          d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6:
+            uuid: d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_media_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 14
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
@@ -196,16 +192,14 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
-  field_image:
-    type: image
-    label: hidden
+  field_media_image:
+    type: entity_reference_entity_view
+    label: above
     settings:
-      image_link: ''
-      image_style: wide
-      image_loading:
-        attribute: eager
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    weight: -1
+    weight: 114
     region: content
   field_tags:
     type: entity_reference_label

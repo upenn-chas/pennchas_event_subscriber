@@ -1,17 +1,33 @@
-uuid: 985677a3-1594-4da5-8123-274ae02ba375
+uuid: 09318cef-f51f-493e-97b6-75d4da87a33a
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - taxonomy
+    - options
 id: node.field_available_to
 field_name: field_available_to
 entity_type: node
-type: entity_reference
+type: list_string
 settings:
-  target_type: taxonomy_term
-module: core
+  allowed_values:
+    -
+      value: senior_staff
+      label: 'Senior Staff'
+    -
+      value: ra
+      label: RA
+    -
+      value: student_worker
+      label: 'Student Worker'
+    -
+      value: any_resident
+      label: 'Any Resident'
+    -
+      value: anyone_with_pennkey
+      label: 'Anyone with a Pennkey'
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

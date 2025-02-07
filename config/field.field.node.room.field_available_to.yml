@@ -1,27 +1,21 @@
-uuid: d8f10e61-3395-404a-b80a-01c21b406f6e
+uuid: 4311f583-ad11-4924-b73b-c0f6c3e5efc1
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_available_to
     - node.type.room
+  module:
+    - options
 id: node.room.field_available_to
 field_name: field_available_to
 entity_type: node
 bundle: room
-label: 'Available To'
+label: "Available To\t"
 description: ''
 required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  handler: 'default:taxonomy_term'
-  handler_settings:
-    target_bundles: {  }
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
-field_type: entity_reference
+settings: {  }
+field_type: list_string

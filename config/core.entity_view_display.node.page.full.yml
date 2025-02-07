@@ -7,14 +7,12 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_blocks_ref
     - field.field.node.page.field_circle_color
-    - field.field.node.page.field_image
+    - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.layout_builder__layout
-    - image.style.wide
     - node.type.page
   module:
     - color_field
-    - image
     - layout_builder
     - layout_builder_restrictions
     - text
@@ -71,17 +69,6 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
-  field_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: wide
-      image_loading:
-        attribute: eager
-    third_party_settings: {  }
-    weight: -1
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -89,6 +76,7 @@ content:
     region: content
 hidden:
   field_blocks_ref: true
+  field_media_image: true
   field_menus: true
   layout_builder__layout: true
   published_at: true
