@@ -32,5 +32,12 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+$settings['config_sync_directory'] = '../config/';
+ini_set('memory_limit', '-1');
+$config['recaptcha_v3.settings']['site_key'] = '6LeJHJ8qAAAAAApHFIjYa8lypKlaVbf1RxsgdzCj';
+$config['recaptcha_v3.settings']['secret_key'] = '6LeJHJ8qAAAAALyeRIub9_k4cmszXvAPOkV2Azc6';
 
-ini_set('memory_limit', '1024M');
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = 'smtp-relay/collegehouses.upenn.edu';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'oktad;Kneb63GlovUthid';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
