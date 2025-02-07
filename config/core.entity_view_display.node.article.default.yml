@@ -119,22 +119,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 11
             additional: {  }
-          8d056adf-951f-45cc-af39-2139b36936c1:
-            uuid: 8d056adf-951f-45cc-af39-2139b36936c1
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_blocks_ref'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 13
-            additional: {  }
           d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6:
             uuid: d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6
             region: content

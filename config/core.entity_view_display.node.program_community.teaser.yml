@@ -5,15 +5,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.program_community.body
-    - field.field.node.program_community.field_banner
     - field.field.node.program_community.field_blocks_ref
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
+    - field.field.node.program_community.field_media_image
     - field.field.node.program_community.field_tags
     - field.field.node.program_community.layout_builder__layout
+    - image.style.media_library
     - node.type.program_community
   module:
-    - image
+    - media
     - text
     - user
 id: node.program_community.teaser
@@ -29,16 +30,16 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_banner:
-    type: image
+  field_media_image:
+    type: media_thumbnail
     label: hidden
     settings:
-      image_link: content
-      image_style: ''
+      image_link: ''
+      image_style: media_library
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
   field_tags:
     type: entity_reference_label
