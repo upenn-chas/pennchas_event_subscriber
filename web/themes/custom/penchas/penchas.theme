@@ -714,6 +714,7 @@ function penchas_preprocess_views_view(&$variables) {
       }
       $variables['current_group_label'] = $groupData->get('label')->value;
       $variables['current_group_circle_color'] = $groupData->get('field_circle_color')->value;
+      $variables['current_group_bg_color'] = $groupData->get('field_color')->value;
       $variables['simplified_menu_html'] = '<div class="internal-links">'.$simplified_menu_html.'</div>';
     }
   // }

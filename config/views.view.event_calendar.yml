@@ -1,6 +1,6 @@
 uuid: 87f19eda-bfcf-4614-aa9f-f99facccbaa4
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.field_event_schedule

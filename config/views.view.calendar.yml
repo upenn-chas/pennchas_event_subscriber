@@ -515,7 +515,7 @@ display:
         options:
           offset: 0
           display_reset: 0
-          use_previous_next: 0
+          use_previous_next: 1
           label_format: M
       exposed_form:
         type: bef
@@ -1012,6 +1012,13 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      pager:
+        type: calendar_week
+        options:
+          offset: 0
+          display_reset: 0
+          use_previous_next: 1
+          label_format: M
       arguments:
         field_short_name_value:
           id: field_short_name_value
@@ -1072,12 +1079,13 @@ display:
         type: fields
         options: {  }
       defaults:
+        pager: false
         style: false
         row: false
         arguments: false
       exposed_block: false
       display_extenders: {  }
-      path: group/%/weekly-calendar
+      path: group/%/week-calendar
     cache_metadata:
       max-age: -1
       contexts:
