@@ -1,0 +1,26 @@
+uuid: 2991f530-9e34-46fa-af64-f1d3edde9c9a
+langcode: en
+status: true
+dependencies: {  }
+name: node_chas_event
+label: 'node chas_event validation'
+entity_type: node
+bundle: chas_event
+field_validation_rules:
+  e10ae4bc-5a17-4369-80d4-b9d903c5a6e6:
+    id: unique_field_validation_rule
+    title: 'Unique Emails'
+    data:
+      scope: entity
+      published: false
+      per_user: false
+    weight: 1
+    uuid: e10ae4bc-5a17-4369-80d4-b9d903c5a6e6
+    field_name: field_collaborators
+    column: value
+    error_message: 'Collaborator(s) contains one or more duplicate emails.'
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
