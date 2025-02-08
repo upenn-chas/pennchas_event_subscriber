@@ -3,6 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
     - node.type.chas_event
     - node.type.notices
     - node.type.page
@@ -12,6 +16,7 @@ dependencies:
   module:
     - content_moderation
     - file
+    - media
     - node
     - penchas_custom_token
     - pennchas_form_alter
@@ -28,31 +33,48 @@ weight: -4
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access media overview'
   - 'access my events'
   - 'access my rerservations'
   - 'cancel smart date recur instances'
   - 'create chas_event content'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
   - 'create notices content'
   - 'create page content'
+  - 'create remote_video media'
+  - 'create video media'
   - 'delete any room content'
+  - 'delete media'
   - 'delete own chas_event content'
+  - 'delete own document media'
   - 'delete own files'
+  - 'delete own image media'
   - 'delete own notices content'
   - 'delete own page content'
+  - 'delete own remote_video media'
   - 'delete own reserve_room content'
   - 'delete own room content'
+  - 'delete own video media'
   - 'delete room revisions'
   - 'edit any room content'
   - 'edit own chas_event content'
+  - 'edit own document media'
+  - 'edit own image media'
   - 'edit own notices content'
   - 'edit own page content'
+  - 'edit own remote_video media'
   - 'edit own reserve_room content'
   - 'edit own room content'
+  - 'edit own video media'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
   - 'revert room revisions'
+  - 'update media'
   - 'use editorial transition create_new_draft'
   - 'view chas_event revisions'
   - 'view notices revisions'
   - 'view own unpublished content'
+  - 'view own unpublished media'
   - 'view room revisions'

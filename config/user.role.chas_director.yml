@@ -3,6 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
     - node.type.chas_event
     - node.type.notices
     - node.type.page
@@ -13,6 +18,7 @@ dependencies:
     - complete_webform_exporter
     - config
     - content_moderation
+    - media
     - node
     - penchas_custom_token
     - smart_date_recur
@@ -24,35 +30,64 @@ weight: -3
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access media overview'
   - 'access my events'
   - 'access my rerservations'
   - 'cancel smart date recur instances'
+  - 'create audio media'
   - 'create chas_event content'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
   - 'create notices content'
   - 'create page content'
+  - 'create remote_video media'
   - 'create reserve_room content'
+  - 'create video media'
   - 'delete all revisions'
+  - 'delete any audio media'
   - 'delete any chas_event content'
+  - 'delete any document media'
+  - 'delete any image media'
+  - 'delete any media'
   - 'delete any notices content'
+  - 'delete any remote_video media'
   - 'delete any room content'
+  - 'delete any video media'
   - 'delete chas_event revisions'
+  - 'delete media'
   - 'delete notices revisions'
+  - 'delete own audio media'
   - 'delete own chas_event content'
+  - 'delete own document media'
+  - 'delete own image media'
   - 'delete own notices content'
   - 'delete own page content'
+  - 'delete own remote_video media'
   - 'delete own reserve_room content'
   - 'delete own room content'
+  - 'delete own video media'
   - 'delete room revisions'
   - 'download any webform submission managed files'
+  - 'edit any audio media'
   - 'edit any chas_event content'
+  - 'edit any document media'
+  - 'edit any image media'
   - 'edit any notices content'
+  - 'edit any remote_video media'
   - 'edit any reserve_room content'
   - 'edit any room content'
+  - 'edit any video media'
+  - 'edit own audio media'
   - 'edit own chas_event content'
+  - 'edit own document media'
+  - 'edit own image media'
   - 'edit own notices content'
   - 'edit own page content'
+  - 'edit own remote_video media'
   - 'edit own reserve_room content'
   - 'edit own room content'
+  - 'edit own video media'
   - 'export configuration'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
@@ -60,18 +95,26 @@ permissions:
   - 'revert chas_event revisions'
   - 'revert notices revisions'
   - 'revert room revisions'
+  - 'update any media'
+  - 'update media'
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'
   - 'use editorial transition pending'
   - 'use editorial transition publish'
   - 'view all revisions'
+  - 'view any audio media revisions'
+  - 'view any document media revisions'
+  - 'view any image media revisions'
+  - 'view any remote_video media revisions'
   - 'view any unpublished content'
+  - 'view any video media revisions'
   - 'view any webform submission'
   - 'view chas_event revisions'
   - 'view chas_event revisions'
   - 'view latest version'
   - 'view notices revisions'
   - 'view own unpublished content'
+  - 'view own unpublished media'
   - 'view room revisions'
   - 'view webform submissions any node'
