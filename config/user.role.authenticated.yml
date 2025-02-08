@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.webform_default
+    - media.type.document
     - node.type.chas_event
     - node.type.reserve_room
     - node.type.room
@@ -32,6 +33,7 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
+  - 'create document media'
   - 'create reserve_room content'
   - 'delete any reserve_room content'
   - 'delete own files'

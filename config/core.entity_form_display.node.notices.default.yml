@@ -5,18 +5,17 @@ dependencies:
   config:
     - field.field.node.notices.field_blocks_ref
     - field.field.node.notices.field_event_schedule
-    - field.field.node.notices.field_file
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_is_campus_wide
     - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_media_file
     - field.field.node.notices.field_media_image
     - field.field.node.notices.field_text_box
     - field.field.node.notices.layout_builder__layout
     - node.type.notices
   module:
     - conditional_fields
-    - file
     - media_library
     - path
     - publication_date
@@ -63,32 +62,6 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
-  field_file:
-    type: file_generic
-    weight: 9
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings:
-      conditional_fields:
-        86eed513-d16a-42fc-852a-8d15c640e8e3:
-          entity_type: node
-          bundle: chas_event
-          dependee: field_intended_audience
-          settings:
-            state: visible
-            reset: true
-            condition: value
-            grouping: AND
-            values_set: 3
-            value: ''
-            values: "house_event\r\nfloor_event"
-            value_form:
-              -
-                value: house_event
-            effect: show
-            effect_options: {  }
-            selector: ''
   field_groups:
     type: options_buttons
     weight: 5
@@ -97,7 +70,7 @@ content:
     third_party_settings: {  }
   field_marketing_blurb:
     type: string_textarea
-    weight: 11
+    weight: 12
     region: content
     settings:
       rows: 5
@@ -122,9 +95,35 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
+  field_media_file:
+    type: media_library_widget
+    weight: 10
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      conditional_fields:
+        8ae45690-0cf7-4c66-86c2-e2b02ab1d922:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_intended_audience
+          settings:
+            state: visible
+            reset: true
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "house_event\r\nfloor_event"
+            value_form:
+              -
+                value: null
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_media_image:
     type: media_library_widget
-    weight: 1
+    weight: 8
     region: content
     settings:
       media_types: {  }
@@ -158,7 +157,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -171,7 +170,7 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -201,7 +200,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }

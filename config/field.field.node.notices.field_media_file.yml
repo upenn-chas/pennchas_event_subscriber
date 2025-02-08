@@ -1,0 +1,29 @@
+uuid: 6a80e48d-1f7b-48ff-8595-31b4b918fe12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_file
+    - media.type.document
+    - node.type.notices
+id: node.notices.field_media_file
+field_name: field_media_file
+entity_type: node
+bundle: notices
+label: Attachment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
