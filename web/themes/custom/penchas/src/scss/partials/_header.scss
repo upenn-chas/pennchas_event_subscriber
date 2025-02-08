@@ -127,7 +127,11 @@ header {
               text-decoration: none;
               text-transform: capitalize;
               margin-right: 30px;
-             
+             &:hover{
+              background: #ffea3f;
+              color: #011f5b;
+              border-color: #ffea3f;
+             }
             }
           }
         }

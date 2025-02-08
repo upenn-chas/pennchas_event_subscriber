@@ -152,6 +152,9 @@
           margin-bottom: 0;
           .info-column {
             padding-bottom: 0;
+            p{
+              margin-bottom: 20px;
+            }
         }
       }
     }
@@ -177,10 +180,11 @@
     li {
       font-size: 24px;
       line-height: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       @include media-query ('mobile'){
         font-size: 20px;
         line-height: 24px;
+        margin-bottom: 20px;
       }
       &::marker {
           color: $lightBlue;

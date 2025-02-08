@@ -180,61 +180,27 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
-          51c62a09-33d0-4e30-b012-115f8952e3ec:
-            uuid: 51c62a09-33d0-4e30-b012-115f8952e3ec
-            region: blb_region_col_1
+          ed924cbe-b002-49ed-88fc-9dddcccec00b:
+            uuid: ed924cbe-b002-49ed-88fc-9dddcccec00b
+            region: blb_region_col_2
             configuration:
-              id: 'field_block:node:notices:field_file'
-              label: Attachment
+              id: 'field_block:node:notices:field_media_image'
+              label: Image
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: file_link_class
-                label: inline
+                type: media_thumbnail
+                label: hidden
                 settings:
-                  use_description_as_link_text: true
-                  class: link-attachment
-                  show_filesize: false
-                  show_filetype: false
-                  use_label_as_fallback: false
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
                 third_party_settings: {  }
-            weight: 5
-            additional: {  }
-          887a3f2a-f43d-41a3-860a-6f8935458c40:
-            uuid: 887a3f2a-f43d-41a3-860a-6f8935458c40
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:notices:field_blocks_ref'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          2e8229f2-bf98-40e6-a8c0-16bb5495da7e:
-            uuid: 2e8229f2-bf98-40e6-a8c0-16bb5495da7e
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:notices:field_media_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            weight: 7
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

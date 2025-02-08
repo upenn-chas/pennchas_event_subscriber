@@ -44,51 +44,50 @@
       <h2{{ title_attributes }}>{{ label }}</h2>
     {% endif %}
     {{ title_suffix }}
-    {# {{dump(content.field_attach_add_to_google_calen.0['#markup'])}}
-    {% if content.field_attach_add_to_google_calen.0['#markup'] == 'On' %}
-      
-    {% else %} #}
-      {% if content.field_cta %}
+    {% if content.field_attach_add_to_google_calen %}
+      {% if content.field_attach_add_to_google_calen[0]['#markup'] %}
+        <a class="blue-tpt" target="_blank" href="{{add_to_calendar_link}}">Add to Calendar</a>
+      {% endif %}
+    {% else %}
         {% if content.field_cta.0['#title'] == content.field_cta.0['#url'].toString() %}
           <input type="text" value="{{content.field_cta.0['#url'].toString()}}" id="linkInput" readonly style="display:none">
           <a class="blue-circel" href="#" linktocopy="{{content.field_cta.0['#url'].toString()}}" onclick="copyLink()"><svg width="27" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"></path></svg></a>
+          <script>
+              function copyLink() {
+                  var currentURL = window.location.href;
 
-    <script>
-        function copyLink() {
-            var currentURL = window.location.href;
+                  // Create a temporary input element to hold the URL
+                  var tempInput = document.createElement("input");
+                  tempInput.value = currentURL;
+                  document.body.appendChild(tempInput);
 
-            // Create a temporary input element to hold the URL
-            var tempInput = document.createElement("input");
-            tempInput.value = currentURL;
-            document.body.appendChild(tempInput);
+                  // Select the input text
+                  tempInput.select();
+                  tempInput.setSelectionRange(0, 99999);  // For mobile devices
 
-            // Select the input text
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999);  // For mobile devices
+                  // Try using Clipboard API first (ensure the environment supports it)
+                  if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                      navigator.clipboard.writeText(currentURL).then(function() {
+                          alert("Link copied: " + currentURL);
+                      }).catch(function(error) {
+                          alert("Error copying the link with Clipboard API: " + error);
+                      });
+                  } else {
+                      // Fallback to document.execCommand (for older browsers)
+                      try {
+                          document.execCommand("copy");
+                          alert("Link: " + currentURL);
+                      } catch (err) {
+                          alert("Unable to copy the link: " + err);
+                      }
+                  }
 
-            // Try using Clipboard API first (ensure the environment supports it)
-            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-                navigator.clipboard.writeText(currentURL).then(function() {
-                    alert("Link copied: " + currentURL);
-                }).catch(function(error) {
-                    alert("Error copying the link with Clipboard API: " + error);
-                });
-            } else {
-                // Fallback to document.execCommand (for older browsers)
-                try {
-                    document.execCommand("copy");
-                    alert("Link: " + currentURL);
-                } catch (err) {
-                    alert("Unable to copy the link: " + err);
-                }
-            }
-
-            // Remove the temporary input element
-            document.body.removeChild(tempInput);
-        }
-    </script>
-        {% else %}
-          <a class="blue-tpt" target="_blank" href="{{content.field_cta.0['#url'].toString()}}">Add to Calendar</a>
+                  // Remove the temporary input element
+                  document.body.removeChild(tempInput);
+              }
+          </script>
+        
+          
         {% endif %}
     {% endif %}
   {% endblock %}

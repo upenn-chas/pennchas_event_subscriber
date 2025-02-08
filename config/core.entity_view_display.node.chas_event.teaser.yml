@@ -41,6 +41,7 @@ dependencies:
     - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
   module:
+    - media
     - options
     - smart_date
     - user
@@ -77,12 +78,23 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   field_long_text:
     type: basic_string
     label: above
     settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_media_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: content
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 2
     region: content
@@ -117,7 +129,6 @@ hidden:
   field_long_text_2: true
   field_marketing_blurb: true
   field_media_file: true
-  field_media_image: true
   field_moderation_finished_at: true
   field_participants: true
   field_program_communities: true

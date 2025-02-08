@@ -5114,6 +5114,59 @@
             }
         },
         {
+            "name": "drupal/menu_item_group_role_access",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/menu_item_group_role_access.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menu_item_group_role_access-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "cf3d2c4f1118c31982e8bc1f1748a680af9c99fd"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10",
+                "drupal/group": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1703593626",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Pankaj_LNweb",
+                    "homepage": "https://www.drupal.org/user/3600604"
+                },
+                {
+                    "name": "Shikha_LNweb",
+                    "homepage": "https://www.drupal.org/user/2930533"
+                },
+                {
+                    "name": "sunil_lnwebworks",
+                    "homepage": "https://www.drupal.org/user/3726661"
+                }
+            ],
+            "description": "Custom module for managing menu item access by group and role.",
+            "homepage": "https://www.drupal.org/project/menu_item_group_role_access",
+            "support": {
+                "source": "https://git.drupalcode.org/project/menu_item_group_role_access"
+            }
+        },
+        {
             "name": "drupal/menu_item_role_access",
             "version": "2.4.0",
             "source": {
@@ -20914,20 +20967,20 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "pantheon-upstreams/upstream-configuration": 20,
+        "upenn/penn403": 20,
         "drupal/advagg": 15,
         "drupal/conditional_fields": 15,
         "drupal/gcontent_moderation": 20,
+        "drupal/viewsreference": 10,
         "drupal/group_permissions": 15,
         "drupal/publication_date": 5,
-        "drupal/ultimate_cron": 15,
-        "drupal/viewsreference": 10,
-        "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20
+        "drupal/ultimate_cron": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },

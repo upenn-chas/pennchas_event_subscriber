@@ -33,7 +33,6 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - link
-    - options
     - text
     - user
 third_party_settings:
@@ -578,7 +577,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_address:
     type: string
@@ -594,23 +593,8 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 6
     region: content
-  field_available_to:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 33
-    region: blb_region_col_1
-  field_blocks_ref:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 31
-    region: blb_region_col_1
   field_chas_tech_managed_space:
     type: boolean
     label: above
@@ -619,7 +603,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 5
     region: content
   field_circle_color:
     type: color_field_formatter_text
@@ -628,7 +612,7 @@ content:
       format: hex
       opacity: true
     third_party_settings: {  }
-    weight: 30
+    weight: 15
     region: content
   field_duration:
     type: duration_human_display
@@ -637,25 +621,7 @@ content:
       text_length: full
       separator: space
     third_party_settings: {  }
-    weight: 28
-    region: content
-  field_evaluation_notification:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 29
-    region: content
-  field_group:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 15
+    weight: 14
     region: content
   field_group_ref:
     type: string
@@ -663,7 +629,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 26
+    weight: 11
     region: content
   field_link_1:
     type: link
@@ -675,7 +641,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 17
+    weight: 8
     region: content
   field_link_2:
     type: link
@@ -687,7 +653,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 18
+    weight: 9
     region: content
   field_link_3:
     type: link
@@ -699,7 +665,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 19
+    weight: 10
     region: content
   field_maximum_occupancy:
     type: number_integer
@@ -711,20 +677,19 @@ content:
     weight: 4
     region: content
   field_media_images:
-    type: entity_reference_entity_view
+    type: entity_reference_label
     label: above
     settings:
-      view_mode: default
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 32
-    region: blb_region_col_1
+    weight: 1
+    region: content
   field_qr_code:
     type: endroid_qr_code_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 13
+    weight: 7
     region: content
   field_text_box:
     type: string
@@ -732,7 +697,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 26
+    weight: 12
     region: content
   field_text_box_2:
     type: string
@@ -740,7 +705,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 27
+    weight: 13
     region: content
   links:
     settings: {  }
@@ -750,6 +715,10 @@ content:
 hidden:
   content_moderation_control: true
   feeds_item: true
+  field_available_to: true
+  field_blocks_ref: true
+  field_evaluation_notification: true
+  field_group: true
   field_image: true
   field_room_gps_pin: true
   field_support_contact: true

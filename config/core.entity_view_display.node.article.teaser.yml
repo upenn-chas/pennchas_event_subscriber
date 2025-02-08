@@ -11,10 +11,12 @@ dependencies:
     - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
+    - image.style.media_library
     - node.type.article
   module:
     - layout_builder
     - layout_builder_restrictions
+    - media
     - text
     - user
 third_party_settings:
@@ -43,7 +45,7 @@ content:
     settings:
       trim_length: 140
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_chas_news:
     type: entity_reference_label
@@ -52,6 +54,17 @@ content:
       link: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_media_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: media_library
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
     region: content
   field_tags:
     type: entity_reference_label
@@ -69,6 +82,5 @@ content:
 hidden:
   comment: true
   field_blocks_ref: true
-  field_media_image: true
   layout_builder__layout: true
   published_at: true

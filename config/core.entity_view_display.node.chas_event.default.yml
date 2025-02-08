@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
     - field.field.node.chas_event.field_actual_program_outcomes
@@ -230,54 +229,27 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
-          3810e36a-64b0-48f7-aca1-df6f727a088b:
-            uuid: 3810e36a-64b0-48f7-aca1-df6f727a088b
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'Add to Calendar'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 381
-              block_revision_id: 416
-              block_serialized: null
-            weight: 4
-            additional: {  }
-          d831f109-fe7c-461d-812c-07c6d2550857:
-            uuid: d831f109-fe7c-461d-812c-07c6d2550857
-            region: blb_region_col_1
+          4707199f-6a30-4980-8b2e-a119a59824ad:
+            uuid: 4707199f-6a30-4980-8b2e-a119a59824ad
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:chas_event:field_media_image'
+              label: 'Highlight Image'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: entity_reference_entity_view
-                label: above
+                type: media_thumbnail
+                label: hidden
                 settings:
-                  view_mode: default
-                  link: false
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
                 third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          15b8a60a-433f-4f86-b14d-325967855015:
-            uuid: 15b8a60a-433f-4f86-b14d-325967855015
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_media_file'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            weight: 7
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

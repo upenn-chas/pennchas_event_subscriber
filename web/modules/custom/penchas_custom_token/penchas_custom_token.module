@@ -84,7 +84,9 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
         $result = $query->execute()->fetchCol();
 
         $total_count = count($result);
-        $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
+        if($total_count != '0'){
+          $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
+        }
         break;
 
       case 'penchas_myevent':
@@ -97,7 +99,9 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
         $result = $query->execute()->fetchCol();
 
         $total_count = count($result);
-        $replacements[$original] = $total_count . ' events pending.';
+        if($total_count != '0'){
+          $replacements[$original] = $total_count . ' events pending.';
+        }
         break;
 
       case 'penchas_my_reservation':
@@ -110,7 +114,9 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
         $result = $query->execute()->fetchCol();
 
         $total_count = count($result);
-        $replacements[$original] = $total_count . ' pending moderation.';
+        if($total_count != '0'){
+          $replacements[$original] = $total_count . ' pending moderation.';
+        }
         break;
 
       case 'penchas_global':

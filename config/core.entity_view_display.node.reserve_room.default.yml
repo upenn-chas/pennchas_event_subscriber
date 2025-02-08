@@ -69,8 +69,8 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          1bcc4ce1-5fe4-4ba8-a3fa-eaa6b2639399:
-            uuid: 1bcc4ce1-5fe4-4ba8-a3fa-eaa6b2639399
+          3dba24f7-233a-4d59-943c-5f1463a1d42e:
+            uuid: 3dba24f7-233a-4d59-943c-5f1463a1d42e
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
@@ -79,26 +79,10 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 358
-              block_revision_id: 391
+              block_id: 628
+              block_revision_id: 670
               block_serialized: null
             weight: 0
-            additional: {  }
-          d69eaa0f-bed6-44f9-b7b5-68e29ff8bf4e:
-            uuid: d69eaa0f-bed6-44f9-b7b5-68e29ff8bf4e
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_blocks_ref'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -137,21 +121,6 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          63efbceb-407f-4f2c-9312-c1a59c5a57bc:
-            uuid: 63efbceb-407f-4f2c-9312-c1a59c5a57bc
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: heading
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 359
-              block_revision_id: 392
-              block_serialized: null
-            weight: 0
-            additional: {  }
           c42a1b59-5ac3-43db-b9dc-bf946f5e76b5:
             uuid: c42a1b59-5ac3-43db-b9dc-bf946f5e76b5
             region: blb_region_col_1
@@ -169,7 +138,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           1d8db9de-e120-4c69-b2b7-2c085b9dea51:
             uuid: 1d8db9de-e120-4c69-b2b7-2c085b9dea51
@@ -208,7 +177,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           e430d4a9-629e-4fd7-a39a-96f61349e5b1:
             uuid: e430d4a9-629e-4fd7-a39a-96f61349e5b1
@@ -229,7 +198,7 @@ third_party_settings:
                   class: ''
                   tag: span
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           b9fc7a24-562c-4c79-a58f-7cd6ee78363a:
             uuid: b9fc7a24-562c-4c79-a58f-7cd6ee78363a
@@ -247,7 +216,7 @@ third_party_settings:
                 label: inline
                 settings: {  }
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           03e43586-4c39-41f0-873b-360085e36b16:
             uuid: 03e43586-4c39-41f0-873b-360085e36b16
@@ -265,7 +234,7 @@ third_party_settings:
                 label: inline
                 settings: {  }
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           12db4b5f-33c1-441c-ae32-b14ab434df37:
             uuid: 12db4b5f-33c1-441c-ae32-b14ab434df37
@@ -284,7 +253,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 6
+            weight: 7
             additional: {  }
           e695983e-0b8d-42b4-a991-365d52bd6484:
             uuid: e695983e-0b8d-42b4-a991-365d52bd6484
@@ -304,7 +273,22 @@ third_party_settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-            weight: 7
+            weight: 8
+            additional: {  }
+          5ce4f840-0bb5-420e-8472-cbef49ec8801:
+            uuid: 5ce4f840-0bb5-420e-8472-cbef49ec8801
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Your room reservation has been APPROVED with the following details:'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 633
+              block_revision_id: 675
+              block_serialized: null
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -343,8 +327,8 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          3dd42582-7183-4ce7-b40b-a6baaf2a5624:
-            uuid: 3dd42582-7183-4ce7-b40b-a6baaf2a5624
+          b502573a-cc72-4ad0-9d5d-8b5000eb9f67:
+            uuid: b502573a-cc72-4ad0-9d5d-8b5000eb9f67
             region: blb_region_col_1
             configuration:
               id: 'inline_block:link'
@@ -353,8 +337,8 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 360
-              block_revision_id: 393
+              block_id: 634
+              block_revision_id: 676
               block_serialized: null
             weight: 0
             additional: {  }

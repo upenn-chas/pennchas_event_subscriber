@@ -1,0 +1,23 @@
+uuid: 1f3761ab-cee5-4492-9c88-72d2db419dce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_link
+    - field.storage.block_content.field_alignment
+  module:
+    - options
+id: block_content.cta_link.field_alignment
+field_name: field_alignment
+entity_type: block_content
+bundle: cta_link
+label: Alignment
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: center
+default_value_callback: ''
+settings: {  }
+field_type: list_string
