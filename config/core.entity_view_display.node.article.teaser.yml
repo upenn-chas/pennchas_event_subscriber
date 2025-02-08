@@ -45,7 +45,7 @@ content:
     settings:
       trim_length: 140
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_chas_news:
     type: entity_reference_label

@@ -33,12 +33,26 @@
       }
     }    
   }
-
+  .row{
+    justify-content: space-between;
+  }
   .col-12 {
     position: relative;
     z-index: 1;
     @include media-query('tablet') {
       z-index: inherit;
+    }
+    &:nth-child(1){
+      @media (min-width:1300px) {
+        max-width: 578px;
+        width: 100%;
+      }
+    }
+    &:nth-child(2){
+      @media (min-width:1300px) {
+      max-width: 720px;
+      width: 100%;
+      }
     }
   }
 
@@ -173,14 +187,7 @@
   }
 }
 
-.path-frontpage {
-  .banner-info {
-    padding-right: 82px;
-    @include media-query('medium') {
-      padding-right: 0;
-    }
-  }
-}
+
 .mac-os {
   .hero-banner{
      h1{
