@@ -134,9 +134,9 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
   if ($entity instanceof NodeInterface) {
+    $entity->setTitle(trim($entity->getTitle()));
     if ($entity->isNew()) {
       (new NodePreSaveHook())->handle($entity); //(this will work for Admin. But needs to fix corrections)
-      // (new NodePreInsertHook())->handle($entity);
     } else {
       (new NodePreUpdateHook())->handle($entity);
     }
@@ -323,7 +323,8 @@ function _get_group_rooms(int $groupId)
 // }
 
 
-function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node) {
+function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
+{
   // Initialize variables
   $variables = [];
   $connection = Database::getConnection();
