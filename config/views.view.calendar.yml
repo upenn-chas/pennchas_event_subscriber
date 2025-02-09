@@ -879,7 +879,7 @@ display:
             field_event_schedule: '0'
           calendar_display_rows: false
           calendar_weekday_start: false
-          calendar_timestamp: 'this month'
+          calendar_timestamp: Today
           calendar_title: '[date:custom:F Y]'
           calendar_row_title: ''
       row:
@@ -1079,10 +1079,12 @@ display:
         type: fields
         options: {  }
       defaults:
+        use_ajax: false
         pager: false
         style: false
         row: false
         arguments: false
+      use_ajax: false
       exposed_block: false
       display_extenders: {  }
       path: group/%/week-calendar

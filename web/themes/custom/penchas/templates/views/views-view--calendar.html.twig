@@ -40,7 +40,7 @@
   ]
 %}
 {% include directory ~ '/templates/calendar-header.html.twig' with {'short_name': short_name} %}
-<section class="calender-page">
+<section class="calender-page space">
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
     <div class="container">
       {{ title_prefix }}
@@ -55,6 +55,7 @@
               {{ header }}
             </div>
           {% endif %}
+          
           <div class="select-outer">
               <select class="redirect-dropdown" onchange="redirectToLink()">
                 <option value="{{base_path}}group/{{short_name}}/calendar_view">Events</option>
@@ -67,8 +68,9 @@
               {{exclude_notices_filter|t}}
             </div>
           {% endif %}
-          {# <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': short_name , plugin_id: 'group_node:chas_events'}) }}">Add Event</a>
-          <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': short_name , plugin_id: 'group_node:notices'}) }}">Add Notices</a> #}
+          {% if add_content_ctas %}
+            {{add_content_ctas|t}}
+          {% endif %}
         </div>
         <div class="calender-right">
          {% if pager %}
@@ -76,8 +78,8 @@
           {% endif %}
           <div class="select-outer">
               <select class="redirect-dropdown" onchange="redirectToLink()">
-                <option data-class="monthly"  value="{{base_path}}group/{{short_name}}/calendar?c_type=monthly">Month</option>
-                <option data-class="weekly" value="{{base_path}}group/{{short_name}}/weekly-calendar?c_type=weekly">Week</option>
+                <option data-class="month"  value="{{base_path}}group/{{short_name}}/calendar?c_type=month">Month</option>
+                <option data-class="week" value="{{base_path}}group/{{short_name}}/week-calendar?c_type=week">Week</option>
               </select>
             </div>
           {% if attachment_before %}
@@ -95,8 +97,6 @@
               {{ empty }}
             </div>
           {% endif %}
-
-          
           {% if attachment_after %}
             <div class="attachment attachment-after">
               {{ attachment_after }}

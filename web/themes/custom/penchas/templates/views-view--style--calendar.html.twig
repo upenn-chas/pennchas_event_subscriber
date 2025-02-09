@@ -15,83 +15,88 @@
   ]
 %}
 {% include directory ~ '/templates/calendar-header.html.twig' with {'short_name': short_name}  %}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if title %}
-    {{ title }}
-  {% endif %}
-  {{ title_suffix }}
-    <div class="row">
-      <div class="col-md-3">
-        <div class="view-header">
-          {{ header }}
-          
-          <div>
+<section class="calender-page space">
+  <div{{ attributes.addClass(classes) }}>
+    <div class="container">
+      {{ title_prefix }}
+      {% if title %}
+        <h5>{{ title }}</h5>
+      {% endif %}
+      {{ title_suffix }}
+      <div class="row">
+        <div class="calender-left">
+          {% if header %}
+            <div class="view-header">
+              {{ header }}
+            </div>
+          {% endif %}
+          <div class="select-outer">
             <select class="redirect-dropdown" onchange="redirectToLink()">
               <option value="{{base_path}}group/{{short_name}}/room-reservation-calendar">Reservation</option>
               <option value="{{base_path}}group/{{short_name}}/calendar">Events</option>
             </select>
           </div>
-
-          {# <a class="btn btn-teritory medium" href="{{ path('entity.group_relationship.create_form', {'group': short_name , plugin_id: 'group_node:reserve_room'}) }}">Reserve a Room</a> #}
+          {% if add_content_ctas %}
+            {{add_content_ctas|t}}
+          {% endif %}
         </div>
-      </div>
-      <div class="col-md-9">
-        <div>
-        {% if exposed %}
-          <div class="view-filters">
+        <div class="calender-right">
+          {% if exposed %}
+            <div class="view-filters">
+              {{ exposed }}
+            </div>
+          {% endif %}
+
+          {% if pager %}
+            {{ pager }}
+          {% endif %}
+
+            <div class="select-outer">
+              <select class="redirect-dropdown" onchange="redirectToLink()">
+                <option data-class="month" value="{{base_path}}group/{{short_name}}/room-reservation-calendar?c_type=month">Month</option>
+                <option data-class="week" value="{{base_path}}group/{{short_name}}/week-room-reservation-calendar?c_type=week">Week</option>
+              </select>
+            </div>
           
-            {{ exposed }}
-          </div>
-        {% endif %}
-          <div>
-            <select class="redirect-dropdown" onchange="redirectToLink()">
-              <option data-class="monthly" value="{{base_path}}group/{{short_name}}/room-reservation-calendar?c_type=monthly">Monthly</option>
-              <option data-class="weekly" value="{{base_path}}group/{{short_name}}/weekly-room-reservation-calendar?c_type=weekly">Weekly</option>
-            </select>
-          </div>
+          {% if attachment_before %}
+            <div class="attachment attachment-before">
+              {{ attachment_before }}
+            </div>
+          {% endif %}
+
+          
+
+          {% if rows %}
+            <div class="view-content">
+              {{ rows }}
+            </div>
+          {% elseif empty %}
+            <div class="view-empty">
+              {{ empty }}
+            </div>
+          {% endif %}
+
+          {% if attachment_after %}
+            <div class="attachment attachment-after">
+              {{ attachment_after }}
+            </div>
+          {% endif %}
+          {% if more %}
+            {{ more }}
+          {% endif %}
+          {% if footer %}
+            <div class="view-footer">
+              {{ footer }}
+            </div>
+          {% endif %}
+          {% if feed_icons %}
+            <div class="feed-icons">
+              {{ feed_icons }}
+            </div>
+          {% endif %}
         </div>
-        
-        {% if attachment_before %}
-          <div class="attachment attachment-before">
-            {{ attachment_before }}
-          </div>
-        {% endif %}
-
-        {% if pager %}
-          {{ pager }}
-        {% endif %}
-
-        {% if rows %}
-          <div class="view-content">
-            {{ rows }}
-          </div>
-        {% elseif empty %}
-          <div class="view-empty">
-            {{ empty }}
-          </div>
-        {% endif %}
-
-        {% if attachment_after %}
-          <div class="attachment attachment-after">
-            {{ attachment_after }}
-          </div>
-        {% endif %}
-        {% if more %}
-          {{ more }}
-        {% endif %}
-        {% if footer %}
-          <div class="view-footer">
-            {{ footer }}
-          </div>
-        {% endif %}
-        {% if feed_icons %}
-          <div class="feed-icons">
-            {{ feed_icons }}
-          </div>
-        {% endif %}
       </div>
     </div>
-    
   
-</div>
+  </div>
+</section>

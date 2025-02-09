@@ -13,7 +13,6 @@ dependencies:
   module:
     - layout_builder
     - layout_builder_restrictions
-    - layout_discovery
     - text
     - user
 third_party_settings:
@@ -22,67 +21,10 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components:
-          1dd4c3eb-6180-48d9-9cef-3a221bfa4fb5:
-            uuid: 1dd4c3eb-6180-48d9-9cef-3a221bfa4fb5
-            region: content
-            configuration:
-              id: 'extra_field_block:node:house_landing_page:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 0
-            additional: {  }
-          0174aa9e-a674-49eb-8dc4-2f052f1b8e41:
-            uuid: 0174aa9e-a674-49eb-8dc4-2f052f1b8e41
-            region: content
-            configuration:
-              id: 'field_block:node:house_landing_page:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          59cbf20a-2a8e-4fd1-94e9-adfbc82a1db1:
-            uuid: 59cbf20a-2a8e-4fd1-94e9-adfbc82a1db1
-            region: content
-            configuration:
-              id: 'field_block:node:house_landing_page:field_select_house'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          ba2f73f2-3175-4b5a-bc6e-42f4bd06cf71:
-            uuid: ba2f73f2-3175-4b5a-bc6e-42f4bd06cf71
-            region: content
-            configuration:
-              id: 'field_block:node:house_landing_page:field_menus'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
+        components: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
