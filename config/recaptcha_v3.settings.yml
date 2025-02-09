@@ -2,7 +2,7 @@ _core:
   default_config_hash: 6xvuojdlZ8-8Q7yJyRldPaE0UK_YijOlDo6HvURmW_E
 hide_badge: false
 verify_hostname: true
-default_challenge: ''
-error_message: 'Anti-bot verification failed.'
+default_challenge: captcha/Math
+error_message: 'Captcha verification failed. You may be flagged as a bot. Please refresh the page and try again.'
 cacheable: false
 library_use_recaptcha_net: false
