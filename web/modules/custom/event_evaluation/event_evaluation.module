@@ -14,7 +14,7 @@ const EVENT_EVALUTION_VIEW_DISPLAY_ID = 'event_evaluate_page_view';
 function event_evaluation_views_pre_view(ViewExecutable $view, $display_id, &$args)
 {
     if ($view->id() === EVENT_EVALUTION_VIEW_ID && $display_id === EVENT_EVALUTION_VIEW_DISPLAY_ID) {
-        if(!count($args)) {
+        if (!count($args)) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
         $node_id = $args[0];
@@ -52,7 +52,7 @@ function event_evaluation_entity_operation_alter(array &$operations, EntityInter
 
         if (isUserAuthorized($entity) && canEvaluateEvent($entity)) {
             $operations['evaluate'] = [
-                'title' => 'Evaluate',
+                'title' => t('Evaluate'),
                 'weight' => 10,
                 'url' => \Drupal\Core\Url::fromRoute('event_evaluation_operation_option', [
                     'node' => $entity->id(),
@@ -67,10 +67,10 @@ function event_evaluation_entity_operation_alter(array &$operations, EntityInter
  * 
  * Handle the evaluation cron job
  */
- function event_evaluation_cron() 
- {
+function event_evaluation_cron()
+{
     \Drupal::service('event_evaluation.evaluation_email_cron')->notifyEndEventsForEvaluation();
- }
+}
 
 /**
  * Check is user is authroized for event evalution.

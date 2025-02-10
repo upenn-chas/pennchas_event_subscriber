@@ -1,10 +1,9 @@
-uuid: 1e9e53d4-7cdd-48fc-925e-d7b9571322d6
+uuid: f6e2aafd-145b-41c5-8bb1-36607e0143f5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.house_landing_page.field_select_house
-    - node.type.house_landing_page
+    - node.type.page
   module:
     - feeds_log
     - node
@@ -25,9 +24,9 @@ third_party_settings:
       skipped: skipped
       failed: failed
     source: true
-label: 'Blank pages creation'
-id: blank_pages_creation
-description: ''
+label: 'Basic Pages'
+id: basic_pages
+description: 'Import Basic pages'
 help: ''
 import_period: -1
 fetcher: upload
@@ -42,7 +41,7 @@ parser_configuration:
 processor: 'entity:node'
 processor_configuration:
   values:
-    type: house_landing_page
+    type: page
   langcode: en
   insert_new: 1
   update_existing: 0
@@ -56,14 +55,9 @@ processor_configuration:
   owner_feed_author: true
   owner_id: 0
 custom_sources:
-  house:
-    value: House
-    label: House
-    machine_name: house
-    type: csv
   title:
-    value: Title
-    label: Title
+    value: TITLE
+    label: TITLE
     machine_name: title
     type: csv
   url:
@@ -77,15 +71,6 @@ custom_sources:
     machine_name: url_auto
     type: csv
 mappings:
-  -
-    target: field_select_house
-    map:
-      target_id: house
-    settings:
-      language: ''
-      reference_by: label
-      autocreate: 1
-      autocreate_bundle: house1
   -
     target: title
     map:

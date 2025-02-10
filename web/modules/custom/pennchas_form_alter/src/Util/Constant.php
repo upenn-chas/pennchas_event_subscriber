@@ -10,6 +10,7 @@ final class Constant
     const NODE_EVENT = 'chas_event';
     const NODE_ROOM = 'room';
     const NODE_NOTICES = 'notices';
+    const NODE_HOUSE_PAGE = 'house_landing_page';
 
     const MOD_STATUS_PUBLISHED = 'published';
     const MOD_STATUS_DRAFT = 'draft';

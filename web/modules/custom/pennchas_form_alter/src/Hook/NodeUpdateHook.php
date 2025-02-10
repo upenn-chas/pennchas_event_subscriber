@@ -18,6 +18,8 @@ class NodeUpdateHook
         $nodeType = $node->getType();
         if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
+        } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
+            $this->handleHousePage($node);
         }
     }
 
@@ -43,6 +45,28 @@ class NodeUpdateHook
                         $rel->delete();
                     });
                 }
+            }
+        }
+    }
+
+    protected function handleHousePage(Node $node)
+    {
+        $oldHouseId = (int) $node->original->get('field_select_house')->getString();
+        $houseId = (int) $node->get('field_select_house')->getString();
+        if ($oldHouseId !== $houseId) {
+            $oldHouse = Group::load($oldHouseId);
+            $oldRelationships = $oldHouse->getRelationshipsByEntity($node);
+            if ($oldRelationships) {
+                array_walk($oldRelationships, function ($rel) {
+                    $rel->delete();
+                });
+            }
+        }
+        $house = Group::load($houseId);
+        if ($house) {
+            $existingRelationship = $house->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
     }
