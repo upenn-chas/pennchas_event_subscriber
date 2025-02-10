@@ -87,11 +87,17 @@ function penchas_preprocess_node_edit_form(&$variables) {
     if (strpos($path_parts[2], 'group_node') !== false) {
       $bundle_type = str_replace('group_node:', '', $path_parts[2]);
       
-      if($bundle_type == 'reserve_room' || $bundle_type == 'room' ){
+      if($bundle_type == 'reserve_room' || $bundle_type == 'room' || $bundle_type == 'chas_event' || $bundle_type == 'notices' || $bundle_type == 'article'){
         if($bundle_type == 'reserve_room'){
           $label = "Room Reservations";
         }else if($bundle_type == 'room'){
           $label = "Room";
+        }else if($bundle_type == 'chas_event'){
+          $label = "CHAS Event";
+        }else if($bundle_type == 'notices'){
+          $label = "Notices";
+        }else if($bundle_type == 'article'){
+          $label = "Article";
         }
         $group_id = $path_parts[1];
         if($group_id){

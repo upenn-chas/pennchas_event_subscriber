@@ -42,14 +42,14 @@
 {% include directory ~ '/templates/calendar-header.html.twig' with {'short_name': short_name} %}
 <section class="calender-page space">
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
-    <div class="container">
-      {{ title_prefix }}
-      {% if title %}
-        <h5>{{ title }}</h5>
-      {% endif %}
-      {{ title_suffix }}
+    <div class="container calendar-view">
       <div class="row">
         <div class="calender-left">
+          {{ title_prefix }}
+            {% if title %}
+              <h5>{{ title }}</h5>
+            {% endif %}
+          {{ title_suffix }}
           {% if header %}
             <div class="view-header">
               {{ header }}

@@ -26,6 +26,7 @@ permissions:
   - 'update any group_node:notices entity'
   - 'update any group_node:reserve_room entity'
   - 'update any group_node:room entity'
+  - 'update own group_node:chas_event entity'
   - 'update own group_node:notices entity'
   - 'update own group_node:reserve_room entity'
   - 'update own group_node:room entity'
