@@ -105,28 +105,56 @@
     //     jQuery('#edit-type-exclude-notices').prop('checked', false);
     //   }
       // When the General Events/Notice checkbox is clicked
-    jQuery('#edit-type-exclude-notices').on('change', function() {
-      alert('asdkjhasd');
-      // jQuery('#edit-type-all').prop('checked', false);
-      // jQuery('#edit-type-all').prop('checked', false);
-      // jQuery('#edit-type-chas-event').trigger('change');
-      // jQuery('#edit-type-notices').trigger('change');
       
-      // Check if the checkbox is checked
-      // if (jQuery(this).prop('checked')) {
-      //   // If checked, check the CHAS Event radio button
-        
-      //   jQuery('#edit-type-all').prop('checked', false);
+        // Function to handle checkbox state and enable/disable radio buttons
+        function toggleRadioOptions() {
+          var checkbox = jQuery('#edit-type-exclude-notices'); // The checkbox element
+          var secondRadio = jQuery('#edit-type-chas-event');   // Second radio button (value: chas_event)
+          var thirdRadio = jQuery('#edit-type-notices');       // Third radio button (value: notices)
+          console.log('asdjhasdasdjasdkjh');
   
-      //   // Trigger change event for CHAS Event radio button
-      // } else {
-      //   // If unchecked, uncheck the CHAS Event radio button
-      //   jQuery('#edit-type-all').prop('checked', true);
-      //   jQuery('#edit-type-chas-event').prop('checked', false);
-      //   // jQuery('#edit-type-exclude-notices').prop('checked', false);
-      //   // Trigger change event for All radio button
-      // }
-    });
+          if (checkbox.prop('checked')) {
+              // If checkbox is checked, enable the second radio option and disable the third one
+              secondRadio.prop('disabled', false);  // Enable second option
+              thirdRadio.prop('disabled', true);    // Disable third option
+          } else {
+              // If checkbox is unchecked, disable the second radio option and enable the third one
+              secondRadio.prop('disabled', true);   // Disable second option
+              thirdRadio.prop('disabled', false);   // Enable third option
+          }
+      }
+  
+      // Call toggleRadioOptions on checkbox change
+      jQuery('#edit-type-exclude-notices').change(function() {
+        console.log('asdjhasd');
+          toggleRadioOptions();
+      });
+  
+      // Initial call to set the state based on the checkbox's current state
+      toggleRadioOptions();
+  
+      // jQuery('#edit-type-exclude-notices').on('change', function() {
+    //   alert('asdkjhasd');
+    //   // jQuery('#edit-type-all').prop('checked', false);
+    //   // jQuery('#edit-type-all').prop('checked', false);
+    //   // jQuery('#edit-type-chas-event').trigger('change');
+    //   // jQuery('#edit-type-notices').trigger('change');
+      
+    //   // Check if the checkbox is checked
+    //   // if (jQuery(this).prop('checked')) {
+    //   //   // If checked, check the CHAS Event radio button
+        
+    //   //   jQuery('#edit-type-all').prop('checked', false);
+  
+    //   //   // Trigger change event for CHAS Event radio button
+    //   // } else {
+    //   //   // If unchecked, uncheck the CHAS Event radio button
+    //   //   jQuery('#edit-type-all').prop('checked', true);
+    //   //   jQuery('#edit-type-chas-event').prop('checked', false);
+    //   //   // jQuery('#edit-type-exclude-notices').prop('checked', false);
+    //   //   // Trigger change event for All radio button
+    //   // }
+    // });
     
     // Check if the ol element with the class node_search-results is empty
     if (jQuery('.node_search-results').children().length === 0) {
