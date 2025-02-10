@@ -12,6 +12,12 @@
     setInterval(function () {
       const urlParams = new URLSearchParams(window.location.search);
       const c_type = urlParams.get('c_type');
+      var currentUrl = window.location.href;
+      var searchString = 'calendar?type=notices'; // Replace this with the string you're looking for in the URL
+
+      if (currentUrl.includes(searchString)) {
+          jQuery('#edit-type-exclude-notices').prop('checked', true);
+      }
       if(c_type){
         jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
       }
@@ -108,26 +114,25 @@
       
         // Function to handle checkbox state and enable/disable radio buttons
         function toggleRadioOptions() {
-          var checkbox = jQuery('#edit-type-exclude-notices'); // The checkbox element
-          var secondRadio = jQuery('#edit-type-chas-event');   // Second radio button (value: chas_event)
-          var thirdRadio = jQuery('#edit-type-notices');       // Third radio button (value: notices)
-          console.log('asdjhasdasdjasdkjh');
-  
+          var checkbox = jQuery('#edit-type-exclude-notices');
+          var field_is_campus_wide_value = jQuery('#edit-field-is-campus-wide-value').val();
+          var field_intended_audience_value = jQuery('#edit-field-intended-audience-value').val();
+          var currentUrlWithoutParams = window.location.origin + window.location.pathname;
           if (checkbox.prop('checked')) {
-              // If checkbox is checked, enable the second radio option and disable the third one
-              secondRadio.prop('disabled', false);  // Enable second option
-              thirdRadio.prop('disabled', true);    // Disable third option
+            var type = jQuery('#edit-type-notices').val();
           } else {
-              // If checkbox is unchecked, disable the second radio option and enable the third one
-              secondRadio.prop('disabled', true);   // Disable second option
-              thirdRadio.prop('disabled', false);   // Enable third option
+            var type = jQuery('#edit-type-chas-event').val();
           }
-      }
-  
-      // Call toggleRadioOptions on checkbox change
-      jQuery('#edit-type-exclude-notices').change(function() {
-        console.log('asdjhasd');
-          toggleRadioOptions();
+          var url = currentUrlWithoutParams+'?type='+type+'&field_is_campus_wide_value='+field_is_campus_wide_value+'&field_intended_audience_value='+field_intended_audience_value;
+          console.log('url: ', url);
+          return url;
+        }
+        
+        // Call toggleRadioOptions on checkbox change
+        jQuery('#edit-type-exclude-notices').change(function() {
+          var url = toggleRadioOptions();
+          window.location.href = url;
+          
       });
   
       // Initial call to set the state based on the checkbox's current state
