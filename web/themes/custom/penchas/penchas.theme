@@ -21,6 +21,10 @@ use Drupal\group\Entity\GroupMembership;
 use Drupal\group\Entity\GroupRole;
 use Drupal\group\GroupManager;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group\GroupMembershipInterface;
+use Drupal\group\Access\GroupPermissionHandlerInterface;
+
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -57,15 +61,33 @@ function process_submenu($submenu) {
   return $submenu_items;
 }
 
+/**
+ * Implements hook_preprocess_HOOK() for container templates.
+ */
+function penchas_preprocess_container(array &$variables) {
+  // Add a custom class to the container.
+  $current_path = \Drupal::service('path.current')->getPath();
+  $path_parts = explode('/', trim($current_path, '/'));
+  if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
+    if (strpos($path_parts[2], 'calendar') !== false) {
+      $variables['attributes']['class'] = 'full-container';
+    }
+  }
+  
+}
+
+
 function penchas_preprocess_node_edit_form(&$variables) {
   $variables['base_path'] = base_path();
   $group_banner_html = '<br/>';
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
+  
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
-    if (strpos($path_parts[4], 'group_node') !== false) {
-      $bundle_type = str_replace('group_node:', '', $path_parts[4]);
-      if($bundle_type == 'reserve_room' || $bundle_type == 'room'){
+    if (strpos($path_parts[2], 'group_node') !== false) {
+      $bundle_type = str_replace('group_node:', '', $path_parts[2]);
+      
+      if($bundle_type == 'reserve_room' || $bundle_type == 'room' ){
         if($bundle_type == 'reserve_room'){
           $label = "Room Reservations";
         }else if($bundle_type == 'room'){
@@ -99,6 +121,7 @@ function penchas_preprocess_node_edit_form(&$variables) {
             }
           }
           $field_heading = $groupData->get('field_heading')->value;
+          
           $group_label = $groupData->get('label')->value;
           $group_banner_html = '<section class="hero-banner without-image" style="background-color: #'.$field_bg_color.';">'
                                 .'<style>.hero-banner .container:before {background: #'.$field_circle_color.'}</style>'
@@ -603,8 +626,6 @@ function penchas_preprocess_block(&$variables) {
 function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
   $themeHandler = \Drupal::service('theme_handler');
   $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
-
-  // dd($javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']);
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['group'] = -100;
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['type'] = 'file';
@@ -628,19 +649,113 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
 }
 
 /**
+ * Helper function to fetch group ID based on the short name.
+ */
+function get_group_id_by_short_name($short_name_value) {
+  $connection = Database::getConnection();
+  $query = $connection->select('group__field_short_name', 'gs')
+    ->fields('gs', ['entity_id'])
+    ->condition('gs.field_short_name_value', $short_name_value);
+  $result = $query->execute()->fetchObject();
+  return $result ? $result->entity_id : NULL;
+}
+
+/**
+ * Helper function to generate a URL for creating a content type in a group.
+ */
+function generate_create_form_url($group_id, $plugin_id) {
+  return Url::fromRoute('entity.group_relationship.create_form', [
+    'group' => $group_id,
+    'plugin_id' => $plugin_id,
+  ])->toString();
+}
+
+// function check_user_permission_in_group($group_id, AccountInterface $user, $permission) {
+//   // Load the group entity.
+//   $group = Group::load($group_id);
+
+//   // If the group does not exist, return FALSE.
+//   if (!$group) {
+//     return FALSE;
+//   }
+
+//   // Get the GroupPermissionHandler service.
+//   $group_permission_handler = \Drupal::service('group.permissions');
+
+//   // Check if the user has the specified permission for this group.
+//   $has_permission = $group_permission_handler->getPermissions($group, $user, $permission);
+//   // dd($has_permission);
+//   // Return whether the user has the permission.
+//   return $has_permission;
+// }
+
+/**
  * Implements hook_preprocess_views_view().
  */
 function penchas_preprocess_views_view(&$variables) {
   
+  $user = \Drupal::currentUser();
+  // Example usage: Check if the current user can create "article" content in the group.
+  // $group_id = 1;  // Replace with actual group ID.
+  // $permission = 'create group_node:notices entity';  // Replace with the specific permission.
+  
+  // if (check_user_permission_in_group($group_id, $user, $permission)) {
+  //   dd("User has the permission: $permission in the group.");
+  // } else {
+  //   dd("User does NOT have the permission: $permission in the group.");
+  // }
   // $route_match = \Drupal::routeMatch();
   // $groupData = $route_match->getParameter('group');
   // $variables['current_group_id'] = $groupData;
-  if ($variables['id'] === 'event_calendar') {
+
+  // Check if the current view ID is either 'calendar' or 'room_reservation_calendar'.
+  if (in_array($variables['id'], ['calendar', 'room_reservation_calendar'])) {
     $variables['group_id'] = $variables['view']->argument['field_short_name_value']->argument;
+
+    if (isset($variables['group_id'])) {
+      // Fetch group ID from the short name
+      $group_ID = get_group_id_by_short_name($variables['group_id']);
+      
+      // If group ID is found, proceed
+      $ctas = [];
+      if ($group_ID) {
+        // Load the group entity
+        $group = Group::load($group_ID);
+        $variables['add_content_ctas'] = '<br/>';
+
+        if($variables['id'] === 'room_reservation_calendar'){
+
+          // Handle permission and CTA for creating 'reserve_room'
+          if ($group && $group->hasPermission('create group_node:reserve_room entity', $user, $group_ID)) {
+            $url = generate_create_form_url($group_ID, 'group_node:reserve_room');
+            $ctas[] = '<a class="btn btn-teritory medium" href="' . $url . '">Reserve a Room</a>';
+          }
+        }
+        // Check permissions and generate CTAs based on the group and permissions
+        if($variables['id'] === 'calendar'){
+
+          // Handle permission and CTA for creating 'chas_event'
+          if ($group && $group->hasPermission('create group_node:chas_event entity', $user, $group_ID)) {
+            $url = generate_create_form_url($group_ID, 'group_node:chas_event');
+            $ctas[] = '<a class="btn btn-teritory medium" href="' . $url . '">Add Event</a>';
+          }
+          
+          // Handle permission and CTA for creating 'notices'
+          if ($group && $group->hasPermission('create group_node:notices entity', $user, $group_ID)) {
+            $url = generate_create_form_url($group_ID, 'group_node:notices');
+            $ctas[] = '<a class="btn btn-teritory medium" href="' . $url . '">Add Notice</a>';
+          }
+        }
+        // Combine all CTAs
+        $variables['add_content_ctas'] .= implode('', $ctas);
+      }
+    }
   }
 
   $view = $variables['view'];
   $id = $view->storage->id();
+
+
   if($id == 'our_team_list'){
     $exposed_filter = $view->exposed_data;
     if (isset($exposed_filter['field_user_categories_target_id'])) {
@@ -674,7 +789,7 @@ function penchas_preprocess_views_view(&$variables) {
   
   $variables['base_path'] = base_path();
   $variables['get_involved'] = 'Get Involved';
-  $variables['house_calendar'] = 'House Calendar';
+  $variables['house_calendar'] = 'Calendar';
   $variables['house_programs'] = 'House Programs';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';

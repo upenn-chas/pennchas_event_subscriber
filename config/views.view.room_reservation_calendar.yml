@@ -349,7 +349,7 @@ display:
             'group_node:program_community': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
-      use_ajax: true
+      use_ajax: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -469,7 +469,7 @@ display:
         options:
           offset: 0
           display_reset: 0
-          use_previous_next: 0
+          use_previous_next: 1
           label_format: '\w\e\e\k W'
       arguments:
         field_short_name_value:
@@ -569,7 +569,7 @@ display:
           plugin_id: standard
           required: false
       display_extenders: {  }
-      path: group/%/weekly-room-reservation-calendar
+      path: group/%/week-room-reservation-calendar
     cache_metadata:
       max-age: -1
       contexts:
