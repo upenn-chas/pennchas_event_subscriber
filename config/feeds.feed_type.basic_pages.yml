@@ -1,0 +1,87 @@
+uuid: f6e2aafd-145b-41c5-8bb1-36607e0143f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.page
+  module:
+    - feeds_log
+    - node
+third_party_settings:
+  feeds_log:
+    status: true
+    operations:
+      created: created
+      updated: updated
+      deleted: deleted
+      skipped: skipped
+      failed: failed
+      cleaned: cleaned
+    items:
+      created: created
+      updated: updated
+      deleted: deleted
+      skipped: skipped
+      failed: failed
+    source: true
+label: 'Basic Pages'
+id: basic_pages
+description: 'Import Basic pages'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: page
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+custom_sources:
+  title:
+    value: TITLE
+    label: TITLE
+    machine_name: title
+    type: csv
+  url:
+    value: URL
+    label: URL
+    machine_name: url
+    type: csv
+  url_auto:
+    value: 'URL Auto'
+    label: 'URL Auto'
+    machine_name: url_auto
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: path
+    map:
+      alias: url
+      pathauto: url_auto
+    settings:
+      language: null

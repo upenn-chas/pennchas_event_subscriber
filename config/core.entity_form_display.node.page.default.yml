@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.layout_builder__layout
     - node.type.page
+    - workflows.workflow.non_moderation_flow
   module:
     - color_field
     - conditional_fields
@@ -147,5 +149,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  feeds_item: true
   field_blocks_ref: true
   layout_builder__layout: true

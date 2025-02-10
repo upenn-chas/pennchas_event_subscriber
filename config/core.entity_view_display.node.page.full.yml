@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.page.body
+    - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_media_image
@@ -75,6 +76,7 @@ content:
     weight: 101
     region: content
 hidden:
+  feeds_item: true
   field_blocks_ref: true
   field_media_image: true
   field_menus: true
