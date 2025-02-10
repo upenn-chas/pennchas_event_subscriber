@@ -21,6 +21,8 @@ class NodeInsertHook
             $this->handleNotice($node);
         } else if ($nodeType === Constant::NODE_ROOM) {
             $this->handleRoom($node);
+        } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
+            $this->handleHousePage($node);
         }
     }
 
@@ -90,5 +92,17 @@ class NodeInsertHook
         $node->set('field_qr_code', $node->toUrl('canonical', ['absolute' => true])->toString());
         $node->setNewRevision(false);
         $node->save();
+    }
+
+    protected function handleHousePage(Node $node)
+    {
+        $houseId = (int) $node->get('field_select_house')->getString();
+        $house = Group::load($houseId);
+        if($house) {
+            $existingRelationship = $house->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
     }
 }

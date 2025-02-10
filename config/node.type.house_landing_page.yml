@@ -8,7 +8,7 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'House landing page'
+name: 'House Page'
 type: house_landing_page
 description: 'About pages of Houses'
 help: null

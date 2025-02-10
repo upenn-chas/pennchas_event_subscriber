@@ -5,7 +5,11 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.webform_default
+    - media.type.audio
     - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
     - node.type.chas_event
     - node.type.reserve_room
     - node.type.room
@@ -33,19 +37,34 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
+  - 'create audio media'
   - 'create document media'
+  - 'create image media'
+  - 'create remote_video media'
   - 'create reserve_room content'
+  - 'create video media'
   - 'delete any reserve_room content'
+  - 'delete media'
+  - 'delete own document media'
   - 'delete own files'
+  - 'delete own image media'
+  - 'delete own remote_video media'
   - 'delete own reserve_room content'
+  - 'delete own video media'
   - 'edit any reserve_room content'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'edit own remote_video media'
   - 'edit own reserve_room content'
+  - 'edit own video media'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'update media'
   - 'use text format basic_html'
   - 'use text format webform_default'
   - 'view chas_event revisions'
   - 'view media'
+  - 'view own unpublished media'
   - 'view room revisions'
   - 'view user email addresses'

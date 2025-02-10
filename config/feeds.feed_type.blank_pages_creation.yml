@@ -30,13 +30,10 @@ id: blank_pages_creation
 description: ''
 help: ''
 import_period: -1
-fetcher: http
+fetcher: upload
 fetcher_configuration:
-  auto_detect_feeds: false
-  use_pubsubhubbub: false
-  always_download: false
-  fallback_hub: ''
-  request_timeout: 30
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
 parser: csv
 parser_configuration:
   delimiter: ','
@@ -56,13 +53,28 @@ processor_configuration:
   authorize: true
   revision: false
   expire: -1
-  owner_feed_author: false
+  owner_feed_author: true
   owner_id: 0
 custom_sources:
   house:
     value: House
     label: House
     machine_name: house
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  url:
+    value: URL
+    label: URL
+    machine_name: url
+    type: csv
+  url_auto:
+    value: 'URL Auto'
+    label: 'URL Auto'
+    machine_name: url_auto
     type: csv
 mappings:
   -
@@ -74,3 +86,17 @@ mappings:
       reference_by: label
       autocreate: 1
       autocreate_bundle: house1
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: path
+    map:
+      alias: url
+      pathauto: url_auto
+    settings:
+      language: null

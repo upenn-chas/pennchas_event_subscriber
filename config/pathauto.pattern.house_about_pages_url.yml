@@ -5,14 +5,14 @@ dependencies:
   module:
     - node
 id: house_about_pages_url
-label: 'House About pages URL'
+label: 'House pages URL'
 type: 'canonical_entities:node'
 pattern: '[node:field_select_house:entity:field_short_name]/[node:title]'
 selection_criteria:
-  c11e421b-5fd1-4836-b27a-c3d755dd0cd8:
+  6ccc027c-efce-4217-aadd-f26f9d3a14b8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: c11e421b-5fd1-4836-b27a-c3d755dd0cd8
+    uuid: 6ccc027c-efce-4217-aadd-f26f9d3a14b8
     context_mapping:
       node: node
     bundles:

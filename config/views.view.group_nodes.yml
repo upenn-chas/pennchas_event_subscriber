@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - node.type.chas_event
+    - node.type.house_landing_page
     - node.type.notices
     - node.type.page
     - node.type.program_community
@@ -13,6 +14,7 @@ dependencies:
     - gnode
     - group
     - node
+    - url_alteration
 _core:
   default_config_hash: 0bibzgCqmSgspCrEA2qTxfywBYHKOs3E6hju9O0acTw
 id: group_nodes
@@ -1101,7 +1103,12 @@ display:
           group_relation_plugins: {  }
       group_by: true
       header: {  }
-      footer: {  }
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          plugin_id: result
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -1184,6 +1191,7 @@ display:
           value:
             page: page
             chas_event: chas_event
+            house_landing_page: house_landing_page
             notices: notices
             program_community: program_community
             reserve_room: reserve_room
@@ -1232,6 +1240,18 @@ display:
       defaults:
         filters: false
         filter_groups: false
+        footer: false
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: 'Displaying @start - @end of @total'
       display_extenders: {  }
       path: group/%group/nodes
       menu:

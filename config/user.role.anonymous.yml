@@ -10,7 +10,6 @@ dependencies:
     - contact
     - filter
     - group
-    - media
     - node
     - search
     - system
@@ -28,5 +27,4 @@ permissions:
   - 'search content'
   - 'use text format restricted_html'
   - 'view chas_event revisions'
-  - 'view media'
   - 'view user email addresses'
