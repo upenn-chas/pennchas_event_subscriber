@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
-    - node.type.chas_event
   module:
     - comment
     - contact
     - filter
     - group
-    - node
     - search
     - system
 _core:
@@ -26,5 +24,4 @@ permissions:
   - 'access site-wide contact form'
   - 'search content'
   - 'use text format restricted_html'
-  - 'view chas_event revisions'
   - 'view user email addresses'

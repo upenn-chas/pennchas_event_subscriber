@@ -15,8 +15,8 @@ dependencies:
     - rest
     - serialization
     - url_alteration
-    - user
     - verf
+    - view_alteration
     - views_bootstrap
     - views_data_export
 id: contents_delete_report
@@ -525,9 +525,8 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -766,7 +765,7 @@ display:
           row_class: ''
           default_row_class: true
           override: 1
-          sticky: 0
+          sticky: 1
           caption: ''
           summary: ''
           description: ''
@@ -860,7 +859,7 @@ display:
             'group_node:room': '0'
             'group_node:webform': '0'
       use_ajax: true
-      group_by: false
+      group_by: true
       header:
         display_link:
           id: display_link
@@ -883,7 +882,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
@@ -927,7 +925,6 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
@@ -989,7 +986,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'

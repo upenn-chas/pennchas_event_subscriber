@@ -13,7 +13,7 @@ dependencies:
     - node
     - options
     - smart_date
-    - user
+    - view_alteration
     - views_bootstrap
     - webform
     - webform_views
@@ -439,9 +439,8 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -613,7 +612,6 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_event_priority'
         - 'config:field.storage.node.field_event_schedule'
@@ -983,7 +981,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -1432,7 +1429,6 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_event_priority'
         - 'config:field.storage.node.field_event_schedule'

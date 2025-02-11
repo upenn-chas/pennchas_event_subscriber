@@ -4,16 +4,18 @@ status: true
 dependencies:
   config:
     - group.type.house1
+    - user.role.chas_technology
 id: house1-chas_technology
 label: 'CHAS Technology'
 weight: 3
 admin: false
-scope: individual
-global_role: null
+scope: outsider
+global_role: chas_technology
 group_type: house1
 permissions:
   - 'access content overview'
   - 'access group_node overview'
+  - 'access reports'
   - 'create group_media:document entity'
   - 'create group_media:image entity'
   - 'create group_media:remote_video entity'
@@ -52,9 +54,12 @@ permissions:
   - 'view group_media:remote_video entity'
   - 'view group_media:video entity'
   - 'view group_node:chas_event entity'
+  - 'view group_node:house_landing_page entity'
   - 'view group_node:notices entity'
   - 'view group_node:page entity'
+  - 'view group_node:reserve_room entity'
   - 'view group_node:room entity'
+  - 'view latest version'
   - 'view own unpublished group_media:document entity'
   - 'view own unpublished group_media:image entity'
   - 'view own unpublished group_media:remote_video entity'
@@ -64,4 +69,6 @@ permissions:
   - 'view own unpublished group_node:page entity'
   - 'view own unpublished group_node:reserve_room entity'
   - 'view own unpublished group_node:room entity'
+  - 'view unpublished group_node:chas_event entity'
+  - 'view unpublished group_node:reserve_room entity'
   - 'view unpublished group_node:room entity'

@@ -15,8 +15,8 @@ dependencies:
     - node
     - rest
     - serialization
-    - user
     - verf
+    - view_alteration
     - views_bootstrap
     - views_data_export
 id: room_reservation_reports
@@ -628,9 +628,8 @@ display:
               secondary_open: false
               reset_button_always_show: false
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -1053,7 +1052,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
@@ -1100,7 +1098,6 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
@@ -1125,7 +1122,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'

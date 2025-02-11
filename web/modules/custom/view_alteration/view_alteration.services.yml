@@ -1,0 +1,7 @@
+services:
+  # Report Access handler.
+  view_alteraion.report_access_handler:
+    class: \Drupal\view_alteration\Access\ReportAccessCheck
+    arguments: ['@pennchas_common.access_check']
+    tags:
+      - { name: access_check, applies_to: _report_access }

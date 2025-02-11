@@ -1,0 +1,6 @@
+services:
+  pennchas_common.access_check:
+    class: \Drupal\common_utils\Checker\AccessCheck
+    arguments: ['@current_user']
+  pennchas_common.option_group:
+    class: \Drupal\common_utils\Option\GroupOption

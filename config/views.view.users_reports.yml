@@ -14,6 +14,7 @@ dependencies:
     - url_alteration
     - user
     - verf
+    - view_alteration
     - views_bootstrap
     - views_data_export
 id: users_reports
@@ -753,9 +754,8 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: perm
-        options:
-          perm: 'access user profiles'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -1061,7 +1061,7 @@ display:
           plugin_id: group_relationship_to_entity_reverse
           required: false
           group_relation_plugins:
-            group_membership: '0'
+            group_membership: group_membership
       use_ajax: true
       header:
         display_link:
@@ -1084,7 +1084,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
       tags:
         - 'config:field.storage.group_relationship.group_roles'
         - 'config:field.storage.user.field_full_name'
@@ -1128,7 +1127,6 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
-        - user.permissions
       tags:
         - 'config:field.storage.group_relationship.group_roles'
         - 'config:field.storage.user.field_full_name'
@@ -1149,7 +1147,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
       tags:
         - 'config:field.storage.group_relationship.group_roles'
         - 'config:field.storage.user.field_full_name'

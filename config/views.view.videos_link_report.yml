@@ -16,8 +16,8 @@ dependencies:
     - rest
     - serialization
     - url_alteration
-    - user
     - verf
+    - view_alteration
     - views_bootstrap
     - views_data_export
 id: videos_link_report
@@ -242,8 +242,8 @@ display:
           label: 'Video file'
           exclude: true
           alter:
-            alter_text: false
-            text: '{{ field_media_video_file__target_id }}'
+            alter_text: true
+            text: "{{ url('<front>')|render|trim('/', 'right') ~ field_media_video_file }}"
             make_link: false
             path: ''
             absolute: false
@@ -813,9 +813,8 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: perm
-        options:
-          perm: 'view media'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -1244,7 +1243,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'
@@ -1288,7 +1286,6 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
-        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'
@@ -1507,8 +1504,8 @@ display:
           label: 'Video file'
           exclude: true
           alter:
-            alter_text: false
-            text: '{{ field_media_video_file__target_id }}'
+            alter_text: true
+            text: "{{ url('<front>')|render|trim('/', 'right') ~ field_media_video_file }}"
             make_link: false
             path: ''
             absolute: false
@@ -1633,7 +1630,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '{{ field_media_video_file ? : field_media_oembed_video }}'
+            text: "{% set video_link = field_media_video_file ? : field_media_oembed_video %}\r\n<a href=\"{{ video_link }}\" target=\"_blank\">{{ video_link }}</a>"
             make_link: false
             path: ''
             absolute: false
@@ -1955,7 +1952,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'

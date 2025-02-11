@@ -40,6 +40,7 @@ permissions:
   - 'create notices content'
   - 'create page content'
   - 'create remote_video media'
+  - 'create reserve_room content'
   - 'create video media'
   - 'delete media'
   - 'delete own chas_event content'
@@ -64,3 +65,4 @@ permissions:
   - 'view notices revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view reserve_room revisions'

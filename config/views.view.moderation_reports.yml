@@ -17,8 +17,8 @@ dependencies:
     - node
     - rest
     - serialization
-    - user
     - verf
+    - view_alteration
     - views_bootstrap
     - views_data_export
 id: moderation_reports
@@ -689,9 +689,8 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: report_access
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -996,7 +995,7 @@ display:
           row_class: ''
           default_row_class: true
           override: 1
-          sticky: 0
+          sticky: 1
           caption: ''
           summary: ''
           description: ''
@@ -1115,7 +1114,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
@@ -1167,7 +1165,6 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'
@@ -1202,7 +1199,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_groups'
         - 'config:field.storage.node.field_last_moderated_by'

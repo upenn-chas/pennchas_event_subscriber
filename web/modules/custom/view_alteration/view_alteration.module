@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Config\Entity\Query\Query;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
 
@@ -44,5 +46,31 @@ function view_alteration_views_data_alter(array &$data)
                 'id' => 'custom_roles_filter',
             ],
         ];
+    }
+}
+
+function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
+{
+    $viewId = $view->id();
+    if (
+        $viewId === 'moderation_reports'
+        || $viewId === 'rooms_reservation_moderation_reports'
+        || $viewId === 'contents_change_report'
+        || $viewId === 'contents_delete_report'
+        || $viewId === 'events_evaluation_report'
+        || $viewId === 'room_reservation_reports'
+        || $viewId === 'users_reports'
+        || $viewId === 'videos_link_report'
+    ) {
+        $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
+        if ($groups) {
+            if ($viewId === 'users_reports') {
+                $query->addWhere(0, 'group_relationship_field_data_users_field_data.gid', array_keys($groups), 'IN');
+            } else if ( $viewId === 'videos_link_report') {
+                $query->addWhere(0, 'group_relationship_field_data_media_field_data.gid', array_keys($groups), 'IN');
+            } else {
+                $query->addWhere(0, 'gcfd.gid', array_keys($groups), 'IN');
+            } 
+        }
     }
 }
