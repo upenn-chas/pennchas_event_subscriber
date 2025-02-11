@@ -241,7 +241,6 @@ function get_group_label($group_id) {
   return $gm_result ? $gm_result->label : NULL;
 }
 
-
 function penchas_preprocess_html(&$variables) {
   
   /* Node Meta tag updates  */
@@ -433,10 +432,6 @@ function penchas_preprocess_html(&$variables) {
   /* SAML resposne testing ends */
 
 }
-
-
-
-
 
 function penchas_preprocess_block(&$variables) {
 
