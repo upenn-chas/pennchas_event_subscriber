@@ -732,3 +732,30 @@ label {
   }
 }
 }
+.js-form-item  {
+  small.description{
+  font-size: 14px;
+  color: #011f5c !important;
+  }
+}
+.form-select{
+border: 1px solid $primaryColor;
+height: 50px;
+border-radius: 10px;
+padding: 0 30px 0 20px;
+font-size: 18px;
+color: #4E638C;
+font-family: $teritoryFont;
+@include media-query ('mobile') {
+  font-size: 16px;
+}
+&::placeholder {
+  color: #4E638C;
+  opacity: 1;
+}
+&:focus {
+  box-shadow: none;
+  border: 1px solid $primaryColor;
+  outline: none;
+}
+}
