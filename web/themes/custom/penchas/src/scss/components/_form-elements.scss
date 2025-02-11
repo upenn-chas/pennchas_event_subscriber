@@ -345,6 +345,8 @@ label {
 .node-chas-event-form, 
 .node-reserve-room-form, 
 .node-room-form, 
+.node-notices-form,
+.node-article-form,
 .comment-comment-form{ 
   margin-bottom: 30px;
   .row:has(.col-md-8) {
@@ -368,7 +370,7 @@ label {
 						}
 						.form-type-email {
 							input {
-								padding-top: 11px;
+								// padding-top: 11px;
 								min-height: 50px;
 								height: 50px;
 							}
@@ -405,10 +407,61 @@ label {
               }
               .time-end {
                 flex-wrap: nowrap;
+                gap: 10px;
+              }
+              details{
+                border: none;
+                .details-wrapper{
+                  padding: 0.5em 0;
+                }
+              }
+              .js-form-type-checkbox{
+                input{
+                  display: block;
+                }
               }
             }
             .duration-wrapper {
               display: inline-flex;
+              
+            }
+            .form-select{
+              border: 1px solid $primaryColor;
+              height: 50px;
+              border-radius: 10px;
+              padding: 0 30px 0 20px;
+              font-size: 18px;
+              color: #4E638C;
+              font-family: $teritoryFont;
+              @include media-query ('mobile') {
+                font-size: 16px;
+              }
+              &::placeholder {
+                color: #4E638C;
+                opacity: 1;
+              }
+              &:focus {
+                box-shadow: none;
+                border: 1px solid $primaryColor;
+                outline: none;
+              }
+            }
+            .js-form-item-field-event-schedule-0-interval,
+            .js-form-item-field-event-schedule-0-repeat-end{
+              label{
+                display: none;
+              }
+            }
+            .js-form-item-field-event-schedule-0-interval{
+              .field-interval{
+                padding: 10px;
+                width: 5.5rem;
+              }
+            }
+            .input-group-append{
+              .field-suffix{
+                padding-top: 0;
+              }
             }
 					}
 				}
@@ -604,3 +657,105 @@ label {
   }
 }
 
+.form-required {
+  position: relative; // Ensure proper positioning if needed
+  
+  &::after {
+    content: "";
+    display: inline-block;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="%23EE0000" d="M0,7.562l1.114-3.438c2.565,0.906,4.43,1.688,5.59,2.35C6.398,3.553,6.237,1.544,6.22,0.447h3.511 c-0.05,1.597-0.234,3.6-0.558,6.003c1.664-0.838,3.566-1.613,5.714-2.325L16,7.562c-2.05,0.678-4.06,1.131-6.028,1.356 c0.984,0.856,2.372,2.381,4.166,4.575l-2.906,2.059c-0.935-1.274-2.041-3.009-3.316-5.206c-1.194,2.275-2.244,4.013-3.147,5.206 l-2.856-2.059c1.872-2.307,3.211-3.832,4.017-4.575C3.849,8.516,1.872,8.062,0,7.562"/></svg>') no-repeat center center;
+    background-size: contain;
+    margin-left: 2px; // Adjust spacing if needed
+    inset: unset !important;
+  }
+}
+
+.view-webform-export {
+  .form-floating{
+    padding-top: 25px;
+     >label{
+      padding: 0;
+      word-break: break-word;
+    box-sizing: border-box;
+    width: 100%;
+     }
+  }
+}
+
+.node-form #edit-field-event-schedule-wrapper button#edit-field-event-schedule-add-more {
+  display: none;
+}
+.node-form td.field-multiple-drag {
+  display: none;
+}
+
+.node-form {
+  td{
+    &:empty{
+      display: none;
+    }
+    background-color: transparent;
+    box-shadow: none;
+  &.has-multiple-fields-remove-button{
+    padding: 0 !important;
+  }   
+
+  }
+}
+.node-chas-event-form {
+  .block,
+  .field--widget-term-reference-tree {
+    ul {
+      .js-form-item {
+        margin-bottom: 12px !important;
+      }
+      ul {
+        margin-left: 14px;
+        .no-term-reference-tree-button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.view-webform-export {
+  &.view-display-id-page_1{
+  .views-form {
+    [data-drupal-selector="edit-webform-submission-bulk-form"] {
+      .form-actions {
+        .form-submit{
+          display: none;
+        }
+      }
+    }
+  }
+}
+}
+.js-form-item  {
+  small.description{
+  font-size: 14px;
+  color: #011f5c !important;
+  }
+}
+.form-select{
+border: 1px solid $primaryColor;
+height: 50px;
+border-radius: 10px;
+padding: 0 30px 0 20px;
+font-size: 18px;
+color: #4E638C;
+font-family: $teritoryFont;
+@include media-query ('mobile') {
+  font-size: 16px;
+}
+&::placeholder {
+  color: #4E638C;
+  opacity: 1;
+}
+&:focus {
+  box-shadow: none;
+  border: 1px solid $primaryColor;
+  outline: none;
+}
+}

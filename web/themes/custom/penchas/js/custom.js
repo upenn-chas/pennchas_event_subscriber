@@ -12,6 +12,12 @@
     setInterval(function () {
       const urlParams = new URLSearchParams(window.location.search);
       const c_type = urlParams.get('c_type');
+      var currentUrl = window.location.href;
+      var searchString = 'calendar?type=notices'; // Replace this with the string you're looking for in the URL
+
+      if (currentUrl.includes(searchString)) {
+          jQuery('#edit-type-exclude-notices').prop('checked', true);
+      }
       if(c_type){
         jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
       }
@@ -105,28 +111,55 @@
     //     jQuery('#edit-type-exclude-notices').prop('checked', false);
     //   }
       // When the General Events/Notice checkbox is clicked
-    jQuery('#edit-type-exclude-notices').on('change', function() {
-      alert('asdkjhasd');
-      // jQuery('#edit-type-all').prop('checked', false);
-      // jQuery('#edit-type-all').prop('checked', false);
-      // jQuery('#edit-type-chas-event').trigger('change');
-      // jQuery('#edit-type-notices').trigger('change');
       
-      // Check if the checkbox is checked
-      // if (jQuery(this).prop('checked')) {
-      //   // If checked, check the CHAS Event radio button
+        // Function to handle checkbox state and enable/disable radio buttons
+        function toggleRadioOptions() {
+          var checkbox = jQuery('#edit-type-exclude-notices');
+          var field_is_campus_wide_value = jQuery('#edit-field-is-campus-wide-value').val();
+          var field_intended_audience_value = jQuery('#edit-field-intended-audience-value').val();
+          var currentUrlWithoutParams = window.location.origin + window.location.pathname;
+          if (checkbox.prop('checked')) {
+            var type = jQuery('#edit-type-notices').val();
+          } else {
+            var type = jQuery('#edit-type-chas-event').val();
+          }
+          var url = currentUrlWithoutParams+'?type='+type+'&field_is_campus_wide_value='+field_is_campus_wide_value+'&field_intended_audience_value='+field_intended_audience_value;
+          console.log('url: ', url);
+          return url;
+        }
         
-      //   jQuery('#edit-type-all').prop('checked', false);
+        // Call toggleRadioOptions on checkbox change
+        jQuery('#edit-type-exclude-notices').change(function() {
+          var url = toggleRadioOptions();
+          window.location.href = url;
+          
+      });
   
-      //   // Trigger change event for CHAS Event radio button
-      // } else {
-      //   // If unchecked, uncheck the CHAS Event radio button
-      //   jQuery('#edit-type-all').prop('checked', true);
-      //   jQuery('#edit-type-chas-event').prop('checked', false);
-      //   // jQuery('#edit-type-exclude-notices').prop('checked', false);
-      //   // Trigger change event for All radio button
-      // }
-    });
+      // Initial call to set the state based on the checkbox's current state
+      toggleRadioOptions();
+  
+      // jQuery('#edit-type-exclude-notices').on('change', function() {
+    //   alert('asdkjhasd');
+    //   // jQuery('#edit-type-all').prop('checked', false);
+    //   // jQuery('#edit-type-all').prop('checked', false);
+    //   // jQuery('#edit-type-chas-event').trigger('change');
+    //   // jQuery('#edit-type-notices').trigger('change');
+      
+    //   // Check if the checkbox is checked
+    //   // if (jQuery(this).prop('checked')) {
+    //   //   // If checked, check the CHAS Event radio button
+        
+    //   //   jQuery('#edit-type-all').prop('checked', false);
+  
+    //   //   // Trigger change event for CHAS Event radio button
+    //   // } else {
+    //   //   // If unchecked, uncheck the CHAS Event radio button
+    //   //   jQuery('#edit-type-all').prop('checked', true);
+    //   //   jQuery('#edit-type-chas-event').prop('checked', false);
+    //   //   // jQuery('#edit-type-exclude-notices').prop('checked', false);
+    //   //   // Trigger change event for All radio button
+    //   // }
+    // });
     
     // Check if the ol element with the class node_search-results is empty
     if (jQuery('.node_search-results').children().length === 0) {
@@ -147,6 +180,8 @@
     jQuery(window).on("resize", function () {
       adjustContentWidth();
     });
+    jQuery('.view-id-calendar .calendar-view-pager .pager__current, .view-id-room-reservation-calendar .calendar-view-pager .pager__current').find('div').text('Today');
+    
 
     jQuery('.calendar-view-table thead th').eq(0).text('SUN');
     jQuery('.calendar-view-table thead th').eq(1).text('MON');

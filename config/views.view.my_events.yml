@@ -3255,6 +3255,11 @@ display:
           date_format: long
           custom_date_format: ''
           timezone: ''
+      access:
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       arguments:
         uid:
           id: uid
@@ -3432,8 +3437,10 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        access: false
         query: false
         title: false
+        use_ajax: false
         style: false
         row: false
         relationships: false
@@ -3455,6 +3462,7 @@ display:
           entity_field: uid
           plugin_id: standard
           required: false
+      use_ajax: false
       display_description: ''
       header:
         area:
@@ -3502,7 +3510,7 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_collaborators'
         - 'config:field.storage.node.field_marketing_blurb'

@@ -114,6 +114,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     }
+    .field--type-entity-reference{
+      display: none;
+    }
   }
   .field_child_dashboard_blocks {
     display: none;
@@ -138,6 +141,7 @@
       .contents:after {
         display: none;
       }
+     
     }
     .contents {
       border: 1px solid $primaryColor;
