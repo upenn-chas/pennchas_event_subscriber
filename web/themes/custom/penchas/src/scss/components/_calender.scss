@@ -227,7 +227,7 @@
 //       }
 //     }
 //   }
-  
+
 // }
 // .fc-head {
 //   .fc-head-container.fc-widget-header {
@@ -254,77 +254,71 @@
   h5 {
     margin-top: 15px;
   }
-  .calendar-view{
-    >.row{
+
+  .calendar-view {
+    >.row {
       border-top: 1px solid $primaryColor;
       padding-top: 20px;
+    }
+
+    .mobile-view {
+      display: none;
+      margin-bottom: 30px;
+
+      @include media-query ('tablet') {
+        display: block;
+
+        .btn {
+          width: 100%;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .btn-teritory {
+      &:hover {
+        background: $yellowHighlightColor;
+        color: $primaryColor;
+        border-color: $yellowHighlightColor;
+      }
     }
   }
 
   .calender-left {
     width: 250px;
+
     @include media-query ('tablet') {
       width: 100%;
+      display: none;
     }
-    
-      .view-filters{
-        border-bottom: 1px solid $primaryColor;
-        padding-bottom: 25px;
-        // .checkbox {
-        //   input[type="checkbox"] {
-        //     appearance: none;
-        //     -webkit-appearance: none;
-        //     -moz-appearance: none;
-        //     width: 20px;
-        //     height: 20px;
-        //     border: 2px solid $primaryColor; 
-        //     border-radius: 0; 
-        //     background-color: #fff; 
-        //     cursor: pointer;
-        //     position: relative;
-        //     transition: all 0.3s ease;
-        
-        //     &:checked {
-        //       background-color: $primaryColor; 
-        //       border-color: $primaryColor;
-        
-        //       &::after {
-        //         content: "";
-        //         position: absolute;
-        //         top: 50%;
-        //         left: 50%;
-        //         transform: translate(-50%, -50%);
-        //         width: 12px;
-        //         height: 12px;
-        //         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23fff" d="M20.285 6.709l-11.31 11.31-5.657-5.657 1.414-1.414 4.243 4.243 9.896-9.896z"/></svg>') no-repeat center;
-        //         background-size: contain;
-        //       }
-        //     }
-        //   }
-        // }
-      //   form{
-      //     .form-composite{
-      //     .radio{
-      //       display: none;
-      //     }
-      //   }
-      // }
+
+    .view-filters {
+      border-bottom: 1px solid $primaryColor;
+      padding-bottom: 25px;
+    }
+
+    .btn-teritory {
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
       }
-      .btn-teritory{
-        width: 100%;
-        &:not(:last-child){
-          margin-bottom: 20px;
-        }
-      }
+    }
   }
+
   .calender-right {
     width: calc(100% - 255px);
     margin-left: 5px;
     position: relative;
+
     @include media-query ('tablet') {
       width: 100%;
       margin-left: 0;
     }
+
     .select-outer {
       display: inline-block;
       float: inline-end;
@@ -337,10 +331,20 @@
       padding: 0;
       list-style-type: none;
       position: absolute;
-      .pager__current { 
+
+      @include media-query ('tablet') {
+        flex-direction: row;
+      }
+
+      .pager__current {
         order: 1;
         margin-right: 30px;
-        .js-form-item{
+
+        @include media-query ('tablet') {
+          display: none;
+        }
+
+        .js-form-item {
           border: 1px solid $primaryColor;
           border-radius: 10px;
           padding: 12px 15px 12px 15px;
@@ -355,32 +359,38 @@
 
       .pager__previous {
         order: 2;
+
         a {
           display: inline-flex;
           align-items: center;
-          padding-right: 30px; 
+          padding-right: 30px;
           position: relative;
           font-size: 0;
+
           &::after {
             content: "";
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 21 24"><path fill="%23011F5B" d="M0.59531236 11.470312L0.065624714 12L0.59531236 12.529687L8.4703121 20.404686L9 20.934376L10.059376 19.875L9.5296879 19.345314L2.9343746 12.75L20.25 12.75L21 12.75L21 11.25L20.25 11.25L2.9343746 11.25L9.5296879 4.6546869L10.059376 4.125L9 3.0656247L8.4703121 3.5953131L0.59531236 11.470312Z"/></svg>') no-repeat center;
             width: 21px;
             height: 24px;
             position: absolute;
-            left: 0; /* Aligns SVG to the left of the text */
+            left: 0;
+            /* Aligns SVG to the left of the text */
             top: 50%;
             transform: translateY(-50%);
           }
         }
       }
+
       .pager__next {
         order: 3;
+
         a {
           display: inline-flex;
           align-items: center;
-          padding-right: 30px; 
+          padding-right: 30px;
           position: relative;
           font-size: 0;
+
           &::after {
             content: "";
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 21 24"><path fill="%23011F5B" d="M20.404686 12.529687L20.934376 12L20.404688 11.470312L12.529688 3.5953131L12 3.0656247L10.940624 4.125L11.470312 4.6546869L18.065624 11.25L0.75 11.25L0 11.25L0 12.75L0.75 12.75L18.065624 12.75L11.470312 19.345314L10.940624 19.875L12 20.934376L12.529687 20.404688L20.404686 12.529688Z"/></svg>') no-repeat center;
@@ -393,12 +403,14 @@
           }
         }
       }
+
       .js-form-item {
         margin: 0 !important;
         padding: 0;
       }
     }
   }
+
   .calendar-view-table {
     caption {
       padding: 0;
@@ -414,50 +426,69 @@
       padding-top: 10px;
       padding-left: 215px;
       margin-bottom: 10px;
+
+      @include media-query ('tablet') {
+        padding-left: 0;
+        text-align: center;
+        font-size: 24px;
+        line-height: 24px;
+      }
     }
   }
 }
 
-.calendar-view-table .next-month, 
+.calendar-view-table .next-month,
 .calendar-view-table .previous-month {
   background-color: #fff;
 }
- 
-.calendar-view-table.table > :not(caption) > * > * {
+
+.calendar-view-table.table> :not(caption)>*>* {
   border-left: 1px solid #bec6d5;
   border-bottom: 1px solid #bec6d5;
   box-shadow: none;
   border-right: 0;
   border-top: 0;
+
+  @include media-query ('tablet') {
+    border-left: 0;
+  }
 }
 
 .calendar-view-table.table tr td:last-child {
   border-right: 1px solid #BEC6D5;
+
+  @include media-query ('tablet') {
+    border-right: 0;
+  }
 }
+
 .calendar-view-table {
-  &.calendar-view-week{
-    .calendar-view-day{
-      .calendar-view-day__number{
+  &.calendar-view-week {
+    .calendar-view-day {
+      .calendar-view-day__number {
         font-size: 24px;
         font-weight: 700;
         line-height: 24px;
         padding: 10px;
       }
     }
-    .calendar-view-day__number{
+
+    .calendar-view-day__number {
       display: inline-block;
       width: auto;
       text-align: center;
       margin: 0 auto;
     }
-    .is-today{
-      .calendar-view-day__number{
-      background-color: $lightBlue !important;
-      border-radius: 10px;
-      
+
+    .is-today {
+      .calendar-view-day__number {
+        background-color: $lightBlue !important;
+        border-radius: 10px;
+
       }
     }
   }
+
   thead {
     th {
       background: none;
@@ -465,20 +496,23 @@
       text-transform: uppercase;
       font-size: 14px;
       font-family: $teritoryFont;
-      border-left: 0 !important;       
+      border-left: 0 !important;
       padding: 0;
       text-align: center;
       font-weight: 400;
 
     }
   }
+
   .calendar-view-day {
     padding: 0;
   }
+
   .calendar-view-day__row {
     padding: 0;
-    border: 0; 
+    border: 0;
     border-radius: 0;
+
     * {
       font-family: $teritoryFont;
       font-size: 12px;
@@ -486,28 +520,33 @@
       margin-bottom: 0;
     }
   }
-.weekly-calendar{
-  div:not(:empty){
-    background-color:#ecf2ff;
-    border-radius: 4px;
-    padding: 8px;
-    &:not(:last-child){
-      margin-bottom:2px;
+
+  .weekly-calendar {
+    div:not(:empty) {
+      background-color: #ecf2ff;
+      border-radius: 4px;
+      padding: 8px;
+
+      &:not(:last-child) {
+        margin-bottom: 2px;
+      }
     }
   }
-}
+
   .calendar-view-day__rows {
     gap: 0;
   }
-  .is-today{
-    .calendar-view-day__number{
+
+  .is-today {
+    .calendar-view-day__number {
       background-color: $lightBlue !important;
       border-radius: 8px;
       width: auto;
       padding: 4px;
-    margin: 0 auto;
+      margin: 0 auto;
     }
   }
+
   .calendar-view-day__number {
     margin: 0;
     height: auto;
@@ -528,8 +567,91 @@
     color: $primaryColor;
   }
 }
-.view-id-calendar  {
-  div#edit-type{
-  display: none;
+
+.view-id-calendar {
+  div#edit-type {
+    display: none;
+  }
+}
+
+.calender-page .calender-left .view-filters {
+  div.js-form-item {
+    padding-left: 0;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      position: relative;
+      padding-left: 35px;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: none;
+
+      @include media-query('ipad') {
+        padding-left: 30px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $primaryColor;
+
+        @include media-query('ipad') {
+          top: -2px;
+        }
+      }
+    }
+
+    input[type="checkbox"]:checked+label {
+      &:before {
+        background-color: $primaryColor;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 8px;
+        width: 13px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        left: 4px;
+        top: 3px;
+        transform: rotate(-45deg);
+
+        @include media-query('ipad') {
+          top: 2px;
+        }
+      }
+    }
+  }
+}
+
+.page-view-calendar {
+  .hero-banner.without-image.small {
+    .internal-links {
+      @include media-query ('tablet') {
+        width: calc(100% - 20px);
+      }
+    }
+  }
+  .container{
+  .row{
+    @include media-query ('tablet') {
+      .row{
+        margin-left: 0;
+        margin-right: 0;
+        .view-calendar{
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
+  }
   }
 }

@@ -927,3 +927,21 @@ function penchas_preprocess_views_view(&$variables) {
     $variables['selected_filters_output'] = $filters_html;
   }
 }
+
+/**
+ * Implements hook_preprocess_datetime_form().
+ */
+function penchas_preprocess_datetime_form(array &$variables) {
+  // Check if the specific field is part of the form.
+  // dd($variables);
+  if (isset($variables['element']['#fields']['field_event_schedule'])) {
+    // Iterate over the field settings to find the time input element.
+    foreach ($variables['element']['#fields']['field_event_schedule'] as $key => &$field) {
+      // Check if the element is a time input field.
+      if (isset($field['#type']) && $field['#type'] == 'time') {
+        // Set the step value to 3600 to remove minutes (1 hour intervals).
+        $field['#attributes']['step'] = 3600;
+      }
+    }
+  }
+}

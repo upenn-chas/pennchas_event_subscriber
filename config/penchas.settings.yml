@@ -122,7 +122,7 @@ bootstrap_barrio_navbar_flyout: 1
 bootstrap_barrio_navbar_slide: 0
 bootstrap_barrio_tabs_style: full
 bootstrap_barrio_messages_widget_toast_delay: '10000'
-bootstrap_barrio_float_label: 1
+bootstrap_barrio_float_label: 0
 bootstrap_barrio_navbar_top_affix: 0
 bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0

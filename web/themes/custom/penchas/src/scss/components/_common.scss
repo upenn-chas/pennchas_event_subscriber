@@ -710,19 +710,29 @@ body {
 .banner-info {
   .info {
     margin-top: 20px;
+
     ul {
       li {
         margin-bottom: 1rem;
+
         &::marker {
           color: #92b7ff;
         }
-        a{
+
+        a {
           text-decoration: none;
-          &:hover{
+
+          &:hover {
             opacity: 0.8;
           }
         }
       }
     }
+  }
+}
+
+.view-webform-export {
+  .pagination {
+    justify-content: center;
   }
 }

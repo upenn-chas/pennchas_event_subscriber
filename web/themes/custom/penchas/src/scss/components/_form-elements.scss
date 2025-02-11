@@ -370,7 +370,7 @@ label {
 						}
 						.form-type-email {
 							input {
-								padding-top: 11px;
+								// padding-top: 11px;
 								min-height: 50px;
 								height: 50px;
 							}
@@ -407,10 +407,61 @@ label {
               }
               .time-end {
                 flex-wrap: nowrap;
+                gap: 10px;
+              }
+              details{
+                border: none;
+                .details-wrapper{
+                  padding: 0.5em 0;
+                }
+              }
+              .js-form-type-checkbox{
+                input{
+                  display: block;
+                }
               }
             }
             .duration-wrapper {
               display: inline-flex;
+              
+            }
+            .form-select{
+              border: 1px solid $primaryColor;
+              height: 50px;
+              border-radius: 10px;
+              padding: 0 30px 0 20px;
+              font-size: 18px;
+              color: #4E638C;
+              font-family: $teritoryFont;
+              @include media-query ('mobile') {
+                font-size: 16px;
+              }
+              &::placeholder {
+                color: #4E638C;
+                opacity: 1;
+              }
+              &:focus {
+                box-shadow: none;
+                border: 1px solid $primaryColor;
+                outline: none;
+              }
+            }
+            .js-form-item-field-event-schedule-0-interval,
+            .js-form-item-field-event-schedule-0-repeat-end{
+              label{
+                display: none;
+              }
+            }
+            .js-form-item-field-event-schedule-0-interval{
+              .field-interval{
+                padding: 10px;
+                width: 5.5rem;
+              }
+            }
+            .input-group-append{
+              .field-suffix{
+                padding-top: 0;
+              }
             }
 					}
 				}
@@ -617,4 +668,67 @@ label {
     margin-left: 2px; // Adjust spacing if needed
     inset: unset !important;
   }
+}
+
+.view-webform-export {
+  .form-floating{
+    padding-top: 25px;
+     >label{
+      padding: 0;
+      word-break: break-word;
+    box-sizing: border-box;
+    width: 100%;
+     }
+  }
+}
+
+.node-form #edit-field-event-schedule-wrapper button#edit-field-event-schedule-add-more {
+  display: none;
+}
+.node-form td.field-multiple-drag {
+  display: none;
+}
+
+.node-form {
+  td{
+    &:empty{
+      display: none;
+    }
+    background-color: transparent;
+    box-shadow: none;
+  &.has-multiple-fields-remove-button{
+    padding: 0 !important;
+  }   
+
+  }
+}
+.node-chas-event-form {
+  .block,
+  .field--widget-term-reference-tree {
+    ul {
+      .js-form-item {
+        margin-bottom: 12px !important;
+      }
+      ul {
+        margin-left: 14px;
+        .no-term-reference-tree-button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.view-webform-export {
+  &.view-display-id-page_1{
+  .views-form {
+    [data-drupal-selector="edit-webform-submission-bulk-form"] {
+      .form-actions {
+        .form-submit{
+          display: none;
+        }
+      }
+    }
+  }
+}
 }

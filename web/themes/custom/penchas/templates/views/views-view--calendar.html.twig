@@ -44,6 +44,11 @@
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
     <div class="container calendar-view">
       <div class="row">
+        <div class="mobile-view">
+          {% if add_content_ctas %}
+            {{add_content_ctas|t}}
+          {% endif %}
+        </div>
         <div class="calender-left">
           {{ title_prefix }}
             {% if title %}
@@ -64,8 +69,8 @@
             </div>
           {% if exposed %}
             <div class="view-filters">
-              {{ exposed }}
               {{exclude_notices_filter|t}}
+              {{ exposed }}
             </div>
           {% endif %}
           {% if add_content_ctas %}

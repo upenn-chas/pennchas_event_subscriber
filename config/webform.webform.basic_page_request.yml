@@ -17,15 +17,20 @@ elements: |-
     '#type': email
     '#title': Email
     '#required': true
+  select_house:
+    '#type': webform_entity_select
+    '#title': 'Select House'
+    '#target_type': group
+    '#selection_handler': 'default:group'
+    '#selection_settings':
+      target_bundles:
+        house1: house1
+  add_attachment:
+    '#type': webform_document_file
+    '#title': 'Add Attachment'
   message:
     '#type': textfield
     '#title': Message
-  advanced_html_text:
-    '#type': text_format
-    '#title': 'Advanced HTML/Text'
-    '#allowed_formats':
-      basic_html: basic_html
-      full_html: full_html
 css: ''
 javascript: ''
 settings:

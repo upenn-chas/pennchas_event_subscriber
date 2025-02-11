@@ -378,6 +378,28 @@ display:
           empty_zero: false
           hide_alter_empty: true
           view_mode: default
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       exposed_form:
         type: bef
         options:
@@ -404,7 +426,7 @@ display:
               reset_button_always_show: false
             filter:
               webform_id:
-                plugin_id: bef
+                plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
@@ -414,9 +436,6 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
       filters:
         webform_id:
           id: webform_id
@@ -536,6 +555,7 @@ display:
           hide_empty: false
       defaults:
         use_ajax: false
+        pager: false
         exposed_form: false
         style: false
         row: false
@@ -544,7 +564,7 @@ display:
         filter_groups: false
       use_ajax: true
       display_extenders: {  }
-      path: webform-export
+      path: dashboard/webform-export
     cache_metadata:
       max-age: 0
       contexts:

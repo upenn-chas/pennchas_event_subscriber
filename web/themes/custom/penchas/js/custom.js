@@ -180,6 +180,8 @@
     jQuery(window).on("resize", function () {
       adjustContentWidth();
     });
+    jQuery('.view-id-calendar .calendar-view-pager .pager__current, .view-id-room-reservation-calendar .calendar-view-pager .pager__current').find('div').text('Today');
+    
 
     jQuery('.calendar-view-table thead th').eq(0).text('SUN');
     jQuery('.calendar-view-table thead th').eq(1).text('MON');

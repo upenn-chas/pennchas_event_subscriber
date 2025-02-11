@@ -26,7 +26,6 @@ dependencies:
     - field.field.node.room.layout_builder__layout
     - node.type.room
   module:
-    - color_field
     - duration_field
     - link
     - media_library
@@ -79,13 +78,6 @@ content:
     weight: 16
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_circle_color:
-    type: color_field_widget_html5
-    weight: 22
-    region: content
-    settings:
-      show_extra: false
     third_party_settings: {  }
   field_duration:
     type: duration_widget
@@ -206,6 +198,7 @@ content:
 hidden:
   feeds_item: true
   field_blocks_ref: true
+  field_circle_color: true
   field_evaluation_notification: true
   field_group: true
   field_group_ref: true
