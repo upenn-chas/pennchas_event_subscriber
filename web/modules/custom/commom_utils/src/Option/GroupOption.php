@@ -26,6 +26,10 @@ class GroupOption {
         $options = [];
 
         $currentUser = \Drupal::currentUser();
+        if(!$currentUser->isAuthenticated()) {
+            return $options;
+        }
+        
         $groupMemberships = GroupMembership::loadByUser($currentUser);
         if ($groupMemberships) {
             foreach ($groupMemberships as $groupMembership) {

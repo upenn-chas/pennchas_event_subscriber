@@ -22,8 +22,6 @@ use Symfony\Component\Routing\Route;
  */
 class ReportAccess extends AccessPluginBase
 {
-
-
     /**
      * Report view permission.
      * 

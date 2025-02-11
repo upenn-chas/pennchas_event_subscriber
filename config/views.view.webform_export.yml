@@ -564,7 +564,7 @@ display:
         filter_groups: false
       use_ajax: true
       display_extenders: {  }
-      path: dashboard/reports/webform-export
+      path: dashboard/webform-export
     cache_metadata:
       max-age: 0
       contexts:

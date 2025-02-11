@@ -15,22 +15,27 @@ event_feedback.report:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::report'
     _title: 'Participations Survey Report'
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _report_access: 'view_alteraion.report_access_handler'
+  options:
+    permission: 'access reports'
 event_feedback.report_export:
   path: /dashboard/reports/participations-survey/export
   defaults:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::reportExport'
     _title: ''
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _report_access: 'view_alteraion.report_access_handler'
+  options:
+    permission: 'access reports'
 event_feedback.per_event_report_export:
   path: /dashboard/reports/event-survey/{node}/export
   defaults:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::perEventReportExport'
     _title: ''
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _report_access: 'view_alteraion.report_access_handler'
   options:
+    permission: 'access reports'
     parameters:
       node:
         type: entity:node

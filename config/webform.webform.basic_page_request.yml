@@ -170,11 +170,8 @@ settings:
 access:
   create:
     roles:
-      - administrator
-      - chas_student_worker
-      - chas_technology
-      - chas_director
-      - chas_professional_staff
+      - anonymous
+      - authenticated
     users: {  }
     permissions: {  }
   view_any:

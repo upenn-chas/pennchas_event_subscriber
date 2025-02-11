@@ -52,25 +52,27 @@ function view_alteration_views_data_alter(array &$data)
 function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
 {
     $viewId = $view->id();
-    if (
-        $viewId === 'moderation_reports'
-        || $viewId === 'rooms_reservation_moderation_reports'
-        || $viewId === 'contents_change_report'
-        || $viewId === 'contents_delete_report'
-        || $viewId === 'events_evaluation_report'
-        || $viewId === 'room_reservation_reports'
-        || $viewId === 'users_reports'
-        || $viewId === 'videos_link_report'
-    ) {
-        $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
-        if ($groups) {
-            if ($viewId === 'users_reports') {
-                $query->addWhere(0, 'group_relationship_field_data_users_field_data.gid', array_keys($groups), 'IN');
-            } else if ( $viewId === 'videos_link_report') {
-                $query->addWhere(0, 'group_relationship_field_data_media_field_data.gid', array_keys($groups), 'IN');
-            } else {
-                $query->addWhere(0, 'gcfd.gid', array_keys($groups), 'IN');
-            } 
-        }
+    $reportViewIds = [
+        'moderation_reports',
+        'rooms_reservation_moderation_reports',
+        'contents_change_report',
+        'contents_delete_report',
+        'events_evaluation_report',
+        'room_reservation_reports',
+        'users_reports',
+        'videos_link_report'
+    ];
+    if (!in_array($viewId, $reportViewIds, true)) {
+        return;
+    }
+    $groupRelationshipColumn = [
+        'users_reports' => 'group_relationship_field_data_users_field_data.gid',
+        'videos_link_report' => 'group_relationship_field_data_media_field_data.gid',
+    ];
+
+    $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
+    if ($groups) {
+        $field = $groupRelationshipColumn[$viewId] ?? 'gcfd.gid';
+        $query->addWhere(0, $field, array_keys($groups), 'IN');
     }
 }
