@@ -110,6 +110,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
 
   if($formId == 'views_form_webform_export_page_1'){
     $form['header']['webform_submission_bulk_form']['action']['#default_value'] = 'webform_submission_export_action';
+    $form['actions']['submit']['#value'] = t('Export');
   }
 }
 
