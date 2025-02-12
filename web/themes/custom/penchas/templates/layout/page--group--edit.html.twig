@@ -68,7 +68,6 @@
  */
 #}
 {# see https://www.drupal.org/project/drupal/issues/953034#comment-14192130 #}
-
 {% set sidebar_first_exists = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 <div id="page-wrapper">
@@ -96,9 +95,11 @@
        {# class="{{ container }}" #}
         <div id="main">
           {{ page.breadcrumb }}
+
+          {#  #}
           {% if node.field_circle_color.0.value.color %}
               {% set banner_class = 'hero-banner with-bottom-border' %}
-            {% if node.field_media_image.entity == ''  %}
+            {% if node.field_image.entity.fileuri == ''  %}
               {% set banner_class = 'hero-banner without-image' %}
             {% endif %}
             <section class="{{banner_class}}">
@@ -112,7 +113,6 @@
                     <div class="col-12 col-lg-6">
                         <div class="breadcrumbs-block">
                             <nav aria-label="breadcrumb">
-                            
                               {{ drupal_entity('block', 'penchas_breadcrumbs') }}
                             </nav>
                         </div>
@@ -147,11 +147,10 @@
                         </div>
 
                     </div>
-                    
-                    {% if node.field_media_image.entity %}
+                    {% if node.field_image.entity.fileuri %}
                       <div class="col-12 col-lg-6">
                           <div class="hero-img">
-                              <img src="{{file_url(node.field_media_image.entity.field_media_image.entity.uri.value)}}" alt="{{node.title.value}}">
+                              <img src="{{file_url(node.field_image.entity.fileuri)}}" alt="{{node.title.value}}">
                           </div>
                       </div>
                     {% endif %}
@@ -164,7 +163,7 @@
 
           <div class="row row-offcanvas row-offcanvas-left clearfix">
               <main{{ content_attributes }}>
-                <section class="section">
+                <section class="container section">
                   <a href="#main-content" id="main-content" tabindex="-1"></a>
                   {{ page.content }}
                 </section>
