@@ -59,7 +59,6 @@
         "drupal/fullcalendar_view": "^5.2",
         "drupal/views_fields_combine": "^10.0",
         "drupal/groupmedia": "^4.0",
-        "drupal/multiple_fields_remove_button": "^2.2",
         "drupal/field_group": "^3.6",
         "drupal/svg_image_field": "^2.3",
         "drupal/entity_reference_revisions": "^1.12",
