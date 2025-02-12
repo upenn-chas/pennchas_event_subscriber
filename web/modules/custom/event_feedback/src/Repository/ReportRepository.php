@@ -16,12 +16,13 @@ class ReportRepository
         $this->connection = $connection;
     }
 
-    public function getSubmissions(string $webformId, array $filters, $page = 0, $length = 10)
+    public function getSubmissions(string $webformId, array $filters, array $groupIds = [], $page = 0, $length = 10)
     {
         $eventQuery = $this->connection->select('webform_submission', 'ws');
         $eventQuery->innerJoin('node_field_data', 'n', 'ws.entity_id = n.nid');
         $eventQuery->leftJoin('group_relationship_field_data', 'grfd', 'grfd.entity_id=n.nid');
-        $eventQuery->leftJoin('groups_field_data', 'gfd', 'gfd.id=grfd.gid');
+        $eventQuery->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = n.nid');
+        $eventQuery->leftJoin('groups_field_data', 'gfd', 'gfd.id=nfg.field_groups_target_id');
         $eventQuery->leftJoin('node__field_intended_audience', 'nfia', 'nfia.entity_id = n.nid');
         $eventQuery->leftJoin('node__field_intended_outcomes', 'nfio', 'nfio.entity_id = n.nid');
         $eventQuery->leftJoin('node__field_event_priority', 'nfep', 'nfep.entity_id = n.nid');
@@ -32,6 +33,9 @@ class ReportRepository
         $eventQuery->addExpression('GROUP_CONCAT(DISTINCT gfd.label)', 'houses');
         $eventQuery->addExpression('COUNT(DISTINCT ws.sid)', 'respondant');
         $eventQuery->condition('ws.webform_id', $webformId, '=');
+        if($groupIds) {
+            $eventQuery->condition('grfd.gid', $groupIds, 'IN');
+        }
         $eventQuery->groupBy('ws.entity_id');
         $eventQuery->orderBy('ws.created', 'DESC');
 

@@ -53,9 +53,6 @@ settings:
     -
       value: bfbfb9
       label: '#bfbfb9'
-    -
-      value: f2e933
-      label: '#f2e933'
   allowed_values_function: ''
 module: options
 locked: false

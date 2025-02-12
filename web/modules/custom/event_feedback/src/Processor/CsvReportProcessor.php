@@ -46,9 +46,9 @@ class CsvReportProcessor
             $row[$columnIndexes['event_report']] = Url::fromRoute('view.event_survey_report.page_1', ['node' => $nid], ['absolute' => true])->toString();
             $row[$columnIndexes['event_evaluation']] = $event['evaluated'] !== NULL ? Url::fromRoute('event_evaluation_operation_option', ['node' => $nid], ['absolute' => true])->toString() : '';
             $data[] = $row;
-            $footer[2] += $row[2];
+            $footer[$columnIndexes['repondants']] += $event['respondant'];
         }
-        $footer[1] = 'Totals';
+        $footer[$columnIndexes['event']] = t('Totals');
         $data[] = $footer;
         return $data;
     }

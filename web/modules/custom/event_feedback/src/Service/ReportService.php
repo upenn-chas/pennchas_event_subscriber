@@ -27,7 +27,8 @@ class ReportService
 
     public function buildReport(string $webformId, array $filters, $page = 0, $length = 10)
     {
-        $submissions = $this->repository->getSubmissions($webformId, $filters, $page, $length);
+        $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
+        $submissions = $this->repository->getSubmissions($webformId, $filters, array_keys($groups), $page, $length);
         $headerDetails = $this->headerBuilder->buildHeader($webformId, 'report');
         $data = $this->processor->process($submissions, $headerDetails);
 

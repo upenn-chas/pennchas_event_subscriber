@@ -195,10 +195,10 @@ access:
     permissions: {  }
   view_any:
     roles:
-      - administrator
-      - chas_director
+      - authenticated
     users: {  }
-    permissions: {  }
+    permissions:
+      - 'access reports'
   update_any:
     roles: {  }
     users: {  }
