@@ -463,6 +463,9 @@ label {
                 padding-top: 0;
               }
             }
+            .input-group{
+              align-items: center;
+            }
 					}
 				}
 			}
@@ -738,6 +741,7 @@ label {
   color: #011f5c !important;
   }
 }
+
 .form-select{
 border: 1px solid $primaryColor;
 height: 50px;
@@ -758,4 +762,30 @@ font-family: $teritoryFont;
   border: 1px solid $primaryColor;
   outline: none;
 }
+}
+
+
+.info-fields {
+  background: #EBF2FF;
+  padding: 13px 20px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+  p {
+    margin: 0;
+    font-size: 18px;
+    font-family: $teritoryFont;
+    line-height: 25px;
+    &:before {
+      content: "";   
+      height: 25px;
+      width: 25px;
+      background: url(../../assets/images/info-icon.svg) no-repeat;
+      background-size: contain;
+      float: left;
+      margin-right: 5px;
+    }
+    a{
+      text-decoration-color:$primaryColor;
+    }
+  }
 }
