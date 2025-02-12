@@ -17,6 +17,7 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\Reference;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_token_info().
@@ -85,7 +86,7 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
 
         $total_count = count($result);
         if($total_count != '0'){
-          $replacements[$original] = 'You have ' . $total_count . ' events for moderation.';
+          $replacements[$original] = new TranslatableMarkup('<div class="info-fields"><p>You have '. $total_count . ' events for moderation. Go to <a href="/my-events-all">My Events</a>.</p></div>');
         }
         break;
 
