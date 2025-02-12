@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
     - field.field.node.page.field_circle_color
     - field.field.node.page.field_media_image
@@ -15,7 +14,6 @@ dependencies:
     - color_field
     - layout_builder
     - layout_builder_restrictions
-    - layout_discovery
     - text
     - user
 third_party_settings:
@@ -24,151 +22,10 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components:
-          c07df783-b387-4230-b2d9-80f6eb8c978f:
-            uuid: c07df783-b387-4230-b2d9-80f6eb8c978f
-            region: content
-            configuration:
-              id: 'field_block:node:page:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          b101de60-663b-479e-957b-80fcc51e8f69:
-            uuid: b101de60-663b-479e-957b-80fcc51e8f69
-            region: content
-            configuration:
-              id: 'extra_field_block:node:page:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 1
-            additional: {  }
-          7a97d5ed-4c2d-468c-b893-444fbb7df601:
-            uuid: 7a97d5ed-4c2d-468c-b893-444fbb7df601
-            region: content
-            configuration:
-              id: 'field_block:node:page:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          abfb421e-fb64-4938-b91d-39aed2a40480:
-            uuid: abfb421e-fb64-4938-b91d-39aed2a40480
-            region: content
-            configuration:
-              id: 'extra_field_block:node:page:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 3
-            additional: {  }
-          38f51b45-7bbb-4097-9575-095f6fef6a16:
-            uuid: 38f51b45-7bbb-4097-9575-095f6fef6a16
-            region: content
-            configuration:
-              id: 'field_block:node:page:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          4fce653b-3a07-4542-8189-b5da9ea2b8e0:
-            uuid: 4fce653b-3a07-4542-8189-b5da9ea2b8e0
-            region: content
-            configuration:
-              id: 'extra_field_block:node:page:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 5
-            additional: {  }
-          340e49bc-fbef-4e91-b48e-37e450874ded:
-            uuid: 340e49bc-fbef-4e91-b48e-37e450874ded
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_circle_color'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: color_field_formatter_text
-                label: above
-                settings:
-                  format: hex
-                  opacity: true
-                third_party_settings: {  }
-            weight: 8
-            additional: {  }
-          58f12234-80e8-4b91-b219-226150440735:
-            uuid: 58f12234-80e8-4b91-b219-226150440735
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_menus'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 9
-            additional: {  }
-          c689eb3e-b082-4552-9c60-9462679cd519:
-            uuid: c689eb3e-b082-4552-9c60-9462679cd519
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_blocks_ref'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 10
-            additional: {  }
-          233f1cad-96c7-4f53-a45b-e1dd6701a7ea:
-            uuid: 233f1cad-96c7-4f53-a45b-e1dd6701a7ea
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_media_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            weight: 11
-            additional: {  }
+        components: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -251,8 +108,6 @@ content:
     weight: 101
     region: content
 hidden:
-  feeds_item: true
-  langcode: true
   layout_builder__layout: true
   published_at: true
   search_api_excerpt: true

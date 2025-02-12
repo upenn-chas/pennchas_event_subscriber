@@ -237,3 +237,45 @@
   font-size: medium;
 }
 
+#layout-builder-modal .description{
+  color: #ffffff !important;
+}
+#block-penchas-primary-admin-actions nav.action-links {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+}
+#block-penchas-primary-admin-actions nav.action-links .nav-link:first-child .btn.btn-secondary{
+ border:1px solid #011f5b;
+}
+#block-penchas-primary-admin-actions nav.action-links .nav-link:nth-child(2) .btn.btn-secondary{
+  border:1px solid #011f5b;
+  background-color: #011f5b;
+  color: #fff;
+ }
+ #block-penchas-primary-admin-actions nav.action-links .nav-link:nth-child(2) .btn.btn-secondary:hover{
+  background-color: $yellowLightColor;
+  border-color: $yellowLightColor;
+  color: #011f5b;
+ }
+ .page-view-group-media .view-group-media .views-exposed-form .flex-wrap{
+  gap: 15px;
+ }
+ #layout-builder-modal tr td{
+  background-color: #2c2e32;
+ }
+ #layout-builder-modal tr:hover td{
+  background-color: #2c2e32;
+ }
+ #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link{
+  color: #383a40;
+  padding: 12px 14px;
+ }
+ #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link:hover{
+  color: #fff;
+ }
+
+ #drupal-off-canvas .layout-builder-remove-block .button--primary.btn {
+  color: inherit;
+  margin-bottom: 10px;
+}
