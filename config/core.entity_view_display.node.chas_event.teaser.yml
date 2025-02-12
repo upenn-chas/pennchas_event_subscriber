@@ -134,5 +134,7 @@ hidden:
   field_program_communities: true
   field_text_box: true
   field_text_box_2: true
+  langcode: true
   links: true
   published_at: true
+  search_api_excerpt: true

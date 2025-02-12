@@ -80,5 +80,7 @@ hidden:
   field_blocks_ref: true
   field_media_image: true
   field_menus: true
+  langcode: true
   layout_builder__layout: true
   published_at: true
+  search_api_excerpt: true

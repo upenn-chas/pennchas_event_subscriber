@@ -18,6 +18,7 @@ class EventFormAlter
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
         }
+        unset($form['field_event_schedule']['widget']['add_more']);
 
         if ($form['#form_id'] === 'node_chas_event_form') {
             $form['terms_condition'] = [
@@ -28,6 +29,12 @@ class EventFormAlter
                 '#required' => TRUE,
                 '#weight' => 100
             ];
+        } else {
+            foreach ($form['field_event_schedule']['widget'] as $key => $value) {
+                if (is_numeric($key) && $key !== 0) {
+                    unset($form['field_event_schedule']['widget'][$key]);
+                }
+            }
         }
         return $form;
     }
@@ -51,7 +58,7 @@ class EventFormAlter
             $groupsId =  \Drupal::entityQuery('group')
                 ->condition('type', 'house1')
                 ->condition('status', 1)->accessCheck(true)->execute();
-                
+
             $groups = Group::loadMultiple($groupsId);
 
             foreach ($groups as $group) {

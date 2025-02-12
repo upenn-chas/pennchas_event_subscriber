@@ -11,4 +11,6 @@ mode: default
 content: {  }
 hidden:
   entity_id: true
+  langcode: true
+  search_api_excerpt: true
   uid: true

@@ -153,4 +153,5 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  langcode: true
   timezone: true

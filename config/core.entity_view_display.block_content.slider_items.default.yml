@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.slider_items
     - field.field.block_content.slider_items.body
+    - field.field.block_content.slider_items.field_heading
     - field.field.block_content.slider_items.field_image
   module:
     - image
@@ -34,3 +35,5 @@ content:
     region: content
 hidden:
   field_heading: true
+  langcode: true
+  search_api_excerpt: true

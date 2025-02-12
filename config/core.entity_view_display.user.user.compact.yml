@@ -50,4 +50,6 @@ hidden:
   field_preferred_name: true
   field_title_position: true
   field_user_categories: true
+  langcode: true
   member_for: true
+  search_api_excerpt: true

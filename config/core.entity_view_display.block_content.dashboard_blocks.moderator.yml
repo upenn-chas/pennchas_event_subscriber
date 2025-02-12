@@ -37,3 +37,5 @@ hidden:
   body: true
   field_block_display_condition_wi: true
   field_child_dashboard_blocks: true
+  langcode: true
+  search_api_excerpt: true

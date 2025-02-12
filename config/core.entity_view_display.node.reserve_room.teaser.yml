@@ -82,5 +82,7 @@ hidden:
   field_purpose_of_request: true
   field_room: true
   field_support_contact: true
+  langcode: true
   layout_builder__layout: true
   published_at: true
+  search_api_excerpt: true

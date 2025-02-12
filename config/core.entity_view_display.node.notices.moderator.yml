@@ -50,5 +50,7 @@ hidden:
   field_marketing_blurb: true
   field_media_image: true
   field_text_box: true
+  langcode: true
   layout_builder__layout: true
   published_at: true
+  search_api_excerpt: true
