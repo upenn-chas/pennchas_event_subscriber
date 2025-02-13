@@ -9,6 +9,7 @@ dependencies:
     - contact
     - filter
     - group
+    - media
     - search
     - system
 _core:
@@ -24,4 +25,5 @@ permissions:
   - 'access site-wide contact form'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view media'
   - 'view user email addresses'

@@ -319,3 +319,72 @@ color: inherit !important;
 #drupal-off-canvas form.layout-builder-configure-section summary .bs-group-title svg path{
  fill:#fff;
 }
+
+.media-library-widget-modal{
+  font-family: $teritoryFont;
+ #media-library-add-form-wrapper{
+  .form-control{
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    height: auto;
+  }
+  .js-media-library-add-form{
+    .item-list{
+      .list-group{
+        li{
+          padding: 20px;
+          [data-drupal-selector="edit-remove-button"]{
+            border: 1px solid #011f5b;
+            border-radius: 4px;
+            padding: 6px 14px;
+            text-align: center;
+            margin-top: 36px;
+            &:hover{
+              background: #011f5b;
+              color: #fff;
+              border-color: #011f5b;
+            }
+            &::before{
+              display: none;
+            }
+          }
+          }
+
+        }
+      }
+      [data-drupal-selector="edit-actions"]{
+      .button{
+          margin-right: 20px;
+        }
+      }
+  }
+ }
+ .views-exposed-form{
+  .d-flex{
+    align-items: center;
+  }
+  .form-control{
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    height: auto;
+    border-color: #dee2e6;
+  }
+  [data-drupal-selector="edit-actions"] .btn{
+    border: 1px solid #011f5b;
+    border-radius: 4px;
+    padding: 6px 14px;
+    text-align: center;
+    margin-top: 36px;
+    &:hover{
+      background: #ffea3f;
+      color: #011f5b;
+      border-color: #ffea3f;
+    }
+    &::before{
+      display: none;
+    }
+  }
+ }
+ 
+}
