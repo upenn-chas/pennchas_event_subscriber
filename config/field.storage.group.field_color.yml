@@ -12,17 +12,17 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: 92b7ff
-      label: '#92B7FF'
-    -
-      value: ebf1ff
-      label: '#ebf1ff'
-    -
       value: d6dbd6
       label: '#D6DBD6'
     -
       value: cedce8
       label: '#CEDCE8'
+    -
+      value: feead7
+      label: '#FEEAD7'
+    -
+      value: fff3dc
+      label: '#FFF3DC'
     -
       value: e6e3ec
       label: '#E6E3EC'
@@ -30,8 +30,8 @@ settings:
       value: d2deea
       label: '#D2DEEA'
     -
-      value: d8d6da
-      label: '#D8D6DA'
+      value: d8e6da
+      label: '#D8E6DA'
     -
       value: dcebf2
       label: '#DCEBF2'
@@ -44,9 +44,6 @@ settings:
     -
       value: f8e8cb
       label: '#F8E8CB'
-    -
-      value: d2dee8
-      label: '#D2DEE8'
     -
       value: f5d5cf
       label: '#F5D5CF'
