@@ -2692,6 +2692,7 @@ display:
         access: false
         query: false
         title: false
+        use_ajax: false
         use_more: false
         use_more_always: false
         use_more_text: false
@@ -2732,6 +2733,7 @@ display:
             'group_media:image': '0'
             'group_media:remote_video': '0'
             'group_media:video': '0'
+      use_ajax: false
       display_description: ''
       use_more: false
       use_more_always: true

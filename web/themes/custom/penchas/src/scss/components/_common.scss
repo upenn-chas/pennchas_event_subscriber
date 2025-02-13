@@ -793,6 +793,9 @@ body {
       line-height: normal;
       margin-bottom: 0.5rem;
     }
+    &::marker{
+      color: #92B7FF;
+    }
    }
   }
 }

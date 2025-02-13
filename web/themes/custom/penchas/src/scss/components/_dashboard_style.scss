@@ -11,6 +11,7 @@
 
   nav.tabs:has(.nav.primary.nav-tabs) {
     background: #e9ecef;
+    z-index: 3;
   }
   nav.tabs .nav.primary.nav-tabs {
     max-width: 1300px;
@@ -18,6 +19,10 @@
     border: 0;
     row-gap: 10px;
   
+  }
+  nav.tabs:has(.nav.primary.nav-tabs) .nav.primary.nav-tabs{
+    flex-wrap: wrap;
+    width: auto;
   }
   nav.tabs:has(.nav.primary.nav-tabs) .nav.primary.nav-tabs .nav-item a{
     text-decoration: none;

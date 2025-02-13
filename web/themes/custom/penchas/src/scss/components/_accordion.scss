@@ -270,6 +270,13 @@
     overflow: hidden;
     button {
       padding-bottom: 0;
+      &:before{
+        top: 24px;
+        right: 34px;
+      }
+      &::after{
+        right: 22px;
+      }
     }
 
     .tags {
@@ -278,7 +285,7 @@
 
     &:has(.tags) button{
       &:before {
-        top: 32px;
+        top: 55px;
         right: 34px;
         @include media-query('mobile') {
           top: 44px;
@@ -286,7 +293,7 @@
         }
       }
       &:after {
-        top: 46px;
+        top: 52px;
         right: 21px;
 
         @include media-query('mobile') {

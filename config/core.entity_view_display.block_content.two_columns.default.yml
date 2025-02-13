@@ -8,9 +8,11 @@ dependencies:
     - field.field.block_content.two_columns.field_cta
     - field.field.block_content.two_columns.field_image
     - field.field.block_content.two_columns.field_image_alignment
+    - field.field.block_content.two_columns.field_media_image
   module:
     - image
     - link
+    - media
     - options
     - text
 id: block_content.two_columns.default
@@ -54,6 +56,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_media_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   langcode: true
