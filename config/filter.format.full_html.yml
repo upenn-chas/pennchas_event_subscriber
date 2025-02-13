@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - editor
+    - media
     - token_filter
 _core:
   default_config_hash: vpZysv3RHJjhYzq7O_q5q8mVlHdrSzKELmXyiX6RtV0
@@ -50,6 +51,15 @@ filters:
     status: true
     weight: 15
     settings: {  }
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types: {  }
   token_filter:
     id: token_filter
     provider: token_filter
