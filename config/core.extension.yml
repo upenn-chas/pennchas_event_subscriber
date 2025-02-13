@@ -68,6 +68,7 @@ module:
   group_finder: 0
   group_media_library: 0
   group_media_library_groupmedia: 0
+  group_media_library_media_tracker: 0
   group_media_library_widget: 0
   group_permissions: 0
   group_relationship_tokens: 0
