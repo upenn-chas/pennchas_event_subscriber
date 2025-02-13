@@ -44,14 +44,14 @@
     }
     &:nth-child(1){
       @media (min-width:1300px) {
-        max-width: 578px;
-        width: 100%;
+        // max-width: 578px;
+        width: 42.8%;
       }
     }
     &:nth-child(2){
       @media (min-width:1300px) {
-      max-width: 720px;
-      width: 100%;
+      // max-width: 720px;
+      width: 53.4%;
       }
     }
   }

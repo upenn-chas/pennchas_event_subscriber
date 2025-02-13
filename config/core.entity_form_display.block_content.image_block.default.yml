@@ -1,21 +1,17 @@
-uuid: bca4366d-71b9-484e-bcf9-7129da194a70
+uuid: cfe79d61-968c-4eee-a3a3-d617fbbc7466
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.two_columns_40_60
-    - field.field.block_content.two_columns_40_60.body
-    - field.field.block_content.two_columns_40_60.field_background_color
-    - field.field.block_content.two_columns_40_60.field_cta
-    - field.field.block_content.two_columns_40_60.field_media_image
+    - block_content.type.image_block
+    - field.field.block_content.image_block.body
+    - field.field.block_content.image_block.field_media_image
   module:
-    - color_field
-    - link
     - media_library
     - text
-id: block_content.two_columns_40_60.default
+id: block_content.image_block.default
 targetEntityType: block_content
-bundle: two_columns_40_60
+bundle: image_block
 mode: default
 content:
   body:
@@ -27,22 +23,6 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  field_background_color:
-    type: color_field_widget_default
-    weight: 27
-    region: content
-    settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
-  field_cta:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_media_image:
     type: media_library_widget

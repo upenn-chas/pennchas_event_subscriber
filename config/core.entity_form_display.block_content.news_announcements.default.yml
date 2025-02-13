@@ -6,12 +6,11 @@ dependencies:
     - block_content.type.news_announcements
     - field.field.block_content.news_announcements.body
     - field.field.block_content.news_announcements.field_cta
-    - field.field.block_content.news_announcements.field_image
+    - field.field.block_content.news_announcements.field_media_image
     - field.field.block_content.news_announcements.field_news
-    - image.style.thumbnail
   module:
-    - image
     - link
+    - media_library
 id: block_content.news_announcements.default
 targetEntityType: block_content
 bundle: news_announcements
@@ -25,13 +24,12 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 1
+  field_media_image:
+    type: media_library_widget
+    weight: 27
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
   field_news:
     type: entity_reference_autocomplete

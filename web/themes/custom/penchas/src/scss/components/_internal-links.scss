@@ -5,6 +5,9 @@
   left: 13px;
   bottom: -8px;
   z-index: 10;
+  @include media-query('ipad'){
+    gap: 30px;
+  }
   @include media-query('tablet') {
     gap: 5px;
   }

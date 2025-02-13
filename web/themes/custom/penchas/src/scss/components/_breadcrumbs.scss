@@ -13,6 +13,7 @@
     text-transform: uppercase;
     font-family: $teritoryFont;
     font-size: 12px;
+    font-weight: 600;
     &.active {
       color: $primaryColor;
     }
@@ -24,6 +25,9 @@
       &:hover {
         color: $redHighlightColor;
       }
+    }
+    div{
+      display: contents;
     }
   }
 }
@@ -49,6 +53,29 @@
   position: relative;
   z-index: 11;
   top: 13px;
+  width: auto;
+  display: inline-block;
+  li {
+    text-transform: uppercase;
+    font-family: $teritoryFont;
+    font-size: 12px;
+    font-weight: 600;
+    &.active {
+      color: $primaryColor;
+    }
+    a {
+      text-transform: uppercase;
+      font-family: $teritoryFont;
+      font-size: 12px;
+      text-decoration: none;
+      &:hover {
+        color: $redHighlightColor;
+      }
+    }
+    div{
+      display: contents;
+    }
+  }
 }
 
 body:has(.view-dashboard-header) .breadcrumbs-block {
