@@ -8,11 +8,11 @@ dependencies:
     - field.field.block_content.top_content_section.field_background_color
     - field.field.block_content.top_content_section.field_circle_colour
     - field.field.block_content.top_content_section.field_cta
-    - field.field.block_content.top_content_section.field_image
+    - field.field.block_content.top_content_section.field_media_image
   module:
     - color_field
-    - image
     - link
+    - media
     - text
 id: block_content.top_content_section.default
 targetEntityType: block_content
@@ -56,8 +56,8 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_image:
-    type: image
+  field_media_image:
+    type: media_thumbnail
     label: hidden
     settings:
       image_link: ''
@@ -65,7 +65,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 3
+    weight: 1
     region: content
 hidden:
   langcode: true

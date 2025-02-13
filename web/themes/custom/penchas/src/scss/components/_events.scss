@@ -207,6 +207,13 @@
   @include media-query('tablet') {
     padding: 0 !important;
   }
+  .view-header{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: $teritoryFont;
+    line-height: 16px;
+    margin-bottom: 1rem;
+  }
   .row {
     margin: 0;
     ul {
@@ -256,7 +263,7 @@
         font-size: 12px;
         text-transform: uppercase;
         display: inline-block;
-        padding: 7px 14px 3px 14px;
+        padding: 6px 14px 5px 14px;
         border-radius: 10px;
         &.pending {
           background-color: #FFEB40;
@@ -290,6 +297,7 @@
        }
         a {
           text-decoration: none;
+          font-weight: 600;
 
           &:hover {
             text-decoration: underline;
@@ -534,7 +542,7 @@
       font-family: $teritoryFont;
       background: #fff;
       color: #011f5b;
-      padding: 13px 20px 9px 20px;
+      padding: 14px 20px 14px 20px;
       border-radius: 10px;
       font-weight: 400;
       border: 1px solid #011f5b;

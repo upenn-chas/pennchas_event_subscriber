@@ -8,10 +8,10 @@ dependencies:
     - field.field.block_content.two_columns.field_cta
     - field.field.block_content.two_columns.field_image
     - field.field.block_content.two_columns.field_image_alignment
-    - image.style.thumbnail
+    - field.field.block_content.two_columns.field_media_image
   module:
-    - image
     - link
+    - media_library
     - text
 id: block_content.two_columns.default
 targetEntityType: block_content
@@ -30,25 +30,24 @@ content:
     third_party_settings: {  }
   field_cta:
     type: link_default
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 3
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
   field_image_alignment:
     type: options_select
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_media_image:
+    type: media_library_widget
+    weight: 5
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   info:
     type: string_textfield
@@ -65,4 +64,5 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_image: true

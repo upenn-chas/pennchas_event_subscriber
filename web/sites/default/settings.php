@@ -38,11 +38,11 @@ ini_set('memory_limit', '-1');
 
 // TODO: Remove below config from here and add them in settings.local.php file on server.
 
-// $config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
-// $config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
+$config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
+$config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
 
-// $config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = 'smtp-relay/collegehouses.upenn.edu';
-// $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'oktad;Kneb63GlovUthid';
-// $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
-// $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = 'smtp-relay/collegehouses.upenn.edu';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'oktad;Kneb63GlovUthid';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
 

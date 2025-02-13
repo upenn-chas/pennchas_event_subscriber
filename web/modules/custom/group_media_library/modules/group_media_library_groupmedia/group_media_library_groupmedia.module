@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Group media library group media module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group_media_library\Access;
+use Drupal\media_library\MediaLibraryState;
+
+/**
+ * Implements hook_ENTITY_TYPE_create_access().
+ */
+function group_media_library_groupmedia_media_create_access(AccountInterface $account, array $context, $entity_bundle): AccessResultInterface {
+  $state = $context['media_library_state'] ?? NULL;
+  if ($state instanceof MediaLibraryState) {
+    return \Drupal::classResolver(Access::class)
+      ->addFormAccess($account, $state, $entity_bundle);
+  }
+  return AccessResult::neutral();
+}

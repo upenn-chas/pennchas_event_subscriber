@@ -1,0 +1,12 @@
+name: 'Group finder'
+type: module
+description: 'Allows you to find group in different scenarios.'
+package: 'Group'
+core_version_requirement: ^9 || ^10
+dependencies:
+  - group:group
+
+# Information added by Drupal.org packaging script on 2023-02-13
+version: '2.0.0-alpha3'
+project: 'group_finder'
+datestamp: 1676274919

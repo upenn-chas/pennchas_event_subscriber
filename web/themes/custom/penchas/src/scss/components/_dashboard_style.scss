@@ -11,11 +11,27 @@
 
   nav.tabs:has(.nav.primary.nav-tabs) {
     background: #e9ecef;
+    z-index: 3;
   }
   nav.tabs .nav.primary.nav-tabs {
     max-width: 1300px;
     margin: 0 auto;
     border: 0;
+    row-gap: 10px;
+  
+  }
+  nav.tabs:has(.nav.primary.nav-tabs) .nav.primary.nav-tabs{
+    flex-wrap: wrap;
+    width: auto;
+  }
+  nav.tabs:has(.nav.primary.nav-tabs) .nav.primary.nav-tabs .nav-item a{
+    text-decoration: none;
+    &:hover{
+      background: $lightBlue;
+    }
+    &.active{
+      background: $lightBlue;
+    }
   }
 
   .form-type-duration .duration-inner-wrapper .form-type--number, 
@@ -258,9 +274,11 @@
   border-color: $yellowLightColor;
   color: #011f5b;
  }
- .page-view-group-media .view-group-media .views-exposed-form .flex-wrap{
+ .page-view-group-media .view-group-media .views-exposed-form .flex-wrap,
+ .page-view-group-nodes .view-group-nodes .views-exposed-form .flex-wrap{
   gap: 15px;
  }
+ 
  #layout-builder-modal tr td{
   background-color: #2c2e32;
  }
@@ -278,4 +296,26 @@
  #drupal-off-canvas .layout-builder-remove-block .button--primary.btn {
   color: inherit;
   margin-bottom: 10px;
+}
+.smartdate--widget .input-group input {
+  width: 5.5rem;
+}
+.smartdate--widget .input-group .input-group-text {
+  padding-top: 5px !important;
+}
+#drupal-off-canvas form.layout-builder-configure-section summary {
+  color: inherit;
+}
+#drupal-off-canvas form.layout-builder-configure-section summary:after{
+ border-color: inherit;
+}
+#drupal-off-canvas form.layout-builder-configure-section button,
+#drupal-off-canvas form.layout-builder-configure-section .details-description {
+  color: inherit !important;
+}
+#drupal-off-canvas form.layout-builder-configure-section summary .bs-group-title{
+color: inherit !important;
+}
+#drupal-off-canvas form.layout-builder-configure-section summary .bs-group-title svg path{
+ fill:#fff;
 }

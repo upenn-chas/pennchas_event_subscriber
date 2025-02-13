@@ -37,7 +37,15 @@
     'col-out-block'
   ]
 %}
-<div{{ attributes.addClass(classes) }} style="background-color: {{content.field_background_color[0]['#markup']}}">
+{% if content.field_background_color_options[0]['#markup'] %}
+  {% if content.field_background_color_options[0]['#markup'] == 'Blue' %}
+    {% set bg_color = '#92B7FF' %}
+  {% endif %}
+  {% if content.field_background_color_options[0]['#markup'] == 'Yellow' %}
+    {% set bg_color = '#FFEB40' %}
+  {% endif %}
+{% endif %}
+<div{{ attributes.addClass(classes) }} style="background-color: {{bg_color}}">
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>

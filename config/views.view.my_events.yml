@@ -1856,6 +1856,7 @@ display:
           plugin_id: moderation_state_filter
           operator: in
           value:
+            editorial-draft: editorial-draft
             editorial-pending: editorial-pending
           group: 1
           exposed: true
@@ -1881,20 +1882,41 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-              test: '0'
             reduce: false
           is_grouped: false
           group_info:
-            label: ''
+            label: 'Moderation state'
             description: ''
-            identifier: ''
+            identifier: moderation_state
             optional: true
             widget: select
             multiple: false
             remember: false
-            default_group: All
+            default_group: '1'
             default_group_multiple: {  }
-            group_items: {  }
+            group_items:
+              1:
+                title: '- Any -'
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+                  editorial-denied: editorial-denied
+                  editorial-pending: editorial-pending
+              2:
+                title: Draft
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+              3:
+                title: Pending
+                operator: in
+                value:
+                  editorial-pending: editorial-pending
+              4:
+                title: Denied
+                operator: in
+                value:
+                  editorial-denied: editorial-denied
       filter_groups:
         operator: AND
         groups:
@@ -2692,6 +2714,7 @@ display:
         access: false
         query: false
         title: false
+        use_ajax: false
         use_more: false
         use_more_always: false
         use_more_text: false
@@ -2732,6 +2755,7 @@ display:
             'group_media:image': '0'
             'group_media:remote_video': '0'
             'group_media:video': '0'
+      use_ajax: false
       display_description: ''
       use_more: false
       use_more_always: true
@@ -3396,16 +3420,38 @@ display:
             reduce: false
           is_grouped: false
           group_info:
-            label: ''
+            label: 'Moderation state'
             description: ''
-            identifier: ''
+            identifier: moderation_state
             optional: true
             widget: select
             multiple: false
             remember: false
-            default_group: All
+            default_group: '1'
             default_group_multiple: {  }
-            group_items: {  }
+            group_items:
+              1:
+                title: '- Any -'
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+                  editorial-denied: editorial-denied
+                  editorial-pending: editorial-pending
+              2:
+                title: Draft
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+              3:
+                title: Pending
+                operator: in
+                value:
+                  editorial-pending: editorial-pending
+              4:
+                title: Denied
+                operator: in
+                value:
+                  editorial-denied: editorial-denied
       filter_groups:
         operator: AND
         groups:

@@ -1,0 +1,12 @@
+services:
+  group_finder.provider:
+    class: Drupal\group_finder\GroupFinderProvider
+    arguments: [ '@plugin.manager.group_finder' ]
+  plugin.manager.group_finder:
+    class: Drupal\group_finder\GroupFinderManager
+    parent: default_plugin_manager
+  group_finder.context:
+    class: Drupal\group_finder\Context\GroupFinderContext
+    arguments: [ '@group_finder.provider' ]
+    tags:
+      - { name: context_provider }

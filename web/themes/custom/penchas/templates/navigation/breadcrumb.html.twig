@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ * - breadcrumb_divider: Breadcrumb divider character
+ */
+#}
+{% if breadcrumb %}
+{# {% set breadcrumb = breadcrumb|merge([{
+    'title': node_title,
+    'is_current': true
+  }]) %} #}
+  {{ include('bootstrap_barrio:breadcrumb',
+    { breadcrumb: breadcrumb,
+      breadcrumb_divider: breadcrumb_divider
+    })
+  }}
+{% endif %}

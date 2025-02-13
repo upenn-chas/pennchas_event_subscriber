@@ -1,0 +1,12 @@
+name: 'Group Media Library - Widget'
+type: module
+description: 'Allows to use media library field widget in group context.'
+package: 'Group'
+core_version_requirement: ^9.5 || ^10
+dependencies:
+  - group_media_library:group_media_library
+
+# Information added by Drupal.org packaging script on 2023-11-29
+version: '2.0.0-alpha2'
+project: 'group_media_library'
+datestamp: 1701279159

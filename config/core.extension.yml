@@ -57,7 +57,6 @@ module:
   field: 0
   field_group: 0
   field_ui: 0
-  field_validation: 0
   file: 0
   filter: 0
   find_your_house: 0
@@ -66,6 +65,10 @@ module:
   gcontent_moderation: 0
   gnode: 0
   group: 0
+  group_finder: 0
+  group_media_library: 0
+  group_media_library_groupmedia: 0
+  group_media_library_widget: 0
   group_permissions: 0
   group_relationship_tokens: 0
   group_role_condition_plugin: 0

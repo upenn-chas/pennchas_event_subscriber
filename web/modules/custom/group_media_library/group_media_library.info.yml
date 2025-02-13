@@ -1,0 +1,14 @@
+name: 'Group Media Library'
+type: module
+description: 'Provides a functionality to use media library with group.'
+package: 'Group'
+core_version_requirement: ^9.5 || ^10
+dependencies:
+  - drupal:media_library
+  - group:group
+  - group_finder:group_finder
+
+# Information added by Drupal.org packaging script on 2023-11-29
+version: '2.0.0-alpha2'
+project: 'group_media_library'
+datestamp: 1701279159

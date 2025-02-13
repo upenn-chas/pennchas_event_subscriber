@@ -1,0 +1,29 @@
+uuid: 83c5d9d6-c7e0-4a76-b4a3-15b8f89a86c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_image
+    - media.type.image
+    - node.type.house_landing_page
+id: node.house_landing_page.field_media_image
+field_name: field_media_image
+entity_type: node
+bundle: house_landing_page
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

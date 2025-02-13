@@ -6,7 +6,9 @@ dependencies:
     - field.field.node.house_landing_page.body
     - field.field.node.house_landing_page.feeds_item
     - field.field.node.house_landing_page.field_blocks_ref
+    - field.field.node.house_landing_page.field_media_image
     - field.field.node.house_landing_page.field_menus
+    - field.field.node.house_landing_page.field_parent_page
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
     - node.type.house_landing_page
@@ -24,7 +26,40 @@ third_party_settings:
         layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components: {  }
+        components:
+          f5080039-e89c-470a-9f89-854dc7cf09d8:
+            uuid: f5080039-e89c-470a-9f89-854dc7cf09d8
+            region: null
+            configuration:
+              id: 'field_block:node:house_landing_page:field_media_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          ca43a7bc-fccb-46ae-8966-59389fb24d82:
+            uuid: ca43a7bc-fccb-46ae-8966-59389fb24d82
+            region: null
+            configuration:
+              id: 'field_block:node:house_landing_page:field_parent_page'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -69,6 +104,15 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_media_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 105
+    region: null
   field_menus:
     type: entity_reference_label
     label: above
@@ -77,6 +121,14 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
+  field_parent_page:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: null
   field_select_house:
     type: entity_reference_label
     label: above

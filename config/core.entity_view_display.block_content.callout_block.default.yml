@@ -5,11 +5,11 @@ dependencies:
   config:
     - block_content.type.callout_block
     - field.field.block_content.callout_block.body
-    - field.field.block_content.callout_block.field_background_color
+    - field.field.block_content.callout_block.field_background_color_options
     - field.field.block_content.callout_block.field_cta
   module:
-    - color_field
     - link
+    - options
     - text
 id: block_content.callout_block.default
 targetEntityType: block_content
@@ -23,14 +23,12 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_background_color:
-    type: color_field_formatter_text
-    label: hidden
-    settings:
-      format: hex
-      opacity: true
+  field_background_color_options:
+    type: list_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_cta:
     type: link

@@ -7,9 +7,7 @@ dependencies:
     - field.field.block_content.informational_block.body
     - field.field.block_content.informational_block.field_alignment
     - field.field.block_content.informational_block.field_cta
-    - field.field.block_content.informational_block.field_image
   module:
-    - image
     - link
     - options
     - text
@@ -43,17 +41,6 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 2
-    region: content
-  field_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 3
     region: content
 hidden:
   langcode: true

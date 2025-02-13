@@ -6,14 +6,14 @@ plugins:
       enabled: true
   typography:
     text_color:
-      enabled: true
+      enabled: false
     text_alignment:
-      enabled: true
+      enabled: false
   spacing:
     padding:
-      enabled: true
+      enabled: false
     margin:
-      enabled: true
+      enabled: false
   border:
     border:
       enabled: false
