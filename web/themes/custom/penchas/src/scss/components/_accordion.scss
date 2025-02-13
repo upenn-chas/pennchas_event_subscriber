@@ -271,11 +271,23 @@
     button {
       padding-bottom: 0;
       &:before{
-        top: 24px;
+        top: 28px;
         right: 34px;
+        @include media-query('ipad'){
+          top: 24px;
+        }
+        @include media-query('mobile') {
+          top: 28px;
+          right: 25px;
+        }
       }
       &::after{
         right: 22px;
+        top: 55%;
+        @include media-query('mobile') {
+          top: 39px;
+          right: 14px;
+        }
       }
     }
 
@@ -285,7 +297,8 @@
 
     &:has(.tags) button{
       &:before {
-        top: 55px;
+        // top: 55px;
+        top: 78%;
         right: 34px;
         @include media-query('mobile') {
           top: 44px;
@@ -293,8 +306,9 @@
         }
       }
       &:after {
-        top: 52px;
-        right: 21px;
+        // top: 68px;
+        top: 97%;
+        right: 22px;
 
         @include media-query('mobile') {
           top: 55px;
