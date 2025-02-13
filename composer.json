@@ -97,7 +97,6 @@
         "drupal/menu_item_role_access": "^2.4",
         "drupal/advagg": "^6.0@alpha",
         "drupal/menu_item_group_role_access": "^1.0",
-        "drupal/field_validation": "^1.1",
         "drupal/search_api_solr": "^4.3",
         "drupal/layout_paragraphs": "^2.1"
     },
