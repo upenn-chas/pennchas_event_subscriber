@@ -276,6 +276,9 @@
         @include media-query('ipad'){
           top: 24px;
         }
+        @include media-query('tablet-large'){
+          top: 22.3px;
+        }
         @include media-query('mobile') {
           top: 28px;
           right: 25px;
@@ -284,6 +287,9 @@
       &::after{
         right: 22px;
         top: 55%;
+        @include media-query('tablet-large'){
+          top: 58%;
+        }
         @include media-query('mobile') {
           top: 39px;
           right: 14px;
