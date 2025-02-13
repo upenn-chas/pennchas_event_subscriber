@@ -298,7 +298,7 @@
     &:has(.tags) button{
       &:before {
         // top: 55px;
-        top: 80%;
+        top: 78%;
         right: 34px;
         @include media-query('mobile') {
           top: 44px;
@@ -307,7 +307,7 @@
       }
       &:after {
         // top: 68px;
-        top: 100%;
+        top: 97%;
         right: 22px;
 
         @include media-query('mobile') {
