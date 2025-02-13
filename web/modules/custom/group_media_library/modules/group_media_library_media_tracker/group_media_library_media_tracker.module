@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Group media library media tracker module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\media\MediaInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function group_media_library_media_tracker_media_insert(MediaInterface $entity): void {
+  // React on media inserted from a group finder context.
+  // When inserting a media from a group finder context, the media entity should
+  // become group content in the group found by the group finder.
+  // Here we only care about media that is being created from the media library.
+  /** @var \Drupal\group_finder\GroupFinderInterface $group_finder */
+  $group_finder = \Drupal::service('group_finder.provider')->get();
+  if ($group_finder && $group_finder->getPluginId() === 'media_library_opener') {
+    \Drupal::service('groupmedia.attach_group')->attach($entity);
+  }
+}
+
+/**
+ * Implements hook_groupmedia_entity_group_alter().
+ */
+function group_media_library_media_tracker_groupmedia_entity_group_alter(&$groups, EntityInterface $entity): void {
+  // When creating a media from group finder context using media library,
+  // groupmedia module doesn't know the group that the media should be attached
+  // to without saving the entity (group, grouped entity e.g. node) itself.
+  // In order to attach the media (that is being created from the media library
+  // context) to the correct group before saving the entity (group, grouped
+  // entity e.g. node) that the media is being attached to, we try to find the
+  // group from the media library group finder.
+  if ($entity instanceof MediaInterface) {
+    /** @var \Drupal\group_finder\GroupFinderInterface $group_finder */
+    $group_finder = \Drupal::service('group_finder.provider')->get();
+
+    // Here we only care about media that is being created from the media
+    // library.
+    // So we should attach media to group only when we are on the media library
+    // opener group finder. This is because it makes sure we have group media
+    // library state, so we get the group from the GroupMediaLibraryState.
+    // @see \Drupal\group_media_library\Plugin\GroupFinder\MediaLibraryOpener
+    if (($group = $group_finder?->getGroup())
+      && $group->id()
+      && $group_finder->getPluginId() === 'media_library_opener') {
+      // Extract the group ids for the existing groups.
+      $group_ids = [];
+      foreach ($groups as $value) {
+        $group_ids[] = $value->id();
+      }
+
+      // If the group founded by the group finder context is not exist in the
+      // groups, add it to groups.
+      if (!in_array($group->id(), $group_ids)) {
+        $groups[] = $group;
+      }
+    }
+  }
+}

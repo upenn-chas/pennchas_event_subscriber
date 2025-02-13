@@ -1,0 +1,23 @@
+{
+  "name": "drupal/group_finder",
+  "type": "drupal-module",
+  "description": "Drupal module that allows you to find group in different scenarios.",
+  "homepage": "http://drupal.org/project/group_finder",
+  "authors": [
+    {
+      "name": "Mohammed Nassar",
+      "homepage": "https://www.drupal.org/u/msnassar",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/group_finder",
+    "source": "https://git.drupalcode.org/project/group_finder"
+  },
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/core": "^9 || ^10",
+    "drupal/group": "^2.0 || ^3.0"
+  }
+}

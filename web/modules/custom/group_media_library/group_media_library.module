@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Group media library module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group_media_library\Access;
+
+/**
+ * Implements hook_entity_create_access().
+ *
+ * This hook is only taking care of the "create access" for the content that is
+ * being created in a group when in context of media library opener.
+ * Because, core is not aware of the "group content create access" that has
+ * been given to users from group.
+ *
+ * We have access opinion on "create content" for media library opener when:
+ * 1. The current route is a media library route.
+ * 2. The type of the entity is not media:
+ *    The access to create media when in context of media_library_state is
+ *    handled in group_media_library_groupmedia_media_create_access as this is
+ *    only needed when the user has been granted the access to create media form
+ *    the group only.
+ * 3. The type of the entity is not group:
+ *    Core is aware of the "group create access", as this is a global access.
+ */
+function group_media_library_entity_create_access(AccountInterface $account, array $context, $entity_bundle): AccessResultInterface {
+  // Media library opener routes.
+  $route_names = [
+    'media_library.ui',
+    'view.media_library.widget',
+    'view.media_library.widget_table',
+  ];
+  if (!in_array($context['entity_type_id'], ['group', 'media'])
+    && in_array(\Drupal::routeMatch()->getRouteName(), $route_names)) {
+
+    return \Drupal::classResolver(Access::class)
+      ->openerAccess($account, $context, $entity_bundle);
+  }
+
+  return AccessResult::neutral();
+}
