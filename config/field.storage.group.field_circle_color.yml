@@ -18,8 +18,8 @@ settings:
       value: a0bbd4
       label: '#A0BBD4'
     -
-      value: fddoa8
-      label: '#FDDOA8'
+      value: fdd0a8
+      label: '#FDD0A8'
     -
       value: ffe4b1
       label: '#FFE4B1'
@@ -53,6 +53,12 @@ settings:
     -
       value: bfbfb9
       label: '#bfbfb9'
+    -
+      value: feead7
+      label: '#FEEAD7'
+    -
+      value: fff3dc
+      label: '#fff3dc'
   allowed_values_function: ''
 module: options
 locked: false
