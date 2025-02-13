@@ -9,19 +9,11 @@ dependencies:
     - field.field.block_content.cta_link.field_cta
   module:
     - link
-    - options
 id: block_content.cta_link.default
 targetEntityType: block_content
 bundle: cta_link
 mode: default
 content:
-  field_alignment:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
   field_cta:
     type: link
     label: hidden
@@ -36,5 +28,6 @@ content:
     region: content
 hidden:
   body: true
+  field_alignment: true
   langcode: true
   search_api_excerpt: true

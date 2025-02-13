@@ -1,0 +1,21 @@
+uuid: bd2a96b8-ed25-4a97-8aff-ef1ec5e24ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.callout_block
+    - field.storage.block_content.field_background_color_options
+  module:
+    - options
+id: block_content.callout_block.field_background_color_options
+field_name: field_background_color_options
+entity_type: block_content
+bundle: callout_block
+label: 'Background Color options'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

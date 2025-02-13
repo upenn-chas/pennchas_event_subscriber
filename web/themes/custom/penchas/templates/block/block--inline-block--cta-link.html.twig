@@ -34,25 +34,17 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-    'col-out-block'
   ]
 %}
-{% if content.field_background_color_options[0]['#markup'] %}
-  {% if content.field_background_color_options[0]['#markup'] == 'Blue' %}
-    {% set bg_color = '#92B7FF' %}
-  {% endif %}
-  {% if content.field_background_color_options[0]['#markup'] == 'Yellow' %}
-    {% set bg_color = '#FFEB40' %}
-  {% endif %}
-{% endif %}
-<div{{ attributes.addClass(classes) }} style="background-color: {{bg_color}}">
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-      {{ content.body }}
-      {{ content.field_cta }}
-  {% endblock %}
-</div>
+  <div{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+      <div{{ content_attributes.addClass('content') }}>
+        {{ content }}
+      </div>
+    {% endblock %}
+  </div>

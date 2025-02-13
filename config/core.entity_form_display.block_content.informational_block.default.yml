@@ -7,10 +7,7 @@ dependencies:
     - field.field.block_content.informational_block.body
     - field.field.block_content.informational_block.field_alignment
     - field.field.block_content.informational_block.field_cta
-    - field.field.block_content.informational_block.field_image
-    - image.style.thumbnail
   module:
-    - image
     - link
     - text
 id: block_content.informational_block.default
@@ -41,14 +38,6 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 3
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
   info:
     type: string_textfield

@@ -373,7 +373,9 @@ label {
 								// padding-top: 11px;
 								min-height: 50px;
 								height: 50px;
-                
+                @include media-query ('small'){
+                  margin-top: 14px;
+                }
 							}
 						}
 						.form-submit {
@@ -405,9 +407,10 @@ label {
                   @include media-query ('small'){
                     .js-form-item {
                       width: 100%;
-                      margin-bottom: 0 !important;
+                    
                     }
                   }
+               
                 }
                 label {
                   display: none;
@@ -416,6 +419,13 @@ label {
               .time-end {
                 flex-wrap: nowrap;
                 gap: 10px;
+                @include media-query ('small'){
+                  .js-form-item {
+                    width: 100%;
+                    // margin-bottom: 0;
+                    // margin-top: 1rem;
+                  }
+                }
               }
               details{
                 border: none;
@@ -431,7 +441,18 @@ label {
             }
             .duration-wrapper {
               display: inline-flex;
-              
+              @include media-query ('small'){
+                flex-direction: column;
+                width: 100%;
+                label{
+                  text-align: left;
+                }
+              }
+            }
+            .repeat--label{
+              @include media-query ('small'){
+              width: 100%;
+              }
             }
             .form-select{
               border: 1px solid $primaryColor;
