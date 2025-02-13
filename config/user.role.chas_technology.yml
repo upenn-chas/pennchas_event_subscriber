@@ -19,6 +19,7 @@ dependencies:
     - media
     - node
     - penchas_custom_token
+    - penchas_group_role_permissions
     - pennchas_form_alter
     - smart_date_recur
 third_party_settings:

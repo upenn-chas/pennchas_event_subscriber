@@ -1,0 +1,13 @@
+name: 'Group Media Library - Group Media'
+type: module
+description: 'Add support for using group media library with groupmedia module.'
+package: 'Group'
+core_version_requirement: ^9.5 || ^10
+dependencies:
+  - group_media_library:group_media_library
+  - groupmedia:groupmedia
+
+# Information added by Drupal.org packaging script on 2023-11-29
+version: '2.0.0-alpha2'
+project: 'group_media_library'
+datestamp: 1701279159

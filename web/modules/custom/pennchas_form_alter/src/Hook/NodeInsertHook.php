@@ -2,6 +2,7 @@
 
 namespace Drupal\pennchas_form_alter\Hook;
 
+use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
@@ -43,8 +44,8 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-        
-        $roomReservationMessage = 'Do you need a room reservation? <a href="#">click here</a>';
+        $eventLocationHouseId = (int) $node->get('field_location')->getString();
+        $roomReservationMessage = 'Do you need a room reservation? <a href="'. Url::fromRoute('entity.group_relationship.create_form', ['group' => $eventLocationHouseId, 'plugin_id' => 'group_node:reserve_room'])->toString() .'">click here</a>';
         $message = t('Your event has been submited and there is a possible three day wait time for approval.' . ' ' . $roomReservationMessage);
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {

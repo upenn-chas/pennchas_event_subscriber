@@ -62,6 +62,7 @@ permissions:
   - 'use editorial transition create_new_draft'
   - 'use editorial transition denied'
   - 'use editorial transition pending'
+  - 'use editorial transition publish'
   - 'view group'
   - 'view group_media:document entity'
   - 'view group_media:image entity'

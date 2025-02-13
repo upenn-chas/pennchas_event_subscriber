@@ -1,0 +1,24 @@
+{
+  "name": "drupal/group_media_library",
+  "type": "drupal-module",
+  "description": "Drupal module that provides a functionality to use media library with group.",
+  "homepage": "https://www.drupal.org/project/group_media_library",
+  "authors": [
+    {
+      "name": "Mohammed Nassar",
+      "homepage": "https://www.drupal.org/u/msnassar",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/group_media_library",
+    "source": "https://git.drupalcode.org/project/group_media_library"
+  },
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/core": "^9 || ^10",
+    "drupal/group": "^2.0 || ^3.0",
+    "drupal/group_finder": "^2.0@alpha"
+  }
+}

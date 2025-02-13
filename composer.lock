@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ca345ae1a9dedef6c45184bf9c88767",
+    "content-hash": "41a2aaaf712ec90a7bc6c7ff319ade7d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -21409,20 +21409,20 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20,
-        "drupal/gcontent_moderation": 20,
-        "drupal/viewsreference": 10,
-        "drupal/group_permissions": 15,
-        "drupal/ultimate_cron": 15,
+        "drupal/advagg": 15,
         "drupal/conditional_fields": 15,
+        "drupal/gcontent_moderation": 20,
+        "drupal/group_permissions": 15,
         "drupal/publication_date": 5,
-        "drupal/advagg": 15
+        "drupal/ultimate_cron": 15,
+        "drupal/viewsreference": 10,
+        "pantheon-upstreams/upstream-configuration": 20,
+        "upenn/penn403": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2.0"
     },
