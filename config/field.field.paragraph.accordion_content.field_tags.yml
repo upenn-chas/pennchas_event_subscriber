@@ -1,0 +1,21 @@
+uuid: 260a47f3-c95e-48a3-8590-6f1b04af8224
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tags
+    - paragraphs.paragraphs_type.accordion_content
+  module:
+    - options
+id: paragraph.accordion_content.field_tags
+field_name: field_tags
+entity_type: paragraph
+bundle: accordion_content
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

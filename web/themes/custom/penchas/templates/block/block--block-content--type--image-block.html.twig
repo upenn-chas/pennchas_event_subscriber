@@ -29,34 +29,33 @@
  * @ingroup themeable
  */
 #}
-{% set bg_class = 'none' %}
-{% if content.field_background_color_options[0]['#markup'] %}
-  {% if content.field_background_color_options[0]['#markup'] == 'Blue' %}
-    {% set bg_color = '#92B7FF' %}
-    {% set bg_class = 'blue' %}
-  {% endif %}
-  {% if content.field_background_color_options[0]['#markup'] == 'Yellow' %}
-    {% set bg_color = '#FFEB40' %}
-    {% set bg_class = 'yellow' %}
-  {% endif %}
-{% endif %}
 {%
   set classes = [
     'block',
     'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
-    'col-out-block',
-    bg_class
+    'block-' ~ plugin_id|clean_class
   ]
 %}
-<div{{ attributes.addClass(classes) }} style="background-color: {{bg_color}}">
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-      {{ content.body }}
-      {{ content.field_cta }}
-  {% endblock %}
-</div>
+{% set image_alignment = '' %}
+{% if content.field_image_alignment %}
+  {% set image_alignment = content.field_image_alignment[0]['#markup'] %}
+{% endif %}
+  <section{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+    {% set image_url = content.field_media_image.0['#item'].entity.fileuri| file_url %}
+      <div class="image-block align-{{image_alignment}}">   
+        {% if content.field_cta %}
+            <a href="{{content.field_cta.0['#url'].toString()}}" class="arrow-link">
+                <img src="{{image_url}}" alt="{{label}}">
+            </a>
+        {% else %}
+          {{content.field_media_image}}
+        {% endif %}
+      </div>
+    {% endblock %}
+  </section>

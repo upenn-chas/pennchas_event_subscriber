@@ -60,17 +60,25 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="heading{{ loop.index }}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
-              {{item.content['#block_content'].info.value}}
+              {% if item.content['#paragraph'].field_heading is not empty %}
+                {{ item.content['#paragraph'].field_heading.value }}
+              {% endif %}
             </button>
-            {% if item.content.field_tags.0 %}
+            {% if item.content['#paragraph'].field_tags.0 %}
               <div class="tags">
-                {{item.content['field_tags']}}
+                <div class="item-list">
+                  <ul class="tags list-group">
+                   {% for tag in item.content['#paragraph'].field_tags %}
+                    <li class="list-group-item">{{ tag.value }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
               </div>
             {% endif %}
           </h2>
           <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample" style="">
             <div class="accordion-body">
-              {{ item.content|without('field_tags') }}
+              {{item.content['#paragraph'].field_description.value|raw}}
             </div>
           </div>
         </div>

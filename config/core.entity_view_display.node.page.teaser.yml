@@ -38,7 +38,7 @@ content:
     type: color_field_formatter_text
     label: hidden
     settings:
-      format: hex
+      format: rgb
       opacity: true
     third_party_settings: {  }
     weight: 2
