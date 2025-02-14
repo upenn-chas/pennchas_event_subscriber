@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - core.base_field_override.group.house1.label
-    - field.field.group.house1.field_circle_color
     - field.field.group.house1.field_color
+    - field.field.group.house1.field_color_of_circle
     - field.field.group.house1.field_community
     - field.field.group.house1.field_description
     - field.field.group.house1.field_heading
@@ -175,21 +175,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 10
             additional: {  }
-          a10b5480-71d1-4897-a413-9138d3ab18e5:
-            uuid: a10b5480-71d1-4897-a413-9138d3ab18e5
-            region: content
-            configuration:
-              id: 'field_block:group:house1:field_circle_color'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 11
-            additional: {  }
           b55d0cff-61d7-4d26-b9c4-7ac6db716bfb:
             uuid: b55d0cff-61d7-4d26-b9c4-7ac6db716bfb
             region: content
@@ -205,6 +190,21 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings: {  }
             weight: 12
+            additional: {  }
+          1b4c478f-5ca7-4bdf-9c8b-d06a7a9e4a4e:
+            uuid: 1b4c478f-5ca7-4bdf-9c8b-d06a7a9e4a4e
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_color_of_circle'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 13
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -246,19 +246,19 @@ targetEntityType: group
 bundle: house1
 mode: default
 content:
-  field_circle_color:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_color:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
     weight: -1
+    region: content
+  field_color_of_circle:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_community:
     type: list_default

@@ -1,14 +1,14 @@
-uuid: d4ffac8b-c303-43f6-aa2d-8a7eebabaf52
+uuid: 0072181e-c10c-4089-94fe-23662d8f482c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_circle_color
+    - field.storage.group.field_color_of_circle
     - group.type.house1
   module:
     - options
-id: group.house1.field_circle_color
-field_name: field_circle_color
+id: group.house1.field_color_of_circle
+field_name: field_color_of_circle
 entity_type: group
 bundle: house1
 label: 'Circle Color'

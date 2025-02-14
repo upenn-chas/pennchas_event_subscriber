@@ -75,10 +75,10 @@
 %}
 
 <section class="hero-banner without-image small" style="background-color: #{{node.field_group.0.entity.field_color.value}};">
-    {% if node.field_group.0.entity.field_circle_color.value %}
+    {% if node.field_group.0.entity.field_color_of_circle.value %}
         <style>
             .hero-banner .container:before {
-            background: #{{node.field_group.0.entity.field_circle_color.value}};
+            background: #{{node.field_group.0.entity.field_color_of_circle.value}};
             }
         </style>
     {% endif %}

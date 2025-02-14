@@ -15,14 +15,22 @@
 .reports {
   table {
     font-size: 16px;
-    width: 1600px;    
+    width: 1600px; 
+    position: relative;   
     thead {
+      position: sticky;
+      top: 0;
+      background-color: #fff; 
+      z-index: 2;
       tr {
         th {
           border-left: 1px solid #ccc;
           border-top: 1px solid #ccc;
           &:last-child{
             border-right: 1px solid #ccc;
+          }
+          .tablesort {
+            filter: invert(1);
           }
         }
       }
