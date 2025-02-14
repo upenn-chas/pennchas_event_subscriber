@@ -1228,21 +1228,34 @@ display:
               chas_professional_staff: '0'
               test: '0'
             reduce: true
-          is_grouped: false
+          is_grouped: true
           group_info:
             label: 'Moderation state'
-            description: null
+            description: ''
             identifier: moderation_state
             optional: true
             widget: select
             multiple: false
             remember: false
-            default_group: All
+            default_group: '1'
             default_group_multiple: {  }
             group_items:
-              1: {  }
-              2: {  }
-              3: {  }
+              1:
+                title: '- Any -'
+                operator: in
+                value:
+                  editorial-published: editorial-published
+                  editorial-denied: editorial-denied
+              2:
+                title: Approved
+                operator: in
+                value:
+                  editorial-published: editorial-published
+              3:
+                title: Denied
+                operator: in
+                value:
+                  editorial-denied: editorial-denied
       filter_groups:
         operator: AND
         groups:
@@ -1885,7 +1898,7 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             reduce: false
-          is_grouped: false
+          is_grouped: true
           group_info:
             label: 'Moderation state'
             description: ''
@@ -1902,7 +1915,6 @@ display:
                 operator: in
                 value:
                   editorial-draft: editorial-draft
-                  editorial-denied: editorial-denied
                   editorial-pending: editorial-pending
               2:
                 title: Draft
@@ -1914,11 +1926,6 @@ display:
                 operator: in
                 value:
                   editorial-pending: editorial-pending
-              4:
-                title: Denied
-                operator: in
-                value:
-                  editorial-denied: editorial-denied
       filter_groups:
         operator: AND
         groups:
@@ -2578,7 +2585,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div  class=\"row\">\r\n  <div class=\"block1\">\r\n    {{ field_groups }} \r\n    {{ field_location_of_program }}\r\n  </div>\r\n  <div class=\"block2\">\r\n    <div class=\"center-title\">{{ title }}</div>\r\n    {{ uid }}<br/>\r\n    {{ field_marketing_blurb }}\r\n  </div>\r\n  <div class=\"block3\">\r\n    <div class=\"action-btns\">\r\n      <div class=\"approved-btn\">{{ moderation_state }}</div>\r\n      <div class=\"bottom-btns\">\r\n        <div class=\"edit-btns\"><img src=\"/themes/custom/penchas/images/edit.svg\">{{ edit_node }}</div>\r\n        <div class=\"delete-btns\"><img src=\"/themes/custom/penchas/images/delete.svg\">{{ delete_node }}</div>    \r\n      </div>      \r\n    </div>\r\n  </div>\r\n</div>"
+            text: "<div  class=\"row\">\r\n  <div class=\"block1\">\r\n    {{ field_groups }} \r\n    {{ field_location_of_program }}\r\n  </div>\r\n  <div class=\"block2\">\r\n    <div class=\"center-title\">{{ title }}</div>\r\n    {{ uid }}<br/>\r\n    {{ field_marketing_blurb }}\r\n  </div>\r\n  <div class=\"block3\">\r\n    <div class=\"action-btns\">\r\n      <div class=\"approved-btn\">{{ moderation_state }}</div><br>\r\n      <div class=\"bottom-btns\">\r\n        {% if edit_node  %}\r\n        <div class=\"edit-btns\"><img src=\"/themes/custom/penchas/images/edit.svg\">{{ edit_node }}</div>\r\n         {% endif %}\r\n         {% if delete_node %}\r\n        <div class=\"delete-btns\"><img src=\"/themes/custom/penchas/images/delete.svg\">{{ delete_node }}</div>    \r\n         {% endif %}\r\n      </div>      \r\n    </div>\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -2730,21 +2737,36 @@ display:
               chas_professional_staff: '0'
               test: '0'
             reduce: true
-          is_grouped: false
+          is_grouped: true
           group_info:
             label: 'Moderation state'
-            description: null
+            description: ''
             identifier: moderation_state
             optional: true
             widget: select
             multiple: false
             remember: false
-            default_group: All
+            default_group: '1'
             default_group_multiple: {  }
             group_items:
-              1: {  }
-              2: {  }
-              3: {  }
+              1:
+                title: '- Any -'
+                operator: in
+                value:
+                  editorial-published: editorial-published
+                  editorial-denied: editorial-denied
+              2:
+                title: Approved
+                operator: in
+                value:
+                  editorial-published: editorial-published
+                  editorial-denied: editorial-denied
+              3:
+                title: Denied
+                operator: in
+                value:
+                  editorial-published: editorial-published
+                  editorial-denied: editorial-denied
       filter_groups:
         operator: AND
         groups:
@@ -3528,8 +3550,9 @@ display:
           custom_date_format: ''
           timezone: ''
       access:
-        type: none
-        options: {  }
+        type: dashboard_access
+        options:
+          dashboard_perm: 'dashboard pending events'
       arguments: {  }
       filters:
         type:
@@ -3749,6 +3772,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:field.storage.node.field_collaborators'
         - 'config:field.storage.node.field_groups'

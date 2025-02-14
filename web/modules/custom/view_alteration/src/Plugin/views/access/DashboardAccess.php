@@ -26,8 +26,12 @@ use Symfony\Component\Routing\Route;
  * )
  * 
  */
-class DashboardAccess extends AccessPluginBase /*implements CacheableDependencyInterface*/
+class DashboardAccess extends AccessPluginBase implements CacheableDependencyInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected $usesOptions = TRUE;
 
     /**
      * The permission handler.
@@ -120,11 +124,10 @@ class DashboardAccess extends AccessPluginBase /*implements CacheableDependencyI
         $permissions = $this->permissionHandler->getPermissions();
         foreach ($permissions as $perm => $perm_item) {
             $provider = $perm_item['provider'];
-            if (true || $provider === 'penchas_custom_token') {
+            if ($provider === 'penchas_custom_token') {
                 $perms[$perm] = strip_tags($perm_item['title']);
             }
         }
-        // dd()
 
         $form['dashboard_perm'] = [
             '#type' => 'select',
@@ -134,15 +137,29 @@ class DashboardAccess extends AccessPluginBase /*implements CacheableDependencyI
             '#required' => TRUE,
             '#description' => $this->t('Only users with the selected dashboard permission will be able to access this display.'),
         ];
-       
     }
 
     /**
      * {@inheritdoc}
      */
-    public function submitOptionsForm(&$form, FormStateInterface $form_state)
+    public function getCacheMaxAge()
     {
-        $this->options['dashboard_perm'] = $form_state->getValue('dashboard_perm');
-        parent::submitOptionsForm($form, $form_state);
+        return Cache::PERMANENT;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheContexts()
+    {
+        return ['user.permissions'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheTags()
+    {
+        return [];
     }
 }
