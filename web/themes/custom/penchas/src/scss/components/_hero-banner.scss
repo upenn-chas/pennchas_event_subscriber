@@ -217,3 +217,13 @@
     }
   }
 }
+
+.hero-banner {
+  .hero-img {
+    &:not(:has(.field--name-field-media-image img)) {
+      @media (min-width: 992px) {
+        min-height: 250px;
+      }
+    }
+  }
+}
