@@ -98,7 +98,7 @@
           {{ page.breadcrumb }}
           
               {% set banner_class = 'hero-banner with-bottom-border' %}
-            {% if node.field_media_image.entity == ''  %}
+            {% if node.field_media_image.value is empty  %}
               {% set banner_class = 'hero-banner without-image' %}
             {% endif %}
             {% if not is_front %}
@@ -148,7 +148,6 @@
                           </div>
 
                       </div>
-                      
                       {% if node.field_media_image.value is not empty %}
                         <div class="col-12 col-lg-6">
                             <div class="hero-img">

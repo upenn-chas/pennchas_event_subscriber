@@ -357,6 +357,14 @@ color: inherit !important;
           }
         }
   }
+  .js-media-library-views-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .form-actions{
+      width: 100%;
+    }
+  }
  #media-library-add-form-wrapper{
   .form-control{
     width: 100%;
