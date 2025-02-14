@@ -16,6 +16,15 @@ class NoticeFormAlter
             $form['#attached']['library'][] = 'pennchas_form_alter/notice_select_all';
             $form['field_groups']['widget']['#options'] = ['select_all' => t('All college houses')] + $form['field_groups']['widget']['#options'];
         }
+        unset($form['field_event_schedule']['widget']['add_more']);
+        if ($form['#form_id'] === 'node_notices_edit_form') {
+            foreach ($form['field_event_schedule']['widget'] as $key => $value) {
+                if (is_numeric($key) && $key !== 0) {
+                    unset($form['field_event_schedule']['widget'][$key]);
+                }
+            }
+        }
+
         return $form;
     }
 

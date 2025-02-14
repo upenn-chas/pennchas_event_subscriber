@@ -20,7 +20,6 @@ dependencies:
     - path
     - publication_date
     - smart_date
-    - smart_date_recur
 id: node.notices.default
 targetEntityType: node
 bundle: notices
@@ -46,22 +45,12 @@ content:
         120|2 hours
         custom
       show_extra: false
-      hide_date: true
+      hide_date: false
       allday: false
       remove_seconds: true
       duration_overlay: false
       separator: to
-    third_party_settings:
-      smart_date_recur:
-        modal: false
-        show_single: true
-        allowed_recur_freq_values:
-          MINUTELY: '0'
-          HOURLY: '0'
-          DAILY: DAILY
-          WEEKLY: WEEKLY
-          MONTHLY: MONTHLY
-          YEARLY: YEARLY
+    third_party_settings: {  }
   field_groups:
     type: options_buttons
     weight: 5
