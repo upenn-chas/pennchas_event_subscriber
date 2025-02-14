@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
-    - field.field.node.page.field_circle_color
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
@@ -15,7 +14,6 @@ dependencies:
     - image.style.medium
     - node.type.page
   module:
-    - color_field
     - media
     - text
     - user
@@ -33,15 +31,6 @@ content:
       trim_length: 600
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_circle_color:
-    type: color_field_formatter_text
-    label: hidden
-    settings:
-      format: rgb
-      opacity: true
-    third_party_settings: {  }
-    weight: 2
     region: content
   field_media_image:
     type: media_thumbnail

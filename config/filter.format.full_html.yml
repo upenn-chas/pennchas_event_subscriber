@@ -2,7 +2,14 @@ uuid: 77e2ccdc-e595-4c86-ad7b-d8eb534379c9
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.media.cke_media_resize_large
+    - core.entity_view_mode.media.cke_media_resize_medium
+    - core.entity_view_mode.media.cke_media_resize_small
+    - core.entity_view_mode.media.cke_media_resize_xl
+    - core.entity_view_mode.media.full
   module:
+    - ckeditor_media_resize
     - editor
     - media
     - token_filter
@@ -51,6 +58,12 @@ filters:
     status: true
     weight: 15
     settings: {  }
+  filter_resize_media:
+    id: filter_resize_media
+    provider: ckeditor_media_resize
+    status: true
+    weight: 90
+    settings: {  }
   media_embed:
     id: media_embed
     provider: media
@@ -58,7 +71,13 @@ filters:
     weight: 100
     settings:
       default_view_mode: default
-      allowed_view_modes: {  }
+      allowed_view_modes:
+        default: default
+        cke_media_resize_large: cke_media_resize_large
+        cke_media_resize_medium: cke_media_resize_medium
+        cke_media_resize_small: cke_media_resize_small
+        cke_media_resize_xl: cke_media_resize_xl
+        full: full
       allowed_media_types: {  }
   token_filter:
     id: token_filter
