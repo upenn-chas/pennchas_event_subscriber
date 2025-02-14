@@ -9,18 +9,17 @@ dependencies:
     - paragraphs.paragraphs_type.accordion_content
   module:
     - options
-    - text
 id: paragraph.accordion_content.default
 targetEntityType: paragraph
 bundle: accordion_content
 mode: default
 content:
   field_description:
-    type: text_default
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 3
     region: content
   field_heading:
     type: string

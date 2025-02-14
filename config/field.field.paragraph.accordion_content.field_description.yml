@@ -1,12 +1,10 @@
-uuid: acfde1aa-465b-46dc-b9ef-f42f8c2a8143
+uuid: a689e0a8-f65c-4e1c-873d-b6b521d748cd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_description
     - paragraphs.paragraphs_type.accordion_content
-  module:
-    - text
 id: paragraph.accordion_content.field_description
 field_name: field_description
 entity_type: paragraph
@@ -17,6 +15,5 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  allowed_formats: {  }
-field_type: text_long
+settings: {  }
+field_type: string_long
