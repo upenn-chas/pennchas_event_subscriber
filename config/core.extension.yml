@@ -162,6 +162,7 @@ module:
   pathauto: 1
   externalauth: 10
   views: 10
+  paragraphs: 11
   publication_date: 99
 theme:
   olivero: 0

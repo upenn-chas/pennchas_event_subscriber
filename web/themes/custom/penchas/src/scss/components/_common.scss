@@ -124,6 +124,15 @@ body {
   }
 }
 
+// .node--type-page{
+//   p{
+//     @include media-query-min('mobile') {
+//       font-size: 24px;
+//       line-height: 28px;
+//   } 
+//   }
+// }
+
 .space-m {
   margin: 80px 0;
 
@@ -736,66 +745,124 @@ body {
     justify-content: center;
   }
 }
-.layout-builder-form  {
-  .form-actions{ 
-  [data-drupal-selector="edit-submit"]{
-  margin-right: 1rem;
-  border: 1px solid #011f5b;
-    border-radius: 10px;
-    padding: 17px 20px;
-    text-align: center;
-    &::before{
-      display: none;
+
+.layout-builder-form {
+  .form-actions {
+    [data-drupal-selector="edit-submit"] {
+      margin-right: 1rem;
+      border: 1px solid #011f5b;
+      border-radius: 10px;
+      padding: 17px 20px;
+      text-align: center;
+
+      &::before {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $yellowLightColor;
+        border-color: $yellowLightColor;
+      }
     }
-    &:hover{
-      background-color: $yellowLightColor;
-      border-color: $yellowLightColor;
+
+    [data-drupal-selector="edit-discard-changes"] {
+      border: 1px solid #011f5b;
+      border-radius: 10px;
+      padding: 17px 20px;
+      text-align: center;
+      background-color: #011f5b;
+      color: #fff;
+
+      &::before {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $yellowLightColor;
+        border-color: $yellowLightColor;
+        color: #011f5b;
+      }
     }
-  }
-  [data-drupal-selector="edit-discard-changes"]{
-    border: 1px solid #011f5b;
-    border-radius: 10px;
-    padding: 17px 20px;
-    text-align: center;
-    background-color: #011f5b;
-    color: #fff;
-    &::before{
-      display: none;
+
+    [data-drupal-selector="edit-preview-toggle"] {
+      margin-top: 1rem;
     }
-    &:hover{
-      background-color: $yellowLightColor;
-      border-color: $yellowLightColor;
-      color: #011f5b;
-    } 
-  }
-  [data-drupal-selector="edit-preview-toggle"]{
-    margin-top: 1rem;
   }
 }
-}
-.node--type-house-landing-page{
+
+.node--type-house-landing-page {
   .node__content {
     p {
       font-size: 24px;
       line-height: 28px;
-  
-    @include media-query('mobile') {
-      font-size: 18px;
-      line-height: normal;
+
+      @include media-query('mobile') {
+        font-size: 18px;
+        line-height: normal;
+      }
     }
+
+    li {
+      font-size: 26px;
+      line-height: 28px;
+      margin-bottom: 1rem;
+
+      @include media-query('mobile') {
+        font-size: 20px;
+        line-height: normal;
+        margin-bottom: 0.5rem;
+      }
+
+      &::marker {
+        color: #92B7FF;
+      }
     }
-   li{
+  }
+}
+
+.block-inline-blockbasic {
+  p {
+    @include media-query-min('mobile') {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  ul {
+    li {
+      font-size: 26px;
+      line-height: 28px;
+      margin-bottom: 1rem;
+
+      @include media-query('mobile') {
+        font-size: 20px;
+        line-height: normal;
+        margin-bottom: 0.5rem;
+      }
+
+      &::marker {
+        color: #92B7FF;
+      }
+    }
+
+}
+ol{
+  li {
     font-size: 26px;
     line-height: 28px;
     margin-bottom: 1rem;
+
     @include media-query('mobile') {
       font-size: 20px;
       line-height: normal;
       margin-bottom: 0.5rem;
     }
-    &::marker{
-      color: #92B7FF;
-    }
-   }
-  }
+}
+}
+}
+
+.image-block {
+  &.align-center{
+  text-align: center;
+}
 }

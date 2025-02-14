@@ -269,15 +269,18 @@
     margin: 0 0 8px 0;
     overflow: hidden;
     button {
-      padding-bottom: 0;
+      // padding-bottom: 0;
       &:before{
         top: 28px;
         right: 34px;
+        @include media-query-min('medium'){
+          top: 31px;
+        }
         @include media-query('ipad'){
           top: 24px;
         }
         @include media-query('tablet-large'){
-          top: 22.3px;
+          top: 26.3px;
         }
         @include media-query('mobile') {
           top: 28px;
@@ -304,8 +307,14 @@
     &:has(.tags) button{
       &:before {
         // top: 55px;
-        top: 78%;
+        top: 72%;
         right: 34px;
+        @include media-query-min('medium'){
+          top: 70%;
+        }
+        @include media-query('tablet-large'){
+          top:71%;
+        }
         @include media-query('mobile') {
           top: 44px;
           right: 25px;
@@ -313,9 +322,11 @@
       }
       &:after {
         // top: 68px;
-        top: 97%;
+        top: 90%;
         right: 22px;
-
+        @include media-query-min('medium'){
+          top: 86%;
+        }
         @include media-query('mobile') {
           top: 55px;
           right: 14px;

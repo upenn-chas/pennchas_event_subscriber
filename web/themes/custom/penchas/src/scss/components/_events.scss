@@ -150,20 +150,16 @@
 .field--type-entity-reference{
   margin: 0;
 }
-@include media-query('mobile') {
+// @include media-query('mobile') {
 
-  .space:has(.events) .container{
-    padding-right: 0;
-    padding-left: 0;
-    .col-12 {
-      padding-right: 0;
-    }
-
-    .row {
-      margin-right: 0;
-    }
-  }
-}
+//   .space:has(.events) .container{
+//     padding-right: 0;
+//     padding-left: 0;
+//     .col-12 {
+//       padding-right: 0;
+//     }
+//   }
+// }
 
 .mac-os {
   .tags {
@@ -789,4 +785,13 @@
 			}
 		}
 	}
+}
+.view-group-events{
+ .row {
+  @include media-query ('mobile'){
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+}
 }
