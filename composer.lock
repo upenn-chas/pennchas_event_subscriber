@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "501f61103e410136f937af06819e56b8",
+    "content-hash": "05cdfbac680943da22aeaba01d8a21e9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2506,6 +2506,59 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/checklistapi",
                 "issues": "https://www.drupal.org/project/issues/checklistapi"
+            }
+        },
+        {
+            "name": "drupal/ckeditor_media_resize",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ckeditor_media_resize.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_media_resize-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "0e700e53a9aaedbd7586d3fc995201bed14e12a8"
+            },
+            "require": {
+                "drupal/core": "^10.3.0 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1730224770",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Leu",
+                    "homepage": "https://www.drupal.org/u/s_leu",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "s_leu",
+                    "homepage": "https://www.drupal.org/user/1336864"
+                },
+                {
+                    "name": "tim bozeman",
+                    "homepage": "https://www.drupal.org/user/2241356"
+                }
+            ],
+            "description": "Provides a ckeditor5 plugin that allows resizing of embedded image media.",
+            "homepage": "https://drupal.org/project/ckeditor_media_resize",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ckeditor_media_resize"
             }
         },
         {
@@ -21361,20 +21414,20 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/advagg": 15,
-        "drupal/conditional_fields": 15,
-        "drupal/gcontent_moderation": 20,
-        "drupal/group_permissions": 15,
-        "drupal/publication_date": 5,
-        "drupal/ultimate_cron": 15,
-        "drupal/viewsreference": 10,
         "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20
+        "upenn/penn403": 20,
+        "drupal/gcontent_moderation": 20,
+        "drupal/viewsreference": 10,
+        "drupal/group_permissions": 15,
+        "drupal/ultimate_cron": 15,
+        "drupal/conditional_fields": 15,
+        "drupal/publication_date": 5,
+        "drupal/advagg": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
