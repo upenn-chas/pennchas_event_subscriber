@@ -7,16 +7,14 @@ dependencies:
     - field.field.paragraph.accordion_content.field_heading
     - field.field.paragraph.accordion_content.field_tags
     - paragraphs.paragraphs_type.accordion_content
-  module:
-    - text
 id: paragraph.accordion_content.default
 targetEntityType: paragraph
 bundle: accordion_content
 mode: default
 content:
   field_description:
-    type: text_textarea
-    weight: 1
+    type: string_textarea
+    weight: 3
     region: content
     settings:
       rows: 5
