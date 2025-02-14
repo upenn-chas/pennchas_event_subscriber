@@ -99,7 +99,7 @@
           {{ page.breadcrumb }}
 
           {#  #}
-          {% if node.field_circle_color.0.value.color %}
+          {% if node.field_color_of_circle.0.value.color %}
               {% set banner_class = 'hero-banner with-bottom-border' %}
             {% if node.field_media_image.entity.fileuri == ''  %}
               {% set banner_class = 'hero-banner without-image' %}
@@ -107,7 +107,7 @@
             <section class="{{banner_class}}">
               <style>
                   .hero-banner .container:before {
-                      background: {{node.field_circle_color.0.value.color}};
+                      background: {{node.field_color_of_circle.0.value.color}};
                   }
               </style>
               <div class="container">

@@ -104,7 +104,7 @@ function penchas_preprocess_node_edit_form(&$variables) {
           $groupData = Group::load($group_id);
           $url_path = $groupData->toUrl()->toString();
           $field_bg_color = $groupData->get('field_color')->value;
-          $field_circle_color = $groupData->get('field_circle_color')->value;
+          $field_color_of_circle = $groupData->get('field_color_of_circle')->value;
           $field_menus = $groupData->get('field_menus');
           $simplified_menu_html = '';
           foreach ($field_menus as $key => $group_menu) {
@@ -130,7 +130,7 @@ function penchas_preprocess_node_edit_form(&$variables) {
           
           $group_label = $groupData->get('label')->value;
           $group_banner_html = '<section class="hero-banner without-image" style="background-color: #'.$field_bg_color.';">'
-                                .'<style>.hero-banner .container:before {background: #'.$field_circle_color.'}</style>'
+                                .'<style>.hero-banner .container:before {background: #'.$field_color_of_circle.'}</style>'
                                 .'<div class="container">'
                                   .'<div class="row">'
                                     .'<div class="col-12 col-lg-6">'
@@ -246,14 +246,14 @@ function penchas_preprocess_html(&$variables) {
   
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
-
+  
   if ($node instanceof NodeInterface) {
     // Get site name and node title once
     $site_name = \Drupal::config('system.site')->get('name');
     $node_title = $node->getTitle();
     $variables['node_title'] = $node_title;
     $node_meta_title = $node_title . ' | ' . $site_name;
-
+    //dump($node_meta_title);
     // Define bundles that require group information
     $bundles_with_groups = ['program_community', 'article', 'reserve_room', 'room'];
 
@@ -706,7 +706,7 @@ function generate_create_form_url($group_id, $plugin_id) {
  * Implements hook_preprocess_views_view().
  */
 function penchas_preprocess_views_view(&$variables) {
-  
+   
   $user = \Drupal::currentUser();
   // Example usage: Check if the current user can create "article" content in the group.
   // $group_id = 1;  // Replace with actual group ID.
@@ -841,7 +841,7 @@ function penchas_preprocess_views_view(&$variables) {
         }
       }
       $variables['current_group_label'] = $groupData->get('label')->value;
-      $variables['current_group_circle_color'] = $groupData->get('field_circle_color')->value;
+      $variables['current_group_circle_color'] = $groupData->get('field_color_of_circle')->value;
       $variables['current_group_bg_color'] = $groupData->get('field_color')->value;
       $variables['simplified_menu_html'] = '<div class="internal-links">'.$simplified_menu_html.'</div>';
     }

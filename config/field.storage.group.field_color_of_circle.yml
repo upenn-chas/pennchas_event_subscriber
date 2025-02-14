@@ -1,18 +1,18 @@
-uuid: 0d8453f8-bb06-495c-aa2c-e5eb12cb785b
+uuid: 27a6396d-707c-4c50-a7d4-8a2e8b00d8c9
 langcode: en
 status: true
 dependencies:
   module:
     - group
     - options
-id: group.field_circle_color
-field_name: field_circle_color
+id: group.field_color_of_circle
+field_name: field_color_of_circle
 entity_type: group
 type: list_string
 settings:
   allowed_values:
     -
-      value: afbaae
+      value: afb8ae
       label: '#AFB8AE'
     -
       value: a0bbd4
@@ -39,7 +39,7 @@ settings:
       value: d79a9a
       label: '#D79A9A'
     -
-      value: a8c588
+      value: a8c5dd
       label: '#A8C5DD'
     -
       value: f3d6a4
