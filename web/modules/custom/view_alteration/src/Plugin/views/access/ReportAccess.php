@@ -41,7 +41,7 @@ class ReportAccess extends AccessPluginBase
      */
     public function alterRouteDefinition(Route $route)
     {
-        $route->setRequirement('_report_access', 'view_alteraion.report_access_handler::access');
+        $route->setRequirement('_report_access', 'view_alteration.dashboard_access::access');
         $route->setOption('permission', $this->reportAccessPermission);
     }
 

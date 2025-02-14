@@ -33,21 +33,21 @@ function view_alteration_theme()
 /**
  * Implements hook_views_data_alter().
  */
-function view_alteration_views_data_alter(array &$data)
-{
-    // dd($data);
-    if (isset($data['group_relationship__group_roles']) && isset($data['user__roles'])) {
-        $data['users_field_data']['custom_roles_filter'] = [
-            'title' => t('Custom Roles filter'),
-            'filter' => [
-                'title' => t('Custom Roles filter'),
-                'help' => t('Custom Roles filter'),
-                'field' => 'roles',
-                'id' => 'custom_roles_filter',
-            ],
-        ];
-    }
-}
+// function view_alteration_views_data_alter(array &$data)
+// {
+//     // dd($data);
+//     if (isset($data['group_relationship__group_roles']) && isset($data['user__roles'])) {
+//         $data['users_field_data']['custom_roles_filter'] = [
+//             'title' => t('Custom Roles filter'),
+//             'filter' => [
+//                 'title' => t('Custom Roles filter'),
+//                 'help' => t('Custom Roles filter'),
+//                 'field' => 'roles',
+//                 'id' => 'custom_roles_filter',
+//             ],
+//         ];
+//     }
+// }
 
 /**
  * Add the logged in user allowed groups in the query.

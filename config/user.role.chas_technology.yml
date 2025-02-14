@@ -49,6 +49,8 @@ permissions:
   - 'create reserve_room content'
   - 'create room content'
   - 'create video media'
+  - 'dashboard pending events'
+  - 'dashboard pending reservations'
   - 'delete any room content'
   - 'delete media'
   - 'delete own chas_event content'

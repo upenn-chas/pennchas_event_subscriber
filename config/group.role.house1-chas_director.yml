@@ -26,6 +26,8 @@ permissions:
   - 'create group_node:program_community entity'
   - 'create group_node:reserve_room entity'
   - 'create group_node:room entity'
+  - 'dashboard pending events'
+  - 'dashboard pending reservations'
   - 'delete any group_media:document entity'
   - 'delete any group_media:image entity'
   - 'delete any group_media:remote_video entity'

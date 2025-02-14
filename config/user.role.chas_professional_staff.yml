@@ -48,6 +48,8 @@ permissions:
   - 'create remote_video media'
   - 'create reserve_room content'
   - 'create video media'
+  - 'dashboard pending events'
+  - 'dashboard pending reservations'
   - 'delete media'
   - 'delete own chas_event content'
   - 'delete own document media'
