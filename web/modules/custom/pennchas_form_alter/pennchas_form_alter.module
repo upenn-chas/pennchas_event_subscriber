@@ -59,6 +59,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
   ) {
     $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
   } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
+    $filterFormId = $form['#id'];
     $viewId = \Drupal::request()->get('view_id');
     if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
       if (isset($form['start']) && isset($form['start']['#attributes'])) {
@@ -105,9 +106,10 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
       if (isset($form['type'])) {
         unset($form['type']['#options']['All']);
       }
+    } else if ($filterFormId === 'views-exposed-form-media-library-widget' || $filterFormId === 'views-exposed-form-media-library-widget-table') {
+      $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
+      $form['gid']['#options'] = array_merge(['All' => $form['gid']['#options']['All']], $groups);
     }
-  } else {
-    // dd($formId);
   }
 
   if ($formId == 'views_form_webform_export_page_1') {

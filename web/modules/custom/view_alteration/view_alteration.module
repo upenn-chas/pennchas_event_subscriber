@@ -49,30 +49,51 @@ function view_alteration_views_data_alter(array &$data)
     }
 }
 
+/**
+ * Add the logged in user allowed groups in the query.
+ * 
+ * Implements hook_views_query_alter().
+ */
 function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
 {
     $viewId = $view->id();
-    $reportViewIds = [
-        'moderation_reports',
-        'rooms_reservation_moderation_reports',
-        'contents_change_report',
-        'contents_delete_report',
-        'events_evaluation_report',
-        'room_reservation_reports',
-        'users_reports',
-        'videos_link_report'
+    static $reportViewIds = [
+        'moderation_reports' =>  1,
+        'rooms_reservation_moderation_reports' =>  1,
+        'contents_change_report' =>  1,
+        'contents_delete_report' =>  1,
+        'events_evaluation_report' =>  1,
+        'room_reservation_reports' =>  1,
+        'users_reports' =>  1,
+        'videos_link_report' =>  1
     ];
-    if (!in_array($viewId, $reportViewIds, true)) {
+    if (isset($reportViewIds[$viewId])) {
+        view_alteration_handle_reports_view($query, $viewId);
         return;
     }
+
+    if ($viewId === 'media_library') {
+        view_alteration_apply_group_filter_to_query($query, ['gcfd.gid', 'group_relationship_field_data_media_field_data.gid']);
+    }
+}
+
+function view_alteration_handle_reports_view(Sql &$query, string $viewId)
+{
     $groupRelationshipColumn = [
         'users_reports' => 'group_relationship_field_data_users_field_data.gid',
         'videos_link_report' => 'group_relationship_field_data_media_field_data.gid',
     ];
 
+    $field = $groupRelationshipColumn[$viewId] ?? 'gcfd.gid';
+    view_alteration_apply_group_filter_to_query($query, [$field]);
+}
+
+function view_alteration_apply_group_filter_to_query(Sql &$query, array $fields)
+{
     $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
-    if ($groups) {
-        $field = $groupRelationshipColumn[$viewId] ?? 'gcfd.gid';
-        $query->addWhere(0, $field, array_keys($groups), 'IN');
+    if ($groups && $fields) {
+        foreach ($fields as $field) {
+            $query->addWhere(0, $field, array_keys($groups), 'IN');
+        }
     }
 }

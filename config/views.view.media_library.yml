@@ -6,10 +6,13 @@ dependencies:
     - core.entity_view_mode.media.media_library
     - image.style.media_library
   module:
+    - group
     - image
     - media
     - media_library
+    - url_alteration
     - user
+    - verf
   enforced:
     module:
       - media_library
@@ -467,7 +470,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships: {  }
@@ -1059,6 +1062,57 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        gid_verf:
+          id: gid_verf
+          table: group_relationship_field_data
+          field: gid_verf
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          plugin_id: verf
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gid_verf_op
+            label: House
+            description: ''
+            use_operator: false
+            operator: gid_verf_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          verf_target_bundles:
+            house1: house1
+          show_unpublished: 0
       filter_groups:
         operator: AND
         groups:
@@ -1066,11 +1120,29 @@ display:
       defaults:
         access: false
         css_class: false
+        relationships: false
         fields: false
         arguments: false
         filters: false
         filter_groups: false
         header: false
+      relationships:
+        group_relationship:
+          id: group_relationship
+          table: media_field_data
+          field: group_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Media group relationship'
+          entity_type: media
+          plugin_id: group_relationship_to_entity_reverse
+          required: false
+          group_relation_plugins:
+            'group_media:audio': '0'
+            'group_media:document': '0'
+            'group_media:image': '0'
+            'group_media:remote_video': '0'
+            'group_media:video': '0'
       css_class: ''
       display_description: ''
       header:
@@ -1101,7 +1173,9 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:views.view.media_library'
+        - group_list
   widget_table:
     id: widget_table
     display_title: 'Widget (table)'
@@ -1146,6 +1220,71 @@ display:
           type: string
           settings:
             link_to_entity: false
+        gid:
+          id: gid
+          table: group_relationship_field_data
+          field: gid
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          entity_field: gid
+          plugin_id: field
+          label: House
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         uid:
           id: uid
           table: media_field_revision
@@ -1349,6 +1488,57 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        gid_verf:
+          id: gid_verf
+          table: group_relationship_field_data
+          field: gid_verf
+          relationship: group_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: group_relationship
+          plugin_id: verf
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gid_verf_op
+            label: House
+            description: ''
+            use_operator: false
+            operator: gid_verf_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          verf_target_bundles:
+            house1: house1
+          show_unpublished: 0
       filter_groups:
         operator: AND
         groups:
@@ -1363,14 +1553,34 @@ display:
       defaults:
         access: false
         css_class: false
+        group_by: false
         style: false
         row: false
+        relationships: false
         fields: false
         arguments: false
         filters: false
         filter_groups: false
         header: false
+      relationships:
+        group_relationship:
+          id: group_relationship
+          table: media_field_data
+          field: group_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Media group relationship'
+          entity_type: media
+          plugin_id: group_relationship_to_entity_reverse
+          required: false
+          group_relation_plugins:
+            'group_media:document': 'group_media:document'
+            'group_media:image': 'group_media:image'
+            'group_media:remote_video': 'group_media:remote_video'
+            'group_media:video': 'group_media:video'
+            'group_media:audio': '0'
       css_class: ''
+      group_by: false
       header:
         display_link_grid:
           id: display_link_grid
@@ -1399,4 +1609,6 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:views.view.media_library'
+        - group_list
