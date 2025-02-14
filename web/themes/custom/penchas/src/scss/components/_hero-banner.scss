@@ -56,7 +56,7 @@
     }
   }
 
-  &.yellow-circel {
+  &.yellow-circle {
     .container {
       &:before {
         background-color: $yellowHighlightColor;
@@ -157,6 +157,7 @@
 
   &.with-bottom-border {
     border-bottom: 1px solid $primaryColor;
+    padding-bottom: 20px;
   }
 
   &.banner-style2 {
@@ -213,6 +214,16 @@
         @media (min-width: 992px) {
           min-height: 800px;
         }
+      }
+    }
+  }
+}
+
+.hero-banner {
+  .hero-img {
+    &:not(:has(.field--name-field-media-image img)) {
+      @media (min-width: 992px) {
+        min-height: 250px;
       }
     }
   }

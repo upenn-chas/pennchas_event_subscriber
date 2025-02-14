@@ -104,6 +104,7 @@ button {
   &:hover {
     background: $primaryColor;
     color: #fff;
+    border-color: $primaryColor;
   }
   &:active {
     background: none;

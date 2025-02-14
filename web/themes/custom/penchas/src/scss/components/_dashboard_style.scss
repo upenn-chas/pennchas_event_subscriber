@@ -319,6 +319,10 @@ color: inherit !important;
 #drupal-off-canvas form.layout-builder-configure-section summary .bs-group-title svg path{
  fill:#fff;
 }
+#drupal-off-canvas form.layout-builder-remove-section .form-actions [data-drupal-selector="edit-submit"]{
+  color: inherit;
+  margin-bottom: 10px;
+}
 
 .media-library-widget-modal{
   font-family: $teritoryFont;
@@ -352,6 +356,14 @@ color: inherit !important;
             }
           }
         }
+  }
+  .js-media-library-views-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .form-actions{
+      width: 100%;
+    }
   }
  #media-library-add-form-wrapper{
   .form-control{

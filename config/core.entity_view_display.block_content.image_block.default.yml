@@ -5,9 +5,13 @@ dependencies:
   config:
     - block_content.type.image_block
     - field.field.block_content.image_block.body
+    - field.field.block_content.image_block.field_cta
+    - field.field.block_content.image_block.field_image_alignment
     - field.field.block_content.image_block.field_media_image
   module:
+    - link
     - media
+    - options
     - text
 id: block_content.image_block.default
 targetEntityType: block_content
@@ -20,6 +24,25 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image_alignment:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_media_image:
     type: media_thumbnail
