@@ -206,3 +206,14 @@
   z-index: 1;
   position: relative;
 }
+.path-frontpage {
+  .hero-banner {
+    .hero-img {
+      &:not(:has(.field--name-field-media-image img)) {
+        @media (min-width: 992px) {
+          min-height: 800px;
+        }
+      }
+    }
+  }
+}
