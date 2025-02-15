@@ -129,7 +129,7 @@
         }
         
         // Call toggleRadioOptions on checkbox change
-        jQuery('#edit-type-exclude-notices').change(function() {
+        jQuery('#edit-type-exclude_notice').on('click',function() {
           var url = toggleRadioOptions();
           window.location.href = url;
           
