@@ -50,15 +50,6 @@ settings:
     -
       value: f5d5cf
       label: '#F5D5CF'
-    -
-      value: feead7
-      label: '#feead7'
-    -
-      value: fff3dc
-      label: '#fff3dc'
-    -
-      value: d8e6da
-      label: '#D8E6da'
   allowed_values_function: ''
 module: options
 locked: false

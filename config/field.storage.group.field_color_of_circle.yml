@@ -47,9 +47,6 @@ settings:
     -
       value: efb6ab
       label: '#EFB6AB'
-    -
-      value: a9c68d
-      label: '#a9c68d'
   allowed_values_function: ''
 module: options
 locked: false
