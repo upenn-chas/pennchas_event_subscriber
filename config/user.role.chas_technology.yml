@@ -46,8 +46,6 @@ permissions:
   - 'create notices content'
   - 'create page content'
   - 'create remote_video media'
-  - 'create reserve_room content'
-  - 'create room content'
   - 'create video media'
   - 'dashboard pending events'
   - 'dashboard pending reservations'
