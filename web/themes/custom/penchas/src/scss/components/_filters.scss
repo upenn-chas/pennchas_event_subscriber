@@ -201,8 +201,47 @@
     .row {
         gap: 60px 0;
         @include media-query ('mobile'){
-            gap: 20px 0;
+            gap: 30px 0;
         }
     }
 }
 
+.page-view-group-houses{
+    .hero-banner{
+        .container{
+            @include media-query('mobile'){
+            padding-left: 0;
+            padding-right: 0;
+            .row{
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .col-12{
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+            }
+            
+        }   
+    }
+    .filters{
+        .view-filters{
+            &.container{
+                @include media-query('mobile'){
+                    padding-left: 6px;
+                    padding-right: 6px;
+                }
+            }
+        }
+    }
+    .filter-results{
+        .row{
+            .col-md-6{
+                @include media-query('mobile'){
+                padding-left: 6px;
+                padding-right: 6px;
+                }
+            }
+        }
+    }
+}

@@ -214,6 +214,9 @@
         @media (min-width: 992px) {
           min-height: 800px;
         }
+        @include media-query('tablet') {
+          min-height: 250px;
+        }
       }
     }
   }
