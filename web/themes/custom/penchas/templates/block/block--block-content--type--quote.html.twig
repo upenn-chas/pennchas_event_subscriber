@@ -36,7 +36,8 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-  <div class="titile-with-text row">
+<div {{ attributes.addClass(classes) }}>
+  <div class="titile-with-text blockquote-block row">
     {{ title_prefix }}
     <div class="col-12 col-lg-8">
         {% if label %}
@@ -49,4 +50,5 @@
         {{ content }}
       </div>
     {% endblock %}
+  </div>
   </div>

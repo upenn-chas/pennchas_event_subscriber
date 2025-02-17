@@ -20,6 +20,7 @@ module:
   captcha: 0
   checklistapi: 0
   ckeditor5: 0
+  ckeditor5_open_new_tab: 0
   ckeditor_media_resize: 0
   color_field: 0
   comment: 0
