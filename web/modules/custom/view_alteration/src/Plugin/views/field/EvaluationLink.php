@@ -69,7 +69,6 @@ class EvaluationLink extends EntityLink
      */
     private function checkEvaluationAccess(EntityInterface $entity)
     {
-        return \Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($entity)
-            && \Drupal::service('pennchas_common.evaluation_check')->checkForEntity($entity);
+        return \Drupal::service('pennchas_common.evaluation_check')->checkForEntity($entity);
     }
 }

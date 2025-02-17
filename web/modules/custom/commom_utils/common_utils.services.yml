@@ -9,3 +9,4 @@ services:
     class: \Drupal\common_utils\Option\GroupOption
   pennchas_common.evaluation_check:
     class: \Drupal\common_utils\Access\EvaluationCheck
+    arguments: ['@current_user']
