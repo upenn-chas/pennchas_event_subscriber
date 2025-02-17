@@ -284,3 +284,31 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
 
   return $variables;
 }
+
+function pennchas_form_alter_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Ensure the form ID is correct
+  $view_id = ['calendar'];
+  if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_id)) {
+    $form['#after_build'][] = 'penchas_add_exclude_notices_filter';
+  }
+}
+
+function penchas_add_exclude_notices_filter($form, &$form_state) {
+  // Add your custom checkbox field under the form
+
+  $form['exclude_notice'] = [
+    '#type' => 'checkbox',
+    '#title' => t('General Events/Notice'),
+    '#description' => t('Exclude Notices'), 
+    '#default_value' => 0, 
+    '#attributes' => [
+        'class' => ['form-checkbox', 'form-check-input'],  
+        'data-drupal-selector' => 'edit-type-exclude-notices', 
+        'id' => 'edit-type-exclude-notices',
+        'name' => 'exclude_notice', 
+        'value' => 'Exclude Notices',
+    ],
+  ];
+
+  return $form;
+}

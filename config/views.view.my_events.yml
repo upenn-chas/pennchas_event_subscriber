@@ -2795,8 +2795,7 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-              test: '0'
-            placeholder: ''
+            placeholder: Search
           is_grouped: false
           group_info:
             label: ''

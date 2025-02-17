@@ -797,3 +797,21 @@ article > header {
     padding-right: 5px;
   }
 }
+.offcanvas-body {
+  .tb-megamenu {
+    ul.tb-megamenu-nav {
+      li.tb-megamenu-item {
+        .tb-megamenu-submenu {
+          ul.tb-megamenu-subnav.level-1.items-2 {
+            li.level-2 {
+              > a {
+                font-weight: 700 !important;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

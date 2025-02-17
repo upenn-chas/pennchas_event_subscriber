@@ -210,6 +210,10 @@
     &:last-child{
       .image-with-text-inner{
         margin-bottom: 0;
+        @include media-query ('tablet'){
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
     }
   }
