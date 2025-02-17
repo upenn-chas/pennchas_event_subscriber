@@ -6,6 +6,9 @@
     position: relative;
     .dashboard-header{
       padding-top: 15px;
+      @include media-query('tablet') {
+        flex-wrap: wrap;
+      }
     }
   }
 
@@ -277,6 +280,12 @@
  .page-view-group-media .view-group-media .views-exposed-form .flex-wrap,
  .page-view-group-nodes .view-group-nodes .views-exposed-form .flex-wrap{
   gap: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+  @include media-query('mobile'){
+    padding-left: 18px;
+    padding-right: 18px;
+  }
  }
  
  #layout-builder-modal tr td{
@@ -431,4 +440,27 @@ color: inherit !important;
   }
  }
  
+}
+
+.view-group-media{
+  .views-exposed-form{
+    [data-drupal-selector="edit-actions"]{
+      .btn{
+        color: #fff;
+        font-weight: 400;
+        border: 1px solid $primaryColor;
+        font-size: 16px;
+        padding: 6px 20px;
+        border-radius: 4px;
+        background: $primaryColor;
+        &:hover{
+          color: $primaryColor;
+          background: #fff;
+        }
+        &::before{
+          display: none;
+        }
+      }
+    }
+  }
 }

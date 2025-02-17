@@ -14,10 +14,13 @@
       const c_type = urlParams.get('c_type');
       var currentUrl = window.location.href;
       var searchString = 'calendar?type=notices'; // Replace this with the string you're looking for in the URL
+      // var searchString = 'calendar?type=notices'; // Replace this with the string you're looking for in the URL
 
-      if (currentUrl.includes(searchString)) {
-          jQuery('#edit-type-exclude-notices').prop('checked', true);
-      }
+      // if (currentUrl.includes(searchString)) {
+      //     jQuery('#edit-type-exclude-notices').prop('checked', true);
+      // }else{
+
+      // }
       if(c_type){
         jQuery('.redirect-dropdown option[data-class="'+c_type+'"]').attr('selected','selected');  
       }
@@ -113,30 +116,31 @@
       // When the General Events/Notice checkbox is clicked
       
         // Function to handle checkbox state and enable/disable radio buttons
-        function toggleRadioOptions() {
-          var checkbox = jQuery('#edit-type-exclude-notices');
-          var field_is_campus_wide_value = jQuery('#edit-field-is-campus-wide-value').val();
-          var field_intended_audience_value = jQuery('#edit-field-intended-audience-value').val();
-          var currentUrlWithoutParams = window.location.origin + window.location.pathname;
-          if (checkbox.prop('checked')) {
-            var type = jQuery('#edit-type-notices').val();
-          } else {
-            var type = jQuery('#edit-type-chas-event').val();
-          }
-          var url = currentUrlWithoutParams+'?type='+type+'&field_is_campus_wide_value='+field_is_campus_wide_value+'&field_intended_audience_value='+field_intended_audience_value;
-          console.log('url: ', url);
-          return url;
-        }
+      // function toggleRadioOptions() {
+      //   var checkbox = jQuery('#edit-type-exclude-notices');
+      //   var field_is_campus_wide_value = jQuery('#edit-field-is-campus-wide-value').val();
+      //   var field_intended_audience_value = jQuery('#edit-field-intended-audience-value').val();
+      //   var currentUrlWithoutParams = window.location.origin + window.location.pathname;
+      //   if (checkbox.prop('checked')) {
+      //     // var type = jQuery('#edit-type-notices').val();
+      //     var type = jQuery('#edit-type-chas-event').val();
+      //   } else {
+      //     // var type = jQuery('#edit-type-chas-event').val();
+      //     var type = jQuery('#edit-type-notices').val();
+      //   }
+      //   var url = currentUrlWithoutParams+'?type='+type+'&field_is_campus_wide_value='+field_is_campus_wide_value+'&field_intended_audience_value='+field_intended_audience_value;
+      //   console.log('url: ', url);
+      //   return url;
+      // }
         
-        // Call toggleRadioOptions on checkbox change
-        jQuery('#edit-type-exclude_notice').on('click',function() {
-          var url = toggleRadioOptions();
-          window.location.href = url;
-          
-      });
+      //   // Call toggleRadioOptions on checkbox change
+      // jQuery('#edit-type-exclude-notices').on('click',function() {
+      //   var url = toggleRadioOptions();
+      //   window.location.href = url;
+      // });
   
       // Initial call to set the state based on the checkbox's current state
-      toggleRadioOptions();
+      // toggleRadioOptions();
   
       // jQuery('#edit-type-exclude-notices').on('change', function() {
     //   alert('asdkjhasd');

@@ -7,12 +7,23 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Routing\Access\AccessInterface;
 use Symfony\Component\Routing\Route;
 
-class ReportAccessCheck implements AccessInterface
+class DashboardAccessCheck implements AccessInterface
 {
+
+    protected $viewUnpublishedContent = [
+        'view any unpublished content',
+        'view own unpublished content'
+    ];
+
+    protected $groupMemberPermission = [
+        'my_events' => ['view unpublished group_node:chas_event entity', 'view own unpublished group_node:chas_event entity'],
+        // 'reserve_room' => 'view unpublished group_node:reserve_room entity'
+    ];
+
     /**
      * Access checker.
      * 
-     * @var Drupal\common_utils\Checker\AccessCheck
+     * @var \Drupal\common_utils\Checker\AccessCheck
      */
     protected $accessChecker;
 

@@ -815,8 +815,8 @@ function penchas_preprocess_views_view(&$variables) {
   
   $id = $view->storage->id();
   // if($id == 'calendar'){
-    $variables['exclude_notices_filter'] = '<div class="js-form-item js-form-type-checkbox checkbox"><input data-drupal-selector="edit-type-exclude_notice" type="checkbox" checked="checked" id="edit-type-exclude-notices" name="exclude_notice" value="Exclude Notices" class="form-checkbox form-check-input"><label class="form-check-label" for="edit-type-exclude_notice">
-        General Events/Notice</label></div>';
+    // $variables['exclude_notices_filter'] = '<div class="js-form-item js-form-type-checkbox checkbox"><input data-drupal-selector="edit-type-exclude_notice" type="checkbox" id="edit-type-exclude-notices" name="exclude_notice" value="Exclude Notices" class="form-checkbox form-check-input"><label class="form-check-label" for="edit-type-exclude-notices">
+    //     General Events/Notice</label></div>';
 
     if($groupData){
       $groupData = Group::load($groupData);

@@ -1,3 +1,9 @@
 access reports:
   title: "Access Reports Dashboard Page"
   description: "Allow user to access the reports on the dashboard."
+dashboard pending events:
+  title: "Access Pending Events Dashboard Page"
+  description: "Allow user to access the pending events on the dashboard."
+dashboard pending reservations:
+  title: "Access Pending Room Reservation  Dashboard Page"
+  description: "Allow user to access the pending room reservations on the dashboard."

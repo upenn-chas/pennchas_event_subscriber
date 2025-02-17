@@ -61,6 +61,16 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
   } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
     $filterFormId = $form['#id'];
     $viewId = \Drupal::request()->get('view_id');
+    static $targetViews = [
+      'moderation_reports' => 1,
+      'room_reservation_reports' => 1,
+      'contents_change_report' => 1,
+      'videos_link_report' => 1,
+      'events_evaluation_report' => 1,
+      'contents_delete_report' => 1,
+      'my_reservations' => 1,
+      'my_events' => 1,
+    ];
     if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
       if (isset($form['start']) && isset($form['start']['#attributes'])) {
         unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
@@ -83,14 +93,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         $form['content_type']['#default_value'] = 1;
         $form['content_type']['#value'] = 1;
       }
-    } else if (
-      $viewId === 'moderation_reports'
-      || $viewId === 'room_reservation_reports'
-      || $viewId === 'contents_change_report'
-      || $viewId === 'videos_link_report'
-      || $viewId === 'events_evaluation_report'
-      || $viewId === 'contents_delete_report'
-    ) {
+    } else if (isset($targetViews[$viewId])) {
       if (isset($form['moderation_state'])) {
         unset($form['moderation_state']['#options']['All']);
       }
@@ -403,4 +406,32 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
   }
 
   return $variables;
+}
+
+function pennchas_form_alter_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Ensure the form ID is correct
+  $view_id = ['calendar'];
+  if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_id)) {
+    $form['#after_build'][] = 'penchas_add_exclude_notices_filter';
+  }
+}
+
+function penchas_add_exclude_notices_filter($form, &$form_state) {
+  // Add your custom checkbox field under the form
+
+  $form['exclude_notice'] = [
+    '#type' => 'checkbox',
+    '#title' => t('General Events/Notice'),
+    '#description' => t('Exclude Notices'), 
+    '#default_value' => 0, 
+    '#attributes' => [
+        'class' => ['form-checkbox', 'form-check-input'],  
+        'data-drupal-selector' => 'edit-type-exclude-notices', 
+        'id' => 'edit-type-exclude-notices',
+        'name' => 'exclude_notice', 
+        'value' => 'Exclude Notices',
+    ],
+  ];
+
+  return $form;
 }

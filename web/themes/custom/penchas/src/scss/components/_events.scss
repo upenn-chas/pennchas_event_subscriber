@@ -179,7 +179,7 @@
   }
   .hero-banner.without-image{
     .col-lg-6{
-      min-height: 270px;
+      min-height: 120px;
     }
   }
 }
@@ -239,6 +239,7 @@
       @include media-query('tablet') {
         order: 3;
         width: 50%;
+        word-wrap: break-word;
       }
       .center-title {
         margin-bottom: 5px;
@@ -457,6 +458,24 @@
         padding: 0 15px;
         height: 50px;
         min-height: 50px;
+      
+      }
+      &.form-item-title{
+        width: 100%;
+        max-width: 370px;
+        box-sizing: content-box;
+      @include media-query('tablet') {
+        padding: 0 15px;
+        max-width: none;
+        width: 100%;
+      }
+        input{
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='24' viewBox='0 0 19 24'%3E%3Cpath fill='%2302014C' d='M12.9375 10.5625C12.9375 8.5528812 11.865381 6.6959167 10.125 5.6911073C8.3846188 4.6862974 6.2403808 4.6862974 4.5 5.6911073C2.7596188 6.6959167 1.6874995 8.5528812 1.6874995 10.5625C1.6874995 12.57212 2.7596188 14.429084 4.5 15.433892C6.2403808 16.438704 8.3846188 16.438704 10.125 15.433892C11.865381 14.429084 12.9375 12.57212 12.9375 10.5625ZM11.851172 16.296484C10.606641 17.284376 9.0281248 17.875 7.3125 17.875C3.2730465 17.875 -5.364418e-07 14.601953 -5.364418e-07 10.5625C-5.364418e-07 6.523047 3.2730465 3.25 7.3125 3.25C11.351953 3.25 14.625 6.523047 14.625 10.5625C14.625 12.278125 14.034375 13.856641 13.046485 15.101172L17.405859 19.460546L18.003515 20.058203L16.808203 21.25L16.210546 20.652344L11.851172 16.292969L11.851172 16.296484Z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          background-size: 20px;
+          padding-right: 35px;
+        }
       }
     }
 

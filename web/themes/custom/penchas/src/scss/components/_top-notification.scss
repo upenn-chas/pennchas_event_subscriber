@@ -34,6 +34,9 @@
       text-decoration: none;
       border-bottom: 1px solid #011F5B;
       padding-bottom: 2px;
+      @include media-query('mobile') {
+        padding-bottom: 0;
+      }
     }
   }
 }

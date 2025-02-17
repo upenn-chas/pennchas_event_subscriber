@@ -1,6 +1,9 @@
 services:
   pennchas_common.access_check:
-    class: \Drupal\common_utils\Checker\AccessCheck
+    class: \Drupal\common_utils\Access\AccessCheck
+    arguments: ['@current_user']
+  pennchas_common.moderator_access_check:
+    class: \Drupal\common_utils\Access\ModeratorCheck
     arguments: ['@current_user']
   pennchas_common.option_group:
     class: \Drupal\common_utils\Option\GroupOption

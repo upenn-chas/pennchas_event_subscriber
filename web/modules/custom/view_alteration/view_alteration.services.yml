@@ -1,7 +1,12 @@
 services:
   # Report Access handler.
-  view_alteraion.report_access_handler:
+  view_alteration.dashboard.report_access:
     class: \Drupal\view_alteration\Access\ReportAccessCheck
     arguments: ['@pennchas_common.access_check']
     tags:
       - { name: access_check, applies_to: _report_access }
+  view_alteration.dashboard_access:
+    class: \Drupal\view_alteration\Access\DashboardAccessCheck
+    arguments: ['@pennchas_common.access_check']
+    tags:
+      - { name: access_check, applies_to: _dashboard_access }
