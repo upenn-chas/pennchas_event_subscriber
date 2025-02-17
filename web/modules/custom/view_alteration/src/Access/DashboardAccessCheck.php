@@ -10,16 +10,6 @@ use Symfony\Component\Routing\Route;
 class DashboardAccessCheck implements AccessInterface
 {
 
-    protected $viewUnpublishedContent = [
-        'view any unpublished content',
-        'view own unpublished content'
-    ];
-
-    protected $groupMemberPermission = [
-        'my_events' => ['view unpublished group_node:chas_event entity', 'view own unpublished group_node:chas_event entity'],
-        // 'reserve_room' => 'view unpublished group_node:reserve_room entity'
-    ];
-
     /**
      * Access checker.
      * 

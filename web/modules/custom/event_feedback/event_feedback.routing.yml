@@ -15,7 +15,7 @@ event_feedback.report:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::report'
     _title: 'Participations Survey Report'
   requirements:
-    _report_access: 'view_alteraion.report_access_handler'
+    _dashboard_access: 'view_alteration.dashboard_access'
   options:
     permission: 'access reports'
 event_feedback.report_export:
@@ -24,7 +24,7 @@ event_feedback.report_export:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::reportExport'
     _title: ''
   requirements:
-    _report_access: 'view_alteraion.report_access_handler'
+    _dashboard_access: 'view_alteration.dashboard_access'
   options:
     permission: 'access reports'
 event_feedback.per_event_report_export:
@@ -33,7 +33,7 @@ event_feedback.per_event_report_export:
     _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::perEventReportExport'
     _title: ''
   requirements:
-    _report_access: 'view_alteraion.report_access_handler'
+    _dashboard_access: 'view_alteration.dashboard_access'
   options:
     permission: 'access reports'
     parameters:

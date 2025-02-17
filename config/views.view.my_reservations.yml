@@ -422,9 +422,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: dashboard_access
         options:
-          perm: 'access my rerservations'
+          dashboard_perm: 'dashboard pending reservations'
       cache:
         type: tag
         options: {  }
@@ -1003,6 +1003,60 @@ display:
           text: Delete
           output_url_as_text: false
           absolute: true
+        moderate_content:
+          id: moderate_content
+          table: node
+          field: moderate_content
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderate_content
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Moderate
+          output_url_as_text: 0
+          absolute: 0
+          category: Custom
         nothing:
           id: nothing
           table: views
@@ -1015,7 +1069,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div  class=\"row\">\r\n<div class=\"col-12 col-lg-4\">\r\n{{ field_location_of_program }}\r\n\r\n</div>\r\n<div class=\"col-12 col-lg-5\">\r\n{{ title }}<br>\r\n{{ field_collaborators }}<br>\r\n{{ field_marketing_blurb }}<br>\r\n</div>\r\n<div class=\"col-12 col-lg-3\">\r\n{{ moderation_state }}<br>\r\n{{ edit_node }} \r\n{{ delete_node }}\r\n</div>\r\n</div>"
+            text: "<div  class=\"row\">\r\n<div class=\"col-12 col-lg-4\">\r\n{{ field_location_of_program }}\r\n\r\n</div>\r\n<div class=\"col-12 col-lg-5\">\r\n{{ title }}<br>\r\n{{ field_collaborators }}<br>\r\n{{ field_marketing_blurb }}<br>\r\n</div>\r\n<div class=\"col-12 col-lg-3\">\r\n{{ moderation_state }}<br>\r\n{% if moderate_content %}\r\n          <div class=\"moderate-btns\"><img src=\"/themes/custom/penchas/images/gear.svg\">{{ moderate_content }}</div>\r\n        {% endif %}\r\n        {% if edit_node %}\r\n        <div class=\"edit-btns\"><img src=\"/themes/custom/penchas/images/edit.svg\">{{ edit_node }}</div>\r\n        {% endif %}\r\n        {% if delete_node %}\r\n        <div class=\"delete-btns\"><img src=\"/themes/custom/penchas/images/delete.svg\">{{ delete_node }}</div>    \r\n        {% endif %}\r\n</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1731,6 +1785,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+      access:
+        type: perm
+        options:
+          perm: 'access my rerservations'
       arguments: {  }
       filters:
         status:
@@ -1934,6 +1992,7 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        access: false
         query: false
         use_more: false
         use_more_always: false
@@ -3188,6 +3247,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+      access:
+        type: perm
+        options:
+          perm: 'access my rerservations'
       arguments: {  }
       filters:
         status:
@@ -3391,6 +3454,7 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        access: false
         query: false
         title: false
         use_more: false

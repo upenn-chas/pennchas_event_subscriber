@@ -813,8 +813,9 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: report_access
-        options: {  }
+        type: dashboard_access
+        options:
+          dashboard_perm: 'access reports'
       cache:
         type: tag
         options: {  }
@@ -1243,6 +1244,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'
@@ -1286,6 +1288,7 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
+        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'
@@ -1952,6 +1955,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags:
         - 'config:field.storage.media.field_media_oembed_video'
         - 'config:field.storage.media.field_media_video_file'
