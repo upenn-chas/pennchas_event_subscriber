@@ -1,0 +1,15 @@
+uuid: d6d45b52-a4a4-4839-9706-8e5459634499
+langcode: en
+status: true
+dependencies: {  }
+id: form_date_format
+label: 'Form Date format'
+date_format: 'l, F d Y'
+time_format: 'h:ma'
+time_hour_format: ha
+allday_label: 'All day'
+separator: ' - '
+join: ', '
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'
