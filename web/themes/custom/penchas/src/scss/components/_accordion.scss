@@ -129,6 +129,7 @@
     border: 1px solid $primaryColor;
     padding: 65px 85px;
     margin-top: -1px;
+    z-index: 1;
     @include media-query('tablet') {
       padding: 35px 35px;
     }
@@ -139,6 +140,7 @@
   }
   .block-inline-blockdashboard-blocks {
     width: calc(50% - 13px);
+    padding: 0;
     @include media-query('tablet') {
       width: 100%;
     }
@@ -372,5 +374,25 @@
 
   .accordion-item:has(.accordion-button:not(.collapsed)) {
     background-color: #EBF2FF;
+  }
+}
+
+.layout-builder__section{
+  .block-inline-blockdashboard-blocks {
+    &:nth-child(odd) {
+      .field_child_dashboard_blocks {
+        position: relative;
+        left: -100%;
+        margin-left: -25px;
+      }
+    }
+    &:nth-child(even) {
+      .field_child_dashboard_blocks {
+        position: relative;
+        left: 0;
+        margin-left:0;
+
+      }
+    }
   }
 }

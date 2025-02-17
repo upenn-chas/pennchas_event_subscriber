@@ -26,6 +26,7 @@ class TwigExtension extends AbstractExtension {
         // Define a new Twig function.
         return [
         new TwigFunction('verify_role_access', [$this, 'verifyRoleAccess']),
+        // new TwigFunction('getGroupName', [$this, 'getGroupName']),
         ];
     }
 
@@ -80,6 +81,12 @@ class TwigExtension extends AbstractExtension {
         }
         return $group_role;
     }
+
+    // public function getGroupName(){
+    //     $group = \Drupal::routeMatch()->getParameter('group');
+    //     $group = Group::load($groupId);
+    //     dd($name);
+    // }
 
   
 }

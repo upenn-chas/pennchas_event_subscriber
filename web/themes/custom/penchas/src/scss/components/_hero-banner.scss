@@ -128,6 +128,9 @@
       flex: 0 0 auto;
       width: 100%;
       min-height: 240px;
+      @include media-query('mobile'){
+        min-height:auto;
+      }
     }
   }
   &.small {
