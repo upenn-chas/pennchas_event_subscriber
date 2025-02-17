@@ -525,8 +525,9 @@ display:
                   is_secondary: false
                   hide_label: false
       access:
-        type: report_access
-        options: {  }
+        type: dashboard_access
+        options:
+          dashboard_perm: 'access reports'
       cache:
         type: tag
         options: {  }
@@ -882,6 +883,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
@@ -925,6 +927,7 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
@@ -986,6 +989,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'

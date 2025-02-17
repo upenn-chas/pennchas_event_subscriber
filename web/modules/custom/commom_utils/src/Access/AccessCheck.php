@@ -23,32 +23,42 @@ class AccessCheck
     }
 
     /**
-     * Checks whether the current user have given permission or not.
+     * Checks whether the current user has the given permission.
      *
      * @param string $permission
-     *   The permission that need to check.
+     *   The permission to check.
      *
-     * @return boolean
-     *  
+     * @return bool
+     *   TRUE if the user has the given permission, FALSE otherwise.
      */
     public function check(string $permission)
     {
-        if(!$permission) {
-            return FALSE;
-        }
-        if ($this->checkForNonGroupMember($permission)) {
-            return TRUE;
-        }
-
-        // Check permision at group level, if the user is member of any group.
-        return $this->checkForGroupMember($permission);
+        return !empty($permission) && ($this->checkForNonGroupMember($permission) || $this->checkForGroupMember($permission));
     }
 
+    /**
+     * Checks if the logged-in user has the given permission.
+     *
+     * @param string $permission
+     *   The permission to check.
+     *
+     * @return bool
+     *   TRUE if the user has the specified permission, FALSE otherwise.
+     */
     public function checkForNonGroupMember(string $permission)
     {
         return $this->user->hasPermission($permission);
     }
 
+    /**
+     * Checks if the logged-in user has the specified permission in their membered groups.
+     *
+     * @param string $permission
+     *   The permission to check.
+     *
+     * @return bool
+     *   TRUE if the user has the given permission, FALSE otherwise.
+     */
     public function checkForGroupMember(string $permission)
     {
         $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($this->user);

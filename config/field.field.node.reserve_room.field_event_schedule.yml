@@ -16,7 +16,7 @@ id: node.reserve_room.field_event_schedule
 field_name: field_event_schedule
 entity_type: node
 bundle: reserve_room
-label: 'Event Schedule'
+label: 'Your Room Reservation Details'
 description: ''
 required: true
 translatable: false
