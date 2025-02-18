@@ -54,41 +54,27 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
   ) {
     $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
   } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
+    // dd($form);
     $filterFormId = $form['#id'];
-    $viewId = \Drupal::request()->get('view_id');
+    // $viewId = \Drupal::request()->get('view_id', \Drupal::request()->get('view_name', NULL));
+    // dd(Drupal::request()->get('view_id'), \Drupal::request());
     static $targetViews = [
-      'moderation_reports' => 1,
-      'room_reservation_reports' => 1,
-      'contents_change_report' => 1,
-      'videos_link_report' => 1,
-      'events_evaluation_report' => 1,
-      'contents_delete_report' => 1,
-      'my_reservations' => 1,
-      'my_events' => 1,
+      'views-exposed-form-moderation-reports-event-moderation' => 1,
+      'views-exposed-form-room-reservation-reports-page-1' => 1,
+      'views-exposed-form-contents-change-report-page-1' => 1,
+      'views-exposed-form-videos-link-report-page-1' => 1,
+      'views-exposed-form-events-evaluation-report-page-1' => 1,
+      'views-exposed-form-contents-delete-report-page-1' => 1,
+      'views-exposed-form-my-reservations-my-pending-reservations' => 1,
+      'views-exposed-form-my-reservations-my-reservations-block' => 1,
+      'views-exposed-form-my-reservations-page-1' => 1,
+      'views-exposed-form-my-reservations-page-2' => 1,
+      'views-exposed-form-my-events-my-events-block' => 1,
+      'views-exposed-form-my-events-my-pending-events' => 1,
+      'views-exposed-form-my-events-page-1' => 1,
+      'views-exposed-form-my-events-page-2' => 1,
     ];
-    if ($viewId === Constant::VIEW_EVENT_CALENDAR) {
-      if (isset($form['start']) && isset($form['start']['#attributes'])) {
-        unset($form['start']['#attributes']['data-bef-auto-submit-exclude']);
-      }
-      if (isset($form['end']) && isset($form['end']['#attributes'])) {
-        unset($form['end']['#attributes']['data-bef-auto-submit-exclude']);
-      }
-
-      if (isset($form['event_type'])) {
-        $form['event_type']['#default_value'] = 1;
-        $form['event_type']['#value'] = 1;
-      }
-
-      if (isset($form['campus_wide'])) {
-        $form['campus_wide']['#default_value'] = 1;
-        $form['campus_wide']['#value'] = 1;
-      }
-
-      if (isset($form['content_type'])) {
-        $form['content_type']['#default_value'] = 1;
-        $form['content_type']['#value'] = 1;
-      }
-    } else if (isset($targetViews[$viewId])) {
+    if (isset($targetViews[$filterFormId])) {
       if (isset($form['moderation_state'])) {
         unset($form['moderation_state']['#options']['All']);
       }
@@ -104,7 +90,8 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
       if (isset($form['type'])) {
         unset($form['type']['#options']['All']);
       }
-    } else if ($filterFormId === 'views-exposed-form-media-library-widget' || $filterFormId === 'views-exposed-form-media-library-widget-table') {
+    } else if ($filterFormId === 'views-exposed-form-media-library-widget' 
+      || $filterFormId === 'views-exposed-form-media-library-widget-table') {
       $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
       $form['gid']['#options'] = array_merge(['All' => $form['gid']['#options']['All']], $groups);
     }
