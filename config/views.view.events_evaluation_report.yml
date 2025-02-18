@@ -2056,7 +2056,7 @@ display:
           row_class: ''
           default_row_class: true
           override: 1
-          sticky: 0
+          sticky: 1
           caption: ''
           summary: ''
           description: ''
@@ -2064,6 +2064,8 @@ display:
             nid: nid
             field_intended_audience: field_intended_audience
             title: title
+            field_evaluated_on: field_evaluated_on
+            field_evaluated_by: field_evaluated_by
             field_areas_for_improvement: field_areas_for_improvement
             field_anticipated_cost: field_anticipated_cost
             field_actual_program_expense: field_actual_program_expense
@@ -2082,11 +2084,8 @@ display:
             field_program_communities: field_program_communities
             field_college_houses: field_college_houses
             field_long_text: field_long_text
-            field_evaluated_by: field_evaluated_by
             field_full_name: field_full_name
-            field_evaluated_on: field_evaluated_on
             nothing_1: nothing_1
-            view_node: view_node
           info:
             nid:
               sortable: 0
@@ -2103,6 +2102,20 @@ display:
               empty_column: 0
               responsive: ''
             title:
+              sortable: 0
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            field_evaluated_on:
+              sortable: 1
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+            field_evaluated_by:
               sortable: 0
               default_sort_order: asc
               align: ''
@@ -2221,13 +2234,6 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-            field_evaluated_by:
-              sortable: 0
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
             field_full_name:
               sortable: 0
               default_sort_order: asc
@@ -2235,21 +2241,7 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-            field_evaluated_on:
-              sortable: 1
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
             nothing_1:
-              align: ''
-              separator: ''
-              empty_column: 0
-              responsive: ''
-            view_node:
-              sortable: 0
-              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: 0
