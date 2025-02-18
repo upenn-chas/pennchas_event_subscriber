@@ -126,26 +126,26 @@
                               {% endif %}
                           </div>
 
-                          <div class="internal-links">
-                            {% for menus in node.field_menus %}
-                              {# {{dump(menus.value['target_id'])}} #}
-                              <div class="dropdown">
-                                {% set items = simplify_menu(menus.value['target_id']) %}
-                                {% for menu_item in items.menu_tree %}
-                                    <a class="btn btn-secondary dropdown-toggle" >{{ menu_item.text }}</a>
-                                  <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <ul class="clearfix nav">
-                                      {% for submenu_item in menu_item.submenu %}
-                                      <li class="navigation__item nav-item">
-                                        <a href="{{ submenu_item.url }}" class="nav-link nav-link--">{{ submenu_item.text }}</a>
-                                      </li>
-                                      {% endfor %}
-                                    </ul>
-                                  </div>
-                                {% endfor %}
-                              </div>
-                            {% endfor %}
-                          </div>
+                          {% for menus in node.field_menus %}
+                            <div class="internal-links">
+                                {# {{dump(menus.value['target_id'])}} #}
+                                <div class="dropdown">
+                                  {% set items = simplify_menu(menus.value['target_id']) %}
+                                  {% for menu_item in items.menu_tree %}
+                                      <a class="btn btn-secondary dropdown-toggle" >{{ menu_item.text }}</a>
+                                    <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                      <ul class="clearfix nav">
+                                        {% for submenu_item in menu_item.submenu %}
+                                        <li class="navigation__item nav-item">
+                                          <a href="{{ submenu_item.url }}" class="nav-link nav-link--">{{ submenu_item.text }}</a>
+                                        </li>
+                                        {% endfor %}
+                                      </ul>
+                                    </div>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                          {% endfor %}
 
                       </div>
                       {% if node.field_media_image.value is not empty %}

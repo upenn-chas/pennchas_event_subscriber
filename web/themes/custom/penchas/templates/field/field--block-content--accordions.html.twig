@@ -80,6 +80,13 @@
             <div class="accordion-body">
               {{item.content['#paragraph'].field_description.value|raw}}
             </div>
+            <div class="accordion-list">
+              <ul class="list-content">
+                {% for lists in item.content['#paragraph'].field_listing_content %}
+                  <li class="list-item">{{ lists.value }}</li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
       {% endfor %}

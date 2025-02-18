@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: accordion_content
-label: 'Accordion Content'
+label: 'Accordion Content (UNUSED)'
 revision: false
 description: null
