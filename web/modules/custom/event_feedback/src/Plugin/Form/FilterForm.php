@@ -78,7 +78,7 @@ class FilterForm extends FormBase
             '#type' => 'date',
             '#title' => 'Submitted From'
         ];
-        
+
 
         $form['wrapper']['submit_to'] = [
             '#type' => 'date',
@@ -93,10 +93,16 @@ class FilterForm extends FormBase
                 'wrapper' => 'report-table-container',
             ],
         ];
-
         $form['wrapper']['reset'] = [
-            '#type' => 'reset',
+            '#type' => 'submit',
             '#value' => $this->t('Reset'),
+            '#ajax' => [
+                'callback' => '::resetAjaxCallback',
+                'wrapper' => 'report-table-container',
+            ],
+            '#attributes' => [
+                'onclick' => 'this.form.reset();setTimeout(() => {}, 10);'
+            ]
         ];
 
         return $form;
@@ -105,6 +111,24 @@ class FilterForm extends FormBase
     public function filterAjaxCallback(array &$form, FormStateInterface $form_state)
     {
         $controller = \Drupal::service('event_feedback.event_feedback_controller');;
+        $data = $controller->buildTable($form_state->getValues());
+        $res = new AjaxResponse();
+        $res->addCommand(new HtmlCommand('#report-table-container', $data));
+        return $res;
+    }
+
+    public function resetAjaxCallback(array &$form, FormStateInterface $form_state)
+    {
+        $controller = \Drupal::service('event_feedback.event_feedback_controller');
+        $form_state->setValues([
+            'gid' => '_all',
+            'type' => '_all',
+            'outcome' => '_all',
+            'participants' => '_all',
+            'goal_area' => '_all',
+            'submit_from' => '',
+            'submit_to' => '',
+        ]);
         $data = $controller->buildTable($form_state->getValues());
         $res = new AjaxResponse();
         $res->addCommand(new HtmlCommand('#report-table-container', $data));

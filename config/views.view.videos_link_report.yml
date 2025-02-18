@@ -1376,7 +1376,7 @@ display:
           entity_type: media
           entity_field: bundle
           plugin_id: field
-          label: 'Video type'
+          label: 'Video Type'
           exclude: false
           alter:
             alter_text: false
