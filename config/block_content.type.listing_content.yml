@@ -1,0 +1,8 @@
+uuid: e87d3633-1379-4c85-b460-a69c0e8f8a65
+langcode: en
+status: true
+dependencies: {  }
+id: listing_content
+label: 'Listing Content'
+revision: false
+description: null

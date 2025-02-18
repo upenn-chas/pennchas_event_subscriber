@@ -1,0 +1,8 @@
+uuid: 010d9b51-77eb-4b68-84a7-a5ed69feda40
+langcode: en
+status: true
+dependencies: {  }
+id: list_content_block
+label: 'List Content Block'
+revision: false
+description: null
