@@ -88,8 +88,9 @@ class EventFeedbackController extends ControllerBase
             ];
         }
 
+        $intendedOutcomeValue = \Drupal::service('pennchas_common.field_values_label')->values($node, 'field_intended_outcomes');
         $eventIntendedElements = $webform->getElementsDecoded();
-        $eventIntendedElements['event_intended_to']['#title'] = $eventIntendedElements['event_intended_to']['#title'] . ': ' . str_replace(', ', ' | ', $node->get('field_intended_outcomes')->getString());
+        $eventIntendedElements['event_intended_to']['#title'] = $eventIntendedElements['event_intended_to']['#title'] . ': ' . implode(' | ', $intendedOutcomeValue);
 
         $webform->setElements($eventIntendedElements);
         return [

@@ -10,3 +10,5 @@ services:
   pennchas_common.evaluation_check:
     class: \Drupal\common_utils\Access\EvaluationCheck
     arguments: ['@current_user']
+  pennchas_common.field_values_label:
+    class: \Drupal\common_utils\Option\FieldOption
