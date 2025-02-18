@@ -35,6 +35,7 @@ settings:
       - codeBlock
       - '|'
       - sourceEditing
+      - htmlEmbed
   plugins:
     ckeditor5_codeBlock:
       languages:
