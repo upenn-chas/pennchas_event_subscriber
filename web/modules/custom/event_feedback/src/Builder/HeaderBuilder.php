@@ -40,36 +40,44 @@ class HeaderBuilder
                 [
                     'title' => t('Event Report'),
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-1'
                 ],
                 [
                     'title' => t('House(s)'),
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-1'
                 ],
                 [
                     'title' => t('Event'),
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-1'
                 ],
                 [
                     'title' => t('Respondants'),
-                    'cspan' => 0
+                    'cspan' => 0,
+                    'class' => 'event-feedback--th-1'
                 ],
             ],
             [
                 [
                     'title' => '',
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-2'
                 ],
                 [
                     'title' => '',
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-2'
                 ],
                 [
                     'title' => '',
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-2'
                 ],
                 [
                     'title' => '',
                     'cspan' => 0,
+                    'class' => 'event-feedback--th-2'
                 ]
             ]
         ];
@@ -98,7 +106,8 @@ class HeaderBuilder
                     $defaultRowValues[$colIndex] = 0;
                     $header[1][$colIndex++] = [
                         'title' => $opt,
-                        'cspan' => 0
+                        'cspan' => 0,
+                        'class' => 'event-feedback--th-2 opt'
                     ];
                 }
             }
@@ -107,10 +116,12 @@ class HeaderBuilder
         $header[0][$colIndex] = [
             'title' => t('Event Evaluation'),
             'cspan' => 0,
+            'class' => 'event-feedback--th-1'
         ];
         $header[1][$colIndex] = [
             'title' => '',
             'cspan' => 0,
+            'class' => 'event-feedback--th-2'
         ];
         $columnIndexes['event_evaluation'] = $colIndex;
         $defaultRowValues[$colIndex] = '';

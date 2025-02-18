@@ -3,7 +3,7 @@
     {% for theader in table_header %}
         <tr>
         {% for cell in theader %}
-            <th colspan="{{ cell.cspan }}">{{ cell.title }}</th>
+            <th class="{{ cell.class }}" colspan="{{ cell.cspan }}">{{ cell.title }}</th>
         {% endfor %}       
         </tr>
     {% endfor %}
