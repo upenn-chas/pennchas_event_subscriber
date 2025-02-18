@@ -932,7 +932,7 @@ display:
           row_class: ''
           default_row_class: true
           override: 1
-          sticky: 0
+          sticky: 1
           caption: ''
           summary: ''
           description: ''
