@@ -149,7 +149,7 @@ content:
         120|2 hours
         custom
       show_extra: false
-      hide_date: true
+      hide_date: false
       allday: false
       remove_seconds: true
       duration_overlay: false

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.accordion_content.field_description
     - field.field.paragraph.accordion_content.field_heading
+    - field.field.paragraph.accordion_content.field_listing_content
     - field.field.paragraph.accordion_content.field_tags
     - paragraphs.paragraphs_type.accordion_content
 id: paragraph.accordion_content.default
@@ -23,6 +24,14 @@ content:
   field_heading:
     type: string_textfield
     weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_listing_content:
+    type: string_textfield
+    weight: 4
     region: content
     settings:
       size: 60

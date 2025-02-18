@@ -371,12 +371,19 @@ label {
 							}
 						}
 						.form-type-email {
+              margin-top: 16px;
+              margin-right: 10px;
+              @include media-query ('small'){
+              margin-right: 10px;
+              
+              }
 							input {
 								// padding-top: 11px;
 								min-height: 50px;
 								height: 50px;
                 @include media-query ('small'){
                   margin-top: 14px;
+                
                 }
 							}
 						}
@@ -744,6 +751,8 @@ label {
     }
     background-color: transparent;
     box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
   &.has-multiple-fields-remove-button{
     padding: 0 !important;
   }   
@@ -869,6 +878,16 @@ body.path-group{
         color: #011f5b;
         border-color: #ffea3f;
         }
+      }
+    }
+  }
+}
+table{
+  td{
+    &:has(.smartdate--widget){
+      @media (max-width:767px) {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   }
