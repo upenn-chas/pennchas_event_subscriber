@@ -30,7 +30,7 @@ class ModerationEntityEmailService
         $groupModeratorsId = $group ? $this->getGroupModerators('house1', [$group->id()]) : [];
         $moderatorsId = array_unique(array_merge($globalModeratorsId, $groupModeratorsId));
         if ($moderatorsId) {
-            $emailBatches = array_chunk($moderatorsId, 20);
+            $emailBatches = array_chunk($moderatorsId, 12);
             foreach ($emailBatches as $batch) {
                 $this->sendMail($node, $emailTemplatId, $batch);
             }
