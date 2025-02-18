@@ -29,7 +29,6 @@ settings:
       - code
       - '|'
       - sourceEditing
-      - htmlEmbed
   plugins:
     ckeditor5_heading:
       enabled_headings:

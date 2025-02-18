@@ -82,9 +82,17 @@
 .tab-pane {
   .section-title {
     margin-top: 60px;
+    padding-left: 0;
+    padding-right: 0;
+    @include media-query('tablet') {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
     @include media-query('mobile') {
       margin-bottom: 20px;
       margin-top: 40px;
+      padding-left: 18px;
+      padding-right: 18px;
     }
     
   }
@@ -139,6 +147,7 @@
         font-family: $teritoryFont;
         text-decoration: underline;
         padding-left: 25px;
+        word-break: break-word;
         &:hover {
           color: $primaryColor;
           text-decoration: none;
@@ -186,6 +195,7 @@
 // }
 
 .view-our-team-list {
+  justify-content: center;
  .view-filters {
   padding: 0;
  }
@@ -196,8 +206,12 @@
   fieldset {
     width: 100%;
     display: block;
+    @media (max-width:1320px) {
+      margin-left: 18px;
+    }
     @include media-query ('mobile') {
       padding: 0 20px;
+      margin-left: 0;
     }
     legend {
       display: none;

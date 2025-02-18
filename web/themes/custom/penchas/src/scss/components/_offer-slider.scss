@@ -158,5 +158,10 @@
 
 .node--type-program-community:has(.program-card ) {
   margin-bottom: 40px;
+  
+  @include media-query('tablet'){
+    padding-left: 0;
+	padding-right: 0;
+  }
 }
 

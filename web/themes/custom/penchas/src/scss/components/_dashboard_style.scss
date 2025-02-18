@@ -488,3 +488,37 @@ color: inherit !important;
     }
   }
 }
+
+#main{
+  .block-views-blockdashboard-header-block-1{
+    @include media-query('mobile'){
+      display: none;
+    }
+  }
+  main{
+    .section{
+      .block-views-blockdashboard-header-block-1{
+        display: none;
+        @include media-query('mobile'){
+          display: block;
+          .dashboard-breadcrumbs{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+#main-wrapper {
+  .row.row-offcanvas {
+    margin-left: 0;
+    margin-right: 0;
+    main{
+      &.main-content.col{
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+}
