@@ -1,0 +1,27 @@
+uuid: 77eccaef-5071-4803-93ef-cda53226f174
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_select_list_style
+field_name: field_select_list_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: order
+      label: Unordered
+    -
+      value: ordered
+      label: Ordered
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

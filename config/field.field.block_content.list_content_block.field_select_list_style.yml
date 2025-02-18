@@ -1,0 +1,21 @@
+uuid: b0eefbf7-84f1-438e-8faf-c91d6d320af7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.list_content_block
+    - field.storage.block_content.field_select_list_style
+  module:
+    - options
+id: block_content.list_content_block.field_select_list_style
+field_name: field_select_list_style
+entity_type: block_content
+bundle: list_content_block
+label: 'Select List Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

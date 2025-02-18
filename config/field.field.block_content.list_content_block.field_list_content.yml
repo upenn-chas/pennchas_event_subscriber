@@ -1,0 +1,19 @@
+uuid: cde810ca-bbc5-4278-996c-e397703498c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.list_content_block
+    - field.storage.block_content.field_list_content
+id: block_content.list_content_block.field_list_content
+field_name: field_list_content
+entity_type: block_content
+bundle: list_content_block
+label: 'List Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

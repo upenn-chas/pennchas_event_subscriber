@@ -77,11 +77,39 @@
     padding: 0 30px 20px 30px;
     font-size: 24px;
     line-height: 28px;
+    word-wrap: break-word;
     @include media-query('small') {
       padding: 0 20px 20px 20px;
       font-size: 20px;
       line-height: normal;
     }
+  }
+  .accordion-list{
+    padding-left: 24px;
+    padding-right: 24px;
+    @include media-query('small'){
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    ul {
+      li {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 1rem;
+        margin-left: 10px;
+  
+        @include media-query('mobile') {
+          font-size: 18px;
+          line-height: normal;
+          margin-bottom: 0.5rem;
+        }
+  
+        &::marker {
+          color: #92B7FF;
+        }
+      }
+  
+  }
   }
 }
 

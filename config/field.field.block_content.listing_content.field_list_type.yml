@@ -1,0 +1,21 @@
+uuid: ab4db69a-542a-4268-8627-687c06732fc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.listing_content
+    - field.storage.block_content.field_list_type
+  module:
+    - options
+id: block_content.listing_content.field_list_type
+field_name: field_list_type
+entity_type: block_content
+bundle: listing_content
+label: 'List type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

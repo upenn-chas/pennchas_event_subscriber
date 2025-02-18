@@ -155,6 +155,7 @@ body {
 .node__content {
   p {
     font-size: 18px;
+    word-wrap: break-word;
   }
 }
 
@@ -855,15 +856,26 @@ body {
   }
 }
 
-.block-inline-blockbasic {
+.block-inline-blockbasic,
+.block-inline-blocklist-content-block {
+  h2{
+    margin-bottom: 20px;
+    @include media-query('mobile'){
+      margin-bottom: 1rem;
+    }
+  }
   p {
     @include media-query-min('mobile') {
       font-size: 24px;
       line-height: 28px;
+      word-wrap: break-word;
     }
   }
 
   ul {
+    @include media-query('mobile'){
+      padding-left: 1rem;
+    }
     li {
       font-size: 24px;
       line-height: 28px;
@@ -883,11 +895,17 @@ body {
 
 }
 ol{
+  @include media-query('mobile'){
+    padding-left: 1rem;
+  }
   li {
     font-size: 24px;
     line-height: 26px;
     margin-bottom: 1rem;
     margin-left: 10px;
+    &::marker {
+      font-weight: 700;
+    }
     @include media-query('mobile') {
       font-size: 18px;
       line-height: normal;
@@ -937,12 +955,18 @@ ol{
 .views-exposed-form{
   .d-flex {
     gap: 12px;
+    align-items: center;
 
     @media(max-width: 767px) {
       gap: 0 12px;
     }
   }
-
+.js-form-type-select {
+  max-width: 250px;
+  @include media-query('small'){
+    max-width: 100%;
+  }
+}
   .js-form-item {
     @include media-query('mobile') {
       width: 100%;
@@ -1007,6 +1031,7 @@ ol{
     padding: 6px 20px;
     border-radius: 4px;
     background: #011f5b;
+    margin-top: 16px;
 
     &:hover {
       color: #011f5b;
@@ -1018,4 +1043,10 @@ ol{
     }
   }
 }
+}
+.block-inline-blockbasic  {
+  .align-center{
+  margin: auto;
+  display: table;
+  }
 }
