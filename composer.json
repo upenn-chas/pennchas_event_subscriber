@@ -100,7 +100,8 @@
         "drupal/search_api_solr": "^4.3",
         "drupal/layout_paragraphs": "^2.1",
         "drupal/ckeditor_media_resize": "^1.0",
-        "drupal/ckeditor5_open_new_tab": "^1.0"
+        "drupal/ckeditor5_open_new_tab": "^1.0",
+        "drupal/ckeditor_html_embed": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

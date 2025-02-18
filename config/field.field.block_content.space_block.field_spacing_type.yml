@@ -1,0 +1,21 @@
+uuid: b40bca45-7be1-4a0d-a983-9ff7adf8072c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.space_block
+    - field.storage.block_content.field_spacing_type
+  module:
+    - options
+id: block_content.space_block.field_spacing_type
+field_name: field_spacing_type
+entity_type: block_content
+bundle: space_block
+label: 'Spacing type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

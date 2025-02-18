@@ -6,6 +6,9 @@
     position: relative;
     .dashboard-header{
       padding-top: 15px;
+      @include media-query('medium'){
+        z-index: 1;
+      }
       @include media-query('tablet') {
         flex-wrap: wrap;
       }
@@ -461,6 +464,27 @@ color: inherit !important;
           display: none;
         }
       }
+    }
+  }
+}
+.view-dashboard-header  {
+  .dashboard-breadcrumbs{
+  left: 18px;
+
+  @media (max-width:1199px) {
+    left: 0;
+  }
+}
+  .dashboard-header{
+    @media (max-width:1300px) {
+      position: absolute;
+      margin-top: 0;
+      width: auto;
+    }
+    @media (max-width:1199px) {
+      position: static;
+        margin-top: 10px;
+        width: 100%;
     }
   }
 }

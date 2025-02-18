@@ -884,5 +884,17 @@ ol{
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
+    font-family: $teritoryFont;
+    margin-top: 15px;
+  }
+}
+
+.block-inline-blockvideo-block {
+  .field--name-field-media-oembed-video {
+    iframe {
+      width: 100%;
+      height: auto; 
+      min-height: 300px; 
+    }
   }
 }

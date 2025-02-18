@@ -1,0 +1,36 @@
+uuid: 0904cc10-1509-4f08-8cbd-3ba80b085344
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_spacing_type
+field_name: field_spacing_type
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: top_spacing
+      label: top-spacing
+    -
+      value: bottom_spacing
+      label: bottom-spacing
+    -
+      value: top_bottom_spacing
+      label: top-and-bottom-spacing
+    -
+      value: top_medium_spacing
+      label: top-medium-spacing
+    -
+      value: bottom_medium_spacing
+      label: bottom-medium-spacing
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

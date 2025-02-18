@@ -1,0 +1,8 @@
+uuid: 0513f869-fa11-47be-8cef-6fe839cd1218
+langcode: en
+status: true
+dependencies: {  }
+id: space_block
+label: 'Space block'
+revision: false
+description: null

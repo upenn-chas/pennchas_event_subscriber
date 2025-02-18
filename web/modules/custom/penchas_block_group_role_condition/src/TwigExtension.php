@@ -26,7 +26,7 @@ class TwigExtension extends AbstractExtension {
         // Define a new Twig function.
         return [
         new TwigFunction('verify_role_access', [$this, 'verifyRoleAccess']),
-        // new TwigFunction('getGroupName', [$this, 'getGroupName']),
+        new TwigFunction('get_group_name', [$this, 'getGroupName'], array('is_safe' => array('html'))),
         ];
     }
 
@@ -82,11 +82,24 @@ class TwigExtension extends AbstractExtension {
         return $group_role;
     }
 
-    // public function getGroupName(){
-    //     $group = \Drupal::routeMatch()->getParameter('group');
-    //     $group = Group::load($groupId);
-    //     dd($name);
-    // }
+    public function getGroupName(){
+        $current_uri = \Drupal::request()->getRequestUri();
+        $uri_parts = explode('/', $current_uri);
+        $uri_parts = array_filter($uri_parts);
+        $groupName = '';
+        if(isset($uri_parts)){
+          // $variables['group_machine_label'] = $uri_parts['2'];
+          $variables['short_name'] = $uri_parts['2'];
+          $connection = Database::getConnection();
+          $query = $connection->select('groups_field_data', 'hm');
+          $query->fields('hm',['label']);
+          $query->condition('hm.id', $uri_parts['2']);
+          $group_results = $query->execute()->fetchObject();
+          $groupName = $group_results->label;
+
+          return $groupName;
+        }
+    }
 
   
 }
