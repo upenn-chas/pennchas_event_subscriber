@@ -22,6 +22,8 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
+
+
   if ($formId === 'node_program_community_form') {
     if (!\Drupal::currentUser()->hasRole('administrator')) {
       $form['field_group']['#access'] = false;
@@ -54,10 +56,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
   ) {
     $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
   } else if ($formId === Constant::VIEW_EXPOSED_FORM_ID) {
-    // dd($form);
     $filterFormId = $form['#id'];
-    // $viewId = \Drupal::request()->get('view_id', \Drupal::request()->get('view_name', NULL));
-    // dd(Drupal::request()->get('view_id'), \Drupal::request());
     static $targetViews = [
       'views-exposed-form-moderation-reports-event-moderation' => 1,
       'views-exposed-form-room-reservation-reports-page-1' => 1,
@@ -90,8 +89,10 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
       if (isset($form['type'])) {
         unset($form['type']['#options']['All']);
       }
-    } else if ($filterFormId === 'views-exposed-form-media-library-widget' 
-      || $filterFormId === 'views-exposed-form-media-library-widget-table') {
+    } else if (
+      $filterFormId === 'views-exposed-form-media-library-widget'
+      || $filterFormId === 'views-exposed-form-media-library-widget-table'
+    ) {
       $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
       $form['gid']['#options'] = array_merge(['All' => $form['gid']['#options']['All']], $groups);
     }
@@ -272,7 +273,8 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
   return $variables;
 }
 
-function pennchas_form_alter_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function pennchas_form_alter_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
   // Ensure the form ID is correct
   $view_id = ['calendar'];
   if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_id)) {
@@ -280,20 +282,21 @@ function pennchas_form_alter_form_views_exposed_form_alter(&$form, \Drupal\Core\
   }
 }
 
-function penchas_add_exclude_notices_filter($form, &$form_state) {
+function penchas_add_exclude_notices_filter($form, &$form_state)
+{
   // Add your custom checkbox field under the form
 
   $form['exclude_notice'] = [
     '#type' => 'checkbox',
     '#title' => t('General Events/Notice'),
-    '#description' => t('Exclude Notices'), 
-    '#default_value' => 0, 
+    '#description' => t('Exclude Notices'),
+    '#default_value' => 0,
     '#attributes' => [
-        'class' => ['form-checkbox', 'form-check-input'],  
-        'data-drupal-selector' => 'edit-type-exclude-notices', 
-        'id' => 'edit-type-exclude-notices',
-        'name' => 'exclude_notice', 
-        'value' => 'Exclude Notices',
+      'class' => ['form-checkbox', 'form-check-input'],
+      'data-drupal-selector' => 'edit-type-exclude-notices',
+      'id' => 'edit-type-exclude-notices',
+      'name' => 'exclude_notice',
+      'value' => 'Exclude Notices',
     ],
   ];
 

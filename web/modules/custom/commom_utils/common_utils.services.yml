@@ -12,3 +12,5 @@ services:
     arguments: ['@current_user']
   pennchas_common.field_values_label:
     class: \Drupal\common_utils\Option\FieldOption
+  pennchas_common.users:
+    class: \Drupal\common_utils\User\User
