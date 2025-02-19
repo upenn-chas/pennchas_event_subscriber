@@ -431,6 +431,22 @@ display:
         options: {  }
       empty: {  }
       sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
         title:
           id: title
           table: node_field_data
@@ -3728,6 +3744,38 @@ display:
         type: dashboard_access
         options:
           dashboard_perm: 'dashboard pending events'
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments: {  }
       filters:
         type:
@@ -3894,6 +3942,7 @@ display:
         row: false
         relationships: false
         fields: false
+        sorts: false
         arguments: false
         filters: false
         filter_groups: false
