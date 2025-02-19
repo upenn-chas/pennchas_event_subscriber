@@ -116,6 +116,7 @@ module:
   responsive_image: 0
   rest: 0
   search_api: 0
+  search_api_db: 0
   search_api_solr: 0
   section_library: 0
   seo_checklist: 0
