@@ -63,27 +63,12 @@ class CsvPerEventReportProcessor
     protected function buildData($header, $body, $footer, $columnIndexes, $node)
     {
         $data = [];
-        $intendedOutcomes = $this->_getIndentedOutcomes($node);
+        $intendedOutcomes = \Drupal::service('pennchas_common.field_values_label')->values($node, 'field_intended_outcomes');
+        $intendedOutcomes = implode(' | ', $intendedOutcomes);
         $header[$columnIndexes['event_intended_to']] .= ", {$intendedOutcomes}?";
         $data[] = $header;
         $data = array_merge($data, $body);
         $data[] = $footer;
         return $data;
-    }
-
-    protected function _getIndentedOutcomes($event)
-    {
-        $intendedOutcomeField = $event->get('field_intended_outcomes');
-        $intendedOutcomeValue = $intendedOutcomeField->getValue();
-        $fieldSettings = $intendedOutcomeField->getDataDefinition()->getSettings();
-        $allowedValues = $fieldSettings['allowed_values'];
-
-        $intendedOutcomes = [];
-
-        foreach ($intendedOutcomeValue as $value) {
-            $intendedOutcomes[] = $allowedValues[$value['value']];
-        }
-
-        return implode(' | ', $intendedOutcomes);
     }
 }

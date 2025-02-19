@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\common_utils\Option;
 
 use Drupal\group\Entity\Group;
@@ -7,7 +8,8 @@ use Drupal\group\Entity\GroupMembership;
 /**
  * Get list of groups for current user.
  */
-class GroupOption {
+class GroupOption
+{
 
     /**
      * Get the list of groups.
@@ -21,15 +23,15 @@ class GroupOption {
      * @return array []
      *  Key value pair of group id and group label
      */
-    public function options(String $groupType = 'house1', bool $allGroupsForNonMember = true )
+    public function options(String $groupType = 'house1', bool $allGroupsForNonMember = true)
     {
         $options = [];
 
         $currentUser = \Drupal::currentUser();
-        if(!$currentUser->isAuthenticated()) {
+        if (!$currentUser->isAuthenticated()) {
             return $options;
         }
-        
+
         $groupMemberships = GroupMembership::loadByUser($currentUser);
         if ($groupMemberships) {
             foreach ($groupMemberships as $groupMembership) {
@@ -37,7 +39,7 @@ class GroupOption {
                 $group = Group::load($gid);
                 $options[$group->id()] = $group->label();
             }
-        } else if($allGroupsForNonMember) {
+        } else if ($allGroupsForNonMember) {
             $groupsId =  \Drupal::entityQuery('group')
                 ->condition('type', $groupType)
                 ->condition('status', 1)->accessCheck(true)->execute();
@@ -49,5 +51,4 @@ class GroupOption {
         }
         return $options;
     }
-
 }

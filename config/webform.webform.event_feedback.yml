@@ -15,16 +15,16 @@ categories: {  }
 elements: |-
   event_like_rating:
     '#type': radios
-    '#title': 'On a scale of "loved it!" to "did not enjoy it", how did you like the event?'
+    '#title': '1. On a scale of "loved it!" to "did not enjoy it", how did you like the event?'
     '#options':
-      4: 'loved it'
-      3: 'enjoyed it'
-      2: 'enjoyed it a little bit'
-      1: 'did not enjoy it'
+      4: 'Loved it'
+      3: 'Enjoyed it'
+      2: 'Enjoyed it a little bit'
+      1: 'Did not enjoy it'
     '#required': true
   event_intended_to:
     '#type': radios
-    '#title': 'This event was intended to'
+    '#title': '2. This event was intended to'
     '#options':
       'yes': 'Yes'
       'no': 'No'
@@ -32,7 +32,7 @@ elements: |-
     '#required': true
   why_choose_event:
     '#type': checkboxes
-    '#title': 'Why did you choose to attend? Check all that apply?'
+    '#title': '3. Why did you choose to attend? Check all that apply:'
     '#options':
       topic_was_interesting: 'Topic was interesting'
       chance_to_meet_other_students: 'Chance to meet other students'
