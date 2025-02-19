@@ -125,9 +125,9 @@
                                 {% endif %}
                               {% endif %}
                           </div>
-
-                          {% for menus in node.field_menus %}
-                            <div class="internal-links">
+                        {% if node.field_menus.value['target_id'] is not null %}
+                          <div class="internal-links">
+                            {% for menus in node.field_menus %}
                                 {# {{dump(menus.value['target_id'])}} #}
                                 <div class="dropdown">
                                   {% set items = simplify_menu(menus.value['target_id']) %}
@@ -144,8 +144,9 @@
                                     </div>
                                   {% endfor %}
                                 </div>
-                            </div>
-                          {% endfor %}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
                       </div>
                       {% if node.field_media_image.value is not empty %}

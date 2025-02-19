@@ -413,6 +413,7 @@ label {
                 .time-start {
                   flex-wrap: nowrap;
                   gap: 10px;
+                  align-content: center;
                     .js-form-item {
                       label{
                         display: block !important;
@@ -433,7 +434,7 @@ label {
               .time-end {
                 flex-wrap: nowrap;
                 gap: 10px;
-                
+                align-content: center;
                 
                   .js-form-item {
                     label{

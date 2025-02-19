@@ -1,0 +1,11 @@
+uuid: 0626abf6-0a7d-4cd6-ba81-04bc1de2266e
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.default_original
+label: Default-original
+description: ''
+targetEntityType: media
+cache: true

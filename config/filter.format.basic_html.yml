@@ -7,6 +7,7 @@ dependencies:
     - core.entity_view_mode.media.cke_media_resize_medium
     - core.entity_view_mode.media.cke_media_resize_small
     - core.entity_view_mode.media.cke_media_resize_xl
+    - core.entity_view_mode.media.default_original
   module:
     - ckeditor_media_resize
     - editor
@@ -75,13 +76,14 @@ filters:
     status: true
     weight: 100
     settings:
-      default_view_mode: default
+      default_view_mode: default_original
       allowed_view_modes:
         default: default
         cke_media_resize_large: cke_media_resize_large
         cke_media_resize_medium: cke_media_resize_medium
         cke_media_resize_small: cke_media_resize_small
         cke_media_resize_xl: cke_media_resize_xl
+        default_original: default_original
       allowed_media_types: {  }
   token_filter:
     id: token_filter
