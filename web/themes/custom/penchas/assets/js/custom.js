@@ -82,7 +82,8 @@ $(document).ready(function () {
   const $selectBtn = $menu.find(".select-btn");
   const $sBtnText = $menu.find(".sbtn-text");
 
-  $selectBtn.on("click", function () {
+  $selectBtn.on("click", function (event) {
+    event.stopPropagation();
     $menu.toggleClass("active");
   });
 
