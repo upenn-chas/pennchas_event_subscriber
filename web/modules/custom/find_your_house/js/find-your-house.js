@@ -3,9 +3,19 @@
   
   jQuery(document).ready(function(){
     jQuery('#block-penchas-findyourhouse .select-btn').on('click', function(){
-      console.log('askdhasd test ');
+      // console.log('askdhasd test ');
+      event.stopPropagation();
       jQuery(this).parent().toggleClass('active');
     });
+
+    jQuery(document).on('click', function(event){
+      // Check if the click target is outside the menu
+      if (!jQuery(event.target).closest('#block-penchas-findyourhouse').length) {
+          // Remove the active class
+          jQuery('#block-penchas-findyourhouse .active').removeClass('active');
+      }
+    });
+
     jQuery('#block-penchas-findyourhouse .select-menu ul.options .option').on('click', function(){
       console.log('asdasd');
       jQuery('.sBtn-text').html(jQuery(this).find('span').text());

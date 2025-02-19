@@ -16,7 +16,6 @@ dependencies:
     - filter
     - group
     - media
-    - search
     - shortcut
     - system
 _core:
@@ -45,7 +44,6 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own video media'
   - 'post comments'
-  - 'search content'
   - 'skip comment approval'
   - 'update media'
   - 'use text format basic_html'
