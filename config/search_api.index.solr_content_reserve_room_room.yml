@@ -1,4 +1,4 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: eb2459c5-a487-4a8c-b156-14c1dab1885b
 langcode: en
 status: true
 dependencies:
@@ -55,8 +55,8 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_content_reserve_room_room
+name: 'Solr Content (Reserve Room / Room)'
 description: ''
 read_only: false
 field_settings: {  }
@@ -73,8 +73,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - chas_event
-        - notices
+        - reserve_room
+        - room
     languages:
       default: false
       selected:

@@ -1,11 +1,10 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: e6f78e4c-3158-40ad-a1cb-57bdcd70783b
 langcode: en
 status: true
 dependencies:
   config:
     - search_api.server.pantheon_search
   module:
-    - group
     - node
     - search_api_solr
 third_party_settings:
@@ -55,26 +54,18 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_content_basic_page_house_pages
+name: 'Solr Content (Basic page / House Pages)'
 description: ''
 read_only: false
 field_settings: {  }
 datasource_settings:
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: false
-      selected:
-        - en
   'entity:node':
     bundles:
       default: false
       selected:
-        - chas_event
-        - notices
+        - house_landing_page
+        - page
     languages:
       default: false
       selected:
