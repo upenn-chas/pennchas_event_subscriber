@@ -2,7 +2,7 @@
   'use strict';
   
   jQuery(document).ready(function(){
-    jQuery('#block-penchas-findyourhouse .select-btn').on('click', function(){
+    jQuery('#block-penchas-findyourhouse .select-btn').on('click', function(event){
       // console.log('askdhasd test ');
       event.stopPropagation();
       jQuery(this).parent().toggleClass('active');
