@@ -567,12 +567,12 @@ function penchas_preprocess_block(&$variables) {
       // }
       $number_of_members = $group->get('field_number_of_residents')->value ? $group->get('field_number_of_residents')->value.' residents' : '';
       $file_path = $image_alt = $image_title ='';
-      if($group->get('field_media_image')){
-        if($group->get('field_media_image')->entity){
-          if($group->get('field_media_image')->entity->field_media_image){
-            $image_alt = $group->get('field_media_image')->entity->field_media_image->getValue()[0]['alt'];
-            $image_title = $group->get('field_media_image')->entity->field_media_image->getValue()[0]['title'];
-            $file = File::load($group->get('field_media_image')->entity->field_media_image->getValue()[0]['target_id']);
+      if($group->get('field_image')){
+        if($group->get('field_image')->entity){
+          if($group->get('field_image')->entity->field_media_image){
+            $image_alt = $group->get('field_image')->entity->field_media_image->getValue()[0]['alt'];
+            $image_title = $group->get('field_image')->entity->field_media_image->getValue()[0]['title'];
+            $file = File::load($group->get('field_image')->entity->field_media_image->getValue()[0]['target_id']);
             $file_path = $file->createFileUrl();
           }
         }
