@@ -1,4 +1,4 @@
-uuid: fa81224d-b408-4526-a185-1041ff92e5c1
+uuid: 7726daea-6104-49a6-9d56-b9b51ccd396e
 langcode: en
 status: true
 dependencies:
@@ -26,13 +26,10 @@ dependencies:
     - search_api_solr.solr_request_handler.request_handler_suggest_default_7_0_0
     - search_api_solr.solr_request_handler.request_handler_tvrh_default_7_0_0
   module:
-    - search_api_pantheon
     - search_api_solr
-_core:
-  default_config_hash: POKgbHnDgOG9Kpq-lFViH5ZvK4Ufv-erVlvs4oah-Vk
-id: pantheon_search
-name: 'Pantheon Search'
-description: 'Default search server for Pantheon Search.'
+id: local_solr
+name: local_solr
+description: ''
 backend: search_api_solr
 backend_config:
   retrieve_data: false
@@ -41,28 +38,34 @@ backend_config:
   server_prefix: ''
   domain: generic
   environment: default
-  connector: pantheon
+  connector: standard
   connector_config:
-    scheme: https
-    port: 443
-    path: v1
+    scheme: http
+    host: 112.196.0.230
+    port: 8983
+    path: /
+    core: weassem
     timeout: 5
     index_timeout: 5
     optimize_timeout: 10
     finalize_timeout: 30
-    solr_version: '8'
+    skip_schema_check: false
+    solr_version: ''
     http_method: AUTO
     commit_within: 1000
     jmx: false
     jts: false
     solr_install_dir: ''
-    skip_schema_check: true
   optimize: false
   fallback_multiple: false
   disabled_field_types: {  }
   disabled_caches: {  }
-  disabled_request_handlers: null
-  disabled_request_dispatchers: null
+  disabled_request_handlers:
+    - request_handler_elevate_default_7_0_0
+    - request_handler_replicationmaster_default_7_0_0
+    - request_handler_replicationslave_default_7_0_0
+  disabled_request_dispatchers:
+    - request_dispatcher_httpcaching_default_7_0_0
   rows: 10
   index_single_documents_fallback_count: 10
   index_empty_text_fields: false

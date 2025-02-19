@@ -1,10 +1,11 @@
-uuid: 2a18c069-5f7d-476c-8888-bbb13da55f0f
+uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
 langcode: en
 status: true
 dependencies:
   config:
-    - search_api.server.pantheon_search
+    - search_api.server.local_solr
   module:
+    - group
     - node
     - search_api_solr
 third_party_settings:
@@ -54,48 +55,45 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-_core:
-  default_config_hash: HAm0jo8jX8VFQ76YTiZnP26IYI1MDoESxOydvjJj6wI
-id: primary
-name: primary
+id: chas_content
+name: 'Chas content'
 description: ''
 read_only: false
 field_settings: {  }
 datasource_settings:
-  'entity:node':
+  'entity:group':
     bundles:
       default: true
       selected: {  }
     languages:
-      default: true
-      selected: {  }
+      default: false
+      selected:
+        - en
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - article
+        - chas_event
+        - house_landing_page
+        - notices
+        - page
+        - program_community
+        - reserve_room
+        - room
+    languages:
+      default: false
+      selected:
+        - en
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
   entity_type: {  }
-  highlight:
-    weights:
-      postprocess_query: 0
-    prefix: '<strong>'
-    suffix: '</strong>'
-    excerpt: true
-    excerpt_always: false
-    excerpt_length: 256
-    exclude_fields: {  }
-    highlight: always
-    highlight_partial: false
   language_with_fallback: {  }
   rendered_item: {  }
-  reverse_entity_references: {  }
-  solr_boost_more_recent:
-    weights:
-      preprocess_query: 0
-    boosts: {  }
-  solr_date_range:
-    weights:
-      preprocess_index: 0
+  solr_date_range: {  }
 tracker_settings:
   default:
     indexing_order: fifo
@@ -104,4 +102,4 @@ options:
   delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
-server: pantheon_search
+server: local_solr
