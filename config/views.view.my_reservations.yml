@@ -2727,7 +2727,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: "<ul class=\"tabs tab--primary layout-tabs reservations-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_reservations_block\" role=\"tab\" aria-controls=\"panel-my-reservations\" aria-selected=\"false\"><a href=\"/my-reservations\">My Reservations</a>\r\n</span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link is-active tabs__link\" data-wrap=\"my_pending_reservations\" role=\"tab\" aria-controls=\"panel-pending-reservations\" aria-selected=\"true\" tabindex=\"-1\"><a href=\"/my-pending-reservations\">My Pending Reservations</a>\r\n</span></li>\r\n</ul>"
+            value: "<ul class=\"tabs tab--primary layout-tabs reservations-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_reservations_block\" role=\"tab\" aria-controls=\"panel-my-reservations\" aria-selected=\"false\"><a href=\"/my-reservations\">My Reservations</a>\r\n</span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link is-active tabs__link\" data-wrap=\"my_pending_reservations\" role=\"tab\" aria-controls=\"panel-pending-reservations\" aria-selected=\"true\" tabindex=\"-1\"><a href=\"/my-pending-reservations\">Pending Reservations</a>\r\n</span></li>\r\n</ul>"
             format: full_html
           tokenize: false
         result:
@@ -3515,7 +3515,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: "<ul class=\"tabs tab--primary layout-tabs reservations-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link is-active tabs__link\" data-wrap=\"my_reservations_block\" role=\"tab\" aria-controls=\"panel-my-reservations\" aria-selected=\"true\"><a href=\"/my-reservations\">My Reservations</a>\r\n</span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_pending_reservations\" role=\"tab\" aria-controls=\"panel-pending-reservations\" aria-selected=\"false\" tabindex=\"-1\"><a href=\"/my-pending-reservations\">My Pending Reservations</a>\r\n</span></li>\r\n</ul>"
+            value: "<ul class=\"tabs tab--primary layout-tabs reservations-tab-blocks\" role=\"tablist\">\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link is-active tabs__link\" data-wrap=\"my_reservations_block\" role=\"tab\" aria-controls=\"panel-my-reservations\" aria-selected=\"true\"><a href=\"/my-reservations\">My Reservations</a>\r\n</span></li>\r\n\r\n<li class=\"tabs__tab\" role=\"presentation\"><span class=\"nav-item nav-link tabs__link\" data-wrap=\"my_pending_reservations\" role=\"tab\" aria-controls=\"panel-pending-reservations\" aria-selected=\"false\" tabindex=\"-1\"><a href=\"/my-pending-reservations\">Pending Reservations</a>\r\n</span></li>\r\n</ul>"
             format: full_html
           tokenize: false
         result:
