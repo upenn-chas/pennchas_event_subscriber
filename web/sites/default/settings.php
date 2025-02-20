@@ -46,3 +46,6 @@ $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'okta
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
 
+if(isset($_ENV['PANTHEON_ENVIRONMENT'])){
+    $config['search_api.server.solr_server']['backend_config']['connector'] = 'pantheon';
+}
