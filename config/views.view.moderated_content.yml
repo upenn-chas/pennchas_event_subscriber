@@ -604,8 +604,9 @@ display:
           operator: in
           value:
             editorial-draft: editorial-draft
-            editorial-archived: editorial-archived
+            editorial-denied: editorial-denied
             editorial-pending: editorial-pending
+            editorial-delete: editorial-delete
           group: 1
           exposed: true
           expose:
@@ -631,18 +632,46 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             reduce: true
-          is_grouped: false
+          is_grouped: true
           group_info:
-            label: ''
+            label: 'Moderation state'
             description: ''
-            identifier: ''
+            identifier: moderation_state
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items: {  }
+            group_items:
+              1:
+                title: '- Any -'
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+                  editorial-denied: editorial-denied
+                  editorial-pending: editorial-pending
+                  editorial-delete: editorial-delete
+              2:
+                title: Draft
+                operator: in
+                value:
+                  editorial-draft: editorial-draft
+              3:
+                title: Pending
+                operator: in
+                value:
+                  editorial-pending: editorial-pending
+              4:
+                title: Denied
+                operator: in
+                value:
+                  editorial-denied: editorial-denied
+              5:
+                title: Delete
+                operator: in
+                value:
+                  editorial-delete: editorial-delete
         langcode:
           id: langcode
           table: node_field_revision
@@ -673,47 +702,6 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        moderation_state_1:
-          id: moderation_state_1
-          table: node_field_revision
-          field: moderation_state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: moderation_state_filter
-          operator: 'not in'
-          value:
-            editorial-published: editorial-published
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
             reduce: false
           is_grouped: false
           group_info:

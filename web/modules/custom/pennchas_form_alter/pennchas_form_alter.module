@@ -77,23 +77,23 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
 
     // Targeted views
     static $targetViews = [
-        'views-exposed-form-moderation-reports-event-moderation',
-        'views-exposed-form-room-reservation-reports-page-1',
-        'views-exposed-form-contents-change-report-page-1',
-        'views-exposed-form-videos-link-report-page-1',
-        'views-exposed-form-events-evaluation-report-page-1',
-        'views-exposed-form-contents-delete-report-page-1',
-        'views-exposed-form-my-reservations-my-pending-reservations',
-        'views-exposed-form-my-reservations-my-reservations-block',
-        'views-exposed-form-my-reservations-page-1',
-        'views-exposed-form-my-reservations-page-2',
-        'views-exposed-form-my-events-my-events-block',
-        'views-exposed-form-my-events-my-pending-events',
-        'views-exposed-form-my-events-page-1',
-        'views-exposed-form-my-events-page-2',
+        'views-exposed-form-moderation-reports-event-moderation' => 1,
+        'views-exposed-form-room-reservation-reports-page-1' => 1,
+        'views-exposed-form-contents-change-report-page-1' => 1,
+        'views-exposed-form-videos-link-report-page-1' => 1,
+        'views-exposed-form-events-evaluation-report-page-1' => 1,
+        'views-exposed-form-contents-delete-report-page-1' => 1,
+        'views-exposed-form-my-reservations-my-pending-reservations' => 1,
+        'views-exposed-form-my-reservations-my-reservations-block' => 1,
+        'views-exposed-form-my-reservations-page-1' => 1,
+        'views-exposed-form-my-reservations-page-2' => 1,
+        'views-exposed-form-my-events-my-events-block' => 1,
+        'views-exposed-form-my-events-my-pending-events' => 1,
+        'views-exposed-form-my-events-page-1' => 1,
+        'views-exposed-form-my-events-page-2' => 1,
     ];
 
-    if (in_array($filterFormId, $targetViews, TRUE)) {
+    if (isset($targetViews[$filterFormId])) {
         if (isset($form['moderation_state'])) {
             unset($form['moderation_state']['#options']['All']);
         }
@@ -109,7 +109,11 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
         if (isset($form['type'])) {
             unset($form['type']['#options']['All']);
         }
-    } elseif ($filterFormId === 'views-exposed-form-media-library-widget' || $filterFormId === 'views-exposed-form-media-library-widget-table') {
+    } else if ($filterFormId === 'views-exposed-form-moderated-content-moderated-content') {
+        if (isset($form['moderation_state'])) {
+            unset($form['moderation_state']['#options']['All']);
+        }
+    } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
         $groups = $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
         $form['gid']['#options'] = array_merge(['All' => $form['gid']['#options']['All']], $groups);
     }
