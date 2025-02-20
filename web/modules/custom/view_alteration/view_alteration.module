@@ -36,28 +36,28 @@ function view_alteration_theme()
  * 
  * Implements hook_views_query_alter().
  */
-function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
-{
-    $viewId = $view->id();
-    static $reportViewIds = [
-        'moderation_reports' =>  1,
-        'rooms_reservation_moderation_reports' =>  1,
-        'contents_change_report' =>  1,
-        'contents_delete_report' =>  1,
-        'events_evaluation_report' =>  1,
-        'room_reservation_reports' =>  1,
-        'users_reports' =>  1,
-        'videos_link_report' =>  1
-    ];
-    if (isset($reportViewIds[$viewId])) {
-        view_alteration_handle_reports_view($query, $viewId);
-        return;
-    }
+// function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
+// {
+//     $viewId = $view->id();
+//     static $reportViewIds = [
+//         'moderation_reports' =>  1,
+//         'rooms_reservation_moderation_reports' =>  1,
+//         'contents_change_report' =>  1,
+//         'contents_delete_report' =>  1,
+//         'events_evaluation_report' =>  1,
+//         'room_reservation_reports' =>  1,
+//         'users_reports' =>  1,
+//         'videos_link_report' =>  1
+//     ];
+//     if (isset($reportViewIds[$viewId])) {
+//         view_alteration_handle_reports_view($query, $viewId);
+//         return;
+//     }
 
-    if ($viewId === 'media_library') {
-        view_alteration_apply_group_filter_to_query($query, ['gcfd.gid', 'group_relationship_field_data_media_field_data.gid']);
-    }
-}
+//     if ($viewId === 'media_library') {
+//         view_alteration_apply_group_filter_to_query($query, ['gcfd.gid', 'group_relationship_field_data_media_field_data.gid']);
+//     }
+// }
 
 function view_alteration_handle_reports_view(Sql &$query, string $viewId)
 {
