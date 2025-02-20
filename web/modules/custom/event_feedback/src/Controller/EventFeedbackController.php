@@ -121,7 +121,7 @@ class EventFeedbackController extends ControllerBase
             '#title' => $this->t('Participations Survey Report'),
             '#rows' => $rows,
             '#header' => [
-                '#markup' => '<a target="_blank" class="views-display-link" href="' . Url::fromRoute('event_feedback.report_export')->toString() . '">' . $this->t('Export') . '</a>',
+                '#markup' => '<a target="_blank" class="views-display-link" id="export-btn" href="' . Url::fromRoute('event_feedback.report_export')->toString() . '">' . $this->t('Export') . '</a>',
             ],
             '#pager' => ['#type' => 'pager']
         ];
@@ -146,7 +146,7 @@ class EventFeedbackController extends ControllerBase
 
     public function reportExport()
     {
-        $request = \Drupal::request()->request->all();
+        $request = \Drupal::requestStack()->getSession()->get('participantsSurvey', []);
         $data = \Drupal::service('event_feedback.csv_report_service')->buildReport($this->eventFeedbackWebformId, $request, -1);
 
         $csvFile = new StreamedResponse();
