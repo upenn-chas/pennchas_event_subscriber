@@ -34,7 +34,7 @@ content:
     type: media_thumbnail
     label: hidden
     settings:
-      image_link: ''
+      image_link: content
       image_style: media_library
       image_loading:
         attribute: lazy
