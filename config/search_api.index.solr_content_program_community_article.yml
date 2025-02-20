@@ -3,11 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
+    - field.storage.node.field_chas_news
     - search_api.server.pantheon_search
   module:
     - group
     - node
     - search_api_solr
+    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -59,7 +62,55 @@ id: solr_content_program_community_article
 name: 'Solr Content (Program Community / Article)'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_chas_news:
+    label: 'Chas news'
+    datasource_id: 'entity:node'
+    property_path: field_chas_news
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_chas_news
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:group':
     bundles:
@@ -69,6 +120,13 @@ datasource_settings:
       default: false
       selected:
         - en
+  'entity:group_relationship':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
       default: false

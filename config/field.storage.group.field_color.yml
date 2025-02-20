@@ -50,6 +50,9 @@ settings:
     -
       value: f5d5cf
       label: '#F5D5CF'
+    -
+      value: d8e6da
+      label: '#D8E6DA'
   allowed_values_function: ''
 module: options
 locked: false
