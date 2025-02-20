@@ -24,8 +24,6 @@ class FilterForm extends FormBase
      */
     public function buildForm(array $form, FormStateInterface $form_state)
     {
-        $request = \Drupal::request()->request;
-
         $form['#attributes']['class'] = 'views-exposed-form bef-exposed-form';
 
         $form['wrapper'] = [
@@ -38,7 +36,7 @@ class FilterForm extends FormBase
             '#type' => 'select',
             '#title' => $this->t('House'),
             '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getGroups(),
-            '#default_value' => $request->get('gid', null),
+            '#default_value' => NULL,
             '#required' => FALSE,
         ];
 
@@ -46,7 +44,7 @@ class FilterForm extends FormBase
             '#type' => 'select',
             '#title' => $this->t('Intended Audience/Participant Group'),
             '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getEventIntendedAudience(),
-            '#default_value' => $request->get('type', null),
+            '#default_value' => NULL,
             '#required' => FALSE,
         ];
 
@@ -54,7 +52,7 @@ class FilterForm extends FormBase
             '#type' => 'select',
             '#title' => $this->t('Intended Outcome(s)'),
             '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getEventIntendedOutcomes(),
-            '#default_value' => $request->get('outcome', null),
+            '#default_value' => NULL,
             '#required' => FALSE,
         ];
 
@@ -62,7 +60,7 @@ class FilterForm extends FormBase
             '#type' => 'select',
             '#title' => $this->t('Intended participant year(s)'),
             '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getEventIntendedParticipantYears(),
-            '#default_value' => $request->get('participants', null),
+            '#default_value' => NULL,
             '#required' => FALSE,
         ];
 
@@ -70,38 +68,45 @@ class FilterForm extends FormBase
             '#type' => 'select',
             '#title' => $this->t('CHAS Priority/Goal Area'),
             '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getEventGoalAreas(),
-            '#default_value' => $request->get('goal_area', null),
+            '#default_value' => NULL,
             '#required' => FALSE,
         ];
 
         $form['wrapper']['submit_from'] = [
             '#type' => 'date',
-            '#title' => 'Submitted From'
+            '#title' => 'Submitted From',
+            '#default_value' => NULL,
         ];
 
 
         $form['wrapper']['submit_to'] = [
             '#type' => 'date',
-            '#title' => 'Submitted To'
+            '#title' => 'Submitted To',
+            '#default_value' => NULL,
         ];
 
         $form['wrapper']['submit'] = [
             '#type' => 'submit',
+            '#id' => 'submit-btn',
             '#value' => $this->t('Submit'),
             '#ajax' => [
                 'callback' => '::filterAjaxCallback',
                 'wrapper' => 'report-table-container',
+                'progress' => ['type' => 'throbber'],
             ],
         ];
         $form['wrapper']['reset'] = [
             '#type' => 'submit',
+            '#id' => 'reset-btn',
             '#value' => $this->t('Reset'),
             '#ajax' => [
-                'callback' => '::resetAjaxCallback',
+                'callback' => '::filterAjaxCallback',
                 'wrapper' => 'report-table-container',
+                'progress' => ['type' => 'throbber'],
             ],
+            '#access' => false,
             '#attributes' => [
-                'onclick' => 'this.form.reset();setTimeout(() => {}, 10);'
+                'onclick' => 'this.form.reset();setTimeout(() => {}, 10);',
             ]
         ];
 
@@ -110,29 +115,33 @@ class FilterForm extends FormBase
 
     public function filterAjaxCallback(array &$form, FormStateInterface $form_state)
     {
-        $controller = \Drupal::service('event_feedback.event_feedback_controller');;
+        $trigger = $form_state->getUserInput()['_triggering_element_value'] ?? 'Submit';
+        $controller = \Drupal::service('event_feedback.event_feedback_controller');
+        if ($trigger === 'Submit') {
+            $form['wrapper']['reset']['#access'] = true;
+        } else {
+            $this->resetForm($form, $form_state);
+        }
+        \Drupal::requestStack()->getSession()->set('participantsSurvey', $form_state->getValues());
         $data = $controller->buildTable($form_state->getValues());
         $res = new AjaxResponse();
+        $res->addCommand(new HtmlCommand('#view-filters-container', $form));
         $res->addCommand(new HtmlCommand('#report-table-container', $data));
         return $res;
     }
 
-    public function resetAjaxCallback(array &$form, FormStateInterface $form_state)
+    private function resetForm(array &$form, FormStateInterface &$form_state)
     {
-        $controller = \Drupal::service('event_feedback.event_feedback_controller');
-        $form_state->setValues([
-            'gid' => '_all',
-            'type' => '_all',
-            'outcome' => '_all',
-            'participants' => '_all',
-            'goal_area' => '_all',
-            'submit_from' => '',
-            'submit_to' => '',
-        ]);
-        $data = $controller->buildTable($form_state->getValues());
-        $res = new AjaxResponse();
-        $res->addCommand(new HtmlCommand('#report-table-container', $data));
-        return $res;
+        $form['wrapper']['reset']['#access'] = false;
+        $form['wrapper']['gid']['#value'] = '_all';
+        $form['wrapper']['type']['#value'] = '_all';
+        $form['wrapper']['outcome']['#value'] = '_all';
+        $form['wrapper']['participants']['#value'] = '_all';
+        $form['wrapper']['goal_area']['#value'] = '_all';
+        $form['wrapper']['submit_from']['#value'] = '_all';
+        $form['wrapper']['submit_to']['#value'] = '_all';
+        $form_state->setValues([]);
+        $form_state->setRebuild(TRUE);
     }
 
     /**

@@ -99,6 +99,17 @@ class ReportRepository
         $query->groupBy('wsd.name');
         $query->groupBy('wsd.value');
 
+        
+        if (isset($filters['submit_from']) && $filters['submit_from']) {
+            $startFrom = strtotime($filters['submit_from'] . ' 00:00:00');
+            $query->condition('ws.created', $startFrom, '>=');
+        }
+
+        if (isset($filters['submit_to']) && $filters['submit_to']) {
+            $startTo = strtotime($filters['submit_to'] . ' 23:59:59');
+            $query->condition('ws.created', $startTo, '<=');
+        }
+
         $submissionData = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
 
         return [
