@@ -96,6 +96,7 @@ module:
   media_library: 0
   media_library_form_element: 0
   menu_item_group_role_access: 0
+  menu_item_role_access: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
