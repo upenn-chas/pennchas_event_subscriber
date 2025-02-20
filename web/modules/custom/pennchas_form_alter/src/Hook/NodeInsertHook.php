@@ -32,13 +32,9 @@ class NodeInsertHook
         \Drupal::messenger()->deleteAll();
 
         $eventHousesId = $node->get('field_groups')->getValue();
-        $eventHouses = Group::loadMultiple(array_column($eventHousesId, 'target_id'));
+        $groupIds = array_column($eventHousesId, 'target_id');
+        $eventHouses = Group::loadMultiple($groupIds);
         foreach ($eventHouses as $house) {
-            // $node_url = $house->get('field_house_machine_name')->value.'/'.$node->getTitle();
-            // \Drupal::service('path.alias_storage')->save([
-            //     'alias' => '/' . $node_url,
-            //     'source' => '/events/' . $node->id()
-            //   ]);
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $house->addRelationship($node, 'group_node:' . $node->getType());
@@ -53,7 +49,7 @@ class NodeInsertHook
             $mailService->notifyAuthor(Constant::EVENT_EMAIL_MODERATOR_CREATED, $node);
         } else {
             $mailService->notifyAuthor(Constant::EVENT_EMAIL_CREATED, $node);
-            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $eventHouses[0]);
+            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $groupIds);
         }
         \Drupal::messenger()->addStatus($message);
     }
@@ -83,7 +79,7 @@ class NodeInsertHook
             $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
         } else {
             $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_CREATED, $node);
-            $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, $group);
+            $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, [$group->id()]);
         }
         \Drupal::messenger()->addStatus($message);
     }

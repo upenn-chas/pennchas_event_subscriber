@@ -24,73 +24,15 @@ class ModerationEntityEmailService
         $this->sendMail($node, $emailTemplatId, [$node->getOwnerId()]);
     }
 
-    public function notifyModerators(string $emailTemplatId, Node $node, Group|null $group)
+    public function notifyModerators(string $emailTemplatId, Node $node, $groupIds = [])
     {
-        $globalModeratorsId = $this->getUsersIdWithModerationPermission();
-        $groupModeratorsId = $group ? $this->getGroupModerators('house1', [$group->id()]) : [];
-        $moderatorsId = array_unique(array_merge($globalModeratorsId, $groupModeratorsId));
+        $moderatorsId = \Drupal::service('pennchas_common.users')->usersWithPermission(Constant::PERMISSION_MODERATION, $groupIds);
         if ($moderatorsId) {
             $emailBatches = array_chunk($moderatorsId, 12);
             foreach ($emailBatches as $batch) {
                 $this->sendMail($node, $emailTemplatId, $batch);
             }
         }
-    }
-
-    protected function getUsersIdWithModerationPermission()
-    {
-        $roleWithModerationPermission = $this->getRolesWithModerationPermission();
-
-        if ($roleWithModerationPermission) {
-            $users = \Drupal::entityQuery('user')
-                ->accessCheck(false)
-                ->condition('status', 1)
-                ->condition('roles', $roleWithModerationPermission, 'IN')
-                ->execute();
-            return $users ? array_keys($users) : [];
-        }
-        return [];
-    }
-
-    protected function getGroupModerators($groupTypeKey, $groupIds)
-    {
-        if (!$groupIds) {
-            return [];
-        }
-
-        $groupType = GroupType::load($groupTypeKey);
-        $groupRoles = $groupType->getRoles(false);
-        $moderatorRoles = [];
-
-        foreach ($groupRoles as $roleKey => $groupRole) {
-            if ($roleKey !== $groupTypeKey . '-admin' && $groupRole->hasPermission(Constant::PERMISSION_MODERATION)) {
-                $moderatorRoles[] = $roleKey;
-            }
-        }
-
-        $groupModeratorsId = [];
-
-        $groups = Group::loadMultiple($groupIds);
-        foreach ($groups as $group) {
-            $members = $group->getMembers($moderatorRoles);
-            foreach ($members as $member) {
-                $groupModeratorsId[] = $member->getUser()->id();
-            }
-        }
-        return $groupModeratorsId;
-    }
-
-    protected function getRolesWithModerationPermission()
-    {
-        $roles = Role::loadMultiple();
-
-        $moderatorRoles = [];
-        foreach ($roles as $key => $role) {
-            if ($role->hasPermission(Constant::PERMISSION_MODERATION)) {
-                $moderatorRoles[] = $key;
-            }
-        }
-        return $moderatorRoles;
     }
 
     protected function sendMail(Node $node, $templateKey, $recipients)
