@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Functions to support theming in the SASS Starterkit subtheme.
@@ -31,7 +32,8 @@ use Drupal\group\Access\GroupPermissionHandlerInterface;
  *
  * Replace Barrio setting options with subtheme ones.
  */
-function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $form_state)
+{
   $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = array(
     'bg-primary' => t('Primary'),
     'bg-secondary' => t('Secondary'),
@@ -49,12 +51,13 @@ function penchas_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   );
 }
-function process_submenu($submenu) {
+function process_submenu($submenu)
+{
   $submenu_items = '';
 
   foreach ($submenu as $item) {
     $submenu_items .= '<li class="navigation__item nav-item">';
-    $submenu_items .= '<a href="'.$item->link->getUrlObject()->toString().'" class="nav-link nav-link--">'.$item->link->getTitle().'</a>';
+    $submenu_items .= '<a href="' . $item->link->getUrlObject()->toString() . '" class="nav-link nav-link--">' . $item->link->getTitle() . '</a>';
     $submenu_items .= '</li>';
   }
 
@@ -64,7 +67,8 @@ function process_submenu($submenu) {
 /**
  * Implements hook_preprocess_HOOK() for container templates.
  */
-function penchas_preprocess_container(array &$variables) {
+function penchas_preprocess_container(array &$variables)
+{
   // Add a custom class to the container.
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
@@ -73,34 +77,34 @@ function penchas_preprocess_container(array &$variables) {
       $variables['attributes']['class'] = 'full-container';
     }
   }
-  
 }
 
 
-function penchas_preprocess_node_edit_form(&$variables) {
+function penchas_preprocess_node_edit_form(&$variables)
+{
   $variables['base_path'] = base_path();
   $group_banner_html = '<br/>';
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
-  
+
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
     if (strpos($path_parts[2], 'group_node') !== false) {
       $bundle_type = str_replace('group_node:', '', $path_parts[2]);
-      
-      if($bundle_type == 'reserve_room' || $bundle_type == 'room' || $bundle_type == 'chas_event' || $bundle_type == 'notices' || $bundle_type == 'article'){
-        if($bundle_type == 'reserve_room'){
+
+      if ($bundle_type == 'reserve_room' || $bundle_type == 'room' || $bundle_type == 'chas_event' || $bundle_type == 'notices' || $bundle_type == 'article') {
+        if ($bundle_type == 'reserve_room') {
           $label = "Room Reservations";
-        }else if($bundle_type == 'room'){
+        } else if ($bundle_type == 'room') {
           $label = "Room";
-        }else if($bundle_type == 'chas_event'){
+        } else if ($bundle_type == 'chas_event') {
           $label = "CHAS Event";
-        }else if($bundle_type == 'notices'){
+        } else if ($bundle_type == 'notices') {
           $label = "Notices";
-        }else if($bundle_type == 'article'){
+        } else if ($bundle_type == 'article') {
           $label = "Article";
         }
         $group_id = $path_parts[1];
-        if($group_id){
+        if ($group_id) {
           $groupData = Group::load($group_id);
           $url_path = $groupData->toUrl()->toString();
           $field_bg_color = $groupData->get('field_color')->value;
@@ -108,59 +112,58 @@ function penchas_preprocess_node_edit_form(&$variables) {
           $field_menus = $groupData->get('field_menus');
           $simplified_menu_html = '';
           foreach ($field_menus as $key => $group_menu) {
-            
+
             // Load the menu using the menu_link_tree service
             $menu_tree = \Drupal::service('menu.link_tree');
             $menu_name = $group_menu->target_id;
-            
+
             // Fetch the menu tree data
-            $menu_data = $menu_tree->load($menu_name,new MenuTreeParameters());
-            
+            $menu_data = $menu_tree->load($menu_name, new MenuTreeParameters());
+
             foreach ($menu_data as $item) {
               $simplified_menu_html .= '<div class="dropdown">';
-              $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >'.$item->link->getTitle().'</a>';
+              $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >' . $item->link->getTitle() . '</a>';
               $simplified_menu_html .= '<div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                     <ul class="clearfix nav">';
               $simplified_menu_html .= process_submenu($item->subtree);
-              
+
               $simplified_menu_html .= '</ul></div></div>';
             }
           }
           $field_heading = $groupData->get('field_heading')->value;
-          
+
           $group_label = $groupData->get('label')->value;
-          $group_banner_html = '<section class="hero-banner without-image" style="background-color: #'.$field_bg_color.';">'
-                                .'<style>.hero-banner .container:before {background: #'.$field_color_of_circle.'}</style>'
-                                .'<div class="container">'
-                                  .'<div class="row">'
-                                    .'<div class="col-12 col-lg-6">'
-                                      .'<div class="breadcrumbs-block">'
-                                        .'<nav aria-label="breadcrumb">'
-                                          .'<ol class="breadcrumb">'
-                                            .'<li class="breadcrumb-item"><a href="/">Home</a></li>'
-                                            .'<li class="breadcrumb-item"><a href="'.$url_path.'">'.$group_label.' House</a></li>'
-                                            .'<li class="breadcrumb-item active" aria-current="page">'.$label.'</li>'
-                                         .' </ol>'
-                                        .'</nav>'
-                                      .'</div>'
-                                      .'<div class="banner-info">'
-                                        .'<h1>'.$label.'</h1>'
-                                      .'</div>'
-                                      .'<div class="internal-links">'.$simplified_menu_html.'</div>'
-                                    .'</div>'
-                                  .'</div>'
-                                .'</div>'
-                              .'</section>';
-    
+          $group_banner_html = '<section class="hero-banner without-image" style="background-color: #' . $field_bg_color . ';">'
+            . '<style>.hero-banner .container:before {background: #' . $field_color_of_circle . '}</style>'
+            . '<div class="container">'
+            . '<div class="row">'
+            . '<div class="col-12 col-lg-6">'
+            . '<div class="breadcrumbs-block">'
+            . '<nav aria-label="breadcrumb">'
+            . '<ol class="breadcrumb">'
+            . '<li class="breadcrumb-item"><a href="/">Home</a></li>'
+            . '<li class="breadcrumb-item"><a href="' . $url_path . '">' . $group_label . ' House</a></li>'
+            . '<li class="breadcrumb-item active" aria-current="page">' . $label . '</li>'
+            . ' </ol>'
+            . '</nav>'
+            . '</div>'
+            . '<div class="banner-info">'
+            . '<h1>' . $label . '</h1>'
+            . '</div>'
+            . '<div class="internal-links">' . $simplified_menu_html . '</div>'
+            . '</div>'
+            . '</div>'
+            . '</div>'
+            . '</section>';
         }
       }
     }
   }
-  
-  $variables['group_banner_info'] = $group_banner_html;
 
+  $variables['group_banner_info'] = $group_banner_html;
 }
-function penchas_preprocess_node(&$variables) {
+function penchas_preprocess_node(&$variables)
+{
   $variables['base_path'] = base_path();
   $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';
@@ -170,24 +173,24 @@ function penchas_preprocess_node(&$variables) {
   $variables['room_reservation_heading'] = 'My Room Reservations';
   $current_user = \Drupal::currentUser();
   $edit_link = '';
-  
+
   $variables['breadcrumbs_list'] = '';
   $node = \Drupal::routeMatch()->getParameter('node');
- 
+
   if ($node instanceof NodeInterface) {
 
     $node = $variables['node'];
     if ($node->bundle() == 'chas_event') {
       $calendar_link = base_path();
-      if ($current_user->isAuthenticated() ) {
+      if ($current_user->isAuthenticated()) {
         $moderator_link = '';
         $eventHouseId = (int) $node->get('field_location')->getString();
         $group = Group::load($eventHouseId);
         $eventHousename = $group->get('field_short_name')->value;
         $housesId = [$eventHousename];
-        if (count($housesId) == 1){
-          $calendar_link = base_path().'group/'.$eventHousename.'/calendar';
-        }else{
+        if (count($housesId) == 1) {
+          $calendar_link = base_path() . 'group/' . $eventHousename . '/calendar';
+        } else {
           // $connection = Database::getConnection();
           // $query = $connection->select('group_relationship_field_data', 'gr')
           //     ->fields('gr', ['id'])
@@ -200,31 +203,36 @@ function penchas_preprocess_node(&$variables) {
         }
         $variables['is_logged_in'] = TRUE;
         $variables['attributes']['class'][] = 'logged-in-user';
-        $edit_url = \Drupal\Core\Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
-        $node_edit_url = $edit_url->toString();
-
-        if($node->get('moderation_state')){
-          if($node->get('moderation_state')->value == 'draft'){
-            // $moderator_link = '<li><a href="#content-moderation-entity-moderation-form"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
-            $moderator_link = '<li><a href="'.base_path().'moderate/event/'.$node->id().'"><img src="'.base_path().'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
-          }
+        $edit_link = '';
+        if (!$node->access('update')) {
+          $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
+          $node_edit_url = $edit_url->toString();
+          $edit_link = '<li><a href="' . $node_edit_url . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
         }
 
-        $edit_link = '<li><a href="'.$node_edit_url.'"><img src="'.base_path().'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>'.$moderator_link;
+        if ($node->get('moderation_state')) {
+          $moderationState = $node->get('moderation_state')->value;
+          if (($moderationState === 'draft' || $moderationState === 'pending') && \Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($node)) {;
+            $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
+            $moderator_link = '<li><a href="' . $moderator_url . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+          }
+        }
+        $edit_link .= $moderator_link;
       }
-      $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="'.$calendar_link.'"><img src="'.base_path().'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'.$edit_link.'</ul></div></div>';
+      $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="' . $calendar_link . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>' . $edit_link . '</ul></div></div>';
     }
   }
 }
 /**
  * Helper function to get the group ID based on node
  */
-function get_group_id_by_node($node) {
+function get_group_id_by_node($node)
+{
   $query = \Drupal::database()->select('group_relationship_field_data', 'g')
     ->fields('g', ['gid'])
     ->condition('g.entity_id', $node->id())
     ->execute();
-  
+
   $result = $query->fetchObject();
   return $result ? $result->gid : NULL;
 }
@@ -232,7 +240,8 @@ function get_group_id_by_node($node) {
 /**
  * Helper function to get the group label based on group ID
  */
-function get_group_label($group_id) {
+function get_group_label($group_id)
+{
   $query = \Drupal::database()->select('groups_field_data', 'gm')
     ->fields('gm', ['label'])
     ->condition('gm.id', $group_id)
@@ -242,11 +251,12 @@ function get_group_label($group_id) {
   return $gm_result ? $gm_result->label : NULL;
 }
 
-function penchas_preprocess_html(&$variables) {
-  
+function penchas_preprocess_html(&$variables)
+{
+
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
-  
+
   if ($node instanceof NodeInterface) {
     // Get site name and node title once
     $site_name = \Drupal::config('system.site')->get('name');
@@ -269,7 +279,7 @@ function penchas_preprocess_html(&$variables) {
         }
       }
     }
-    
+
     // Special handling for 'house_landing_page' bundle
     if ($node->bundle() === 'house_landing_page') {
       $parent_house_id = (int) $node->get('field_select_house')->target_id;
@@ -283,18 +293,18 @@ function penchas_preprocess_html(&$variables) {
     if ($node->bundle() == 'notices') {
       $event_house_id = $node->get('field_groups')->getString();
       $event_house_ids = explode(',', $event_house_id);
-        if (count($event_house_ids) == 1){
-          $group_machine_name = get_group_label($event_house_id);
-          if ($group_machine_name) {
-            $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-          }
+      if (count($event_house_ids) == 1) {
+        $group_machine_name = get_group_label($event_house_id);
+        if ($group_machine_name) {
+          $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
         }
+      }
     }
 
     // Special handling for 'chas_event' and 'notices' bundles
     if ($node->bundle() == 'chas_event') {
       $eventHousesId = $node->get('field_groups')->getValue();
-      if (count($eventHousesId) == 1){
+      if (count($eventHousesId) == 1) {
         // $event_house_id = (int) $node->get('field_location')->getString();
         // $housesId = [$event_house_id];
         $group_machine_name = get_group_label($eventHousesId[0]['target_id']);
@@ -317,7 +327,7 @@ function penchas_preprocess_html(&$variables) {
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
   $variables['front_page_url'] = $front_page_path;
   $current_uri = \Drupal::request()->getRequestUri();
-  
+
   /* SAML resposne testing starts */
   // if($current_uri == '/all-college-houses'){
 
@@ -338,7 +348,7 @@ function penchas_preprocess_html(&$variables) {
   //   foreach ($group_roles as $role) {
   //     $group_roles_target_ids[] = $role->id();
   //   }
-    
+
   //   $query = \Drupal::entityQuery('user_role');
   //   $role_ids = $query->execute();
   //   $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
@@ -354,7 +364,7 @@ function penchas_preprocess_html(&$variables) {
   //   foreach ($gf_result as $row) {
   //     $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
   //   }
-    
+
   //   // $personentitlement = [
   //   //   "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
   //   //   "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
@@ -392,7 +402,7 @@ function penchas_preprocess_html(&$variables) {
   //               $groupData = Group::load($group_id);
   //               if ($groupData->getMember($user)) {
   //                 $groupData->removeMember($user);
-                  
+
   //                 $values = ['group_roles' => []];
   //                 foreach ($group_user_roles_ids as $role_id) {
   //                     // Add each role to the group member
@@ -432,11 +442,11 @@ function penchas_preprocess_html(&$variables) {
   // }
 
   /* SAML resposne testing ends */
-
 }
 
-function penchas_preprocess_page(&$variables) {
-  
+function penchas_preprocess_page(&$variables)
+{
+
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
 
@@ -445,7 +455,8 @@ function penchas_preprocess_page(&$variables) {
     $variables['node_title'] = $node_title;
   }
 }
-function penchas_preprocess_block(&$variables) {
+function penchas_preprocess_block(&$variables)
+{
 
   $route_name = \Drupal::routeMatch()->getRouteName();
 
@@ -457,14 +468,14 @@ function penchas_preprocess_block(&$variables) {
     if ($node && $node instanceof \Drupal\node\NodeInterface) {
       $node_title = $node->getTitle();
       if ($node->bundle() == 'reserve_room' || $node->bundle() == 'chas_event') {
-        if($node->get('field_event_schedule')->getValue()){
+        if ($node->get('field_event_schedule')->getValue()) {
           $node_event_schedule = $node->get('field_event_schedule')->getValue();
           $node_start_date = $node_event_schedule[0]['value'];
           $node_end_date = $node_event_schedule[0]['end_value'];
         }
         // Get the node URL.
         $node_url = $node->toUrl()->toString();
-        $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text='.$node_title.'&dates='.date('YmjThms', $node_start_date).'/'.date('YmjThms', $node_end_date);
+        $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' . $node_title . '&dates=' . date('YmjThms', $node_start_date) . '/' . date('YmjThms', $node_end_date);
       }
     }
   }
@@ -481,7 +492,7 @@ function penchas_preprocess_block(&$variables) {
   //     // If there are no field values, stop further processing.
   //     return;
   //   }
-      
+
   //     $group_roles_arr = [];
   //     $group_conditions = $variables['content']['#block_content']->get('field_block_display_condition_wi')->getValue();
   //     foreach ($group_conditions as $value) {
@@ -512,7 +523,7 @@ function penchas_preprocess_block(&$variables) {
   //       if(!empty($group_roles_results)){
   //         $group_role = $group_roles_results['group_roles_target_id'];
   //         $variables['content'] = [];
-          
+
   //       }
   //     }
   //   }
@@ -521,7 +532,7 @@ function penchas_preprocess_block(&$variables) {
   //     $variables['#access'] = FALSE;
   //     return;
   //   }
-      
+
   //   if(!empty($group_role)){
   //       $key = array_search($group_role, $group_roles_arr);
   //       if ($key !== false) {
@@ -544,7 +555,7 @@ function penchas_preprocess_block(&$variables) {
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
 
-  if($variables['plugin_id'] == 'inline_block:houses_sliders'){
+  if ($variables['plugin_id'] == 'inline_block:houses_sliders') {
     $group_storage = \Drupal::entityTypeManager()->getStorage('group');
     $group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
     $groups = Group::loadMultiple($group_ids);
@@ -561,15 +572,15 @@ function penchas_preprocess_block(&$variables) {
 
     foreach ($groups as $group) {
       $description = $group->get('field_description')->value ?
-    preg_replace('/\s+/', ' ', trim(html_entity_decode(strip_tags($group->get('field_description')->value)))) : '';
+        preg_replace('/\s+/', ' ', trim(html_entity_decode(strip_tags($group->get('field_description')->value)))) : '';
 
       // if($group->id() == 1){
       // }
-      $number_of_members = $group->get('field_number_of_residents')->value ? $group->get('field_number_of_residents')->value.' residents' : '';
-      $file_path = $image_alt = $image_title ='';
-      if($group->get('field_image')){
-        if($group->get('field_image')->entity){
-          if($group->get('field_image')->entity->field_media_image){
+      $number_of_members = $group->get('field_number_of_residents')->value ? $group->get('field_number_of_residents')->value . ' residents' : '';
+      $file_path = $image_alt = $image_title = '';
+      if ($group->get('field_image')) {
+        if ($group->get('field_image')->entity) {
+          if ($group->get('field_image')->entity->field_media_image) {
             $image_alt = $group->get('field_image')->entity->field_media_image->getValue()[0]['alt'];
             $image_title = $group->get('field_image')->entity->field_media_image->getValue()[0]['title'];
             $file = File::load($group->get('field_image')->entity->field_media_image->getValue()[0]['target_id']);
@@ -578,31 +589,31 @@ function penchas_preprocess_block(&$variables) {
         }
       }
       $group_tags = $group->get('field_community')->value;
-      $tags = $group_tags.' '.$number_of_members;
-      if(!empty($group_tags) && !empty($number_of_members)){
-        $tags = $group_tags.', '.$number_of_members;
+      $tags = $group_tags . ' ' . $number_of_members;
+      if (!empty($group_tags) && !empty($number_of_members)) {
+        $tags = $group_tags . ', ' . $number_of_members;
       }
 
 
       $group_path = '/group/' . $group->id();
       $alias_manager = \Drupal::service('path_alias.manager');
       $url = $alias_manager->getAliasByPath($group_path);
-      $groups_html .= '<div class="offer-slider-block" data-group="'.$group->get('field_short_name')->value.'">'.
-                          '<div class="program-card"><a href="'.$url.'"></a>'.
-                              '<div class="program-card-img">'.
-                                '<img src="'.$file_path.'" alt="'.$image_alt.'" title="'.$image_title.'">'.
-                              '</div>'.
-                              '<div class="program-card-info">'.
-                                  '<h4>'.$group->label().'</h4>'.
-                                  '<div class="tags">'.
-                                      '<p>'.$tags.'</p>'.
-                                '</div>'.
-                                  '<p>'.$description.'</p>'.
-                                  '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>'.
-                                      '</svg>'.
-                              '</div>'.
-                          '</div>'.
-                      '</div>';
+      $groups_html .= '<div class="offer-slider-block" data-group="' . $group->get('field_short_name')->value . '">' .
+        '<div class="program-card"><a href="' . $url . '"></a>' .
+        '<div class="program-card-img">' .
+        '<img src="' . $file_path . '" alt="' . $image_alt . '" title="' . $image_title . '">' .
+        '</div>' .
+        '<div class="program-card-info">' .
+        '<h4>' . $group->label() . '</h4>' .
+        '<div class="tags">' .
+        '<p>' . $tags . '</p>' .
+        '</div>' .
+        '<p>' . $description . '</p>' .
+        '<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path><path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path></svg>' .
+        '</svg>' .
+        '</div>' .
+        '</div>' .
+        '</div>';
     }
     $variables['all_group_houses'] = $groups_html;
   }
@@ -614,13 +625,13 @@ function penchas_preprocess_block(&$variables) {
   $block_content = \Drupal::entityTypeManager()
     ->getStorage('block_content')
     ->loadByProperties(['type' => $block_type]);
-    // Loop through the blocks and get content.
-    foreach ($block_content as $block) {
-      
-      // You can access fields like this:
+  // Loop through the blocks and get content.
+  foreach ($block_content as $block) {
+
+    // You can access fields like this:
     $field_value = $block->get('info')->value; // Replace 'field_name' with your field machine name.
 
-    
+
     // Or render the entire content for a block.
     $content = \Drupal::entityTypeManager()
       ->getViewBuilder('block_content')
@@ -633,10 +644,10 @@ function penchas_preprocess_block(&$variables) {
   $renderer = \Drupal::service('renderer');
   $html_content = $renderer->render($content);
   $variables['all_dashboard_basic_block'] = $html_content;
-
 }
 
-function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets)
+{
   $themeHandler = \Drupal::service('theme_handler');
   $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
   $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
@@ -655,7 +666,8 @@ function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterfa
 /**
  * Implements hook_theme_suggestions_views_view_alter().
  */
-function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $variables)
+{
   if (isset($variables['view']->element['#view_id'])) {
     $suggestions[] = 'views_view__' . $variables['view']->element['#view_id'];
   }
@@ -664,7 +676,8 @@ function penchas_theme_suggestions_views_view_alter(array &$suggestions, array $
 /**
  * Helper function to fetch group ID based on the short name.
  */
-function get_group_id_by_short_name($short_name_value) {
+function get_group_id_by_short_name($short_name_value)
+{
   $connection = Database::getConnection();
   $query = $connection->select('group__field_short_name', 'gs')
     ->fields('gs', ['entity_id'])
@@ -676,7 +689,8 @@ function get_group_id_by_short_name($short_name_value) {
 /**
  * Helper function to generate a URL for creating a content type in a group.
  */
-function generate_create_form_url($group_id, $plugin_id) {
+function generate_create_form_url($group_id, $plugin_id)
+{
   return Url::fromRoute('entity.group_relationship.create_form', [
     'group' => $group_id,
     'plugin_id' => $plugin_id,
@@ -705,13 +719,14 @@ function generate_create_form_url($group_id, $plugin_id) {
 /**
  * Implements hook_preprocess_views_view().
  */
-function penchas_preprocess_views_view(&$variables) {
-   
+function penchas_preprocess_views_view(&$variables)
+{
+
   $user = \Drupal::currentUser();
   // Example usage: Check if the current user can create "article" content in the group.
   // $group_id = 1;  // Replace with actual group ID.
   // $permission = 'create group_node:notices entity';  // Replace with the specific permission.
-  
+
   // if (check_user_permission_in_group($group_id, $user, $permission)) {
   //   dd("User has the permission: $permission in the group.");
   // } else {
@@ -728,7 +743,7 @@ function penchas_preprocess_views_view(&$variables) {
     if (isset($variables['group_id'])) {
       // Fetch group ID from the short name
       $group_ID = get_group_id_by_short_name($variables['group_id']);
-      
+
       // If group ID is found, proceed
       $ctas = [];
       if ($group_ID) {
@@ -736,7 +751,7 @@ function penchas_preprocess_views_view(&$variables) {
         $group = Group::load($group_ID);
         $variables['add_content_ctas'] = '<br/>';
 
-        if($variables['id'] === 'room_reservation_calendar'){
+        if ($variables['id'] === 'room_reservation_calendar') {
 
           // Handle permission and CTA for creating 'reserve_room'
           if ($group && $group->hasPermission('create group_node:reserve_room entity', $user, $group_ID)) {
@@ -745,14 +760,14 @@ function penchas_preprocess_views_view(&$variables) {
           }
         }
         // Check permissions and generate CTAs based on the group and permissions
-        if($variables['id'] === 'calendar'){
+        if ($variables['id'] === 'calendar') {
 
           // Handle permission and CTA for creating 'chas_event'
           if ($group && $group->hasPermission('create group_node:chas_event entity', $user, $group_ID)) {
             $url = generate_create_form_url($group_ID, 'group_node:chas_event');
             $ctas[] = '<a class="btn btn-teritory medium" href="' . $url . '">Add Event</a>';
           }
-          
+
           // Handle permission and CTA for creating 'notices'
           if ($group && $group->hasPermission('create group_node:notices entity', $user, $group_ID)) {
             $url = generate_create_form_url($group_ID, 'group_node:notices');
@@ -769,7 +784,7 @@ function penchas_preprocess_views_view(&$variables) {
   $id = $view->storage->id();
 
 
-  if($id == 'our_team_list'){
+  if ($id == 'our_team_list') {
     $exposed_filter = $view->exposed_data;
     if (isset($exposed_filter['field_user_categories_target_id'])) {
       $filter_value = reset($exposed_filter['field_user_categories_target_id']); // Get the first (and possibly only) value
@@ -782,24 +797,24 @@ function penchas_preprocess_views_view(&$variables) {
     }
   }
   $groupData = '';
-  
-  if($id == 'calendar' || $id == 'room_reservation_calendar' || $id == 'group_listing'){
+
+  if ($id == 'calendar' || $id == 'room_reservation_calendar' || $id == 'group_listing') {
     $current_uri = \Drupal::request()->getRequestUri();
     $uri_parts = explode('/', $current_uri);
     $uri_parts = array_filter($uri_parts);
-    
-    if(isset($uri_parts)){
+
+    if (isset($uri_parts)) {
       // $variables['group_machine_label'] = $uri_parts['2'];
       $variables['short_name'] = $uri_parts['2'];
       $connection = Database::getConnection();
       $query = $connection->select('group__field_short_name', 'hm');
-      $query->fields('hm',['entity_id']);
+      $query->fields('hm', ['entity_id']);
       $query->condition('hm.field_short_name_value', $uri_parts['2']);
       $group_results = $query->execute()->fetchObject();
       $groupData = $group_results->entity_id;
     }
   }
-  
+
   $variables['base_path'] = base_path();
   $variables['get_involved'] = 'Get Involved';
   $variables['house_calendar'] = 'Calendar';
@@ -810,90 +825,90 @@ function penchas_preprocess_views_view(&$variables) {
   $current_user = \Drupal::currentUser();
   $variables['breadcrumb_reports'] = 'Reports';
   $variables['breadcrumb_reports_link'] = "/dashboard/reports";
-  
+
   $variables['title'] = $view->getTitle();
-  
+
   $id = $view->storage->id();
   // if($id == 'calendar'){
-    // $variables['exclude_notices_filter'] = '<div class="js-form-item js-form-type-checkbox checkbox"><input data-drupal-selector="edit-type-exclude_notice" type="checkbox" id="edit-type-exclude-notices" name="exclude_notice" value="Exclude Notices" class="form-checkbox form-check-input"><label class="form-check-label" for="edit-type-exclude-notices">
-    //     General Events/Notice</label></div>';
+  // $variables['exclude_notices_filter'] = '<div class="js-form-item js-form-type-checkbox checkbox"><input data-drupal-selector="edit-type-exclude_notice" type="checkbox" id="edit-type-exclude-notices" name="exclude_notice" value="Exclude Notices" class="form-checkbox form-check-input"><label class="form-check-label" for="edit-type-exclude-notices">
+  //     General Events/Notice</label></div>';
 
-    if($groupData){
-      $groupData = Group::load($groupData);
-      $variables['current_group_id'] = $groupData->id();
-      $url_path = $groupData->toUrl()->toString();
-      $field_menus = $groupData->get('field_menus');
-      $simplified_menu_html = '';
-      foreach ($field_menus as $key => $group_menu) {
-        // Load the menu using the menu_link_tree service
-        $menu_tree = \Drupal::service('menu.link_tree');
-        $menu_name = $group_menu->target_id;
-        // Fetch the menu tree data
-        $menu_data = $menu_tree->load($menu_name,new MenuTreeParameters());
-        foreach ($menu_data as $item) {
-          $simplified_menu_html .= '<div class="dropdown">';
-          $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >'.$item->link->getTitle().'</a>';
-          $simplified_menu_html .= '<div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+  if ($groupData) {
+    $groupData = Group::load($groupData);
+    $variables['current_group_id'] = $groupData->id();
+    $url_path = $groupData->toUrl()->toString();
+    $field_menus = $groupData->get('field_menus');
+    $simplified_menu_html = '';
+    foreach ($field_menus as $key => $group_menu) {
+      // Load the menu using the menu_link_tree service
+      $menu_tree = \Drupal::service('menu.link_tree');
+      $menu_name = $group_menu->target_id;
+      // Fetch the menu tree data
+      $menu_data = $menu_tree->load($menu_name, new MenuTreeParameters());
+      foreach ($menu_data as $item) {
+        $simplified_menu_html .= '<div class="dropdown">';
+        $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >' . $item->link->getTitle() . '</a>';
+        $simplified_menu_html .= '<div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <ul class="clearfix nav">';
-          $simplified_menu_html .= process_submenu($item->subtree);
-          
-          $simplified_menu_html .= '</ul></div></div>';
-        }
+        $simplified_menu_html .= process_submenu($item->subtree);
+
+        $simplified_menu_html .= '</ul></div></div>';
       }
-      $variables['current_group_label'] = $groupData->get('label')->value;
-      $variables['current_group_circle_color'] = $groupData->get('field_color_of_circle')->value;
-      $variables['current_group_bg_color'] = $groupData->get('field_color')->value;
-      $variables['simplified_menu_html'] = '<div class="internal-links">'.$simplified_menu_html.'</div>';
     }
+    $variables['current_group_label'] = $groupData->get('label')->value;
+    $variables['current_group_circle_color'] = $groupData->get('field_color_of_circle')->value;
+    $variables['current_group_bg_color'] = $groupData->get('field_color')->value;
+    $variables['simplified_menu_html'] = '<div class="internal-links">' . $simplified_menu_html . '</div>';
+  }
   // }
-  if($id == 'team_members'){
+  if ($id == 'team_members') {
     $variables['display_id'] = $view->current_display;
     $team_filters_arr = '';
     $selected_filters = [];
     $values = $view->getExposedInput();
     $team_filters = [];
     foreach ($view->filter as $filter) {
-      if($filter->isExposed()) {
+      if ($filter->isExposed()) {
         $team_filters[] = $filter->options;
       }
     }
     // Get the path of the view page
     $path = $view->getDisplay()->getPath();
 
-    if(!empty($team_filters)){
-      if(!empty($team_filters[0]['value'])){
+    if (!empty($team_filters)) {
+      if (!empty($team_filters[0]['value'])) {
         foreach ($team_filters[0]['value'] as $key => $team_filter) {
-          if($key != 'all'){
+          if ($key != 'all') {
             $team_filters_arr .= '<li class="nav-item" role="presentation">
-              <a class="nav-link active" href="/'.$path.'?field_type_value='.$key.'">'.$team_filter.'</a></li>';
+              <a class="nav-link active" href="/' . $path . '?field_type_value=' . $key . '">' . $team_filter . '</a></li>';
           }
         }
       }
-      $team_filters_output = '<div class="tab-outer"><ul class="nav nav-tabs" id="myTab" role="tablist">'.$team_filters_arr.'</ul></div>';
+      $team_filters_output = '<div class="tab-outer"><ul class="nav nav-tabs" id="myTab" role="tablist">' . $team_filters_arr . '</ul></div>';
     }
     $variables['team_filters'] = $team_filters_output;
   }
-  if($id == 'group_houses'){
+  if ($id == 'group_houses') {
     $selected_filters = [];
     $values = $view->getExposedInput();
     $filters = [];
     foreach ($view->filter as $filter) {
-      if($filter->isExposed()) {
+      if ($filter->isExposed()) {
         $filters[] = $filter->options;
       }
     }
 
     $filters_html = '';
-    if(!empty($values)){
+    if (!empty($values)) {
       $view_url = $view->getUrl();
       $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
       $selected_filters['field_community'] = $community;
-      if(isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All'){
+      if (isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All') {
         $variables['size'] = $values['field_number_of_residents_value'];
-      }else{
+      } else {
         $variables['size'] = 'All';
       }
-      $variables['operator'] = ( $values['field_number_of_residents_value_1_op'] ?  $values['field_number_of_residents_value_1_op'] : '<');
+      $variables['operator'] = ($values['field_number_of_residents_value_1_op'] ?  $values['field_number_of_residents_value_1_op'] : '<');
       $residents_arr_ = $values['field_number_of_residents_value_1'];
       $small_size_value = ($residents_arr_['value'] ? $residents_arr_['value'] : '');
       $small_size_min = ($residents_arr_['min'] ? $residents_arr_['min'] : '');
@@ -903,32 +918,32 @@ function penchas_preprocess_views_view(&$variables) {
       $operator = '>';
       // params condition : (Small: <300; Medium: 301<>600; Large >600)
       $min = $max = $value = '';
-      if($variables['size'] == 1){
+      if ($variables['size'] == 1) {
         $selected_filters['size'] = 'Small < 300';
         $size = '1';
         $operator = '<=';
         $value = 300;
-      }else if($variables['size'] == 2){
+      } else if ($variables['size'] == 2) {
         $size = '2';
         $operator = 'between';
         $min = 300;
         $max = 600;
         $selected_filters['size'] = 'Medium 301<>600';
-      }else if($variables['size'] == 3){
+      } else if ($variables['size'] == 3) {
         $size = '3';
         $operator = '>';
         $value = 600;
         $selected_filters['size'] = 'Large >600';
       }
-      $link = $view_url->toString().'?field_community_value='.$community.'&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
-      if(!empty($selected_filters) && isset($selected_filters['field_community']) && $selected_filters['field_community'] != 'All'){
-        $link = $view_url->toString().'?field_community_value=All&field_number_of_residents_value='.$size.'&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
-        $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$selected_filters['field_community'].'</span></a>';
+      $link = $view_url->toString() . '?field_community_value=' . $community . '&field_number_of_residents_value=' . $size . '&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
+      if (!empty($selected_filters) && isset($selected_filters['field_community']) && $selected_filters['field_community'] != 'All') {
+        $link = $view_url->toString() . '?field_community_value=All&field_number_of_residents_value=' . $size . '&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
+        $filters_html .= '<a href="' . $link . '"><span class="filter-tag">' . $selected_filters['field_community'] . '</span></a>';
       }
-      if(!empty($selected_filters) && isset($selected_filters['size'])){
-        $link = $view_url->toString().'?field_community_value='.$community.'&field_number_of_residents_value=All&field_number_of_residents_value_1_op='.$operator.'&field_number_of_residents_value_1%5Bvalue%5D='.$value.'&field_number_of_residents_value_1%5Bmin%5D='.$min.'&field_number_of_residents_value_1%5Bmax%5D='.$max;
+      if (!empty($selected_filters) && isset($selected_filters['size'])) {
+        $link = $view_url->toString() . '?field_community_value=' . $community . '&field_number_of_residents_value=All&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
         $filter_size = $selected_filters['size'];
-        $filters_html .= '<a href="'.$link.'"><span class="filter-tag">'.$filter_size.'</span></a>';
+        $filters_html .= '<a href="' . $link . '"><span class="filter-tag">' . $filter_size . '</span></a>';
       }
     }
     $variables['selected_filters_output'] = $filters_html;
