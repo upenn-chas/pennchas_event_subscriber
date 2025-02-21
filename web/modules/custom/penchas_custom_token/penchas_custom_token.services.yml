@@ -1,0 +1,3 @@
+services:
+  pennchas_custom_token.pending_moderation_node_count:
+    class: \Drupal\penchas_custom_token\Service\PendingModerationNodeCount

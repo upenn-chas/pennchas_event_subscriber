@@ -75,46 +75,24 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
   foreach ($tokens as $name => $original) {
     switch ($name) {
       case 'event_subheading':
-
-        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-        $query->fields('ms', ['content_entity_id']);
-        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
-        $query->condition('ms.uid', $current_user_id, '=');
-        $query->condition('ms.moderation_state', 'draft', '=');
-        $query->condition('fs.type', 'chas_event', '=');
-        $result = $query->execute()->fetchCol();
-
-        $total_count = count($result);
+        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForModerator('chas_event');
         if($total_count != '0'){
-          $replacements[$original] = new TranslatableMarkup('<div class="info-fields"><p>You have '. $total_count . ' events for moderation. Go to <a href="/my-events-all">My Events</a>.</p></div>');
+          $replacements[$original] = new TranslatableMarkup('<div class="info-fields"><p>You have @count events for moderation. Go to <a href="@goToUrl">My Events</a>.</p></div>', [
+            '@count' => $total_count,
+            '@goToUrl' => Url::fromRoute('view.my_events.page_1')->toString()
+          ]);
         }
         break;
 
       case 'penchas_myevent':
-        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-        $query->fields('ms', ['content_entity_id']);
-        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
-        $query->condition('ms.uid', $current_user_id, '=');
-        $query->condition('ms.moderation_state', 'draft', '=');
-        $query->condition('fs.type', 'chas_event', '=');
-        $result = $query->execute()->fetchCol();
-
-        $total_count = count($result);
+        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('chas_event');
         if($total_count != '0'){
           $replacements[$original] = $total_count . ' events pending.';
         }
         break;
 
       case 'penchas_my_reservation':
-        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-        $query->fields('ms', ['content_entity_id']);
-        $query->leftJoin('node_field_data', 'fs', 'fs.nid = ms.content_entity_id');
-        $query->condition('ms.uid', $current_user_id, '=');
-        $query->condition('ms.moderation_state', 'draft', '=');
-        $query->condition('fs.type', 'reserve_room', '=');
-        $result = $query->execute()->fetchCol();
-
-        $total_count = count($result);
+        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('reserve_room');
         if($total_count != '0'){
           $replacements[$original] = $total_count . ' pending moderation.';
         }
@@ -251,4 +229,9 @@ function check_user_group_permission(AccountInterface $account, $group_id, $perm
  */
 function user_has_permission(AccountInterface $account, $permission) {
   return $account->hasPermission($permission);
+}
+
+function penchas_custom_token_get_pending_moderation_node()
+{
+  
 }
