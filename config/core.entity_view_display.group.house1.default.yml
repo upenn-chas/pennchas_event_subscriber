@@ -159,22 +159,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
-          ea373a40-dcf1-4420-aa64-e885587568c4:
-            uuid: ea373a40-dcf1-4420-aa64-e885587568c4
-            region: content
-            configuration:
-              id: 'field_block:group:house1:field_menus'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 10
-            additional: {  }
           b55d0cff-61d7-4d26-b9c4-7ac6db716bfb:
             uuid: b55d0cff-61d7-4d26-b9c4-7ac6db716bfb
             region: content
@@ -205,6 +189,22 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 13
+            additional: {  }
+          86b8321d-8fd4-49b1-8f43-65721f2812ae:
+            uuid: 86b8321d-8fd4-49b1-8f43-65721f2812ae
+            region: content
+            configuration:
+              id: 'field_block:group:house1:field_menus'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 14
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -305,7 +305,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 9
     region: content
   field_number_of_residents:
     type: number_integer

@@ -134,6 +134,15 @@ header {
              }
             }
           }
+          a.nav-link.nav-link--dashboard {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #011f5b;
+            text-decoration: none;
+            font-family: tablet-gothic;
+            padding: 18px 16px 18px 0;
+        }
         }
       }
       .tb-megamenu{
@@ -744,6 +753,7 @@ article > header {
         transition: all ease-in-out 0.3s;
       }
     }
+    
   }
 }
 

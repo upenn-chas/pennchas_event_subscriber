@@ -1,4 +1,4 @@
-uuid: 93fcae38-1ac9-4b9d-ad61-3c39fb61f591
+uuid: 921fe360-912c-42f1-92c8-b93881698b68
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ id: group.house1.field_menus
 field_name: field_menus
 entity_type: group
 bundle: house1
-label: menus
+label: Menus
 description: ''
 required: false
 translatable: false

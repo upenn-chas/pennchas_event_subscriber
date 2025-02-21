@@ -41,7 +41,7 @@ backend_config:
   connector: standard
   connector_config:
     scheme: http
-    host: 112.196.0.230
+    host: localhost
     port: 8983
     path: /
     core: weassem
