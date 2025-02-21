@@ -165,7 +165,7 @@ function penchas_preprocess_node(&$variables) {
   $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
-  $variables['breadcrumb_dashboard_link'] = '/user';
+  $variables['breadcrumb_dashboard_link'] = '/dashboard';
   $variables['primary_color'] = '#ffea3f';
   $variables['room_reservation_heading'] = 'My Room Reservations';
   $current_user = \Drupal::currentUser();
@@ -806,7 +806,7 @@ function penchas_preprocess_views_view(&$variables) {
   $variables['house_programs'] = 'House Programs';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
-  $variables['breadcrumb_dashboard_link'] = '/user';
+  $variables['breadcrumb_dashboard_link'] = '/dashboard';
   $current_user = \Drupal::currentUser();
   $variables['breadcrumb_reports'] = 'Reports';
   $variables['breadcrumb_reports_link'] = "/dashboard/reports";
