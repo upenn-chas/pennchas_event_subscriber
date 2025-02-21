@@ -71,14 +71,14 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   field_intended_audience:
     type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_long_text:
     type: basic_string
@@ -91,12 +91,12 @@ content:
     type: media_thumbnail
     label: hidden
     settings:
-      image_link: content
+      image_link: ''
       image_style: ''
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
 hidden:
   content_moderation_control: true

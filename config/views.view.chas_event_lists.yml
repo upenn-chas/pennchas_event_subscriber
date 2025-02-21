@@ -1,6 +1,6 @@
 uuid: 65a53b33-5ac5-43c4-b567-4d4cb932583b
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - node.type.chas_event
