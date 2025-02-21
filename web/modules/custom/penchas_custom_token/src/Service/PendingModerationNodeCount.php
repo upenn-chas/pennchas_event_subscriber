@@ -9,6 +9,10 @@ class PendingModerationNodeCount
     {
         $groups = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
 
+        if(!$groups) {
+            return 0;
+        }
+
         $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
         $query->fields('ms', ['content_entity_id']);
         $query->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
