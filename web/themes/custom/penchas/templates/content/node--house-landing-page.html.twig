@@ -105,13 +105,11 @@
         </div>
 
         <div class="internal-links">
-            {% for menus in node.field_menus %}
-              {# {{dump(menus.value['target_id'])}} #}
+            {% for menus in node.field_select_house.0.parent.entity.field_menus %}
               <div class="dropdown">
                 {% set items = simplify_menu(menus.value['target_id']) %}
                 {% for menu_item in items.menu_tree %}
-
-                    <a class="btn btn-secondary dropdown-toggle" >{{ menu_item.text }}</a>
+                    <a class="btn btn-secondary dropdown-toggle" href="{{ menu_item.url }}" >{{ menu_item.text }}</a>
                   <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                     <ul class="clearfix nav">
                       {% for submenu_item in menu_item.submenu %}

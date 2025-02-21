@@ -36,7 +36,7 @@ logo:
   use_default: 0
   path: 'public://logo_0.svg'
 favicon:
-  use_default: 0
+  use_default: 1
   path: 'public://simplified-shield_0.ico'
   mimetype: image/vnd.microsoft.icon
 bootstrap_barrio_source: bootstrap_barrio/bootstrap
