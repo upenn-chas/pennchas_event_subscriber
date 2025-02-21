@@ -295,3 +295,37 @@
 		}
 	}
 }
+
+.search-content{
+  padding-top: 15px;
+	padding-bottom: 30px;
+  .views-exposed-form{
+    .d-flex{
+      justify-content: end;
+      gap: 15px;
+      align-items: center;
+    }
+  }
+  .view-content{
+    margin-top: 15px !important;
+    margin-bottom: 30px !important;
+
+    border-radius: 8px;
+    &:not(:last-child){
+      border: 1px solid #ddd;
+    }
+    .search-items{
+      border-bottom: 1px solid #ddd;
+      padding: 16px;
+      a{
+        font-size: 28px;
+        font-family: tablet-gothic-compressed;
+      }
+      p{
+        color: #333;
+        margin-top: 16px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

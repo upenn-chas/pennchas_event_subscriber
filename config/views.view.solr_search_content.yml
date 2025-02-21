@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.group.field_short_name
     - field.storage.node.body
     - search_api.index.solr_search_content
   module:
@@ -77,7 +78,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -165,10 +166,10 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-        type:
-          id: type
+        field_short_name:
+          id: field_short_name
           table: search_api_datasource_solr_search_content_entity_group
-          field: type
+          field: field_short_name
           relationship: none
           group_type: group
           admin_label: ''
@@ -215,11 +216,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: string
           settings:
-            link: true
-          group_column: target_id
+            link_to_entity: false
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -230,26 +231,23 @@ display:
           separator: ', '
           field_api_classes: false
           field_rendering: true
-          fallback_handler: search_api_entity
+          fallback_handler: search_api
           fallback_options:
             link_to_item: false
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-            display_methods:
-              group_type:
-                display_method: label
       pager:
         type: full
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 10
+          items_per_page: 15
           total_pages: null
           id: 0
           tags:
-            next: ››
-            previous: ‹‹
+            next: 'Next ›'
+            previous: '‹ Previous'
             first: '« First'
             last: 'Last »'
           expose:
@@ -338,44 +336,11 @@ display:
             - body
             - title
       style:
-        type: table
+        type: default
         options:
           grouping: {  }
-          row_class: ''
+          row_class: search-items
           default_row_class: false
-          columns:
-            title: title
-            body: body
-            field_house_machine_name: field_house_machine_name
-          default: '-1'
-          info:
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            body:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_house_machine_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          override: true
-          sticky: false
-          summary: ''
-          empty_table: false
-          caption: ''
-          description: ''
       row:
         type: fields
         options:
@@ -386,11 +351,12 @@ display:
       query:
         type: search_api_query
         options:
-          bypass_access: false
+          bypass_access: true
           skip_access: false
           preserve_facet_query_args: false
           query_tags: {  }
       relationships: {  }
+      css_class: search-content
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -404,6 +370,32 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.group.field_short_name'
+        - 'config:field.storage.node.body'
+        - 'config:search_api.index.solr_search_content'
+        - 'search_api_list:solr_search_content'
+  block_1:
+    id: block_1
+    display_title: 'Search Block'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: 'Search Block'
+      defaults:
+        title: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.group.field_short_name'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.solr_search_content'
         - 'search_api_list:solr_search_content'
@@ -425,6 +417,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.group.field_short_name'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.solr_search_content'
         - 'search_api_list:solr_search_content'
