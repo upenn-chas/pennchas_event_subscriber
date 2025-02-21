@@ -95,6 +95,7 @@ field_settings:
       separator: |+
 
 
+
       fields: {  }
   field_actual_program_attendance:
     label: 'Actual Program Attendance'
@@ -296,9 +297,9 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_program_communities
-  moderation_state:
+  moderation_state_1:
     label: 'Moderation state'
-    datasource_id: 'entity:node'
+    datasource_id: 'entity:content_moderation_state'
     property_path: moderation_state
     type: string
     dependencies:
@@ -353,6 +354,10 @@ field_settings:
       module:
         - node
 datasource_settings:
+  'entity:content_moderation_state':
+    languages:
+      default: true
+      selected: {  }
   'entity:group':
     bundles:
       default: true
