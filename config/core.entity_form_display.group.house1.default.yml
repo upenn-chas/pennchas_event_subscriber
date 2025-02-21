@@ -10,6 +10,7 @@ dependencies:
     - field.field.group.house1.field_heading
     - field.field.group.house1.field_house_machine_name
     - field.field.group.house1.field_image
+    - field.field.group.house1.field_menus
     - field.field.group.house1.field_number_of_residents
     - field.field.group.house1.field_short_name
     - field.field.group.house1.layout_builder__layout
@@ -25,19 +26,19 @@ mode: default
 content:
   field_color:
     type: options_select
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   field_color_of_circle:
     type: options_select
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_community:
     type: options_select
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -72,9 +73,19 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_menus:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_number_of_residents:
     type: number
-    weight: 13
+    weight: 12
     region: content
     settings:
       placeholder: ''

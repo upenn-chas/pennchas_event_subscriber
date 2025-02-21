@@ -1,14 +1,14 @@
-uuid: f5358856-33e8-42ae-a098-3b3da1bcd103
+uuid: 921fe360-912c-42f1-92c8-b93881698b68
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_menus
-    - node.type.house_landing_page
-id: node.house_landing_page.field_menus
+    - field.storage.group.field_menus
+    - group.type.house1
+id: group.house1.field_menus
 field_name: field_menus
-entity_type: node
-bundle: house_landing_page
+entity_type: group
+bundle: house1
 label: Menus
 description: ''
 required: false
