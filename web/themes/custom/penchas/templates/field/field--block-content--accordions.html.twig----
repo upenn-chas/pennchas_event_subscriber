@@ -78,7 +78,9 @@
           </h2>
           <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample" style="">
             <div class="accordion-body">
-              {{item.content['#paragraph'].field_description.value|raw}}
+            {% if item.content['#paragraph'].field_description.0 %}
+              {{ item.content['#paragraph'].field_description.value|raw }}
+            {% endif %}
             </div>
             <div class="accordion-list">
               <ul class="list-content">

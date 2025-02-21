@@ -5,31 +5,22 @@ dependencies:
   config:
     - block_content.type.accordions
     - field.field.block_content.accordions.body
-    - field.field.block_content.accordions.field_content
   module:
-    - paragraphs
+    - text
 id: block_content.accordions.default
 targetEntityType: block_content
 bundle: accordions
 mode: default
 content:
-  field_content:
-    type: paragraphs
-    weight: 26
+  body:
+    type: text_textarea_with_summary
+    weight: 1
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
-      features:
-        collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
     third_party_settings: {  }
   info:
     type: string_textfield
@@ -46,5 +37,4 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
-hidden:
-  body: true
+hidden: {  }

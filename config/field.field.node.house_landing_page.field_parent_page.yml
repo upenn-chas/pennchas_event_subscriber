@@ -21,7 +21,7 @@ settings:
     target_bundles:
       house_landing_page: house_landing_page
     sort:
-      field: _none
+      field: field_select_house
       direction: ASC
     auto_create: false
     auto_create_bundle: page

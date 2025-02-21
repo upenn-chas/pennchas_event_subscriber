@@ -3,11 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_address
+    - field.storage.node.field_email
+    - field.storage.node.field_event_schedule
+    - field.storage.node.field_group
+    - field.storage.node.field_group_ref
+    - field.storage.node.field_link_3
+    - field.storage.node.field_long_text
+    - field.storage.node.field_room
+    - field.storage.node.field_support_contact
     - search_api.server.pantheon_search
   module:
+    - content_moderation
     - group
     - node
     - search_api_solr
+    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -59,8 +70,156 @@ id: solr_content_reserve_room_room
 name: 'Solr Content (Reserve Room / Room)'
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  field_address:
+    label: Address
+    datasource_id: 'entity:node'
+    property_path: field_address
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_address
+  field_email:
+    label: 'Main Contact Email'
+    datasource_id: 'entity:node'
+    property_path: field_email
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_email
+  field_event_schedule:
+    label: 'Your Room Reservation Details'
+    datasource_id: 'entity:node'
+    property_path: field_event_schedule
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_schedule
+  field_group:
+    label: House
+    datasource_id: 'entity:node'
+    property_path: field_group
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_group
+  field_group_ref:
+    label: 'Group Ref'
+    datasource_id: 'entity:node'
+    property_path: field_group_ref
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_group_ref
+  field_link_3:
+    label: 'Legacy Resource URL'
+    datasource_id: 'entity:node'
+    property_path: field_link_3
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_link_3
+  field_long_text:
+    label: 'Purpose Of Request'
+    datasource_id: 'entity:node'
+    property_path: field_long_text
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_long_text
+  field_room:
+    label: 'Select Your Room'
+    datasource_id: 'entity:node'
+    property_path: field_room
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_room
+  field_support_contact:
+    label: 'Main Contact Name'
+    datasource_id: 'entity:node'
+    property_path: field_support_contact
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_support_contact
+  gid:
+    label: 'Parent group'
+    datasource_id: 'entity:group_relationship'
+    property_path: gid
+    type: integer
+    dependencies:
+      module:
+        - url_alteration
+  label:
+    label: Title
+    datasource_id: 'entity:group_relationship'
+    property_path: label
+    type: string
+    dependencies:
+      module:
+        - url_alteration
+  moderation_state:
+    label: 'Moderation state'
+    datasource_id: 'entity:content_moderation_state'
+    property_path: moderation_state
+    type: string
+    dependencies:
+      module:
+        - content_moderation
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Group relationship type'
+    datasource_id: 'entity:group_relationship'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - url_alteration
+  type_1:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: User
+    datasource_id: 'entity:content_moderation_state'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - content_moderation
+  uid_1:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
 datasource_settings:
+  'entity:content_moderation_state':
+    languages:
+      default: true
+      selected: {  }
   'entity:group':
     bundles:
       default: true
@@ -69,6 +228,15 @@ datasource_settings:
       default: false
       selected:
         - en
+  'entity:group_relationship':
+    bundles:
+      default: false
+      selected:
+        - house1-group_node-reserve_room
+        - house1-group_node-room
+    languages:
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
       default: false
