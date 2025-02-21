@@ -204,7 +204,7 @@ function penchas_preprocess_node(&$variables)
         $variables['is_logged_in'] = TRUE;
         $variables['attributes']['class'][] = 'logged-in-user';
         $edit_link = '';
-        if (!$node->access('update')) {
+        if ($node->access('update')) {
           $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
           $node_edit_url = $edit_url->toString();
           $edit_link = '<li><a href="' . $node_edit_url . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
