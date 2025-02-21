@@ -46,6 +46,8 @@ $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'okta
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
 $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
 
-if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
-    $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
+      $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+  }
 }

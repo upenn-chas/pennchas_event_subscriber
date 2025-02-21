@@ -3,21 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.accordion_content.field_description
+    - field.field.paragraph.accordion_content.field_accordions_description
     - field.field.paragraph.accordion_content.field_heading
-    - field.field.paragraph.accordion_content.field_listing_content
     - field.field.paragraph.accordion_content.field_tags
     - paragraphs.paragraphs_type.accordion_content
   module:
     - options
+    - text
 id: paragraph.accordion_content.default
 targetEntityType: paragraph
 bundle: accordion_content
 mode: default
 content:
-  field_description:
-    type: basic_string
-    label: hidden
+  field_accordions_description:
+    type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
     weight: 3
@@ -29,14 +29,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_listing_content:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
     region: content
   field_tags:
     type: list_default

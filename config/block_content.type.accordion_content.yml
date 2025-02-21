@@ -1,8 +1,0 @@
-uuid: 00235acf-d416-48c3-ba97-428796aeb108
-langcode: en
-status: true
-dependencies: {  }
-id: accordion_content
-label: 'Accordion Content (UNUSED)'
-revision: false
-description: null

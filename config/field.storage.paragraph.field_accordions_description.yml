@@ -1,16 +1,16 @@
-uuid: 896d521d-92c8-4185-9639-240ae07e8b9c
+uuid: ae30db20-0da5-47ea-80f6-8f7f40acffc5
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_description
-field_name: field_description
+    - text
+id: paragraph.field_accordions_description
+field_name: field_accordions_description
 entity_type: paragraph
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_with_summary
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true
