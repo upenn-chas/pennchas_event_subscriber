@@ -43,7 +43,7 @@ class PendingModerationNodeCount
         $query->condition('fs.type', $type);
         $result = $query->distinct()->countQuery()->execute()->fetchCol();
         if($result[0] && $result[0] > 0) {
-            return "{$result[0]} {trim($suffix)}";
+            return "{$result[0]} {$suffix}";
         }
     }
 }

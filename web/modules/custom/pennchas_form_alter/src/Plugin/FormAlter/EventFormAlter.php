@@ -36,6 +36,10 @@ class EventFormAlter
                 }
             }
         }
+        $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
+        if($index !== FALSE) {
+            unset( $form['actions']['submit']['#submit'][$index]);
+        }
         return $form;
     }
 

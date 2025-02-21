@@ -29,8 +29,6 @@ class NodeInsertHook
 
     public function handleEvent(Node $node): void
     {
-        \Drupal::messenger()->deleteAll();
-
         $eventHousesId = $node->get('field_groups')->getValue();
         $groupIds = array_column($eventHousesId, 'target_id');
         $eventHouses = Group::loadMultiple($groupIds);
@@ -57,7 +55,8 @@ class NodeInsertHook
     protected function handleNotice(Node $node)
     {
         $eventHousesId = $node->get('field_groups')->getValue();
-        $eventHouses = Group::loadMultiple(array_column($eventHousesId, 'target_id'));
+        $groupIds = array_column($eventHousesId, 'target_id');
+        $eventHouses = Group::loadMultiple($groupIds);
         foreach ($eventHouses as $house) {
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {

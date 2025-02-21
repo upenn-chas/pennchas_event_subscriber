@@ -70,10 +70,7 @@ class GroupOption
         if (!$this->user->isAuthenticated()) {
             return [];
         }
-        $username = $this->user->getAccountName();
-        \Drupal::logger('GroupOption')->debug('Getting groups for '. $username);
         $groupMemberships = GroupMembership::loadByUser($this->user);
-        \Drupal::logger('GroupOption')->debug($username .' is memmber of group: '. (($groupMemberships)? 'yes.' : 'no.'));
         if ($groupMemberships) {
             foreach ($groupMemberships as $groupMembership) {
                 $gid = $groupMembership->get('gid')->getString();
@@ -92,7 +89,6 @@ class GroupOption
                 $options[$group->id()] = $group->label();
             }
         }
-        \Drupal::logger('GroupOption')->debug('Groups for '. $username .' are: '. implode(', ', $options));
 
         return $options;
     }
