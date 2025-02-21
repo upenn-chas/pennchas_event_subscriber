@@ -421,6 +421,7 @@ label {
                         overflow: visible !important;
                         width: auto !important;
                         height: auto !important;
+                        padding-left: 8px !important;
                       }
                       @include media-query ('small'){
                       width: 100%;
@@ -443,6 +444,7 @@ label {
                       overflow: visible !important;
                       width: auto !important;
                       height: auto !important;
+                      padding-left: 8px !important;
                     }
                     @include media-query ('small'){
                     width: 100%;

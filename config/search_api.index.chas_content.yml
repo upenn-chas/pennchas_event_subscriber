@@ -297,6 +297,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_program_communities
+  moderation_state:
+    label: 'Moderation state'
+    datasource_id: 'entity:node'
+    property_path: moderation_state
+    type: string
+    dependencies:
+      module:
+        - content_moderation
   moderation_state_1:
     label: 'Moderation state'
     datasource_id: 'entity:content_moderation_state'
@@ -345,6 +353,14 @@ field_settings:
     dependencies:
       module:
         - node
+  type_1:
+    label: 'Group relationship type'
+    datasource_id: 'entity:group_relationship'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - url_alteration
   uid:
     label: 'Authored by'
     datasource_id: 'entity:node'
@@ -353,6 +369,14 @@ field_settings:
     dependencies:
       module:
         - node
+  workflow:
+    label: Workflow
+    datasource_id: 'entity:content_moderation_state'
+    property_path: workflow
+    type: string
+    dependencies:
+      module:
+        - content_moderation
 datasource_settings:
   'entity:content_moderation_state':
     languages:
