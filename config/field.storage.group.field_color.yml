@@ -53,6 +53,12 @@ settings:
     -
       value: d8e6da
       label: '#D8E6DA'
+    -
+      value: feead7
+      label: '#FEEAD7'
+    -
+      value: fff3dc
+      label: '#FFF3DC'
   allowed_values_function: ''
 module: options
 locked: false
