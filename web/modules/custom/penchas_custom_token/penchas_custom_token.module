@@ -17,7 +17,6 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\Reference;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_token_info().
@@ -75,27 +74,15 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
   foreach ($tokens as $name => $original) {
     switch ($name) {
       case 'event_subheading':
-        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForModerator('chas_event');
-        if($total_count != '0'){
-          $replacements[$original] = new TranslatableMarkup('<div class="info-fields"><p>You have @count events for moderation. Go to <a href="@goToUrl">My Events</a>.</p></div>', [
-            '@count' => $total_count,
-            '@goToUrl' => Url::fromRoute('view.my_events.page_1')->toString()
-          ]);
-        }
+        $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForModerator('chas_event');
         break;
 
       case 'penchas_myevent':
-        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('chas_event');
-        if($total_count != '0'){
-          $replacements[$original] = $total_count . ' events pending.';
-        }
+        $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('chas_event', 'events pending.');
         break;
 
       case 'penchas_my_reservation':
-        $total_count = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('reserve_room');
-        if($total_count != '0'){
-          $replacements[$original] = $total_count . ' pending moderation.';
-        }
+        $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('reserve_room', 'pending moderation.');
         break;
 
       case 'penchas_global':
