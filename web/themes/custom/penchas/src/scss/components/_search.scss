@@ -305,17 +305,21 @@
       gap: 15px;
       align-items: center;
     }
+    .form-actions{
+      align-self: center;
+      margin: 0 !important;
+    }
   }
   .view-content{
     margin-top: 15px !important;
     margin-bottom: 30px !important;
-
     border-radius: 8px;
-    &:not(:last-child){
-      border: 1px solid #ddd;
-    }
+    border: 1px solid #ddd;
+   
     .search-items{
-      border-bottom: 1px solid #ddd;
+      &:not(:last-child){
+        border-bottom: 1px solid #ddd;
+      }
       padding: 16px;
       a{
         font-size: 28px;
