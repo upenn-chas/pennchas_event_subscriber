@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - group_role_condition_plugin
     - user
   theme:
     - penchas
@@ -29,3 +30,14 @@ visibility:
       user: '@user.current_user_context:current_user'
     roles:
       administrator: administrator
+      chas_student_worker: chas_student_worker
+      chas_technology: chas_technology
+      chas_director: chas_director
+      chas_professional_staff: chas_professional_staff
+  group_role_condition_plugin:
+    id: group_role_condition_plugin
+    block_group_roles:
+      house1-house_coordinator: house1-house_coordinator
+      house1-house_director: house1-house_director
+      house1-house_faculty: house1-house_faculty
+    negate: null

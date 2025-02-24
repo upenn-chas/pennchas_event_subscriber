@@ -11,6 +11,7 @@ dependencies:
     - node.type.notices
     - node.type.page
     - node.type.reserve_room
+    - node.type.room
     - workflows.workflow.editorial
   module:
     - content_moderation
@@ -58,6 +59,7 @@ permissions:
   - 'delete own remote_video media'
   - 'delete own reserve_room content'
   - 'delete own video media'
+  - 'edit any room content'
   - 'edit own chas_event content'
   - 'edit own document media'
   - 'edit own image media'
@@ -65,6 +67,7 @@ permissions:
   - 'edit own page content'
   - 'edit own remote_video media'
   - 'edit own reserve_room content'
+  - 'edit own room content'
   - 'edit own video media'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
