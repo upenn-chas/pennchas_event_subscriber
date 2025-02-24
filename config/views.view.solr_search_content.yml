@@ -274,7 +274,20 @@ display:
       cache:
         type: search_api_none
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<h3>Not Found...</h3>'
+            format: full_html
+          tokenize: true
       sorts: {  }
       arguments: {  }
       filters:
@@ -313,7 +326,7 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             expose_fields: false
-            placeholder: ''
+            placeholder: 'What are you looking for?'
             searched_fields_id: search_api_fulltext_searched_fields
             value_maxlength: 128
           is_grouped: false
@@ -378,6 +391,7 @@ display:
     position: 2
     display_options:
       title: 'Search Block'
+      empty: {  }
       arguments:
         'null':
           id: 'null'
@@ -413,6 +427,7 @@ display:
           validate_options: {  }
           must_not_be: false
       defaults:
+        empty: false
         title: false
         arguments: false
       display_description: ''
@@ -439,6 +454,8 @@ display:
       arguments: {  }
       defaults:
         arguments: false
+        header: false
+      header: {  }
       display_extenders: {  }
       path: solr-search-content
     cache_metadata:
