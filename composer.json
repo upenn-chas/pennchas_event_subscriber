@@ -102,7 +102,9 @@
         "drupal/ckeditor_media_resize": "^1.0",
         "drupal/ckeditor5_open_new_tab": "^1.0",
         "drupal/ckeditor_html_embed": "^1.0",
-        "drupal/search_api_pantheon": "^8.3"
+        "drupal/search_api_pantheon": "^8.3",
+        "drupal/linkit": "^7.0",
+        "drupal/lb_copy_section": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

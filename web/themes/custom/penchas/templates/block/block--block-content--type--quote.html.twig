@@ -41,13 +41,13 @@
     {{ title_prefix }}
     <div class="col-12 col-lg-8">
         {% if label %}
-        <h3{{ title_attributes }}>{{ label }}</h3>
+        <h3{{ title_attributes }}>{{content.field_description_content}}</h3>
         {% endif %}
     </div>
     {{ title_suffix }}
     {% block content %}
       <div{{ content_attributes.addClass('content') }}>
-        {{ content }}
+        {{ content.field_author }}
       </div>
     {% endblock %}
   </div>

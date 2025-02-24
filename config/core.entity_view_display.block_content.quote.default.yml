@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.quote
     - field.field.block_content.quote.body
     - field.field.block_content.quote.field_author
+    - field.field.block_content.quote.field_description_content
   module:
     - text
 id: block_content.quote.default
@@ -27,6 +28,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_description_content:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   langcode: true
