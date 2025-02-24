@@ -36,26 +36,8 @@
         </div>
       </div>
     </section>
-    <div class="action-container">
-      {% if header %}
-        <div class="view-header">
-          {{ header }}
-        </div>
-      {% endif %}
-
-      {% if exposed %}
-        <div class="view-filters" id="view-filters-container">
-          {{ exposed }}
-        </div>
-      {% endif %}
-    </div>
-    {% if rows %}
-      <div class="view-content row" id="report-table-container">
-        {{ rows }}
-      </div>
-    {% endif %}
-    {% if pager %}
-      {{ pager }}
+    {% if data %}
+      {{ data }}
     {% endif %}
   </div>
 </div>

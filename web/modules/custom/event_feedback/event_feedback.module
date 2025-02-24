@@ -16,13 +16,19 @@ function event_feedback_theme($existing, $type, $theme, $path)
             ],
             'template' => 'event-feedback-page'
         ],
-        'report_page' => [
+        'report_container' => [
             'variables' => [
                 'header' => null,
                 'rows' => [],
-                'title' => "",
                 'exposed' => null,
                 'pager' => null
+            ],
+            'template' => 'report-container-page'
+        ],
+        'report_page' => [
+            'variables' => [
+                'data' => NULL,
+                'title' => "",
             ],
             'template' => 'report-page'
         ],
