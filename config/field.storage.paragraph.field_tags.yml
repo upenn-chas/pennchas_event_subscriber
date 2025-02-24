@@ -12,13 +12,13 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: first_year
+      value: 'First Year'
       label: 'First Year'
     -
-      value: upperclass
+      value: Upperclass
       label: Upperclass
     -
-      value: credit_available
+      value: 'Credit Available'
       label: 'Credit Available'
   allowed_values_function: ''
 module: options
