@@ -19,7 +19,7 @@
     {% endif %}
     {{ link.title_translate|t }}
     {% if submenu and block_config['auto-arrow'] %}
-      <span class="caret"><span class="sr-only-hidden">menu</span></span>
+      <span class="caret" role="none"><span class="sr-only-hidden">menu</span></span>
     {% endif %}
     {% if item_config['caption'] %}
       <span class="mega-caption"> {{ item_config['caption']|t }}</span>
