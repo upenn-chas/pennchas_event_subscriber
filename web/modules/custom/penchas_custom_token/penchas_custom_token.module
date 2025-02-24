@@ -176,8 +176,6 @@ function penchas_custom_token_node_access(Node $node, $op, AccountInterface $acc
   //   }
   // }
 
-  
-
   return AccessResult::allowed();
 }
 
