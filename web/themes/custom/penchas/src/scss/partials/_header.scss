@@ -277,9 +277,16 @@ header {
                   }
                 }
               }
-              form.search-block-form{
-                .form-type-search{
+              .search-content{
+                padding-top: 0;
+              }
+              form.search-block-form,
+              form.views-exposed-form{
+                .form-type-search,
+                .js-form-type-textfield{
                   margin-bottom: 0 !important;
+                  width: 100%;
+                  z-index: 9999;
                   label {
                       color: #011f5b !important;
                       position: relative !important;
@@ -297,13 +304,15 @@ header {
                       height: 60px !important;
                       background: #fff;
                       border-radius: 10px;
-                      padding: 15px;
+                      padding: 15px 40px 15px 15px;
+                      z-index: 999;
                   }
                 }
                 .form-actions {
                   position: absolute;
                   right: 13px;
                   top: 48px;
+                  z-index: 9999;
                     button {
                       font-size: 0;
                       background-image: url(/themes/custom/penchas/images/icons/search-icon.png);                      
@@ -311,7 +320,10 @@ header {
                       height: 24px;
                       background-color: transparent;
                       background-repeat: no-repeat;
-                      background-position: center;                       
+                      background-position: center;  
+                      &::before{
+                        display: none;
+                      }                     
                     
                   }
                 }
@@ -395,6 +407,7 @@ header {
 											padding: 60px;
                       border: 0;
                       top: 100px;
+                      overflow: hidden;
 										}
 									}
 								}
@@ -555,6 +568,7 @@ article > header {
               a {
                 font-family: 'tablet-gothic';
                 margin: 0;
+                display: inline-block !important;
               }
               &.dropdown-submenu{
                 & > a {
@@ -612,8 +626,48 @@ article > header {
                 &.tb-megamenu-item {
                   .tb-megamenu-submenu {
                     form {
+                     
                       &.search-block-form {
                         .form-type-search {
+                          label {
+                              height: 30px !important;
+                              position: relative !important;
+                              width: 100% !important;
+                              font-weight: 600;
+                          }
+                          input {
+                            margin: 0 !important;
+                            width: 100% !important;
+                            height: 60px !important;
+                            background: #fff;
+                            border-radius: 10px;
+                            padding: 15px;
+                          }
+                        }
+                        .form-actions {
+                          position: absolute;
+                          right: 58px;
+                          top: 0;
+                          .btn, button {
+                            font-size: 0;
+                            &:before {
+                              content: "";
+                              background-image: url(/themes/custom/penchas/images/icons/search-icon.png);
+                              position: absolute;
+                              top: 36px;
+                              width: 50px;
+                              height: 50px;
+                              background-color: transparent;
+                              background-repeat: no-repeat;
+                              background-position: 70%;
+                            }
+                          }
+                        }
+                      }
+                      &.views-exposed-form {
+                        
+                        .form-type-textfield {
+                          width: 100%;
                           label {
                               height: 30px !important;
                               position: relative !important;

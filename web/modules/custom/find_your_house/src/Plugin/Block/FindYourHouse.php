@@ -111,7 +111,7 @@ class FindYourHouse extends BlockBase
 			'#attributes' => [
 				'class' => ['find_your_house form-group'],
 			],
-			'#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text">Select your House Name</span><div class="select-arrow"></div><ul class="options">' . $options_html . '</ul></div></div>',
+			'#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text" role="button" tabindex="0">Select your House Name</span><div class="select-arrow" aria-label="Select dropdown"></div><ul class="options">' . $options_html . '</ul></div></div>',
 			// '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
 			// '#suffix' => '</span></li></ul></div><div class="form-action"><button type="submit">Go</button></div>'
 			// '#markup' => $prefix . $content
