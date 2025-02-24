@@ -21,6 +21,13 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
+function pennchas_form_alter_preprocess_page(&$variables)
+{
+    if (\Drupal::request()->getPathInfo() === '/dashboard') {
+        $variables['#cache']['max-age'] = 0; // Disable cache
+    }
+}
+
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     switch ($formId) {

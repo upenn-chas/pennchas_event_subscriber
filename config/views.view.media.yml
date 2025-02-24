@@ -137,7 +137,7 @@ display:
             image_style: thumbnail
             image_loading:
               attribute: lazy
-          group_column: ''
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -810,14 +810,29 @@ display:
           row_class: ''
           default_row_class: true
           columns:
+            media_bulk_form: media_bulk_form
+            thumbnail__target_id: thumbnail__target_id
             name: name
             bundle: bundle
-            changed: changed
             uid: uid
             status: status
-            thumbnail__target_id: thumbnail__target_id
+            changed: changed
+            operations: operations
+            gid: gid
           default: changed
           info:
+            media_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            thumbnail__target_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             name:
               sortable: true
               default_sort_order: asc
@@ -828,13 +843,6 @@ display:
             bundle:
               sortable: true
               default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            changed:
-              sortable: true
-              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false
@@ -853,7 +861,19 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            thumbnail__target_id:
+            changed:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            gid:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -877,6 +897,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
