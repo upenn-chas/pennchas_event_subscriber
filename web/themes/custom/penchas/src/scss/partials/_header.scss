@@ -286,6 +286,7 @@ header {
                 .js-form-type-textfield{
                   margin-bottom: 0 !important;
                   width: 100%;
+                  z-index: 9999;
                   label {
                       color: #011f5b !important;
                       position: relative !important;
@@ -304,12 +305,14 @@ header {
                       background: #fff;
                       border-radius: 10px;
                       padding: 15px 40px 15px 15px;
+                      z-index: 999;
                   }
                 }
                 .form-actions {
                   position: absolute;
                   right: 13px;
                   top: 48px;
+                  z-index: 9999;
                     button {
                       font-size: 0;
                       background-image: url(/themes/custom/penchas/images/icons/search-icon.png);                      
@@ -565,6 +568,7 @@ article > header {
               a {
                 font-family: 'tablet-gothic';
                 margin: 0;
+                display: inline-block !important;
               }
               &.dropdown-submenu{
                 & > a {
@@ -661,6 +665,7 @@ article > header {
                         }
                       }
                       &.views-exposed-form {
+                        
                         .form-type-textfield {
                           width: 100%;
                           label {
