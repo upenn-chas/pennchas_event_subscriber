@@ -71,6 +71,7 @@ type_settings:
       from:
         - draft
         - pending
+        - published
       to: published
       weight: -1
   entity_types:

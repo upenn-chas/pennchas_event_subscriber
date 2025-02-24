@@ -15,6 +15,7 @@ dependencies:
     - group
     - node
     - url_alteration
+    - view_alteration
 _core:
   default_config_hash: 0bibzgCqmSgspCrEA2qTxfywBYHKOs3E6hju9O0acTw
 id: group_nodes
@@ -1723,16 +1724,16 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: 'Delete node'
-        operations:
-          id: operations
+        evaluate_content:
+          id: evaluate_content
           table: node
-          field: operations
+          field: evaluate_content
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          plugin_id: entity_operations
-          label: Evaluate
+          plugin_id: evaluate_content
+          label: 'Link to evalute Content'
           exclude: true
           alter:
             alter_text: false
@@ -1773,7 +1774,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          destination: false
+          text: Evaluate
+          output_url_as_text: 0
+          absolute: 0
         dropbutton:
           id: dropbutton
           table: views
@@ -1825,17 +1828,17 @@ display:
           hide_alter_empty: true
           destination: true
           fields:
+            view_group_relationship: view_group_relationship
+            edit_group_relationship: edit_group_relationship
+            delete_group_relationship: delete_group_relationship
             edit_node: edit_node
             delete_node: delete_node
+            evaluate_content: evaluate_content
             title: '0'
             type: '0'
             uid: '0'
             status: '0'
             changed: '0'
-            view_group_relationship: '0'
-            edit_group_relationship: '0'
-            delete_group_relationship: '0'
-            operations: '0'
       filters:
         status:
           id: status
