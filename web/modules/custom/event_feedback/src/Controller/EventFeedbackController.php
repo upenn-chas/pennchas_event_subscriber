@@ -104,25 +104,40 @@ class EventFeedbackController extends ControllerBase
         ];
     }
 
-    public function report()
-    {
+    public function report() {
         $request = \Drupal::request()->request->all();
         $page = \Drupal::request()->query->get('page', 0);
         $page = $page < 0 ? 0 : $page;
+        $filterForm = \Drupal::formBuilder()->getForm(new FilterForm());
+        $reportData = $this->reportData($request, $filterForm, $page);
 
-        $rows = $this->buildTable($request, $page, true);
+        $reportData = $this->renderer->render($reportData);
+
+        return [
+            '#theme' => 'report_page',
+            '#title' => $this->t('Participations Survey Report'),
+            '#data' => $reportData
+        ];
+    }
+
+    public function reportData($filters, $form, $page = 0)
+    {
+        $rows = $this->buildTable($filters, $page, true);
         $total = $rows['total'];
         unset($rows['total']);
         $rows = $this->renderer->render($rows);
         \Drupal::service('pager.manager')->createPager($total, $this->pageLength);
-        return [
-            '#theme' => 'report_page',
-            '#exposed' => \Drupal::formBuilder()->getForm(new FilterForm()),
-            '#title' => $this->t('Participations Survey Report'),
-            '#rows' => $rows,
-            '#header' => [
+        $header = NULL;
+        if($total > 0) {
+            $header = [
                 '#markup' => '<a target="_blank" class="views-display-link" id="export-btn" href="' . Url::fromRoute('event_feedback.report_export')->toString() . '">' . $this->t('Export') . '</a>',
-            ],
+            ];
+        }
+        return [
+            '#theme' => 'report_container',
+            '#exposed' => $form,
+            '#rows' => $rows,
+            '#header' => $header,
             '#pager' => ['#type' => 'pager']
         ];
     }

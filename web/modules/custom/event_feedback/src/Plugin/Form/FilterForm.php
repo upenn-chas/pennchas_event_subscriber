@@ -92,7 +92,7 @@ class FilterForm extends FormBase
             '#ajax' => [
                 'callback' => '::filterAjaxCallback',
                 'wrapper' => 'report-table-container',
-                'progress' => ['type' => 'throbber'],
+                'progress' => ['type' => 'fullscreen'],
             ],
         ];
         $form['wrapper']['reset'] = [
@@ -102,7 +102,7 @@ class FilterForm extends FormBase
             '#ajax' => [
                 'callback' => '::filterAjaxCallback',
                 'wrapper' => 'report-table-container',
-                'progress' => ['type' => 'throbber'],
+                'progress' => ['type' => 'fullscreen'],
             ],
             '#access' => false,
             '#attributes' => [
@@ -123,10 +123,11 @@ class FilterForm extends FormBase
             $this->resetForm($form, $form_state);
         }
         \Drupal::requestStack()->getSession()->set('participantsSurvey', $form_state->getValues());
-        $data = $controller->buildTable($form_state->getValues());
+        $data = $controller->reportData($form_state->getValues(), $form);
         $res = new AjaxResponse();
-        $res->addCommand(new HtmlCommand('#view-filters-container', $form));
-        $res->addCommand(new HtmlCommand('#report-table-container', $data));
+        // $res->addCommand(new HtmlCommand('#view-filters-container', $form));
+        // $res->addCommand(new HtmlCommand('#report-table-container', $data));
+        $res->addCommand(new HtmlCommand('#participations-survey-report', $data));
         return $res;
     }
 
