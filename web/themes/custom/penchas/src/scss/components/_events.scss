@@ -7,6 +7,7 @@
   }
   &.grid-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-right: 0;
     article {
       padding: 0;
     }
@@ -285,8 +286,10 @@
         gap: 15px;
         margin-top: 20px;
         justify-content: flex-end;
+        width: 100%;
         @include media-query('tablet') {
           margin-top: 0;
+          width: auto;
         }
        div {
         display: flex;
@@ -837,5 +840,13 @@ body.page-view-my-events  {
   padding-left: 0;
   padding-right: 0;
     }
+  }
+}
+.block-inline-blockevents-by-group  {
+  .views-element-container{
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   }
 }
