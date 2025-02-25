@@ -36,7 +36,6 @@ module:
   custom_view_filters: 0
   datetime: 0
   dblog: 0
-  devel: 0
   devel_generate: 0
   duration_field: 0
   dynamic_page_cache: 0
@@ -158,8 +157,6 @@ module:
   views_ui: 0
   viewsreference: 0
   webform: 0
-  webform_devel: 0
-  webform_example_custom_form: 0
   webform_node: 0
   webform_submission_export_import: 0
   webform_ui: 0
