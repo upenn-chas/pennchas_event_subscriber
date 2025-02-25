@@ -122,7 +122,7 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
         }
     } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
         $groups = $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
-        $form['gid']['#options'] = array_merge(['All' => $form['gid']['#options']['All']], $groups);
+        $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
     }
 }
 
