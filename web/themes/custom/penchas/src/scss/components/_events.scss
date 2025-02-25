@@ -830,3 +830,12 @@
   }
 }
 }
+
+body.page-view-my-events  {
+  div#main{
+    @include media-query('mobile'){
+  padding-left: 0;
+  padding-right: 0;
+    }
+  }
+}

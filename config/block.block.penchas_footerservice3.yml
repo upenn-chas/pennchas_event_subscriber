@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: /dashboard
+    pages: "/dashboard\r\n/user/login"

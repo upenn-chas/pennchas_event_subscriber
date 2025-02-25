@@ -63,6 +63,12 @@ textarea.form-control {
     margin: 5px 0 10px 0;
     color: $primaryColor;
     font-size: 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &:focus-visible{
+      outline: none;
+    }
   }
 }
 
