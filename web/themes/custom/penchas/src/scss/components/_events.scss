@@ -235,7 +235,7 @@
       }
     }
     .block2 {
-      width: calc(100% - 370px);
+      width: calc(100% - 450px);
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
@@ -254,7 +254,7 @@
     }
     
     .block3 {
-      width: 185px;
+      width: 250px;
       @include media-query('tablet') {
         order: 1;
         width: 100%;
@@ -299,7 +299,9 @@
         a {
           text-decoration: none;
           font-weight: 600;
-
+          @include media-query('small'){
+            font-size: 12px;
+          }
           &:hover {
             text-decoration: underline;
           }
