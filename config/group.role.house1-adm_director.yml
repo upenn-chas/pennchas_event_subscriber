@@ -43,7 +43,6 @@ permissions:
   - 'update own group_node:notices entity'
   - 'update own group_node:page entity'
   - 'update own group_node:reserve_room entity'
-  - 'update own group_node:room entity'
   - 'use editorial transition create_new_draft'
   - 'view group'
   - 'view group_media:document entity'

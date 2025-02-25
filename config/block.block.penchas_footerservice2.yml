@@ -2,10 +2,7 @@ uuid: 60e3bb42-7e69-4f5e-90e1-fb207ce7c4e9
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:informational_block:451dbdb1-0314-453e-a0ad-53656c75e8b5'
   module:
-    - block_content
     - system
   theme:
     - penchas
