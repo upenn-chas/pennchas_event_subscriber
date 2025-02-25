@@ -343,7 +343,7 @@ header {
                       padding: 15px 40px 15px 15px;
                       z-index: 999;
                       font-family: $teritoryFont;
-                      text-transform: math-auto;
+                      text-transform: none;
 
                       &:-webkit-autofill {
                         background-color: transparent !important;
@@ -780,7 +780,7 @@ article>header {
                             padding: 15px;
                             padding-right: 45px;
                             font-family: $teritoryFont;
-                            text-transform: math-auto;
+                            text-transform: none;
 
                             &:-webkit-autofill {
                               background-color: transparent !important;
