@@ -190,7 +190,7 @@
 }
 
 #layout-builder-modal label {
-  color: #ffffff;
+  // color: #ffffff;
   font-size: 1rem;
   font-weight: normal;
   background: none;
@@ -216,9 +216,9 @@
   position: relative;
 }
 
-#layout-builder-modal .ck.ck-editor__main>.ck-editor__editable {
-  background: #383A40;
-}
+// #layout-builder-modal .ck.ck-editor__main>.ck-editor__editable {
+//   background: #383A40;
+// }
 
 #drupal-off-canvas .bs_tab-content .bs_tab-pane .js-form-wrapper .bs-group-title,
 #drupal-off-canvas .layout-builder-configure-section summary,
@@ -229,7 +229,7 @@
 
 #drupal-off-canvas button.button--primary,
 #drupal-off-canvas input[type="submit"].button--primary {
-  color: white;
+  // color: white;
   width: 85%;
 }
 
@@ -255,12 +255,12 @@
 #drupal-off-canvas .bs_input-boxes .fieldset-wrapper>div>div input:checked+label,
 #layout-builder-modal .bs_input-boxes .fieldset-wrapper>div>div input+label {
   text-indent: -10px;
-  color: white;
+  // color: white;
   font-size: medium;
 }
 
 #layout-builder-modal .description{
-  color: #ffffff !important;
+  // color: #ffffff !important;
 }
 #block-penchas-primary-admin-actions nav.action-links {
   display: flex;
@@ -291,18 +291,21 @@
   }
  }
  
- #layout-builder-modal tr td{
-  background-color: #2c2e32;
- }
- #layout-builder-modal tr:hover td{
-  background-color: #2c2e32;
- }
+//  #layout-builder-modal tr td{
+//   background-color: #2c2e32;
+//  }
+//  #layout-builder-modal tr:hover td{
+//   background-color: #2c2e32;
+//  }
  #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link{
-  color: #383a40;
+  color: #fff;
   padding: 12px 14px;
+  background-color: #011f5b;
  }
  #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link:hover{
   color: #fff;
+  padding: 12px 14px;
+  background-color: #011f5b;
  }
 
  #drupal-off-canvas .layout-builder-remove-block .button--primary.btn {
@@ -521,4 +524,7 @@ color: inherit !important;
     }
   }
 
+}
+#drupal-off-canvas .form-search::placeholder{
+  color: #fff !important;
 }

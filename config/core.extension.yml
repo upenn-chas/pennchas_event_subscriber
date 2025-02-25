@@ -89,6 +89,7 @@ module:
   layout_builder_restrictions_by_region: 0
   layout_builder_tabs: 0
   layout_discovery: 0
+  lb_copy_section: 0
   link: 0
   linkit: 0
   mailsystem: 0
