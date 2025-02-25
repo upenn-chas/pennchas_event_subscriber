@@ -326,7 +326,7 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             expose_fields: false
-            placeholder: 'What are you looking for?'
+            placeholder: 'What Are You Looking For?'
             searched_fields_id: search_api_fulltext_searched_fields
             value_maxlength: 128
           is_grouped: false

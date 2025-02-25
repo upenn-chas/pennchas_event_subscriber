@@ -9,14 +9,14 @@ _core:
 id: penchas_secondary_local_tasks
 theme: penchas
 region: breadcrumb
-weight: -14
+weight: -17
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
   label: 'Secondary tabs'
-  label_display: '0'
+  label_display: visible
   provider: core
-  primary: false
+  primary: true
   secondary: true
 visibility: {  }

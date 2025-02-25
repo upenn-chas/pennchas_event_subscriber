@@ -3,55 +3,42 @@ langcode: en
 status: true
 dependencies:
   module:
+    - group
     - node
-    - user
   theme:
     - penchas
 _core:
   default_config_hash: KXHXi71YAvE0XBvVwHOI0fkyg2HJMTgz0L4N2HaBfI0
 id: penchas_primary_local_tasks
 theme: penchas
-region: breadcrumb
-weight: -16
+region: content
+weight: -17
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
   label: 'Primary tabs'
-  label_display: '0'
+  label_display: visible
   provider: core
   primary: true
-  secondary: false
+  secondary: true
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-    bundles:
-      article: article
-      chas_event: chas_event
-      house_landing_page: house_landing_page
-      notices: notices
-      page: page
-      program_community: program_community
-      reserve_room: reserve_room
-      room: room
+    bundles: {  }
     roles:
       administrator: administrator
       chas_student_worker: chas_student_worker
       chas_technology: chas_technology
       chas_director: chas_director
       chas_professional_staff: chas_professional_staff
-  user_role:
-    id: user_role
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
     negate: false
     context_mapping:
-      user: '@user.current_user_context:current_user'
-    roles:
-      content_editor: content_editor
-      administrator: administrator
-      chas_student_worker: chas_student_worker
-      chas_technology: chas_technology
-      chas_director: chas_director
-      chas_professional_staff: chas_professional_staff
+      group: '@group.group_route_context:group'
+    bundles:
+      house1: house1

@@ -837,14 +837,14 @@ body {
         line-height: normal;
       }
     }
-
+    ul{
     li {
-      font-size: 26px;
+      font-size: 24px;
       line-height: 28px;
       margin-bottom: 1rem;
 
       @include media-query('mobile') {
-        font-size: 20px;
+        font-size: 18px;
         line-height: normal;
         margin-bottom: 0.5rem;
       }
@@ -852,6 +852,24 @@ body {
       &::marker {
         color: #92B7FF;
       }
+      }
+    }
+    ol{
+      li {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 1rem;
+  
+        @include media-query('mobile') {
+          font-size: 18px;
+          line-height: normal;
+          margin-bottom: 0.5rem;
+        }
+  
+        &::marker {
+          font-weight: 700 !important;
+        }
+        }
     }
   }
 }
@@ -1061,4 +1079,7 @@ ol{
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+.js-media-library-item-preview{
+ padding-top: 1rem;
 }

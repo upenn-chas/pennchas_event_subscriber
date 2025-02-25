@@ -190,7 +190,7 @@
 }
 
 #layout-builder-modal label {
-  color: #ffffff;
+  // color: #ffffff;
   font-size: 1rem;
   font-weight: normal;
   background: none;
@@ -216,15 +216,15 @@
   position: relative;
 }
 
-#layout-builder-modal .ck.ck-editor__main>.ck-editor__editable {
-  background: #383A40;
-}
+// #layout-builder-modal .ck.ck-editor__main>.ck-editor__editable {
+//   background: #383A40;
+// }
 
 #drupal-off-canvas .bs_tab-content .bs_tab-pane .js-form-wrapper .bs-group-title,
 #drupal-off-canvas .layout-builder-configure-section summary,
 #layout-builder-modal summary,
 #drupal-off-canvas summary {
-  color: black;
+  color: #fff !important;
 }
 
 #drupal-off-canvas button.button--primary,
@@ -236,7 +236,7 @@
 #drupal-off-canvas button.button--primary,
 #drupal-off-canvas input[type="submit"].button--primary:hover {
   background: #383A40 !important;
-  color: black;
+  color: #fff !important;
 }
 
 #drupal-off-canvas summary svg g,
@@ -255,12 +255,12 @@
 #drupal-off-canvas .bs_input-boxes .fieldset-wrapper>div>div input:checked+label,
 #layout-builder-modal .bs_input-boxes .fieldset-wrapper>div>div input+label {
   text-indent: -10px;
-  color: white;
+  // color: white;
   font-size: medium;
 }
 
 #layout-builder-modal .description{
-  color: #ffffff !important;
+  // color: #ffffff !important;
 }
 #block-penchas-primary-admin-actions nav.action-links {
   display: flex;
@@ -291,18 +291,21 @@
   }
  }
  
- #layout-builder-modal tr td{
-  background-color: #2c2e32;
- }
- #layout-builder-modal tr:hover td{
-  background-color: #2c2e32;
- }
+//  #layout-builder-modal tr td{
+//   background-color: #2c2e32;
+//  }
+//  #layout-builder-modal tr:hover td{
+//   background-color: #2c2e32;
+//  }
  #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link{
-  color: #383a40;
+  color: #fff;
   padding: 12px 14px;
+  background-color: #011f5b;
  }
  #layout-builder-modal .tabledrag-toggle-weight-wrapper button.link:hover{
   color: #fff;
+  padding: 12px 14px;
+  background-color: #011f5b;
  }
 
  #drupal-off-canvas .layout-builder-remove-block .button--primary.btn {
@@ -521,4 +524,39 @@ color: inherit !important;
     }
   }
 
+}
+#drupal-off-canvas .form-search::placeholder,
+#drupal-off-canvas-wrapper .layout-selection li a div{
+  color: #fff !important;
+}
+#drupal-off-canvas .bs_tab-pane .form-item label,
+#drupal-off-canvas .bs_tab-pane .form-item input,
+#drupal-off-canvas .bs_tab-pane  textarea,
+  #drupal-off-canvas-wrapper .layout-selection li a
+ {
+ color: #fff;
+}
+#drupal-off-canvas .bs_tab-pane .description{
+  color:rgb(255 255 255 / 50%);
+}
+
+#drupal-off-canvas .fieldgroup.blb_gutter_type .fieldset-wrapper>div>div input+label, #layout-builder-modal .fieldgroup.blb_gutter_type .fieldset-wrapper>div>div input+label{
+  color: #fff;
+}
+#drupal-off-canvas form.layout-builder-configure-section .btn, #drupal-off-canvas form.layout-builder-configure-section .details-description, #drupal-off-canvas form.layout-builder-configure-section button{
+  color: #fff !important;
+}
+#layout-builder-modal button.button,#layout-builder-modal button.button:hover, #layout-builder-modal button.button:focus, #layout-builder-modal button.button:active, #layout-builder-modal input[type=submit].button:hover, #layout-builder-modal input[type=submit].button:focus, #layout-builder-modal input[type=submit].button:active,
+#layout-builder-modal button.button--primary, #layout-builder-modal input[type=submit].button--primary,
+#layout-builder-modal button.button, #layout-builder-modal input[type=submit].button {
+  background-color: #011f5b;
+}
+#layout-builder-modal tr td input {
+  border-color: #484848 !important;
+}
+#drupal-off-canvas .fieldgroup.blb_container_type .fieldset-wrapper>div>div input+label, #layout-builder-modal .fieldgroup.blb_container_type .fieldset-wrapper>div>div input+label{
+  color: inherit;
+}
+body #drupal-off-canvas-wrapper .layout-builder-remove-section {
+  color: #fff !important;
 }
