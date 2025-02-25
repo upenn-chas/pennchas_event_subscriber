@@ -94,7 +94,10 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{front_page_url}}/">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{front_page_url}}/group/{{node.field_select_house.0.parent.entity.id.value}}">{{house_label}} HOUSE</a></li>
+              {# <li class="breadcrumb-item"><a href="{{front_page_url}}/group/{{node.field_select_house.0.parent.entity.id.value}}">{{house_label}} HOUSE</a></li> #}
+              {% if page_breadcrumbs_list %}              
+                {{page_breadcrumbs_list|t}}
+              {% endif %}
               <li class="breadcrumb-item active" aria-current="page">{{label}}</li>
             </ol>
           </nav>

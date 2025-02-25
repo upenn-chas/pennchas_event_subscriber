@@ -159,6 +159,7 @@ third_party_settings:
       restricted_categories:
         - 'Custom block types'
         - 'Custom blocks'
+        - Devel
         - 'Lists (Views)'
         - Menus
     entity_view_mode_restriction_by_region:
