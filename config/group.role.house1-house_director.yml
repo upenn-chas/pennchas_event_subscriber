@@ -63,7 +63,6 @@ permissions:
   - 'update own group_node:page entity'
   - 'update own group_node:program_community entity'
   - 'update own group_node:reserve_room entity'
-  - 'update own group_node:room entity'
   - 'use editorial transition archive'
   - 'use editorial transition archived_draft'
   - 'use editorial transition create_new_draft'

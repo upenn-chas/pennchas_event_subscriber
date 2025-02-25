@@ -67,7 +67,6 @@ permissions:
   - 'edit own page content'
   - 'edit own remote_video media'
   - 'edit own reserve_room content'
-  - 'edit own room content'
   - 'edit own video media'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
