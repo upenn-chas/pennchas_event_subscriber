@@ -141,3 +141,6 @@ bootstrap_barrio_h3_color: base
 bootstrap_barrio_region_clean_none: 0
 bootstrap_barrio_region_width_none: 0
 bootstrap_barrio_region_class_none: row
+bootstrap_barrio_region_clean_footer_services: 0
+bootstrap_barrio_region_width_footer_services: 0
+bootstrap_barrio_region_class_footer_services: row

@@ -8,6 +8,9 @@
   &.grid-4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding-right: 0;
+    @media (max-width:1440px) {
+      padding-left: 0;
+    }
     article {
       padding: 0;
     }
@@ -269,6 +272,9 @@
         border-radius: 10px;
         &.pending {
           background-color: #FFEB40;
+        }
+        &.denied{
+          background-color: #F8919D;
         }
       }
       .action-btns {
@@ -825,7 +831,16 @@
 	}
 }
 .view-group-events{
+  
  .row {
+  @media (max-width:1440px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include media-query ('tablet'){
+    margin-left: -5px;
+  }
   @include media-query ('mobile'){
     margin-left: 0;
     margin-right: 0;
@@ -843,6 +858,12 @@ body.page-view-my-events  {
   }
 }
 .block-inline-blockevents-by-group  {
+  // h2{
+  //   margin-bottom: 40px;
+  //   @include media-query('mobile'){
+  //     margin-bottom: 25px;
+  //   }
+  // }
   .views-element-container{
   max-width: 1300px;
   margin-left: auto;

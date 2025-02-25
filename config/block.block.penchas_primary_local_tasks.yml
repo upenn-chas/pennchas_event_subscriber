@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - group
     - node
     - user
   theme:
@@ -12,7 +13,7 @@ _core:
 id: penchas_primary_local_tasks
 theme: penchas
 region: breadcrumb
-weight: -16
+weight: -17
 provider: null
 plugin: local_tasks_block
 settings:
@@ -28,21 +29,20 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
-    bundles:
-      article: article
-      chas_event: chas_event
-      house_landing_page: house_landing_page
-      notices: notices
-      page: page
-      program_community: program_community
-      reserve_room: reserve_room
-      room: room
+    bundles: {  }
     roles:
       administrator: administrator
       chas_student_worker: chas_student_worker
       chas_technology: chas_technology
       chas_director: chas_director
       chas_professional_staff: chas_professional_staff
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      house1: house1
   user_role:
     id: user_role
     negate: false

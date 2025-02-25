@@ -12,7 +12,7 @@ dependencies:
 id: penchas_connectwithchas
 theme: penchas
 region: content
-weight: -14
+weight: -15
 provider: null
 plugin: 'block_content:8f524d64-a576-4a8e-85e3-5601d5bb3511'
 settings:
