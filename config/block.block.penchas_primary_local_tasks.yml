@@ -49,4 +49,9 @@ visibility:
     context_mapping:
       user: '@user.current_user_context:current_user'
     roles:
+      content_editor: content_editor
       administrator: administrator
+      chas_student_worker: chas_student_worker
+      chas_technology: chas_technology
+      chas_director: chas_director
+      chas_professional_staff: chas_professional_staff

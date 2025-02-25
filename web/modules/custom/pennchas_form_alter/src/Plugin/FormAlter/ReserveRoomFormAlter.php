@@ -25,7 +25,7 @@ class ReserveRoomFormAlter
             $form['terms_condition'] = [
                 '#type' => 'checkbox',
                 '#title' => [
-                    '#markup' => t('I have read and understand the <a href="#">policies</a> associated with reserving rooms in this College House.')
+                    '#markup' => t('I have read and understand the <a href="/policies">policies associated</a> with reserving rooms in this College House.')
                 ],
                 '#required' => TRUE,
                 '#weight' => 100

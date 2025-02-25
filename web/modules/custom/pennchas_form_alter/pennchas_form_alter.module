@@ -328,18 +328,18 @@ function penchas_add_exclude_notices_filter($form, &$form_state)
 /**
  * Implements hook_menu_local_tasks_alter().
  */
-function pennchas_form_alter_menu_local_tasks_alter($type, $active_task) {
+// function pennchas_form_alter_menu_local_tasks_alter($type, $active_task) {
     
-    // Define the path for which you want to modify the tabs (e.g., node edit page)
-    if ($type == 'node' && isset($active_task)) {
-      // Check if the active task is the "delete" tab
-    //   dump($active_task);
-      if ($active_task == 'delete') {
-        // Remove the "delete" tab by returning an empty array
-        return [];
-      }
-    }
-    // Default behavior (return tasks as normal)
-    // return menu_local_tasks_alter();
-  }
+//     // Define the path for which you want to modify the tabs (e.g., node edit page)
+//     if ($type == 'node' && isset($active_task)) {
+//       // Check if the active task is the "delete" tab
+//     //   dump($active_task);
+//       if ($active_task == 'delete') {
+//         // Remove the "delete" tab by returning an empty array
+//         return [];
+//       }
+//     }
+//     // Default behavior (return tasks as normal)
+//     // return menu_local_tasks_alter();
+//   }
   
