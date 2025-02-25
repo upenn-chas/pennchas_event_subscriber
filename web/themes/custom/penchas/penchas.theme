@@ -175,11 +175,19 @@ function penchas_preprocess_node(&$variables)
   $edit_link = '';
 
   $variables['breadcrumbs_list'] = '';
+  $variables['page_breadcrumbs_list'] = '';
   $node = \Drupal::routeMatch()->getParameter('node');
+  $base_url = base_path();
+  /* Node Meta tag updates */
+  $connection = Database::getConnection();
+  $url_generator = \Drupal::service('url_generator');
+  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url_generator->generateFromRoute('<front>');
 
   if ($node instanceof NodeInterface) {
 
     $node = $variables['node'];
+    $variables['node_full_URL'] = $node->toUrl()->toString(); 
+    // dd($variables['node_full_URL']);
     if ($node->bundle() == 'chas_event') {
       $calendar_link = base_path();
       if ($current_user->isAuthenticated()) {
@@ -221,6 +229,70 @@ function penchas_preprocess_node(&$variables)
       }
       $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="' . $calendar_link . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>' . $edit_link . '</ul></div></div>';
     }
+
+    $node_url = $node->toUrl()->toString(); // Used multiple times
+    // Initialize variables for breadcrumbs
+    $breadcrumbs = '';
+
+    // Check for specific content types
+    if (in_array($node->bundle(), ['page', 'house_landing_page'])) {
+        // Extract breadcrumb values
+        $url_array = explode('/', $node_url);
+        $url_array = array_filter($url_array, function($value) {
+          return $value !== "";
+        });
+        if(count($url_array) > 1){
+          
+          // dd($url_array);
+          // Collect all path aliases at once (instead of querying for each part of the breadcrumb)
+          $alias_conditions = array_map(function ($breadcrumb_value) {
+              return '/'.$breadcrumb_value;
+          }, array_filter($url_array)); // Avoid empty values
+          if (!empty($alias_conditions)) {
+              // Perform a single query for all breadcrumb alias conditions
+              $query = $connection->select('path_alias', 'pa')
+                  ->fields('pa', ['path', 'alias'])
+                  ->condition('pa.alias', $alias_conditions, 'IN')
+                  ->execute();
+
+              // Store results in an associative array for quick lookup
+              $path_aliases = [];
+              foreach ($query as $result) {
+                  $path_aliases[$result->alias] = $result->path;
+              }
+
+              // Loop through the breadcrumb values and generate breadcrumb items
+              foreach ($url_array as $breadcrumb_value) {
+                  if (empty($breadcrumb_value)) {
+                      continue;
+                  }
+
+                  $alias = '/' . $breadcrumb_value;
+                  if (isset($path_aliases[$alias])) {
+                      $node_path = $path_aliases[$alias];
+
+                      if (strpos($node_path, '/group') !== false) {
+                          $group_id = str_replace('/group/', '', $node_path);
+                          $group_name = get_group_label($group_id);
+                          $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $group_name . '</a></li>';
+                      }
+
+                      if (strpos($node_path, '/node/') !== false) {
+                          $node_id = str_replace('/node/', '', $node_path);
+                          $node_parent_label = get_node_title($node_id);
+                          $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $node_parent_label . '</a></li>';
+                      }
+                  }
+              }
+          }
+        }
+
+        // Save the generated breadcrumbs to the variables
+        $variables['page_breadcrumbs_list'] = $breadcrumbs;
+    }
+
+    // Save the node title for later use
+    $variables['node_title'] = $node->getTitle();
   }
 }
 /**
@@ -235,6 +307,19 @@ function get_group_id_by_node($node)
 
   $result = $query->fetchObject();
   return $result ? $result->gid : NULL;
+}
+
+/**
+ * Helper function to get the Node title based on Node ID
+ */
+function get_node_title($node_id)
+{
+  $query = \Drupal::database()->select('node_field_data', 'n')
+    ->fields('n', ['title'])
+    ->condition('n.nid', $node_id)
+    ->execute();
+    $node_result = $query->fetchObject();
+  return $node_result ? $node_result->title : NULL;
 }
 
 /**
@@ -253,7 +338,6 @@ function get_group_label($group_id)
 
 function penchas_preprocess_html(&$variables)
 {
-
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
 
@@ -446,11 +530,13 @@ function penchas_preprocess_html(&$variables)
 
 function penchas_preprocess_page(&$variables)
 {
-
+  $base_url = base_path();
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
-
+  
   if ($node instanceof NodeInterface) {
+    $node = $variables['node'];
+    
     $node_title = $node->getTitle();
     $variables['node_title'] = $node_title;
   }

@@ -11,7 +11,7 @@ _core:
 id: penchas_breadcrumbs
 theme: penchas
 region: none
-weight: -12
+weight: -17
 provider: null
 plugin: system_breadcrumb_block
 settings:

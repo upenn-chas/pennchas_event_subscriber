@@ -88,6 +88,8 @@ third_party_settings:
           - 'extra_field_block:node:page:search_api_excerpt'
           - 'field_block:node:page:sticky'
           - 'field_block:node:page:title'
+        Devel:
+          - devel_switch_user
         Forms:
           - user_login_block
         Help:

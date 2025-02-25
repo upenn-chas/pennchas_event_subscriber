@@ -9,7 +9,7 @@ dependencies:
 id: penchas_sitebranding
 theme: penchas
 region: none
-weight: 0
+weight: -12
 provider: null
 plugin: system_branding_block
 settings:

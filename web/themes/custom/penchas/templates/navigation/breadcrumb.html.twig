@@ -9,13 +9,16 @@
  */
 #}
 {% if breadcrumb %}
-{# {% set breadcrumb = breadcrumb|merge([{
-    'title': node_title,
+  {# Optionally, add the current node title or page title to the breadcrumb #}
+  {% set breadcrumb = breadcrumb|merge([{
+    'text': drupal_title(),
     'is_current': true
-  }]) %} #}
+  }]) %}
+  
   {{ include('bootstrap_barrio:breadcrumb',
     { breadcrumb: breadcrumb,
       breadcrumb_divider: breadcrumb_divider
     })
   }}
 {% endif %}
+<!-- Compare this snippet from web/themes/custom/penchas/templates/navigation/breadcrumb.html.twig: -->
