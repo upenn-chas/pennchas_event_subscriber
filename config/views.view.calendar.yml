@@ -9,6 +9,7 @@ dependencies:
     - node.type.chas_event
     - node.type.notices
     - workflows.workflow.editorial
+    - workflows.workflow.non_moderation_flow
   module:
     - better_exposed_filters
     - calendar_view
@@ -543,7 +544,7 @@ display:
               reset_button_always_show: false
             filter:
               type:
-                plugin_id: bef
+                plugin_id: bef_single
                 advanced:
                   sort_options: false
                   rewrite:
@@ -553,9 +554,6 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
               field_is_campus_wide_value:
                 plugin_id: bef_single
                 advanced:
@@ -683,34 +681,20 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             reduce: true
-          is_grouped: false
+          is_grouped: true
           group_info:
-            label: 'Content type'
+            label: 'General Events/Notice'
             description: ''
             identifier: type
             optional: true
-            widget: radios
+            widget: select
             multiple: false
             remember: false
-            default_group: '1'
+            default_group: All
             default_group_multiple: {  }
             group_items:
               1:
-                title: 'General Events'
-                operator: in
-                value:
-                  chas_event: chas_event
-                  all: '0'
-                  article: '0'
-                  page: '0'
-                  house_landing_page: '0'
-                  notices: '0'
-                  program_community: '0'
-                  reserve_room: '0'
-                  room: '0'
-                  webform: '0'
-              2:
-                title: 'General Notices'
+                title: Notices
                 operator: in
                 value:
                   notices: notices
@@ -732,7 +716,7 @@ display:
           admin_label: ''
           plugin_id: boolean
           operator: '='
-          value: '1'
+          value: '0'
           group: 1
           exposed: true
           expose:
@@ -838,6 +822,7 @@ display:
             editorial-published: editorial-published
             editorial-denied: editorial-denied
             editorial-pending: editorial-pending
+            non_moderation_flow-published: non_moderation_flow-published
           group: 1
           exposed: false
           expose:
@@ -924,7 +909,7 @@ display:
           entity_field: gid
           plugin_id: standard
           required: false
-      use_ajax: false
+      use_ajax: true
       group_by: true
       header: {  }
       footer: {  }
@@ -948,6 +933,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      enabled: true
       arguments:
         field_short_name_value:
           id: field_short_name_value
@@ -989,7 +975,9 @@ display:
           transform_dash: false
           break_phrase: false
       defaults:
+        use_ajax: false
         arguments: false
+      use_ajax: false
       exposed_block: false
       display_extenders: {  }
       path: group/%/calendar
