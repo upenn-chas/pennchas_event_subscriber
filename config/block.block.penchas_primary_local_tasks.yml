@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - node
+    - user
   theme:
     - penchas
 _core:
@@ -37,6 +38,18 @@ visibility:
       reserve_room: reserve_room
       room: room
     roles:
+      administrator: administrator
+      chas_student_worker: chas_student_worker
+      chas_technology: chas_technology
+      chas_director: chas_director
+      chas_professional_staff: chas_professional_staff
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      content_editor: content_editor
       administrator: administrator
       chas_student_worker: chas_student_worker
       chas_technology: chas_technology
