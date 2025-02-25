@@ -1,7 +1,9 @@
 uuid: e1502ae1-b40e-429c-8b73-85b424537610
 langcode: en
-status: false
+status: true
 dependencies:
+  module:
+    - user
   theme:
     - bootstrap_barrio
 _core:
@@ -19,4 +21,11 @@ settings:
   provider: core
   primary: true
   secondary: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

@@ -1,6 +1,6 @@
 uuid: a6c3c76c-6569-482b-ba2e-c7611391b0c9
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - bootstrap_barrio

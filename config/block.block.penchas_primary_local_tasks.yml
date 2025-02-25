@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - user
   theme:
     - penchas
 _core:
@@ -26,13 +26,10 @@ visibility:
     id: 'entity_bundle:node'
     negate: false
     context_mapping:
-      node: '@node.node_route_context:node'
-    bundles:
-      article: article
-      chas_event: chas_event
-      house_landing_page: house_landing_page
-      notices: notices
-      page: page
-      program_community: program_community
-      reserve_room: reserve_room
-      room: room
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator
+      chas_student_worker: chas_student_worker
+      chas_technology: chas_technology
+      chas_director: chas_director
+      chas_professional_staff: chas_professional_staff

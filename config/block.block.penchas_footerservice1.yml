@@ -1,0 +1,30 @@
+uuid: 9cce9847-1419-4864-9391-156483d3f66b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:informational_block:43b48f07-f974-492f-813e-9d3046ffe96f'
+  module:
+    - block_content
+    - system
+  theme:
+    - penchas
+id: penchas_footerservice1
+theme: penchas
+region: footer_services
+weight: 0
+provider: null
+plugin: 'block_content:43b48f07-f974-492f-813e-9d3046ffe96f'
+settings:
+  id: 'block_content:43b48f07-f974-492f-813e-9d3046ffe96f'
+  label: 'Footer service 1'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /dashboard
