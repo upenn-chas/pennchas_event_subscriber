@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
+    - node.type.house_landing_page
   module:
     - comment
     - contact
     - filter
     - group
     - media
+    - node
     - system
 _core:
   default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
@@ -23,5 +25,6 @@ permissions:
   - 'access group overview'
   - 'access site-wide contact form'
   - 'use text format restricted_html'
+  - 'view house_landing_page revisions'
   - 'view media'
   - 'view user email addresses'

@@ -6,8 +6,10 @@ dependencies:
     - block_content.type.program_communities_block
     - field.field.block_content.program_communities_block.body
     - field.field.block_content.program_communities_block.field_cta
-    - field.field.block_content.program_communities_block.field_program_community_referenc
+    - field.field.block_content.program_communities_block.field_description_content
+    - field.field.block_content.program_communities_block.field_media_image
   module:
+    - element_class_formatter
     - link
     - text
 id: block_content.program_communities_block.default
@@ -23,24 +25,38 @@ content:
     weight: 0
     region: content
   field_cta:
-    type: link
+    type: link_separate
     label: hidden
     settings:
       trim_length: 80
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: nofollow
+      target: '0'
     third_party_settings: {  }
     weight: 2
     region: content
-  field_program_community_referenc:
-    type: entity_reference_label
+  field_description_content:
+    type: wrapper_class
     label: hidden
     settings:
-      link: true
+      class: ''
+      tag: p
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_media_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: cke_media_resize_medium
+      link: false
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   langcode: true
