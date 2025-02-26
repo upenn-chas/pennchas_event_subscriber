@@ -5,8 +5,11 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_new_event_md_hst_notification
     - field.field.easy_email.et_new_event_md_hst_notification.field_event
+    - field.field.easy_email.et_new_event_md_hst_notification.field_image
+    - field.field.easy_email.et_new_event_md_hst_notification.field_url
   module:
     - file
+    - link
     - text
     - user
 id: easy_email.et_new_event_md_hst_notification.default
@@ -88,6 +91,26 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_image:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   from_address:
     type: string
