@@ -1002,12 +1002,12 @@ body.page-view-my-events {
 
 .block-inline-blockevents-by-group {
 
-  // h2{
-  //   margin-bottom: 40px;
-  //   @include media-query('mobile'){
-  //     margin-bottom: 25px;
-  //   }
-  // }
+  h2{
+    margin-bottom: 40px;
+    @include media-query('mobile'){
+      margin-bottom: 25px;
+    }
+  }
   .views-element-container {
     max-width: 1300px;
     margin-left: auto;
