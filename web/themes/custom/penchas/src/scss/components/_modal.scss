@@ -132,6 +132,7 @@
   border: 0;
   border-radius: 8px;
   max-width: 400px;
+
   .ui-dialog-titlebar {
     padding: 0;
     background: none;
@@ -162,13 +163,22 @@
   
   .ui-dialog-content {
     padding: 0;
+    max-height: 72dvh !important;
     article,
     .node--unpublished {
       padding: 18px 30px 30px 30px;
+
+      .row{
+        .col-lg-9,
+        .col-lg-3  {
+          width: 100%;
+        }
+      }
     }
 
     .event-details-wrap {
       padding-top: 15px !important;
+      padding-bottom: 25px;
     }
 
     .block-field-blocknodechas-eventtitle {
@@ -184,7 +194,7 @@
         a {
           color: $primaryColor; 
           display: inline-flex;
-          align-items: center;
+          align-items: flex-end;
           gap: 3px;
           padding-left: 0;
           img {
@@ -204,7 +214,7 @@
     }
     .field--name-field-event-schedule {
       img {
-        margin-right: 15px;
+        margin-right: 5px;
       }
       time {
         color: $primaryColor;
@@ -217,7 +227,7 @@
     }
     .field--name-field-text-box-2 {
       img {
-        margin-right: 15px;
+        margin-right: 5px;
       }
       .event-detail-location {
         color: $primaryColor;
@@ -230,6 +240,13 @@
     }
     .event-details-wrap .block-field-blocknodechas-eventfield-text-box-2 {
       margin-bottom: 15px;
+      .field--name-field-text-box-2{
+        display: inline-flex;
+        align-items: flex-start;
+        img{
+          margin-top: 5px;
+        }
+      }
     }
 
     .content {
