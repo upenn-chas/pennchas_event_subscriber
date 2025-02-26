@@ -1,0 +1,19 @@
+uuid: b1c9a759-a412-42dc-a2be-6a298b0560b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_new_event_md_hst_notification
+    - field.storage.easy_email.field_image
+id: easy_email.et_new_event_md_hst_notification.field_image
+field_name: field_image
+entity_type: easy_email
+bundle: et_new_event_md_hst_notification
+label: Image
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

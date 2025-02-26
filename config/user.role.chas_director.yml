@@ -3,14 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.node.article.default
+    - core.entity_view_display.node.house_landing_page.default
+    - core.entity_view_display.node.page.default
+    - core.entity_view_display.node.program_community.default
+    - core.entity_view_display.node.room.full
     - media.type.audio
     - media.type.document
     - media.type.image
     - media.type.remote_video
     - media.type.video
+    - node.type.article
     - node.type.chas_event
+    - node.type.house_landing_page
     - node.type.notices
     - node.type.page
+    - node.type.program_community
     - node.type.reserve_room
     - node.type.room
     - workflows.workflow.editorial
@@ -18,6 +26,7 @@ dependencies:
     - complete_webform_exporter
     - config
     - content_moderation
+    - layout_builder
     - media
     - node
     - penchas_custom_token
@@ -36,6 +45,11 @@ permissions:
   - 'access my rerservations'
   - 'access reports'
   - 'cancel smart date recur instances'
+  - 'configure editable article node layout overrides'
+  - 'configure editable house_landing_page node layout overrides'
+  - 'configure editable page node layout overrides'
+  - 'configure editable program_community node layout overrides'
+  - 'configure editable room node layout overrides'
   - 'create audio media'
   - 'create chas_event content'
   - 'create document media'
@@ -58,15 +72,17 @@ permissions:
   - 'delete own chas_event content'
   - 'delete own notices content'
   - 'delete own reserve_room content'
-  - 'delete own room content'
   - 'delete reserve_room revisions'
-  - 'delete room revisions'
   - 'download any webform submission managed files'
+  - 'edit any article content'
   - 'edit any audio media'
   - 'edit any chas_event content'
   - 'edit any document media'
+  - 'edit any house_landing_page content'
   - 'edit any image media'
   - 'edit any notices content'
+  - 'edit any page content'
+  - 'edit any program_community content'
   - 'edit any remote_video media'
   - 'edit any reserve_room content'
   - 'edit any room content'
@@ -76,10 +92,8 @@ permissions:
   - 'edit own document media'
   - 'edit own image media'
   - 'edit own notices content'
-  - 'edit own page content'
   - 'edit own remote_video media'
   - 'edit own reserve_room content'
-  - 'edit own room content'
   - 'edit own video media'
   - 'export configuration'
   - 'make smart dates recur'
@@ -88,7 +102,6 @@ permissions:
   - 'revert chas_event revisions'
   - 'revert notices revisions'
   - 'revert reserve_room revisions'
-  - 'revert room revisions'
   - 'update any media'
   - 'update media'
   - 'use editorial transition archived_draft'
@@ -104,12 +117,16 @@ permissions:
   - 'view any unpublished content'
   - 'view any video media revisions'
   - 'view any webform submission'
+  - 'view article revisions'
   - 'view chas_event revisions'
   - 'view chas_event revisions'
+  - 'view house_landing_page revisions'
   - 'view latest version'
   - 'view notices revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view program_community revisions'
   - 'view reserve_room revisions'
   - 'view room revisions'
   - 'view webform submissions any node'

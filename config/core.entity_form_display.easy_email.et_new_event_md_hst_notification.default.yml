@@ -5,8 +5,11 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_new_event_md_hst_notification
     - field.field.easy_email.et_new_event_md_hst_notification.field_event
+    - field.field.easy_email.et_new_event_md_hst_notification.field_image
+    - field.field.easy_email.et_new_event_md_hst_notification.field_url
   module:
     - file
+    - link
     - text
 id: easy_email.et_new_event_md_hst_notification.default
 targetEntityType: easy_email
@@ -99,6 +102,22 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   from_address:
     type: string_textfield

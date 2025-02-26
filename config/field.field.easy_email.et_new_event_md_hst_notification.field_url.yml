@@ -1,0 +1,23 @@
+uuid: 2aa19942-abf6-4d56-9654-48d44dc757b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_new_event_md_hst_notification
+    - field.storage.easy_email.field_url
+  module:
+    - link
+id: easy_email.et_new_event_md_hst_notification.field_url
+field_name: field_url
+entity_type: easy_email
+bundle: et_new_event_md_hst_notification
+label: URL
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

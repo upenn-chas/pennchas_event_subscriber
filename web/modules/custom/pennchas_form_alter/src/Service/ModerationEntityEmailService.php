@@ -44,6 +44,14 @@ class ModerationEntityEmailService
             if ($email) {
                 $nodeType = $node->getType();
                 $email->set($nodeType === Constant::NODE_RESERVE_ROOM ? 'field_reserve_room' : 'field_event', $node);
+                if($templateKey === Constant::EVENT_EMAIL_MODERATOR_CREATED) {
+                    $feedbackUrl = \Drupal\Core\Url::fromRoute('event_feedback.page', [
+                        'node' => $node->id(),
+                    ], ['absolute' => true])->toString();
+                    $email->set('field_url', $feedbackUrl);
+                    $qrCodePath = \Drupal::service('pennchas_form_alter.qr_code_generator')->generateQrCode($feedbackUrl);
+                    $email->set('field_image', $qrCodePath);
+                }
                 $email->setRecipientIds($recipients);
                 $this->mailer->sendEmail($email, [], true, true);
             }
