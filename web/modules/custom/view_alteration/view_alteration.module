@@ -52,7 +52,6 @@ function view_alteration_views_query_alter(ViewExecutable $view, QueryPluginBase
         'media_library' => 1
     ];
     if (isset($reportViewIds[$viewId])) {
-        dd('asdasdasd');
         view_alteration_apply_group_filter_to_query($query, $viewId);
         return;
     }
