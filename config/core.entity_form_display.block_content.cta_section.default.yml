@@ -7,9 +7,11 @@ dependencies:
     - field.field.block_content.cta_section.field_background_color
     - field.field.block_content.cta_section.field_cta
     - field.field.block_content.cta_section.field_heading
+    - field.field.block_content.cta_section.field_media_image
   module:
     - color_field
     - link
+    - media_library
 id: block_content.cta_section.default
 targetEntityType: block_content
 bundle: cta_section
@@ -38,6 +40,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_media_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   info:
     type: string_textfield
