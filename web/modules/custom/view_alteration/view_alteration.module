@@ -33,12 +33,13 @@ function view_alteration_theme()
 
 /**
  * Add the logged in user allowed groups in the query.
- * 
+ *  * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
  * Implements hook_views_query_alter().
  */
-function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
+function view_alteration_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
 {
     $viewId = $view->id();
+    
     static $reportViewIds = [
         'moderation_reports' =>  1,
         'rooms_reservation_moderation_reports' =>  1,
@@ -51,6 +52,7 @@ function view_alteration_views_query_alter(ViewExecutable $view, Sql $query)
         'media_library' => 1
     ];
     if (isset($reportViewIds[$viewId])) {
+        dd('asdasdasd');
         view_alteration_apply_group_filter_to_query($query, $viewId);
         return;
     }

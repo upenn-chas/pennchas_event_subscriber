@@ -11,7 +11,7 @@ _core:
 id: penchas_messages
 theme: penchas
 region: highlighted
-weight: -18
+weight: -17
 provider: null
 plugin: system_messages_block
 settings:

@@ -21,6 +21,7 @@
 
   h2 {
     margin: 0;
+    line-height: 50px;
 
     @include media-query('medium') {
       text-align: center;
@@ -67,6 +68,9 @@
     &:hover {
       border-color: #011f5b;
     }
+  }
+  .btn{
+    padding: 15px 20px 18px 20px;
   }
 }
 

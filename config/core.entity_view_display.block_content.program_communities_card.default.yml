@@ -10,17 +10,23 @@ dependencies:
     - field.field.block_content.program_communities_card.field_select_program
   module:
     - color_field
+    - element_class_formatter
     - link
-    - text
 id: block_content.program_communities_card.default
 targetEntityType: block_content
 bundle: program_communities_card
 mode: default
 content:
   body:
-    type: text_default
+    type: wrapper_class
     label: hidden
-    settings: {  }
+    settings:
+      class: ''
+      tag: p
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
     third_party_settings: {  }
     weight: 1
     region: content

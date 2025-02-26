@@ -47,7 +47,7 @@
                   {{ title_prefix }}
                     <h2{{ title_attributes }}>{{ label }}</h2>
                   {{ title_suffix }}
-                  <p>{{content.body}}</p>
+                  <p>{{content.body|raw}}</p>
               </div>
           </div>
                   {% endif %}
