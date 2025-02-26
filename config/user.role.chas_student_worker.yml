@@ -3,13 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.node.article.default
+    - core.entity_view_display.node.house_landing_page.default
+    - core.entity_view_display.node.page.default
+    - core.entity_view_display.node.program_community.default
+    - core.entity_view_display.node.room.full
     - media.type.document
     - media.type.image
     - media.type.remote_video
     - media.type.video
+    - node.type.article
     - node.type.chas_event
+    - node.type.house_landing_page
     - node.type.notices
     - node.type.page
+    - node.type.program_community
     - node.type.reserve_room
     - node.type.room
     - workflows.workflow.editorial
@@ -17,6 +25,7 @@ dependencies:
     - content_moderation
     - event_evaluation
     - file
+    - layout_builder
     - media
     - node
     - penchas_custom_token
@@ -35,26 +44,39 @@ permissions:
   - 'access media overview'
   - 'access my rerservations'
   - 'administer nodes'
+  - 'configure editable article node layout overrides'
+  - 'configure editable house_landing_page node layout overrides'
+  - 'configure editable page node layout overrides'
+  - 'configure editable program_community node layout overrides'
+  - 'configure editable room node layout overrides'
   - 'create chas_event content'
   - 'create document media'
   - 'create image media'
   - 'create media'
   - 'create notices content'
-  - 'create page content'
   - 'create remote_video media'
   - 'create video media'
   - 'dashboard pending events'
   - 'dashboard pending reservations'
+  - 'delete any article content'
+  - 'delete any house_landing_page content'
+  - 'delete any page content'
+  - 'delete any program_community content'
+  - 'delete any room content'
   - 'delete media'
   - 'delete own chas_event content'
   - 'delete own document media'
   - 'delete own files'
   - 'delete own image media'
   - 'delete own notices content'
+  - 'delete own page content'
   - 'delete own remote_video media'
   - 'delete own reserve_room content'
   - 'delete own video media'
-  - 'edit any room content'
+  - 'edit any article content'
+  - 'edit any house_landing_page content'
+  - 'edit any page content'
+  - 'edit any program_community content'
   - 'edit own chas_event content'
   - 'edit own document media'
   - 'edit own image media'
@@ -65,8 +87,13 @@ permissions:
   - 'event own evaluation'
   - 'update media'
   - 'use editorial transition create_new_draft'
+  - 'view article revisions'
   - 'view chas_event revisions'
+  - 'view house_landing_page revisions'
   - 'view notices revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view program_community revisions'
   - 'view reserve_room revisions'
+  - 'view room revisions'
