@@ -199,10 +199,10 @@
   .btn-wrapper {
     text-align: center;
     margin: 30px 0 0px 0;
-    padding-bottom: 80px;
-    @include media-query('mobile') {
-      padding-bottom: 50px;
-    }
+    // padding-bottom: 80px;
+    // @include media-query('mobile') {
+    //   padding-bottom: 50px;
+    // }
     a {
       position: relative;
       padding: 0;
@@ -236,5 +236,13 @@
         background: none;
       }
     }
+  }
+  &:has(.program-card){
+    .btn-wrapper {
+    padding-bottom: 80px;
+    @include media-query('mobile') {
+      padding-bottom: 50px;
+    }
+  }
   }
 }

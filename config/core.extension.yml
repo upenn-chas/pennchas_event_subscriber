@@ -51,6 +51,7 @@ module:
   element_class_formatter_responsive_image: 0
   endroid_qr_code: 0
   entity: 0
+  entity_clone: 0
   entity_reference_revisions: 0
   event_evaluation: 0
   event_feedback: 0
@@ -83,10 +84,12 @@ module:
   jquery_ui_resizable: 0
   language: 0
   layout_builder: 0
+  layout_builder_block_clone: 0
   layout_builder_blocks: 0
   layout_builder_modal: 0
   layout_builder_restrictions: 0
   layout_builder_restrictions_by_region: 0
+  layout_builder_styles: 0
   layout_builder_tabs: 0
   layout_discovery: 0
   link: 0

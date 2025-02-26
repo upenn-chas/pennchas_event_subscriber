@@ -148,7 +148,7 @@
       display: flex;
       flex-wrap: wrap;
       height: 100%;
-      gap: 140px;
+      gap: 100px;
       @include media-query ('mobile'){
         gap: 40px;
       }

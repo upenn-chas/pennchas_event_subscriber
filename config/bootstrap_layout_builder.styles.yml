@@ -1,9 +1,9 @@
 plugins:
   background:
     background_color:
-      enabled: true
+      enabled: false
     background_media:
-      enabled: true
+      enabled: false
   typography:
     text_color:
       enabled: false
