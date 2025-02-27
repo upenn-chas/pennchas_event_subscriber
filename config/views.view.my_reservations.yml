@@ -3446,7 +3446,7 @@ display:
                 value:
                   editorial-published: editorial-published
               3:
-                title: Denied
+                title: Declined
                 operator: in
                 value:
                   editorial-denied: editorial-denied
