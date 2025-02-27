@@ -73,7 +73,7 @@ function penchas_preprocess_container(array &$variables)
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
-    if(!empty($path_parts[2]) && $path_parts[2] == 'calendar'){
+    if (!empty($path_parts[2]) && $path_parts[2] == 'calendar') {
       if (strpos($path_parts[2], 'calendar') !== false) {
         $variables['attributes']['class'] = 'full-container';
       }
@@ -164,109 +164,118 @@ function penchas_preprocess_node_edit_form(&$variables)
 
   $variables['group_banner_info'] = $group_banner_html;
 }
+
+/**
+ * Implements hook_preprocess_node().
+ *
+ * Prepares variables for node templates.
+ */
 function penchas_preprocess_node(&$variables)
 {
-  $variables['base_path'] = base_path();
+  // Define common variables.
+  $base_path = base_path();
+  $variables['base_path'] = $base_path;
   $variables['house_string'] = 'house';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
   $variables['breadcrumb_dashboard_link'] = '/dashboard';
   $variables['primary_color'] = '#ffea3f';
   $variables['room_reservation_heading'] = 'My Room Reservations';
-  $current_user = \Drupal::currentUser();
-  $edit_link = '';
-
   $variables['breadcrumbs_list'] = '';
+
+  // Get current user and node.
+  $current_user = \Drupal::currentUser();
   $node = \Drupal::routeMatch()->getParameter('node');
-  $base_url = base_path();
-  /* Node Meta tag updates  */
+
+  // Ensure we are dealing with a valid node.
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+
+  $variables['node_full_URL'] = $node->toUrl()->toString();
   $connection = Database::getConnection();
-  $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
-  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
-  
-  if ($node instanceof NodeInterface) {
-    $node = $variables['node'];
-    $variables['node_full_URL'] = $node->toUrl()->toString(); 
-    
-    if ($node->bundle() == 'page' || $node->bundle() == 'house_landing_page') {
-      $url_array = explode('/', $node->toUrl()->toString());
-      $breadcrumbs = '';
-      foreach ($url_array as $key => $breadcrumb_value) {
-        if(isset($breadcrumb_value) && !empty($breadcrumb_value)){
-          $query = $connection->select('path_alias', 'pa')
-            ->fields('pa', ['path'])
-            ->condition('pa.alias', '/'.$breadcrumb_value)
-            ->execute();
-          $result = $query->fetchObject();
-          $node_path = $result ? $result->path : NULL;
-          if (strpos($node_path, '/group') !== false) {
-            $group_id = str_replace('/group/', '', $node_path);
-            $group_name = get_group_label($group_id);
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="'.$front_page_path.$node_path . '">' . $group_name . '</a></li>';
-          }
-          if(strpos($node_path, '/node/') !== false){
-            $node_id = str_replace('/node/', '', $node_path);
-            $node_parent_label = get_node_title($node_id);
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="' .$front_page_path.$node_path . '">' . $node_parent_label . '</a></li>';
-          }
-        }
-      }
-      $variables['page_breadcrumbs_list'] = $breadcrumbs;
-      // $node_meta_title = $node->getTitle() . ' | ' . \Drupal::config('system.site')->get('name');
-      // $variables['head_title']['title'] = $node_meta_title;
-    }
-    
-    $node_title = $node->getTitle();
-    $variables['node_title'] = $node_title;
-  }
-  if ($node instanceof NodeInterface) {
+  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
 
-    $node = $variables['node'];
-    $variables['node_full_URL'] = $node->toUrl()->toString(); 
-    // dd($variables['node_full_URL']);
-    if ($node->bundle() == 'chas_event') {
-      $calendar_link = base_path();
-      if ($current_user->isAuthenticated()) {
-        $moderator_link = '';
-        $eventHouseId = (int) $node->get('field_location')->getString();
-        $group = Group::load($eventHouseId);
+  $nodeBundle = $node->bundle();
+
+  // Handle breadcrumb generation for page and house_landing_page.
+  if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
+    $url_segments = array_filter(explode('/', $node->toUrl()->toString()));
+    $breadcrumbs = '';
+
+    foreach ($url_segments as $segment) {
+      $result = $connection->select('path_alias', 'pa')
+        ->fields('pa', ['path'])
+        ->condition('pa.alias', '/' . $segment)
+        ->execute()
+        ->fetchObject();
+
+      if (!$result || empty($result->path)) {
+        continue;
+      }
+
+      $node_path = $result->path;
+
+      if (strpos($node_path, '/group/') !== false) {
+        $group_id = str_replace('/group/', '', $node_path);
+        $group_name = get_group_label($group_id);
+        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $group_name . '</a></li>';
+      } elseif (strpos($node_path, '/node/') !== false) {
+        $node_id = str_replace('/node/', '', $node_path);
+        $node_parent_label = get_node_title($node_id);
+        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $node_parent_label . '</a></li>';
+      }
+    }
+
+    $variables['page_breadcrumbs_list'] = $breadcrumbs;
+  } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
+    $calendar_link = $base_path;
+    $edit_link = '';
+
+    if ($current_user->isAuthenticated()) {
+      $moderator_link = '';
+
+      // Get event house ID and group.
+      $eventHouseId = (int) $node->get('field_location')->getString();
+      $group = Group::load($eventHouseId);
+
+      if ($group) {
         $eventHousename = $group->get('field_short_name')->value;
-        $housesId = [$eventHousename];
-        if (count($housesId) == 1) {
-          $calendar_link = base_path() . 'group/' . $eventHousename . '/calendar';
-        } else {
-          // $connection = Database::getConnection();
-          // $query = $connection->select('group_relationship_field_data', 'gr')
-          //     ->fields('gr', ['id'])
-          //     ->condition('entity_id', $current_user->id(), '=')
-          //     ->condition('plugin_id', 'group_membership', '=');
-          // $results = $query->execute()->fetchAll();
-          // if(!empty($results)){
-
-          // }
-        }
-        $variables['is_logged_in'] = TRUE;
-        $variables['attributes']['class'][] = 'logged-in-user';
-        $edit_link = '';
-        if ($node->access('update')) {
-          $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()]);
-          $node_edit_url = $edit_url->toString();
-          $edit_link = '<li><a href="' . $node_edit_url . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
-        }
-
-        if ($node->get('moderation_state')) {
-          $moderationState = $node->get('moderation_state')->value;
-          if (($moderationState === 'draft' || $moderationState === 'pending') && \Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($node)) {;
-            $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
-            $moderator_link = '<li><a href="' . $moderator_url . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
-          }
-        }
-        $edit_link .= $moderator_link;
+        $calendar_link = $base_path . 'group/' . $eventHousename . '/calendar';
       }
-      $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul><li><a href="' . $calendar_link . '"><img src="' . base_path() . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>' . $edit_link . '</ul></div></div>';
+
+      $variables['is_logged_in'] = TRUE;
+      $variables['attributes']['class'][] = 'logged-in-user';
+
+      // Generate edit link if the user has permission.
+      if ($node->access('update')) {
+        $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()])->toString();
+        $edit_link = '<li><a href="' . $edit_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
+      }
+
+      // Generate moderator link if the node is in draft/pending state and user has access.
+      $moderator_access_check_service = \Drupal::service('pennchas_common.moderator_access_check');
+      if ($node->hasField('moderation_state') && ($moderationState = $node->get('moderation_state')->value)) {
+        if (in_array($moderationState, ['draft', 'pending']) && $moderator_access_check_service->checkForEntity($node)) {
+          $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
+          $moderator_link = '<li><a href="' . $moderator_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+        }
+      }
+
+      $edit_link .= $moderator_link;
     }
+
+    $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul>
+          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'
+      . $edit_link . '</ul></div></div>';
+  } else if ($nodeBundle === 'reserve_room' && $variables['view_mode'] === 'moderator') {
+    $variables['moderation_logs'] = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($node->id());
   }
+
+  // Set node title.
+  $variables['node_title'] = $node->getTitle();
 }
+
 /**
  * Helper function to get the group ID based on node
  */
@@ -290,7 +299,7 @@ function get_node_title($node_id)
     ->fields('n', ['title'])
     ->condition('n.nid', $node_id)
     ->execute();
-    $node_result = $query->fetchObject();
+  $node_result = $query->fetchObject();
   return $node_result ? $node_result->title : NULL;
 }
 
@@ -506,10 +515,10 @@ function penchas_preprocess_page(&$variables)
   $base_url = base_path();
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
-  
+
   if ($node instanceof NodeInterface) {
     $node = $variables['node'];
-    
+
     $node_title = $node->getTitle();
     $variables['node_title'] = $node_title;
   }
@@ -780,7 +789,6 @@ function generate_create_form_url($group_id, $plugin_id)
  */
 function penchas_preprocess_views_view(&$variables)
 {
-
   $user = \Drupal::currentUser();
   // Example usage: Check if the current user can create "article" content in the group.
   // $group_id = 1;  // Replace with actual group ID.
@@ -1007,7 +1015,9 @@ function penchas_preprocess_views_view(&$variables)
     }
     $variables['selected_filters_output'] = $filters_html;
   }
+
 }
+
 
 /**
  * Implements hook_preprocess_datetime_form().

@@ -78,7 +78,7 @@ class ModerationLog
             '#attributes' => self::TABLE_ATTRIBUTES
         ];
 
-        return $this->renderer->render($table);
+        return $rows ? $this->renderer->render($table) : '';
     }
 
     /**

@@ -11,7 +11,7 @@ use Drupal\views\ViewExecutable;
  */
 function view_alteration_views_pre_view(ViewExecutable $view, $display_id, &$args)
 {
-    if ($view->id() === 'event_moderation_view') {
+    if ($view->id() === 'event_moderation_view' && $display_id === 'event_moderate_page_view') {
         $view->attachment_after = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($args[0]);
     }
 }

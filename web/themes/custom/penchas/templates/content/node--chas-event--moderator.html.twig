@@ -70,68 +70,12 @@
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix container',
+    'clearfix',
   ]
 %}
-<section class="hero-banner without-image small" style="background-color: #{{node.field_group.0.entity.field_color.value}};">
-    {% if node.field_group.0.entity.field_color_of_circle.value %}
-        <style>
-            .hero-banner .container:before {
-            background: #{{node.field_group.0.entity.field_color_of_circle.value}};
-            }
-        </style>
-    {% endif %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                <div class="breadcrumbs-block">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="{{base_path}}">{{breadcrumb_home}}</a>
-                            </li>
-                            {% if node.field_group.0.entity.id.value %}
-                              <li class="breadcrumb-item">
-                                  <a href="{{base_path}}group/{{node.field_group.0.entity.id.value}}">{{node.field_group.0.entity.label.value}} {{house_string}}</a>
-                              </li>
-                            {% endif %}
-                            <li class="breadcrumb-item active" aria-current="page">
-                                {{room_reservation_heading}}
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="banner-info items-gap">
-                    <h1>
-                        {{room_reservation_heading}}
-                    </h1>                    
-                </div>
-                <div class="internal-links">
-            {% for menus in node.field_group.0.entity.field_menus %}
-              <div class="dropdown">
-                {% set items = simplify_menu(menus.value['target_id']) %}
-                {% for menu_item in items.menu_tree %}
-                    <a class="btn btn-secondary dropdown-toggle" href="{{ menu_item.url }}" >{{ menu_item.text }}</a>
-                  <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                    <ul class="clearfix nav">
-                      {% for submenu_item in menu_item.submenu %}
-                      <li class="navigation__item nav-item">
-                        <a href="{{ submenu_item.url }}" class="nav-link nav-link--">{{ submenu_item.text }}</a>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                {% endfor %}
-              </div>
-            {% endfor %}
-          </div>
-            </div>
-        </div>
-    </div>
-</section>
 <article{{ attributes.addClass(classes) }}>
+  {{breadcrumbs_list|t}}
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {{ content }}
-    {{ moderation_logs }}
   </div>
 </article>
