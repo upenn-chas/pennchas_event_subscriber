@@ -48,6 +48,8 @@ permissions:
   - 'update media'
   - 'use text format basic_html'
   - 'use text format webform_default'
+  - 'view all media revisions'
+  - 'view any video media revisions'
   - 'view media'
   - 'view own unpublished media'
   - 'view user email addresses'

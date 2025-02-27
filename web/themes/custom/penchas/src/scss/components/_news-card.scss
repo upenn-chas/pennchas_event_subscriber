@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   span {
     font-size: 12px;
     text-transform: uppercase;
@@ -35,6 +35,9 @@
     }
     p {
       margin: 0;
+    }
+    h5{
+      margin-bottom: 2px;
     }
   }
   .news-card-right {

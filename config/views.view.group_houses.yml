@@ -374,7 +374,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -391,8 +391,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: text_trimmed
+          settings:
+            trim_length: 250
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -437,7 +438,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -468,7 +469,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                            <p>{{ field_description }} </p>\r\n                            \r\n                        </div>\r\n                    </div>"
+            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                        <p> {{ field_description |raw}} </p>\r\n<a class=\"arrow-link\" href=\"{{ view_group }}\"><img src=\"/themes/custom/penchas/images/icons/card-arrow.png\" class=\"icon\" alt=\"icon\"><span class=\"sr-only-hidden\">link</span></a>\r\n                        </div>\r\n                    </div>"
             make_link: false
             path: ''
             absolute: false
