@@ -318,6 +318,21 @@ third_party_settings:
               block_serialized: null
             weight: 9
             additional: {  }
+          c399f4a7-01ed-4e6b-b05f-ff8304ca067a:
+            uuid: c399f4a7-01ed-4e6b-b05f-ff8304ca067a
+            region: blb_region_col_1
+            configuration:
+              id: 'extra_field_block:node:reserve_room:content_moderation_control'
+              label: 'Moderation control'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                settings: {  }
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'

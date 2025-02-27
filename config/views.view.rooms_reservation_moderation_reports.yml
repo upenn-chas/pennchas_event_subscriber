@@ -1000,7 +1000,7 @@ display:
                 value:
                   editorial-published: editorial-published
               5:
-                title: Denied
+                title: Declined
                 operator: in
                 value:
                   editorial-denied: editorial-denied

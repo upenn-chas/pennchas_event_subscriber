@@ -2,6 +2,7 @@
 
 namespace Drupal\common_utils\Option;
 
+use Drupal\field\Entity\FieldConfig;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
 use Drupal\node\NodeInterface;
@@ -38,5 +39,26 @@ class FieldOption
         }
 
         return $data;
+    }
+
+
+    /**
+     * Retrieves the allowed values for a specific field in a given node bundle.
+     *
+     * @param string $bundle
+     *   The machine name of the content type (node bundle).
+     * @param string $field
+     *   The machine name of the field.
+     *
+     * @return array
+     *   An array of allowed values for the specified field, or an empty array if none are found.
+     */
+    public function getNodeFieldAllowedValues(string $bundle, string $field)
+    {
+        $config = FieldConfig::loadByName('node', $bundle, $field);
+        if (!$config) {
+            return [];
+        }
+        return $config->getSetting('allowed_values');
     }
 }
