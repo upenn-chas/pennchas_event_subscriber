@@ -21,8 +21,11 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
+use Drupal\Core\Messenger\MessengerInterface;
+
 function pennchas_form_alter_preprocess_page(&$variables)
 {
+    \Drupal::messenger()->deleteAll(); // Remove all messages
     if (\Drupal::request()->getPathInfo() === '/dashboard') {
         $variables['#cache']['max-age'] = 0; // Disable cache
     }

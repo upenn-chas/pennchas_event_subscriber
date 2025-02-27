@@ -9,7 +9,7 @@ dependencies:
 id: penchas_dashboardblock
 theme: penchas
 region: none
-weight: -14
+weight: -13
 provider: null
 plugin: dashbaord_block
 settings:
