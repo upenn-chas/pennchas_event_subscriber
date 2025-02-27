@@ -100,6 +100,7 @@
     transform: translate(-50%,-50%);
     padding: 15px 10px;
     border: 0;
+    overflow: auto;
   }
   .close-btn {
     background: url('../../assets/images/close-icon.svg')no-repeat;
@@ -259,7 +260,10 @@
         }
       }
     }
-
+    p.event-detail-left{
+      font-size: 18px;
+      line-height: normal;
+    }
    
 
   }
