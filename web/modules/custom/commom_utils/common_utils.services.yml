@@ -15,3 +15,6 @@ services:
     class: \Drupal\common_utils\Option\FieldOption
   pennchas_common.users:
     class: \Drupal\common_utils\User\User
+  pennchas_common.moderation_log:
+    class: \Drupal\common_utils\Service\ModerationLog
+    arguments: ['@database', '@date.formatter', '@renderer']

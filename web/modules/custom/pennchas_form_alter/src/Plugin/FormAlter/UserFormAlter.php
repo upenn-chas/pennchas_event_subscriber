@@ -3,9 +3,6 @@
 namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupMembership;
 
 class UserFormAlter
 {
@@ -40,10 +37,6 @@ class UserFormAlter
 
     protected function getUmbrellaRoles()
     {
-        $config = FieldConfig::loadByName('node', 'room', 'field_available_to');
-        if(!$config) {
-            return [];
-        }
-        return $config->getSetting('allowed_values');
+        return \Drupal::service('pennchas_common.field_values_label')->getNodeFieldAllowedValues('room', 'field_available_to');
     }
 }

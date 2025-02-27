@@ -2,20 +2,23 @@
 
 namespace Drupal\pennchas_form_alter\Plugin\Validation\Constraint;
 
+use Drupal\Core\Session\AccountInterface;
 use Drupal\node\Entity\Node;
-use Drupal\taxonomy\Entity\Term;
-use Drupal\user\Entity\Role;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Checks that the submitted reservation is available.
- *
+ * Validates room reservation constraints.
  */
 class AllowRoomConstraintValidator extends ConstraintValidator
 {
     /**
-     * Checks if the passed value is valid.
+     * Validates if the selected room can be booked by the current user.
+     *
+     * @param mixed $value
+     *   The value being validated.
+     * @param Constraint $constraint
+     *   The constraint for the validation.
      *
      * @return void
      */
@@ -23,44 +26,60 @@ class AllowRoomConstraintValidator extends ConstraintValidator
     {
         $selectRoom = $value->getValue();
         $roomId = $selectRoom[0]['target_id'];
+        if (empty($roomId)) {
+            return;
+        }
+
         $room = Node::load($roomId);
         $currentUser = \Drupal::currentUser();
+
+        // Allow administrators to book any room.
         if ($currentUser->hasRole('administrator')) {
             return;
         }
-        if(!$this->isUserAutenticToBook($room, $currentUser)) {
+
+        if (!$this->isUserAutenticToBook($room, $currentUser)) {
             $this->context->addViolation($constraint->notAuthentic, ['%room' => $room->getTitle()]);
         }
-
     }
 
     /**
-     * Check if current user is authentic to book selected room.
+     * Determines if the current user is authorized to book the selected room.
+     *
+     * @param Node $room
+     *   The room node.
+     * @param AccountInterface $account
+     *   The current user account.
+     *
+     * @return bool
+     *   TRUE if the user is authorized, FALSE otherwise.
      */
-    function isUserAutenticToBook(Node $room, $currentUser)
+    function isUserAutenticToBook(Node $room, AccountInterface $account)
     {
 
         $roomAvailableTo = $room->get('field_available_to')->getString();
-        $term = Term::load($roomAvailableTo);
-        $roleName = $term->getName();
-        
+        $state = \Drupal::state();
+
+        /**
+         * @var \Drupal\group\Entity\Group
+         */
         $group = \Drupal::routeMatch()->getParameter('group');
-        
-        $member = $group->getMember($currentUser);
-        $roles = [];
-        if ($member) {
-            $roles = $member->getRoles();
+
+        // Fetch user roles in the group, if applicable.
+        if ($group && ($membership = $group->getMember($account))) {
+            $roles = $membership->getRoles();
+            $roles = array_keys($roles);
         } else {
-            $roles = Role::loadMultiple($currentUser->getRoles(true));
+            $roles = $account->getRoles();
         }
-        $isAuthentic = false;
+
+        // Check if any of the user's roles have permission for the selected room.
         foreach ($roles as $role) {
-            $umberaRoles = $role->getThirdPartySetting('pennchas_form_alter', 'umbera_roles');
-            if ($umberaRoles && isset($umberaRoles[$roleName])) {
-                $isAuthentic = true;
-                break;
+            $roleConfig = $state->get('custom_group_role_config_' . $role);
+            if ($roleConfig && isset($roleConfig[$roomAvailableTo])) {
+                return true;
             }
         }
-        return $isAuthentic;
+        return false;
     }
 }
