@@ -189,31 +189,41 @@ function penchas_preprocess_node(&$variables)
     $variables['node_full_URL'] = $node->toUrl()->toString(); 
     
     if ($node->bundle() == 'page' || $node->bundle() == 'house_landing_page') {
-      $url_array = explode('/', $node->toUrl()->toString());
+      $url = $node->toUrl()->toString();
+      $url_array = explode('/', trim($url, '/'));
       $breadcrumbs = '';
+      
+      // Iterate over URL segments and build breadcrumbs
+      $url_parts = [];
       foreach ($url_array as $key => $breadcrumb_value) {
-        if(isset($breadcrumb_value) && !empty($breadcrumb_value)){
-          $query = $connection->select('path_alias', 'pa')
-            ->fields('pa', ['path'])
-            ->condition('pa.alias', '/'.$breadcrumb_value)
-            ->execute();
-          $result = $query->fetchObject();
-          $node_path = $result ? $result->path : NULL;
-          if (strpos($node_path, '/group') !== false) {
-            $group_id = str_replace('/group/', '', $node_path);
-            $group_name = get_group_label($group_id);
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="'.$front_page_path.$node_path . '">' . $group_name . '</a></li>';
+          if (!empty($breadcrumb_value)) {
+              // Try to find path alias if it exists
+              $query = \Drupal::database()->select('path_alias', 'pa')
+                  ->fields('pa', ['path'])
+                  ->condition('pa.alias', '/' . $breadcrumb_value)
+                  ->execute();
+              $result = $query->fetchObject();
+              $node_path = $result ? $result->path : '/' . $breadcrumb_value;
+              
+              // Add breadcrumb part
+              $url_parts[] = $breadcrumb_value;
+              $breadcrumb_url = '/' . implode('/', $url_parts);
+              
+              // Add the breadcrumb link
+              $breadcrumbs .= '<li class="breadcrumb-item">';
+              if ($key < count($url_array) - 1) {
+                  // For intermediate parts, add a link
+                  $breadcrumbs .= '<a href="' . $front_page_path . $breadcrumb_url . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
+              } else {
+                  // For the last part (current page), no link
+                  $breadcrumbs .= ucfirst(str_replace('-', ' ', $breadcrumb_value));
+              }
+              $breadcrumbs .= '</li>';
           }
-          if(strpos($node_path, '/node/') !== false){
-            $node_id = str_replace('/node/', '', $node_path);
-            $node_parent_label = get_node_title($node_id);
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="' .$front_page_path.$node_path . '">' . $node_parent_label . '</a></li>';
-          }
-        }
       }
+  
+      // Set breadcrumbs in variables
       $variables['page_breadcrumbs_list'] = $breadcrumbs;
-      // $node_meta_title = $node->getTitle() . ' | ' . \Drupal::config('system.site')->get('name');
-      // $variables['head_title']['title'] = $node_meta_title;
     }
     
     $node_title = $node->getTitle();
