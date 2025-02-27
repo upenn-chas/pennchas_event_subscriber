@@ -17,7 +17,8 @@
 {% include directory ~ '/templates/calendar-header.html.twig' with {'short_name': short_name}  %}
 <section class="calender-page space">
   <div{{ attributes.addClass(classes) }}>
-    <div class="container">
+    <div class="container calendar-view">
+      <div class="row">
       {{ title_prefix }}
       {% if title %}
         <h5>{{ title }}</h5>
@@ -95,6 +96,7 @@
             </div>
           {% endif %}
         </div>
+      </div>
       </div>
     </div>
   

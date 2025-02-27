@@ -415,6 +415,14 @@ label {
               padding-top: 15px;
               padding-bottom: 15px;
               color: $primaryColor;
+              label{
+                text-align: left;
+              }
+              .form-type-select {
+                label {
+                  min-width: auto;
+                }
+              }
               .smartdate--time-inline{ 
                 .time-start {
                   flex-wrap: nowrap;

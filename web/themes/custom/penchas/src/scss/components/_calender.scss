@@ -294,17 +294,26 @@
       width: 100%;
       display: none;
     }
-
+    h5{
+    margin-bottom: 15px;
+    }
     .view-filters {
       border-bottom: 1px solid $primaryColor;
-      padding-bottom: 25px;
+      padding-bottom: 5px;
+      padding-top: 15px;
     }
 
     .btn-teritory {
       width: 100%;
+      text-transform: none;
 
       &:not(:last-child) {
         margin-bottom: 20px;
+      }
+      &:hover{
+        background: #ffea3f;
+        color: #011f5b;
+        border-color: #ffea3f;
       }
     }
   }
@@ -360,8 +369,9 @@
           font-size: 18px;
           font-weight: 400;
           line-height: normal;
-          margin: 5px 0 10px 0 !important;
+          margin: 5px 0 4px 0 !important;
           width: max-content;
+          text-transform: none;
         }
       }
 
@@ -371,7 +381,7 @@
         a {
           display: inline-flex;
           align-items: center;
-          padding-right: 30px;
+          padding-right: 25px;
           position: relative;
           font-size: 0;
 
@@ -552,6 +562,7 @@
       width: auto;
       padding: 4px;
       margin: 0 auto;
+      font-weight: 600;
     }
   }
 
@@ -565,7 +576,7 @@
     color: $primaryColor;
     border-radius: 0;
     font-family: $teritoryFont;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   #more-button-container {
@@ -585,6 +596,9 @@
 .calender-page .calender-left .view-filters {
   div.js-form-item {
     padding-left: 0;
+    &.js-form-item-field-intended-audience-value{
+      margin-bottom: 0 !important;
+    }
 
     input[type="checkbox"] {
       display: none;
@@ -592,20 +606,20 @@
 
     label {
       position: relative;
-      padding-left: 35px;
+      padding-left: 30px;
       font-size: 18px;
       font-weight: 400;
       text-transform: none;
 
       @include media-query('ipad') {
-        padding-left: 30px;
+        padding-left: 25px;
       }
 
       &:before {
         content: "";
         position: absolute;
         left: 0;
-        top: 0;
+        top: 4px;
         width: 20px;
         height: 20px;
         border: 1px solid $primaryColor;

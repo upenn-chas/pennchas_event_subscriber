@@ -10,7 +10,7 @@ _core:
   default_config_hash: RUx2GFzPgeUTi3zHGWtBFpk3yGQAGStKPs4Moaq_Uew
 id: penchas_help
 theme: penchas
-region: highlighted
+region: none
 weight: -16
 provider: null
 plugin: help_block

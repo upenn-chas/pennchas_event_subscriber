@@ -73,8 +73,8 @@ function penchas_preprocess_container(array &$variables)
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
-    if (!empty($path_parts[2]) && $path_parts[2] == 'calendar') {
-      if (strpos($path_parts[2], 'calendar') !== false) {
+    if (!empty($path_parts[2]) && $path_parts[2] == 'calendar' || $path_parts[2] == 'room-reservation-calendar' || $path_parts[2] == 'week-room-reservation-calendar' || $path_parts[2] == 'week-calendar') {
+      if (strpos($path_parts[2], 'calendar') !== false || strpos($path_parts[2], 'room-reservation-calendar') !== false || strpos($path_parts[2], 'week-room-reservation-calendar') !== false || strpos($path_parts[2], 'week-calendar') !== false) {
         $variables['attributes']['class'] = 'full-container';
       }
     }
@@ -193,40 +193,44 @@ function penchas_preprocess_node(&$variables)
   }
 
   $variables['node_full_URL'] = $node->toUrl()->toString();
-  $connection = Database::getConnection();
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
 
   $nodeBundle = $node->bundle();
 
   // Handle breadcrumb generation for page and house_landing_page.
   if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
-    $url_segments = array_filter(explode('/', $node->toUrl()->toString()));
+    $url_array = array_filter(explode('/', $node->toUrl()->toString()));
     $breadcrumbs = '';
 
-    foreach ($url_segments as $segment) {
-      $result = $connection->select('path_alias', 'pa')
+    // Iterate over URL segments and build breadcrumbs
+    $url_parts = [];
+    foreach ($url_array as $key => $breadcrumb_value) {
+
+      // Try to find path alias if it exists
+      $query = \Drupal::database()->select('path_alias', 'pa')
         ->fields('pa', ['path'])
-        ->condition('pa.alias', '/' . $segment)
-        ->execute()
-        ->fetchObject();
+        ->condition('pa.alias', '/' . $breadcrumb_value)
+        ->execute();
+      $result = $query->fetchObject();
+      $node_path = $result ? $result->path : '/' . $breadcrumb_value;
 
-      if (!$result || empty($result->path)) {
-        continue;
+      // Add breadcrumb part
+      $url_parts[] = $breadcrumb_value;
+      $breadcrumb_url = '/' . implode('/', $url_parts);
+      // dd($breadcrumb_url);
+      // Add the breadcrumb link
+      $breadcrumbs .= '<li class="breadcrumb-item">';
+      if ($key < count($url_array) - 1) {
+        // For intermediate parts, add a link
+        $breadcrumbs .= '<a href="' . $front_page_path . $breadcrumb_url . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
+      } else {
+        // For the last part (current page), no link
+        $breadcrumbs .= ucfirst(str_replace('-', ' ', $breadcrumb_value));
       }
-
-      $node_path = $result->path;
-
-      if (strpos($node_path, '/group/') !== false) {
-        $group_id = str_replace('/group/', '', $node_path);
-        $group_name = get_group_label($group_id);
-        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $group_name . '</a></li>';
-      } elseif (strpos($node_path, '/node/') !== false) {
-        $node_id = str_replace('/node/', '', $node_path);
-        $node_parent_label = get_node_title($node_id);
-        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $front_page_path . $node_path . '">' . $node_parent_label . '</a></li>';
-      }
+      $breadcrumbs .= '</li>';
     }
 
+    // Set breadcrumbs in variables
     $variables['page_breadcrumbs_list'] = $breadcrumbs;
   } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
     $calendar_link = $base_path;
@@ -884,7 +888,7 @@ function penchas_preprocess_views_view(&$variables)
 
   $variables['base_path'] = base_path();
   $variables['get_involved'] = 'Get Involved';
-  $variables['house_calendar'] = 'Calendar';
+  $variables['house_calendar'] = 'House Calendar';
   $variables['house_programs'] = 'House Programs';
   $variables['breadcrumb_home'] = 'HOME';
   $variables['breadcrumb_dashboard'] = 'Dashboard';
@@ -1015,7 +1019,6 @@ function penchas_preprocess_views_view(&$variables)
     }
     $variables['selected_filters_output'] = $filters_html;
   }
-
 }
 
 

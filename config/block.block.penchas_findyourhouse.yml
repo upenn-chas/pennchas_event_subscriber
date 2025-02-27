@@ -9,7 +9,7 @@ dependencies:
 id: penchas_findyourhouse
 theme: penchas
 region: none
-weight: -16
+weight: -15
 provider: null
 plugin: find_your_house
 settings:

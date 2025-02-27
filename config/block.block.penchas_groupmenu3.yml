@@ -11,7 +11,7 @@ dependencies:
 id: penchas_groupmenu3
 theme: penchas
 region: none
-weight: -13
+weight: -12
 provider: null
 plugin: 'system_menu_block:group-menu-3'
 settings:

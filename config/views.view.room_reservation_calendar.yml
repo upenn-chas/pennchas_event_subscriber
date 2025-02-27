@@ -399,6 +399,7 @@ display:
           transform_dash: false
           break_phrase: false
       defaults:
+        css_class: false
         relationships: false
         arguments: false
       relationships:
@@ -433,6 +434,7 @@ display:
           entity_field: gid
           plugin_id: standard
           required: false
+      css_class: ''
       display_extenders: {  }
       path: group/%/room-reservation-calendar
     cache_metadata:
