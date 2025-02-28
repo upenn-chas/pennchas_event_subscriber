@@ -199,40 +199,43 @@ function penchas_preprocess_node(&$variables)
 
   // Handle breadcrumb generation for page and house_landing_page.
   if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
-    $url_array = array_filter(explode('/', $node->toUrl()->toString()));
-    $breadcrumbs = '';
+      // Get the full URL of the node
+      $url = $node->toUrl()->toString();
+      $url_array = explode('/', trim($url, '/'));
 
-    // Iterate over URL segments and build breadcrumbs
-    $url_parts = [];
-    foreach ($url_array as $key => $breadcrumb_value) {
-
-      // Try to find path alias if it exists
-      $query = \Drupal::database()->select('path_alias', 'pa')
-        ->fields('pa', ['path'])
-        ->condition('pa.alias', '/' . $breadcrumb_value)
-        ->execute();
-      $result = $query->fetchObject();
-      $node_path = $result ? $result->path : '/' . $breadcrumb_value;
-
-      // Add breadcrumb part
-      $url_parts[] = $breadcrumb_value;
-      $breadcrumb_url = '/' . implode('/', $url_parts);
-      // dd($breadcrumb_url);
-      // Add the breadcrumb link
-      $breadcrumbs .= '<li class="breadcrumb-item">';
-      if ($key < count($url_array) - 1) {
-        // For intermediate parts, add a link
-        $breadcrumbs .= '<a href="' . $front_page_path . $breadcrumb_url . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
-      } else {
-        // For the last part (current page), no link
-        $breadcrumbs .= ucfirst(str_replace('-', ' ', $breadcrumb_value));
+      // Initialize breadcrumb variable
+      $breadcrumbs = '';
+    
+      // Iterate over URL segments and build breadcrumbs
+      $url_parts = [];
+      foreach ($url_array as $key => $breadcrumb_value) {
+        if (!empty($breadcrumb_value)) {
+          // Try to find path alias if it exists
+          $query = \Drupal::database()->select('path_alias', 'pa')
+            ->fields('pa', ['path'])
+            ->condition('pa.alias', '/' . implode('/', array_slice($url_array, 0, $key + 1))) // Get the path for the alias
+            ->execute();
+          $result = $query->fetchObject();
+    
+          // If alias is found, use it; otherwise, fall back to the original path segment
+          $node_path = $result ? $result->path : '/' . implode('/', array_slice($url_array, 0, $key + 1));
+    
+          // Build the breadcrumb URL incrementally
+          $url_parts[] = $breadcrumb_value;
+          $breadcrumb_url = implode('/', $url_parts);
+    
+          // Skip the last breadcrumb (current node)
+          if ($key < count($url_array) - 1) {
+            // Add breadcrumb list item for the parent
+            $breadcrumbs .= '<li class="breadcrumb-item">';
+            $breadcrumbs .= '<a href="' . $node_path . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
+            $breadcrumbs .= '</li>';
+          }
+        }
       }
-      $breadcrumbs .= '</li>';
-    }
-
-    // Set breadcrumbs in variables
-    $variables['page_breadcrumbs_list'] = $breadcrumbs;
-  } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
+      // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
+      $variables['page_breadcrumbs_list'] = $breadcrumbs;
+    } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
     $calendar_link = $base_path;
     $edit_link = '';
 
