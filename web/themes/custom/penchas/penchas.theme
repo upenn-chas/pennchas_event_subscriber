@@ -196,12 +196,13 @@ function penchas_preprocess_node(&$variables)
   $connection = Database::getConnection();
   $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
-  
+  $nodeBundle = $node->bundle();
+
   if ($node instanceof NodeInterface) {
     $node = $variables['node'];
     $variables['node_full_URL'] = $node->toUrl()->toString(); 
     
-    if ($node->bundle() == 'page' || $node->bundle() == 'house_landing_page') {
+    if ($nodeBundle == 'page' || $node->bundle() == 'house_landing_page') {
       // Get the full URL of the node
       $url = $node->toUrl()->toString();
       $url_array = explode('/', trim($url, '/'));
@@ -414,20 +415,18 @@ function penchas_preprocess_html(&$variables)
   //   $group_roles_target_ids = [];
   //   $connection = Database::getConnection();
   //   $current_user = \Drupal::currentUser();
-  //   $uid = $current_user->id(); 
+  //   // $uid = $current_user->id(); 
+  //   $uid = '40';
+  //   // dump($uid);
   //   $user = \Drupal\user\Entity\User::load($uid);
   //   $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
   //   $personentitlement = explode(", ", $personentitlement_values);
-  //   // foreach ($result as $row) {
-  //   //   $group_roles_target_ids[] = $row->group_roles_target_id;  // Collect the 'group_roles_target_id' values.
-  //   // }
   //   $query = \Drupal::entityQuery('group_role');
   //   $role_ids = $query->execute();
   //   $group_roles = GroupRole::loadMultiple($role_ids);
   //   foreach ($group_roles as $role) {
   //     $group_roles_target_ids[] = $role->id();
   //   }
-
   //   $query = \Drupal::entityQuery('user_role');
   //   $role_ids = $query->execute();
   //   $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
@@ -452,7 +451,6 @@ function penchas_preprocess_html(&$variables)
   //   //   "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
   //   //   "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
   //   // ];
-  //   // dd($personentitlement);
   //   foreach ($personentitlement as $row => $value) {
   //     $array = explode('.', $value);
   //     $last_string = end($array);
@@ -476,6 +474,8 @@ function penchas_preprocess_html(&$variables)
   //           $query->condition('gr.entity_id', $uid);
   //           $query->condition('gr.gid', $group_id); 
   //           $group_results = $query->execute()->fetchObject();
+  //           // dd($group_user_roles_ids);
+  //           dd($group_results);
   //           if(!empty($group_results)){
   //             if($group_results->plugin_id == 'group_membership'){
   //               $groupData = Group::load($group_id);
@@ -515,7 +515,25 @@ function penchas_preprocess_html(&$variables)
   //             $user->save();
   //           }
   //         }
+  //       }elseif(isset($drupal_user_roles_ids)){
+  //         if ($user) {
+  //           foreach ($drupal_user_roles_ids as $role) {
+  //             if (!$user->hasRole($role)) {
+  //               $user->addRole($role);
+  //             }
+  //           }
+  //           $user->save();
+  //         }
   //       }
+  //     }
+  //   }elseif(isset($drupal_user_roles_ids)){
+  //     if ($user) {
+  //       foreach ($drupal_user_roles_ids as $role) {
+  //         if (!$user->hasRole($role)) {
+  //           $user->addRole($role);
+  //         }
+  //       }
+  //       $user->save();
   //     }
   //   }
   // }

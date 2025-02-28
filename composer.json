@@ -162,7 +162,7 @@
                 "Attachment pager": "https://www.drupal.org/files/issues/2020-11-29/2833734-allow-attachment-pager-42.patch"
             },
             "drupal/simplesamlphp_auth": {
-                "Get dynamically values and Updated in drupal": "patches/simple_auth.patch"
+                "Get dynamically values and Updated in drupal": "patches/simple_grouper.patch"
             }
         }
     },
