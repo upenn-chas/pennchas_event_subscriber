@@ -29,8 +29,15 @@ class NodeInsertHook
 
     public function handleEvent(Node $node): void
     {
-        $eventHousesId = $node->get('field_groups')->getValue();
-        $groupIds = array_column($eventHousesId, 'target_id');
+        $eventState = $node->get('moderation_state')->getString();
+        $eventLocationHouseId = (int) $node->get('field_location')->getString();
+        $roomReservationUrl =  Url::fromRoute('entity.group_relationship.create_form', ['group' => $eventLocationHouseId, 'plugin_id' => 'group_node:reserve_room'])->toString();
+        $groupIds = [$eventLocationHouseId];
+        
+        if ($eventState === Constant::MOD_STATUS_PUBLISHED) {
+            $eventHousesId = $node->get('field_groups')->getValue();
+            $groupIds = array_column($eventHousesId, 'target_id');
+        }
         $eventHouses = Group::loadMultiple($groupIds);
         foreach ($eventHouses as $house) {
             $existingRelationship = $house->getRelationshipsByEntity($node);
@@ -38,8 +45,7 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-        $eventLocationHouseId = (int) $node->get('field_location')->getString();
-        $roomReservationMessage = 'Do you need a room reservation? <a href="'. Url::fromRoute('entity.group_relationship.create_form', ['group' => $eventLocationHouseId, 'plugin_id' => 'group_node:reserve_room'])->toString() .'">click here</a>';
+        $roomReservationMessage = "Do you need a room reservation? <a href='{$roomReservationUrl}'>click here</a>";
         $message = t('Your event has been submited and there is a possible three day wait time for approval.' . ' ' . $roomReservationMessage);
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
@@ -94,7 +100,7 @@ class NodeInsertHook
     {
         $houseId = (int) $node->get('field_select_house')->getString();
         $house = Group::load($houseId);
-        if($house) {
+        if ($house) {
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $house->addRelationship($node, 'group_node:' . $node->getType());

@@ -193,16 +193,12 @@ function penchas_preprocess_node(&$variables)
   }
 
   $variables['node_full_URL'] = $node->toUrl()->toString();
-  $connection = Database::getConnection();
-  $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
-  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
+  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
+
   $nodeBundle = $node->bundle();
 
-  if ($node instanceof NodeInterface) {
-    $node = $variables['node'];
-    $variables['node_full_URL'] = $node->toUrl()->toString(); 
-    
-    if ($nodeBundle == 'page' || $node->bundle() == 'house_landing_page') {
+  // Handle breadcrumb generation for page and house_landing_page.
+  if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
       // Get the full URL of the node
       $url = $node->toUrl()->toString();
       $url_array = explode('/', trim($url, '/'));
@@ -239,10 +235,7 @@ function penchas_preprocess_node(&$variables)
       }
       // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
       $variables['page_breadcrumbs_list'] = $breadcrumbs;
-    }    
-
-    // $variables['page_breadcrumbs_list'] = $breadcrumbs;
-  } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
+    } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
     $calendar_link = $base_path;
     $edit_link = '';
 
