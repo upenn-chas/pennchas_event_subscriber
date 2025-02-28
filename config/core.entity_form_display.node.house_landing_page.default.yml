@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.house_landing_page.body
     - field.field.node.house_landing_page.feeds_item
     - field.field.node.house_landing_page.field_blocks_ref
+    - field.field.node.house_landing_page.field_last_state
     - field.field.node.house_landing_page.field_media_image
     - field.field.node.house_landing_page.field_parent_page
     - field.field.node.house_landing_page.field_select_house
@@ -118,12 +119,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   feeds_item: true
   field_blocks_ref: true
+  field_last_state: true
   field_media_image: true
   layout_builder__layout: true

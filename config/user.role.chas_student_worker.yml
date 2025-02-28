@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.node.article.default
     - core.entity_view_display.node.house_landing_page.default
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
@@ -44,7 +43,6 @@ permissions:
   - 'access media overview'
   - 'access my rerservations'
   - 'administer nodes'
-  - 'configure editable article node layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'

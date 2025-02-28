@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.program_community.field_blocks_ref
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
+    - field.field.node.program_community.field_last_state
     - field.field.node.program_community.field_media_image
     - field.field.node.program_community.field_tags
     - field.field.node.program_community.layout_builder__layout
@@ -37,6 +38,7 @@ hidden:
   field_blocks_ref: true
   field_group: true
   field_group_ref: true
+  field_last_state: true
   field_media_image: true
   field_tags: true
   langcode: true

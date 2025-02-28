@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_is_campus_wide
+    - field.field.node.notices.field_last_state
     - field.field.node.notices.field_marketing_blurb
     - field.field.node.notices.field_media_file
     - field.field.node.notices.field_media_image
@@ -47,6 +48,7 @@ hidden:
   field_group_ref: true
   field_groups: true
   field_is_campus_wide: true
+  field_last_state: true
   field_marketing_blurb: true
   field_media_image: true
   field_text_box: true

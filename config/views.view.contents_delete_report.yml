@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_last_state
     - workflows.workflow.editorial
     - workflows.workflow.non_moderation_flow
   module:
@@ -231,21 +232,19 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        revision_log:
-          id: revision_log
-          table: node_revision
-          field: revision_log
+        field_last_state:
+          id: field_last_state
+          table: node__field_last_state
+          field: field_last_state
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: revision_log
           plugin_id: field
           label: 'Last State'
           exclude: false
           alter:
             alter_text: true
-            text: '{{ revision_log__value |capitalize  }}'
+            text: '{{ field_last_state__value|capitalize  }} '
             make_link: false
             path: ''
             absolute: false
@@ -283,9 +282,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: basic_string
-          settings: {  }
-          group_column: entity_id
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -885,6 +885,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_last_state'
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
         - group_list
@@ -929,6 +930,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_last_state'
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
         - group_list
@@ -991,6 +993,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_last_state'
         - 'config:views.view.contents_delete_report'
         - 'config:workflow_list'
         - group_list

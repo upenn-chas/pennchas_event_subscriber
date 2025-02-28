@@ -1,0 +1,19 @@
+uuid: 1762034b-299d-4816-a858-707cbd495287
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.program_community
+id: node.program_community.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: program_community
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.chas_event.field_is_campus_wide
     - field.field.node.chas_event.field_last_moderated_by
     - field.field.node.chas_event.field_last_moderation_message
+    - field.field.node.chas_event.field_last_state
     - field.field.node.chas_event.field_link_1
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
@@ -252,6 +253,7 @@ hidden:
   field_is_campus_wide: true
   field_last_moderated_by: true
   field_last_moderation_message: true
+  field_last_state: true
   field_moderation_finished_at: true
   langcode: true
   published_at: true

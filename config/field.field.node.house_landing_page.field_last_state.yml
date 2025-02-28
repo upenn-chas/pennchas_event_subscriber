@@ -1,0 +1,19 @@
+uuid: c75e3b5f-0864-425e-ba51-824517e509de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.house_landing_page
+id: node.house_landing_page.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: house_landing_page
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

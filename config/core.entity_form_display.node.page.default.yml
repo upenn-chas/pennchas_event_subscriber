@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
+    - field.field.node.page.field_last_state
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
@@ -159,4 +160,5 @@ content:
 hidden:
   feeds_item: true
   field_blocks_ref: true
+  field_last_state: true
   layout_builder__layout: true

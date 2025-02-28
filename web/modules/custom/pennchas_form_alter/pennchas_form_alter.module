@@ -138,7 +138,8 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
             $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
             $node->setUnpublished();
             $node->setNewRevision(true);
-            $node->setRevisionLogMessage($currentState);
+            $node->setRevisionLogMessage('Deleted');
+            $node->set('field_last_state', $currentState);
             $node->save();
 
             \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
