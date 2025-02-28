@@ -1166,3 +1166,8 @@ body {
     }
   }
 }
+.js-form-item-field-event-schedule-0-time-wrapper-value-date{
+  @include media-query('mobile'){
+    margin-right: 0;
+  }
+}
