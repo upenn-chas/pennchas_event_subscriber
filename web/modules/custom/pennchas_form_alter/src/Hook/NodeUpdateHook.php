@@ -74,7 +74,11 @@ class NodeUpdateHook
     protected function processHouseChangeData(Node $node)
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
-        $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
+        $newHouses = [(int) $node->get('field_location')->getString()];
+        if($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
+            $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
+        }
+        
 
         $existingHouses = array_flip($existingHouses);
 

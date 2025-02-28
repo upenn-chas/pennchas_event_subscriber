@@ -38,23 +38,21 @@ class NodePreSaveHook
         ]);
         $eventHouseId = (int) $node->get('field_location')->getString();
         $eventHouse = Group::load($eventHouseId);
-        $housesId = [$eventHouseId];
+        $housesId = $this->getHouses($node);
         if ($this->canByPassModeration($eventHouse, Constant::PERMISSION_MODERATION)) {
             $node->setPublished(true);
             $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
             $node->set('field_moderation_finished_at', time());
-            $housesId = $this->getHouses($node);
         } else {
             $node->setPublished(false);
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
-        $node->set('field_groups', $housesId);
+        $node->field_groups =  $housesId;
         $houseCount = count($housesId);
         if ($houseCount === 1){
             $eventHouse_data = Group::load($housesId[0]);
             $group_machine_name = $eventHouse_data->get('field_short_name')->value;
             $node->set('field_group_ref', $group_machine_name);
-            // dd($node);
         }
         $node->set('field_is_campus_wide', $houseCount >= 14);
         $this->updateEventEndsOn($node);

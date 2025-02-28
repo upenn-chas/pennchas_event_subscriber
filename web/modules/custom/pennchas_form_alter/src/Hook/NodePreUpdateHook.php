@@ -34,8 +34,7 @@ class NodePreUpdateHook
         $eventExistingHouse = $node->original->get('field_groups')->getValue();
         $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
 
-        $eventHouseId = (int) $node->get('field_location')->getString();
-        $housesId = [$eventHouseId];
+        $housesId = $this->getHouses($node);
         $moderationState = $node->get('moderation_state')->getString();
         if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
             if ($this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)) {
