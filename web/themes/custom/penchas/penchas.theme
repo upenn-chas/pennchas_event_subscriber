@@ -1028,7 +1028,6 @@ function penchas_preprocess_views_view(&$variables)
     }
     $variables['selected_filters_output'] = $filters_html;
   }
-
 }
 
 

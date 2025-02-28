@@ -48,28 +48,46 @@
     });
 
     jQuery(document).on('click', '#more-btn', function() { 
-      var allLiTitles = '';
+      var body = '';
 
-      var eventDate = jQuery(this).closest('.calendar-view-day').find('time').text();
+      var weekday = jQuery(this).closest('.calendar-view-day').find('time').data('weekday');
+      var date = jQuery(this).closest('.calendar-view-day').find('time').text();
+      var modalTitle = '<div class="title-weekday">'+ weekday +'</div>';
+      modalTitle += '<div class="title-date font-weight-bold">'+ date +'</div>';
       jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
-        var title = jQuery(this).find('.title').text();
+        let titleContainer = jQuery(this).find('.title');
+        let anchor = titleContainer.find('a');
+        let eventTitle = anchor.text()
+        let eventUrl = anchor.attr('href');
         var eventTime = jQuery(this).find('.field_event_schedule_start_end_value').text();
-        allLiTitles += '<p>' + eventTime + '<strong> ' + title + '</strong>' + '</p>';
+        body += '<div class="modal-event"><span class="event-time">' + eventTime + '</span>';
+        body += '<a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></div>';
       });
-      var modalContent = '<h2>' + eventDate + '</h2>' + allLiTitles;
-      openModalWithContent(modalContent);
+      openModalWithContent(modalTitle, body);
     });
 
-    function openModalWithContent(content) {
+    function openModalWithContent(title, content) {
       // Check if a modal already exists or create one
       var modal = jQuery('#ajax-modal');
       if (modal.length === 0) {
         // If modal doesn't exist, create one
-        modal = jQuery('<div id="ajax-modal" class="modal calendar-modal"><div class="modal-content"><span class="close-btn">&times;</span><div id="modal-body"></div></div></div>');
+        modal = jQuery('<div id="ajax-modal" class="modal calendar-modal"> \
+          <div class="modal-dialog modal-dialog-centered" role="document">\
+            <div class="modal-content"> \
+            \
+              <div class="modal-header d-flex flex-column justify-content-center border-0 p-0">\
+                <div class="modal-title" id="modalTitle"></div>\
+                  <span class="close-btn" aria-hidden="true">&times;</span>\
+              </div>\
+              <div id="modal-body"></div>\
+            </div>\
+          </div>\
+        </div>');
         jQuery('body').append(modal);
       }
     
       // Append content to the modal body
+      jQuery('#modalTitle').html(title);
       jQuery('#modal-body').html(content);
     
       // Display the modal

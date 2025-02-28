@@ -9,7 +9,7 @@ id: node.chas_event.field_text_box
 field_name: field_text_box
 entity_type: node
 bundle: chas_event
-label: 'Experiences and Strategies'
+label: 'Experiences and Strategies (List your program activities)'
 description: ''
 required: true
 translatable: false

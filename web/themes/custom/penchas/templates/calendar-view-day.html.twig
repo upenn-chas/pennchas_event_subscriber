@@ -38,7 +38,7 @@
 
 	{# The day #}
 	{% block day_number %}
-    <time class="calendar-view-day__number" datetime="{{ timestamp|date('Y-m-d\TH:i:s') }}" title="{{ day_title|trim }}">
+    <time class="calendar-view-day__number" data-weekday="{{ timestamp|date('D') }}" datetime="{{ timestamp|date('Y-m-d\TH:i:s') }}" title="{{ day_title|trim }}">
       {{ timestamp|date('j') }}
     </time>
 	{% endblock %}

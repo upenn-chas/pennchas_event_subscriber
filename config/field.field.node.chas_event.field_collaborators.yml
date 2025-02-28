@@ -9,9 +9,9 @@ id: node.chas_event.field_collaborators
 field_name: field_collaborators
 entity_type: node
 bundle: chas_event
-label: Collaborator(s)
+label: 'Collaborator(s) (Include anyone co-hosting in addition to yourself)'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
