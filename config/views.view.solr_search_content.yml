@@ -326,7 +326,7 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             expose_fields: false
-            placeholder: 'What Are You Looking For?'
+            placeholder: 'What are you looking for?'
             searched_fields_id: search_api_fulltext_searched_fields
             value_maxlength: 128
           is_grouped: false
@@ -663,6 +663,9 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
+      cache:
+        type: search_api_none
+        options: {  }
       arguments:
         'null':
           id: 'null'
@@ -733,7 +736,7 @@ display:
               chas_director: '0'
               chas_professional_staff: '0'
             expose_fields: false
-            placeholder: 'What Are You Looking For?'
+            placeholder: 'What are you looking for?'
             searched_fields_id: search_api_fulltext_searched_fields
             value_maxlength: 128
           is_grouped: false
@@ -818,6 +821,7 @@ display:
           separator: ''
           hide_empty: true
       defaults:
+        cache: false
         style: false
         row: false
         fields: false

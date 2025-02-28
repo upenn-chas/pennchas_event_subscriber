@@ -88,7 +88,7 @@ class FilterForm extends FormBase
         $form['wrapper']['submit'] = [
             '#type' => 'submit',
             '#id' => 'submit-btn',
-            '#value' => $this->t('Submit'),
+            '#value' => $this->t('Apply'),
             '#ajax' => [
                 'callback' => '::filterAjaxCallback',
                 'wrapper' => 'report-table-container',
