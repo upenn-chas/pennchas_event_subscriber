@@ -16,9 +16,10 @@ register_users: true
 allow:
   set_drupal_pwd: true
   default_login: true
-  default_login_roles: {  }
-  default_login_users: '1'
-logout_goto_url: null
+  default_login_roles:
+    administrator: administrator
+  default_login_users: '1, 47, 48, 49, 50, 3, 41, 6, 42, 38, 32, 24, 39, 28,15, 26, 31'
+logout_goto_url: ''
 user_register_original: admin_only
 sync:
   mail: true

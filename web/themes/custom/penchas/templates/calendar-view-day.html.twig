@@ -30,9 +30,9 @@
   {% set count = (not rows ? 0 : rows|length)|number_format %}
   {% set day_title %}
     {% trans %}
-      {{ count }} result for {{ html_date }}
+      {{ count }} result
     {% plural count %}
-      {{ count }} results for {{ html_date }}
+      {{ count }} results
     {% endtrans %}
   {% endset %}
 
