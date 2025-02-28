@@ -1,0 +1,6 @@
+services:
+  pennchas_event_subscriber.deleted_node_access_subscriber:
+    class: Drupal\pennchas_event_subscriber\Subscriber\DeletedNodeAccessSubscriber
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }

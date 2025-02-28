@@ -113,6 +113,7 @@ module:
   penchas_custom_token: 0
   penchas_group_role_permissions: 0
   penchas_node_alteration: 0
+  pennchas_event_subscriber: 0
   pennchas_form_alter: 0
   recaptcha_v3: 0
   recreate_block_content: 0
