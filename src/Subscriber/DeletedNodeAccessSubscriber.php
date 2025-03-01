@@ -29,7 +29,8 @@ class DeletedNodeAccessSubscriber implements EventSubscriberInterface
      */
     protected $allowedRoutes = [
         'entity.node.version_history',
-        'entity.node.canonical'
+        'entity.node.canonical',
+        'entity.node.webform.results_submissions',
     ];
 
     /**
@@ -68,6 +69,7 @@ class DeletedNodeAccessSubscriber implements EventSubscriberInterface
         $route = \Drupal::routeMatch();
         $routeName = $route->getRouteName();
         $node = $route->getParameter('node');
+        
         // Check if the node is an instance of NodeInterface
         if (!$node || !$node instanceof \Drupal\node\NodeInterface) {
             return;
