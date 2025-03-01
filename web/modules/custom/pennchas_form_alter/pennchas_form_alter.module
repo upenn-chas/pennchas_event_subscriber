@@ -342,6 +342,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 {
     // Get the tabs array.
     $tabs = &$data['tabs'][0];
+
     // Check if the tabs array is empty.
     if(!$tabs) {
         return;
