@@ -324,221 +324,276 @@ function get_group_label($group_id)
   return $gm_result ? $gm_result->label : NULL;
 }
 
-// function penchas_preprocess_html(&$variables)
-// {
+function penchas_preprocess_html(&$variables)
+{
 
-//   /* Node Meta tag updates  */
-//   $node = \Drupal::routeMatch()->getParameter('node');
+  /* Node Meta tag updates  */
+  $node = \Drupal::routeMatch()->getParameter('node');
 
-//   if ($node instanceof NodeInterface) {
-//     // Get site name and node title once
-//     $site_name = \Drupal::config('system.site')->get('name');
-//     $node_title = $node->getTitle();
-//     $variables['node_title'] = $node_title;
-//     $node_meta_title = $node_title . ' | ' . $site_name;
-//     //dump($node_meta_title);
-//     // Define bundles that require group information
-//     $bundles_with_groups = ['program_community', 'article', 'reserve_room', 'room'];
+  if ($node instanceof NodeInterface) {
+    // Get site name and node title once
+    $site_name = \Drupal::config('system.site')->get('name');
+    $node_title = $node->getTitle();
+    $variables['node_title'] = $node_title;
+    $node_meta_title = $node_title . ' | ' . $site_name;
+    //dump($node_meta_title);
+    // Define bundles that require group information
+    $bundles_with_groups = ['program_community', 'article', 'reserve_room', 'room'];
 
-//     // If node is of a relevant bundle, process the group relationship
-//     if (in_array($node->bundle(), $bundles_with_groups)) {
-//       // Get the associated group ID
-//       $group_id = get_group_id_by_node($node);
-//       if ($group_id) {
-//         // Get group label and update meta title
-//         $group_machine_name = get_group_label($group_id);
-//         if ($group_machine_name) {
-//           $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-//         }
-//       }
-//     }
+    // If node is of a relevant bundle, process the group relationship
+    if (in_array($node->bundle(), $bundles_with_groups)) {
+      // Get the associated group ID
+      $group_id = get_group_id_by_node($node);
+      if ($group_id) {
+        // Get group label and update meta title
+        $group_machine_name = get_group_label($group_id);
+        if ($group_machine_name) {
+          $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+        }
+      }
+    }
 
-//     // Special handling for 'house_landing_page' bundle
-//     if ($node->bundle() === 'house_landing_page') {
-//       $parent_house_id = (int) $node->get('field_select_house')->target_id;
-//       $group_machine_name = get_group_label($parent_house_id);
-//       if ($group_machine_name) {
-//         $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-//       }
-//     }
+    // Special handling for 'house_landing_page' bundle
+    if ($node->bundle() === 'house_landing_page') {
+      $parent_house_id = (int) $node->get('field_select_house')->target_id;
+      $group_machine_name = get_group_label($parent_house_id);
+      if ($group_machine_name) {
+        $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+      }
+    }
 
-//     // Special handling for 'chas_event' and 'notices' bundles
-//     if ($node->bundle() == 'notices') {
-//       $event_house_id = $node->get('field_groups')->getString();
-//       $event_house_ids = explode(',', $event_house_id);
-//       if (count($event_house_ids) == 1) {
-//         $group_machine_name = get_group_label($event_house_id);
-//         if ($group_machine_name) {
-//           $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-//         }
-//       }
-//     }
+    // Special handling for 'chas_event' and 'notices' bundles
+    if ($node->bundle() == 'notices') {
+      $event_house_id = $node->get('field_groups')->getString();
+      $event_house_ids = explode(',', $event_house_id);
+      if (count($event_house_ids) == 1) {
+        $group_machine_name = get_group_label($event_house_id);
+        if ($group_machine_name) {
+          $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+        }
+      }
+    }
 
-//     // Special handling for 'chas_event' and 'notices' bundles
-//     if ($node->bundle() == 'chas_event') {
-//       $eventHousesId = $node->get('field_groups')->getValue();
-//       if (count($eventHousesId) == 1) {
-//         // $event_house_id = (int) $node->get('field_location')->getString();
-//         // $housesId = [$event_house_id];
-//         $group_machine_name = get_group_label($eventHousesId[0]['target_id']);
-//         if ($group_machine_name) {
-//           $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
-//         }
-//       }
-//     }
+    // Special handling for 'chas_event' and 'notices' bundles
+    if ($node->bundle() == 'chas_event') {
+      $eventHousesId = $node->get('field_groups')->getValue();
+      if (count($eventHousesId) == 1) {
+        // $event_house_id = (int) $node->get('field_location')->getString();
+        // $housesId = [$event_house_id];
+        $group_machine_name = get_group_label($eventHousesId[0]['target_id']);
+        if ($group_machine_name) {
+          $node_meta_title = $node_title . ' | ' . $group_machine_name . ' | ' . $site_name;
+        }
+      }
+    }
 
-//     // Assign the refined title to the head_title
-//     $variables['head_title']['title'] = $node_meta_title;
-//   }
+    // Assign the refined title to the head_title
+    $variables['head_title']['title'] = $node_meta_title;
+  }
 
 
-//   /* Node Meta tag updates ends here  */
+  /* Node Meta tag updates ends here  */
 
-//   $variables['base_path'] = base_path();
-//   $variables['breadcrumb_home'] = 'HOME';
-//   $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
-//   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
-//   $variables['front_page_url'] = $front_page_path;
-//   $current_uri = \Drupal::request()->getRequestUri();
+  $variables['base_path'] = base_path();
+  $variables['breadcrumb_home'] = 'HOME';
+  $url = \Drupal::service('url_generator')->generateFromRoute('<front>');
+  $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
+  $variables['front_page_url'] = $front_page_path;
+  $current_uri = \Drupal::request()->getRequestUri();
+  
+  /* SAML resposne testing starts */
+  // if($current_uri == '/all-college-houses'){
 
-//   /* SAML resposne testing starts */
-//   if($current_uri == '/all-college-houses'){
-
-//     // Initialize an array to store the results.
-//     $group_roles_target_ids = [];
-//     $connection = Database::getConnection();
-//     $current_user = \Drupal::currentUser();
-//     // $uid = $current_user->id(); 
-//     $uid = '40';
-//     // dump($uid);
-//     $user = \Drupal\user\Entity\User::load($uid);
-//     $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
-//     $personentitlement = explode(", ", $personentitlement_values);
-//     $query = \Drupal::entityQuery('group_role');
-//     $role_ids = $query->execute();
-//     $group_roles = GroupRole::loadMultiple($role_ids);
-//     foreach ($group_roles as $role) {
-//       $group_roles_target_ids[] = $role->id();
-//     }
-//     $query = \Drupal::entityQuery('user_role');
-//     $role_ids = $query->execute();
-//     $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
-//     foreach ($drupal_user_roles as $role) {
-//       $drupal_user_roles[] = $role->id();
-//     }
-
-//     // get all groups IDs by machine names
-//     $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
-//     ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
-//     $gf_result = $group_machine_name_query->execute()->fetchAll();
-//     $groups_data = [];
-//     foreach ($gf_result as $row) {
-//       $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
-//     }
-
-//     $personentitlement = [
-//       "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
-//       "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
-//       "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
-//       "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
-//       "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
-//       "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
-//     ];
-//     dump($personentitlement);
-//     foreach ($personentitlement as $row => $value) {
-//       $array = explode('.', $value);
-//       $last_string = end($array);
-//       // Asign that user into group
-//       if (array_key_exists($last_string, $groups_data)) {
-//         $group_ids[] = $groups_data[$last_string];
-//       }
-//       if (in_array($last_string, $drupal_user_roles)) {
-//         $drupal_user_roles_ids[] = $last_string;
-//       }
-//       if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
-//         $group_user_roles_ids[] = $last_string;
-//       }
-//     }
-//     dump($group_ids);
-//     dump($group_user_roles_ids);
-//     dump($drupal_user_roles_ids);
-//     if(isset($drupal_user_roles_ids)){
-//       if ($user) {
-//         foreach ($drupal_user_roles_ids as $role) {
-//           if (!$user->hasRole($role)) {
-//             $user->addRole($role);
-//           }
-//         }
-//         $user->save();
-//       }
-//     }
+  //   // Initialize an array to store the results.
+  //   $group_roles_target_ids = [];
+  //   $connection = Database::getConnection();
+  //   $current_user = \Drupal::currentUser();
+  //   // $uid = $current_user->id(); 
+  //   $uid = '40';
+  //   // dump($uid);
+  //   $user = \Drupal\user\Entity\User::load($uid);
     
-//     if (isset($group_ids)) {
-//       foreach ($group_ids as $key => $group_id) {
-//         if(isset($group_user_roles_ids)){
-//           foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
-//             $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
-//             $query->fields('gr');
-//             $query->condition('gr.entity_id', $uid);
-//             $query->condition('gr.gid', $group_id); 
-//             $group_results = $query->execute()->fetchObject();
-//             // dd($group_user_roles_ids);
-//             dd($group_results);
-//             if(!empty($group_results)){
-//               if($group_results->plugin_id == 'group_membership'){
-//                 $groupData = Group::load($group_id);
-//                 if ($groupData->getMember($user)) {
-//                   $groupData->removeMember($user);
+  //   $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
+  //   $personentitlement = explode(", ", $personentitlement_values);
+  //   $query = \Drupal::entityQuery('group_role');
+  //   $role_ids = $query->execute();
+  //   $group_roles = GroupRole::loadMultiple($role_ids);
+  //   foreach ($group_roles as $role) {
+  //     $group_roles_target_ids[] = $role->id();
+  //   }
+  //   $query = \Drupal::entityQuery('user_role');
+  //   $role_ids = $query->execute();
+  //   $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
+  //   foreach ($drupal_user_roles as $role) {
+  //     $drupal_user_roles[] = $role->id();
+  //   }
 
-//                   $values = ['group_roles' => []];
-//                   foreach ($group_user_roles_ids as $role_id) {
-//                       // Add each role to the group member
-//                       $values['group_roles'][] = 'house1-' . $role_id;
-//                   }
-//                   if (!$groupData->getMember($user)) {
-//                     $groupData->addMember($user, $values);
-//                   }
-//                 }
-//               }
-//             }else{
-//               // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
-//               $values = ['group_roles' => []];  
-//               foreach ($group_user_roles_ids as $role_id) {
-//                   // Add each role to the group member
-//                   $values['group_roles'][] = 'house1-' . $role_id;
-//               }
-//               $groupData = Group::load($group_id);
-//               if (!$groupData->getMember($user)) {
-//                 $groupData->addMember($user, $values);
-//               }
+  //   // get all groups IDs by machine names
+  //   $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
+  //   ->fields('gfh', ['entity_id', 'field_house_machine_name_value']);
+  //   $gf_result = $group_machine_name_query->execute()->fetchAll();
+  //   $groups_data = [];
+  //   foreach ($gf_result as $row) {
+  //     $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
+  //   }
 
-//             }
+  //   $personentitlement = [
+  //     "0" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.campus_partner",
+  //     "1" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.ra",
+  //     "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
+  //     "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
+  //     "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
+  //     "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
+  //   ];
+  //   dump($personentitlement);
+  //   foreach ($personentitlement as $row => $value) {
+  //     $array = explode('.', $value);
+  //     $last_string = end($array);
+  //     // Asign that user into group
+  //     if (array_key_exists($last_string, $groups_data)) {
+  //       $group_ids[] = $groups_data[$last_string];
+  //     }
+  //     if (in_array($last_string, $drupal_user_roles)) {
+  //       $drupal_user_roles_ids[] = $last_string;
+  //     }
+  //     if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
+  //       $group_user_roles_ids[] = $last_string;
+  //     }
+  //   }
+  //   dump($group_ids);
+  //   dump($group_user_roles_ids);
+  //   dump($drupal_user_roles_ids);
+  //   // if(isset($drupal_user_roles_ids)){
+  //   //   if ($user) {
+  //   //     foreach ($drupal_user_roles_ids as $role) {
+  //   //       if (!$user->hasRole($role)) {
+  //   //         $user->addRole($role);
+  //   //       }
+  //   //     }
+  //   //     $user->save();
+  //   //   }
+  //   // }
+  //   $bundle = 'house1-group_membership'; // Replace with your bundle if needed.
+  //   // dd($bundle);
+  //   $membership = GroupMembership::create([
+  //     'bundle' => $bundle,
+  //     'group' => 5,
+  //     'uid' => 40,
+  //     'roles' => ['house1-chas_technology'],
+  //   ]);
 
-//             if ($user) {
-//               foreach ($drupal_user_roles_ids as $role) {
-//                 if (!$user->hasRole($role)) {
-//                   $user->addRole($role);
-//                 }
-//               }
-//               $user->save();
-//             }
-//           }
-//         }elseif(isset($drupal_user_roles_ids)){
-//           if ($user) {
-//             foreach ($drupal_user_roles_ids as $role) {
-//               if (!$user->hasRole($role)) {
-//                 $user->addRole($role);
-//               }
-//             }
-//             $user->save();
-//           }
-//         }
-//       }
-//     }
-//   }
+  //   // Save the group membership.
+  //   // $membership->save();
+  //   dd($membership);
+  //   if (isset($group_ids)) {
+  //     dump($group_user_roles_ids);
+  //     foreach ($group_ids as $key => $group_id) {
 
-//   /* SAML resposne testing ends */
-// }
+  //       $prefix = "house1-";
+
+  //       $values = array_map(function($item) use ($prefix) {
+  //         return $prefix . $item;
+  //       }, $group_user_roles_ids);
+  //       // $values = [
+  //       //     'global_role' => 'house1-house_coordinator',  // The role you want to assign
+  //       //     'role' => 'house1-house_coordinator',  // The role you want to assign
+  //       //     // 'status' => TRUE,                    // Set status to active
+  //       //     'scope' => 'any',               // This could be the context or scope of the membership
+  //       //     'group_type'=> 'house1',
+  //       //   ];
+  //       // $values = ['group_roles' => $values];
+  //       // dump($values);
+
+  //       // Remove existing group membership
+  //       // $groupData = Group::load($group_id);
+  //       // $groupData->removeMember($user);
+        
+  //       // $groupData->addMember($user, $values);
+  //       // $groupData->save();
+        
+  //       die();
+
+  //             $groupData->addMember($user, $values);
+  //             $groupData->save();
+  //             die();
+  //       if(isset($group_user_roles_ids)){
+  //         foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
+  //           $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
+  //           $query->fields('gr');
+  //           $query->condition('gr.entity_id', $uid);
+  //           $query->condition('gr.gid', $group_id); 
+  //           $group_results = $query->execute()->fetchObject();
+  //           // dd($group_user_roles_ids);
+  //           dump($group_results);
+  //           // if($group_results){
+  //           //   // dd('sad: asdasd'.$group_id);
+  //           //   if($group_results->plugin_id == 'group_membership'){
+  //           //     // dd($group_id);
+  //           //     if ($groupData->getMember($user)) {
+  //                 $groupData->removeMember($user);
+
+  //           //       $values = ['group_roles' => []];
+  //           //       foreach ($group_user_roles_ids as $role_id) {
+  //           //           // Add each role to the group member
+  //           //           $values['group_roles'][] = 'house1-' . $role_id;
+  //           //       }
+  //           //       if (!$groupData->getMember($user)) {
+  //           //         $groupData->addMember($user, $values);
+  //           //       }
+  //           //     }
+  //           //   }
+  //           // }else{
+  //             $values = ['group_roles' => 'house1-'.$group_user_roles_id];
+  //             dump($group_user_roles_ids);
+  //             $values = ['group_roles' => []];  
+  //             // foreach ($group_user_roles_ids as $role_id) {
+  //             //     // Add each role to the group member
+  //             //     $values['group_roles'][] = 'house1-' . $role_id;
+  //             // }
+  //             $prefix = "house1-";
+
+  //             $values = array_map(function($item) use ($prefix) {
+  //                 return $prefix . $item;
+  //             }, $group_user_roles_ids);
+  //             // $values = ['group_roles' => $values];
+  //             // dd($values);
+  //             // $values = [
+  //             //   'role' => 'house1-chas_technology',  // The role you want to assign
+  //             //   'status' => TRUE,                    // Set status to active
+  //             //   'scope' => 'outsider',               // This could be the context or scope of the membership
+  //             // ];
+  //             // $groupData = Group::load($group_id);
+  //             // if (!$groupData->getMember($user)) {
+  //               // $groupData->addMember($user);
+  //               $membership = $groupData->addMember($user);
+
+  //               // Set the role for the group membership.
+  //               $membership->addRole($role_entity);
+                
+  //               // Save the changes.
+  //               $membership->save();
+  //               $groupData->save();
+  //               dd($membership);
+  //             // }
+
+  //           // }
+
+  //           // if ($user) {
+  //           //   foreach ($drupal_user_roles_ids as $role) {
+  //           //     if (!$user->hasRole($role)) {
+  //           //       $user->addRole($role);
+  //           //     }
+  //           //   }
+  //           //   $user->save();
+  //           // }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  /* SAML resposne testing ends */
+}
 
 function penchas_preprocess_page(&$variables)
 {
@@ -557,23 +612,24 @@ function penchas_preprocess_block(&$variables)
 {
 
   $route_name = \Drupal::routeMatch()->getRouteName();
-
-  // Check if we are on a node page (e.g., node/[nid]).
-  if (strpos($route_name, 'entity.node.canonical') !== FALSE) {
-    // Get the current node object.
-    $node = \Drupal::routeMatch()->getParameter('node');
-    // Check if the node exists and is an instance of the Node class.
-    if ($node && $node instanceof \Drupal\node\NodeInterface) {
-      $node_title = $node->getTitle();
-      if ($node->bundle() == 'reserve_room' || $node->bundle() == 'chas_event') {
-        if ($node->get('field_event_schedule')->getValue()) {
-          $node_event_schedule = $node->get('field_event_schedule')->getValue();
-          $node_start_date = $node_event_schedule[0]['value'];
-          $node_end_date = $node_event_schedule[0]['end_value'];
+  if(isset($route_name)){
+    // Check if we are on a node page (e.g., node/[nid]).
+    if (strpos($route_name, 'entity.node.canonical') !== FALSE) {
+      // Get the current node object.
+      $node = \Drupal::routeMatch()->getParameter('node');
+      // Check if the node exists and is an instance of the Node class.
+      if ($node && $node instanceof \Drupal\node\NodeInterface) {
+        $node_title = $node->getTitle();
+        if ($node->bundle() == 'reserve_room' || $node->bundle() == 'chas_event') {
+          if ($node->get('field_event_schedule')->getValue()) {
+            $node_event_schedule = $node->get('field_event_schedule')->getValue();
+            $node_start_date = $node_event_schedule[0]['value'];
+            $node_end_date = $node_event_schedule[0]['end_value'];
+          }
+          // Get the node URL.
+          $node_url = $node->toUrl()->toString();
+          $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' . $node_title . '&dates=' . date('YmjThms', $node_start_date) . '/' . date('YmjThms', $node_end_date);
         }
-        // Get the node URL.
-        $node_url = $node->toUrl()->toString();
-        $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' . $node_title . '&dates=' . date('YmjThms', $node_start_date) . '/' . date('YmjThms', $node_end_date);
       }
     }
   }

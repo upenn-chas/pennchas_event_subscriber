@@ -25,7 +25,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 
 function pennchas_form_alter_preprocess_page(&$variables)
 {
-    \Drupal::messenger()->deleteAll(); // Remove all messages
+    // \Drupal::messenger()->deleteAll(); // Remove all messages
     if (\Drupal::request()->getPathInfo() === '/dashboard') {
         $variables['#cache']['max-age'] = 0; // Disable cache
     }
@@ -337,42 +337,42 @@ function penchas_add_exclude_notices_filter($form, FormStateInterface &$form_sta
 /**
  * Implements hook_menu_local_tasks_alter().
  */
-function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
-{
-    // Get the tabs array.
-    $tabs = &$data['tabs'][0];
-    // Check if the tabs array is empty.
-    if(!$tabs) {
-        return;
-    }
+// function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
+// {
+//     // Get the tabs array.
+//     $tabs = &$data['tabs'][0];
+//     // Check if the tabs array is empty.
+//     if(!$tabs) {
+//         return;
+//     }
 
-    // List of common tabs to remove.
-    static $unsetTabs = [
-        'devel' => 1,
-        'search content' => 1,
-        'moderated content' => 1,
-    ];
-    remove_tabs($tabs, $unsetTabs);
+//     // List of common tabs to remove.
+//     static $unsetTabs = [
+//         'devel' => 1,
+//         'search content' => 1,
+//         'moderated content' => 1,
+//     ];
+//     remove_tabs($tabs, $unsetTabs);
 
-    // Get the node object from the route.
-    $node = \Drupal::routeMatch()->getParameter('node');
+//     // Get the node object from the route.
+//     $node = \Drupal::routeMatch()->getParameter('node');
 
-    // Check if the node is a node object.
-    if ($node && $node instanceof NodeInterface) {
-        // List of tabs to remove when the node is deleted.
-        static $unsetTabsOfDeletedNode = [
-            'delete' => 1,
-            'edit' => 1,
-            'layout' => 1,
-            'clone' => 1,
-            'revert' => 1
-        ];
-        // Check if the node is deleted.
-        if ($node->hasField('moderation_state') && $node->get('moderation_state')->getString() === 'delete') {
-            remove_tabs($tabs, $unsetTabsOfDeletedNode);
-        }
-    }
-}
+//     // Check if the node is a node object.
+//     if ($node && $node instanceof NodeInterface) {
+//         // List of tabs to remove when the node is deleted.
+//         static $unsetTabsOfDeletedNode = [
+//             'delete' => 1,
+//             'edit' => 1,
+//             'layout' => 1,
+//             'clone' => 1,
+//             'revert' => 1
+//         ];
+//         // Check if the node is deleted.
+//         if ($node->hasField('moderation_state') && $node->get('moderation_state')->getString() === 'delete') {
+//             remove_tabs($tabs, $unsetTabsOfDeletedNode);
+//         }
+//     }
+// }
 
 /**
  * Remove tabs from the tabs array.
