@@ -366,7 +366,8 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
             'edit' => 1,
             'layout' => 1,
             'clone' => 1,
-            'revert' => 1
+            'revert' => 1,
+            'test' => 1,
         ];
         // Check if the node is deleted.
         if ($node->hasField('moderation_state') && $node->get('moderation_state')->getString() === 'delete') {

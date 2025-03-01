@@ -199,45 +199,45 @@ function penchas_preprocess_node(&$variables)
 
   // Handle breadcrumb generation for page and house_landing_page.
   if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
-      // Get the full URL of the node
-      $url = $node->toUrl()->toString();
-      $url_array = explode('/', trim($url, '/'));
+    // Get the full URL of the node
+    $url = $node->toUrl()->toString();
+    $url_array = explode('/', trim($url, '/'));
 
-      // Initialize breadcrumb variable
-      $breadcrumbs = '';
-    
-      // Iterate over URL segments and build breadcrumbs
-      $url_parts = [];
-      foreach ($url_array as $key => $breadcrumb_value) {
-        if (!empty($breadcrumb_value)) {
-          // Try to find path alias if it exists
-          $query = \Drupal::database()->select('path_alias', 'pa')
-            ->fields('pa', ['path'])
-            ->condition('pa.alias', '/' . implode('/', array_slice($url_array, 0, $key + 1))) // Get the path for the alias
-            ->execute();
-          $result = $query->fetchObject();
-    
-          // If alias is found, use it; otherwise, fall back to the original path segment
-          $node_path = $result ? $result->path : '/' . implode('/', array_slice($url_array, 0, $key + 1));
-    
-          // Build the breadcrumb URL incrementally
-          $url_parts[] = $breadcrumb_value;
-          $breadcrumb_url = implode('/', $url_parts);
-    
-          // Skip the last breadcrumb (current node)
-          if ($key < count($url_array) - 1) {
-            // Add breadcrumb list item for the parent
-            $breadcrumbs .= '<li class="breadcrumb-item">';
-            $breadcrumbs .= '<a href="' . $node_path . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
-            $breadcrumbs .= '</li>';
-          }
+    // Initialize breadcrumb variable
+    $breadcrumbs = '';
+
+    // Iterate over URL segments and build breadcrumbs
+    $url_parts = [];
+    foreach ($url_array as $key => $breadcrumb_value) {
+      if (!empty($breadcrumb_value)) {
+        // Try to find path alias if it exists
+        $query = \Drupal::database()->select('path_alias', 'pa')
+          ->fields('pa', ['path'])
+          ->condition('pa.alias', '/' . implode('/', array_slice($url_array, 0, $key + 1))) // Get the path for the alias
+          ->execute();
+        $result = $query->fetchObject();
+
+        // If alias is found, use it; otherwise, fall back to the original path segment
+        $node_path = $result ? $result->path : '/' . implode('/', array_slice($url_array, 0, $key + 1));
+
+        // Build the breadcrumb URL incrementally
+        $url_parts[] = $breadcrumb_value;
+        $breadcrumb_url = implode('/', $url_parts);
+
+        // Skip the last breadcrumb (current node)
+        if ($key < count($url_array) - 1) {
+          // Add breadcrumb list item for the parent
+          $breadcrumbs .= '<li class="breadcrumb-item">';
+          $breadcrumbs .= '<a href="' . $node_path . '">' . ucfirst(str_replace('-', ' ', $breadcrumb_value)) . '</a>';
+          $breadcrumbs .= '</li>';
         }
       }
-      // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
-      $variables['page_breadcrumbs_list'] = $breadcrumbs;
-    } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
+    }
+    // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
+    $variables['page_breadcrumbs_list'] = $breadcrumbs;
+  } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
     $calendar_link = $base_path;
-    $edit_link = '';
+    $links = '';
 
     if ($current_user->isAuthenticated()) {
       $moderator_link = '';
@@ -254,27 +254,34 @@ function penchas_preprocess_node(&$variables)
       $variables['is_logged_in'] = TRUE;
       $variables['attributes']['class'][] = 'logged-in-user';
 
-      // Generate edit link if the user has permission.
-      if ($node->access('update')) {
-        $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()])->toString();
-        $edit_link = '<li><a href="' . $edit_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
-      }
+
 
       // Generate moderator link if the node is in draft/pending state and user has access.
       $moderator_access_check_service = \Drupal::service('pennchas_common.moderator_access_check');
-      if ($node->hasField('moderation_state') && ($moderationState = $node->get('moderation_state')->value)) {
+
+      // Get the moderation state of the node.
+      $moderationState = $node->hasField('moderation_state') ? $node->get('moderation_state')->value : NULL;
+
+      // Generate edit and moderation link only if the node is not deleted.
+      if ($moderationState !== 'delete') {
+
+        // Generate edit link if the user has permission.
+        if ($node->access('update')) {
+          $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()])->toString();
+          $links = '<li><a href="' . $edit_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
+        }
+        
+        // Generate moderation link if the user has permission.
         if (in_array($moderationState, ['draft', 'pending']) && $moderator_access_check_service->checkForEntity($node)) {
           $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
-          $moderator_link = '<li><a href="' . $moderator_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+          $links .= '<li><a href="' . $moderator_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
         }
       }
-
-      $edit_link .= $moderator_link;
     }
 
     $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul>
           <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'
-      . $edit_link . '</ul></div></div>';
+      . $links . '</ul></div></div>';
   } else if ($nodeBundle === 'reserve_room' && $variables['view_mode'] === 'moderator') {
     $variables['moderation_logs'] = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($node->id());
   }
