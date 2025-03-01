@@ -52,9 +52,10 @@ class ReserveRoomFormAlter
     private function _getGroupRooms(int $groupId)
     {
         $roomsIds = \Drupal::entityQuery('node')
-            ->accessCheck(false)
+            ->accessCheck(TRUE)
             ->condition('type', 'room')
             ->condition('status', 1)
+            ->sort('title', 'ASC') 
             ->condition('field_group', $groupId)
             ->execute();
 
