@@ -93,6 +93,7 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
         'views-exposed-form-videos-link-report-page-1' => 1,
         'views-exposed-form-events-evaluation-report-page-1' => 1,
         'views-exposed-form-contents-delete-report-page-1' => 1,
+        'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
         'views-exposed-form-my-reservations-my-pending-reservations' => 1,
         'views-exposed-form-my-reservations-my-reservations-block' => 1,
         'views-exposed-form-my-reservations-page-1' => 1,
