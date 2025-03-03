@@ -596,9 +596,6 @@
 .calender-page .calender-left .view-filters {
   div.js-form-item {
     padding-left: 0;
-    &.js-form-item-field-intended-audience-value{
-      margin-bottom: 0 !important;
-    }
 
     input[type="checkbox"] {
       display: none;
@@ -643,7 +640,7 @@
         border-left: 2px solid #fff;
         border-bottom: 2px solid #fff;
         left: 4px;
-        top: 3px;
+        top: 7px;
         transform: rotate(-45deg);
 
         @include media-query('ipad') {

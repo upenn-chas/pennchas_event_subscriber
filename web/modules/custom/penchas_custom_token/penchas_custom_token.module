@@ -23,10 +23,10 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function penchas_custom_token_token_info(): array {
   $tokens = [];
-  $tokens['penchas_custom_token']['event_subheading'] = [
-    'name' => t('Subheading for Dashboard'),
-    'description' => t("Event Info Subheading for Dashboard pages."),
-  ];
+  // $tokens['penchas_custom_token']['event_subheading'] = [
+  //   'name' => t('Subheading for Dashboard'),
+  //   'description' => t("Event Info Subheading for Dashboard pages."),
+  // ];
   $tokens['penchas_custom_token']['penchas_myevent'] = [
     'name' => t('My Pending Event for Dashboard'),
     'description' => t("My Pending Event for Dashboard."),
@@ -73,9 +73,9 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
 
   foreach ($tokens as $name => $original) {
     switch ($name) {
-      case 'event_subheading':
-        $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForModerator('chas_event');
-        break;
+      // case 'event_subheading':
+      //   $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForModerator('chas_event');
+      //   break;
 
       case 'penchas_myevent':
         $replacements[$original] = \Drupal::service('pennchas_custom_token.pending_moderation_node_count')->nodeCountForAuthor('chas_event', 'events pending.');

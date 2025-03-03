@@ -153,7 +153,6 @@ third_party_settings:
           - 'inline_block:view_block'
       restricted_categories:
         - 'Custom block types'
-        - 'Custom blocks'
         - 'Lists (Views)'
         - Menus
         - System

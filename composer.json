@@ -161,7 +161,8 @@
             "drupal/core": {
                 "getEntityTypeId": "https://www.drupal.org/files/issues/2024-06-26/3049332_d10.3.0.patch",
                 "Views filter of timestamp type": "https://www.drupal.org/files/issues/2024-11-19/core_views-timestamp_date_filter-3204558-13.patch",
-                "Attachment pager": "https://www.drupal.org/files/issues/2020-11-29/2833734-allow-attachment-pager-42.patch"
+                "Attachment pager": "https://www.drupal.org/files/issues/2020-11-29/2833734-allow-attachment-pager-42.patch",
+                "html issue": "https://www.drupal.org/files/issues/2023-08-07/TypeError_htmlspecialchars_ArgumentNustBeTypeString_ArrayGiven-3352384-43.patch"
             },
             "drupal/simplesamlphp_auth": {
                 "Get dynamically values and Updated in drupal": "patches/samlphp_auth_new.patch"
