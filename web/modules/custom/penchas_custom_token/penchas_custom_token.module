@@ -216,7 +216,8 @@ function user_has_permission(AccountInterface $account, $permission) {
   return $account->hasPermission($permission);
 }
 
-function penchas_custom_token_get_pending_moderation_node()
-{
+// function penchas_custom_token_get_pending_moderation_node()
+// {
   
-}
+// }
+

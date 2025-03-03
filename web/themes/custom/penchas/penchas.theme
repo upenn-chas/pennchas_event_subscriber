@@ -1062,6 +1062,20 @@ function penchas_preprocess_views_view(&$variables)
     if (!empty($values)) {
       $view_url = $view->getUrl();
       $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
+      switch ($community) {
+        case 'four_year_community':
+            $community = 'Four Year Community';
+            break;
+        case 'first_year_community':
+            $community = 'First Year Community';
+            break;
+        case 'upperclass_community':
+            $community = 'Upperclass Community';
+            break;
+
+        default:
+            break;
+      }
       $selected_filters['field_community'] = $community;
       if (isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All') {
         $variables['size'] = $values['field_number_of_residents_value'];
@@ -1079,7 +1093,7 @@ function penchas_preprocess_views_view(&$variables)
       // params condition : (Small: <300; Medium: 301<>600; Large >600)
       $min = $max = $value = '';
       if ($variables['size'] == 1) {
-        $selected_filters['size'] = 'Small < 300';
+        $selected_filters['size'] = 'Small';
         $size = '1';
         $operator = '<=';
         $value = 300;
@@ -1088,12 +1102,12 @@ function penchas_preprocess_views_view(&$variables)
         $operator = 'between';
         $min = 300;
         $max = 600;
-        $selected_filters['size'] = 'Medium 301<>600';
+        $selected_filters['size'] = 'Medium';
       } else if ($variables['size'] == 3) {
         $size = '3';
         $operator = '>';
         $value = 600;
-        $selected_filters['size'] = 'Large >600';
+        $selected_filters['size'] = 'Large';
       }
       $link = $view_url->toString() . '?field_community_value=' . $community . '&field_number_of_residents_value=' . $size . '&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
       if (!empty($selected_filters) && isset($selected_filters['field_community']) && $selected_filters['field_community'] != 'All') {

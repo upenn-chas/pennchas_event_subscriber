@@ -395,3 +395,5 @@ function remove_tabs(array &$tabs, array $tabTitles)
         }
     }
 }
+
+
