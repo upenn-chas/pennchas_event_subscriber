@@ -4189,23 +4189,24 @@ display:
           admin_label: 'Group relationship'
           entity_type: group
           plugin_id: group_to_group_relationship
-          required: false
+          required: true
           group_relation_plugins:
             'group_node:chas_event': 'group_node:chas_event'
             'group_node:article': '0'
             'group_node:house_landing_page': '0'
+            'group_node:notices': '0'
             'group_node:page': '0'
             'group_node:program_community': '0'
             'group_node:reserve_room': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
             group_membership: '0'
-            group_media_type: '0'
             'group_media:audio': '0'
             'group_media:document': '0'
             'group_media:image': '0'
             'group_media:remote_video': '0'
             'group_media:video': '0'
+            group_media_type: '0'
       use_ajax: false
       display_description: ''
       use_more: false
