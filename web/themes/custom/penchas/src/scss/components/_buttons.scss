@@ -215,3 +215,26 @@ a.arrow-link {
   border-radius: 50%;
   
 }
+
+
+.btn.form-submit {
+  font-size: 18px;
+  background: #011f5b;
+  border-radius: 10px;
+  color: #fff;
+  border: 1px solid #011f5b;
+  font-weight: 400;
+  padding: 0 20px;
+  height: 50px;
+  line-height: normal;
+  margin-left: 20px;
+
+  &:hover {
+    background-color: #fff;
+    color: #011f5b;
+  }
+
+  &::before {
+    display: none;
+  }
+}
