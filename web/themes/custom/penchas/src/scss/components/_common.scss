@@ -1171,3 +1171,25 @@ body {
     margin-right: 0;
   }
 }
+
+.paragraphs-dropdown {
+  .paragraphs-dropdown-actions {
+    top:44px;
+    padding: 0px 16px 16px;
+  }
+}  
+
+.view-id-my_events.view-display-id-page_1 {
+  .list-group-item {
+    .block1 span {
+      display: inline-block;
+      margin: 5px 0;
+    }
+    
+    .block2 {
+      .repeat-description {
+        color: #4E638C;
+      }
+    }
+  }  
+}
