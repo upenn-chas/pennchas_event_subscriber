@@ -22,6 +22,8 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Render\Element\Form;
+use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 
 function pennchas_form_alter_preprocess_page(&$variables)
 {
@@ -74,17 +76,18 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             $form['actions']['submit']['#value'] = t('Export');
             break;
         case Constant::VIEW_EXPOSED_FORM_ID:
-            pennchas_form_alter_views_exposed_form_alter($form);
+            pennchas_form_alter_views_exposed_form_alter($form, $formState);
             break;
         default:
             break;
     }
 }
 
-function  pennchas_form_alter_views_exposed_form_alter(array &$form)
+function  pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInterface $formState)
 {
+    // Get the form ID
     $filterFormId = $form['#id'];
-
+    
     // Targeted views
     static $targetViews = [
         'views-exposed-form-moderation-reports-event-moderation' => 1,
@@ -94,6 +97,9 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
         'views-exposed-form-events-evaluation-report-page-1' => 1,
         'views-exposed-form-contents-delete-report-page-1' => 1,
         'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
+        'views-exposed-form-users-reports-page-1' => 1,
+    ];
+    static $targetDashboardViews = [
         'views-exposed-form-my-reservations-my-pending-reservations' => 1,
         'views-exposed-form-my-reservations-my-reservations-block' => 1,
         'views-exposed-form-my-reservations-page-1' => 1,
@@ -105,26 +111,12 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
     ];
 
     if (isset($targetViews[$filterFormId])) {
+        $form = (new ReportExposeFormAlter())->alter($form, $formState);
+    } else if(isset($targetDashboardViews[$filterFormId]) || $filterFormId === 'views-exposed-form-moderated-content-moderated-content') { 
         if (isset($form['moderation_state'])) {
             unset($form['moderation_state']['#options']['All']);
         }
-
-        if (isset($form['exposed_from_date'])) {
-            $form['exposed_from_date']['#title'] = t('From');
-        }
-
-        if (isset($form['exposed_to_date'])) {
-            $form['exposed_to_date']['#title'] = t('To');
-        }
-
-        if (isset($form['type'])) {
-            unset($form['type']['#options']['All']);
-        }
-    } else if ($filterFormId === 'views-exposed-form-moderated-content-moderated-content') {
-        if (isset($form['moderation_state'])) {
-            unset($form['moderation_state']['#options']['All']);
-        }
-    } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
+    }else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
         $groups = $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
         $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
     }
@@ -152,6 +144,8 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
         \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
     }
 }
+
+
 
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {

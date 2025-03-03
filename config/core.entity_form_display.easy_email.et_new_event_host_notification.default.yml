@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_new_event_host_notification
     - field.field.easy_email.et_new_event_host_notification.field_event
+    - field.field.easy_email.et_new_event_host_notification.field_waiting_period
   module:
     - file
     - text
@@ -98,6 +99,13 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_waiting_period:
+    type: number
+    weight: 29
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   from_address:

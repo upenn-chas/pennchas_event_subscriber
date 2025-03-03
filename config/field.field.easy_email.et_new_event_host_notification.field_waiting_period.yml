@@ -1,0 +1,23 @@
+uuid: 417d18c3-89a0-425b-9247-eb4b53e0f534
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_new_event_host_notification
+    - field.storage.easy_email.field_waiting_period
+id: easy_email.et_new_event_host_notification.field_waiting_period
+field_name: field_waiting_period
+entity_type: easy_email
+bundle: et_new_event_host_notification
+label: 'Waiting Period'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

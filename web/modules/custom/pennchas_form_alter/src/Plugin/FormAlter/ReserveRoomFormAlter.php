@@ -24,12 +24,11 @@ class ReserveRoomFormAlter
 
             $form['terms_condition'] = [
                 '#type' => 'checkbox',
-                '#title' => [
-                    '#markup' => t('I have read and understand the <a href="/policies">policies associated</a> with reserving rooms in this College House.')
-                ],
+                '#title' => t('I have read and understand the <a href="/policies">policies associated</a> with reserving rooms in this College House.'),
                 '#required' => TRUE,
                 '#weight' => 100
             ];
+            
         } else {
             $node  = $formState->getFormObject()->getEntity();
             $groupId = (int) $node->get('field_group')->getString();

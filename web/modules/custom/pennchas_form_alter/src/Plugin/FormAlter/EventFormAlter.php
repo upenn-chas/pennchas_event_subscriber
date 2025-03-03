@@ -23,9 +23,7 @@ class EventFormAlter
         if ($form['#form_id'] === 'node_chas_event_form') {
             $form['terms_condition'] = [
                 '#type' => 'checkbox',
-                '#title' => [
-                    '#markup' => t('I have read and understand the <a href="/policies">policies</a> associated with reserving rooms in this College House.')
-                ],
+                '#title' => t('I have read and understand the <a href="/policies">policies</a> associated with reserving rooms in this College House.'),
                 '#required' => TRUE,
                 '#weight' => 100
             ];

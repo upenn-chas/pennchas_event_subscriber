@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_room_reservation_created
     - field.field.easy_email.et_room_reservation_created.field_reserve_room
+    - field.field.easy_email.et_room_reservation_created.field_waiting_period
   module:
     - file
     - text
@@ -88,6 +89,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_waiting_period:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
     region: content
   from_address:
     type: string

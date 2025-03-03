@@ -1,0 +1,25 @@
+uuid: 9ddf91f5-6bee-47f5-9150-3985f002eed0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_waiting_period
+    - group.type.house1
+id: group.house1.field_waiting_period
+field_name: field_waiting_period
+entity_type: group
+bundle: house1
+label: 'Maximum Moderation Waiting Day(s)'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

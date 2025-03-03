@@ -2,13 +2,12 @@
 
 namespace Drupal\pennchas_form_alter\Service;
 
-use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupType;
 use Drupal\node\Entity\Node;
 use Drupal\pennchas_form_alter\Util\Constant;
-use Drupal\user\Entity\Role;
-use Exception;
 
+/**
+ * Handles email notifications for moderation entities.
+ */
 class ModerationEntityEmailService
 {
 
@@ -19,44 +18,64 @@ class ModerationEntityEmailService
         $this->mailer = \Drupal::service('easy_email.handler');
     }
 
-    public function notifyAuthor(string $emailTemplatId, Node $node)
+    /**
+     * Notifies the author about moderation.
+     */
+    public function notifyAuthor(string $emailTemplateId, Node $node, int $moderationWaitingDays)
     {
-        $this->sendMail($node, $emailTemplatId, [$node->getOwnerId()]);
+        $this->sendMail($emailTemplateId, [$node->getOwnerId()], [
+            'node' => $node,
+            'waitingDays' => $moderationWaitingDays
+        ]);
     }
 
+    /**
+     * Notifies moderators about a node update.
+     */
     public function notifyModerators(string $emailTemplatId, Node $node, $groupIds = [])
     {
         $moderatorsId = \Drupal::service('pennchas_common.users')->usersWithPermission(Constant::PERMISSION_MODERATION, $groupIds);
         if ($moderatorsId) {
             $emailBatches = array_chunk($moderatorsId, 12);
             foreach ($emailBatches as $batch) {
-                $this->sendMail($node, $emailTemplatId, $batch);
+                $this->sendMail($emailTemplatId, $batch, ['node' => $node]);
             }
         }
     }
 
-    protected function sendMail(Node $node, $templateKey, $recipients)
+    /**
+     * Sends an email notification.
+     */
+    protected function sendMail($templateKey, $recipients, array $emailData)
     {
         try {
-            $email = $this->mailer->createEmail([
-                'type' => $templateKey,
-            ]);
-            if ($email) {
-                $nodeType = $node->getType();
-                $email->set($nodeType === Constant::NODE_RESERVE_ROOM ? 'field_reserve_room' : 'field_event', $node);
-                if($templateKey === Constant::EVENT_EMAIL_MODERATOR_CREATED) {
-                    $feedbackUrl = \Drupal\Core\Url::fromRoute('event_feedback.page', [
-                        'node' => $node->id(),
-                    ], ['absolute' => true])->toString();
-                    $email->set('field_url', $feedbackUrl);
-                    $qrCodePath = \Drupal::service('pennchas_form_alter.qr_code_generator')->generateQrCode($feedbackUrl);
-                    $email->set('field_image', $qrCodePath);
-                }
-                $email->setRecipientIds($recipients);
-                $this->mailer->sendEmail($email, [], true, true);
+            $email = $this->mailer->createEmail(['type' => $templateKey]);
+            if (!$email) {
+                return;
             }
-        } catch (Exception $e) {
-            \Drupal::logger('pennchas_form_alter')->error($e->getMessage(), $e->getTrace());
+            $node = $emailData['node'];
+            $email->set(
+                $node->getType() === Constant::NODE_RESERVE_ROOM ? 'field_reserve_room' : 'field_event',
+                $node
+            );
+            
+            if ($templateKey === Constant::EVENT_EMAIL_MODERATOR_CREATED) {
+                $feedbackUrl = \Drupal\Core\Url::fromRoute('event_feedback.page', [
+                    'node' => $node->id(),
+                ], ['absolute' => true])->toString();
+                $email->set('field_url', $feedbackUrl);
+                $qrCodePath = \Drupal::service('pennchas_form_alter.qr_code_generator')->generateQrCode($feedbackUrl);
+                $email->set('field_image', $qrCodePath);
+            } else if(isset($emailData['waitingDays'])) {
+                $email->set('field_waiting_period', $emailData['waitingDays']);
+            }
+            $email->setRecipientIds($recipients);
+            $this->mailer->sendEmail($email, [], true, true);
+        } catch (\Exception $e) {
+            \Drupal::logger('pennchas_form_alter')->error('Email sending failed: @message. Trace: @trace', [
+                '@message' => $e->getMessage(),
+                '@trace' => json_encode($e->getTraceAsString()),
+            ]);
         }
     }
 }

@@ -33,7 +33,7 @@ class NodeInsertHook
         $eventLocationHouseId = (int) $node->get('field_location')->getString();
         $roomReservationUrl =  Url::fromRoute('entity.group_relationship.create_form', ['group' => $eventLocationHouseId, 'plugin_id' => 'group_node:reserve_room'])->toString();
         $groupIds = [$eventLocationHouseId];
-        
+
         if ($eventState === Constant::MOD_STATUS_PUBLISHED) {
             $eventHousesId = $node->get('field_groups')->getValue();
             $groupIds = array_column($eventHousesId, 'target_id');
@@ -46,13 +46,16 @@ class NodeInsertHook
             }
         }
         $roomReservationMessage = "Do you need a room reservation? <a href='{$roomReservationUrl}'>click here</a>";
-        $message = t('Your event has been submited and there is a possible three day wait time for approval.' . ' ' . $roomReservationMessage);
+        $message = t('Your event has been accepted and published.' . ' ' . $roomReservationMessage);
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
-            $message = t('Your event has been accepted and published.' . ' ' . $roomReservationMessage);
             $mailService->notifyAuthor(Constant::EVENT_EMAIL_MODERATOR_CREATED, $node);
         } else {
-            $mailService->notifyAuthor(Constant::EVENT_EMAIL_CREATED, $node);
+            $group = array_shift($eventHouses);
+            $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
+            $message = t('Your event has been submited and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.' . ' ' . $roomReservationMessage);
+
+            $mailService->notifyAuthor(Constant::EVENT_EMAIL_CREATED, $node, $moderationWaitingDays);
             $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $groupIds);
         }
         \Drupal::messenger()->addStatus($message);
@@ -78,12 +81,13 @@ class NodeInsertHook
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
-        $message = t('Your request has been submitted and there is a possible three day wait time for approval.');
+        $message = t('Your request has been accepted.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
-            $message = t('Your request has been accepted.');
             $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
         } else {
-            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_CREATED, $node);
+            $moderationWaitingDays = $this->getHouseMaxModerationWaitingPeriod($group);
+            $message = t('Your request has been submitted and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.');
+            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_CREATED, $node, $moderationWaitingDays);
             $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, [$group->id()]);
         }
         \Drupal::messenger()->addStatus($message);
@@ -106,5 +110,16 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
+    }
+
+
+    private function getHouseMaxModerationWaitingPeriod(Group $group)
+    {
+        $houseMaxModerationWaitingPeriod = 3;
+        if ($group->hasField('field_waiting_period')) {
+            $houseMaxModerationWaitingPeriod = $group->get('field_waiting_period')->getString();
+            $houseMaxModerationWaitingPeriod = $houseMaxModerationWaitingPeriod ? (int) $houseMaxModerationWaitingPeriod : 3;
+        }
+        return $houseMaxModerationWaitingPeriod;
     }
 }
