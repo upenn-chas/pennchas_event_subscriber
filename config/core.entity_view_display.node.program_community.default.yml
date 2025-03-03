@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.program_community.field_blocks_ref
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
+    - field.field.node.program_community.field_last_state
     - field.field.node.program_community.field_media_image
     - field.field.node.program_community.field_tags
     - field.field.node.program_community.layout_builder__layout
@@ -306,6 +307,14 @@ content:
     third_party_settings: {  }
     weight: 26
     region: content
+  field_last_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: blb_region_col_1
   field_tags:
     type: entity_reference_label
     label: above

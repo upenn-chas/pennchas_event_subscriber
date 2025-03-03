@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
+    - field.field.node.page.field_last_state
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
@@ -41,6 +42,22 @@ third_party_settings:
                   link: true
                 third_party_settings: {  }
             weight: 0
+            additional: {  }
+          60db081b-332f-462b-9579-1cdf935f2c8f:
+            uuid: 60db081b-332f-462b-9579-1cdf935f2c8f
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_last_state'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -173,6 +190,14 @@ content:
     third_party_settings: {  }
     weight: 105
     region: content
+  field_last_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 108
+    region: null
   field_media_image:
     type: entity_reference_entity_view
     label: above

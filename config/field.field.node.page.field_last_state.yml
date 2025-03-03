@@ -1,0 +1,19 @@
+uuid: 04a82627-14c5-41b5-8211-04dfbfda6547
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.page
+id: node.page.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: page
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

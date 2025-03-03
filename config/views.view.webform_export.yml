@@ -3,8 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - user.role.administrator
-    - user.role.chas_director
     - webform.webform.basic_page_request
     - webform.webform.event_feedback
     - webform.webform.webform_example_custom_form
@@ -13,7 +11,7 @@ dependencies:
     - csv_serialization
     - rest
     - serialization
-    - user
+    - view_alteration
     - views_aggregator
     - views_data_export
     - webform
@@ -136,11 +134,9 @@ display:
               webform_id:
                 plugin_id: default
       access:
-        type: role
+        type: dashboard_access
         options:
-          role:
-            administrator: administrator
-            chas_director: chas_director
+          dashboard_perm: 'access reports'
       cache:
         type: tag
         options: {  }
@@ -173,7 +169,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags: {  }
   data_export_1:
     id: data_export_1
@@ -264,7 +260,7 @@ display:
         - 'languages:language_interface'
         - request_format
         - user
-        - user.roles
+        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -572,5 +568,5 @@ display:
         - url
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags: {  }

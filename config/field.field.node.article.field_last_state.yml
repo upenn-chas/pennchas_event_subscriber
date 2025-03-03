@@ -1,0 +1,19 @@
+uuid: dc9f256b-d7eb-49ea-8d56-8d46166c57c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.article
+id: node.article.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: article
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

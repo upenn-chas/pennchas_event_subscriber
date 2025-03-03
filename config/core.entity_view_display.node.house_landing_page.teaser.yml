@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.house_landing_page.body
     - field.field.node.house_landing_page.feeds_item
     - field.field.node.house_landing_page.field_blocks_ref
+    - field.field.node.house_landing_page.field_last_state
     - field.field.node.house_landing_page.field_media_image
     - field.field.node.house_landing_page.field_parent_page
     - field.field.node.house_landing_page.field_select_house
@@ -49,6 +50,7 @@ content:
 hidden:
   feeds_item: true
   field_blocks_ref: true
+  field_last_state: true
   field_parent_page: true
   field_select_house: true
   langcode: true

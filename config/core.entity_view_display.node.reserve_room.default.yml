@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.reserve_room.field_group_ref
     - field.field.node.reserve_room.field_last_moderated_by
     - field.field.node.reserve_room.field_last_moderation_message
+    - field.field.node.reserve_room.field_last_state
     - field.field.node.reserve_room.field_long_text
     - field.field.node.reserve_room.field_moderation_finished_at
     - field.field.node.reserve_room.field_phone
@@ -424,6 +425,14 @@ content:
     third_party_settings: {  }
     weight: 26
     region: content
+  field_last_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 28
+    region: blb_region_col_1
   field_long_text:
     type: basic_string
     label: above

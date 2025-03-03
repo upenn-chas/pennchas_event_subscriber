@@ -115,25 +115,23 @@ class FilterForm extends FormBase
 
     public function filterAjaxCallback(array &$form, FormStateInterface $form_state)
     {
-        $trigger = $form_state->getUserInput()['_triggering_element_value'] ?? 'Submit';
+        $trigger = $form_state->getUserInput()['_triggering_element_value'] ?? 'Apply';
         $controller = \Drupal::service('event_feedback.event_feedback_controller');
-        if ($trigger === 'Submit') {
+        if ($trigger === 'Apply') {
             $form['wrapper']['reset']['#access'] = true;
         } else {
             $this->resetForm($form, $form_state);
+            $form['wrapper']['reset']['#access'] = false;
         }
         \Drupal::requestStack()->getSession()->set('participantsSurvey', $form_state->getValues());
         $data = $controller->reportData($form_state->getValues(), $form);
         $res = new AjaxResponse();
-        // $res->addCommand(new HtmlCommand('#view-filters-container', $form));
-        // $res->addCommand(new HtmlCommand('#report-table-container', $data));
         $res->addCommand(new HtmlCommand('#participations-survey-report', $data));
         return $res;
     }
 
     private function resetForm(array &$form, FormStateInterface &$form_state)
     {
-        $form['wrapper']['reset']['#access'] = false;
         $form['wrapper']['gid']['#value'] = '_all';
         $form['wrapper']['type']['#value'] = '_all';
         $form['wrapper']['outcome']['#value'] = '_all';

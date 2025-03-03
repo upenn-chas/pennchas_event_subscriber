@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
+    - field.field.node.room.field_last_state
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
     - field.field.node.room.field_link_3
@@ -631,6 +632,14 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
+  field_last_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
+    region: blb_region_col_1
   field_link_1:
     type: link
     label: above

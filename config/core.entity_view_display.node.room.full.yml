@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.room.field_evaluation_notification
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
+    - field.field.node.room.field_last_state
     - field.field.node.room.field_link_1
     - field.field.node.room.field_link_2
     - field.field.node.room.field_link_3
@@ -393,6 +394,7 @@ hidden:
   field_evaluation_notification: true
   field_group: true
   field_group_ref: true
+  field_last_state: true
   field_link_1: true
   field_link_2: true
   field_link_3: true

@@ -93,6 +93,7 @@ function  pennchas_form_alter_views_exposed_form_alter(array &$form)
         'views-exposed-form-videos-link-report-page-1' => 1,
         'views-exposed-form-events-evaluation-report-page-1' => 1,
         'views-exposed-form-contents-delete-report-page-1' => 1,
+        'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
         'views-exposed-form-my-reservations-my-pending-reservations' => 1,
         'views-exposed-form-my-reservations-my-reservations-block' => 1,
         'views-exposed-form-my-reservations-page-1' => 1,
@@ -138,7 +139,8 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
             $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
             $node->setUnpublished();
             $node->setNewRevision(true);
-            $node->setRevisionLogMessage($currentState);
+            $node->setRevisionLogMessage('Deleted');
+            $node->set('field_last_state', $currentState);
             $node->save();
 
             \Drupal::messenger()->addStatus(t('Node %title has been deleted.', ['%title' => $node->getTitle()]));
@@ -337,42 +339,44 @@ function penchas_add_exclude_notices_filter($form, FormStateInterface &$form_sta
 /**
  * Implements hook_menu_local_tasks_alter().
  */
-// function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
-// {
-//     // Get the tabs array.
-//     $tabs = &$data['tabs'][0];
-//     // Check if the tabs array is empty.
-//     if(!$tabs) {
-//         return;
-//     }
+function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
+{
+    // Get the tabs array.
+    $tabs = &$data['tabs'][0];
 
-//     // List of common tabs to remove.
-//     static $unsetTabs = [
-//         'devel' => 1,
-//         'search content' => 1,
-//         'moderated content' => 1,
-//     ];
-//     remove_tabs($tabs, $unsetTabs);
+    // Check if the tabs array is empty.
+    if(!$tabs) {
+        return;
+    }
 
-//     // Get the node object from the route.
-//     $node = \Drupal::routeMatch()->getParameter('node');
+    // List of common tabs to remove.
+    static $unsetTabs = [
+        'devel' => 1,
+        'search content' => 1,
+        'moderated content' => 1,
+    ];
+    remove_tabs($tabs, $unsetTabs);
 
-//     // Check if the node is a node object.
-//     if ($node && $node instanceof NodeInterface) {
-//         // List of tabs to remove when the node is deleted.
-//         static $unsetTabsOfDeletedNode = [
-//             'delete' => 1,
-//             'edit' => 1,
-//             'layout' => 1,
-//             'clone' => 1,
-//             'revert' => 1
-//         ];
-//         // Check if the node is deleted.
-//         if ($node->hasField('moderation_state') && $node->get('moderation_state')->getString() === 'delete') {
-//             remove_tabs($tabs, $unsetTabsOfDeletedNode);
-//         }
-//     }
-// }
+    // Get the node object from the route.
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    // Check if the node is a node object.
+    if ($node && $node instanceof NodeInterface) {
+        // List of tabs to remove when the node is deleted.
+        static $unsetTabsOfDeletedNode = [
+            'delete' => 1,
+            'edit' => 1,
+            'layout' => 1,
+            'clone' => 1,
+            'revert' => 1,
+            'test' => 1,
+        ];
+        // Check if the node is deleted.
+        if ($node->hasField('moderation_state') && $node->get('moderation_state')->getString() === 'delete') {
+            remove_tabs($tabs, $unsetTabsOfDeletedNode);
+        }
+    }
+}
 
 /**
  * Remove tabs from the tabs array.

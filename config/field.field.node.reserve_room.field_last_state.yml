@@ -1,0 +1,19 @@
+uuid: 7cd79190-dd8c-402d-b960-af14cc641ca4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.reserve_room
+id: node.reserve_room.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: reserve_room
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 6e10f4e6-682a-44dc-b28a-a9c939be3aca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_state
+    - node.type.room
+id: node.room.field_last_state
+field_name: field_last_state
+entity_type: node
+bundle: room
+label: 'Last State'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
