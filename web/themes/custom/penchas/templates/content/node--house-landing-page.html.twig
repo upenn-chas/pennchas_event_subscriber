@@ -77,16 +77,27 @@
 {% set field_color = node.field_select_house.0.parent.entity.field_color.value %}
 {% set field_color_of_circle = node.field_select_house.0.parent.entity.field_color_of_circle.value %}
 {% set field_media_image = node.field_select_house.0.parent.entity.field_media_image.value %}
-
+{% if field_color %}
+  <style>
+  .layout-builder-components .program-box:hover:before {
+    background-color: #{{field_color}};
+    border-color: #{{field_color}}  !important;
+  }
+  .accordion-item:has(.accordion-button:not(.collapsed)){
+    background-color: #{{field_color}}  !important;
+  }
+  .block-inline-blockaccordions .item-list li{
+    background-color: #{{field_color_of_circle}} !important;
+  }
+  .hero-banner .container:before {
+      background: #{{field_color_of_circle}};
+  }
+  </style>
+  {% endif %}
 <article{{ attributes.addClass(classes) }}>
 
     {{ title_prefix }}
   <section class="hero-banner without-image" style="background-color: #{{field_color}};">
-  <style>
-    .hero-banner .container:before {
-      background: #{{field_color_of_circle}};
-     }
-  </style>
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6">

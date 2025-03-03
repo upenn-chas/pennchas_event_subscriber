@@ -71,7 +71,7 @@
         border-right: 0;
         position: absolute;
         right: 0;
-        top: 0px;
+        top: 4px;
         @include media-query('tablet') {
           display: none;
         }
@@ -161,7 +161,7 @@
   }
 }
 
-@include media-query('medium') {
+@include media-query('tablet') {
   .internal-links {
     position: static;
     margin-top: 30px;
