@@ -428,7 +428,18 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="no-records pending-node">No records</div>'
+          tokenize: false
       sorts:
         created:
           id: created
@@ -1805,6 +1816,18 @@ display:
         type: perm
         options:
           perm: 'access my rerservations'
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="no-records published-node">No records</div>'
+          tokenize: false
       sorts:
         title:
           id: title
@@ -2013,6 +2036,7 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        empty: false
         access: false
         query: false
         use_more: false
@@ -3273,6 +3297,18 @@ display:
         type: perm
         options:
           perm: 'access my rerservations'
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="no-records published-node">No records</div>'
+          tokenize: false
       sorts:
         title:
           id: title
@@ -3481,6 +3517,7 @@ display:
           replica: false
           query_tags: {  }
       defaults:
+        empty: false
         access: false
         query: false
         title: false
