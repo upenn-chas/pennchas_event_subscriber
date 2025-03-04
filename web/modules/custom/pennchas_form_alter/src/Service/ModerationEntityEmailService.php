@@ -21,12 +21,15 @@ class ModerationEntityEmailService
     /**
      * Notifies the author about moderation.
      */
-    public function notifyAuthor(string $emailTemplateId, Node $node, int $moderationWaitingDays)
+    public function notifyAuthor(string $emailTemplateId, Node $node, int|null $moderationWaitingDays)
     {
-        $this->sendMail($emailTemplateId, [$node->getOwnerId()], [
-            'node' => $node,
-            'waitingDays' => $moderationWaitingDays
-        ]);
+        $emailData = [
+            'node' => $node
+        ];
+        if($moderationWaitingDays !== null) {
+            $emailData['waitingDays'] = $moderationWaitingDays;
+        }
+        $this->sendMail($emailTemplateId, [$node->getOwnerId()], $emailData);
     }
 
     /**

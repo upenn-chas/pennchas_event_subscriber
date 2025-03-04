@@ -49,7 +49,7 @@ class NodeInsertHook
         $message = t('Your event has been accepted and published.' . ' ' . $roomReservationMessage);
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
-            $mailService->notifyAuthor(Constant::EVENT_EMAIL_MODERATOR_CREATED, $node);
+            $mailService->notifyAuthor(Constant::EVENT_EMAIL_MODERATOR_CREATED, $node, null);
         } else {
             $group = array_shift($eventHouses);
             $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
