@@ -49,20 +49,18 @@
     <div class="row">
       <div class="image-with-text-inner">
         <div class="col-12 col-lg-4">
-          <div class="info-column">
+          <div class="info-column left-spacing">
             {{ title_prefix }}
               {% if label %}
-                {#<h2{{ title_attributes }} class="alignment-{{heading_alignment}}"><a href="{{content.field_cta.0['#url'].toString()}}" class="arrow-link">{{ label }}</a></h2> #}
                 <h2{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h2>
               {% endif %}
             {{ title_suffix }}
-            <p>{{ content.body }}</p>
-            {# {{dump(content.field_cta.0['#title'])}} #}
+            {{content.field_right_description}}
           </div>
         </div>
         <div class="col-12 col-lg-8">
           <div class="img-column">
-             {{content.field_media_image}}
+            <p>{{ content.body }}</p>
           </div>
         </div>
       </div>

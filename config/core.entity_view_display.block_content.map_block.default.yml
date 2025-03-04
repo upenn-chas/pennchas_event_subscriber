@@ -7,11 +7,10 @@ dependencies:
     - field.field.block_content.map_block.body
     - field.field.block_content.map_block.field_background_color
     - field.field.block_content.map_block.field_cta
-    - field.field.block_content.map_block.field_media_image
+    - field.field.block_content.map_block.field_right_description
   module:
     - color_field
     - link
-    - media
     - text
 id: block_content.map_block.default
 targetEntityType: block_content
@@ -46,16 +45,12 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_media_image:
-    type: media_thumbnail
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
+  field_right_description:
+    type: basic_string
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 4
     region: content
 hidden:
   langcode: true
