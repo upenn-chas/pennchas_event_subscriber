@@ -50,6 +50,7 @@ elements: |-
       class:
         - btn
         - btn-primary
+        - blue-btn
 css: ''
 javascript: ''
 settings:

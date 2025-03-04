@@ -386,36 +386,6 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         remove_tabs($tabs, $unsetDeleteTab);
     }
 
-    // $allowed_group_roles = ['house1-house_director', 'house1-house_coordinator', 'house1-house_faculty'];
-
-    // if ($current_user->hasRole('authenticated')) {
-    //     $query = $connection->select('group_relationship_field_data', 'gr');
-    //     $query->condition('gr.entity_id', $current_user->id());
-    //     $query->condition('gr.plugin_id', 'group_membership');
-    //     $query->fields('gr', ['gid']);
-    //     $group_results = $query->execute()->fetchCol();
-
-    //     if (!empty($group_results)) {
-    //         // If the user is part of groups, check if the node is in any of those groups
-    //         foreach ($group_results as $group_id) {
-    //             $query = $connection->select('group_relationship_field_data', 'gr');
-    //             $query->condition('gr.gid', $group_id);
-    //             $query->condition('gr.entity_id', $nid);
-    //             $query->fields('gr');
-    //             $node_results = $query->execute()->fetchAll();
-    //             if (!empty($node_results)) {
-    //                 $variables['node_access'] = 'TRUE';
-    //                 break;
-    //             }
-    //         }
-    //     }
-
-    //     // static $unsetDeleteTab = [
-    //     //     'delete' => 0,
-    //     // ];
-    //     // remove_tabs($tabs, $unsetDeleteTab);
-    // }
-
 }
 
 /**
@@ -435,38 +405,3 @@ function remove_tabs(array &$tabs, array $tabTitles)
         }
     }
 }
-
-
-// function pennchas_form_alter_preprocess_menu_local_task(&$variables) {
-//     // dump($variables);
-//     $current_user = \Drupal::currentUser();
-//     $user_roles = $current_user->getRoles();
-
-//     if ($current_user->hasRole('administrator')) {
-//         return;
-//     }
-
-//     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
-
-//     if (array_intersect($user_roles, $allowed_roles)) {
-//         foreach ($variables as $key => $task) {
-//             // if (isset($task['#link']) && !empty($task['#link']) && !empty($task['#active'])) {
-//                 if(is_array($task)){
-//                     dump($task['#link']);
-//                     if($task['#link']['title'] == 'Delete'){
-//                         dump('control here');
-//                         $task['#link']['title'] = 'jhfjka';
-//                         unset($task);
-//                     }
-//                 }
-                
-//             // }
-
-//             // if (isset($task['#link']['title']) && $task['#link']['title'] == 'Delete') {
-//             // //     // unset($variables['tasks'][$key]);
-//             // }
-//         }
-//         // die();
-//     }
-
-// }
