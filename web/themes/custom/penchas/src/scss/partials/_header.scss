@@ -130,9 +130,14 @@ header {
         nav {
           ul {
             li.nav-item {
+              @supports (-webkit-touch-callout: none) and (font: -apple-system-body) {
+                a.nav-link--user-login {
+                  padding: 16px 20px 18px;
+                }
+              }
               a.nav-link--user-login {
                 border: 1px solid #011f5b;
-                padding: 16px 20px 18px;
+                padding: 16px 20px;
                 color: #011f5b;
                 font-size: 20px;
                 line-height: 24px;
@@ -372,7 +377,7 @@ header {
                       font-size: 0;
                       background-image: url(/themes/custom/penchas/images/icons/search-icon.png);
                       width: 24px;
-                      height: 24px;
+                      height: 30px;
                       background-color: transparent;
                       background-repeat: no-repeat;
                       background-position: center;
@@ -860,13 +865,18 @@ article>header {
               padding: 0px;
             }
           }
-
+          @supports (-webkit-touch-callout: none) and (font: -apple-system-body) {
+            a[data-drupal-link-system-path="user/logout"] {
+              padding: 16px 20px 18px;
+            }
+          }
           a[data-drupal-link-system-path="user/logout"] {
             border: 1px solid #011F5B;
             border-radius: 10px;
-            padding: 16px 20px 18px;
+            padding: 16px 20px;
             margin-right: 30px;
             text-align: center;
+            
             @supports (-moz-appearance: none){
               padding: 18px 20px 16px;
             }

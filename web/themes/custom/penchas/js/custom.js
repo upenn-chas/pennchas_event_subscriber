@@ -61,7 +61,7 @@
         let eventUrl = anchor.attr('href');
         var eventTime = jQuery(this).find('.field_event_schedule_start_end_value').text();
         body += '<div class="modal-event"><span class="event-time">' + eventTime + '</span>';
-        body += '<a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></div>';
+        body += '<strong><a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></strong></div>';
       });
       openModalWithContent(modalTitle, body);
     });
