@@ -158,7 +158,7 @@ content:
     third_party_settings:
       smart_date_recur:
         modal: false
-        show_single: true
+        show_single: false
         allowed_recur_freq_values:
           MINUTELY: '0'
           HOURLY: '0'
