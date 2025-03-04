@@ -400,9 +400,13 @@ label {
 							color: #fff;
 							border-radius: 10px;
 							padding: 13px 20px 11px 20px;
+              // padding: 13px 20px 13px 20px;
 							font-family: tablet-gothic;
 							text-decoration: none;
 							border: 1px solid #011f5b;
+              @supports (-moz-appearance: none){
+                padding: 13px 20px 13px 20px;
+              }
 							&::before {
 								display: none;
 							}
@@ -428,7 +432,11 @@ label {
                   flex-wrap: nowrap;
                   gap: 10px;
                   align-content: center;
+                  justify-content: flex-start;
                     .js-form-item {
+                      @include media-query('mobile'){
+                        width: 100%;
+                      }
                       label{
                         display: block !important;
                         position: relative !important;
@@ -437,9 +445,13 @@ label {
                         height: auto !important;
                         padding-left: 1px !important;
                       }
+
                       @include media-query ('small'){
                       width: 100%;
                     }
+                  }
+                  .js-form-item-field-event-schedule-0-time-wrapper-value-date{
+                    margin-right: 0;
                   }
                 }
                 label {
@@ -450,8 +462,13 @@ label {
                 flex-wrap: nowrap;
                 gap: 10px;
                 align-content: center;
+                flex-direction: row;
+                justify-content: flex-start;
                 
                   .js-form-item {
+                    @include media-query('mobile'){
+                      width: 100%;
+                    }
                     label{
                       display: block !important;
                       position: relative !important;
@@ -589,11 +606,15 @@ label {
       font-weight: 700;
       color: #fff;
       border-radius: 10px;
-      padding: 18px 20px 16px 20px;
+      // padding: 18px 20px 16px 20px;
+      padding: 16px 20px 20px 20px;
       font-family: tablet-gothic;
       text-decoration: none;
       border: 1px solid #011f5b;
       transition: all 0.3s;
+      @supports (-moz-appearance: none){
+        padding: 18px 20px 16px 20px;
+      }
       &:before{
         display: none;
       }
@@ -725,6 +746,10 @@ label {
         font-weight: 900;
         text-transform: none;
         margin-bottom: 20px;
+        @include media-query('mobile'){
+          font-size: 30px;
+          line-height: 30px;
+        }
       }
       select {
         height: 50px;
