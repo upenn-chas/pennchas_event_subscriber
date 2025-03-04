@@ -2,7 +2,10 @@
     margin-top: 30px;
     .view-filters{
         .selected-filters{
-            margin-top: -70px;
+            margin-top: -60px !important;
+            @include media-query('mobile'){
+                margin-top: -85px !important;  
+            }
         }
     }
 }
@@ -42,6 +45,9 @@
         gap: 30px;
         align-items: end;
         @include media-query ('tablet'){margin-top: 0;}
+        @include media-query('mobile'){
+            gap:70px;
+        }
         button#edit-reset {
             position: relative;
             padding: 0;
@@ -121,6 +127,8 @@
 		}
         @include media-query ('mobile'){
             padding: 12px 20px;
+            font-size: 18px;
+            line-height: 22px;
         }
 	}
     .select-arrow {
@@ -252,5 +260,16 @@
                 }
             }
         }
+    }
+}
+
+.layout{
+    &.row{
+        .col-12{
+        &:has(.filter-results){
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
     }
 }

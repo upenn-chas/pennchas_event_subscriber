@@ -10,6 +10,7 @@ dependencies:
     - field.field.block_content.map_block.field_right_description
   module:
     - color_field
+    - element_class_formatter
     - link
     - text
 id: block_content.map_block.default
@@ -46,9 +47,15 @@ content:
     weight: 1
     region: content
   field_right_description:
-    type: basic_string
-    label: above
-    settings: {  }
+    type: wrapper_class
+    label: hidden
+    settings:
+      class: ''
+      tag: p
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
     third_party_settings: {  }
     weight: 4
     region: content

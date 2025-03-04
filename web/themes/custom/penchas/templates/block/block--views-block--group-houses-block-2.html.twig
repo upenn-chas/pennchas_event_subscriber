@@ -34,38 +34,17 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-    'image-with-text',
   ]
 %}
-{% set heading_alignment = '' %}
-
-{% if content.field_alignment %}
-  {% set heading_alignment = content.field_alignment[0]['#markup'] %}
-{% endif %}
-{% set background_color = content.field_background_color.0 %}
-  {% block content %}
-<section {{ attributes.addClass(classes) }} style="background-color: {{background_color}}">
-  <div class="container">
-    <div class="row">
-      <div class="image-with-text-inner">
-        <div class="col-12 col-lg-4">
-          <div class="info-column left-spacing">
-            {{ title_prefix }}
-              {% if label %}
-                <h2{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h2>
-              {% endif %}
-            {{ title_suffix }}
-            {{content.field_right_description}}
-          </div>
-        </div>
-        <div class="col-12 col-lg-8">
-          <div class="iframe-column">
-            <p>{{ content.body }}</p>
-          </div>
-        </div>
+  <div{{ attributes.addClass(classes).removeClass('views-element-container') }}>
+    {{ title_prefix }}
+    {% if label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+      <div{{ content_attributes.addClass('content') }}>
+        {{ content }}
       </div>
-    </div>
+    {% endblock %}
   </div>
-</section>
-
-  {% endblock %}

@@ -121,6 +121,9 @@
   position: relative;
   height: 100%;
   min-height: 430px;
+  @include media-query('mobile'){
+	min-height: auto;
+  }
 
 	a{
 		text-decoration: none;

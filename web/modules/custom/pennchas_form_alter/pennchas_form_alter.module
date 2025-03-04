@@ -379,21 +379,6 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         remove_tabs($tabs, $unsetDeleteTab);
     }
 
-    $allowed_group_roles = ['house1-house_director', 'house1-house_coordinator', 'house1-house_faculty'];
-    if (array_intersect($user_roles, $allowed_group_roles)) {
-
-        $query = $connection->select('group_relationship_field_data', 'gr');
-        $query->condition('gr.entity_id', $current_user->id());
-        $query->condition('gr.plugin_id', 'group_membership');
-        $query->fields('gr', ['gid']);
-        $group_results = $query->execute()->fetchCol();
-
-        // static $unsetDeleteTab = [
-        //     'delete' => 0,
-        // ];
-        // remove_tabs($tabs, $unsetDeleteTab);
-    }
-
 }
 
 /**
@@ -413,38 +398,3 @@ function remove_tabs(array &$tabs, array $tabTitles)
         }
     }
 }
-
-
-// function pennchas_form_alter_preprocess_menu_local_task(&$variables) {
-//     // dump($variables);
-//     $current_user = \Drupal::currentUser();
-//     $user_roles = $current_user->getRoles();
-
-//     if ($current_user->hasRole('administrator')) {
-//         return;
-//     }
-
-//     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
-
-//     if (array_intersect($user_roles, $allowed_roles)) {
-//         foreach ($variables as $key => $task) {
-//             // if (isset($task['#link']) && !empty($task['#link']) && !empty($task['#active'])) {
-//                 if(is_array($task)){
-//                     dump($task['#link']);
-//                     if($task['#link']['title'] == 'Delete'){
-//                         dump('control here');
-//                         $task['#link']['title'] = 'jhfjka';
-//                         unset($task);
-//                     }
-//                 }
-                
-//             // }
-
-//             // if (isset($task['#link']['title']) && $task['#link']['title'] == 'Delete') {
-//             // //     // unset($variables['tasks'][$key]);
-//             // }
-//         }
-//         // die();
-//     }
-
-// }
