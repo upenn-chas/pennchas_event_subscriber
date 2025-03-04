@@ -180,16 +180,14 @@
   margin: 0;
 }
 
-// @include media-query('mobile') {
+@include media-query('mobile') {
 
-//   .space:has(.events) .container{
-//     padding-right: 0;
-//     padding-left: 0;
-//     .col-12 {
-//       padding-right: 0;
-//     }
-//   }
-// }
+  .space:has(.events) .container{
+    .col-12 {
+      padding-right: 0;
+    }
+  }
+}
 
 .mac-os {
   .tags {
