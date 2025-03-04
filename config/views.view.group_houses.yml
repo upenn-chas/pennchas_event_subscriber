@@ -394,7 +394,7 @@ display:
           click_sort_column: value
           type: text_trimmed
           settings:
-            trim_length: 250
+            trim_length: 100
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1529,7 +1529,7 @@ display:
             format: full_html
           tokenize: false
       display_extenders: {  }
-      path: about/the-college-houses-old
+      path: about/the-college-houses
     cache_metadata:
       max-age: -1
       contexts:
