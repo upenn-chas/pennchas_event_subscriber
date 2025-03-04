@@ -4076,9 +4076,9 @@ display:
           empty_zero: false
           hide_alter_empty: false
       access:
-        type: perm
+        type: dashboard_access
         options:
-          perm: 'access my rerservations'
+          dashboard_perm: 'dashboard pending reservations'
       empty:
         area_text_custom:
           id: area_text_custom
