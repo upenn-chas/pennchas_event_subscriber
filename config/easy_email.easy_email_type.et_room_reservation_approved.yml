@@ -11,10 +11,10 @@ bcc: {  }
 fromName: ''
 fromAddress: ''
 replyToAddress: ''
-subject: 'Room reservation request "[easy_email:field_reserve_room:entity:title]" approved'
+subject: 'Reservation for room"[easy_email:field_reserve_room:entity:field_room:entity]" is approved.'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation has been approved with the following details:</p><ul><li><strong>Title:</strong> [easy_email:field_reserve_room:entity:title]</li><li><strong>Schedule:</strong> [easy_email:field_reserve_room:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Purpose: </strong>[easy_email:field_reserve_room:entity:field_long_text:value]</li><li><strong>Number of People:</strong> [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</li><li><strong>Main Contact:</strong><ul><li><strong>Name:</strong> [easy_email:field_reserve_room:entity:field_support_contact:value]</li><li><strong>Email:</strong> [easy_email:field_reserve_room:entity:field_email:value]</li><li><strong>Phone:</strong> [easy_email:field_reserve_room:entity:field_phone:value]</li></ul></li></ul><p><strong>Message from moderator:</strong></p><p>[easy_email:field_message]</p>'
+  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation has been approved with the following details:</p><ul><li><strong>Title:</strong> [easy_email:field_reserve_room:entity:title]</li><li><strong>Room: </strong>[easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Schedule:</strong> [easy_email:field_reserve_room:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Purpose: </strong>[easy_email:field_reserve_room:entity:field_long_text:value]</li><li><strong>Number of People:</strong> [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</li><li><strong>Main Contact:</strong><ul><li><strong>Name:</strong> [easy_email:field_reserve_room:entity:field_support_contact:value]</li><li><strong>Email:</strong> [easy_email:field_reserve_room:entity:field_email:value]</li><li><strong>Phone:</strong> [easy_email:field_reserve_room:entity:field_phone:value]</li></ul></li></ul><p><strong>Message from moderator:</strong></p><p>[easy_email:field_message]</p>'
   format: basic_html
 bodyPlain: ''
 generateBodyPlain: true

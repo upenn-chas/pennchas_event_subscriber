@@ -1,0 +1,23 @@
+uuid: 1922bd2b-41d0-4302-a1f0-1a6e9fc3e2fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_room_reservation_created
+    - field.storage.easy_email.field_waiting_period
+id: easy_email.et_room_reservation_created.field_waiting_period
+field_name: field_waiting_period
+entity_type: easy_email
+bundle: et_room_reservation_created
+label: 'Waiting Period'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

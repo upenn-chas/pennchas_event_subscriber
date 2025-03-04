@@ -5,6 +5,7 @@ dependencies:
   config:
     - easy_email.easy_email_type.et_room_reservation_created
     - field.field.easy_email.et_room_reservation_created.field_reserve_room
+    - field.field.easy_email.et_room_reservation_created.field_waiting_period
   module:
     - file
     - text
@@ -98,6 +99,13 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_waiting_period:
+    type: number
+    weight: 29
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   from_address:
