@@ -1,0 +1,8 @@
+uuid: 164b9b7a-9869-47b2-a0b8-382e7143129b
+langcode: en
+status: true
+dependencies: {  }
+id: map_block
+label: 'Map Block'
+revision: false
+description: null
