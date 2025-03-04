@@ -3,8 +3,6 @@
 namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupMembership;
 
 class ReportExposeFormAlter
 {
@@ -27,15 +25,15 @@ class ReportExposeFormAlter
         }
 
         $form['#validate'][] = [$this, 'validate'];
-
+        
         return $form;
     }
 
-    public function validate(array $form, FormStateInterface $formState)
+    public function validate(array $form, FormStateInterface &$formState)
     {
         $exposedFromDate = $formState->getValue('exposed_from_date');
         $exposedToDate = $formState->getValue('exposed_to_date');
-        
+
         if (!$exposedFromDate || !$exposedToDate) {
             return;
         }
