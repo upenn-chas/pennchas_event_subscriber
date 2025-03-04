@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..4264433 100644
+index 8a084f2..bddd4bd 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
 @@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -15,7 +15,7 @@ index 8a084f2..4264433 100644
  
  /**
   * Controller routines for simplesamlphp_auth routes.
-@@ -200,6 +206,138 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +206,137 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
@@ -33,7 +33,6 @@ index 8a084f2..4264433 100644
 +    $current_user = \Drupal::currentUser();
 +    $user = User::load($current_user->id());
 +    $group_roles_target_ids = [];
-+    $connection = Database::getConnection();
 +    if($user){
 +      $user->set('field_employee_number', $employeeNumber);
 +      $user->set('field_edu_person_principal_name', $eduPersonPrincipalName);

@@ -51,3 +51,5 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
       $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
   }
 }
+
+$settings['config_exclude_modules'] = ['simplesamlphp_auth'];
