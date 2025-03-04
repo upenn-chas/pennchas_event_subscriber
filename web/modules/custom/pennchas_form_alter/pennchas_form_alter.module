@@ -379,13 +379,28 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
     }
 
     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
-    $routes = ['entity.user.canonical'];
     if (array_intersect($user_roles, $allowed_roles)) {
         static $unsetDeleteTab = [
             'delete' => 0,
         ];
         remove_tabs($tabs, $unsetDeleteTab);
     }
+
+    $allowed_group_roles = ['house1-house_director', 'house1-house_coordinator', 'house1-house_faculty'];
+    if (array_intersect($user_roles, $allowed_group_roles)) {
+
+        $query = $connection->select('group_relationship_field_data', 'gr');
+        $query->condition('gr.entity_id', $current_user->id());
+        $query->condition('gr.plugin_id', 'group_membership');
+        $query->fields('gr', ['gid']);
+        $group_results = $query->execute()->fetchCol();
+
+        // static $unsetDeleteTab = [
+        //     'delete' => 0,
+        // ];
+        // remove_tabs($tabs, $unsetDeleteTab);
+    }
+
 }
 
 /**
