@@ -131,6 +131,7 @@ module:
   seo_checklist: 0
   serialization: 0
   shortcut: 0
+  simplesamlphp_auth: 0
   simplify_menu: 0
   smart_date: 0
   smart_date_recur: 0

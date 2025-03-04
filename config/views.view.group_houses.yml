@@ -8,6 +8,7 @@ dependencies:
     - field.storage.group.field_number_of_residents
     - image.style.large
   module:
+    - better_exposed_filters
     - group
     - media
     - options
@@ -203,6 +204,667 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
       tags: {  }
+  block_2:
+    id: block_2
+    display_title: 'Block 2'
+    display_plugin: block
+    position: 1
+    display_options:
+      fields:
+        field_image:
+          id: field_image
+          table: group__field_image
+          field: field_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: media_thumbnail
+          settings:
+            image_link: ''
+            image_style: large
+            image_loading:
+              attribute: lazy
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        label:
+          id: label
+          table: groups_field_data
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: label
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_description:
+          id: field_description
+          table: group__field_description
+          field: field_description
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_trimmed
+          settings:
+            trim_length: 250
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        view_group:
+          id: view_group
+          table: groups
+          field: view_group
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: group
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: true
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "                    <div class=\"program-card\" style=\"background: transparent;\"><a href=\"{{ view_group }}\"></a>\r\n                        <div class=\"program-card-img\">\r\n                            {{ field_image }}\r\n                        </div>\r\n                        <div class=\"program-card-info\">\r\n                            <h4>{{ label }} </h4>\r\n                        <p> {{ field_description |raw}} </p>\r\n<a class=\"arrow-link\" href=\"{{ view_group }}\"><img src=\"/themes/custom/penchas/images/icons/card-arrow.png\" class=\"icon\" alt=\"icon\"><span class=\"sr-only-hidden\">link</span></a>\r\n                        </div>\r\n                    </div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        field_number_of_residents:
+          id: field_number_of_residents
+          table: group__field_number_of_residents
+          field: field_number_of_residents
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: bef
+        options:
+          submit_button: 'Filter Houses'
+          reset_button: true
+          reset_button_label: 'Clear Filters'
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_community_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- Any - | - Select -'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_number_of_residents_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: '- Any - | - Select -'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_number_of_residents_value_1:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+      filters:
+        field_community_value:
+          id: field_community_value
+          table: group__field_community
+          field: field_community_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            all: all
+            four_year_community: four_year_community
+            first_year_community: first_year_community
+            upperclass_community: upperclass_community
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_community_value_op
+            label: 'Student Year'
+            description: ''
+            use_operator: false
+            operator: field_community_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_community_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_number_of_residents_value:
+          id: field_number_of_residents_value
+          table: group__field_number_of_residents
+          field: field_number_of_residents_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_number_of_residents_value_op
+            label: 'Number of Residents (field_number_of_residents)'
+            description: ''
+            use_operator: false
+            operator: field_number_of_residents_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_number_of_residents_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+              test: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: true
+          group_info:
+            label: 'House Size'
+            description: ''
+            identifier: field_number_of_residents_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Small
+                operator: '='
+                value:
+                  min: ''
+                  max: ''
+                  value: small
+              2:
+                title: Medium
+                operator: '='
+                value:
+                  min: ''
+                  max: ''
+                  value: medium
+              3:
+                title: Large
+                operator: '='
+                value:
+                  min: ''
+                  max: ''
+                  value: large
+        field_number_of_residents_value_1:
+          id: field_number_of_residents_value_1
+          table: group__field_number_of_residents
+          field: field_number_of_residents_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_number_of_residents_value_1_op
+            label: ''
+            description: ''
+            use_operator: true
+            operator: field_number_of_residents_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_number_of_residents_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              campus_partner: '0'
+              chas_student_worker: '0'
+              chas_technology: '0'
+              chas_director: '0'
+              chas_professional_staff: '0'
+              test: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        status:
+          id: status
+          table: groups_field_data
+          field: status
+          entity_type: group
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 2
+          expose:
+            operator: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: OR
+          2: AND
+      style:
+        type: views_bootstrap_grid
+        options:
+          grouping: {  }
+          row_class: 'col-xl-4 col-lg-4 col-md-6'
+          default_row_class: true
+          grid_class: ''
+          col_xs: none
+          col_sm: none
+          col_md: none
+          col_lg: none
+          col_xl: none
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        css_class: false
+        use_ajax: false
+        pager: false
+        exposed_form: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+        header: false
+      css_class: 'filter-results space-bottom'
+      use_ajax: false
+      header: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+      tags:
+        - 'config:field.storage.group.field_description'
+        - 'config:field.storage.group.field_image'
+        - 'config:field.storage.group.field_number_of_residents'
   page_1:
     id: page_1
     display_title: Page
@@ -574,6 +1236,60 @@ display:
         type: none
         options:
           offset: 0
+      exposed_form:
+        type: bef
+        options:
+          submit_button: 'Filter Houses'
+          reset_button: true
+          reset_button_label: 'Clear Filters'
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_community_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- Any - | - Select -'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_number_of_residents_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: '- Any - | - Select -'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_number_of_residents_value_1:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       filters:
         field_community_value:
           id: field_community_value
@@ -789,6 +1505,7 @@ display:
         css_class: false
         use_ajax: false
         pager: false
+        exposed_form: false
         style: false
         row: false
         fields: false
@@ -812,7 +1529,7 @@ display:
             format: full_html
           tokenize: false
       display_extenders: {  }
-      path: about/the-college-houses
+      path: about/the-college-houses-old
     cache_metadata:
       max-age: -1
       contexts:

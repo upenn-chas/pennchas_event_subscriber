@@ -69,6 +69,15 @@
             margin-top: 0;
             width: 100%;
         }
+
+        button#edit-reset-group-houses {
+            background: transparent !important;
+            color: #011f5b;
+            padding: 0 0 4px 0;
+            width: auto;
+            border-bottom: 2px solid #fd4453;
+            border-radius: 0;
+        }
     }
 }
 .filter-dropdown, 

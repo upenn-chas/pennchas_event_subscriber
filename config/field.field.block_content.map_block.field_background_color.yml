@@ -1,0 +1,22 @@
+uuid: ae515fb9-fde3-4f93-b0a9-1aa0d2428be1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.map_block
+    - field.storage.block_content.field_background_color
+  module:
+    - color_field
+id: block_content.map_block.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: map_block
+label: 'Banner Background Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type
