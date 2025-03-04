@@ -379,13 +379,22 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
     }
 
     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
-    $routes = ['entity.user.canonical'];
     if (array_intersect($user_roles, $allowed_roles)) {
         static $unsetDeleteTab = [
             'delete' => 0,
         ];
         remove_tabs($tabs, $unsetDeleteTab);
     }
+
+    $allowed_group_roles = ['house1-house_director', 'house1-house_coordinator', 'house1-house_faculty'];
+    if (array_intersect($user_roles, $allowed_group_roles)) {
+
+        // static $unsetDeleteTab = [
+        //     'delete' => 0,
+        // ];
+        // remove_tabs($tabs, $unsetDeleteTab);
+    }
+
 }
 
 /**
