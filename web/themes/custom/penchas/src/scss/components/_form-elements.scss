@@ -942,7 +942,18 @@ table{
     }
   }
 }
-
+.event-evalution-form{
+.input-group{
+  .input-group-prepend {
+    span{
+      color: $primaryColor;
+      font-weight: 600;
+      left:0 !important;
+      font-family: tablet-gothic;
+    }
+}
+}
+}
 .mac_os{
   .calender-page {
     .calender-right {

@@ -44,7 +44,6 @@ class PendingModerationNodeCount
         $query->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
         $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
         $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
-        $query->condition('nfg.bundle', 'chas_event', '=');
         $result = $query->distinct()->countQuery()->execute()->fetchCol();
         if($result[0] && $result[0] > 0) {
             return "{$result[0]} {$suffix}";
