@@ -52,7 +52,6 @@ module:
   element_class_formatter_responsive_image: 0
   endroid_qr_code: 0
   entity: 0
-  entity_clone: 0
   entity_reference_revisions: 0
   event_evaluation: 0
   event_feedback: 0
@@ -131,7 +130,6 @@ module:
   seo_checklist: 0
   serialization: 0
   shortcut: 0
-  simplesamlphp_auth: 0
   simplify_menu: 0
   smart_date: 0
   smart_date_recur: 0

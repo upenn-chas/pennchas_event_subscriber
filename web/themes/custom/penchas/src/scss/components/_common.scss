@@ -1199,3 +1199,13 @@ ul.pagination.js-pager__items {
   justify-content: center;
 }
 
+.layout.row{
+&.layout-builder__layout{
+  margin-left: 0;
+  margin-right:0;
+  .col-12:first-child{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+}
