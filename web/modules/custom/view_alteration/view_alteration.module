@@ -1,17 +1,20 @@
 <?php
 
-use Drupal\Core\Block\BlockPluginInterface;
-use Drupal\Core\Config\Entity\Query\Query;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Implements hook_views_pre_view().
+ * Implements hook_views_post_execute().
  */
-function view_alteration_views_pre_view(ViewExecutable $view, $display_id, &$args)
+function view_alteration_views_post_execute(ViewExecutable $view)
 {
-    if ($view->id() === 'event_moderation_view' && $display_id === 'event_moderate_page_view') {
+    if ($view->id() === 'event_moderation_view' && $view->current_display === 'event_moderate_page_view') {
+        if (!$view->result) {
+            throw new NotFoundHttpException(t('The requested page was not found.'));
+        }
+        $args = $view->args;
         $view->attachment_after = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($args[0]);
     }
 }
@@ -48,7 +51,7 @@ function view_alteration_theme()
 function view_alteration_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
 {
     $viewId = $view->id();
-    
+
     static $reportViewIds = [
         'moderation_reports' =>  1,
         'rooms_reservation_moderation_reports' =>  1,

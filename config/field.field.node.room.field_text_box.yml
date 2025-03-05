@@ -10,7 +10,7 @@ field_name: field_text_box
 entity_type: node
 bundle: room
 label: 'Room GPS Pin'
-description: 'Enter GPS coordinates in the format "latitude,longitude". <i>(e.g., 37.7749,-122.4194)</i>'
+description: ''
 required: false
 translatable: false
 default_value: {  }
