@@ -188,6 +188,10 @@ function pennchas_form_alter_entity_type_alter(&$entityType)
 function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
     if ($bundle === Constant::NODE_EVENT) {
+        if(isset($fields['title'])) {
+            $fields['title']->addConstraint('TextConstraint');
+        }
+        
         if (isset($fields['field_collaborators'])) {
             $fields['field_collaborators']->addConstraint('UniqueCollaboratorsEmailConstraint');
         }
@@ -196,6 +200,10 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
             $fields['field_event_schedule']->addConstraint('EventScheduleConstraint');
         }
     } else if ($bundle === Constant::NODE_RESERVE_ROOM) {
+        if(isset($fields['title'])) {
+            $fields['title']->addConstraint('TextConstraint');
+        }
+
         if (isset($fields['field_room'])) {
             $fields['field_room']->addConstraint('AllowRoomConstraint');
         }
@@ -208,8 +216,17 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
             $fields['field_anticipated_participants']->addConstraint('RoomMaxGuestConstraint');
         }
     } else if ($bundle === Constant::NODE_ROOM) {
-        if (isset($fields['field_room_gps_pin'])) {
-            $fields['field_room_gps_pin']->addConstraint('GeoCoordinatesConstraint');
+
+        if(isset($fields['title'])) {
+            $fields['title']->addConstraint('TextConstraint');
+        }
+        
+        if (isset($fields['field_text_box'])) {
+            $fields['field_text_box']->addConstraint('TextConstraint');
+        }
+
+        if(isset($fields['field_address'])) {
+            $fields['field_address']->addConstraint('TextConstraint');
         }
     }
 }
