@@ -82,12 +82,17 @@
     {{ title_suffix }}
     {% if header %}
       <div class="view-header">
-        {{ header }}
+        {{ header.area }}
       </div>
     {% endif %}
     {% if exposed %}
       <div class="view-filters">
         {{ exposed }}
+      </div>
+    {% endif %}
+    {% if header.result %}
+      <div class="view-header">
+        {{ header.result }}
       </div>
     {% endif %}
     {% if attachment_before %}

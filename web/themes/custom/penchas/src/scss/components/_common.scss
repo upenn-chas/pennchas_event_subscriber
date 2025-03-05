@@ -1210,6 +1210,10 @@ ul.pagination.js-pager__items {
 // }
 // }
 
+.layout-builder__message.layout-builder__message--overrides {
+  display: none;
+}
+
 .layout.row.no-gutters {
   &:not(:has(.program-box)) {
     &.layout-builder__layout {

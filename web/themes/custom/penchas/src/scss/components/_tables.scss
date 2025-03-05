@@ -28,8 +28,13 @@
           &:last-child{
             border-right: 1px solid #ccc;
           }
+          a{
+            text-decoration: none;
+          }
           .tablesort {
             filter: invert(1);
+            vertical-align: baseline;
+            height: 12px
           }
         }
       }
