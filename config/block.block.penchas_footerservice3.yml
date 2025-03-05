@@ -12,12 +12,12 @@ dependencies:
 id: penchas_footerservice3
 theme: penchas
 region: footer_services
-weight: 0
+weight: -15
 provider: null
 plugin: 'block_content:9d12a442-3c85-4b16-a112-12cc44a1681a'
 settings:
   id: 'block_content:9d12a442-3c85-4b16-a112-12cc44a1681a'
-  label: 'Footer service 3'
+  label: 'Housing & Dining'
   label_display: visible
   provider: block_content
   status: true

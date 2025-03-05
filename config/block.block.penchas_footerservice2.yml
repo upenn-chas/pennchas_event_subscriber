@@ -12,12 +12,12 @@ dependencies:
 id: penchas_footerservice2
 theme: penchas
 region: footer_services
-weight: 0
+weight: -16
 provider: null
 plugin: 'block_content:451dbdb1-0314-453e-a0ad-53656c75e8b5'
 settings:
   id: 'block_content:451dbdb1-0314-453e-a0ad-53656c75e8b5'
-  label: 'Footer service 2'
+  label: 'Need IT Help?'
   label_display: visible
   provider: block_content
   status: true

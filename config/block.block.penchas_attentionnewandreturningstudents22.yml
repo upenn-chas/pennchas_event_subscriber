@@ -1,6 +1,6 @@
 uuid: 86e54e61-d8c0-46a7-89ec-b5a5b71e1599
 langcode: en
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:alert_banner:cc2cafe3-1a54-4176-acee-da0ec9429140'
