@@ -6,9 +6,12 @@ dependencies:
     - core.entity_view_mode.node.moderator
     - field.storage.node.field_event_schedule
     - node.type.chas_event
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - node
     - smart_date
+    - user
 id: event_moderation_view
 label: 'Event Moderation View'
 module: views
@@ -112,12 +115,18 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'view any unpublished content'
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          plugin_id: text
       sorts: {  }
       arguments:
         nid:
@@ -149,11 +158,16 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: 'entity:node'
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            bundles:
+              chas_event: chas_event
+            access: false
+            operation: view
+            multiple: 0
           break_phrase: false
           not: false
       filters:
@@ -167,6 +181,48 @@ display:
           value:
             chas_event: chas_event
           group: 1
+        moderation_state:
+          id: moderation_state
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: moderation_state_filter
+          operator: in
+          value:
+            editorial-draft: editorial-draft
+            editorial-pending: editorial-pending
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -198,7 +254,9 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-      tags: {  }
+        - user.permissions
+      tags:
+        - 'config:workflow_list'
   attachment_1:
     id: attachment_1
     display_title: Attachment
@@ -413,6 +471,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      empty: {  }
       style:
         type: default
         options: {  }
@@ -424,6 +488,7 @@ display:
           separator: ''
           hide_empty: false
       defaults:
+        empty: false
         css_class: false
         style: false
         row: false
@@ -441,8 +506,10 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:field.storage.node.field_event_schedule'
+        - 'config:workflow_list'
   event_moderate_page_view:
     id: event_moderate_page_view
     display_title: 'Event moderate Page '
@@ -450,7 +517,9 @@ display:
     position: 1
     display_options:
       title: 'Event Moderation'
+      empty: {  }
       defaults:
+        empty: false
         title: false
       display_description: ''
       display_extenders: {  }
@@ -463,4 +532,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-      tags: {  }
+        - user.permissions
+      tags:
+        - 'config:workflow_list'
