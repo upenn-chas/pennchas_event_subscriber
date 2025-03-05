@@ -167,7 +167,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="test{{ view_node }}">{{ title }}</a>'
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ title }}</a>'
             make_link: false
             path: ''
             absolute: false
@@ -207,7 +207,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1439,7 +1439,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"weekly-calendar\">\r\n<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n<div class=\"field_event_schedule_start_end_value\"> {{ field_event_schedule_value }}</div>\r\n<div class=\"title\">{{ title }} </div>\r\n<div class=\"rsvp-link\">{{ field_link_1 }}</div>\r\n</div>"
+            text: "<div class=\"weekly-calendar\">\r\n{% if field_is_campus_wide is not empty %}\r\n<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n{% endif %}\r\n<div class=\"field_event_schedule_start_end_value\"> {{ field_event_schedule_value }}</div>\r\n<div class=\"title\">{{ title }} </div>\r\n<div class=\"rsvp-link\">{{ field_link_1 }}</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
