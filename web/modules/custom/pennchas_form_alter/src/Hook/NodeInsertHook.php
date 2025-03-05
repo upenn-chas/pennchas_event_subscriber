@@ -83,7 +83,7 @@ class NodeInsertHook
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         $message = t('Your request has been accepted.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
-            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node);
+            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, $node, null);
         } else {
             $moderationWaitingDays = $this->getHouseMaxModerationWaitingPeriod($group);
             $message = t('Your request has been submitted and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.');
