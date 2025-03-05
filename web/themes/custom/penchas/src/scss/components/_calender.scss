@@ -364,7 +364,7 @@
         .js-form-item {
           border: 1px solid $primaryColor;
           border-radius: 10px;
-          padding: 12px 15px 12px 15px;
+          padding: 15px 15px 12px 15px;
           font-family: $teritoryFont;
           font-size: 18px;
           font-weight: 400;
@@ -444,7 +444,10 @@
       padding-top: 10px;
       padding-left: 215px;
       margin-bottom: 10px;
-
+      transform: translateY(5px);
+      // @media only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1024px) {
+      //   transform: translateY(0);
+      // }
       @include media-query ('tablet') {
         padding-left: 0;
         text-align: center;
@@ -452,6 +455,7 @@
         line-height: 24px;
       }
     }
+
   }
 }
 
@@ -672,4 +676,19 @@
 }
 time.calendar-view-day__number:hover {
   cursor: pointer;
+}
+
+.mac_os{
+  .calender-page {
+    .calendar-view-table {
+      caption{
+        transform: translateY(0px);
+      }
+    }
+  }
+  .select-outer {
+    select{
+      padding-top: 0;
+    }
+  }
 }

@@ -395,6 +395,9 @@
       },
     ]
   });
+  if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+    document.documentElement.classList.add('mac_os');
+  }
   Drupal.behaviors.penchas = {
     attach: function (context, settings) {
 
