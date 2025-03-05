@@ -125,7 +125,7 @@
     p {
       font-size: 18px;
       font-family: $teritoryFont;
-      margin: 0;
+      margin: 5px 0 0;
     }
   }
 }
@@ -169,5 +169,15 @@
 .block-inline-blockdashboard-basic-item{
   &:has(.dashboard-tabs){
     height: 100%;
+  }
+}
+
+.mac_os{
+  .dashboard-tabs{
+    .right-content{
+      p{
+        margin: 0;
+      }
+    }
   }
 }

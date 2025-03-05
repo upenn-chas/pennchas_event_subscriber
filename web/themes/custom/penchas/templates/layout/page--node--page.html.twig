@@ -99,7 +99,7 @@
           
               {% set banner_class = 'hero-banner with-bottom-border' %}
             {% if node.field_media_image.value is empty  %}
-              {% set banner_class = 'hero-banner without-image' %}
+              {% set banner_class = 'hero-banner without-image small' %}
             {% endif %}
             {% if not is_front %}
               <section class="{{banner_class}}">

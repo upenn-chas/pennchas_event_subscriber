@@ -38,6 +38,7 @@ textarea.form-control {
     background-color: #fff;
     pointer-events: none;
     border-radius: 10px;
+  
   }
   &:after {
     pointer-events: none;
@@ -66,6 +67,7 @@ textarea.form-control {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    padding-top: 5px;
     &:focus-visible{
       outline: none;
     }
@@ -936,6 +938,20 @@ table{
       @media (max-width:767px) {
         padding-left: 0;
         padding-right: 0;
+      }
+    }
+  }
+}
+
+.mac_os{
+  .calender-page {
+    .calender-right {
+      .pager__items {
+        .pager__current {
+          .js-form-item {
+            padding:12px 15px 12px 15px;
+          }
+        }
       }
     }
   }
