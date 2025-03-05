@@ -44,6 +44,9 @@ class BlockCountForModerator extends BlockBase {
                 'count' => $result[0],
                 'goToUrl' => Url::fromRoute('view.my_events.page_1')->toString(),
             ],
+            '#cache' => [
+              'contexts' => ['user','session'],
+            ],
         ];
     }
 

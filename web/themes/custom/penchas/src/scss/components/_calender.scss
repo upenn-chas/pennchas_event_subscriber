@@ -616,14 +616,10 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 4px;
+        top: 0;
         width: 20px;
         height: 20px;
         border: 1px solid $primaryColor;
-
-        @include media-query('ipad') {
-          top: -2px;
-        }
       }
     }
 
@@ -640,7 +636,7 @@
         border-left: 2px solid #fff;
         border-bottom: 2px solid #fff;
         left: 4px;
-        top: 7px;
+        top: 4px;
         transform: rotate(-45deg);
 
         @include media-query('ipad') {
@@ -673,4 +669,7 @@
     }
   }
   }
+}
+time.calendar-view-day__number:hover {
+  cursor: pointer;
 }
