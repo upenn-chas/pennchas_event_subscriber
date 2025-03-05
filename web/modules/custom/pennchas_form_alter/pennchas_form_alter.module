@@ -129,13 +129,13 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
             $node->set('field_last_state', $currentState);
             $node->save();
 
-            \Drupal::messenger()->addStatus(t('%type "%title" has been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
+            \Drupal::messenger()->addStatus(t('%type %title has been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
         } else {
-            \Drupal::messenger()->addStatus(t('%type "%title" has already been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
+            \Drupal::messenger()->addStatus(t('%type %title has already been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
         }
         $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
     } else {
-        \Drupal::messenger()->addStatus(t('Node of type "%type" doesnt support soft delete.', ['%type' => $node->gettype()]));
+        \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
     }
 }
 

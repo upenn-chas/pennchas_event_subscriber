@@ -659,14 +659,14 @@
       font-family: $teritoryFont;
       background: #fff;
       color: #011f5b;
-      padding: 12px 20px 12px 20px;
+      padding: 17px 20px 13px 20px;
       border-radius: 10px;
       font-weight: 400;
       border: 1px solid #011f5b;
       line-height: 18px;
 
       @include media-query ('small') {
-        padding: 7px 10px 7px 10px;
+        padding: 10px 10px 5px 10px;
         font-size: 14px;
       }
 
@@ -1013,4 +1013,19 @@ body.page-view-my-events {
     margin-right: auto;
     position: relative;
   }
+}
+
+.mac_os{
+  .events-tab-blocks ,
+   .reservations-tab-blocks {
+    li{
+      span{
+        padding: 12px 20px 12px 20px;
+
+        @include media-query('small'){
+          padding: 7px 10px 7px 10px;
+        }
+      }
+    }
+   }
 }
