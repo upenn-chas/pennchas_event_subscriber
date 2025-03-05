@@ -1199,13 +1199,38 @@ ul.pagination.js-pager__items {
   justify-content: center;
 }
 
-.layout.row{
-&.layout-builder__layout{
-  margin-left: 0;
-  margin-right:0;
-  >.col-12{
-    padding-left: 0;
-    padding-right: 0;
+// .layout.row{
+// &.layout-builder__layout{
+//   margin-left: 0;
+//   margin-right:0;
+//   >.col-12{
+//     padding-left: 0;
+//     padding-right: 0;
+//   }
+// }
+// }
+
+.layout.row {
+  &:not(:has(.program-box)) {
+    &.layout-builder__layout {
+      margin-left: 0;
+      margin-right: 0;
+      
+      > .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
-}
+  &:not(:has(.dashboard-tabs)) {
+    &.layout-builder__layout {
+      margin-left: 0;
+      margin-right: 0;
+      
+      > .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
 }

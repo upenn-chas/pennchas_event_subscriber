@@ -16,7 +16,6 @@ dependencies:
   module:
     - comment
     - layout_builder
-    - layout_discovery
     - text
     - user
 third_party_settings:
@@ -25,118 +24,10 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components:
-          f0e68806-fc11-4aac-94d4-e0759fbc43bf:
-            uuid: f0e68806-fc11-4aac-94d4-e0759fbc43bf
-            region: content
-            configuration:
-              id: 'field_block:node:article:comment'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: comment_default
-                label: above
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          09be4390-b81f-43c0-8d69-531b5f42f51a:
-            uuid: 09be4390-b81f-43c0-8d69-531b5f42f51a
-            region: content
-            configuration:
-              id: 'field_block:node:article:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 7
-            additional: {  }
-          ca0914bf-73bf-4139-b0f5-fa1e263e5d3e:
-            uuid: ca0914bf-73bf-4139-b0f5-fa1e263e5d3e
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_tags'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 8
-            additional: {  }
-          77b97204-5a76-45d0-ab68-1a5e58cbdc9e:
-            uuid: 77b97204-5a76-45d0-ab68-1a5e58cbdc9e
-            region: content
-            configuration:
-              id: 'extra_field_block:node:article:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 9
-            additional: {  }
-          82e4c6ff-80a2-45d5-bcb5-43082c8c9834:
-            uuid: 82e4c6ff-80a2-45d5-bcb5-43082c8c9834
-            region: content
-            configuration:
-              id: 'field_block:node:article:comment'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: comment_default
-                label: above
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-            weight: 10
-            additional: {  }
-          6edeea25-2745-4f56-92af-dc7a090488fb:
-            uuid: 6edeea25-2745-4f56-92af-dc7a090488fb
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_chas_news'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 11
-            additional: {  }
-          d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6:
-            uuid: d3394425-b2b6-44ed-ab58-2ef6e0ad2ec6
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_media_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            weight: 14
-            additional: {  }
+        components: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
