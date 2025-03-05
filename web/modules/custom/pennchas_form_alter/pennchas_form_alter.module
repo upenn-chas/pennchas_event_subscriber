@@ -6,7 +6,6 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ModerationFormAlter;
 use Drupal\pennchas_form_alter\Hook\NodeInsertHook;
-use Drupal\pennchas_form_alter\Hook\NodePreInsertHook;
 use Drupal\pennchas_form_alter\Hook\NodePreSaveHook;
 use Drupal\pennchas_form_alter\Hook\NodePreUpdateHook;
 use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
@@ -14,24 +13,14 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\NoticeFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
 
-use Drupal\Core\Database\Query\AlterableInterface;
-use Drupal\group\Entity\Group;
+
 use Drupal\Core\Database\Database;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 
-use Drupal\Core\Messenger\MessengerInterface;
-use Drupal\Core\Render\Element\Form;
-use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 
-function pennchas_form_alter_preprocess_page(&$variables)
-{
-    // \Drupal::messenger()->deleteAll(); // Remove all messages
-    if (\Drupal::request()->getPathInfo() === '/dashboard') {
-        $variables['#cache']['max-age'] = 0; // Disable cache
-    }
-}
+use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
@@ -83,7 +72,11 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
     }
 }
 
-function  pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInterface $formState)
+/**
+ * 
+ * Alter the exposed form of views.
+ */
+function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInterface $formState)
 {
     // Get the form ID
     $filterFormId = $form['#id'];

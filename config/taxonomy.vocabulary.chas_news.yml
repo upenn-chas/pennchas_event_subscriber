@@ -2,7 +2,7 @@ uuid: d47a1171-1cde-4ce3-b2cb-80d6e599240d
 langcode: en
 status: true
 dependencies: {  }
-name: 'Chas News'
+name: 'CHAS News'
 vid: chas_news
 description: null
 weight: 0

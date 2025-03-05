@@ -33,3 +33,10 @@ default_select:
   dependencies:
     - core/jquery
     - core/drupal
+toast:
+  version: 1.0
+  js:
+    js/toast.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

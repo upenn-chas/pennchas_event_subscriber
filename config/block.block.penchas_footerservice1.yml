@@ -12,12 +12,12 @@ dependencies:
 id: penchas_footerservice1
 theme: penchas
 region: footer_services
-weight: 0
+weight: -17
 provider: null
 plugin: 'block_content:43b48f07-f974-492f-813e-9d3046ffe96f'
 settings:
   id: 'block_content:43b48f07-f974-492f-813e-9d3046ffe96f'
-  label: 'Footer service 1'
+  label: 'Connect with CHAS'
   label_display: visible
   provider: block_content
   status: true

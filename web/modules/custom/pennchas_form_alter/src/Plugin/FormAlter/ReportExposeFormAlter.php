@@ -25,20 +25,26 @@ class ReportExposeFormAlter
         }
 
         $form['#validate'][] = [$this, 'validate'];
-        
+        $form['#attached']['library'][] = 'pennchas_form_alter/toast';
+
+
         return $form;
     }
 
-    public function validate(array $form, FormStateInterface &$formState)
+    public function validate(array $form, FormStateInterface $formState)
     {
+        $triggeringElement = $formState->getTriggeringElement();
+        if ($triggeringElement['#value'] === 'Reset') {
+            return;
+        }
         $exposedFromDate = $formState->getValue('exposed_from_date');
         $exposedToDate = $formState->getValue('exposed_to_date');
 
         if (!$exposedFromDate || !$exposedToDate) {
             return;
         }
-        if ($exposedFromDate > $exposedToDate) {
-            $formState->setErrorByName('exposed_from_date', t('From date must be less than or equal to To date.'));
+        if ($exposedToDate < $exposedFromDate) {
+            $formState->setErrorByName('exposed_to_date', t('To Date must be greater than or equal to From Date.'));
         }
     }
 }
