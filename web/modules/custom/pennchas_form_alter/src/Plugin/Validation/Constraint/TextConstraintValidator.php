@@ -26,7 +26,7 @@ class TextConstraintValidator extends ConstraintValidator
     {
         $definition = $value->getFieldDefinition();
         $text = $value->getString();
-        if (preg_replace('/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$$/', '', $text) === '') {
+        if ($text && preg_replace('/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$$/', '', $text) === '') {
             $this->context->addViolation($constraint->invalid, ['%label' => $definition->getLabel()]);
         }
     }
