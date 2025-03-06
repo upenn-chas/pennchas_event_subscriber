@@ -17,6 +17,7 @@ permissions:
   - 'dashboard pending reservations'
   - 'delete own group_node:reserve_room entity'
   - 'update own group_node:reserve_room entity'
+  - 'view group'
   - 'view group_node:article entity'
   - 'view group_node:chas_event entity'
   - 'view group_node:event entity'

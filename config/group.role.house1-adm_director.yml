@@ -45,6 +45,7 @@ permissions:
   - 'update own group_node:chas_event entity'
   - 'update own group_node:notices entity'
   - 'update own group_node:reserve_room entity'
+  - 'update own group_node:room entity'
   - 'use editorial transition create_new_draft'
   - 'view all group revisions'
   - 'view group'

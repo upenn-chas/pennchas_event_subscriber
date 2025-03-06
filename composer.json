@@ -109,7 +109,10 @@
         "drupal/layout_builder_styles": "^2.1",
         "drupal/entity_clone": "^2.1@beta",
         "drupal/clientside_validation": "^4.1",
-        "drupal/gin": "^4.0"
+        "drupal/gin": "^4.0",
+        "drupal/masquerade": "^2.0",
+        "drupal/simple_sitemap": "^4.2",
+        "drupal/robotstxt": "^1.6"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
