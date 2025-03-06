@@ -979,7 +979,21 @@ display:
         arguments: false
       use_ajax: false
       exposed_block: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: '{{ title }}'
+            robots: 'index, follow'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants:
+            default:
+              index: true
+              priority: '0.5'
+              changefreq: always
+              arguments:
+                field_short_name_value: field_short_name_value
+              max_links: 15
       path: group/%/calendar
     cache_metadata:
       max-age: -1
@@ -1551,7 +1565,20 @@ display:
         arguments: false
       use_ajax: false
       exposed_block: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            robots: 'index, follow'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants:
+            default:
+              index: true
+              priority: '0.5'
+              changefreq: always
+              arguments:
+                field_short_name_value: field_short_name_value
+              max_links: 15
       path: group/%/week-calendar
     cache_metadata:
       max-age: -1
