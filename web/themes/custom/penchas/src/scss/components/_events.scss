@@ -237,7 +237,15 @@
   @include media-query('tablet') {
     padding: 0 !important;
   }
-
+  .pagination{
+    @include media-query-min('small'){
+   padding-bottom: 0;
+   margin-bottom: 0;
+    }
+    @include media-query('small'){
+      padding-top: 30px;
+    }
+  }
   .view-header {
     font-size: 14px;
     font-weight: 600;
@@ -245,7 +253,14 @@
     line-height: 16px;
     margin-bottom: 1rem;
   }
-
+  .view-content{
+   &.row{
+    padding-bottom:20px;
+    @include media-query('small'){
+      padding-bottom: 0;
+    }
+   }
+  }
   .row {
     margin: 0;
 
@@ -377,6 +392,11 @@
     font-weight: 700;
     font-family: $teritoryFont;
     color: $primaryColor;
+    margin-bottom: -32px;
+    @include media-query('small'){
+      margin-bottom: 0;
+      text-align: center;
+    }
   }
 
 

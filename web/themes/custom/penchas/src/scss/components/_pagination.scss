@@ -61,15 +61,18 @@
         }
       }
       &[title="Go to first page"]{
-       
           display: none;
-  
       }
       &[title="Go to last page"]{
           display: none;
       }
+      
     }
-
+    &[role="presentation"]{
+      span{
+        display: none;
+      }
+    }
     &.active .page-link {
       background-color: $primaryColor;
       border-color: $primaryColor;

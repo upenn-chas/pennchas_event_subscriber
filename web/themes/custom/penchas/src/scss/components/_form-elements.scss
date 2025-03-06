@@ -471,8 +471,10 @@ label {
                 justify-content: flex-start;
                 
                   .js-form-item {
+                    position: relative;
                     @include media-query('mobile'){
                       width: 100%;
+                      
                     }
                     label{
                       display: block !important;
@@ -487,6 +489,17 @@ label {
                     // margin-bottom: 0;
                     // margin-top: 1rem;
                   }
+                }
+              }
+              .smart-date--duration-list{
+                width: 100%;
+                border-color: $primaryColor;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                li{
+                  color: $primaryColor;
+                  padding-left: 14px;
+                  padding-right: 14px;
                 }
               }
               details{
@@ -935,6 +948,34 @@ body.path-group{
     }
   }
 }
+.view-id-webform_export{
+  padding: 40px 0;
+
+  .views-exposed-form{
+    .js-form-type-select{
+      width: 100%;
+    }
+  }
+  [data-drupal-selector="edit-submit"]{
+    font-size: 18px;
+      background: #011f5b;
+      border-radius: 10px;
+      color: #fff;
+      border: 1px solid #011f5b;
+      font-weight: 400;
+      padding: 0 20px;
+      height: 50px;
+      line-height: normal;
+      &:hover{
+        background-color: #fff;
+      color: #011f5b;
+      }
+      &::before{
+        display:none;
+      }
+  }
+}
+
 table{
   td{
     &:has(.smartdate--widget){

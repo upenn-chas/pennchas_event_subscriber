@@ -547,12 +547,16 @@ body {
 
 .action-container+.view-content.row {
   margin: 0;
-  overflow: auto;
   width: 100%;
-  margin-bottom: 30px;
   max-height: 600px;
+  overflow: auto; 
   border-top: 0.5px solid #ccc;
+  padding-right: 5px;
 }
+
+
+
+
 
 .js-pager__items {
   &.pagination {
