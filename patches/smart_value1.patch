@@ -1,0 +1,15 @@
+diff --git a/src/Plugin/Field/FieldWidget/SmartDateWidgetBase.php b/src/Plugin/Field/FieldWidget/SmartDateWidgetBase.php
+index 7c0980a..a3ff868 100644
+--- a/src/Plugin/Field/FieldWidget/SmartDateWidgetBase.php
++++ b/src/Plugin/Field/FieldWidget/SmartDateWidgetBase.php
+@@ -543,9 +543,8 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
+       if ($is_multiple) {
+         $element = [
+           '#title' => $this
+-            ->t('@title (value @number)', [
++            ->t('@title', [
+               '@title' => $title,
+-              '@number' => $delta + 1,
+             ]),
+           '#title_display' => 'invisible',
+           '#description' => '',
