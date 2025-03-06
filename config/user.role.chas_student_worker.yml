@@ -53,6 +53,7 @@ permissions:
   - 'create media'
   - 'create notices content'
   - 'create remote_video media'
+  - 'create room content'
   - 'create video media'
   - 'dashboard pending events'
   - 'dashboard pending reservations'

@@ -398,6 +398,13 @@
   if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
     document.documentElement.classList.add('mac_os');
   }
+  
+  const target = document.querySelector(".action-container + .view-content.row");
+if (target) {
+  OverlayScrollbars(target, { scrollbars: { autoHide: "never" } });
+}
+
+  
   Drupal.behaviors.penchas = {
     attach: function (context, settings) {
 

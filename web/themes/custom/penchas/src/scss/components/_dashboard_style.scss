@@ -320,6 +320,9 @@
 .smartdate--widget .input-group .input-group-text {
   padding-top: 5px !important;
 }
+// .user-logged-in .smartdate--time-inline .form-datetime-wrapper .form-items-inline,.user-logged-in .smartdate--time-inline div.time-start, .smartdate--time-inline div.time-end{
+//   gap: 5px;
+// }
 #drupal-off-canvas form.layout-builder-configure-section summary {
   color: inherit;
 }
@@ -631,6 +634,9 @@ body #drupal-off-canvas-wrapper .layout-builder-remove-section {
 }
 form{
   &.layout-builder-form{
-    padding: 0 20px;
+    padding: 0 2rem;
+    @include media-query('small'){
+      padding: 0 1rem;
+    }
   }
 }

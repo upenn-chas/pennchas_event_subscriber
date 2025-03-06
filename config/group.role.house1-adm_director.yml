@@ -23,6 +23,7 @@ permissions:
   - 'create group_node:chas_event entity'
   - 'create group_node:notices entity'
   - 'create group_node:reserve_room entity'
+  - 'create group_node:room entity'
   - 'dashboard pending events'
   - 'dashboard pending reservations'
   - 'delete own group_media:document entity'
