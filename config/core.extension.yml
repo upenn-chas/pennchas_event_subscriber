@@ -95,6 +95,7 @@ module:
   link: 0
   linkit: 0
   mailsystem: 0
+  masquerade: 0
   media: 0
   media_library: 0
   media_library_form_element: 0
@@ -120,6 +121,7 @@ module:
   redirect: 0
   responsive_image: 0
   rest: 0
+  robotstxt: 0
   search_api: 0
   search_api_db: 0
   search_api_pantheon: 0
@@ -130,6 +132,7 @@ module:
   seo_checklist: 0
   serialization: 0
   shortcut: 0
+  simple_sitemap: 0
   simplify_menu: 0
   smart_date: 0
   smart_date_recur: 0
