@@ -24,6 +24,17 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
      */
     public function validate(mixed $value, Constraint $constraint)
     {
+        $entity = $this->context->getRoot()->getEntity();
+        $nid = $entity->id();
+
+        if($nid) {
+            $node = Node::load($nid);
+            $originalSchedule = $node->get('field_event_schedule')->getString();
+            $newSchedule = $value->getString();
+            if($originalSchedule === $newSchedule) {
+                return;
+            }
+        }
         $roomId = (int) $this->context->getRoot()->get('field_room')->getString();
         $room = Node::load($roomId);
         $schedule = $value->getValue();
