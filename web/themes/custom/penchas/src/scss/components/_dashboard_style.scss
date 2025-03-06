@@ -491,6 +491,13 @@ color: inherit !important;
         margin-top: 10px;
         width: 100%;
     }
+    @include media-query('small'){
+      margin-bottom: 10px;
+      margin-top: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      gap: 20px;
+    }
   }
 }
 
@@ -620,5 +627,10 @@ body #drupal-off-canvas-wrapper .layout-builder-remove-section {
         }
       }
     }
+  }
+}
+form{
+  &.layout-builder-form{
+    padding: 0 20px;
   }
 }

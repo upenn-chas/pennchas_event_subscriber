@@ -6,7 +6,7 @@
       border: none;
       height: 30px;
       width: 30px;
-      margin: 8px;
+      margin: 5px;
       font-weight: 600;
       display: flex;
       justify-content: center;
@@ -19,6 +19,54 @@
         background: #fff;
         outline: none;
         box-shadow: none;
+      }
+
+      &[rel="next"] {
+        span {
+          &[aria-hidden="true"] {
+            position: relative;
+            font-size: 0;
+
+            &:after {
+              content: "";
+              position: absolute;
+              background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 21 24"><path fill="%23011F5B" d="M20.404686 12.529687L20.934376 12L20.404688 11.470312L12.529688 3.5953131L12 3.0656247L10.940624 4.125L11.470312 4.6546869L18.065624 11.25L0.75 11.25L0 11.25L0 12.75L0.75 12.75L18.065624 12.75L11.470312 19.345314L10.940624 19.875L12 20.934376L12.529687 20.404688L20.404686 12.529688Z"/></svg>') no-repeat center;
+              width: 21px;
+              height: 24px;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+
+      &[rel="prev"] {
+        span {
+          &[aria-hidden="true"] {
+            position: relative;
+            font-size: 0;
+
+            &:after {
+              content: "";
+              background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 21 24"><path fill="%23011F5B" d="M0.59531236 11.470312L0.065624714 12L0.59531236 12.529687L8.4703121 20.404686L9 20.934376L10.059376 19.875L9.5296879 19.345314L2.9343746 12.75L20.25 12.75L21 12.75L21 11.25L20.25 11.25L2.9343746 11.25L9.5296879 4.6546869L10.059376 4.125L9 3.0656247L8.4703121 3.5953131L0.59531236 11.470312Z"/></svg>') no-repeat center;
+              width: 21px;
+              height: 24px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+      &[title="Go to first page"]{
+       
+          display: none;
+  
+      }
+      &[title="Go to last page"]{
+          display: none;
       }
     }
 
