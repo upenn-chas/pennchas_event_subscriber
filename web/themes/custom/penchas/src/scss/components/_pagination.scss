@@ -1,0 +1,31 @@
+.pagination {
+  & .page-item {
+    & .page-link {
+      color: $primaryColor;
+      font-family: $teritoryFont;
+      border: none;
+      height: 30px;
+      width: 30px;
+      margin: 8px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      line-height: 16px;
+
+      &:focus,
+      &:hover {
+        background: #fff;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    &.active .page-link {
+      background-color: $primaryColor;
+      border-color: $primaryColor;
+      border-radius: 10px;
+    }
+  }
+}

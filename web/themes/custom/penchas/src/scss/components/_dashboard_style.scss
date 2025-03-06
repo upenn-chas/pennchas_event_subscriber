@@ -597,3 +597,28 @@ body #drupal-off-canvas-wrapper .layout-builder-remove-section {
     }
   }
 }
+
+.view-group-nodes{
+  .views-exposed-form{
+    .flex-wrap{
+      padding-left: 0;
+      padding-right: 0;
+      [data-drupal-selector="edit-submit-group-nodes"]{
+        color: #fff;
+        font-weight: 400;
+        border: 1px solid #011f5b;
+        font-size: 16px;
+        padding: 6px 20px;
+        border-radius: 4px;
+        background: #011f5b;
+        &:hover{
+          color: #011f5b;
+          background: #fff;
+        }
+        &::before{
+          display: none;
+        }
+      }
+    }
+  }
+}
