@@ -230,6 +230,7 @@
     padding: 65px 85px;
     margin-top: -1px;
     z-index: 1;
+    margin-bottom: 55px;
 
     @include media-query('tablet') {
       padding: 35px 35px;
@@ -237,6 +238,7 @@
 
     @include media-query('small') {
       padding: 30px 24px 0px 24px;
+      margin-bottom: 40px;
     }
 
   }

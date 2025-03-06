@@ -169,6 +169,9 @@
             },
             "drupal/simplesamlphp_auth": {
                 "Get dynamically values and Updated in drupal": "patches/simple_saml_auth1.patch"
+            },
+            "drupal/smart_date": {
+                "Fixed value no. in error message": "patches/smart_value1.patch"
             }
         }
     },
