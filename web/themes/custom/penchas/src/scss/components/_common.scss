@@ -280,10 +280,18 @@ body {
 
   &.blue {
     background: #EBF2FF;
+
+    h6:before {
+      background: url("../../assets/images/info-icon.svg")no-repeat;
+    }
   }
 
   &.green {
     background: #B9F1C3;
+    
+    h6:before {
+      background: url("../../assets/images/tick.svg")no-repeat;
+    }
   }
 
 
@@ -312,7 +320,6 @@ body {
     }
 
     &:before {
-      background: url("../../assets/images/info-icon.svg")no-repeat;
       content: "";
       position: absolute;
       left: 5px;
