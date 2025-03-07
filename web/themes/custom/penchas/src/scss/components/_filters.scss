@@ -320,7 +320,6 @@
     }
 
     .filter-results {
-
         .row {
             .col-md-6 {
                 @include media-query('mobile') {
@@ -332,13 +331,13 @@
     }
 }
 
-.layout {
-    &.row {
-        .col-12 {
-            &:has(.filter-results) {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
-    }
-}
+// .layout {
+//     &.row {
+//         .col-12 {
+//             &:has(.filter-results) {
+//                 padding-left: 0;
+//                 padding-right: 0;
+//             }
+//         }
+//     }
+// }

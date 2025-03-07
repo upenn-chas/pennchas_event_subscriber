@@ -35,6 +35,8 @@
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
     'image-with-text',
+    'row-reverse',
+    'space-mb'
   ]
 %}
 {% set heading_alignment = '' %}
@@ -48,19 +50,19 @@
   <div class="container">
     <div class="row">
       <div class="image-with-text-inner">
+        <div class="col-12 col-lg-8">
+          <div class="img-column">
+            {{ content.body }}
+          </div>
+        </div>
         <div class="col-12 col-lg-4">
-          <div class="info-column left-spacing">
+          <div class="info-column">
             {{ title_prefix }}
               {% if label %}
                 <h2{{ title_attributes }} class="alignment-{{heading_alignment}}">{{ label }}</h2>
               {% endif %}
             {{ title_suffix }}
             {{content.field_right_description}}
-          </div>
-        </div>
-        <div class="col-12 col-lg-8">
-          <div class="iframe-column">
-            <p>{{ content.body }}</p>
           </div>
         </div>
       </div>

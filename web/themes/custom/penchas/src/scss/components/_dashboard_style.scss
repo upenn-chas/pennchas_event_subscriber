@@ -634,9 +634,9 @@ body #drupal-off-canvas-wrapper .layout-builder-remove-section {
 }
 form{
   &.layout-builder-form{
-    padding: 0 2rem;
+    padding: 2rem 2rem 0;
     @include media-query('small'){
-      padding: 0 1rem;
+      padding: 1rem 1rem 0;
     }
   }
 }
