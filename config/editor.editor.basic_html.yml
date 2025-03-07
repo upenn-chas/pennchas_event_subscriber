@@ -15,11 +15,14 @@ settings:
     items:
       - bold
       - italic
+      - underline
       - '|'
       - link
       - '|'
       - bulletedList
       - numberedList
+      - indent
+      - outdent
       - '|'
       - blockQuote
       - drupalInsertImage

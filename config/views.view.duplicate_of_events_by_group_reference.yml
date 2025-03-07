@@ -1,4 +1,4 @@
-uuid: a9d25ea8-992b-4ee9-9c8a-c0c85d8726e3
+uuid: 179749fe-0fad-4836-bc71-19061a4f0c51
 langcode: en
 status: true
 dependencies:
@@ -8,11 +8,13 @@ dependencies:
   module:
     - group
     - node
+    - smart_date
     - url_alteration
     - user
+    - verf
     - views_bootstrap
-id: group_events
-label: 'Events by Group reference'
+id: duplicate_of_events_by_group_reference
+label: 'TEMPORARY - Events by Group reference, Hill'
 module: views
 description: 'Get all Events by Group ID reference'
 tag: ''
@@ -186,6 +188,95 @@ display:
           value:
             chas_event: chas_event
           group: 1
+        field_college_houses_target_id_verf:
+          id: field_college_houses_target_id_verf
+          table: node__field_college_houses
+          field: field_college_houses_target_id_verf
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: verf
+          operator: in
+          value:
+            7: '7'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          verf_target_bundles:
+            house1: '0'
+          show_unpublished: 0
+        field_event_ends_on_value:
+          id: field_event_ends_on_value
+          table: node__field_event_ends_on
+          field: field_event_ends_on_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '+0 day'
+            type: offset
+            granularity: second
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -250,7 +341,9 @@ display:
         - url
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:views.view.duplicate_of_events_by_group_reference'
+        - group_list
   block_1:
     id: block_1
     display_title: Block
@@ -267,4 +360,6 @@ display:
         - url
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:views.view.duplicate_of_events_by_group_reference'
+        - group_list

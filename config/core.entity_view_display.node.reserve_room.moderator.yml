@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
-    - block_content.type.link
     - core.base_field_override.node.reserve_room.title
     - core.entity_view_mode.node.moderator
     - field.field.node.reserve_room.field_anticipated_participants
@@ -71,8 +70,8 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          c0ef8d48-0fb8-4579-b75b-016afe0a1577:
-            uuid: c0ef8d48-0fb8-4579-b75b-016afe0a1577
+          2db52738-dda5-4f11-9891-04552a2fb4bb:
+            uuid: 2db52738-dda5-4f11-9891-04552a2fb4bb
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
@@ -81,10 +80,10 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 629
-              block_revision_id: 671
+              block_id: 1284
+              block_revision_id: 1469
               block_serialized: null
-            weight: 0
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -145,7 +144,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           5c86effa-cef1-479b-b99b-f8b1038dce67:
             uuid: 5c86effa-cef1-479b-b99b-f8b1038dce67
@@ -160,9 +159,9 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: smartdate_custom
-                label: hidden
+                label: visually_hidden
                 settings:
-                  separator: ' - '
+                  separator: ' to '
                   time_diff:
                     enabled: 0
                     future_format: '@interval hence'
@@ -170,21 +169,21 @@ third_party_settings:
                     granularity: '2'
                     refresh: '60'
                     description: ''
-                  date_format: 'D, M j Y'
+                  date_format: 'l, F d'
                   custom_date_format: ''
                   timezone: ''
                   tooltip:
                     date_format: long
                     custom_date_format: ''
-                  join: ', '
-                  time_format: 'g:ia'
-                  time_hour_format: ga
+                  join: ''
+                  time_format: ''
+                  time_hour_format: ''
                   allday_label: 'All day'
                   date_first: '1'
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           de06979b-b32d-4419-8e7e-3f64c1475b55:
             uuid: de06979b-b32d-4419-8e7e-3f64c1475b55
@@ -205,26 +204,7 @@ third_party_settings:
                   class: ''
                   tag: span
                 third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          656d476d-0fd0-49cc-b8f9-69cea20a055c:
-            uuid: 656d476d-0fd0-49cc-b8f9-69cea20a055c
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_email'
-              label: Email
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: email_link_class
-                label: hidden
-                settings:
-                  class: ''
-                third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           61533cd9-8378-4bed-b090-1301d44cb196:
             uuid: 61533cd9-8378-4bed-b090-1301d44cb196
@@ -248,7 +228,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 6
+            weight: 9
             additional: {  }
           915b334a-0cc6-4cce-ba9c-e2a03bec4638:
             uuid: 915b334a-0cc6-4cce-ba9c-e2a03bec4638
@@ -263,11 +243,88 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: string
-                label: hidden
+                label: visually_hidden
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
+            weight: 12
+            additional: {  }
+          add75a28-1f87-4300-b048-2dff9721b89d:
+            uuid: add75a28-1f87-4300-b048-2dff9721b89d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_event_schedule'
+              label: Time
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_custom
+                label: visually_hidden
+                settings:
+                  separator: ' - '
+                  time_diff:
+                    enabled: 0
+                    future_format: '@interval hence'
+                    past_format: '@interval ago'
+                    granularity: '2'
+                    refresh: '60'
+                    description: ''
+                  date_format: ''
+                  custom_date_format: ''
+                  timezone: ''
+                  tooltip:
+                    date_format: long
+                    custom_date_format: ''
+                  join: ''
+                  time_format: 'h:ia'
+                  time_hour_format: 'h:ia'
+                  allday_label: 'All day'
+                  date_first: '1'
+                  ampm_reduce: 0
+                  site_time_toggle: 0
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          e2b6f3d4-7e6b-4e5f-a99b-af44e84040d0:
+            uuid: e2b6f3d4-7e6b-4e5f-a99b-af44e84040d0
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_room'
+              label: Location
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: visually_hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
             weight: 7
+            additional: {  }
+          656d476d-0fd0-49cc-b8f9-69cea20a055c:
+            uuid: 656d476d-0fd0-49cc-b8f9-69cea20a055c
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_email'
+              label: Email
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: email_link_class
+                label: hidden
+                settings:
+                  class: ''
+                third_party_settings: {  }
+            weight: 11
             additional: {  }
           c5bb029a-4878-4b1e-878a-b182209572e4:
             uuid: c5bb029a-4878-4b1e-878a-b182209572e4
@@ -282,64 +339,53 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: number_integer
-                label: inline
+                label: visually_hidden
                 settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
             weight: 8
             additional: {  }
-          91e00304-edf4-42e1-869f-989cf831358d:
-            uuid: 91e00304-edf4-42e1-869f-989cf831358d
+          ee7f5371-976c-4f80-80a9-79e4edefa969:
+            uuid: ee7f5371-976c-4f80-80a9-79e4edefa969
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:basic'
-              label: 'Room reservation text'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 630
-              block_revision_id: 672
-              block_serialized: null
-            weight: 1
-            additional: {  }
-          de0b57c4-b856-4175-b29b-a867948f518b:
-            uuid: de0b57c4-b856-4175-b29b-a867948f518b
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'botm text'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 631
-              block_revision_id: 673
-              block_serialized: null
-            weight: 9
-            additional: {  }
-          c399f4a7-01ed-4e6b-b05f-ff8304ca067a:
-            uuid: c399f4a7-01ed-4e6b-b05f-ff8304ca067a
-            region: blb_region_col_1
-            configuration:
-              id: 'extra_field_block:node:reserve_room:content_moderation_control'
-              label: 'Moderation control'
-              label_display: '0'
+              id: 'field_block:node:reserve_room:field_support_contact'
+              label: 'Main Contact'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                settings: {  }
+                type: string
+                label: visually_hidden
+                settings:
+                  link_to_entity: false
                 third_party_settings: {  }
             weight: 10
+            additional: {  }
+          eefef37a-6f2a-4d2e-a375-573a65dc08ce:
+            uuid: eefef37a-6f2a-4d2e-a375-573a65dc08ce
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Pending Reserve Room Block Title'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 1285
+              block_revision_id: 1470
+              block_serialized: null
+            weight: 2
             additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          container_wrapper_classes: space
+          container_wrapper_classes: ''
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -357,10 +403,79 @@ third_party_settings:
                   background_repeat: no-repeat
                   background_attachment: not_fixed
                   background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: container
-          section_classes: ''
+          section_classes: 'moderation-form reserve-room'
           section_attributes: null
           regions_classes:
             blb_region_col_1: ''
@@ -371,19 +486,19 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          3160c51e-37bd-4e73-9372-9a5b88566912:
-            uuid: 3160c51e-37bd-4e73-9372-9a5b88566912
+          e626bcd8-d5ac-40cf-9a67-8891c5047bad:
+            uuid: e626bcd8-d5ac-40cf-9a67-8891c5047bad
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:link'
-              label: 'Add to Calendar link'
+              id: 'extra_field_block:node:reserve_room:content_moderation_control'
+              label: 'Moderation control'
               label_display: '0'
               provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 632
-              block_revision_id: 674
-              block_serialized: null
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                settings: {  }
+                third_party_settings: {  }
             weight: 0
             additional: {  }
         third_party_settings: {  }
