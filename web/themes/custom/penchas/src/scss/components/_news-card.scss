@@ -2,14 +2,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   span {
     font-size: 12px;
     text-transform: uppercase;
     font-family: $teritoryFont;
   }
 }
-
+.mac_os{
+.news-head {
+  margin-bottom: 5px;
+}
+}
 .news-card {
   display: flex;
   flex-wrap: wrap;

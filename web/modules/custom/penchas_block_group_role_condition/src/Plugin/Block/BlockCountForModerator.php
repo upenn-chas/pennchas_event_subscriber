@@ -21,46 +21,61 @@ class BlockCountForModerator extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    // Initialize $group_role as FALSE
+    $group_role = FALSE;
+    
     $current_user = \Drupal::currentUser();
-    // $current_user_id = $current_user->id();
-    // $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
-    // dd($groupMemberships);
+    $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
+    $required_roles = ['house1-house_coordinator', 'house1-house_director', 'house1-admin_in'];
+    
+    foreach ($groupMemberships as $membership) {
+      $roles = $membership->getRoles();
+      foreach ($roles as $role) {
+        if (in_array($role->id(), $required_roles)) {
+          $group_role = TRUE; // Correct assignment
+        }
+      }
+    }
+
     $user_roles = $current_user->getRoles();
     $allowed_roles = ['administrator', 'chas_director'];
 
-    if (array_intersect($user_roles, $allowed_roles)) {
+    // Check user roles or group role condition
+    if (array_intersect($user_roles, $allowed_roles) || $group_role == TRUE) {
+        $groups = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
 
-      $groups = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
-  
-      if (!count($groups)) {
-          return [];
-      }
-  
-  
-      $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
-      $query->fields('ms', ['content_entity_id']);
-      $query->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
-      $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
-      $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
-      $query->condition('nfg.bundle', 'chas_event', '=');
-      $result = $query->distinct()->countQuery()->execute()->fetchCol();
-  
-      if (!empty($result[0])) {
-          return [
-              '#type' => 'inline_template',
-              '#template' => '<div class="info-fields"><p>You have {{ count }} events for moderation. Go to <a href="{{ goToUrl }}">My Events</a>.</p></div>',
-              '#context' => [
-                  'count' => $result[0],
-                  'goToUrl' => Url::fromRoute('view.my_events.page_1')->toString(),
-              ],
-              '#cache' => [
-                'contexts' => ['user','session'],
-              ],
-          ];
+        // If no groups found, return an empty array to prevent passing null to the cacheable metadata
+        if (!count($groups)) {
+            return [];
         }
-  
-      return [];
+
+        $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
+        $query->fields('ms', ['content_entity_id']);
+        $query->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
+        $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
+        $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
+        $query->condition('nfg.bundle', 'chas_event', '=');
+        $result = $query->distinct()->countQuery()->execute()->fetchCol();
+
+        // Check if we have content to render
+        if (!empty($result[0])) {
+            return [
+                '#type' => 'inline_template',
+                '#template' => '<div class="info-fields"><p>You have {{ count }} events for moderation. Go to <a href="{{ goToUrl }}">My Events</a>.</p></div>',
+                '#context' => [
+                    'count' => $result[0],
+                    'goToUrl' => Url::fromRoute('view.my_events.page_1')->toString(),
+                ],
+                '#cache' => [
+                    'contexts' => ['user', 'session'],
+                ],
+            ];
+        }
     }
-  }
+
+    // Ensure that you return an empty array if none of the conditions are met
+    return [];
+}
+
     
 }

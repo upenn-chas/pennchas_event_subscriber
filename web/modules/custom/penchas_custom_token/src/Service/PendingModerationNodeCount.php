@@ -33,6 +33,9 @@ class PendingModerationNodeCount
     // }
 
     public function nodeCountForAuthor(string $type, string $suffix = '') {
+        // $current_user = \Drupal::currentUser();
+        // $current_user_id = $current_user->id();
+        
         $groups  = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
         if (!count($groups)) {
             return '';

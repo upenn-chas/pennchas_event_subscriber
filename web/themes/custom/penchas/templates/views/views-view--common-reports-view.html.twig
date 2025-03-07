@@ -78,11 +78,11 @@
     </div>
   </section>
     <div class="action-container">
-      {% if header %}
         <div class="view-header">
+        {% if header %}
           {{ header }}
+        {% endif %}
         </div>
-      {% endif %}
       {% if exposed %}
         <div class="view-filters">
           {{ exposed }}

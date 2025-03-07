@@ -697,6 +697,11 @@ body {
     padding-bottom: 20px;
     margin-bottom: 20px;
     text-align: right;
+    min-height: 74px;
+
+    @include media-query('mobile'){
+      min-height: auto;
+    }
 
     .views-display-link {
       color: #011f5b;
@@ -719,6 +724,14 @@ body {
     }
   }
 }
+@media (max-width: 1380px) {
+  .container-lg {
+    &:has(.reports){
+    padding-left: 18px;
+    padding-right: 18px;
+    }
+  }
+}
 
 
 .reports:has(table.table) {
@@ -727,10 +740,16 @@ body {
       &.small {
         .col-lg-6 {
           min-height: 120px;
+          padding-left:0 ;
+          padding-right: 0;
+          .breadcrumbs-block{
+            left: 0;
+          }
         }
       }
     }
   }
+
 }
 
 .hide-techs {
@@ -1019,7 +1038,7 @@ body {
     .js-form-type-select {
       max-width: 250px;
 
-      @include media-query('small') {
+      @include media-query('mobile') {
         max-width: 100%;
       }
     }
