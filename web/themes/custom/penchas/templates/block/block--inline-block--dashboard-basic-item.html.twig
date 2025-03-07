@@ -36,7 +36,7 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-{# {% if verify_role_access(content.field_block_display_condition_wi) %} #}
+{% if verify_role_access(content.field_block_display_condition_wi) %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
     {% if label %}
@@ -62,4 +62,4 @@
     
   {% endblock %}
 </div>
-{# {% endif %}  #}
+{% endif %} 
