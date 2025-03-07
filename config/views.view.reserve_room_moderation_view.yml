@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.moderator
     - node.type.reserve_room
     - workflows.workflow.editorial
   module:
@@ -213,7 +214,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: default
+          view_mode: moderator
       query:
         type: views_query
         options:

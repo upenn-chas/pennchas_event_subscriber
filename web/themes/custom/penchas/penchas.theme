@@ -281,9 +281,7 @@ function penchas_preprocess_node(&$variables)
     $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul>
           <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>'
       . $links . '</ul></div></div>';
-  } else if ($nodeBundle === 'reserve_room' && $variables['view_mode'] === 'moderator') {
-    $variables['moderation_logs'] = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($node->id());
-  } 
+  }
 
   // Set node title.
   $variables['node_title'] = $node->getTitle();

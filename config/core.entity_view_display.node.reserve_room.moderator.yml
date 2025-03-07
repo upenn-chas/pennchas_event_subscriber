@@ -178,25 +178,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 12
             additional: {  }
-          915b334a-0cc6-4cce-ba9c-e2a03bec4638:
-            uuid: 915b334a-0cc6-4cce-ba9c-e2a03bec4638
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:reserve_room:field_phone'
-              label: Phone
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: visually_hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 16
-            additional: {  }
           add75a28-1f87-4300-b048-2dff9721b89d:
             uuid: add75a28-1f87-4300-b048-2dff9721b89d
             region: blb_region_col_1
@@ -272,7 +253,7 @@ third_party_settings:
                 settings:
                   class: ''
                 third_party_settings: {  }
-            weight: 16
+            weight: 18
             additional: {  }
           c5bb029a-4878-4b1e-878a-b182209572e4:
             uuid: c5bb029a-4878-4b1e-878a-b182209572e4
@@ -294,6 +275,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 13
             additional: {  }
+          eefef37a-6f2a-4d2e-a375-573a65dc08ce:
+            uuid: eefef37a-6f2a-4d2e-a375-573a65dc08ce
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Pending Reserve Room Block Title'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 1285
+              block_revision_id: 1470
+              block_serialized: null
+            weight: 2
+            additional: {  }
           ee7f5371-976c-4f80-80a9-79e4edefa969:
             uuid: ee7f5371-976c-4f80-80a9-79e4edefa969
             region: blb_region_col_1
@@ -313,20 +309,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 16
             additional: {  }
-          eefef37a-6f2a-4d2e-a375-573a65dc08ce:
-            uuid: eefef37a-6f2a-4d2e-a375-573a65dc08ce
+          915b334a-0cc6-4cce-ba9c-e2a03bec4638:
+            uuid: 915b334a-0cc6-4cce-ba9c-e2a03bec4638
             region: blb_region_col_1
             configuration:
-              id: 'inline_block:basic'
-              label: 'Pending Reserve Room Block Title'
-              label_display: '0'
+              id: 'field_block:node:reserve_room:field_phone'
+              label: Phone
+              label_display: visible
               provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 1285
-              block_revision_id: 1470
-              block_serialized: null
-            weight: 2
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: visually_hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 19
             additional: {  }
         third_party_settings: {  }
       -

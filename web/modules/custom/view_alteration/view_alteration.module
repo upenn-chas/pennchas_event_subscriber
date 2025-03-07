@@ -10,7 +10,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 function view_alteration_views_post_execute(ViewExecutable $view)
 {
-    if ($view->id() === 'event_moderation_view' && $view->current_display === 'event_moderate_page_view') {
+    $viewId = $view->id();
+    $displayId = $view->current_display;
+    if (($viewId === 'event_moderation_view' && $displayId === 'event_moderate_page_view')
+        || ($viewId === 'reserve_room_moderation_view' && $displayId === 'page_1')) {
         if (!$view->result) {
             throw new NotFoundHttpException(t('The requested page was not found.'));
         }
