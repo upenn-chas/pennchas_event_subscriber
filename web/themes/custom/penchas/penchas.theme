@@ -161,7 +161,6 @@ function penchas_preprocess_node_edit_form(&$variables)
       }
     }
   }
-
   $variables['group_banner_info'] = $group_banner_html;
 }
 
@@ -270,7 +269,7 @@ function penchas_preprocess_node(&$variables)
           $edit_url = Url::fromRoute('entity.node.edit_form', ['node' => $node->id()])->toString();
           $links = '<li><a href="' . $edit_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/edit.svg"> Edit</a></li>';
         }
-        
+
         // Generate moderation link if the user has permission.
         if (in_array($moderationState, ['draft', 'pending']) && $moderator_access_check_service->checkForEntity($node)) {
           $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
@@ -284,7 +283,7 @@ function penchas_preprocess_node(&$variables)
       . $links . '</ul></div></div>';
   } else if ($nodeBundle === 'reserve_room' && $variables['view_mode'] === 'moderator') {
     $variables['moderation_logs'] = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($node->id());
-  }
+  } 
 
   // Set node title.
   $variables['node_title'] = $node->getTitle();
@@ -407,7 +406,7 @@ function penchas_preprocess_html(&$variables)
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . $url;
   $variables['front_page_url'] = $front_page_path;
   $current_uri = \Drupal::request()->getRequestUri();
-  
+
   /* SAML resposne testing starts */
   // if($current_uri == '/all-college-houses'){
 
@@ -419,7 +418,7 @@ function penchas_preprocess_html(&$variables)
   //   $uid = '40';
   //   // dump($uid);
   //   $user = \Drupal\user\Entity\User::load($uid);
-    
+
   //   $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
   //   $personentitlement = explode(", ", $personentitlement_values);
   //   $query = \Drupal::entityQuery('group_role');
@@ -514,10 +513,10 @@ function penchas_preprocess_html(&$variables)
   //       // Remove existing group membership
   //       // $groupData = Group::load($group_id);
   //       // $groupData->removeMember($user);
-        
+
   //       // $groupData->addMember($user, $values);
   //       // $groupData->save();
-        
+
   //       die();
 
   //             $groupData->addMember($user, $values);
@@ -576,7 +575,7 @@ function penchas_preprocess_html(&$variables)
 
   //               // Set the role for the group membership.
   //               $membership->addRole($role_entity);
-                
+
   //               // Save the changes.
   //               $membership->save();
   //               $groupData->save();
@@ -619,7 +618,7 @@ function penchas_preprocess_block(&$variables)
 {
 
   $route_name = \Drupal::routeMatch()->getRouteName();
-  if(isset($route_name)){
+  if (isset($route_name)) {
     // Check if we are on a node page (e.g., node/[nid]).
     if (strpos($route_name, 'entity.node.canonical') !== FALSE) {
       // Get the current node object.
@@ -1064,17 +1063,17 @@ function penchas_preprocess_views_view(&$variables)
       $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
       switch ($community) {
         case 'four_year_community':
-            $community = 'Four Year Community';
-            break;
+          $community = 'Four Year Community';
+          break;
         case 'first_year_community':
-            $community = 'First Year Community';
-            break;
+          $community = 'First Year Community';
+          break;
         case 'upperclass_community':
-            $community = 'Upperclass Community';
-            break;
+          $community = 'Upperclass Community';
+          break;
 
         default:
-            break;
+          break;
       }
       $selected_filters['field_community'] = $community;
       if (isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All') {

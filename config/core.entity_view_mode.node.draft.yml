@@ -1,0 +1,11 @@
+uuid: 8d21c3d0-c4ef-4d82-a85f-1bf913015c3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.draft
+label: Draft
+description: 'Display for draft and pending node.'
+targetEntityType: node
+cache: true

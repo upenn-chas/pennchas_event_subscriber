@@ -56,7 +56,7 @@ class ModerationLink extends EntityLink
         $type = $entity->bundle();
         return match ($type) {
             'chas_event' => 'view.event_moderation_view.event_moderate_page_view',
-            'reserve_room' => 'entity.node.canonical',
+            'reserve_room' => 'view.reserve_room_moderation_view.page_1',
             default => NULL
         };
     }
