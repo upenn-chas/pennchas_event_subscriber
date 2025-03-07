@@ -13,15 +13,24 @@
       align-items: center;
       font-size: 14px;
       line-height: 16px;
+      border-radius: 10px;
+      padding-top: 10px;
 
       &:focus,
       &:hover {
-        background: #fff;
+        background: #EBF2FF;
         outline: none;
         box-shadow: none;
       }
+      &:has(span){
+        &:focus,
+        &:hover {
+          background: #fff;
+        }
+      }
 
       &[rel="next"] {
+        padding-top: 5px;
         span {
           &[aria-hidden="true"] {
             position: relative;
@@ -42,6 +51,7 @@
       }
 
       &[rel="prev"] {
+        padding-top: 5px;
         span {
           &[aria-hidden="true"] {
             position: relative;
@@ -79,4 +89,19 @@
       border-radius: 10px;
     }
   }
+}
+.mac_os{
+.pagination {
+  & .page-item {
+    & .page-link {
+      padding-top: 5px;
+      &[rel="next"] {
+        padding-top: 5px;
+      }
+      &[rel="prev"] {
+        padding-top: 5px;
+      }
+    }
+  }
+}
 }

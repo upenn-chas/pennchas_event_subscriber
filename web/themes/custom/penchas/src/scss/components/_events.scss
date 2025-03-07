@@ -684,6 +684,10 @@
       font-weight: 400;
       border: 1px solid #011f5b;
       line-height: 18px;
+      &:hover{
+        background-color: #EBF2FF;
+        border-color: #EBF2FF;
+      }
 
       @include media-query ('small') {
         padding: 10px 10px 5px 10px;
@@ -693,6 +697,7 @@
       &.is-active {
         background: #011f5b;
         color: #fff;
+        border-color: #011f5b;
 
         a {
           color: #fff;
