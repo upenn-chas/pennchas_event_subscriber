@@ -53,7 +53,7 @@
       var weekday = jQuery(this).closest('.calendar-view-day').find('time').data('weekday');
       var date = jQuery(this).closest('.calendar-view-day').find('time').text();
       var modalTitle = '<div class="title-weekday">'+ weekday +'</div>';
-      modalTitle += '<div class="title-date font-weight-bold">'+ date +'</div>';
+      modalTitle += '<div class="title-date"><b>'+ date +'</b></div>';
       jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
         let titleContainer = jQuery(this).find('.title');
         let anchor = titleContainer.find('a');
@@ -61,7 +61,7 @@
         let eventUrl = anchor.attr('href');
         var eventTime = jQuery(this).find('.field_event_schedule_start_end_value').text();
         body += '<div class="modal-event"><span class="event-time">' + eventTime + '</span>';
-        body += '<strong><a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></strong></div>';
+        body += '<a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></div>';
       });
       openModalWithContent(modalTitle, body);
     });

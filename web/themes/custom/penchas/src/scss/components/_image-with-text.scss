@@ -270,6 +270,9 @@
         @include media-query ('tablet') {
           padding-left: 0;
         }
+        h2{
+          margin-bottom: 10px;
+        }
       }
     }
   }

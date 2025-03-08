@@ -71,9 +71,19 @@
   align-items: flex-start;
   position: relative;
   height: 100%;
+  transition: all ease-in-out 0.3s;
   @include media-query ('mobile') {
-    margin-bottom: 24px;
+    margin-bottom: 0px;
     padding: 24px 20px;
+  }
+  &:hover {
+    background-color: #ebf1ff;
+    border-color: #ebf1ff;
+    transition: all ease-in-out 0.3s; 
+    .field--name-field-heading  {
+      color: $secondaryColor;
+      transition: all ease-in-out 0.3s; 
+    }
   }
 
   .field--type-link {
@@ -102,6 +112,7 @@
     font-family: $secondaryFont;
     margin-bottom: 0;
     line-height: normal;
+    transition: all ease-in-out 0.3s; 
   }
   .circle-color {
     text-align: center;
@@ -155,9 +166,16 @@
     .contents {
       h5 {    
         text-transform: capitalize;
+        transition: all ease-in-out 0.3s;
       }
       p {
         font-size: 18px;
+      }
+      &:hover {
+        h5 {
+          color: $secondaryColor;
+          transition: all ease-in-out 0.3s;
+        }
       }
       .field--type-entity-reference{
         display: none;
@@ -168,7 +186,7 @@
 
 .block-inline-blockdashboard-basic-item{
   &:has(.dashboard-tabs){
-    height: 100%;
+    height: 100%; 
   }
 }
 
@@ -179,5 +197,13 @@
         margin: 0;
       }
     }
+  }
+}
+
+
+.resources-top-border {
+  .block-layout-builder {
+    border-top: 1px solid $primaryColor;
+    padding-top: 45px;
   }
 }
