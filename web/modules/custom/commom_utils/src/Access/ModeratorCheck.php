@@ -55,7 +55,7 @@ class ModeratorCheck
         if ($this->user->hasPermission($this->moderatorPermission)) {
             return TRUE;
         }
-        $groupId = (int) $node->get('field_group')->getString();
+        $groupId = (int) $node->get($field)->getString();
         $group = Group::load($groupId);
 
         return $group->hasPermission($this->moderatorPermission, $this->user);

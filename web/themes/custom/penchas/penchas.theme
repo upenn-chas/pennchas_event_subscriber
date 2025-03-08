@@ -333,10 +333,10 @@ function penchas_preprocess_html(&$variables)
 
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
+  // Get site name and node title once
+  $site_name = \Drupal::config('system.site')->get('name');
 
   if ($node instanceof NodeInterface) {
-    // Get site name and node title once
-    $site_name = \Drupal::config('system.site')->get('name');
     $node_title = $node->getTitle();
     $variables['node_title'] = $node_title;
     $node_meta_title = $node_title . ' | ' . $site_name;
@@ -394,7 +394,23 @@ function penchas_preprocess_html(&$variables)
     // Assign the refined title to the head_title
     $variables['head_title']['title'] = $node_meta_title;
   }
+  $view_id = \Drupal::routeMatch()->getParameter('view_id');
+  $display_id = \Drupal::routeMatch()->getParameter('display_id');
 
+  $view_titles = [
+    'calendar' => 'Event Calendar | ',
+    'room_reservation_calendar' => 'Room Reservation Calendar | ',
+  ];
+
+  $display_titles = [
+    'page_1' => 'Month | ',
+    'page_2' => 'Week | ',
+  ];
+
+  if (isset($view_titles[$view_id])) {
+    $title = $view_titles[$view_id] . ($display_titles[$display_id] ?? '');
+    $variables['head_title']['title'] = $title . $site_name;
+  }
 
   /* Node Meta tag updates ends here  */
 
