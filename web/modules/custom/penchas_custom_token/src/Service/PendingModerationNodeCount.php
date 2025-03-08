@@ -49,10 +49,11 @@ class PendingModerationNodeCount
         $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
         $query->condition('nfg.bundle', $type, '=');
         $result = $query->distinct()->countQuery()->execute()->fetchCol();
-    
         if(!empty($result)){
             if($result[0] && $result[0] > 0) {
                 return "{$result[0]} {$suffix}";
+            }else{
+                return "No {$suffix}";
             }
         }
     }

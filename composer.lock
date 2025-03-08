@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46df97d7b5894661c3707914039b3623",
+    "content-hash": "ed309d505f59b112c3d4fe45c51a1ea6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4687,6 +4687,63 @@
                     "url": "https://paypal.me/saschaeggi"
                 }
             ]
+        },
+        {
+            "name": "drupal/gin_lb",
+            "version": "1.0.0-rc5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gin_lb.git",
+                "reference": "1.0.0-rc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/gin_lb-1.0.0-rc5.zip",
+                "reference": "1.0.0-rc5",
+                "shasum": "e8ae8fbe0b7642645dd173b72cd19da86e6e7f15"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "drupal/gin_toolbar": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-rc5",
+                    "datestamp": "1696943060",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "christian.wiedemann",
+                    "homepage": "https://www.drupal.org/user/861002"
+                },
+                {
+                    "name": "duwid",
+                    "homepage": "https://www.drupal.org/user/2693877"
+                },
+                {
+                    "name": "grimreaper",
+                    "homepage": "https://www.drupal.org/user/2388214"
+                },
+                {
+                    "name": "sch4lly",
+                    "homepage": "https://www.drupal.org/user/856550"
+                }
+            ],
+            "description": "Layout Builder in Gin style",
+            "homepage": "https://www.drupal.org/project/gin_lb",
+            "support": {
+                "source": "https://git.drupalcode.org/project/gin_lb"
+            }
         },
         {
             "name": "drupal/gin_toolbar",
@@ -22397,21 +22454,22 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/advagg": 15,
-        "drupal/conditional_fields": 15,
-        "drupal/entity_clone": 10,
-        "drupal/gcontent_moderation": 20,
-        "drupal/group_permissions": 15,
-        "drupal/publication_date": 5,
-        "drupal/ultimate_cron": 15,
-        "drupal/viewsreference": 10,
         "pantheon-upstreams/upstream-configuration": 20,
-        "upenn/penn403": 20
+        "upenn/penn403": 20,
+        "drupal/gcontent_moderation": 20,
+        "drupal/viewsreference": 10,
+        "drupal/group_permissions": 15,
+        "drupal/ultimate_cron": 15,
+        "drupal/conditional_fields": 15,
+        "drupal/publication_date": 5,
+        "drupal/advagg": 15,
+        "drupal/entity_clone": 10,
+        "drupal/gin_lb": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },

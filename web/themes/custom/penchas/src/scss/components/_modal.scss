@@ -136,6 +136,28 @@
 }
 #modal-body{
   margin-top: 16px;
+  overflow: auto;
+  height: calc(300px - 50px);
+  .modal-event{
+    padding:8px 6px;
+    border-radius: 4px;
+    font-family: $teritoryFont;
+    font-size: 14px;
+    line-height: 15px;
+    color: #011F5B;
+    margin: 2px 0;
+    &:hover{
+      background-color: #EBF2FF;
+    }
+    a{
+      white-space: nowrap;
+      text-decoration: none;
+      font-weight: 600;
+      span{
+        font-weight: 400;
+      }
+    }
+  }
 }
   h2 {
     text-align: center;
@@ -172,6 +194,7 @@
     &:hover{
       background-color: $yellowLightColor;
       color: $primaryColor;
+      border-color: $yellowLightColor;
     }
   }
 
@@ -181,7 +204,7 @@
     background-image: url(../../images/close.svg);
     background-repeat: no-repeat;
     position: absolute;
-    right: 20px;
+    right: 30px;
     top: 30px;
     opacity: 1;
     z-index: 111;
