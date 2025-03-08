@@ -438,8 +438,8 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'House Reservation'
-          tokenize: false
+            title: 'Room Reservation Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
+          tokenize: true
         simple_sitemap_display_extender:
           variants: {  }
       path: group/%/room-reservation-calendar
@@ -568,8 +568,8 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'House Weekly Room Reservation'
-          tokenize: false
+            title: 'Weekly Room Reservation Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
+          tokenize: true
         simple_sitemap_display_extender:
           variants: {  }
       path: group/%/week-room-reservation-calendar

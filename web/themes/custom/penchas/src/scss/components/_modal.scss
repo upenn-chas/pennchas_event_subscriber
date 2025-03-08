@@ -101,6 +101,7 @@
     padding: 15px 10px;
     border: 0;
     overflow: auto;
+    font-family: $teritoryFont;
   }
   .close-btn {
     background: url('../../assets/images/close-icon.svg')no-repeat;
@@ -121,6 +122,20 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+        .title-weekday{
+          font-size: 12px;
+          line-height: 12px;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+        .title-date{
+          font-size: 24px;
+          line-height: 24px;
+          font-weight: 700;
+        }
+}
+#modal-body{
+  margin-top: 16px;
 }
   h2 {
     text-align: center;
@@ -166,8 +181,8 @@
     background-image: url(../../images/close.svg);
     background-repeat: no-repeat;
     position: absolute;
-    right: 10px;
-    top: 20px;
+    right: 20px;
+    top: 30px;
     opacity: 1;
     z-index: 111;
     cursor: pointer;
@@ -184,12 +199,15 @@
   .ui-dialog-content {
     padding: 0;
     max-height: 72dvh !important;
+    overflow: hidden;
     article,
     .node--unpublished {
       padding: 18px 30px 30px 30px;
 
       .row{
         gap: 30px;
+        height: calc(72dvh - 70px);
+        overflow: auto;
         .col-lg-9,
         .col-lg-3  {
           width: 100%;
