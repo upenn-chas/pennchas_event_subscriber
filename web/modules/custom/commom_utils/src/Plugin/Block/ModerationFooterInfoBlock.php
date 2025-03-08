@@ -32,8 +32,7 @@ class ModerationFooterInfoBlock extends BlockBase
       $period = $waitingPeriod > 1 ? $waitingPeriod . ' days' : '1 day';
     }
     return [
-      '#markup' => '<div class="foot-info"><span><strong>Providing confirmation of this reservation can take up to ' . $period . '.</strong></span><br><span>Please check your email for your confirmation.</span></div>',
-      '#allowed_tags' => ['span', 'strong', 'br', 'div', ]
+      '#markup' => '<div class="footer-note"><h6>Providing confirmation of this reservation can take up to ' . $period . '.</h6><p>Please check your email for your confirmation.</p></div>',
     ];
   }
 }

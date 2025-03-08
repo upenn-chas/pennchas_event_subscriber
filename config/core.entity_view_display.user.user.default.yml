@@ -17,6 +17,7 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - field_group
     - image
     - layout_builder
     - layout_builder_restrictions
@@ -51,6 +52,28 @@ third_party_settings:
       restricted_categories: {  }
     entity_view_mode_restriction_by_region:
       allowed_layouts: {  }
+  field_group:
+    group_switch_user_wrapper:
+      children:
+        - masquerade
+      label: 'Switch user wrapper'
+      parent_name: ''
+      region: content
+      weight: 11
+      format_type: fieldset
+      format_settings:
+        classes: 'mt-2 mb-5'
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
 _core:
   default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
 id: user.user.default
@@ -128,6 +151,11 @@ content:
       link: true
     third_party_settings: {  }
     weight: 9
+    region: content
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
     region: content
   member_for:
     settings: {  }

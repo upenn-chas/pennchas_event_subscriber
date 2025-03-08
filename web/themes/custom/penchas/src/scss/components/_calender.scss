@@ -342,6 +342,7 @@
         &.redirect-dropdown {
           @include media-query-min('mobile') {
             min-width: 150px;
+            
           }
         }
       }
@@ -493,7 +494,10 @@
             .title{
               a{
                 white-space: nowrap;
-                font-weight: 500;
+                font-weight: 600;
+                span{
+                  font-weight: 400;
+                }
               }
             }
           }
@@ -543,15 +547,26 @@
         font-weight: 700;
         line-height: 24px;
         padding: 10px;
+        min-width: 40px;
       }
     }
-
+    .calendar-view-day__rows {
+      .field-content{
+        &>div{
+          padding: 0;
+          &:hover{
+            background-color: #ecf2ff;
+          }
+        }
+      }
+    }
     .calendar-view-day__number {
       display: inline-block;
       width: auto;
+      min-width: 40px;
       // min-width: 22px;
       text-align: center;
-      margin: 0 auto;
+      margin: 0 auto 10px !important;
     }
 
     .is-today {
@@ -597,15 +612,15 @@
   }
 
   .weekly-calendar {
-    div:not(:empty) {
+    // div:not(:empty) {
       background-color: #ecf2ff;
       border-radius: 4px;
-      padding: 8px;
+      padding: 0 6px !important;
 
       &:not(:last-child) {
         margin-bottom: 2px;
       }
-    }
+    // }
   }
 
   .calendar-view-day__rows {
@@ -644,7 +659,7 @@
     color: $primaryColor;
     padding: 0 6px;
     border-radius: 4px;
-    font-weight: 500;
+    font-weight: 600;
     &:hover{
      background-color: #ebf2ff;
     }

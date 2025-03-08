@@ -57,11 +57,15 @@
       jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
         let titleContainer = jQuery(this).find('.title');
         let anchor = titleContainer.find('a');
-        let eventTitle = anchor.text()
+        let eventTitle = anchor.contents().last().text().trim();
         let eventUrl = anchor.attr('href');
-        var eventTime = jQuery(this).find('.field_event_schedule_start_end_value').text();
-        body += '<div class="modal-event"><span class="event-time">' + eventTime + '</span>';
-        body += '<a class="event-title font-weight-bold" target="_blank" href="' + eventUrl +'">' + eventTitle + '</a></div>';
+        var eventTime = jQuery(this).find('.title a span').text();
+        body += '<div class="modal-event">';
+        body += '<a class="event-title font-weight-bold" target="_blank" href="' + eventUrl + '">';
+        body += '<span class="event-time">' + eventTime + '</span> ' + eventTitle;
+        body += '</a>';
+        body += '</div>';
+
       });
       openModalWithContent(modalTitle, body);
     });
@@ -403,6 +407,7 @@
 if (target) {
   OverlayScrollbars(target, { scrollbars: { autoHide: "never" } });
 }
+
 
   
   Drupal.behaviors.penchas = {

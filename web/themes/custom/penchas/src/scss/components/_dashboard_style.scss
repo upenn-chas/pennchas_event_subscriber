@@ -672,3 +672,10 @@ form{
 #drupal-off-canvas input[type="week"] {
   color: #fff;
 }
+
+#layout-builder-modal .form-select:focus, #layout-builder-modal .form-text:focus, #layout-builder-modal .form-tel:focus, #layout-builder-modal .form-email:focus, #layout-builder-modal .form-url:focus, #layout-builder-modal .form-search:focus, #layout-builder-modal .form-number:focus, #layout-builder-modal .form-color:focus, #layout-builder-modal .form-file:focus, #layout-builder-modal .form-textarea:focus, #layout-builder-modal .form-date:focus, #layout-builder-modal .form-time:focus#layout-builder-modal .form-select:focus, #layout-builder-modal .form-text:focus, #layout-builder-modal .form-tel:focus, #layout-builder-modal .form-email:focus, #layout-builder-modal .form-url:focus, #layout-builder-modal .form-search:focus, #layout-builder-modal .form-number:focus, #layout-builder-modal .form-color:focus, #layout-builder-modal .form-file:focus, #layout-builder-modal .form-textarea:focus, #layout-builder-modal .form-date:focus, #layout-builder-modal .form-time:focus {
+  border-color: inherit;
+}
+#layout-builder-modal a, #layout-builder-modal .link {
+  color: inherit;
+}

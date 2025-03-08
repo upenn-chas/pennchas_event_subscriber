@@ -159,6 +159,7 @@
       width: 60px;
       font-family: $teritoryFont;    
       font-weight: 700; 
+      padding: 0;
       padding-top: 3px;
       @supports (-webkit-touch-callout: none) and (font: -apple-system-body) {
         padding-top: 0px;

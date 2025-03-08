@@ -1405,8 +1405,17 @@ label {
   }
 }
 
-.js-form-item-field-event-schedule-0-time-wrapper-value-date {
-  margin-right: 5px;
+// .js-form-item-field-event-schedule-0-time-wrapper-value-date {
+//   margin-right: 5px;
+// }
+
+ 
+.smartdate--time-inline div.time-start, 
+.smartdate--time-inline div.time-end  {
+  gap: 5px;
+}
+.smartdate--widget .repeat--label {
+  margin-right: 0;
 }
 
 .node-chas-event-edit-form,
