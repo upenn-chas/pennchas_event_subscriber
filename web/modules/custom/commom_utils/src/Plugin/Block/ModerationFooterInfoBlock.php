@@ -33,7 +33,6 @@ class ModerationFooterInfoBlock extends BlockBase
     }
     return [
       '#markup' => '<div class="footer-note"><h6>Providing confirmation of this reservation can take up to ' . $period . '.</h6><p>Please check your email for your confirmation.</p></div>',
-      '#allowed_tags' => ['span', 'strong', 'br', 'div', ]
     ];
   }
 }
