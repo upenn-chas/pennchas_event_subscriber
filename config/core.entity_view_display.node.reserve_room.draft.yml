@@ -216,7 +216,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 7
+            weight: 8
             additional: {  }
           a74bf14e-5c8a-4bd2-ab67-5aa77addfb03:
             uuid: a74bf14e-5c8a-4bd2-ab67-5aa77addfb03
@@ -255,7 +255,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 8
+            weight: 9
             additional: {  }
           5652df79-1101-4304-9aba-07dee1792663:
             uuid: 5652df79-1101-4304-9aba-07dee1792663
@@ -276,7 +276,7 @@ third_party_settings:
                   class: ''
                   tag: span
                 third_party_settings: {  }
-            weight: 10
+            weight: 11
             additional: {  }
           bf7f1387-5101-41b6-a911-79a16778cd02:
             uuid: bf7f1387-5101-41b6-a911-79a16778cd02
@@ -300,7 +300,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 13
+            weight: 14
             additional: {  }
           f4c62849-cdeb-44de-8464-00b62d538d0c:
             uuid: f4c62849-cdeb-44de-8464-00b62d538d0c
@@ -319,7 +319,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 16
+            weight: 17
             additional: {  }
           addf3f0b-0e8f-4acd-9cec-b6a2e0df43a0:
             uuid: addf3f0b-0e8f-4acd-9cec-b6a2e0df43a0
@@ -358,7 +358,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 9
+            weight: 10
             additional: {  }
           cc912302-620f-4ed9-b453-c27e0576d9b4:
             uuid: cc912302-620f-4ed9-b453-c27e0576d9b4
@@ -377,7 +377,7 @@ third_party_settings:
                 settings:
                   link: false
                 third_party_settings: {  }
-            weight: 11
+            weight: 12
             additional: {  }
           8d8165da-d9b1-4782-a72c-7502b7adfad9:
             uuid: 8d8165da-d9b1-4782-a72c-7502b7adfad9
@@ -396,7 +396,7 @@ third_party_settings:
                 settings:
                   class: ''
                 third_party_settings: {  }
-            weight: 15
+            weight: 16
             additional: {  }
           13b4312f-06bf-4dfd-91f9-995cd98e3e0c:
             uuid: 13b4312f-06bf-4dfd-91f9-995cd98e3e0c
@@ -416,7 +416,7 @@ third_party_settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-            weight: 12
+            weight: 13
             additional: {  }
           13ad2a67-55f7-4a35-90a3-0d578a2b5eb5:
             uuid: 13ad2a67-55f7-4a35-90a3-0d578a2b5eb5
@@ -435,23 +435,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 14
-            additional: {  }
-          2aa9bd93-39b9-4898-afad-4ed8edaa81a0:
-            uuid: 2aa9bd93-39b9-4898-afad-4ed8edaa81a0
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'Pending Reserve Room Block Title'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 1384
-              block_revision_id: 1700
-              block_serialized: null
-              block_uuid: null
-            weight: 6
+            weight: 15
             additional: {  }
           55b66a49-37d3-4066-b244-c8648f0aad25:
             uuid: 55b66a49-37d3-4066-b244-c8648f0aad25
@@ -474,6 +458,21 @@ third_party_settings:
               provider: common_utils
               context_mapping: {  }
             weight: 19
+            additional: {  }
+          aa9598cd-b89f-4b78-938c-8bb7acebef82:
+            uuid: aa9598cd-b89f-4b78-938c-8bb7acebef82
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:link'
+              label: 'Add to calendar'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 1387
+              block_revision_id: 1703
+              block_serialized: null
+            weight: 7
             additional: {  }
         third_party_settings: {  }
       -
@@ -581,8 +580,8 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          aa9598cd-b89f-4b78-938c-8bb7acebef82:
-            uuid: aa9598cd-b89f-4b78-938c-8bb7acebef82
+          2a437ba6-04ec-4d47-b1c0-ee838d471181:
+            uuid: 2a437ba6-04ec-4d47-b1c0-ee838d471181
             region: blb_region_col_1
             configuration:
               id: 'inline_block:link'
@@ -591,13 +590,13 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 1387
-              block_revision_id: 1703
+              block_id: 1389
+              block_revision_id: 1706
               block_serialized: null
-            weight: 0
+            weight: 1
             additional: {  }
-          1032b666-7e80-48d3-bddd-357cca14b5cf:
-            uuid: 1032b666-7e80-48d3-bddd-357cca14b5cf
+          851ac931-a7ae-429b-9db0-60b0cd4dd20b:
+            uuid: 851ac931-a7ae-429b-9db0-60b0cd4dd20b
             region: blb_region_col_1
             configuration:
               id: 'inline_block:space_block'
@@ -606,10 +605,10 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 1388
-              block_revision_id: 1704
+              block_id: 1390
+              block_revision_id: 1707
               block_serialized: null
-            weight: 1
+            weight: 2
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
