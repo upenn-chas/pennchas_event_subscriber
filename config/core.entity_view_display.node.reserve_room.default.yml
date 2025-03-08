@@ -71,8 +71,8 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          ec0a5251-35d1-45b2-ba66-4108841e7a4d:
-            uuid: ec0a5251-35d1-45b2-ba66-4108841e7a4d
+          d3d012bc-5d1f-4488-bf85-cd01725c6d63:
+            uuid: d3d012bc-5d1f-4488-bf85-cd01725c6d63
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
@@ -81,8 +81,8 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 1281
-              block_revision_id: 1466
+              block_id: 1391
+              block_revision_id: 1707
               block_serialized: null
             weight: 0
             additional: {  }
@@ -209,7 +209,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 8
+            weight: 9
             additional: {  }
           1d8db9de-e120-4c69-b2b7-2c085b9dea51:
             uuid: 1d8db9de-e120-4c69-b2b7-2c085b9dea51
@@ -248,7 +248,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 9
+            weight: 10
             additional: {  }
           e430d4a9-629e-4fd7-a39a-96f61349e5b1:
             uuid: e430d4a9-629e-4fd7-a39a-96f61349e5b1
@@ -263,13 +263,13 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label_class
-                label: inline
+                label: visually_hidden
                 settings:
-                  link: true
+                  link: false
                   class: ''
                   tag: span
                 third_party_settings: {  }
-            weight: 11
+            weight: 12
             additional: {  }
           03e43586-4c39-41f0-873b-360085e36b16:
             uuid: 03e43586-4c39-41f0-873b-360085e36b16
@@ -287,7 +287,7 @@ third_party_settings:
                 label: inline
                 settings: {  }
                 third_party_settings: {  }
-            weight: 14
+            weight: 15
             additional: {  }
           12db4b5f-33c1-441c-ae32-b14ab434df37:
             uuid: 12db4b5f-33c1-441c-ae32-b14ab434df37
@@ -306,7 +306,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 17
+            weight: 18
             additional: {  }
           c71b8973-7396-44be-a0b9-d687b968524a:
             uuid: c71b8973-7396-44be-a0b9-d687b968524a
@@ -345,7 +345,7 @@ third_party_settings:
                   ampm_reduce: 0
                   site_time_toggle: 0
                 third_party_settings: {  }
-            weight: 10
+            weight: 11
             additional: {  }
           ddd585fe-bac3-4b3f-9241-db0636a4e18b:
             uuid: ddd585fe-bac3-4b3f-9241-db0636a4e18b
@@ -364,7 +364,7 @@ third_party_settings:
                 settings:
                   link: false
                 third_party_settings: {  }
-            weight: 12
+            weight: 13
             additional: {  }
           e695983e-0b8d-42b4-a991-365d52bd6484:
             uuid: e695983e-0b8d-42b4-a991-365d52bd6484
@@ -384,7 +384,7 @@ third_party_settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-            weight: 13
+            weight: 14
             additional: {  }
           b9fc7a24-562c-4c79-a58f-7cd6ee78363a:
             uuid: b9fc7a24-562c-4c79-a58f-7cd6ee78363a
@@ -402,7 +402,7 @@ third_party_settings:
                 label: inline
                 settings: {  }
                 third_party_settings: {  }
-            weight: 16
+            weight: 17
             additional: {  }
           df8c20ed-c858-4e3c-a464-0015b3379389:
             uuid: df8c20ed-c858-4e3c-a464-0015b3379389
@@ -421,22 +421,22 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 15
+            weight: 16
             additional: {  }
-          bc1290de-37cd-4a4a-8f75-985ee59196d9:
-            uuid: bc1290de-37cd-4a4a-8f75-985ee59196d9
+          62412dd0-b1b8-4fad-9747-187c7aba53c3:
+            uuid: 62412dd0-b1b8-4fad-9747-187c7aba53c3
             region: blb_region_col_1
             configuration:
               id: 'inline_block:basic'
-              label: 'Your room reservation has been APPROVED with the following details:'
+              label: 'Your Room Reservation Request Approval'
               label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_id: 1283
-              block_revision_id: 1468
+              block_id: 1392
+              block_revision_id: 1708
               block_serialized: null
-            weight: 7
+            weight: 8
             additional: {  }
         third_party_settings: {  }
       -
@@ -488,7 +488,7 @@ third_party_settings:
               block_id: 1279
               block_revision_id: 1464
               block_serialized: null
-            weight: 1
+            weight: 2
             additional: {  }
           6feb3a35-5797-46ce-818b-5cb777afd4e3:
             uuid: 6feb3a35-5797-46ce-818b-5cb777afd4e3
@@ -504,6 +504,21 @@ third_party_settings:
               block_revision_id: 1465
               block_serialized: null
             weight: 3
+            additional: {  }
+          0eccba07-1b69-4c6a-a429-73ca8978db77:
+            uuid: 0eccba07-1b69-4c6a-a429-73ca8978db77
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:link'
+              label: 'Add to calendar'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 1393
+              block_revision_id: 1709
+              block_serialized: null
+            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

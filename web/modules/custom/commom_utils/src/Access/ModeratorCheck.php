@@ -41,13 +41,21 @@ class ModeratorCheck
      */
     public function checkForEntity(NodeInterface $node)
     {
+        $field = NULL;
+        $nodeType = $node->getType();
+        if ($nodeType === 'reserve_room') {
+            $field = 'field_group';
+        } else if ($nodeType === 'chas_event') {
+            $field = 'field_location';
+        }
+
+        if (!$field) {
+            return FALSE;
+        }
         if ($this->user->hasPermission($this->moderatorPermission)) {
             return TRUE;
         }
-        if (!$node->hasField('field_location')) {
-            return FALSE;
-        }
-        $groupId = (int) $node->get('field_location')->getString();
+        $groupId = (int) $node->get('field_group')->getString();
         $group = Group::load($groupId);
 
         return $group->hasPermission($this->moderatorPermission, $this->user);
