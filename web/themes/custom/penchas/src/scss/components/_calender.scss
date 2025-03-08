@@ -342,6 +342,7 @@
         &.redirect-dropdown {
           @include media-query-min('mobile') {
             min-width: 150px;
+            
           }
         }
       }
