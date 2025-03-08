@@ -111,6 +111,17 @@ button {
   }
 }
 
+.mac_os {
+  .btn.btn-secondary {
+    padding-top: 14px;
+    padding-bottom: 16px;
+    @include media-query('tablet') { 
+      padding-top: 10px;
+      padding-bottom: 12px;
+    }
+  }
+}
+
 .btn.btn-teritory {
   position: relative;
   padding: 0;

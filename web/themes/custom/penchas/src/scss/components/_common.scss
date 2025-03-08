@@ -1282,3 +1282,10 @@ ul.pagination.js-pager__items {
     }
   }
 }
+
+.all-program-negtive-space {
+  margin-top: -30px;
+  @media(max-width: 767px) {
+    margin-top: -15px;
+  }
+}

@@ -53,7 +53,7 @@
       var weekday = jQuery(this).closest('.calendar-view-day').find('time').data('weekday');
       var date = jQuery(this).closest('.calendar-view-day').find('time').text();
       var modalTitle = '<div class="title-weekday">'+ weekday +'</div>';
-      modalTitle += '<div class="title-date font-weight-bold">'+ date +'</div>';
+      modalTitle += '<div class="title-date"><b>'+ date +'</b></div>';
       jQuery(this).closest('.calendar-view-day__rows').find('li').each(function() {
         let titleContainer = jQuery(this).find('.title');
         let anchor = titleContainer.find('a');

@@ -378,6 +378,10 @@
           margin: 5px 0 4px 0 !important;
           width: max-content;
           text-transform: none;
+          &:hover{
+            background: $primaryColor;
+            color: #fff;
+          }
         }
       }
 
@@ -436,6 +440,9 @@
   }
 
   .calendar-view-table {
+    .calendar-view-day{
+      overflow: hidden;
+    }
     caption {
       padding: 0;
       font-family: $secondaryFont;
@@ -465,13 +472,30 @@
 
     .calendar-view-day__rows {
       .field-content {
-        div {
+        >div {
           padding: 0 6px;
           transition: all 0.3s ease-in-out;
 
           &:hover {
             border-radius: 4px;
             background-color: #EBF2FF;
+          }
+          &.event-schedule{
+            overflow: hidden;
+            display: inline-flex;
+            gap: 2px;
+            width: 100%;
+            div{
+              &.field_event_schedule_start_end_value{
+                min-width: fit-content;
+              }
+            }
+            .title{
+              a{
+                white-space: nowrap;
+                font-weight: 500;
+              }
+            }
           }
         }
       }
@@ -481,6 +505,7 @@
     td {
       padding-left: 4px;
       padding-right: 4px;
+      overflow: hidden;
     }
   }
 }
@@ -524,6 +549,7 @@
     .calendar-view-day__number {
       display: inline-block;
       width: auto;
+      // min-width: 22px;
       text-align: center;
       margin: 0 auto;
     }
@@ -591,6 +617,7 @@
       background-color: $lightBlue !important;
       border-radius: 8px;
       width: auto;
+      min-width: 22px;
       padding: 4px;
       margin: 0 auto;
       font-weight: 600;
@@ -617,6 +644,7 @@
     color: $primaryColor;
     padding: 0 6px;
     border-radius: 4px;
+    font-weight: 500;
     &:hover{
      background-color: #ebf2ff;
     }

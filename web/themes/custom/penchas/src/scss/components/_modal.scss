@@ -112,7 +112,16 @@
     right: 20px;
     top: 20px;
     cursor: pointer;
+    &:hover{
+      filter: brightness(0) saturate(100%) invert(42%) sepia(48%) saturate(5166%) hue-rotate(331deg) brightness(101%) contrast(98%);
+    }
   }
+.modal-title{
+  display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+}
   h2 {
     text-align: center;
     font-size: 24px;
@@ -142,6 +151,13 @@
     .ui-dialog-title {
       display: none;
     }
+ 
+  }
+  .blue-filled{
+    &:hover{
+      background-color: $yellowLightColor;
+      color: $primaryColor;
+    }
   }
 
   .ui-dialog-titlebar-close {
@@ -155,6 +171,9 @@
     opacity: 1;
     z-index: 111;
     cursor: pointer;
+    &:hover{
+      filter: brightness(0) saturate(100%) invert(42%) sepia(48%) saturate(5166%) hue-rotate(331deg) brightness(101%) contrast(98%);
+    }
   }
 
   .event-details-breadcrumbs  {
@@ -210,6 +229,10 @@
       font-size: 48px;
       line-height: 48px;
       color : $primaryColor;
+      &:hover{
+        color: $redHighlightColor;
+        cursor: pointer;
+      }
     }
     .container {
       padding: 0;
