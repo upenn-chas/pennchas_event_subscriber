@@ -179,7 +179,7 @@
 
 .dashboard-accordions {
   padding-bottom: 125px;
-  padding-top: 42px;
+  padding-top: 30px;
 
   @include media-query('small') {
     padding-top: 20px;
@@ -209,6 +209,12 @@
 
   .contents {
     max-height: 150px;
+    &:hover {
+      h5 {
+        color: $secondaryColor;
+        transition: all ease-in-out 0.3s;
+      }
+    }
 
     p {
       margin-bottom: 0;

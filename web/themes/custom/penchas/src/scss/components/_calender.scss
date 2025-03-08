@@ -378,6 +378,10 @@
           margin: 5px 0 4px 0 !important;
           width: max-content;
           text-transform: none;
+          &:hover{
+            background: $primaryColor;
+            color: #fff;
+          }
         }
       }
 
@@ -465,13 +469,28 @@
 
     .calendar-view-day__rows {
       .field-content {
-        div {
+        >div {
           padding: 0 6px;
           transition: all 0.3s ease-in-out;
 
           &:hover {
             border-radius: 4px;
             background-color: #EBF2FF;
+          }
+          &.event-schedule{
+            overflow: hidden;
+            display: inline-flex;
+            gap: 3px;
+            div{
+              width: max-content;
+            }
+            .title{
+              a{
+                white-space: nowrap;
+                font-weight: 400;
+                font-family: $teritoryFont;
+              }
+            }
           }
         }
       }
@@ -481,6 +500,7 @@
     td {
       padding-left: 4px;
       padding-right: 4px;
+      overflow: hidden;
     }
   }
 }
