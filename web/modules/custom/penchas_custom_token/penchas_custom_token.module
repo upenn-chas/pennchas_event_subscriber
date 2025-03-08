@@ -16,6 +16,7 @@ use Drupal\Core\Url;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\Reference;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -70,6 +71,10 @@ function penchas_custom_token_token_info(): array {
 function penchas_custom_token_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
   $replacements = [];
   $current_user_id = \Drupal::currentUser()->id();
+
+  $cache_metadata = new CacheableMetadata();
+  $cache_metadata->addCacheContexts(['user', 'session']);
+  $bubbleable_metadata->merge($cache_metadata);
 
   foreach ($tokens as $name => $original) {
     switch ($name) {

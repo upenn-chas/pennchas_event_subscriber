@@ -33,8 +33,8 @@ class PendingModerationNodeCount
     // }
 
     public function nodeCountForAuthor(string $type, string $suffix = '') {
-        // $current_user = \Drupal::currentUser();
-        // $current_user_id = $current_user->id();
+        $current_user = \Drupal::currentUser();
+        $uid = $current_user->id();
         
         $groups  = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
         if (!count($groups)) {
@@ -45,6 +45,7 @@ class PendingModerationNodeCount
         $query->fields('ms', ['content_entity_id']);
         $query->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
         $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
+        $query->condition('ms.uid', $uid, '=');
         $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
         $query->condition('nfg.bundle', $type, '=');
         $result = $query->distinct()->countQuery()->execute()->fetchCol();

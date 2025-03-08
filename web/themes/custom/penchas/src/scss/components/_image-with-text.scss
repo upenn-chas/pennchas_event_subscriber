@@ -126,6 +126,7 @@
       display: inline-block;
       margin-top: -35px;
       height: auto;
+      width: 100%;
 
       @include media-query('mobile') {
         max-height: 220px;
@@ -146,7 +147,7 @@
 
     iframe {
       margin-top: -35px;
-
+      min-height: 470px;
     }
 
   }
@@ -216,7 +217,6 @@
 
     &.reverse-left-align-image {
       margin-top: 0;
-      padding-bottom: 0;
 
       .image-with-text-inner {
         flex-direction: row-reverse;
@@ -290,7 +290,7 @@
   }
 
   &:has(iframe) {
-    margin-bottom: 125px;
+    margin-bottom: 80px;
     @include media-query('mobile'){
       margin-bottom: 50px;
     }

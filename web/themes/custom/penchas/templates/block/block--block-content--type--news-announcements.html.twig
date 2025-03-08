@@ -44,8 +44,14 @@
 {% endif %}
 
 
-
-<section {{ attributes.addClass(classes) }} style="background-color: #ebf1ff;">
+{# {% set gid = drupal_token('current-page:url:unaliased:args:value:1') %} #}
+{% set token_value = drupal_token('current-page:url:unaliased:args:value:1') %}
+{% set color = drupal_field('field_color', 'group', token_value, 'token')|render|striptags %}
+{% if color %}
+  <section {{ attributes.addClass(classes) }} style="background-color: #{{ color|trim }};">
+{% else %}
+  <section {{ attributes.addClass(classes) }} style="background-color: #ebf1ff;">
+{% endif %}
 {{ title_prefix }}
             {% if label %}
               
