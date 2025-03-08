@@ -982,7 +982,7 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'House Event'
+            title: 'Event Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
             robots: 'index, follow'
           tokenize: true
         simple_sitemap_display_extender:
@@ -1568,9 +1568,9 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'House Weekly Event'
+            title: 'Weekly Event Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
             robots: 'index, follow'
-          tokenize: false
+          tokenize: true
         simple_sitemap_display_extender:
           variants:
             default:
