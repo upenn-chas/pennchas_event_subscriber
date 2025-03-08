@@ -435,7 +435,13 @@ display:
           plugin_id: standard
           required: false
       css_class: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'House Reservation'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: group/%/room-reservation-calendar
     cache_metadata:
       max-age: -1
@@ -559,7 +565,13 @@ display:
           entity_field: gid
           plugin_id: standard
           required: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'House Weekly Room Reservation'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: group/%/week-room-reservation-calendar
     cache_metadata:
       max-age: -1

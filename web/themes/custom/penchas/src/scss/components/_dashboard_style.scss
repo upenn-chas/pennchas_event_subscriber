@@ -237,7 +237,7 @@
 
 #drupal-off-canvas button.button--primary,
 #drupal-off-canvas input[type="submit"].button--primary:hover {
-  background: #383A40 !important;
+  // background: #383A40 !important;
   color: #fff !important;
 }
 
@@ -639,4 +639,36 @@ form{
       padding: 1rem 1rem 0;
     }
   }
+}
+
+#drupal-off-canvas-wrapper {
+  .inline-block-create-button{
+    position: static;
+    display: inline-block;
+    transform: none;
+    &:before { 
+      position: static;
+      display: inline-block;
+      margin: 0 10px 0 0;
+      transform: none;
+    }
+  }
+}
+
+#drupal-off-canvas textarea, 
+#drupal-off-canvas select, 
+#drupal-off-canvas input[type="date"], 
+#drupal-off-canvas input[type="datetime"], 
+#drupal-off-canvas input[type="datetime-local"], 
+#drupal-off-canvas input[type="email"], 
+#drupal-off-canvas input[type="month"], 
+#drupal-off-canvas input[type="number"], 
+#drupal-off-canvas input[type="password"], 
+#drupal-off-canvas input[type="search"], 
+#drupal-off-canvas input[type="tel"], 
+#drupal-off-canvas input[type="text"], 
+#drupal-off-canvas input[type="time"], 
+#drupal-off-canvas input[type="url"], 
+#drupal-off-canvas input[type="week"] {
+  color: #fff;
 }
