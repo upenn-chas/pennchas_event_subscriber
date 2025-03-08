@@ -438,19 +438,11 @@ body {
   .btns-wrapper {
     text-align: center;
   }
-
+  
   .footer-note {
     padding-left: 45px;
-    padding-top: 30px;
-    border-top: 1px solid $primaryColor;
     padding-left: 0;
-    margin-top: 30px;
-
-    @include media-query ('mobile') {
-      padding-left: 0px;
-      padding-top: 20px;
-    }
-
+    
     h6 {
       font-weight: 700;
       font-family: $teritoryFont;
@@ -475,6 +467,11 @@ body {
       line-height: 22px;
       margin-bottom: 0;
     }
+  }
+
+  hr {
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 }
 

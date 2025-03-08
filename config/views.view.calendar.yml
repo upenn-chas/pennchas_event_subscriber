@@ -348,7 +348,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ field_event_schedule_value }}  {{ title }}</a>'
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}"><span>{{ field_event_schedule_value }}</span>  {{ title }}</a>'
             make_link: false
             path: ''
             absolute: false
@@ -1133,71 +1133,6 @@ display:
           text: ''
           output_url_as_text: true
           absolute: true
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="test{{ view_node }}">{{ title }}</a>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: use-ajax
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_event_schedule:
           id: field_event_schedule
           table: node__field_event_schedule
@@ -1441,6 +1376,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ field_event_schedule_value }}  {{ title }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: use-ajax
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -1453,7 +1453,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"weekly-calendar\">\r\n{% if field_is_campus_wide is not empty %}\r\n<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n{% endif %}\r\n<div class=\"field_event_schedule_start_end_value\"> {{ field_event_schedule_value }}</div>\r\n<div class=\"title\">{{ title }} </div>\r\n<div class=\"rsvp-link\">{{ field_link_1 }}</div>\r\n</div>"
+            text: "<div class=\"weekly-calendar\">\r\n{% if field_is_campus_wide is not empty %}\r\n<div class=\"campus-wide\">{{ field_is_campus_wide }} </div>\r\n{% endif %}\r\n<div class=\"field_event_schedule_start_end_value\"> \r\n<div class=\"title\">{{ title }} </div></div>\r\n<div class=\"rsvp-link\">{{ field_link_1 }}</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
