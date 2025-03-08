@@ -41,9 +41,10 @@ class User
 
         if ($roles) {
             $users = \Drupal::entityQuery('user')
-                ->accessCheck(false)
-                ->condition('status', 1)
-                ->condition('roles', $roles, 'IN')
+                ->accessCheck(false) // Bypass access check
+                ->condition('status', 1) // Active users
+                ->condition('mail', '', '!=') // Exclude users with empty email
+                ->condition('roles', $roles, 'IN') // Users with the specified roles
                 ->execute();
             return $users ? array_keys($users) : [];
         }
@@ -63,7 +64,10 @@ class User
         foreach ($groups as $group) {
             $members = $group->getMembers($groupRoles);
             foreach ($members as $member) {
-                $groupUserIds[] = (int) $member->getUser()->id();
+                $user = $member->getUser(); // Get the user object
+                if ($user->getEmail()) { // Exclude users with empty email
+                    $groupUserIds[] = (int) $user->id();
+                }
             }
         }
         return $groupUserIds;
