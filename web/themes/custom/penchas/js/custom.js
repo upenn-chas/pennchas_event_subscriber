@@ -418,7 +418,7 @@ if (target) {
 
     // Get the link from href
     var textToCopy = copyLink.getAttribute('href');
-    alert(textToCopy);
+    // alert(textToCopy);
     if (!textToCopy) {
       console.error("No href found in .copy-link");
       return;
