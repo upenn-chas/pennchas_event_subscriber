@@ -1288,3 +1288,31 @@ ul.pagination.js-pager__items {
     margin-top: -15px;
   }
 }
+
+
+.copy-tooltip {
+  position: absolute;
+  bottom: -25px; /* Adjust position below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #FFEB55; /* Yellow background */
+  color: #011F5B; /* Dark blue text */
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
