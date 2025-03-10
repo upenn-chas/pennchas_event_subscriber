@@ -43,12 +43,13 @@
         {% if label %}
         <h3{{ title_attributes }}>{{content.field_description_content}}</h3>
         {% endif %}
+    
+      {{ title_suffix }}
+      {% block content %}
+        <div{{ content_attributes.addClass('content') }}>
+          {{ content.field_author }}
+        </div>
+      {% endblock %}
     </div>
-    {{ title_suffix }}
-    {% block content %}
-      <div{{ content_attributes.addClass('content') }}>
-        {{ content.field_author }}
-      </div>
-    {% endblock %}
   </div>
   </div>

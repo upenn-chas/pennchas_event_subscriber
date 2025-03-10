@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.quote.field_author
     - field.field.block_content.quote.field_description_content
   module:
+    - element_class_formatter
     - text
 id: block_content.quote.default
 targetEntityType: block_content
@@ -22,10 +23,15 @@ content:
     weight: 0
     region: content
   field_author:
-    type: string
+    type: wrapper_class
     label: hidden
     settings:
-      link_to_entity: false
+      class: ''
+      tag: p
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
     third_party_settings: {  }
     weight: 1
     region: content
