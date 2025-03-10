@@ -3199,8 +3199,8 @@ display:
         options:
           grouping:
             -
-              field: title
-              rendered: false
+              field: edit_node
+              rendered: true
               rendered_strip: false
           row_class: ''
           default_row_class: false
@@ -4340,8 +4340,8 @@ display:
         options:
           grouping:
             -
-              field: title
-              rendered: false
+              field: edit_node
+              rendered: true
               rendered_strip: false
           row_class: ''
           default_row_class: false
