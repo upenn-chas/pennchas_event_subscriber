@@ -26,6 +26,7 @@ permissions:
   - 'delete own group_media:image entity'
   - 'delete own group_media:remote_video entity'
   - 'delete own group_media:video entity'
+  - 'delete own group_node:chas_event entity'
   - 'event own evaluation'
   - 'update own group_media:document entity'
   - 'update own group_media:image entity'

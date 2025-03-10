@@ -408,8 +408,9 @@ function penchas_preprocess_html(&$variables)
   ];
 
   if (isset($view_titles[$view_id])) {
-    $title = $view_titles[$view_id] . ($display_titles[$display_id] ?? '');
-    $variables['head_title']['title'] = $title . $site_name;
+    $short_name = \Drupal::routeMatch()->getParameter('arg_0');
+    $group_label = getGroupLableFromShortName($short_name);
+    $variables['head_title']['title'] = $view_titles[$view_id] . $group_label . ' | ' . $site_name;
   }
 
   /* Node Meta tag updates ends here  */
@@ -613,6 +614,16 @@ function penchas_preprocess_html(&$variables)
   // }
 
   /* SAML resposne testing ends */
+}
+
+function getGroupLableFromShortName(string $short_name)
+{
+  $query = \Drupal::database()->select('groups_field_data', 'gfd');
+  $query->innerJoin('group__field_short_name', 'gfsn', 'gfd.id = gfsn.entity_id');
+  $query->fields('gfd', ['label']);
+  $query->condition('gfsn.field_short_name_value', $short_name);
+  $result = $query->execute()->fetchObject();
+  return $result ? $result->label : NULL;
 }
 
 function penchas_preprocess_page(&$variables)
