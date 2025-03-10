@@ -261,7 +261,7 @@
         a {
           color: $primaryColor; 
           display: inline-flex;
-          align-items: flex-end;
+          align-items: center;
           gap: 3px;
           padding-left: 0;
           img {
@@ -340,3 +340,19 @@
 }
 
  
+.mac_os{
+.ui-dialog:has(.node--type-chas-event)  {
+  .ui-dialog-content {
+    .event-breadcrumbs {
+      ul {
+        a {
+           img{
+            position: relative;
+            top: 2px;
+           }
+        }
+      }
+    }
+  }
+}
+}
