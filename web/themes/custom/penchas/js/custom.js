@@ -409,6 +409,70 @@ if (target) {
 }
 
 
+(function() {
+  document.addEventListener('click', function(e) {
+    var copyLink = e.target.closest('.copy-icon .copy-link');
+    if (!copyLink) return;
+
+    e.preventDefault(); // Prevent redirection
+
+    // Get the link from href
+    var textToCopy = copyLink.getAttribute('href');
+    // alert(textToCopy);
+    if (!textToCopy) {
+      console.error("No href found in .copy-link");
+      return;
+    }
+
+    // Try modern clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showTooltip(copyLink, "Copied!");
+      }).catch(() => {
+        fallbackCopyText(textToCopy, copyLink);
+      });
+    } else {
+      fallbackCopyText(textToCopy, copyLink);
+    }
+  });
+
+  function fallbackCopyText(text, element) {
+    var tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    showTooltip(element, "LINK COPIED!");
+  }
+
+  function showTooltip(element, message) {
+    var tooltip = element.closest('.copy-icon').querySelector('.copy-tooltip');
+    if (!tooltip) return;
+
+    tooltip.innerText = message;
+    tooltip.classList.add('show');
+
+    setTimeout(() => {
+      tooltip.classList.remove('show');
+      tooltip.innerText = "LINK COPIED!";
+    }, 2000);
+  }
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   Drupal.behaviors.penchas = {

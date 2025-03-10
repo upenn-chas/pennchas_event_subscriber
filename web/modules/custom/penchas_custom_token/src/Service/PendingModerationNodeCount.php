@@ -36,18 +36,18 @@ class PendingModerationNodeCount
         $current_user = \Drupal::currentUser();
         $uid = $current_user->id();
         
-        $groups  = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
-        if (!count($groups)) {
-            return "No {$suffix}";
-        }
+        // $groups  = \Drupal::service('pennchas_common.option_group')->getUserGroupsWithPermission('use editorial transition publish');
+        // if (!count($groups)) {
+        //     return "No {$suffix}";
+        // }
        
         $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
         $query->fields('ms', ['content_entity_id']);
-        $query->join('node__field_groups', 'nfg', 'nfg.entity_id = ms.content_entity_id');
-        $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
-        // $query->condition('ms.uid', $uid, '=');
+        $query->join('node_field_data', 'nf', 'nf.nid = ms.content_entity_id');
+        // $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
+        $query->condition('ms.uid', $uid, '=');
         $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
-        $query->condition('nfg.bundle', $type, '=');
+        $query->condition('nf.type', $type, '=');
         $result = $query->distinct()->countQuery()->execute()->fetchCol();
         if(!empty($result)){
             if($result[0] && $result[0] > 0) {
@@ -58,3 +58,4 @@ class PendingModerationNodeCount
         }
     }
 }
+
