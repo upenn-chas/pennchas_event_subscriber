@@ -5,3 +5,8 @@ services:
     arguments: ['@pennchas_common.access_check']
     tags:
       - { name: access_check, applies_to: _dashboard_access }
+  view_alteration.moderator_access:
+    class: \Drupal\view_alteration\Access\ModeratorAccessCheck
+    arguments: ['@pennchas_common.moderator_access_check']
+    tags:
+      - { name: access_check, applies_to: _moderator_access }

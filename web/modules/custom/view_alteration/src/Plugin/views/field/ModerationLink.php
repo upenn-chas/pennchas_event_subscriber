@@ -2,6 +2,7 @@
 
 namespace Drupal\view_alteration\Plugin\views\field;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\views\Attribute\ViewsField;
@@ -22,6 +23,15 @@ class ModerationLink extends EntityLink
     /**
      * {@inheritdoc}
      */
+    protected function checkUrlAccess(ResultRow $row)
+    {
+        $entity = $this->getEntity($row);
+        return AccessResult::allowedIf(\Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($entity));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getUrlInfo(ResultRow $row)
     {
         $entity = $this->getEntity($row);
@@ -29,8 +39,7 @@ class ModerationLink extends EntityLink
         if ($entity === NULL || $template === NULL) {
             return NULL;
         }
-        $access = \Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($entity);
-        return $access ? Url::fromRoute($template, ['node' => $entity->id()]) : '';
+        return Url::fromRoute($template, ['node' => $entity->id()]);
     }
 
     /**

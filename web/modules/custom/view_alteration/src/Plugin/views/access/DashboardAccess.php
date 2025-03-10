@@ -118,7 +118,6 @@ class DashboardAccess extends AccessPluginBase implements CacheableDependencyInt
      */
     public function buildOptionsForm(&$form, FormStateInterface $form_state)
     {
-        \Drupal::logger('Dashboard_access')->debug('Form loaded');
         parent::buildOptionsForm($form, $form_state);
         $perms = [];
         $permissions = $this->permissionHandler->getPermissions();

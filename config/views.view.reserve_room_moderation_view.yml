@@ -9,7 +9,7 @@ dependencies:
   module:
     - content_moderation
     - node
-    - user
+    - view_alteration
 id: reserve_room_moderation_view
 label: 'Reserve Room Moderation View'
 module: views
@@ -106,9 +106,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: moderator_access
         options:
-          perm: 'use editorial transition publish'
+          _perm: 'use editorial transition publish'
+          _group_perm: 'use editorial transition publish'
       cache:
         type: tag
         options: {  }

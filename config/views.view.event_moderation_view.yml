@@ -11,7 +11,7 @@ dependencies:
     - content_moderation
     - node
     - smart_date
-    - user
+    - view_alteration
 id: event_moderation_view
 label: 'Event Moderation View'
 module: views
@@ -115,9 +115,8 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
-        options:
-          perm: 'view any unpublished content'
+        type: moderator_access
+        options: null
       cache:
         type: tag
         options: {  }
@@ -522,7 +521,12 @@ display:
         empty: false
         title: false
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: moderate/event/%node
     cache_metadata:
       max-age: -1
