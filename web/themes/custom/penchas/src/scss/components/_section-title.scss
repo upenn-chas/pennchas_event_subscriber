@@ -31,5 +31,13 @@
 .signature-programs {
   .row.space {
     padding-bottom: 15px;
+    p{
+      font-size: 24px;
+      line-height: 28px;
+      @include media-query('mobile'){
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
   }
 }

@@ -1763,6 +1763,7 @@ label {
       text-decoration: none;
       border: 1px solid #fd4453;
       transition: all 0.3s;
+      vertical-align: bottom;
 
       &:hover {
         background-color: #fd4453;
@@ -2119,6 +2120,23 @@ table {
     }
   }
 }
+
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="time"]::-webkit-datetime-edit-meridiem-field {
+    -webkit-text-fill-color: rgb(78, 99, 140);
+    padding-top: 0;
+    padding-bottom: 5px;
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="time"]::-webkit-datetime-edit-text {
+  padding-bottom: 5px;
+}
+
 
 .mac_os {
   .calender-page {

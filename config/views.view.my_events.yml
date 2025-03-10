@@ -3323,8 +3323,8 @@ display:
         options:
           grouping:
             -
-              field: title
-              rendered: false
+              field: edit_node
+              rendered: true
               rendered_strip: false
           row_class: ''
           default_row_class: false
@@ -3432,7 +3432,13 @@ display:
           plugin_id: result
           empty: false
           content: 'Showing @start - @end of @total'
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'My Events | Penn CHAS'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: dashboard/my-events-all
     cache_metadata:
       max-age: -1
@@ -4579,8 +4585,8 @@ display:
         options:
           grouping:
             -
-              field: title
-              rendered: false
+              field: edit_node
+              rendered: true
               rendered_strip: false
           row_class: ''
           default_row_class: false
@@ -4654,7 +4660,13 @@ display:
           plugin_id: result
           empty: false
           content: 'Showing @start - @end of @total'
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Pending Events | Penn CHAS'
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: dashboard/my-pending-events
     cache_metadata:
       max-age: -1

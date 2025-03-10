@@ -283,7 +283,9 @@
 
     .block1 {
       width: 185px;
-
+      span{
+        line-height: 24px;
+      }
       @include media-query('tablet') {
         order: 2;
         width: 50%;
@@ -295,7 +297,9 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
-
+      span{
+        line-height: 24px;
+      }
       @include media-query('tablet') {
         order: 3;
         width: 50%;
