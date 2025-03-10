@@ -17,8 +17,10 @@ function view_alteration_views_post_execute(ViewExecutable $view)
         if (!$view->result) {
             throw new NotFoundHttpException(t('The requested page was not found.'));
         }
-        $args = $view->args;
-        $view->attachment_after = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($args[0]);
+        $nid = $view->args[0];
+        if($nid) {
+            $view->attachment_after = \Drupal::service('pennchas_common.moderation_log')->buildModerationLogTable($nid);
+        }
     }
 }
 /**
