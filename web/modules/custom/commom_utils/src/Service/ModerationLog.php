@@ -87,7 +87,7 @@ class ModerationLog
     public function getNodeModerationData(int $nid)
     {
         $query = $this->connection->select('content_moderation_state_field_revision', 'cmsfr');
-        $query->fields('cmsfr', ['moderation_state', 'revision_id']); 
+        $query->fields('cmsfr', ['moderation_state']); 
         $query->fields('nr', ['revision_log', 'revision_timestamp']);
         $query->fields('ufd', ['name']);
         $query->innerJoin('node_revision', 'nr', 'cmsfr.content_entity_revision_id = nr.vid');
