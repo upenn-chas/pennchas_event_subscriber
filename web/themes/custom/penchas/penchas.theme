@@ -1088,23 +1088,24 @@ function penchas_preprocess_views_view(&$variables)
 
     $filters_html = '';
     if (!empty($values)) {
-      $view_url = $view->getUrl();
+      $view_url = $view->getUrl()->toString();
       $community = ($values['field_community_value'] ? $values['field_community_value'] : 'All');
+      $communityText = 'All';
       switch ($community) {
         case 'four_year_community':
-          $community = 'Four Year Community';
+          $communityText = 'Four Year Community';
           break;
         case 'first_year_community':
-          $community = 'First Year Community';
+          $communityText = 'First Year Community';
           break;
         case 'upperclass_community':
-          $community = 'Upperclass Community';
+          $communityText = 'Upperclass Community';
           break;
 
         default:
           break;
       }
-      $selected_filters['field_community'] = $community;
+      $selected_filters['field_community'] = $communityText;
       if (isset($values['field_number_of_residents_value']) && $values['field_number_of_residents_value'] != 'All') {
         $variables['size'] = $values['field_number_of_residents_value'];
       } else {
@@ -1137,13 +1138,36 @@ function penchas_preprocess_views_view(&$variables)
         $value = 600;
         $selected_filters['size'] = 'Large';
       }
-      $link = $view_url->toString() . '?field_community_value=' . $community . '&field_number_of_residents_value=' . $size . '&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
+
       if (!empty($selected_filters) && isset($selected_filters['field_community']) && $selected_filters['field_community'] != 'All') {
-        $link = $view_url->toString() . '?field_community_value=All&field_number_of_residents_value=' . $size . '&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
-        $filters_html .= '<a href="' . $link . '"><span class="filter-tag">' . $selected_filters['field_community'] . '</span></a>';
+        $link = $view_url;
+        if ($size !== 'All') {
+          $query_parameters = [
+            'field_community_value' => 'All',
+            'field_number_of_residents_value' => $size,
+            'field_number_of_residents_value_1_op' => $operator,
+            'field_number_of_residents_value_1[value]' => $value,
+            'field_number_of_residents_value_1[min]' => $min,
+            'field_number_of_residents_value_1[max]' => $max,
+          ];
+
+          $link = $view_url . '?' . http_build_query($query_parameters);
+        }
+        $filters_html .= '<a href="' . $link . '"><span class="filter-tag">' . $communityText . '</span></a>';
       }
       if (!empty($selected_filters) && isset($selected_filters['size'])) {
-        $link = $view_url->toString() . '?field_community_value=' . $community . '&field_number_of_residents_value=All&field_number_of_residents_value_1_op=' . $operator . '&field_number_of_residents_value_1%5Bvalue%5D=' . $value . '&field_number_of_residents_value_1%5Bmin%5D=' . $min . '&field_number_of_residents_value_1%5Bmax%5D=' . $max;
+        $link = $view_url;
+        if ($community != 'All') {
+          $query_parameters = [
+            'field_community_value' => $community,
+            'field_number_of_residents_value' => 'All',
+            'field_number_of_residents_value_1_op' => '<=',
+            'field_number_of_residents_value_1[value]' => '',
+            'field_number_of_residents_value_1[min]' => '',
+            'field_number_of_residents_value_1[max]' => '',
+          ];
+          $link = $view_url . '?' . http_build_query($query_parameters);
+        }
         $filter_size = $selected_filters['size'];
         $filters_html .= '<a href="' . $link . '"><span class="filter-tag">' . $filter_size . '</span></a>';
       }
