@@ -235,3 +235,14 @@
     }
   }
 }
+.hero-banner{
+  &.without-image{
+    &.small{
+      .col-lg-6 {
+        @include media-query('mobile'){
+          min-height: auto;
+        }
+      }
+    }
+  }
+}
