@@ -5,6 +5,8 @@ namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
+use Drupal\group\Entity\GroupType;
+use Drupal\user\Entity\Role;
 
 class EventFormAlter
 {
@@ -35,9 +37,15 @@ class EventFormAlter
             }
         }
         $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
-        if($index !== FALSE) {
-            unset( $form['actions']['submit']['#submit'][$index]);
+        if ($index !== FALSE) {
+            unset($form['actions']['submit']['#submit'][$index]);
         }
+
+        $userDetails = $this->getUserDetails();
+        $form['form_caption'] = [
+            '#markup' => "<div class='author-details-container mb-3'><span class='author-label'>Author:&nbsp;</span><span class='author-details'>{$userDetails}</span></div>",
+            '#weight' => -100, // Ensures it appears at the top
+        ];
         return $form;
     }
 
@@ -85,5 +93,62 @@ class EventFormAlter
         foreach ($relationships as $rel) {
             $options[$rel->id()] = "{$group->label()} - {$rel->label()}";
         }
+    }
+
+    private function getUserDetails()
+    {
+        $user = \Drupal::currentUser();
+        $userName = $user->getDisplayName();
+        $roles = [];
+
+        $allRoles = $this->getAllRoles();
+        $userRoles = $user->getRoles(TRUE);
+        foreach ($userRoles as $roleId) {
+            $roles[$roleId] = $allRoles[$roleId];
+        }
+
+        $groupMemberships = GroupMembership::loadByUser($user);
+        if ($groupMemberships) {
+            $groupRoles = $this->getAllGroupRoles();
+            foreach ($groupMemberships as $groupMembership) {
+                $userGroupRoles = $groupMembership->getRoles(FALSE);
+                foreach ($userGroupRoles as $role) {
+                    $roleId = $role->id();
+                    $roles[$roleId] = $groupRoles[$roleId];
+                }
+            }
+        }
+
+        return "{$userName} ({$this->implodeWithAnd($roles)})";
+    }
+
+    private function getAllGroupRoles()
+    {
+        $roles = [];
+        $groupType = GroupType::load('house1');
+        $groupRoles = $groupType->getRoles(FALSE);
+        foreach ($groupRoles as $role) {
+            $roles[$role->id()] = $role->label();
+        }
+        return $roles;
+    }
+
+    private function getAllRoles()
+    {
+        $roles = [];
+        $rolesData = Role::loadMultiple();
+        foreach ($rolesData as $role) {
+            $roles[$role->id()] = $role->label();
+        }
+        return $roles;
+    }
+
+    private function implodeWithAnd(array $array)
+    {
+        $last = array_pop($array);
+        if ($array) {
+            return implode(', ', $array) . ' and ' . $last;
+        }
+        return $last;
     }
 }
