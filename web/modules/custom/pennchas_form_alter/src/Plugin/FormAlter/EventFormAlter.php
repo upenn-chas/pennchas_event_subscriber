@@ -101,6 +101,12 @@ class EventFormAlter
         $userName = $user->getDisplayName();
         $roles = [];
 
+        $allRoles = $this->getAllRoles();
+        $userRoles = $user->getRoles(TRUE);
+        foreach ($userRoles as $roleId) {
+            $roles[$roleId] = $allRoles[$roleId];
+        }
+
         $groupMemberships = GroupMembership::loadByUser($user);
         if ($groupMemberships) {
             $groupRoles = $this->getAllGroupRoles();
@@ -111,14 +117,8 @@ class EventFormAlter
                     $roles[$roleId] = $groupRoles[$roleId];
                 }
             }
-        } else {
-            $allRoles = $this->getAllRoles();
-            $userRoles = $user->getRoles(TRUE);
-            foreach ($userRoles as $roleId) {
-                $roles[$roleId] = $allRoles[$roleId];
-            }
-
         }
+
         return "{$userName} ({$this->implodeWithAnd($roles)})";
     }
 
