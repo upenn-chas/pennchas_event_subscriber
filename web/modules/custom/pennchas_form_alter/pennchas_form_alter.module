@@ -12,8 +12,9 @@ use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\NoticeFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
-
-
+use Drupal\group\Entity\Group;
+use Drupal\user\Entity\Role;
+use Drupal\group\Entity\GroupType;
 use Drupal\Core\Database\Database;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
@@ -25,6 +26,28 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     switch ($formId) {
+        // case 'block_content_dashboard_blocks_form':
+        //     if ($form['field_block_display_condition_wi']) {
+        //         $groupType = GroupType::load('house1');
+        //         $groupRoles = $groupType->getRoles();
+        //         // $form['field_block_display_condition_wi']['widget']['#options'] = [];
+        //         foreach ($groupRoles as $roleKey => $groupRole) {
+        //             $id = $groupRole->id();
+        //             $label = $groupRole->get('label');
+        //             $scope = $groupRole->get('scope');
+        //             if($scope == 'individual'){
+        //                 $scope = 'house only';
+        //             }
+        //             if($scope == 'outsider'){
+        //                 $scope = 'globally';
+        //             }
+                    
+        //             $form['field_block_display_condition_wi']['widget']['#options'][$id] = $label .' ('. $scope .')';
+                    
+        //         }
+
+        //     }
+        //     break;
         case 'node_program_community_form':
             if (!\Drupal::currentUser()->hasRole('administrator')) {
                 $form['field_group']['#access'] = false;

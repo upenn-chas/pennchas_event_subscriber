@@ -1452,6 +1452,16 @@ label {
               }
             }
 
+            &.delta-order {
+              .form-type-select {
+                margin-bottom: 0 !important;
+                margin-left: 6px !important;
+                min-width: 65px;
+              }  
+            }
+
+
+
             .form-type-email {
               margin-top: 16px;
               margin-right: 10px;
@@ -1733,8 +1743,7 @@ label {
       font-weight: 700;
       color: #fff;
       border-radius: 10px;
-      // padding: 18px 20px 16px 20px;
-      padding: 16px 20px 20px 20px;
+      padding: 18px 20px;
       font-family: tablet-gothic;
       text-decoration: none;
       border: 1px solid #011f5b;
@@ -1760,12 +1769,12 @@ label {
       font-weight: 700;
       color: #fd4453;
       border-radius: 10px;
-      padding: 19px 20px 19px 20px;
+      padding: 18px 20px 18px 20px;
       font-family: tablet-gothic;
       text-decoration: none;
       border: 1px solid #fd4453;
       transition: all 0.3s;
-      vertical-align: bottom;
+      vertical-align: middle;
 
       &:hover {
         background-color: #fd4453;
@@ -1936,9 +1945,9 @@ label {
   display: none;
 }
 
-.node-form td.field-multiple-drag {
-  display: none;
-}
+// .node-form td.field-multiple-drag {
+//   display: none;
+// }
 
 .node-form {
   td {
