@@ -172,8 +172,8 @@
 
   &:hover {
     &:before {
-      background-color: #ebf1ff;
-      border-color: #ebf1ff;
+      background-color: var(--background-house-color, #ebf1ff);
+      border-color: var(--background-house-color, #ebf1ff);
       transition: all ease-in-out 0.3s;
     }
 
@@ -254,6 +254,11 @@
   .btn-wrapper {
     text-align: center;
     margin: 30px 0 0px 0;
+    @include media-query('mobile'){
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     // padding-bottom: 80px;
     // @include media-query('mobile') {
@@ -272,6 +277,10 @@
       line-height: 24px;
       font-family: $teritoryFont;
       text-transform: capitalize;
+      @include media-query('mobile'){
+        font-size: 18px;
+
+      }
 
       &:before {
         content: "";
@@ -300,7 +309,7 @@
   &:has(.program-card) {
     .btn-wrapper {
       padding-bottom: 80px;
-
+      padding-top: 50px;
       @include media-query('mobile') {
         padding-bottom: 50px;
       }
@@ -308,6 +317,35 @@
 
     .space .btn-wrapper {
       padding-bottom: 0;
+    }
+  }
+  &.signature-programs{
+    padding-bottom: 40px;
+  }
+}
+
+.signature-block{
+  .signature-programs{
+    .row.space{
+      .btn-wrapper{
+        padding-bottom: 50px;
+        padding-top: 0;
+        margin-top: 10px;
+        @include media-query('mobile'){
+          padding-bottom: 35px;
+        }
+      }
+    }
+    .node--type-program-community:has(.program-card){
+      @include media-query('mobile'){
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+    .btn-wrapper{
+      @include media-query('mobile'){
+        padding-bottom: 10px;
+      }
     }
   }
 }

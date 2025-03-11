@@ -9,7 +9,6 @@ dependencies:
     - field.field.block_content.cta_section.field_heading
     - field.field.block_content.cta_section.field_media_image
   module:
-    - color_field
     - link
     - media_library
 id: block_content.cta_section.default
@@ -17,17 +16,9 @@ targetEntityType: block_content
 bundle: cta_section
 mode: default
 content:
-  field_background_color:
-    type: color_field_widget_default
-    weight: 2
-    region: content
-    settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
   field_cta:
     type: link_default
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
@@ -43,7 +34,7 @@ content:
     third_party_settings: {  }
   field_media_image:
     type: media_library_widget
-    weight: 2
+    weight: 3
     region: content
     settings:
       media_types: {  }
@@ -63,4 +54,5 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_background_color: true

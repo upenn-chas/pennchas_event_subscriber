@@ -416,3 +416,26 @@ function remove_tabs(array &$tabs, array $tabTitles)
         }
     }
 }
+
+
+function pennchas_form_alter_preprocess_field(&$variables) {
+    // Target the specific field in the group entity.
+    if ($variables['element']['#field_name'] == 'field_program_communities') {
+        foreach ($variables['items'] as &$item) {
+            if (!empty($item['content'])) {
+            $getEntity = $item['content']['#url']->getOption('entity');
+
+            $nid = $getEntity->get('entity_id')->target_id; // Assuming the field stores node ID.
+            // Load the node.
+            $node = \Drupal\node\Entity\Node::load($nid);
+            if ($node) {
+                // Generate the node link.
+                $url = $node->toUrl();
+                $title = $node->getTitle();
+                $item['content']['#url'] = $url;
+                $item['content']['#attributes'] = ['target'=> '_blank'];
+            }
+        }
+      }
+    }
+}

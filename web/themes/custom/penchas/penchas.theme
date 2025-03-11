@@ -417,6 +417,18 @@ function penchas_preprocess_html(&$variables)
     $variables['head_title']['title'] = $view_titles[$view_id] . $group_label . ' | ' . $site_name;
   }
 
+  $route_match = \Drupal::routeMatch();
+  if ($group = $route_match->getParameter('group')) { 
+    if ($group instanceof Group) {
+      $background_house_color = $group->get('field_color')->value;
+      $circle_house_color = $group->get('field_color_of_circle')->value;
+
+      if (isset($background_house_color)) {
+        $variables['html_attributes']->setAttribute('style', "--background-house-color:#$background_house_color;--circle-house-color:#$circle_house_color");
+      }
+    }
+  }
+
   /* Node Meta tag updates ends here  */
 
   $variables['base_path'] = base_path();

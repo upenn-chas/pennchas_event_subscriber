@@ -447,34 +447,34 @@
     &:has(.tags) button {
       &:before {
         // top: 55px;
-        top: 72%;
+        top: calc(50% - -15px);
         right: 34px;
 
-        @include media-query-min('medium') {
-          top: 70%;
-        }
+        // @include media-query-min('medium') {
+        //   top: 70%;
+        // }
 
-        @include media-query('tablet-large') {
-          top: 71%;
-        }
+        // @include media-query('tablet-large') {
+        //   top: 71%;
+        // }
 
         @include media-query('mobile') {
-          top: 44px;
+          // top: 44px;
           right: 25px;
         }
       }
 
       &:after {
         // top: 68px;
-        top: 90%;
+        top: calc(50% - -28px);
         right: 22px;
 
-        @include media-query-min('medium') {
-          top: 86%;
-        }
+        // @include media-query-min('medium') {
+        //   top: 86%;
+        // }
 
         @include media-query('mobile') {
-          top: 55px;
+          // top: 55px;
           right: 14px;
         }
       }
@@ -508,7 +508,7 @@
       border: 0;
       padding: 8px 10px;
       font-size: 12px;
-      background: #76a7ff;
+      background: var(--circle-house-color,#76a7ff);
       border-radius: 10px;
       font-weight: 600;
       line-height: normal;
@@ -522,7 +522,7 @@
   }
 
   .accordion-item:has(.accordion-button:not(.collapsed)) {
-    background-color: #EBF2FF;
+    background-color: var(--background-house-color,#EBF2FF);
     border-color: transparent;
     transition: border-color 0.3s ease-in-out;
   }
