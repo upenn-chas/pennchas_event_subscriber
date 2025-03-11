@@ -25,7 +25,7 @@ use Drupal\node\Entity\Node;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\group\GroupMembershipInterface;
 use Drupal\group\Access\GroupPermissionHandlerInterface;
-
+use Drupal\smart_date_recur\Entity\SmartDateRule;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -238,8 +238,8 @@ function penchas_preprocess_node(&$variables)
     $calendar_link = $base_path;
     $nid = $node->id();
     $links = '';
-   $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
-  
+    $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
+
     if ($current_user->isAuthenticated()) {
       $moderator_link = '';
 
@@ -281,7 +281,7 @@ function penchas_preprocess_node(&$variables)
     }
 
     $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul>
-          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li><li class="copy-icon"><a class="copy-link" href="'.$current_path.'"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
+          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
           <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
         </svg></a><span class="copy-tooltip">LINK COPIED!</span></li>'
       . $links . '</ul></div></div>';
@@ -666,16 +666,9 @@ function penchas_preprocess_block(&$variables)
       $node = \Drupal::routeMatch()->getParameter('node');
       // Check if the node exists and is an instance of the Node class.
       if ($node && $node instanceof \Drupal\node\NodeInterface) {
-        $node_title = $node->getTitle();
-        if ($node->bundle() == 'reserve_room' || $node->bundle() == 'chas_event') {
-          if ($node->get('field_event_schedule')->getValue()) {
-            $node_event_schedule = $node->get('field_event_schedule')->getValue();
-            $node_start_date = $node_event_schedule[0]['value'];
-            $node_end_date = $node_event_schedule[0]['end_value'];
-          }
-          // Get the node URL.
-          $node_url = $node->toUrl()->toString();
-          $variables['add_to_calendar_link'] = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' . $node_title . '&dates=' . date('YmjThms', $node_start_date) . '/' . date('YmjThms', $node_end_date);
+        $bundle = $node->bundle();
+        if (in_array($bundle,['reserve_room', 'chas_event'])) {
+          $variables['add_to_calendar_link'] = generate_google_calendar_link($node, $bundle);
         }
       }
     }
@@ -1186,6 +1179,52 @@ function penchas_preprocess_views_view(&$variables)
     }
     $variables['selected_filters_output'] = $filters_html;
   }
+}
+
+function generate_google_calendar_link(NodeInterface $node, string $bundle)
+{
+  $ical_data = $bundle === 'reserve_room' ? generate_google_calendar_data_for_reserve_room($node) : generate_google_calendar_data_for_chas_event($node);
+
+  if ($node->get('field_event_schedule')->getValue()) {
+    $node_event_schedule = $node->get('field_event_schedule')->getValue();
+    $node_start_date = $node_event_schedule[0]['value'];
+    $node_end_date = $node_event_schedule[0]['end_value'];
+    $rrule_id = $node_event_schedule[0]['rrule'];
+    $ical_data['dates'] = date('Ymd\THis', $node_start_date) . '/' . date('Ymd\THis', $node_end_date);
+    if ($rrule_id) {
+      $smart_date = SmartDateRule::load($rrule_id);
+      $ical_data['recur'] = $smart_date->getRule();
+    }
+  }
+  return 'https://www.google.com/calendar/render?' . http_build_query($ical_data);
+}
+
+function generate_google_calendar_data_for_reserve_room(NodeInterface $node)
+{
+  $roomId = (int)$node->get('field_room')->getString();
+  $room = Node::load($roomId);
+  $room_name = $room->getTitle();
+  $description = $node->get('field_long_text')->getString();
+  return [
+    'action' => 'TEMPLATE',
+    'text' => $node->getTitle(),
+    'location' => $room_name,
+    'details' => $description,
+  ];
+}
+
+function generate_google_calendar_data_for_chas_event(NodeInterface $node)
+{
+  $locationId = (int)$node->get('field_location')->getString();
+  $group = Group::load($locationId);
+  $group_name = $group->label();
+  $description = $node->get('field_marketing_blurb')->getString();
+  return [
+    'action' => 'TEMPLATE',
+    'text' => $node->getTitle(),
+    'location' => $group_name,
+    'details' => $description,
+  ];
 }
 
 
