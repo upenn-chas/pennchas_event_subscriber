@@ -97,11 +97,17 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
       case 'user_dashboard_name':
         $current_user_id = \Drupal::currentUser()->id();
         $current_user = User::load($current_user_id);
-        $user_name = $current_user->field_preferred_name->value;
+        $user_name = $current_user->field_preferred_name->value ? $current_user->field_preferred_name->value : $current_user->getDisplayName();
         if (empty($user_name)) {
           $user_name = $current_user->field_full_name->value;
         }
         $replacements[$original] = $user_name;
+        // Add cache contexts
+        $bubbleable_metadata->addCacheContexts([
+          'user',
+          'session',
+          'user.roles'
+        ]);
         break;
 
       // Case 'user_assigned_role':

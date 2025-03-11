@@ -243,18 +243,21 @@
   .event-details-breadcrumbs {
     margin-top: 0;
     min-height: 25px;
+
     ul {
       // justify-content: space-between;
       // flex-direction: row-reverse;
       gap: 25px;
       padding-right: 40px;
       position: relative;
+
       li {
         &.copy-icon {
           position: relative;
           order: 1;
           position: absolute;
           right: 45px;
+
           a {
             &:hover {
               svg {
@@ -426,3 +429,28 @@
   }
 }
 
+.ui-widget.ui-widget-content {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+
+  .ui-dialog-titlebar {
+    background-color: #fff;
+    border: none;
+    .ui-dialog-titlebar-close {
+      background: url('../../assets/images/close-icon.svg')no-repeat;
+      height: 21px;
+      width: 18px;
+      background-color: transparent;
+      right: 20px;
+    border: 0;
+      &:hover {
+        filter: brightness(0) saturate(100%) invert(42%) sepia(48%) saturate(5166%) hue-rotate(331deg) brightness(101%) contrast(98%);
+      }
+    }
+  }
+
+  .ui-dialog-content {
+    padding: 18px 30px 30px 30px;
+  }
+}

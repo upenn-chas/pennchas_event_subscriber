@@ -679,3 +679,27 @@ form{
 #layout-builder-modal a, #layout-builder-modal .link {
   color: inherit;
 }
+
+#layout-builder-modal {
+  .field-multiple-table {
+    td.delta-order.tabledrag-hide {
+      min-width: 85px;
+    }
+
+    td {
+      padding: 5px;
+      &:first-child {
+        padding-left: 0;
+      }
+
+      button {
+        margin-top: 8px;
+      }
+    }
+
+    a.tabledrag-handle .handle {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }    
+}

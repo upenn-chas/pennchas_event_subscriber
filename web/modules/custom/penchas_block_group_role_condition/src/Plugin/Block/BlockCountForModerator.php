@@ -54,7 +54,7 @@ class BlockCountForModerator extends BlockBase {
         if (!empty($total_results)) {
           return [
               '#type' => 'inline_template',
-              '#template' => '<div class="info-fields"><p>You have {{ count }} events for moderation. Go to <a href="{{ goToUrl }}">My Events</a>.</p></div>',
+              '#template' => '<div class="info-fields"><p>They are {{ count }} events awaiting moderation. Go to <a href="{{ goToUrl }}">Pending Events</a>.</p></div>',
               '#context' => [
                   'count' => $total_results,
                   'goToUrl' => Url::fromRoute('view.my_events.page_2')->toString(),

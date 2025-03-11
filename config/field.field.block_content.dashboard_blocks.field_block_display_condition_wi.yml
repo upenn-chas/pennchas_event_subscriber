@@ -27,12 +27,10 @@ field_name: field_block_display_condition_wi
 entity_type: block_content
 bundle: dashboard_blocks
 label: "Block Display Condition with group roles\t"
-description: ''
+description: "Note: \r\nOutsider: Assigned to all non-members who have the corresponding global role. (Globally), \r\nInsider: Assigned to all members who have the corresponding global role. (Insider), \r\nIndividual: Can be assigned to individual members. (House only)"
 required: false
 translatable: false
 default_value:
-  -
-    target_uuid: f8a14057-77d9-4d34-97bb-c65135f14b3d
   -
     target_uuid: cd8700a6-2c84-41dd-80a3-3091d3c677e7
   -
@@ -40,15 +38,17 @@ default_value:
   -
     target_uuid: a74580bb-8244-4123-b964-70e5af4962b4
   -
+    target_uuid: f8a14057-77d9-4d34-97bb-c65135f14b3d
+  -
     target_uuid: 47a0ab46-3dc8-42e2-b483-46c5f96a4588
   -
     target_uuid: 1a8dc8cb-2edc-4a9e-b5f0-4109dbd51464
   -
     target_uuid: fc190d06-7d77-404a-81a0-35f3b73d5eba
   -
-    target_uuid: 1aaa93a7-1e30-460b-804f-c334118ac670
-  -
     target_uuid: 88989d13-dd33-4d39-8873-6c942e0da75b
+  -
+    target_uuid: 1aaa93a7-1e30-460b-804f-c334118ac670
   -
     target_uuid: c0d93e30-9b5f-429f-862a-42185b2196cf
   -
