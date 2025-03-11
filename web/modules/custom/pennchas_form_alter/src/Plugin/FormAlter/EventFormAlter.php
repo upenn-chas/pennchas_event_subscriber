@@ -3,6 +3,7 @@
 namespace Drupal\pennchas_form_alter\Plugin\FormAlter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
 use Drupal\group\Entity\GroupType;
@@ -12,7 +13,8 @@ class EventFormAlter
 {
     public function alter(array $form, FormStateInterface $formState)
     {
-        $options = $this->getOptions();
+        $currentUser = \Drupal::currentUser();
+        $options = $this->getOptions($currentUser);
         $form['field_college_houses']['widget']['#options'] = $options['houses'];
         $form['field_program_communities']['widget']['#options'] = $options['communities'];
         $form['field_location']['widget']['#options'] = $options['houses'];
@@ -35,13 +37,15 @@ class EventFormAlter
                     unset($form['field_event_schedule']['widget'][$key]);
                 }
             }
+            $entity = $formState->getFormObject()->getEntity();
+            $currentUser = $entity->getOwner();
         }
         $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
         if ($index !== FALSE) {
             unset($form['actions']['submit']['#submit'][$index]);
         }
 
-        $userDetails = $this->getUserDetails();
+        $userDetails = $this->getUserDetails($currentUser);
         $form['form_caption'] = [
             '#markup' => "<div class='author-details-container mb-3'><span class='author-label'>Author:&nbsp;</span><span class='author-details'>{$userDetails}</span></div>",
             '#weight' => -100, // Ensures it appears at the top
@@ -49,12 +53,12 @@ class EventFormAlter
         return $form;
     }
 
-    protected function getOptions()
+    protected function getOptions(AccountInterface $currentUser)
     {
         $houseOptions = [];
         $communityOptions = [];
 
-        $currentUser = \Drupal::currentUser();
+
         $groupMemberships = GroupMembership::loadByUser($currentUser);
         if ($groupMemberships) {
             foreach ($groupMemberships as $groupMembership) {
@@ -95,16 +99,17 @@ class EventFormAlter
         }
     }
 
-    private function getUserDetails()
+    private function getUserDetails(AccountInterface $user)
     {
-        $user = \Drupal::currentUser();
         $userName = $user->getDisplayName();
         $roles = [];
 
         $allRoles = $this->getAllRoles();
         $userRoles = $user->getRoles(TRUE);
         foreach ($userRoles as $roleId) {
-            $roles[$roleId] = $allRoles[$roleId];
+            if ($roleId !== 'content_editor') {
+                $roles[$roleId] = $allRoles[$roleId];
+            }
         }
 
         $groupMemberships = GroupMembership::loadByUser($user);

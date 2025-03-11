@@ -37,11 +37,10 @@ class NodePreUpdateHook
         $housesId = $this->getHouses($node);
         $moderationState = $node->get('moderation_state')->getString();
         if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
-            if ($this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)) {
-                $housesId = $this->getHouses($node);
-            } else {
+            if (!$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)) {
                 $node->setPublished(false);
                 $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+                $node->isDefaultRevision(TRUE);
             }
         }
         $node->field_groups =  $housesId;
