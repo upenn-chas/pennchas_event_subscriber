@@ -144,3 +144,9 @@
     }
   }
 }
+
+.block-inline-blockfull-width-slider-section {
+  &.image-with-text-boxed{
+    background-color: var(--background-house-color, #D6DBD6);
+  }
+}

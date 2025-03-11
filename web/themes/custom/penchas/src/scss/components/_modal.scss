@@ -242,7 +242,7 @@
 
   .event-details-breadcrumbs {
     margin-top: 0;
-
+    min-height: 25px;
     ul {
       // justify-content: space-between;
       // flex-direction: row-reverse;
@@ -425,3 +425,4 @@
     }
   }
 }
+

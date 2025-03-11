@@ -3273,7 +3273,7 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'Pending Room Reservation | Penn CHAS'
+            title: 'Pending Room Reservations | Penn CHAS'
           tokenize: false
         simple_sitemap_display_extender:
           variants: {  }
@@ -4455,7 +4455,7 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'My Room Reservation | Penn CHAS'
+            title: 'My Room Reservations | Penn CHAS'
           tokenize: false
         simple_sitemap_display_extender:
           variants: {  }

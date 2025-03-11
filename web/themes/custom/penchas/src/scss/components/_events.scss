@@ -39,7 +39,7 @@
   .event-img {
     position: relative;
     min-height: 173px;
-    background-color: #ebf1ff;
+    background-color: var(--background-house-color, #ebf1ff);
 
     .date {
       position: absolute;

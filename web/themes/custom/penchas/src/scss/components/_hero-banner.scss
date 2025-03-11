@@ -1,4 +1,5 @@
 .hero-banner {
+  background-color: var(--background-house-color);
   padding-top: 60px;
   position: relative;
   z-index: 2;
@@ -25,6 +26,7 @@
       height: 240px;
       border-radius: 50%;
       content: "";
+      background-color: var(--circle-house-color);
       @include media-query('tablet') {
         height: 140px;
         width: 140px;
@@ -235,3 +237,14 @@
     }
   }
 }
+// .hero-banner{
+//   &.without-image{
+//     &.small{
+//       .col-lg-6 {
+//         @include media-query('mobile'){
+//           min-height: auto;
+//         }
+//       }
+//     }
+//   }
+// }

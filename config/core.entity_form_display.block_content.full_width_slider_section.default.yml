@@ -8,7 +8,6 @@ dependencies:
     - field.field.block_content.full_width_slider_section.field_background_color
     - field.field.block_content.full_width_slider_section.field_slider_item_selection
   module:
-    - color_field
     - text
 id: block_content.full_width_slider_section.default
 targetEntityType: block_content
@@ -17,7 +16,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 26
+    weight: 2
     region: content
     settings:
       rows: 9
@@ -25,17 +24,9 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_background_color:
-    type: color_field_widget_default
-    weight: 27
-    region: content
-    settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
   field_slider_item_selection:
     type: entity_reference_autocomplete
-    weight: 28
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -45,7 +36,7 @@ content:
     third_party_settings: {  }
   info:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -53,9 +44,10 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_background_color: true

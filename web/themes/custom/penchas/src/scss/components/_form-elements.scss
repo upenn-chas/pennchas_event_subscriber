@@ -1504,11 +1504,13 @@ label {
 
               label {
                 text-align: left;
+                align-content: center;
               }
 
               .form-type-select {
                 label {
                   min-width: auto;
+                  margin-right: 5px;
                 }
               }
 
