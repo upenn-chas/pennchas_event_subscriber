@@ -11,7 +11,7 @@ dependencies:
 id: penchas_footer2
 theme: penchas
 region: footer_third
-weight: -8
+weight: -18
 provider: null
 plugin: 'system_menu_block:footer-2'
 settings:

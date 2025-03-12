@@ -495,9 +495,13 @@ display:
         header: false
       css_class: 'node--view-mode-moderator node__content'
       header: {  }
-      display_extenders: {  }
-      displays:
-        event_moderate_page_view: event_moderate_page_view
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
+      displays: {  }
+      attachment_position: after
     cache_metadata:
       max-age: -1
       contexts:
