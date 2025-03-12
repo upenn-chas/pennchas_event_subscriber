@@ -131,11 +131,13 @@ header {
           ul {
             li.nav-item {
               @supports (-webkit-touch-callout: none) and (font: -apple-system-body) {
-                a.nav-link--user-login {
+                a.nav-link--user-login,
+                .nav-link--saml-login {
                   padding: 16px 20px 18px;
                 }
               }
-              a.nav-link--user-login {
+              a.nav-link--user-login,
+              .nav-link--saml-login {
                 border: 1px solid #011f5b;
                 padding: 16px 20px;
                 color: #011f5b;
@@ -167,6 +169,7 @@ header {
               text-decoration: none;
               font-family: tablet-gothic;
               padding: 18px 16px 18px 0;
+              border: 0;
             }
           }
         }
@@ -587,7 +590,8 @@ article>header {
               padding: 0 18px;
 
               a {
-                &.nav-link--user-login {
+                &.nav-link--user-login,
+                &.nav-link--saml-login {
                   background: #011F5B;
                   text-align: center;
                   color: #fff;

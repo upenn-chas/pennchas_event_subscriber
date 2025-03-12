@@ -197,7 +197,6 @@
   }
 }
 
-
 .ui-dialog:has(.node--type-chas-event) {
   padding: 0 !important;
   border: 0;
@@ -257,6 +256,7 @@
           order: 1;
           position: absolute;
           right: 45px;
+          padding-right: 1px;
 
           a {
             &:hover {
@@ -274,7 +274,7 @@
 
 
   .ui-dialog-content {
-    padding: 0;
+    padding: 0 !important;
     max-height: 72dvh !important;
     overflow: hidden;
 
@@ -358,6 +358,8 @@
         text-decoration: underline;
         text-decoration-color: $lightBlue;
         font-family: $teritoryFont;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
       }
     }
 
@@ -373,6 +375,8 @@
         text-decoration: underline;
         text-decoration-color: $lightBlue;
         font-family: $teritoryFont;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
       }
     }
 

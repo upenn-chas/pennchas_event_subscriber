@@ -153,7 +153,6 @@ third_party_settings:
           - 'inline_block:video_block'
           - 'inline_block:view_block'
       restricted_categories:
-        - 'Custom blocks'
         - Menus
         - System
     entity_view_mode_restriction_by_region:

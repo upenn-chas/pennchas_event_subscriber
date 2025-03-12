@@ -1302,16 +1302,17 @@ label {
 
 .alert {
   background: #ffeb40;
-  font-size: 18px;
   padding: 13px 20px;
   border-radius: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   font-size: 18px;
   font-family: $teritoryFont;
   font-weight: 600;
-  .btn-close{
-        padding: 1rem 1rem;
-      }
+  z-index: 3;
+
+  .btn-close {
+    padding: 1rem 1rem;
+  }
 }
 
 .form-item {
@@ -1409,11 +1410,12 @@ label {
 //   margin-right: 5px;
 // }
 
- 
-.smartdate--time-inline div.time-start, 
-.smartdate--time-inline div.time-end  {
+
+.smartdate--time-inline div.time-start,
+.smartdate--time-inline div.time-end {
   gap: 5px;
 }
+
 .smartdate--widget .repeat--label {
   margin-right: 0;
 }
@@ -1438,6 +1440,24 @@ label {
 
   table {
     color: $primaryColor;
+    &#field-event-schedule-values{
+      th{
+        &.tabledrag-hide{
+          display: none;
+        }
+      }
+      .delta-order{
+        &.tabledrag-hide{
+          display: none;
+        }
+      }
+    }
+    &#field-collaborators-values{
+      .field-multiple-drag{
+        display: none;
+      }
+    }
+
 
     &.field-multiple-table {
       tbody {
@@ -1457,10 +1477,12 @@ label {
                 margin-bottom: 0 !important;
                 margin-left: 6px !important;
                 min-width: 65px;
-              }  
+              }
             }
 
-
+            &.field-multiple-drag{
+              display: none;
+            }
 
             .form-type-email {
               margin-top: 16px;
@@ -1569,6 +1591,7 @@ label {
 
                 .js-form-item {
                   position: relative;
+
                   @include media-query("mobile") {
                     width: 100%;
                   }
@@ -1589,17 +1612,20 @@ label {
                   }
                 }
               }
-              .smart-date--duration-list{
-                                width: 100%;
-                                border-color: $primaryColor;
-                                border-bottom-left-radius: 10px;
-                                border-bottom-right-radius: 10px;
-                                li{
-                                  color: $primaryColor;
-                                  padding-left: 14px;
-                                  padding-right: 14px;
-                                }
-                              }
+
+              .smart-date--duration-list {
+                width: 100%;
+                border-color: $primaryColor;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                li {
+                  color: $primaryColor;
+                  padding-left: 14px;
+                  padding-right: 14px;
+                }
+              }
+
               details {
                 border: none;
 
@@ -2138,9 +2164,9 @@ input[type="date"]::-webkit-datetime-edit-day-field,
 input[type="time"]::-webkit-datetime-edit-hour-field,
 input[type="time"]::-webkit-datetime-edit-minute-field,
 input[type="time"]::-webkit-datetime-edit-meridiem-field {
-    -webkit-text-fill-color: rgb(78, 99, 140);
-    padding-top: 0;
-    padding-bottom: 5px;
+  -webkit-text-fill-color: rgb(78, 99, 140);
+  padding-top: 0;
+  padding-bottom: 5px;
 }
 
 input[type="date"]::-webkit-datetime-edit-text,

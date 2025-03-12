@@ -299,6 +299,7 @@
       line-height: 20px;
       span{
         line-height: 24px;
+        word-break: break-word;
       }
       @include media-query('tablet') {
         order: 3;

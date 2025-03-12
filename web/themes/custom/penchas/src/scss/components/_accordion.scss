@@ -300,7 +300,7 @@
         position: relative;
         left: -100%;
         margin-left: -25px;
-        @include media-query-min('tablet'){
+        @include media-query('tablet'){
           left:0;
           margin-left: 0;
         }

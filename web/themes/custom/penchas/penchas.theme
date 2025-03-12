@@ -79,6 +79,11 @@ function penchas_preprocess_container(array &$variables)
       }
     }
   }
+  
+  if($path_parts[0] == 'moderate'){
+    $variables['attributes']['class'] = 'full-container';
+  }
+  
 }
 
 
@@ -1226,7 +1231,6 @@ function generate_google_calendar_data_for_chas_event(NodeInterface $node)
     'details' => $description,
   ];
 }
-
 
 /**
  * Implements hook_preprocess_datetime_form().
