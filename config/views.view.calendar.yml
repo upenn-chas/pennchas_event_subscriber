@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_event_schedule
     - field.storage.node.field_intended_audience
     - field.storage.node.field_is_campus_wide
-    - node.type.chas_event
+    - node.type.notices
     - workflows.workflow.editorial
     - workflows.workflow.non_moderation_flow
   module:
@@ -542,7 +542,18 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
-              type:
+              field_intended_audience_value:
+                plugin_id: bef_single
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_is_campus_wide_value_1:
                 plugin_id: bef_single
                 advanced:
                   sort_options: false
@@ -564,7 +575,7 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
-              field_intended_audience_value:
+              type_1:
                 plugin_id: bef_single
                 advanced:
                   sort_options: false
@@ -684,28 +695,109 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_intended_audience_value:
-          id: field_intended_audience_value
+        field_intended_audience_value_1:
+          id: field_intended_audience_value_1
           table: node__field_intended_audience
           field: field_intended_audience_value
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: list_field
-          operator: or
+          operator: not
           value:
-            house_event: house_event
-          group: 1
-          exposed: true
+            community_event: community_event
+            floor_event: floor_event
+          group: 2
+          exposed: false
           expose:
-            operator_id: field_intended_audience_value_op
+            operator_id: ''
             label: ''
             description: ''
             use_operator: false
-            operator: field_intended_audience_value_op
+            operator: ''
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_intended_audience_value
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_intended_audience_value_2:
+          id: field_intended_audience_value_2
+          table: node__field_intended_audience
+          field: field_intended_audience_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: empty
+          value: {  }
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_is_campus_wide_value_1:
+          id: field_is_campus_wide_value_1
+          table: node__field_is_campus_wide
+          field: field_is_campus_wide_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '!='
+          value: '0'
+          group: 3
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'House Events'
+            description: ''
+            use_operator: false
+            operator: field_is_campus_wide_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_is_campus_wide_value_1
             required: false
             remember: false
             multiple: false
@@ -719,25 +811,21 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-            reduce: true
-          is_grouped: true
+          is_grouped: false
           group_info:
-            label: 'House Events'
-            description: ''
-            identifier: field_intended_audience_value
+            label: 'Campus wide (field_is_campus_wide)'
+            description: null
+            identifier: field_is_campus_wide_value_1
             optional: true
-            widget: radios
+            widget: select
             multiple: false
             remember: false
-            default_group: '1'
+            default_group: All
             default_group_multiple: {  }
             group_items:
-              1:
-                title: 'Residents of a house or houses'
-                operator: or
-                value:
-                  house_event: house_event
-          reduce_duplicates: false
+              1: {  }
+              2: {  }
+              3: {  }
         field_is_campus_wide_value:
           id: field_is_campus_wide_value
           table: node__field_is_campus_wide
@@ -748,7 +836,7 @@ display:
           plugin_id: boolean
           operator: '='
           value: '0'
-          group: 1
+          group: 3
           exposed: true
           expose:
             operator_id: ''
@@ -784,8 +872,8 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        type:
-          id: type
+        type_1:
+          id: type_1
           table: node_field_data
           field: type
           relationship: none
@@ -796,18 +884,18 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            chas_event: chas_event
-          group: 1
+            notices: notices
+          group: 3
           exposed: true
           expose:
-            operator_id: type_op
-            label: ''
+            operator_id: type_1_op
+            label: 'Content type'
             description: ''
             use_operator: false
-            operator: type_op
+            operator: type_1_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: type
+            identifier: type_1
             required: false
             remember: false
             multiple: false
@@ -821,10 +909,10 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
-            reduce: true
+            reduce: false
           is_grouped: true
           group_info:
-            label: 'General Events/Notices'
+            label: 'Content type'
             description: ''
             identifier: type
             optional: true
@@ -852,6 +940,8 @@ display:
         operator: AND
         groups:
           1: AND
+          2: AND
+          3: OR
       style:
         type: calendar_month
         options:
@@ -975,9 +1065,8 @@ display:
           transform_dash: false
           break_phrase: false
       defaults:
-        use_ajax: false
+        use_ajax: true
         arguments: false
-      use_ajax: false
       exposed_block: false
       display_extenders:
         metatag_display_extender:

@@ -121,7 +121,9 @@
                               <h1>{{node.title.value}}</h1>
                               {% if node.body %}
                                 {% if node.body.0 %}
-                                  {{node.body.0.value|t}}
+                                  {# Removed "|t" because it generating error #}
+                                  {# {{node.body.0.value|t}} #}
+                                  {{node.body.0.value}}
                                 {% endif %}
                               {% endif %}
                           </div>
