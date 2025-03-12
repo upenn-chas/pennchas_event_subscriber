@@ -43,7 +43,6 @@
   {% set heading_alignment = content.field_alignment[0]['#markup'] %}
 {% endif %}
 
-
 {# {% set gid = drupal_token('current-page:url:unaliased:args:value:1') %} #}
 {% set token_value = drupal_token('current-page:url:unaliased:args:value:1') %}
 {% set color = drupal_field('field_color', 'group', token_value, 'token')|render|striptags %}
@@ -59,11 +58,16 @@
             {{ title_suffix }}
   <div class="container-fluid">
     <div {{ content_attributes.addClass('content row') }}>
-      <div class="col-12 col-lg-6 bg-img">
-      {{content.field_media_image}}
-
-      </div>
-      <div class="col-12 col-lg-6">
+      {% if content.field_media_image.0 %}
+        <div class="col-12 col-lg-6 bg-img">
+        {{content.field_media_image}}
+        </div>
+      {% endif %}
+      {% if content.field_media_image.0 %}
+        <div class="col-12 col-lg-6">
+      {% else %}
+        <div class="col-12 col-lg-6 offset-lg-6">
+      {% endif %}
         <div class="inner-container">
           <div class="section-title">
             {{ title_prefix }}

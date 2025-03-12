@@ -26,7 +26,7 @@
       height: 240px;
       border-radius: 50%;
       content: "";
-      background-color: var(--circle-house-color);
+      background-color: var(--circle-house-color,#FFEB40);
       @include media-query('tablet') {
         height: 140px;
         width: 140px;
