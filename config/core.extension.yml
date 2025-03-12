@@ -94,7 +94,6 @@ module:
   layout_discovery: 0
   link: 0
   linkit: 0
-  mailsystem: 0
   masquerade: 0
   media: 0
   media_library: 0
@@ -139,10 +138,10 @@ module:
   simplify_menu: 0
   smart_date: 0
   smart_date_recur: 0
+  smtp: 0
   standard: 0
   svg_image_field: 0
   svg_image_field_media_bundle: 0
-  symfony_mailer: 0
   system: 0
   taxonomy: 0
   tb_megamenu: 0
