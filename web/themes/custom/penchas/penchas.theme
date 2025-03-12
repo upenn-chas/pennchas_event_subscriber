@@ -185,22 +185,47 @@ function penchas_preprocess_node(&$variables)
   $variables['breadcrumb_dashboard_link'] = '/dashboard';
   $variables['primary_color'] = '#ffea3f';
   $variables['room_reservation_heading'] = 'My Room Reservations';
+  $variables['my_chas_event'] = 'My CHAS Events';
   $variables['breadcrumbs_list'] = '';
-
+  
   // Get current user and node.
   $current_user = \Drupal::currentUser();
   $node = \Drupal::routeMatch()->getParameter('node');
 
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/moderate/event') === 0) {
+    
+    $nodetype = \Drupal\node\Entity\Node::load($node);
+   
+    if($nodetype->bundle() == 'chas_event'){
+      
+      // if ($variables['elements']['#view_mode'] == 'moderator') {
+
+      //   $view = \Drupal::entityTypeManager()->getStorage('view')->load('event_moderation_view');
+       
+      //   if ($view) {
+      //     $view->setDisplay('attachment_1');
+          
+      //     // Get the rendered output for the view.
+      //     $render_array = $view->render();
+          
+      //     // Pass the rendered view to the node template.
+      //     $variables['event_moderation'] = $render_array;
+      //   }
+      // }
+    }
+
+  }
+  
   // Ensure we are dealing with a valid node.
   if (!$node instanceof NodeInterface) {
     return;
   }
-
+  
   $variables['node_full_URL'] = $node->toUrl()->toString();
   $front_page_path = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
 
   $nodeBundle = $node->bundle();
-
   // Handle breadcrumb generation for page and house_landing_page.
   if (in_array($nodeBundle, ['page', 'house_landing_page'])) {
     // Get the full URL of the node

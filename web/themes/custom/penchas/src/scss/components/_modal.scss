@@ -196,8 +196,9 @@
     margin: 0 0 8px 0;
   }
 }
-
-.ui-dialog:has(.node--type-chas-event) {
+// .page-view-calend
+.ui-dialog:has(.node--type-chas-event),
+.ui-dialog:has(.node--type-notices) {
   padding: 0 !important;
   border: 0;
   border-radius: 8px;
@@ -363,7 +364,8 @@
       }
     }
 
-    .field--name-field-text-box-2 {
+    .field--name-field-text-box-2,
+    .field--name-field-text-box {
       img {
         margin-right: 5px;
       }
@@ -379,7 +381,18 @@
         text-underline-offset: 4px;
       }
     }
-
+    .file--mime-application-pdf{
+      padding-left: 0;
+      a{
+        color: $primaryColor !important;
+        font-size: 18px;
+      line-height: normal;
+      word-break: break-all;
+        &:hover{
+          color: #fd4453 !important;
+        }
+      }
+    }
     .event-details-wrap .block-field-blocknodechas-eventfield-text-box-2 {
       margin-bottom: 15px;
 
