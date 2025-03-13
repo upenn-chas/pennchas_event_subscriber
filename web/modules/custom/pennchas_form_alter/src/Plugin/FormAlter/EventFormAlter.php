@@ -50,6 +50,8 @@ class EventFormAlter
             '#markup' => "<div class='author-details-container mb-3'><span class='author-label'>Author:&nbsp;</span><span class='author-details'>{$userDetails}</span></div>",
             '#weight' => -100, // Ensures it appears at the top
         ];
+        
+        $form['#attached']['library'][] = 'pennchas_form_alter/customSamrtDate';
         return $form;
     }
 

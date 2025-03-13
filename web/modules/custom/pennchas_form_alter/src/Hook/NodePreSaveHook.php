@@ -81,7 +81,6 @@ class NodePreSaveHook
                 $node->set('field_group_ref', $group_machine_name);    
             }
         }
-        $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
     }
 
     protected function handleReserveRoom(Node $node)

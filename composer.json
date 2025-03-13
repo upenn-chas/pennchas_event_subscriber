@@ -36,8 +36,6 @@
         "drupal/devel": "^5.3",
         "drupal/color_field": "^3.0",
         "drupal/easy_email": "^3.0",
-        "drupal/symfony_mailer": "^1.5",
-        "drupal/mailsystem": "^4.5",
         "drupal/bootstrap_layout_builder": "^2.1",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/layout_builder_blocks": "^1.1",
