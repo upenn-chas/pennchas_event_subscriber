@@ -912,7 +912,7 @@ display:
             reduce: false
           is_grouped: true
           group_info:
-            label: 'General Events/Notices'
+            label: 'Content type'
             description: ''
             identifier: type
             optional: true
