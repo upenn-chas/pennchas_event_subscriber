@@ -5,9 +5,9 @@ namespace Drupal\event_feedback\Plugin\Form;
 use Drupal\common_utils\Plugin\Option\DropdownOption;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\MessageCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 class FilterForm extends FormBase
 {
@@ -110,7 +110,26 @@ class FilterForm extends FormBase
             ]
         ];
 
+        $form['#validate'][] = [$this, 'validate'];
+
         return $form;
+    }
+
+    public function validate(array $form, FormStateInterface $formState)
+    {
+        $triggeringElement = $formState->getTriggeringElement();
+        if ($triggeringElement['#value'] === 'Reset') {
+            return;
+        }
+        $exposedFromDate = $formState->getValue('submit_from');
+        $exposedToDate = $formState->getValue('submit_to');
+
+        if (!$exposedFromDate || !$exposedToDate) {
+            return;
+        }
+        if ($exposedToDate < $exposedFromDate) {
+            $formState->setErrorByName('submit_to', t('To Date must be greater than or equal to From Date.'));
+        }
     }
 
     public function filterAjaxCallback(array &$form, FormStateInterface $form_state)
@@ -126,6 +145,11 @@ class FilterForm extends FormBase
         \Drupal::requestStack()->getSession()->set('participantsSurvey', $form_state->getValues());
         $data = $controller->reportData($form_state->getValues(), $form);
         $res = new AjaxResponse();
+        if($form_state->hasAnyErrors()) {
+            $error = $form_state->getErrors();
+            $error = $error['submit_to'];
+            $res->addCommand(new MessageCommand($error, null, ['type' => 'error']), TRUE);
+        }
         $res->addCommand(new HtmlCommand('#participations-survey-report', $data));
         return $res;
     }

@@ -99,7 +99,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_event_schedule'
-              label: Date
+              label: 'Date:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -138,7 +138,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_group'
-              label: House
+              label: 'House:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -146,7 +146,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label_class
-                label: hidden
+                label: visually_hidden
                 settings:
                   link: true
                   class: ''
@@ -159,7 +159,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_long_text'
-              label: Purpose
+              label: 'Purpose:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -167,7 +167,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: wrapper_class
-                label: hidden
+                label: visually_hidden
                 settings:
                   class: ''
                   tag: span
@@ -183,7 +183,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_event_schedule'
-              label: Time
+              label: 'Time:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -222,7 +222,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_room'
-              label: Location
+              label: 'Location:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -241,7 +241,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_email'
-              label: Email
+              label: 'Email:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -249,7 +249,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: email_link_class
-                label: hidden
+                label: visually_hidden
                 settings:
                   class: ''
                 third_party_settings: {  }
@@ -260,7 +260,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_anticipated_participants'
-              label: Guests
+              label: 'Guests:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -295,7 +295,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_support_contact'
-              label: 'Main Contact'
+              label: 'Main Contact:'
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -314,7 +314,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:reserve_room:field_phone'
-              label: Phone
+              label: 'Phone:'
               label_display: visible
               provider: layout_builder
               context_mapping:
