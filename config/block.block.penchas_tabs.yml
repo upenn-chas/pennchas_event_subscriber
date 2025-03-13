@@ -1,0 +1,20 @@
+uuid: c67fb502-8be4-4867-af97-8942a5717f57
+langcode: en
+status: true
+dependencies:
+  theme:
+    - penchas
+id: penchas_tabs
+theme: penchas
+region: content
+weight: -17
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

@@ -212,7 +212,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:chas_event:uid'
               label: 'Authored by'
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -495,7 +495,7 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_collaborators'
-              label: 'Collaborator(s) (Include anyone co-hosting in addition to yourself):'
+              label: 'Collaborator(s) (Include anyone co-hosting in addition to yourself)'
               label_display: '0'
               provider: layout_builder
               context_mapping:

@@ -20,8 +20,8 @@ definitions:
     expanded: false
     enabled: false
   user__logout:
-    enabled: true
     menu_name: account
     parent: ''
-    expanded: false
     weight: 0
+    expanded: false
+    enabled: false
