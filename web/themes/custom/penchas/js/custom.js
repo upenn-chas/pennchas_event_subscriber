@@ -9,6 +9,7 @@
 
 
   jQuery(document).ready(function () {
+    jQuery('.nav-link.nav-link--backend-login').parent().remove();
     setInterval(function () {
       const urlParams = new URLSearchParams(window.location.search);
       const c_type = urlParams.get('c_type');
