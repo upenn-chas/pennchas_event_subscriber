@@ -28,6 +28,7 @@ class NoticeFormAlter
         if($index !== FALSE) {
             unset( $form['actions']['submit']['#submit'][$index]);
         }
+        $form['#attached']['library'][] = 'pennchas_form_alter/customSamrtDate';
         return $form;
     }
 

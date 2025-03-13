@@ -45,6 +45,7 @@ class ReserveRoomFormAlter
             }
         }
         $form['actions']['submit']['#value'] = t('Send Request');
+        $form['#attached']['library'][] = 'pennchas_form_alter/customSamrtDate';
         return $form;
     }
 
