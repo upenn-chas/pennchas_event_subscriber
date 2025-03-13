@@ -1392,10 +1392,10 @@ label {
     }
 
     .form-item-revision-log {
-      input {
-        padding-bottom: 50px;
-        padding-top: 45px;
-      }
+      // input {
+      //   padding-bottom: 50px;
+      //   padding-top: 45px;
+      // }
     }
   }
 }
@@ -1427,7 +1427,9 @@ label {
 .node-room-form,
 .node-notices-form,
 .node-article-form,
-.comment-comment-form {
+.comment-comment-form,
+.node-reserve-room-edit-form,
+.node-page-form  {
   margin-bottom: 30px;
 
   .row:has(.col-md-8) {
@@ -2184,6 +2186,15 @@ input[type="time"]::-webkit-datetime-edit-text {
           }
         }
       }
+    }
+  }
+}
+
+.node-page-form {
+  .field-multiple-table{
+    .js-form-type-entity-autocomplete{
+    margin-bottom: 0 !important;
+    margin-right: 6px;
     }
   }
 }

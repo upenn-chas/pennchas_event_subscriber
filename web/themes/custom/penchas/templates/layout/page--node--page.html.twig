@@ -123,7 +123,7 @@
                                 {% if node.body.0 %}
                                   {# Removed "|t" because it generating error #}
                                   {# {{node.body.0.value|t}} #}
-                                  {{node.body.0.value}}
+                                  {{node.body.0.value|raw}}
                                 {% endif %}
                               {% endif %}
                           </div>
