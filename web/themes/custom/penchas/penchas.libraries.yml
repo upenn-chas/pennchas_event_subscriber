@@ -6,7 +6,7 @@ global-styling:
     js/barrio.js: {}
     js/slick.min.js: {}
     js/custom.js?sxsxs=ssxss: {}
-    js/new_custom.js?snk=saknasck: {}
+    js/new_custom.js?ver=0.9: {}
   css:
     component:
       css/style.css: {}
