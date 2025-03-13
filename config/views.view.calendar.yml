@@ -999,7 +999,7 @@ display:
           entity_field: gid
           plugin_id: standard
           required: false
-      use_ajax: true
+      use_ajax: false
       group_by: true
       header: {  }
       footer: {  }
