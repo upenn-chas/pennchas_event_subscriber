@@ -1,0 +1,15 @@
+uuid: 094ca1fa-7cc2-45d7-9049-dd52f50489c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.house_director
+id: house1-house_director_insider
+label: 'House Director'
+weight: 7
+admin: false
+scope: insider
+global_role: house_director
+group_type: house1
+permissions: {  }

@@ -1,0 +1,14 @@
+uuid: 90539815-9067-496c-84c8-e057d6d253ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.house_director
+  module:
+    - user
+id: user_remove_role_action.house_director
+label: 'Remove the House Director role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: house_director
