@@ -1,0 +1,18 @@
+diff --git a/src/Plugin/CvValidator/UrlInternalExternal.php b/src/Plugin/CvValidator/UrlInternalExternal.php
+index 3ea1ae2..793fb39 100644
+--- a/src/Plugin/CvValidator/UrlInternalExternal.php
++++ b/src/Plugin/CvValidator/UrlInternalExternal.php
+@@ -45,11 +45,11 @@ class UrlInternalExternal extends CvValidatorBase {
+     // Needs patch from https://www.drupal.org/node/2613694
+     switch ($element['#link_type']) {
+       case LinkItemInterface::LINK_GENERIC:
+-        $element['#attributes']['pattern'] = '<front>|\/.*|\?.*|#.*|[hH][tT][Tt][pP][sS]?://.+|.*\(\d+\)';
++        $element['#attributes']['pattern'] = '<front>|<nolink>|<button>|\/.*|\?.*|#.*|[hH][tT][Tt][pP][sS]?://.+|.*\(\d+\)';
+         break;
+ 
+       case LinkItemInterface::LINK_INTERNAL:
+-        $element['#attributes']['pattern'] = '<front>|\/|\/[^\/]+.*|\?.*|#.*|.*\(\d+\)';
++        $element['#attributes']['pattern'] = '<front>|<nolink>|<button>|\/|\/[^\/]+.*|\?.*|#.*|.*\(\d+\)';
+         break;
+ 
+     }

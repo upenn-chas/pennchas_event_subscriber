@@ -12,7 +12,7 @@ dependencies:
 id: penchas_views_block__group_houses_block_1
 theme: penchas
 region: content
-weight: -11
+weight: -12
 provider: null
 plugin: 'views_block:group_houses-block_1'
 settings:

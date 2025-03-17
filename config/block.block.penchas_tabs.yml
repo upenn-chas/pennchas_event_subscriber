@@ -8,7 +8,7 @@ dependencies:
     - penchas
 id: penchas_tabs
 theme: penchas
-region: content
+region: breadcrumb
 weight: -17
 provider: null
 plugin: local_tasks_block
