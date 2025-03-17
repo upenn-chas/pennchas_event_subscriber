@@ -130,6 +130,7 @@ class NodePreSaveHook
                 $node->set('field_group', $group->id());                
             }
             $node->set('field_group_ref', $groupMachineName);
+            // dd('asdasd: '.$groupMachineName);
         }
 
         // $node->set('field_group_ref', $urlAlias);
