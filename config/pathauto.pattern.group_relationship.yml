@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - group
+    - url_alteration
 _core:
   default_config_hash: 1tEtbHvVBjy2ChRMYjieiOpb_YY3pH9m3ug1UJOvWrg
 id: group_relationship
@@ -12,7 +12,7 @@ type: 'canonical_entities:group_relationship'
 pattern: 'house/[group_relationship:pretty-path-key]/[group_relationship:id]'
 selection_criteria: {  }
 selection_logic: and
-weight: -5
+weight: -6
 relationships:
   'group_relationship:langcode:language':
     label: Language

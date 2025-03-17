@@ -24,7 +24,6 @@ dependencies:
     - field.field.node.room.field_qr_code
     - field.field.node.room.field_text_box
     - field.field.node.room.field_text_box_2
-    - field.field.node.room.layout_builder__layout
     - node.type.room
   module:
     - duration_field
@@ -64,37 +63,29 @@ content:
     third_party_settings: {  }
   field_amenities_technology:
     type: options_buttons
-    weight: 19
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   field_available_to:
     type: options_buttons
-    weight: 20
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
   field_chas_tech_managed_space:
     type: options_buttons
-    weight: 17
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   field_duration:
     type: duration_widget
-    weight: 21
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
   field_link_1:
-    type: link_default
-    weight: 13
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_link_2:
     type: link_default
     weight: 14
     region: content
@@ -102,7 +93,7 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_link_3:
+  field_link_2:
     type: link_default
     weight: 15
     region: content
@@ -110,23 +101,31 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_link_3:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_maximum_occupancy:
     type: number
-    weight: 11
+    weight: 12
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_media_images:
     type: media_library_widget
-    weight: 18
+    weight: 19
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_text_box:
     type: string_textfield
-    weight: 12
+    weight: 13
     region: content
     settings:
       size: 60
@@ -162,7 +161,17 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 16
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -199,7 +208,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 22
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -212,5 +221,4 @@ hidden:
   field_group_ref: true
   field_last_state: true
   field_qr_code: true
-  layout_builder__layout: true
   moderation_state: true
