@@ -1479,7 +1479,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ field_event_schedule_value }}  {{ title }}</a>'
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}"> <span>{{ field_event_schedule_value }}</span>  {{ title }}</a>'
             make_link: false
             path: ''
             absolute: false

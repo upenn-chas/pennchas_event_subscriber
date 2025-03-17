@@ -18,7 +18,7 @@ settings:
   label_display: '0'
   provider: core
   primary: true
-  secondary: false
+  secondary: true
 visibility:
   user_role:
     id: user_role

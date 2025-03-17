@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.user.full
     - field.field.user.user.field_description
+    - field.field.user.user.field_display_email
+    - field.field.user.user.field_display_name
     - field.field.user.user.field_edu_person_entitlement
     - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
@@ -82,6 +84,11 @@ content:
     third_party_settings: {  }
     weight: 10
     region: blb_region_col_1
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
   member_for:
     settings: {  }
     third_party_settings: {  }
@@ -100,6 +107,8 @@ content:
     region: content
 hidden:
   field_description: true
+  field_display_email: true
+  field_display_name: true
   field_edu_person_entitlement: true
   field_edu_person_principal_name: true
   field_first_name: true

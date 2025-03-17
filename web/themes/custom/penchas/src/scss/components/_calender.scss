@@ -337,12 +337,24 @@
       position: absolute;
       right: 12px;
       z-index: 1;
-
+      @include media-query('mobile'){
+        min-width: 90px;
+        &::after{
+          right: 10px;
+          top: 20px;
+          height: 8px;
+          width: 8px;
+        }
+      }
       select {
         &.redirect-dropdown {
           @include media-query-min('mobile') {
             min-width: 150px;
-            
+
+          }
+          @include media-query('mobile'){
+            height: 40px;
+            font-size: 16px;
           }
         }
       }
@@ -379,7 +391,8 @@
           margin: 5px 0 4px 0 !important;
           width: max-content;
           text-transform: none;
-          &:hover{
+
+          &:hover {
             background: $primaryColor;
             color: #fff;
           }
@@ -441,9 +454,10 @@
   }
 
   .calendar-view-table {
-    .calendar-view-day{
+    .calendar-view-day {
       overflow: hidden;
     }
+
     caption {
       padding: 0;
       font-family: $secondaryFont;
@@ -481,21 +495,25 @@
             border-radius: 4px;
             background-color: #EBF2FF;
           }
-          &.event-schedule{
+
+          &.event-schedule {
             overflow: hidden;
             display: inline-flex;
             gap: 2px;
             width: 100%;
-            div{
-              &.field_event_schedule_start_end_value{
+
+            div {
+              &.field_event_schedule_start_end_value {
                 min-width: fit-content;
               }
             }
-            .title{
-              a{
+
+            .title {
+              a {
                 white-space: nowrap;
                 font-weight: 600;
-                span{
+
+                span {
                   font-weight: 400;
                 }
               }
@@ -550,16 +568,19 @@
         min-width: 40px;
       }
     }
+
     .calendar-view-day__rows {
-      .field-content{
-        &>div{
+      .field-content {
+        &>div {
           padding: 0;
-          &:hover{
+
+          &:hover {
             background-color: #ecf2ff;
           }
         }
       }
     }
+
     .calendar-view-day__number {
       display: inline-block;
       width: auto;
@@ -612,15 +633,28 @@
   }
 
   .weekly-calendar {
-    // div:not(:empty) {
-      background-color: #ecf2ff;
-      border-radius: 4px;
-      padding: 0 6px !important;
+    background-color: #ecf2ff;
+    border-radius: 4px;
+    padding: 0 6px !important;
 
-      &:not(:last-child) {
-        margin-bottom: 2px;
+    &:not(:last-child) {
+      margin-bottom: 2px;
+    }
+.campus-wide{
+  span{
+    font-weight: 600;
+  }
+}
+    .title {
+      a {
+        font-weight: 600;
+        white-space: nowrap;
+        span {
+          font-weight: 400;
+          display: block;
+        }
       }
-    // }
+    }
   }
 
   .calendar-view-day__rows {
@@ -660,8 +694,9 @@
     padding: 0 6px;
     border-radius: 4px;
     font-weight: 600;
-    &:hover{
-     background-color: #ebf2ff;
+
+    &:hover {
+      background-color: #ebf2ff;
     }
   }
 }

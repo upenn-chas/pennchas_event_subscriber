@@ -165,9 +165,12 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_intended_audience'
+              label: 'Intended Audience/Participant Group'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: list_default
                 label: inline
@@ -196,13 +199,22 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_long_text'
+              label: 'Which Floor(s)?'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: basic_string
+                type: wrapper_class
                 label: inline
-                settings: {  }
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
             weight: 24
             additional: {  }
@@ -460,13 +472,22 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_marketing_blurb'
+              label: 'Marketing blurb'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: basic_string
+                type: wrapper_class
                 label: inline
-                settings: {  }
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
             weight: 40
             additional: {  }
@@ -502,9 +523,15 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: basic_string
+                type: wrapper_class
                 label: inline
-                settings: {  }
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
             weight: 22
             additional: {  }

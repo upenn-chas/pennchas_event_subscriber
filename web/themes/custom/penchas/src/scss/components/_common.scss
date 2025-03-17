@@ -1348,3 +1348,25 @@ ul.pagination.js-pager__items {
  
   }
 }
+
+.moderate_table{
+  table{
+    font-size: 16px;
+    position: relative;
+    tr{
+      
+      td,
+      th{
+        border-left: 1px solid #ccc;
+        border-width: 1px;
+        max-width: 300px;
+        width: auto;
+        word-wrap: break-word;
+        a{
+          color: #011f5b;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

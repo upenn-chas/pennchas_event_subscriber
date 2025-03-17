@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_description
+    - field.field.user.user.field_display_email
+    - field.field.user.user.field_display_name
     - field.field.user.user.field_edu_person_entitlement
     - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
@@ -87,6 +89,21 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 10
+    region: content
+  field_display_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_display_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_employee_number:
     type: string
