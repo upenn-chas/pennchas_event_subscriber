@@ -18,5 +18,5 @@ selection_criteria:
     bundles:
       program_community: program_community
 selection_logic: and
-weight: -5
+weight: -2
 relationships: {  }

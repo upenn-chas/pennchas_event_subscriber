@@ -2,6 +2,8 @@ uuid: c67fb502-8be4-4867-af97-8942a5717f57
 langcode: en
 status: true
 dependencies:
+  module:
+    - user
   theme:
     - penchas
 id: penchas_tabs
@@ -17,4 +19,11 @@ settings:
   provider: core
   primary: true
   secondary: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator

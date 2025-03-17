@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_display.node.house_landing_page.default
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
-    - core.entity_view_display.node.room.full
     - media.type.audio
     - media.type.document
     - media.type.image
@@ -47,7 +46,6 @@ permissions:
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'
-  - 'configure editable room node layout overrides'
   - 'create audio media'
   - 'create chas_event content'
   - 'create document media'
