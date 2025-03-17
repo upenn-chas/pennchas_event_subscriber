@@ -477,7 +477,7 @@ body {
     margin-bottom: 20px;
   }
 }
-
+body{
 .room-reservation-title {
   padding-top: 80px;
 
@@ -486,6 +486,7 @@ body {
     font-size: 36px;
     line-height: 36px;
   }
+}
 }
 
 .notice-details-wrap {
@@ -1379,4 +1380,14 @@ ul.pagination.js-pager__items {
     }
   } 
 
+}
+
+.node--type-reserve-room{
+.blue-tpt{
+  &:hover{
+    background-color: $yellowHighlightColor;
+    color: $primaryColor;
+    border-color: $yellowHighlightColor;
+  } 
+}
 }
