@@ -1350,6 +1350,7 @@ ul.pagination.js-pager__items {
 }
 
 .moderate_table{
+  overflow: auto;
   table{
     font-size: 16px;
     position: relative;

@@ -2177,6 +2177,10 @@ input[type="time"]::-webkit-datetime-edit-meridiem-field {
   -webkit-text-fill-color: rgb(78, 99, 140);
   padding-top: 0;
   padding-bottom: 5px;
+  line-height: 24px;
+  &:focus{
+    color: #fff;
+  }
 }
 
 input[type="date"]::-webkit-datetime-edit-text,

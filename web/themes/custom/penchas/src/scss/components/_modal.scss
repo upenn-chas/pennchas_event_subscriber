@@ -341,6 +341,7 @@
       line-height: 48px;
       color: $primaryColor !important;
       text-decoration: none;
+      pointer-events: auto;
 
       &:hover {
         color: $redHighlightColor !important;
