@@ -104,6 +104,7 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
         'views-exposed-form-my-events-my-pending-events' => 1,
         'views-exposed-form-my-events-page-1' => 1,
         'views-exposed-form-my-events-page-2' => 1,
+        'views-exposed-form-my-events-page-3' => 1,
     ];
 
     if (isset($targetViews[$filterFormId])) {
@@ -362,6 +363,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         'devel' => 1,
         'search content' => 1,
         'moderated content' => 1,
+        'test' => 1,
     ];
     remove_tabs($tabs, $unsetTabs);
 

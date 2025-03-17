@@ -1370,3 +1370,12 @@ ul.pagination.js-pager__items {
     }
   }
 }
+.event-details-wrap {
+  h1{
+    a{
+      text-decoration: none;
+      pointer-events: none;
+    }
+  } 
+
+}
