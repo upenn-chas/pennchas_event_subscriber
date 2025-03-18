@@ -1,0 +1,29 @@
+uuid: 29c062be-2964-422d-b951-9875bcadb14d
+langcode: en
+status: true
+dependencies: {  }
+id: et_reserve_room_moved_to_draft
+label: 'Reserve Room Moved to Draft'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Reservation request for room "[easy_email:field_reserve_room:entity:field_room:entity]" is edited.'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>Hi [easy_email:field_reserve_room:entity:author:display-name],</p><p>Your room reservation has been edited and moved back for moderation with the following details:.</p><ul><li><strong>Title:</strong> [easy_email:field_reserve_room:entity:title]</li><li><strong>Room:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Schedule:</strong> [easy_email:field_reserve_room:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Purpose:</strong> [easy_email:field_reserve_room:entity:field_long_text:value]</li><li><strong>Number of People:</strong> [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</li><li><strong>Main Contact:</strong><ul><li><strong>Name:</strong> [easy_email:field_reserve_room:entity:field_support_contact:value]</li><li><strong>Email:</strong> [easy_email:field_reserve_room:entity:field_email:value]</li><li><strong>Phone:</strong> [easy_email:field_reserve_room:entity:field_phone:value]</li></ul></li></ul><p>Approval of this reservation can take up to [easy_email:field_waiting_period] day(s). Please check your email for your confirmation.</p>'
+  format: basic_html
+bodyPlain: ''
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: private
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: false
+purgeInterval: null
+purgePeriod: null

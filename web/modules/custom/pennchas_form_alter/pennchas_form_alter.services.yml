@@ -1,4 +1,7 @@
 services:
+  pennchas_form_alter.update_ends_on_date_cron:
+    class: \Drupal\pennchas_form_alter\Cron\UpdateEndsOnDate
+    arguments: ["@logger.factory"]
   pennchas_form_alter.moderation_entity_email_service:
     class: \Drupal\pennchas_form_alter\Service\ModerationEntityEmailService
   pennchas_form_alter.qr_code_generator:

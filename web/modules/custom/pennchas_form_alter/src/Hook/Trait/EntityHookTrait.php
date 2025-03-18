@@ -5,6 +5,7 @@ namespace Drupal\pennchas_form_alter\Hook\Trait;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 trait EntityHookTrait
@@ -63,5 +64,24 @@ trait EntityHookTrait
         }
 
         return array_values($housesId);
+    }
+
+
+    protected function getHouseMaxModerationWaitingPeriod(Group|null $group)
+    {
+        $houseMaxModerationWaitingPeriod = 3;
+        if ($group && $group->hasField('field_waiting_period')) {
+            $houseMaxModerationWaitingPeriod = $group->get('field_waiting_period')->getString();
+            $houseMaxModerationWaitingPeriod = $houseMaxModerationWaitingPeriod ? (int) $houseMaxModerationWaitingPeriod : 3;
+        }
+        return $houseMaxModerationWaitingPeriod;
+    }
+
+    protected function isMovedForModeration(NodeInterface $node)
+    {
+        $previousState = $node->original->get('moderation_state')->getString();
+        $currentState = $node->get('moderation_state')->getString();
+
+        return $previousState === Constant::MOD_STATUS_PUBLISHED && $currentState === Constant::MOD_STATUS_DRAFT;
     }
 }

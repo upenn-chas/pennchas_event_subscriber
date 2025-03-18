@@ -104,6 +104,7 @@ class NodePreSaveHook
                 $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
             }
         }
+        $this->updateEventEndsOn($node);
     }
 
     

@@ -109,6 +109,18 @@ final class Constant
     const EVENT_EMAIL_MODERATION = 'et_moderation_state_change_notif';
 
     /**
+     * Email template machine name for event moved back for moderation.
+     * @var string
+     */
+    const EVENT_MOVED_TO_DRAFT = 'et_event_moved_to_draft';
+
+    /**
+     * Email template machine name for reserve room moved back for moderation.
+     * @var string
+     */
+    const RESERVE_ROOM_MOVED_TO_DRAFT = 'et_reserve_room_moved_to_draft';
+
+    /**
      * Email template machine name for new event request
      * @var string
      */
