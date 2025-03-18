@@ -22,6 +22,8 @@ class NodePreUpdateHook
         $nodeType = $node->bundle();
         if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
+        } else if ($nodeType === Constant::NODE_RESERVE_ROOM) {
+            $this->handleReserveRoom($node);
         }
 
         if ($node->hasField('layout_builder__layout') && $node->hasField('field_blocks_ref')) {
@@ -46,6 +48,21 @@ class NodePreUpdateHook
         $node->field_groups =  $housesId;
         $this->updateEventEndsOn($node);
         $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
+    }
+
+    protected function handleReserveRoom(Node $node)
+    {
+        // $eventExistingHousesId = (int) $node->original->get('field_group')->getString();
+
+        // $moderationState = $node->get('moderation_state')->getString();
+        // if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
+        //     if (!$this->canByPassModerationInAnyHouse([$eventExistingHousesId], Constant::PERMISSION_MODERATION)) {
+        //         $node->setPublished(false);
+        //         $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+        //         $node->isDefaultRevision(TRUE);
+        //     }
+        // }
+        $this->updateEventEndsOn($node);
     }
 
     protected function handleLayoutBuilder(Node $node)

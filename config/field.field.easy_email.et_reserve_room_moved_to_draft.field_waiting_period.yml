@@ -1,0 +1,23 @@
+uuid: 96e5addc-7db6-4eb9-86f9-5b3b873185ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.et_reserve_room_moved_to_draft
+    - field.storage.easy_email.field_waiting_period
+id: easy_email.et_reserve_room_moved_to_draft.field_waiting_period
+field_name: field_waiting_period
+entity_type: easy_email
+bundle: et_reserve_room_moved_to_draft
+label: 'Waiting Period'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

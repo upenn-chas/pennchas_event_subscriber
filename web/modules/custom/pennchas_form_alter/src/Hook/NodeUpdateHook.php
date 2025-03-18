@@ -20,10 +20,12 @@ class NodeUpdateHook
             $this->handleEvent($node);
         } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
             $this->handleHousePage($node);
+        } else if ($nodeType === Constant::NODE_RESERVE_ROOM) {
+            $this->handleReserveRoom($node);
         }
     }
 
-    protected function handleEvent(Node $node): void
+    protected function handleEvent(Node $node)
     {
         $result = $this->processHouseChangeData($node);
 
@@ -45,6 +47,29 @@ class NodeUpdateHook
                         $rel->delete();
                     });
                 }
+            }
+        }
+
+        if ($this->isMovedForModeration($node)) {
+            $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
+            $groupId = (int) $node->get('field_location')->getString();
+            $group = Group::load($groupId);
+            $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
+            $mailService->notifyAuthor(Constant::EVENT_MOVED_TO_DRAFT, $node, $moderationWaitingDays);
+            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, [$groupId]);
+        }
+    }
+
+    protected function handleReserveRoom(Node $node)
+    {
+        if ($this->isMovedForModeration($node)) {
+            $groupId = (int) $node->get('field_group')->getString();
+            if ($groupId) {
+                $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
+                $group = Group::load($groupId);
+                $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
+                $mailService->notifyAuthor(Constant::RESERVE_ROOM_MOVED_TO_DRAFT, $node, $moderationWaitingDays);
+                $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, [$groupId]);
             }
         }
     }
@@ -75,10 +100,10 @@ class NodeUpdateHook
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
         $newHouses = [(int) $node->get('field_location')->getString()];
-        if($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
+        if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
             $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
         }
-        
+
 
         $existingHouses = array_flip($existingHouses);
 

@@ -4,6 +4,8 @@ namespace Drupal\pennchas_form_alter\Hook;
 
 use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group_test_plugin\Plugin\Group\Relation\GroupRelation;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Util\Constant;
@@ -80,6 +82,16 @@ class NodeInsertHook
     {
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
+        if(!$group) {
+            $roomId = (int) $node->get('field_room')->getString();
+            $room = Node::load($roomId);
+            $groupRelationships = GroupRelationship::loadByEntity($room);
+            if (count($groupRelationships) >= 1) {
+                $groupRelationship = array_shift($groupRelationships);
+                $group = $groupRelationship->getGroup();
+                $group->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         $message = t('Your request has been accepted.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
@@ -110,16 +122,5 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-    }
-
-
-    private function getHouseMaxModerationWaitingPeriod(Group $group)
-    {
-        $houseMaxModerationWaitingPeriod = 3;
-        if ($group->hasField('field_waiting_period')) {
-            $houseMaxModerationWaitingPeriod = $group->get('field_waiting_period')->getString();
-            $houseMaxModerationWaitingPeriod = $houseMaxModerationWaitingPeriod ? (int) $houseMaxModerationWaitingPeriod : 3;
-        }
-        return $houseMaxModerationWaitingPeriod;
     }
 }

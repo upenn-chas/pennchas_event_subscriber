@@ -100,6 +100,7 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
         'views-exposed-form-my-reservations-my-reservations-block' => 1,
         'views-exposed-form-my-reservations-page-1' => 1,
         'views-exposed-form-my-reservations-page-2' => 1,
+        'views-exposed-form-my-reservations-page-3' => 1,
         'views-exposed-form-my-events-my-events-block' => 1,
         'views-exposed-form-my-events-my-pending-events' => 1,
         'views-exposed-form-my-events-page-1' => 1,
@@ -175,7 +176,10 @@ function pennchas_form_alter_node_update(Node $node)
 {
 
     $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_EVENT || $nodeType === Constant::NODE_HOUSE_PAGE) {
+    if ($nodeType === Constant::NODE_EVENT 
+        || $nodeType === Constant::NODE_RESERVE_ROOM
+        || $nodeType === Constant::NODE_HOUSE_PAGE
+    ) {
         (new NodeUpdateHook())->handle($node);
     }
 }
