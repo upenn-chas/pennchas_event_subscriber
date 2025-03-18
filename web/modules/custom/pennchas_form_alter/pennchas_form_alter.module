@@ -464,8 +464,10 @@ function pennchas_form_alter_preprocess_form_element(&$variables) {
 
 function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
     
-    if($element['options']){
-        $element['options']['argument']['#title'] = t('House ID');
+    if($context['items']->getName() == 'field_events_by_group_ref'){
+        if($element['options']){
+            $element['options']['argument']['#title'] = t('House ID');
+        }
     }
   }
   
