@@ -1274,12 +1274,4 @@ function generate_google_calendar_data_for_chas_event(NodeInterface $node)
 //     }
 //   }
 // }
-function penchas_preprocess_form_element_label(&$variables) {
-  $element = &$variables['element'];
-  $substring = 'edit-settings-block-form-field-events-by-group-ref-0-options-argument';
-  if (strpos($element['#id'], $substring) !== false) {
 
-    $variables['element']['#title'] = t('HOUSE ID');
-    // dump($variables['element']);
-  }
-}
