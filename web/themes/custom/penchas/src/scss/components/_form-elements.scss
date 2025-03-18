@@ -2187,7 +2187,7 @@ input[type="time"]::-webkit-datetime-edit-minute-field,
 input[type="time"]::-webkit-datetime-edit-meridiem-field {
   -webkit-text-fill-color: rgb(78, 99, 140);
   padding-top:7px;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   line-height: 40px;
   &:focus-visible,
   &:focus{
@@ -2197,7 +2197,7 @@ input[type="time"]::-webkit-datetime-edit-meridiem-field {
 
 input[type="date"]::-webkit-datetime-edit-text,
 input[type="time"]::-webkit-datetime-edit-text {
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 
 
@@ -2239,5 +2239,23 @@ input[type="time"]::-webkit-datetime-edit-text {
     margin-bottom: 0 !important;
     margin-right: 6px;
     }
+  }
+}
+.button--danger {
+  background: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fd4453;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-family: tablet-gothic;
+  text-decoration: none;
+  border: 1px solid #fd4453;
+  transition: all 0.3s;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: #fd4453;
+    color: #fff;
   }
 }
