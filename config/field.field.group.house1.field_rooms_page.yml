@@ -1,0 +1,23 @@
+uuid: 4397889a-2d89-40be-9ade-08164d2cf684
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_rooms_page
+    - group.type.house1
+  module:
+    - link
+id: group.house1.field_rooms_page
+field_name: field_rooms_page
+entity_type: group
+bundle: house1
+label: 'Rooms Page'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 1
+field_type: link

@@ -80,15 +80,11 @@ class NodeInsertHook
 
     protected function handleReserveRoom(Node $node)
     {
-        $request = \Drupal::routeMatch();
-        $group = $request->getParameter('group');
-        if(!$group) {
-            $roomId = (int) $node->get('field_room')->getString();
-            $room = Node::load($roomId);
-            $groupRelationships = GroupRelationship::loadByEntity($room);
-            if (count($groupRelationships) >= 1) {
-                $groupRelationship = array_shift($groupRelationships);
-                $group = $groupRelationship->getGroup();
+        $groupId = (int) $node->get('field_group')->getString();
+        $group = Group::load($groupId);
+        if($group) {
+            $existingRelationship = $group->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
                 $group->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
