@@ -27,7 +27,7 @@ field_name: field_block_display_condition_wi
 entity_type: block_content
 bundle: dashboard_blocks
 label: "Block Display Condition with group roles\t"
-description: "Note: \r\nOutsider: Assigned to all non-members who have the corresponding global role. (Globally), \r\nInsider: Assigned to all members who have the corresponding global role. (Insider), \r\nIndividual: Can be assigned to individual members. (House only)"
+description: "Note: \r\nOutsider: Assigned to all non-members who have the corresponding global role,  \r\nInsider: Assigned to all members who have the corresponding global role,  \r\nIndividual: Can be assigned to individual members."
 required: false
 translatable: false
 default_value:
