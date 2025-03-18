@@ -20,12 +20,11 @@ default_value:
   -
     target_uuid: a9d25ea8-992b-4ee9-9c8a-c0c85d8726e3
     display_id: block_1
-    data: 'a:6:{s:5:"limit";s:1:"4";s:6:"header";N;s:5:"pager";s:0:"";s:5:"title";i:0;s:8:"argument";N;s:6:"offset";N;}'
+    data: 'a:6:{s:6:"header";N;s:8:"argument";N;s:5:"title";i:0;s:5:"limit";s:1:"4";s:6:"offset";N;s:5:"pager";s:0:"";}'
     options:
+      title: 0
       limit: '4'
       pager: ''
-      title: 0
-      argument: ''
 default_value_callback: ''
 settings:
   handler: 'default:view'
@@ -37,8 +36,8 @@ settings:
   preselect_views:
     group_events: group_events
   enabled_settings:
+    argument: argument
+    title: title
     limit: limit
     pager: pager
-    title: title
-    argument: argument
 field_type: viewsreference
