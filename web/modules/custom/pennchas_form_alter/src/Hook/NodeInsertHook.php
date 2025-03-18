@@ -8,10 +8,13 @@ use Drupal\group\Entity\GroupRelationship;
 use Drupal\group_test_plugin\Plugin\Group\Relation\GroupRelation;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\pennchas_form_alter\Hook\Trait\EntityHookTrait;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 class NodeInsertHook
 {
+    use EntityHookTrait;
+    
     function handle(NodeInterface $node)
     {
         // dd($node->get('layout_builder__layout')->getValue());
@@ -80,15 +83,11 @@ class NodeInsertHook
 
     protected function handleReserveRoom(Node $node)
     {
-        $request = \Drupal::routeMatch();
-        $group = $request->getParameter('group');
-        if(!$group) {
-            $roomId = (int) $node->get('field_room')->getString();
-            $room = Node::load($roomId);
-            $groupRelationships = GroupRelationship::loadByEntity($room);
-            if (count($groupRelationships) >= 1) {
-                $groupRelationship = array_shift($groupRelationships);
-                $group = $groupRelationship->getGroup();
+        $groupId = (int) $node->get('field_group')->getString();
+        $group = Group::load($groupId);
+        if($group) {
+            $existingRelationship = $group->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
                 $group->addRelationship($node, 'group_node:' . $node->getType());
             }
         }

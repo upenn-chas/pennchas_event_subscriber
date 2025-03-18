@@ -49,7 +49,7 @@ class NodePreSaveHook
         }
         $node->field_groups =  $housesId;
         $houseCount = count($housesId);
-        if ($houseCount === 1){
+        if ($houseCount === 1) {
             $eventHouse_data = Group::load($housesId[0]);
             $group_machine_name = $eventHouse_data->get('field_short_name')->value;
             $node->set('field_group_ref', $group_machine_name);
@@ -78,7 +78,7 @@ class NodePreSaveHook
             if ($node->isNew() || !$node->original->get('field_groups')->getString()) {
                 $node->set('field_groups', $group->id());
                 $group_machine_name = $group->get('field_short_name')->value;
-                $node->set('field_group_ref', $group_machine_name);    
+                $node->set('field_group_ref', $group_machine_name);
             }
         }
     }
@@ -87,27 +87,32 @@ class NodePreSaveHook
     {
         $request = \Drupal::routeMatch();
         $group = $request->getParameter('group');
-        if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-            if(isset($group)){
-                $node->set('field_group', $group->id());
-                $eventHouse_data = Group::load($group->id());
-                $group_machine_name = $eventHouse_data->get('field_short_name')->value;
-                $node->set('field_group_ref', $group_machine_name);
+        if (!$group) {
+            $roomId = (int) $node->get('field_room')->getString();
+            $room = Node::load($roomId);
+            $groupRelationships = GroupRelationship::loadByEntity($room);
+            if (count($groupRelationships) >= 1) {
+                $groupRelationship = array_shift($groupRelationships);
+                $group = $groupRelationship->getGroup();
             }
         }
-        if ($node->isNew()) {
-            if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
-                $node->setPublished(true);
-                $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
-            } else {
-                $node->setPublished(false);
-                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-            }
+        $node->set('field_group', $group->id());
+        $eventHouse_data = Group::load($group->id());
+        $group_machine_name = $eventHouse_data->get('field_short_name')->value;
+        $node->set('field_group_ref', $group_machine_name);
+
+        if ($this->canByPassModeration($group, Constant::PERMISSION_MODERATION)) {
+            $node->setPublished(true);
+            $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
+        } else {
+            $node->setPublished(false);
+            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
+
         $this->updateEventEndsOn($node);
     }
 
-    
+
     protected function handleRoom(Node $node)
     {
         $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
@@ -128,7 +133,7 @@ class NodePreSaveHook
                 }
             }
             if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-                $node->set('field_group', $group->id());                
+                $node->set('field_group', $group->id());
             }
             $node->set('field_group_ref', $groupMachineName);
             // dd('asdasd: '.$groupMachineName);
@@ -149,18 +154,18 @@ class NodePreSaveHook
             $group_id = $groupName[0]['target_id'];
             $group = Group::load($group_id);
             $groupMachineName = $group->get('field_short_name')->value;
-            
+
             if ($group->hasField('field_short_name')) {
                 if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
                     $urlAlias = $groupMachineName . $urlAlias;
                 }
             }
-            if($node->hasField('field_group')){
-                if(!empty($node->get('field_group'))){ 
+            if ($node->hasField('field_group')) {
+                if (!empty($node->get('field_group'))) {
                     $node->set('field_group_ref', $groupMachineName);
                 }
             }
-        }else{
+        } else {
             $groupId = $this->getGroupIdsByEntity($nid);
             $group = null;
             if ($groupId) {
@@ -176,7 +181,7 @@ class NodePreSaveHook
                     }
                 }
                 if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-                    $node->set('field_group', $group->id());              
+                    $node->set('field_group', $group->id());
                 }
                 // dd($group);
                 $node->set('field_group_ref', $groupMachineName);

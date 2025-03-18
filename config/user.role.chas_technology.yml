@@ -21,6 +21,7 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - event_evaluation
     - file
     - layout_builder
     - media
@@ -81,6 +82,7 @@ permissions:
   - 'edit own reserve_room content'
   - 'edit own room content'
   - 'edit own video media'
+  - 'event own evaluation'
   - 'make smart dates recur'
   - 'reschedule smart date recur instances'
   - 'update media'

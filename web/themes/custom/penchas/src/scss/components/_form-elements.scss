@@ -1936,6 +1936,7 @@ label {
   font-weight: 700;
 }
 
+.node-reserve-room-edit-form,
 .node-reserve-room-form {
   .field--name-field-room {
     .js-form-type-select {
@@ -1955,6 +1956,17 @@ label {
         height: 50px;
         color: #4e638c;
         border-color: #011f5b;
+      }
+
+      .description {
+        display: block;
+        margin: 20px 0px;
+        line-height: 18px;
+        color: #011f5b !important;
+
+        a {
+          text-decoration: none;
+        }
       }
     }
   }
