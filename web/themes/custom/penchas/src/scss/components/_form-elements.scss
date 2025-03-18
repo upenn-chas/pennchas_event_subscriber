@@ -1563,7 +1563,9 @@ label {
                   gap: 10px;
                   align-content: center;
                   justify-content: flex-start;
-
+                  padding-top: 2px;
+                  position: relative;
+                  top:0;
                   .js-form-item {
                     @include media-query("mobile") {
                       width: 100%;
@@ -1599,6 +1601,9 @@ label {
                 align-content: center;
                 flex-direction: row;
                 justify-content: flex-start;
+                padding-top: 2px;
+                position: relative;
+                  top:0;
 
                 .js-form-item {
                   position: relative;
@@ -2167,7 +2172,13 @@ table {
     }
   }
 }
-
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit{
+padding-top: 2px;
+&:focus{
+  color: #fff !important;
+}
+}
 input[type="date"]::-webkit-datetime-edit-year-field,
 input[type="date"]::-webkit-datetime-edit-month-field,
 input[type="date"]::-webkit-datetime-edit-day-field,
@@ -2175,8 +2186,13 @@ input[type="time"]::-webkit-datetime-edit-hour-field,
 input[type="time"]::-webkit-datetime-edit-minute-field,
 input[type="time"]::-webkit-datetime-edit-meridiem-field {
   -webkit-text-fill-color: rgb(78, 99, 140);
-  padding-top: 0;
+  padding-top:7px;
   padding-bottom: 5px;
+  line-height: 40px;
+  &:focus-visible,
+  &:focus{
+    background-color: #99b9cf !important;
+  }
 }
 
 input[type="date"]::-webkit-datetime-edit-text,
@@ -2192,6 +2208,24 @@ input[type="time"]::-webkit-datetime-edit-text {
         .pager__current {
           .js-form-item {
             padding: 12px 15px 12px 15px;
+          }
+        }
+      }
+    }
+  }
+  .node-chas-event-form {
+    table.field-multiple-table {
+      tbody {
+        tr {
+          td {
+            .smartdate--widget {
+              .smartdate--time-inline {
+                .time-start,
+                .time-end {
+                  padding-top: 0;
+                }
+              }
+            }
           }
         }
       }

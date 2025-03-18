@@ -478,7 +478,10 @@ display:
       empty: {  }
       style:
         type: default
-        options: {  }
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
         options:

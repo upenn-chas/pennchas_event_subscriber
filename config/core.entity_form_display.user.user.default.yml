@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_description
+    - field.field.user.user.field_display_email
+    - field.field.user.user.field_display_name
     - field.field.user.user.field_edu_person_entitlement
     - field.field.user.user.field_edu_person_principal_name
     - field.field.user.user.field_employee_number
@@ -36,7 +38,7 @@ content:
     third_party_settings: {  }
   field_description:
     type: text_textarea_with_summary
-    weight: 15
+    weight: 13
     region: content
     settings:
       rows: 9
@@ -44,9 +46,25 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
+  field_display_email:
+    type: email_default
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_display_name:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_edu_person_entitlement:
     type: string_textarea
-    weight: 13
+    weight: 12
     region: content
     settings:
       rows: 5
@@ -54,7 +72,7 @@ content:
     third_party_settings: {  }
   field_edu_person_principal_name:
     type: string_textfield
-    weight: 12
+    weight: 11
     region: content
     settings:
       size: 60
@@ -94,7 +112,7 @@ content:
     third_party_settings: {  }
   field_phone_no:
     type: string_textfield
-    weight: 16
+    weight: 14
     region: content
     settings:
       size: 60

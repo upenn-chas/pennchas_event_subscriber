@@ -477,7 +477,7 @@ body {
     margin-bottom: 20px;
   }
 }
-
+body{
 .room-reservation-title {
   padding-top: 80px;
 
@@ -486,6 +486,7 @@ body {
     font-size: 36px;
     line-height: 36px;
   }
+}
 }
 
 .notice-details-wrap {
@@ -1347,4 +1348,46 @@ ul.pagination.js-pager__items {
   .event-details-breadcrumbs{
  
   }
+}
+
+.moderate_table{
+  overflow: auto;
+  table{
+    font-size: 16px;
+    position: relative;
+    tr{
+      
+      td,
+      th{
+        border-left: 1px solid #ccc;
+        border-width: 1px;
+        max-width: 300px;
+        width: auto;
+        word-wrap: break-word;
+        a{
+          color: #011f5b;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.event-details-wrap {
+  h1{
+    a{
+      text-decoration: none;
+      pointer-events: none;
+    }
+  } 
+
+}
+
+.node--type-reserve-room{
+.blue-tpt{
+  &:hover{
+    background-color: $yellowHighlightColor;
+    color: $primaryColor;
+    border-color: $yellowHighlightColor;
+  } 
+}
 }

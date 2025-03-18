@@ -1,6 +1,6 @@
 uuid: 7421c61c-c179-4158-897f-830081d89605
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - group_role_condition_plugin
@@ -12,7 +12,7 @@ _core:
 id: penchas_secondary_local_tasks
 theme: penchas
 region: breadcrumb
-weight: -16
+weight: -12
 provider: null
 plugin: local_tasks_block
 settings:
@@ -20,7 +20,7 @@ settings:
   label: 'Secondary tabs'
   label_display: visible
   provider: core
-  primary: true
+  primary: false
   secondary: true
 visibility:
   user_role:

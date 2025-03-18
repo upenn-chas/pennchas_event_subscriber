@@ -12,7 +12,7 @@ dependencies:
 id: penchas_views_block__our_team_list_block_1
 theme: penchas
 region: content
-weight: -12
+weight: -13
 provider: null
 plugin: 'views_block:our_team_list-block_1'
 settings:

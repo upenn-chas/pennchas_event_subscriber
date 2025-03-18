@@ -1279,8 +1279,7 @@ function penchas_preprocess_form_element_label(&$variables) {
   $substring = 'edit-settings-block-form-field-events-by-group-ref-0-options-argument';
   if (strpos($element['#id'], $substring) !== false) {
 
-    // dump($element);
-    // $element['title']['#markup'] = 'NODE ID';
-    $element['title'] = 'NODE ID';
+    $variables['element']['#title'] = t('HOUSE ID');
+    // dump($variables['element']);
   }
 }

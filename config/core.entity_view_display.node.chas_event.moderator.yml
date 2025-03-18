@@ -165,80 +165,95 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_intended_audience'
-              label_display: '0'
+              label: 'Intended Audience/Participant Group:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: list_default
-                label: inline
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 23
+            weight: 24
             additional: {  }
           9083fe3a-a3c4-4619-91f9-0810057d2f85:
             uuid: 9083fe3a-a3c4-4619-91f9-0810057d2f85
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_college_houses'
-              label_display: '0'
+              label: 'For Which House(s):'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: inline
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 25
+            weight: 26
             additional: {  }
           02d9f20a-ad9e-476d-8f91-167eeb4f9ec8:
             uuid: 02d9f20a-ad9e-476d-8f91-167eeb4f9ec8
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_long_text'
-              label_display: '0'
+              label: 'Which Floor(s):'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: basic_string
-                label: inline
-                settings: {  }
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
-            weight: 24
+            weight: 25
             additional: {  }
           8afe4901-79ef-41b5-84c2-9bc962a9043b:
             uuid: 8afe4901-79ef-41b5-84c2-9bc962a9043b
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:uid'
-              label: 'Authored by'
-              label_display: '0'
+              label: 'Authored by:'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: inline
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 26
+            weight: 27
             additional: {  }
           44e792a0-ee7e-4b96-8904-2b488dd9b3ce:
             uuid: 44e792a0-ee7e-4b96-8904-2b488dd9b3ce
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_event_schedule'
-              label: 'Event Schedule'
-              label_display: '0'
+              label: 'Event Schedule:'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
                 type: smartdate_default
-                label: inline
+                label: visually_hidden
                 settings:
                   timezone_override: ''
                   format: default
@@ -256,128 +271,133 @@ third_party_settings:
                     decimals: 2
                     suffix: h
                 third_party_settings: {  }
-            weight: 27
+            weight: 28
             additional: {  }
           ceab2dcc-6ebf-493a-9c40-e91ed820337d:
             uuid: ceab2dcc-6ebf-493a-9c40-e91ed820337d
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_program_communities'
-              label_display: '0'
+              label: 'Program communities:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: inline
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 28
+            weight: 29
             additional: {  }
           9cb29c6f-cc98-46d0-a2ec-7a566002b01d:
             uuid: 9cb29c6f-cc98-46d0-a2ec-7a566002b01d
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_location'
-              label_display: '0'
+              label: 'In which house will the event be held:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: inline
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 29
+            weight: 30
             additional: {  }
           f29622cc-daf9-4268-959c-56d10d3455d2:
             uuid: f29622cc-daf9-4268-959c-56d10d3455d2
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_participants'
-              label_display: '0'
+              label: 'Intended participant year(s):'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: list_default
-                label: inline
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 31
+            weight: 32
             additional: {  }
           98731d2c-8c37-4993-883b-113afbeeffcf:
             uuid: 98731d2c-8c37-4993-883b-113afbeeffcf
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_event_priority'
-              label_display: '0'
+              label: 'CHAS Priority/Goal Area:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: inline
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 30
+            weight: 31
             additional: {  }
           af74ab86-20d3-4790-8998-7375ebd1f942:
             uuid: af74ab86-20d3-4790-8998-7375ebd1f942
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_intended_outcomes'
-              label_display: '0'
+              label: 'Intended Outcome(s):'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: list_default
-                label: inline
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 32
+            weight: 33
             additional: {  }
           d7da02f5-7d6f-4160-9aed-e80151c029b8:
             uuid: d7da02f5-7d6f-4160-9aed-e80151c029b8
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_long_text_2'
-              label_display: '0'
+              label: 'Please specify:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: basic_string
-                label: inline
+                label: visually_hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 33
+            weight: 34
             additional: {  }
           fcc72063-3426-4104-9213-9e6bb6091c3b:
             uuid: fcc72063-3426-4104-9213-9e6bb6091c3b
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_text_box'
-              label_display: '0'
+              label: 'Experiences and Strategies:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: string
-                label: inline
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 34
-            additional: {  }
-          0841f8d9-5887-4a00-913d-06fc3c646271:
-            uuid: 0841f8d9-5887-4a00-913d-06fc3c646271
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_text_box_2'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: inline
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
@@ -388,53 +408,40 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_anticipated_cost'
-              label_display: '0'
+              label: '$ Anticipated cost:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: number_decimal
-                label: inline
+                label: hidden
                 settings:
                   thousand_separator: ''
                   decimal_separator: .
                   scale: 2
-                  prefix_suffix: true
+                  prefix_suffix: false
                 third_party_settings: {  }
-            weight: 36
+            weight: 38
             additional: {  }
           84be5985-25d1-4538-b547-0803544d81d4:
             uuid: 84be5985-25d1-4538-b547-0803544d81d4
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_anticipated_participants'
-              label_display: '0'
+              label: 'Anticipated number of participants:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: number_integer
-                label: inline
+                label: hidden
                 settings:
                   thousand_separator: ''
                   prefix_suffix: true
-                third_party_settings: {  }
-            weight: 37
-            additional: {  }
-          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
-            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_media_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: media_thumbnail
-                label: above
-                settings:
-                  image_link: ''
-                  image_style: ''
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 39
             additional: {  }
@@ -443,70 +450,155 @@ third_party_settings:
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_media_file'
-              label_display: '0'
+              label: 'Intended Audience Attachment:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_entity_view
-                label: above
+                label: hidden
                 settings:
                   view_mode: default
-                  link: false
                 third_party_settings: {  }
-            weight: 38
+            weight: 40
             additional: {  }
           ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1:
             uuid: ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_marketing_blurb'
-              label_display: '0'
+              label: 'Marketing blurb:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: basic_string
-                label: inline
-                settings: {  }
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
-            weight: 40
+            weight: 42
             additional: {  }
           edf7410e-998f-43e9-ac58-7655b096bc12:
             uuid: edf7410e-998f-43e9-ac58-7655b096bc12
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_link_1'
-              label_display: '0'
+              label: 'RSVP Link:'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: link
-                label: inline
+                label: hidden
                 settings:
                   trim_length: 80
-                  url_only: false
+                  url_only: true
                   url_plain: false
-                  rel: ''
-                  target: ''
+                  rel: nofollow
+                  target: _blank
                 third_party_settings: {  }
-            weight: 41
+            weight: 44
             additional: {  }
           18d9d905-b56b-447d-8005-70b63d1ac3c2:
             uuid: 18d9d905-b56b-447d-8005-70b63d1ac3c2
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_collaborators'
-              label: 'Collaborator(s) (Include anyone co-hosting in addition to yourself)'
-              label_display: '0'
+              label: 'Collaborator(s):'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: basic_string
+                type: wrapper_class
+                label: visually_hidden
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings: {  }
+            weight: 23
+            additional: {  }
+          a82b2ef8-2d54-433a-9028-21aaa8b9bb48:
+            uuid: a82b2ef8-2d54-433a-9028-21aaa8b9bb48
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:title'
+              label: 'Title:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
                 label: inline
-                settings: {  }
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
                 third_party_settings: {  }
             weight: 22
+            additional: {  }
+          0841f8d9-5887-4a00-913d-06fc3c646271:
+            uuid: 0841f8d9-5887-4a00-913d-06fc3c646271
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_text_box_2'
+              label: 'Location of Program:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 37
+            additional: {  }
+          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
+            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_media_image'
+              label: 'Highlight Image:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_thumbnail
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 43
             additional: {  }
         third_party_settings: {  }
       -

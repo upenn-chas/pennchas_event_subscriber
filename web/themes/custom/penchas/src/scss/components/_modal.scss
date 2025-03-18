@@ -336,12 +336,19 @@
       font-size: 48px;
       line-height: 48px;
       color: $primaryColor;
+      a{
+      font-size: 48px;
+      line-height: 48px;
+      color: $primaryColor !important;
+      text-decoration: none;
+      pointer-events: auto;
 
       &:hover {
-        color: $redHighlightColor;
+        color: $redHighlightColor !important;
         cursor: pointer;
       }
     }
+  }
 
     .container {
       padding: 0;
