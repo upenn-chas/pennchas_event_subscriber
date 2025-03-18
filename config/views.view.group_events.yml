@@ -259,7 +259,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: true
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships:
@@ -304,7 +304,11 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:

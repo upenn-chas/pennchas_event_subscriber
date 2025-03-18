@@ -575,7 +575,7 @@
           padding: 0;
 
           &:hover {
-            background-color: #ecf2ff;
+            background-color: #92b7ff;
           }
         }
       }
@@ -636,6 +636,9 @@
     background-color: #ecf2ff;
     border-radius: 4px;
     padding: 0 6px !important;
+    &:hover{
+      background-color: #92B7FF;
+    }
 
     &:not(:last-child) {
       margin-bottom: 2px;

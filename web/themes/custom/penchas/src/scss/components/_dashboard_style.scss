@@ -80,7 +80,7 @@
   .input-group-prepend {
     span {
       height: 51px;
-      position: absolute;
+      // position: absolute;
       left: -8px;
       top: 1px;
       z-index: 1;
@@ -710,5 +710,12 @@ form{
       color: #383a40 !important;
     }
   }
+}
+.layout-builder-configure-block{
+details{
+  summary {
+    color: #383a40 !important;
+  }
+}
 }
 }

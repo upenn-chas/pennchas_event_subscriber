@@ -22,9 +22,11 @@
     <div class="col-md-8 layout-region layout-region-node-main">
       {{ form|without('advanced', 'actions') }}
     </div>
-    <div class="col-md-4 layout-region-node-secondary">
-      {# {{ form.advanced }} #}
-    </div>
+    {% if 'administrator' in user.roles %}
+      <div class="col-md-4 layout-region-node-secondary">
+        {{ form.advanced }}
+      </div>
+    {% endif %}
     <div class="col layout-region-node-footer">
       {{ form.actions }}
     </div>

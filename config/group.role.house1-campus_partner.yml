@@ -1,0 +1,23 @@
+uuid: 5b7f878f-a8fa-457b-b19f-370104d9a323
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+    - user.role.campus_partner
+id: house1-campus_partner
+label: 'Campus Partner'
+weight: 8
+admin: false
+scope: outsider
+global_role: campus_partner
+group_type: house1
+permissions:
+  - 'access group_media overview'
+  - 'create group_media:document entity'
+  - 'create group_media:image entity'
+  - 'delete own group_media:document entity'
+  - 'update own group_media:document entity'
+  - 'use editorial transition create_new_draft'
+  - 'view group'
+  - 'view own unpublished group_media:document entity'
