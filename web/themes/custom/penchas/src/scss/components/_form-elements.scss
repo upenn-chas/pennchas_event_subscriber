@@ -1438,7 +1438,7 @@ label {
 .node-article-form,
 .comment-comment-form,
 .node-reserve-room-edit-form,
-.node-page-form  {
+.node-page-form {
   margin-bottom: 30px;
 
   .row:has(.col-md-8) {
@@ -1451,20 +1451,23 @@ label {
 
   table {
     color: $primaryColor;
-    &#field-event-schedule-values{
-      th{
-        &.tabledrag-hide{
+
+    &#field-event-schedule-values {
+      th {
+        &.tabledrag-hide {
           display: none;
         }
       }
-      .delta-order{
-        &.tabledrag-hide{
+
+      .delta-order {
+        &.tabledrag-hide {
           display: none;
         }
       }
     }
-    &#field-collaborators-values{
-      .field-multiple-drag{
+
+    &#field-collaborators-values {
+      .field-multiple-drag {
         display: none;
       }
     }
@@ -1491,7 +1494,7 @@ label {
               }
             }
 
-            &.field-multiple-drag{
+            &.field-multiple-drag {
               display: none;
             }
 
@@ -1565,7 +1568,8 @@ label {
                   justify-content: flex-start;
                   padding-top: 2px;
                   position: relative;
-                  top:0;
+                  top: 0;
+
                   .js-form-item {
                     @include media-query("mobile") {
                       width: 100%;
@@ -1603,7 +1607,7 @@ label {
                 justify-content: flex-start;
                 padding-top: 2px;
                 position: relative;
-                  top:0;
+                top: 0;
 
                 .js-form-item {
                   position: relative;
@@ -2172,13 +2176,16 @@ table {
     }
   }
 }
+
 input[type="date"]::-webkit-datetime-edit,
-input[type="time"]::-webkit-datetime-edit{
-padding-top: 2px;
-&:focus{
-  color: #fff !important;
+input[type="time"]::-webkit-datetime-edit {
+  padding-top: 4px;
+
+  &:focus {
+    color: #fff !important;
+  }
 }
-}
+
 input[type="date"]::-webkit-datetime-edit-year-field,
 input[type="date"]::-webkit-datetime-edit-month-field,
 input[type="date"]::-webkit-datetime-edit-day-field,
@@ -2186,22 +2193,44 @@ input[type="time"]::-webkit-datetime-edit-hour-field,
 input[type="time"]::-webkit-datetime-edit-minute-field,
 input[type="time"]::-webkit-datetime-edit-meridiem-field {
   -webkit-text-fill-color: rgb(78, 99, 140);
-  padding-top:7px;
-  padding-bottom: 5px;
-  line-height: 40px;
+  padding-top: 5px;
+  padding-bottom: -6px;
+  line-height: 0;
+
   &:focus-visible,
-  &:focus{
+  &:focus {
     background-color: #99b9cf !important;
   }
 }
 
 input[type="date"]::-webkit-datetime-edit-text,
 input[type="time"]::-webkit-datetime-edit-text {
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 
 
 .mac_os {
+
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="time"]::-webkit-datetime-edit {
+    padding-top: 0px;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-year-field,
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="time"]::-webkit-datetime-edit-hour-field,
+  input[type="time"]::-webkit-datetime-edit-minute-field,
+  input[type="time"]::-webkit-datetime-edit-meridiem-field {
+    padding-top: 3px;
+    padding-bottom: 2px;
+
+    &:focus-visible,
+    &:focus {
+      background-color: #99b9cf !important;
+    }
+  }
+
   .calender-page {
     .calender-right {
       .pager__items {
@@ -2213,6 +2242,7 @@ input[type="time"]::-webkit-datetime-edit-text {
       }
     }
   }
+
   .node-chas-event-form {
     table.field-multiple-table {
       tbody {
@@ -2220,6 +2250,7 @@ input[type="time"]::-webkit-datetime-edit-text {
           td {
             .smartdate--widget {
               .smartdate--time-inline {
+
                 .time-start,
                 .time-end {
                   padding-top: 0;
@@ -2234,10 +2265,29 @@ input[type="time"]::-webkit-datetime-edit-text {
 }
 
 .node-page-form {
-  .field-multiple-table{
-    .js-form-type-entity-autocomplete{
-    margin-bottom: 0 !important;
-    margin-right: 6px;
+  .field-multiple-table {
+    .js-form-type-entity-autocomplete {
+      margin-bottom: 0 !important;
+      margin-right: 6px;
     }
+  }
+}
+
+.button--danger {
+  background: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fd4453;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-family: tablet-gothic;
+  text-decoration: none;
+  border: 1px solid #fd4453;
+  transition: all 0.3s;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: #fd4453;
+    color: #fff;
   }
 }

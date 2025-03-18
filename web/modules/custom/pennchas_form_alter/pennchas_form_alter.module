@@ -19,8 +19,10 @@ use Drupal\Core\Database\Database;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
-
+use Drupal\field\Entity\FieldConfig;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
+use Drupal\group\Entity\GroupRole;
+
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
@@ -449,3 +451,21 @@ function pennchas_form_alter_preprocess_field(&$variables) {
     }
 }
 
+function pennchas_form_alter_preprocess_form_element(&$variables) {
+    if (strpos($variables['name'] , 'field_block_display_condition_wi') !== false) {
+      $items = &$variables['items'];
+
+        $group_role = GroupRole::load($variables['element']['#return_value']);
+        if($group_role){
+            $variables['label']['#title'] = $group_role->get('label') .' ('. $group_role->get('scope') .')';
+        }
+    }
+}
+
+function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
+    
+    if($element['options']){
+        $element['options']['argument']['#title'] = t('House ID');
+    }
+  }
+  
