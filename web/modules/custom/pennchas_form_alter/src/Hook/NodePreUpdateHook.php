@@ -52,16 +52,16 @@ class NodePreUpdateHook
 
     protected function handleReserveRoom(Node $node)
     {
-        // $eventExistingHousesId = (int) $node->original->get('field_group')->getString();
+        $eventExistingHousesId = (int) $node->original->get('field_group')->getString();
 
-        // $moderationState = $node->get('moderation_state')->getString();
-        // if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
-        //     if (!$this->canByPassModerationInAnyHouse([$eventExistingHousesId], Constant::PERMISSION_MODERATION)) {
-        //         $node->setPublished(false);
-        //         $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-        //         $node->isDefaultRevision(TRUE);
-        //     }
-        // }
+        $moderationState = $node->get('moderation_state')->getString();
+        if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
+            if (!$this->canByPassModerationInAnyHouse([$eventExistingHousesId], Constant::PERMISSION_MODERATION)) {
+                $node->setPublished(false);
+                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+                $node->isDefaultRevision(TRUE);
+            }
+        }
         $this->updateEventEndsOn($node);
     }
 
