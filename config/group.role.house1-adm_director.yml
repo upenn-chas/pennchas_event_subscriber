@@ -34,6 +34,7 @@ permissions:
   - 'delete own group_node:notices entity'
   - 'delete own group_node:reserve_room entity'
   - 'edit group'
+  - 'event own evaluation'
   - 'update any group_node:article entity'
   - 'update any group_node:house_landing_page entity'
   - 'update any group_node:page entity'
