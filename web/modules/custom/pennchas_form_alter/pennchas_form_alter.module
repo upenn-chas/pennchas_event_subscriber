@@ -22,7 +22,7 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 use Drupal\group\Entity\GroupRole;
-
+use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
@@ -55,6 +55,9 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         case 'node_room_form':
         case 'node_room_edit_form':
             $form = (new RoomFormAlter())->alter($form, $formState);
+            break;
+        case 'node_article_form':
+            $form = (new ArticleFormAlter())->alter($form, $formState);
             break;
         case 'content_moderation_entity_moderation_form':
             $form = (new ModerationFormAlter())->alter($form, $formState);
@@ -169,6 +172,7 @@ function pennchas_form_alter_node_insert(Node $node)
         || $nodeType === Constant::NODE_EVENT
         || $nodeType === Constant::NODE_NOTICES
         || $nodeType === Constant::NODE_HOUSE_PAGE
+        || $nodeType === Constant::NODE_ARTICLE
     ) {
         (new NodeInsertHook())->handle($node);
     }
@@ -181,6 +185,7 @@ function pennchas_form_alter_node_update(Node $node)
     if ($nodeType === Constant::NODE_EVENT 
         || $nodeType === Constant::NODE_RESERVE_ROOM
         || $nodeType === Constant::NODE_HOUSE_PAGE
+        || $nodeType === Constant::NODE_ARTICLE
     ) {
         (new NodeUpdateHook())->handle($node);
     }

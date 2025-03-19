@@ -14,7 +14,7 @@ use Drupal\pennchas_form_alter\Util\Constant;
 class NodeInsertHook
 {
     use EntityHookTrait;
-    
+
     function handle(NodeInterface $node)
     {
         // dd($node->get('layout_builder__layout')->getValue());
@@ -29,6 +29,8 @@ class NodeInsertHook
             $this->handleRoom($node);
         } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
             $this->handleHousePage($node);
+        } else if ($nodeType === Constant::NODE_ARTICLE) {
+            $this->handleArticle($node);
         }
     }
 
@@ -85,7 +87,7 @@ class NodeInsertHook
     {
         $groupId = (int) $node->get('field_group')->getString();
         $group = Group::load($groupId);
-        if($group) {
+        if ($group) {
             $existingRelationship = $group->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $group->addRelationship($node, 'group_node:' . $node->getType());
@@ -119,6 +121,18 @@ class NodeInsertHook
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
+    }
+
+    protected function handleArticle(Node $node)
+    {
+        $groupId = (int) $node->get('field_location')->getString();
+        if ($groupId) {
+            $group = Group::load($groupId);
+            $existingRelationship = $group->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $group->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
     }

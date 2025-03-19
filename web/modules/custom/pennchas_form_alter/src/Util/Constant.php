@@ -11,6 +11,7 @@ final class Constant
     const NODE_ROOM = 'room';
     const NODE_NOTICES = 'notices';
     const NODE_HOUSE_PAGE = 'house_landing_page';
+    const NODE_ARTICLE = 'article';
 
     const MOD_STATUS_PUBLISHED = 'published';
     const MOD_STATUS_DRAFT = 'draft';

@@ -22,6 +22,8 @@ class NodeUpdateHook
             $this->handleHousePage($node);
         } else if ($nodeType === Constant::NODE_RESERVE_ROOM) {
             $this->handleReserveRoom($node);
+        } else if ($nodeType === Constant::NODE_ARTICLE) {
+            $this->handleArticle($node);
         }
     }
 
@@ -92,6 +94,29 @@ class NodeUpdateHook
             $existingRelationship = $house->getRelationshipsByEntity($node);
             if (empty($existingRelationship)) {
                 $house->addRelationship($node, 'group_node:' . $node->getType());
+            }
+        }
+    }
+
+    protected function handleArticle(Node $node)
+    {
+        $existingGroupId = (int) $node->original->get('field_location')->getString();
+        $groupId = (int) $node->get('field_location')->getString();
+        if ($existingGroupId === $groupId) {
+            return;
+        }
+        if ($existingGroupId) {
+            $existingGroup = Group::load($existingGroupId);
+            $oldRelationships = $existingGroup->getRelationshipsByEntity($node);
+            array_walk($oldRelationships, function ($rel) {
+                $rel->delete();
+            });
+        }
+        if ($groupId) {
+            $group = Group::load($groupId);
+            $existingRelationship = $group->getRelationshipsByEntity($node);
+            if (empty($existingRelationship)) {
+                $group->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
     }

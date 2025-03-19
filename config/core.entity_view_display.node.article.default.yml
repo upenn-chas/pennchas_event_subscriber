@@ -8,7 +8,9 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
+    - field.field.node.article.field_is_campus_wide
     - field.field.node.article.field_last_state
+    - field.field.node.article.field_location
     - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
@@ -27,7 +29,41 @@ third_party_settings:
         layout_id: layout_builder_blank
         layout_settings:
           label: ''
-        components: {  }
+        components:
+          ca0bd754-7f81-401e-aaf1-889439666705:
+            uuid: ca0bd754-7f81-401e-aaf1-889439666705
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_location'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          2d0ab651-f37a-4a4f-8ba6-42594f80b275:
+            uuid: 2d0ab651-f37a-4a4f-8ba6-42594f80b275
+            region: null
+            configuration:
+              id: 'field_block:node:article:field_is_campus_wide'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
@@ -68,6 +104,16 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
+  field_is_campus_wide:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 116
+    region: null
   field_last_state:
     type: string
     label: above
@@ -75,6 +121,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 115
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_media_image:
     type: entity_reference_entity_view
