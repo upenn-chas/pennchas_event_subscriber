@@ -476,5 +476,13 @@ function pennchas_form_alter_field_widget_single_element_form_alter(&$element, F
             $element['options']['argument']['#title'] = t('House ID');
         }
     }
-  }
+}
   
+function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+    $request = \Drupal::service('request_stack')->getCurrentRequest();
+    $parameter_value = $request->query->get('view_mode');
+    if( $parameter_value == 'calendar_view'){
+        $view_mode = 'calendar_view';
+    }
+
+}

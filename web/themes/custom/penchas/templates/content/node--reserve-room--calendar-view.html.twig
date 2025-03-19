@@ -70,12 +70,19 @@
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'space',
     'clearfix container',
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    <div class="space-medium-bottom ">
+    {# <div class="row">
+      <div class="col-12"> #}
+        {{breadcrumbs_reserve_list|t}}
+      </div>
+    {# </div>
+    </div> #}
     {{ content }}
+  </div>
   </div>
 </article>
