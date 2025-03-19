@@ -3348,11 +3348,7 @@ display:
       style:
         type: views_bootstrap_list_group
         options:
-          grouping:
-            -
-              field: edit_node
-              rendered: true
-              rendered_strip: false
+          grouping: {  }
           row_class: ''
           default_row_class: false
           title_field: ''
@@ -4590,11 +4586,7 @@ display:
       style:
         type: views_bootstrap_list_group
         options:
-          grouping:
-            -
-              field: edit_node
-              rendered: true
-              rendered_strip: false
+          grouping: {  }
           row_class: ''
           default_row_class: false
           title_field: ''
@@ -5879,11 +5871,7 @@ display:
       style:
         type: views_bootstrap_list_group
         options:
-          grouping:
-            -
-              field: edit_node
-              rendered: true
-              rendered_strip: false
+          grouping: {  }
           row_class: ''
           default_row_class: false
           title_field: ''

@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_display.group.house1.default
-    - core.entity_view_display.node.article.default
     - core.entity_view_display.node.house_landing_page.default
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
@@ -28,6 +27,7 @@ dependencies:
     - content_moderation
     - event_evaluation
     - layout_builder
+    - layout_builder_restrictions
     - media
     - node
     - penchas_custom_token
@@ -46,12 +46,11 @@ permissions:
   - 'access my rerservations'
   - 'access reports'
   - 'cancel smart date recur instances'
-  - 'configure all article node layout overrides'
   - 'configure all house1 group layout overrides'
-  - 'configure editable article node layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'
+  - 'configure layout builder restrictions'
   - 'create audio media'
   - 'create chas_event content'
   - 'create document media'

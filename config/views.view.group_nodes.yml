@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.chas_event
     - node.type.house_landing_page
     - node.type.notices
@@ -1901,6 +1902,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
+            article: article
             page: page
             chas_event: chas_event
             house_landing_page: house_landing_page
@@ -1932,6 +1934,7 @@ display:
               chas_technology: '0'
               chas_director: '0'
               chas_professional_staff: '0'
+              house_director: '0'
             reduce: true
           is_grouped: false
           group_info:

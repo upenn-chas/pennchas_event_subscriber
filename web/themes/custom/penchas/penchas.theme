@@ -972,6 +972,13 @@ function generate_create_form_url($group_id, $plugin_id)
  */
 function penchas_preprocess_views_view(&$variables)
 {
+  $params = \Drupal::request()->query->all();
+  $params['c_type'] = 'month';
+  $monthparams = $params;
+  $params['c_type'] = 'week';
+  $weekparams = $params;
+  $variables['month_params'] = http_build_query($monthparams);
+  $variables['week_params'] = http_build_query($weekparams);
   $user = \Drupal::currentUser();
   // Example usage: Check if the current user can create "article" content in the group.
   // $group_id = 1;  // Replace with actual group ID.

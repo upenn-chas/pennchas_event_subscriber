@@ -54,6 +54,7 @@ class NoticeFormAlter
                 $options[$group->id()] = $group->label();
             }
         }
+        asort($options,SORT_STRING);
         return $options;
     }
 }

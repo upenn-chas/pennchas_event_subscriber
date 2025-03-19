@@ -1,9 +1,9 @@
-uuid: dc2152e2-555b-4881-8f40-dba60f8585e9
+uuid: 6eb6ae73-d600-4948-a945-c7222069973c
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.rss
+    - core.entity_view_mode.node.moderator
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
@@ -16,14 +16,22 @@ dependencies:
     - node.type.article
   module:
     - user
-_core:
-  default_config_hash: 2rIr6K5Q0UQ9khg0zE_CK-PtJH76UL-BDDZcZnZzwCc
-id: node.article.rss
+id: node.article.moderator
 targetEntityType: node
 bundle: article
-mode: rss
+mode: moderator
 content:
+  field_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
   links:
+    settings: {  }
+    third_party_settings: {  }
     weight: 100
     region: content
 hidden:
@@ -33,7 +41,6 @@ hidden:
   field_chas_news: true
   field_is_campus_wide: true
   field_last_state: true
-  field_location: true
   field_media_image: true
   field_tags: true
   langcode: true

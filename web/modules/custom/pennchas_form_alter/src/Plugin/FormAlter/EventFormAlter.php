@@ -82,6 +82,9 @@ class EventFormAlter
                 $this->_getCommunities($communityOptions, $group);
             }
         }
+        asort($houseOptions, SORT_STRING);
+        asort($communityOptions, SORT_STRING);
+
         return [
             'houses' => $houseOptions,
             'communities' => $communityOptions
