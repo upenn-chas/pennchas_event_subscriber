@@ -794,10 +794,12 @@
   }
 }
 
-.event-details-breadcrumbs {
+.event-details-breadcrumbs,
+.reserve-details-breadcrumbs {
   margin-top: 25px;
 
-  .event-breadcrumbs {
+  .event-breadcrumbs,
+  .reserve-breadcrumbs {
     ul {
       display: flex;
       list-style-type: none;
@@ -1058,4 +1060,21 @@ body.page-view-my-events {
       }
     }
    }
+}
+.node--type-reserve-room{
+  .node__content{
+    padding-bottom: 80px;
+    @include media-query('mobile'){
+      padding-bottom: 40px;
+      padding-bottom: 40px;
+    }
+    .space-medium-bottom:has(.reserve-details-breadcrumbs){
+      padding-top: 10px;
+      padding-bottom: 40px;
+      @include media-query('mobile'){
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+  }
 }

@@ -96,8 +96,8 @@ display:
             custom_date_format: ''
             timezone: ''
             tooltip:
-              date_format: long
-              custom_date_format: ''
+              date_format: custom
+              custom_date_format: 'g:i a'
             join: ', '
             time_format: 'h:ia'
             time_hour_format: 'h:ia'
@@ -180,7 +180,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}">{{ field_room }} {{ field_event_schedule }}</a>'
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:500}" data-dialog-type="modal"  href="{{ view_node }}?view_mode=calendar_view"><span>{{ field_event_schedule }}</span> {{ field_room }} </a>'
             make_link: false
             path: ''
             absolute: false

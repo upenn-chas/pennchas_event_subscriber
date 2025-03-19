@@ -315,6 +315,33 @@ function penchas_preprocess_node(&$variables)
           <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
         </svg></a><span class="copy-tooltip">LINK COPIED!</span></li>'
       . $links . '</ul></div></div>';
+  } else if ($nodeBundle === 'reserve_room') {
+    $request = \Drupal::service('request_stack')->getCurrentRequest();
+    $parameter_value = $request->query->get('view_mode');
+    if( $parameter_value == 'calendar_view'){
+      $calendar_link = $base_path;
+      $nid = $node->id();
+      $links = '';
+      $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
+      // dd($current_path);
+      if ($current_user->isAuthenticated()) {
+        $eventHouseId = (int) $node->get('field_group')->getString();
+        // dd($eventHouseId);
+        $group = Group::load($eventHouseId);
+
+        if ($group) {
+          $eventHousename = $group->get('field_short_name')->value;
+          $calendar_link = $base_path . 'group/' . $eventHousename . '/room-reservation-calendar';
+        }
+      }
+
+      $variables['breadcrumbs_reserve_list'] = '<div class="reserve-details-breadcrumbs"><div class="reserve-breadcrumbs"><ul>
+          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg"> Back to Calendar</a></li>
+          <li><a href="'.$current_path.'/edit"><img src="/themes/custom/penchas/assets/images/edit.svg">Edit</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
+          <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
+        </svg></a><span class="copy-tooltip">LINK COPIED!</span></li></ul></div></div>';
+
+    }
   }
 
   // Set node title.

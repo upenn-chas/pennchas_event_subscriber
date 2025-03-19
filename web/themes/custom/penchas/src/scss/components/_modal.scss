@@ -198,7 +198,8 @@
 }
 // .page-view-calend
 .ui-dialog:has(.node--type-chas-event),
-.ui-dialog:has(.node--type-notices) {
+.ui-dialog:has(.node--type-notices),
+.ui-dialog:has(.node--view-mode-calendar-view) {
   padding: 0 !important;
   border: 0;
   border-radius: 8px;
@@ -240,7 +241,8 @@
     }
   }
 
-  .event-details-breadcrumbs {
+  .event-details-breadcrumbs,
+  .reserve-details-breadcrumbs {
     margin-top: 0;
     min-height: 25px;
 
@@ -250,6 +252,7 @@
       gap: 25px;
       padding-right: 40px;
       position: relative;
+      
 
       li {
         &.copy-icon {
@@ -451,6 +454,24 @@
       }
     }
   }
+  .ui-dialog:has(.node--view-mode-calendar-view)  {
+    .ui-dialog-content {
+      article {
+        .reserve-details-breadcrumbs {
+          ul {
+            li {
+              a {
+                img{
+                  position: relative;
+                  top: 2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
 }
 
 .ui-widget.ui-widget-content {
@@ -476,5 +497,79 @@
 
   .ui-dialog-content {
     padding: 18px 30px 30px 30px;
+  }
+}
+.ui-dialog:has(.node--view-mode-calendar-view){
+  .ui-dialog-content {
+    article{
+      &.container{
+        padding: 18px 30px 30px 30px;
+        font-size: 18px;
+        line-height: normal;
+        a{
+          color: $primaryColor;
+
+          &:hover{
+            color: $redHighlightColor;
+            text-decoration: none;
+          }
+        }
+        span{
+          margin-bottom: 10px;
+          display: block;
+        }
+        .field__item{
+          margin-bottom: 4px;
+          font-size: 18px;
+          line-height: normal;
+          word-wrap: break-word;
+        }
+      }
+      .reserve-details-breadcrumbs {
+        ul{
+        display: flex;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          justify-content: flex-start;
+          li{
+            &:first-child{
+              display: none;
+            }
+            a{
+              font-size: 12px;
+              font-weight: 600;
+              font-family: tablet-gothic;
+              text-transform: uppercase;
+              text-decoration: none;
+              position: relative;
+              color: #011f5b;
+              display: inline-flex;
+              align-items: center;
+              gap: 3px;
+              padding-left: 0;
+              img{
+                padding-right: 6px;
+                padding-bottom: 3px;
+              }
+              &:hover{
+                color:$primaryColor;
+              }
+            }
+          }
+        }
+      }
+      .layout--onecol {
+        padding: 0 !important;
+        max-height: 72dvh !important;
+        overflow: hidden;
+        .layout__region--content{
+          gap: 30px;
+          max-height: calc(72dvh - 70px);
+          overflow: auto; 
+        }
+      }
+    }
   }
 }
