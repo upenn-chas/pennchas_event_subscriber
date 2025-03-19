@@ -406,9 +406,11 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
     }
 
     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+    // dd($tabs);
     if (array_intersect($user_roles, $allowed_roles)) {
         static $unsetDeleteTab = [
             'delete' => 0,
+            'latest version' => 0,
         ];
         remove_tabs($tabs, $unsetDeleteTab);
     }

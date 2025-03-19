@@ -81,7 +81,7 @@
             {{ pager }}
           {% endif %}
           <div class="select-outer">
-              <select class="redirect-dropdown" onchange="redirectToLink()">
+              <select class="redirect-dropdown" onchange="redirectToLink()" tabindex="-1">
                 <option data-class="month"  value="{{base_path}}group/{{short_name}}/calendar?c_type=month">Month</option>
                 <option data-class="week" value="{{base_path}}group/{{short_name}}/week-calendar?c_type=week">Week</option>
               </select>

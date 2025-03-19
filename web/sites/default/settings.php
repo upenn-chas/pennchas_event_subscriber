@@ -53,3 +53,6 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $settings['config_exclude_modules'] = ['simplesamlphp_auth'];
+
+$login_url = '/saml_login?destination=' . $_SERVER['REQUEST_URI'];
+return new Symfony\Component\HttpFoundation\RedirectResponse($login_url);
