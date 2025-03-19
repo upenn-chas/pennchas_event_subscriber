@@ -354,7 +354,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ roles_target_id is empty ? group_roles : roles_target_id }}\r\n"
+            text: "{% set roles = roles_target_id  ~ \", \" ~ group_roles %}\r\n{{ roles|trim(\", \") }}\r\n"
             make_link: false
             path: ''
             absolute: false
