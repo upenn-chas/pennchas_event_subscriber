@@ -2203,9 +2203,11 @@ input[type="date"]::-webkit-datetime-edit-month-field,
 input[type="date"]::-webkit-datetime-edit-day-field,
 input[type="time"]::-webkit-datetime-edit-hour-field,
 input[type="time"]::-webkit-datetime-edit-minute-field,
-input[type="time"]::-webkit-datetime-edit-meridiem-field {
+input[type="time"]::-webkit-datetime-edit-meridiem-field,
+input[type="time"]::-webkit-datetime-edit-second-field {
   -webkit-text-fill-color: rgb(78, 99, 140);
   padding-top: 5px;
+  margin-bottom: 1px;
   padding-bottom: -6px;
   line-height: 0;
 
@@ -2217,7 +2219,7 @@ input[type="time"]::-webkit-datetime-edit-meridiem-field {
 
 input[type="date"]::-webkit-datetime-edit-text,
 input[type="time"]::-webkit-datetime-edit-text {
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 
