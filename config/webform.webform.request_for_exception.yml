@@ -1,307 +1,70 @@
-uuid: c8c7fe40-70b4-425c-ae0e-4a37df2801e4
+uuid: 12b14294-a0ab-43d1-bf61-a67ee0aae542
 langcode: en
 status: open
-dependencies:
-  enforced:
-    module:
-      - webform_example_custom_form
-_core:
-  default_config_hash: nyNIh1ZbrTgFBkk5neOJtOHpJiph9hddA9BmBBlcpTI
+dependencies: {  }
 weight: 0
 open: null
 close: null
-uid: null
+uid: 52
 template: false
 archive: false
-id: webform_example_custom_form
-title: 'Example: Webform Custom (Configuration) Form'
-description: 'An example of a custom (configuration) form built using the webform module.'
-categories:
-  - Example
-elements: |
-  '#attributes':
-    'class':
-      - 'webform-example-custom-form-settings'
-  basic_elements:
-    '#type': details
-    '#title': 'Basic elements'
-    '#open': true
-    textfield:
-      '#type': textfield
-      '#title': 'Text field'
-      '#counter_type': character
-      '#counter_maximum': 10
-    textarea:
-      '#type': textarea
-      '#title': 'Text area'
-      '#counter_type': word
-      '#counter_maximum': 500
-    select:
-      '#type': select
-      '#title': 'Select menu'
-      '#options':
-        one: One
-        two: Two
-        three: Three
-      '#select2': true
-    checkboxes:
-      '#type': checkboxes
-      '#title': 'Checkboxes'
-      '#options_display': side_by_side
-      '#options_description_display': help
-      '#options':
-        one: 'One -- This is help text.'
-        two: 'Two -- This is help text.'
-        three: 'Three -- This is  help text.'
-  date_elements:
-    '#type': details
-    '#title': 'Date elements'
-    '#open': true
-    date:
-      '#type': date
-      '#title': Date
-    datelist:
-      '#type': datelist
-      '#title': 'Date list'
-    webform_time:
-      '#type': webform_time
-      '#title': Time
-  advanced_elements:
-    '#type': details
-    '#title': 'Advanced elements'
-    '#open': true
-    email_multiple:
-      '#type': webform_email_multiple
-      '#title': 'Email multiple'
-    tel_international:
-      '#type': tel
-      '#title': 'Telephone (International)'
-      '#international': true
-      '#telephone_validation_format': '0'
-    range:
-      '#type': range
-      '#title': Range
-      '#min': 0
-      '#max': 100
-      '#step': 1
-      '#output': right
-      '#output__field_prefix': $
-      '#output__field_suffix': '.00'
-    managed_file:
-      '#type': managed_file
-      '#title': 'File upload'
-    tableselect:
-      '#type': tableselect
-      '#title': 'Table select'
-      '#options':
-        one: One
-        two: Two
-        three: Three
-    webform_tableselect_sort:
-      '#type': webform_tableselect_sort
-      '#title': 'Tableselect sort'
-      '#options':
-        one: One
-        two: Two
-    webform_table_sort:
-      '#type': webform_table_sort
-      '#title': 'Table sort'
-      '#options':
-        one: One
-        two: Two
-        three: Three
-    webform_autocomplete:
-      '#type': webform_autocomplete
-      '#title': Autocomplete
-      '#autocomplete_items': country_names
-    webform_buttons:
-      '#type': webform_buttons
-      '#title': Buttons
-      '#options':
-        one: One
-        two: Two
-        three: Three
-    webform_codemirror:
-      '#type': webform_codemirror
-      '#title': CodeMirror
-      '#mode': yaml
-    webform_image_select:
-      '#type': webform_image_select
-      '#title': 'Image select'
-      '#show_label': true
-      '#images':
-        kitten_1:
-          text: 'Cute Kitten 1'
-          src: 'http://placekitten.com/220/200'
-        kitten_2:
-          text: 'Cute Kitten 2'
-          src: 'http://placekitten.com/180/200'
-        kitten_3:
-          text: 'Cute Kitten 3'
-          src: 'http://placekitten.com/130/200'
-    webform_rating:
-      '#type': webform_rating
-      '#title': Rating
-    webform_terms_of_service:
-      '#type': webform_terms_of_service
-      '#terms_content': 'These are the terms of service.'
-    webform_likert:
-      '#type': webform_likert
-      '#title': Likert
-      '#questions':
-        q1: 'Please answer question 1?'
-        q2: 'How about now answering question 2?'
-        q3: 'Finally, here is question 3?'
-      '#answers':
-        1: 1
-        2: 2
-        3: 3
-        4: 4
-        5: 5
-  entity_reference_elements:
-    '#type': details
-    '#title': 'Entity reference elements'
-    '#open': true
-    entity_autocomplete:
-      '#type': entity_autocomplete
-      '#title': 'Entity autocomplete'
-      '#target_type': user
-      '#selection_handler': 'default:user'
-      '#selection_settings':
-        include_anonymous: true
-    webform_entity_select:
-      '#type': webform_entity_select
-      '#title': 'Entity select'
-      '#target_type': user
-      '#selection_handler': 'default:user'
-      '#selection_settings':
-        include_anonymous: true
-    webform_term_select:
-      '#type': webform_term_select
-      '#title': 'Term select'
-      '#vocabulary': tags
-  webform_composites:
-    '#type': details
-    '#title': 'Webform composites'
-    '#open': true
-    webform_custom_composite:
-      '#type': webform_custom_composite
-      '#title': 'Custom composite'
-      '#element':
-        first_name:
-          '#type': textfield
-          '#title': 'First name'
-        last_name:
-          '#type': textfield
-          '#title': 'Last name'
-        sex:
-          '#type': webform_select_other
-          '#options': sex
-          '#title': Sex
-        martial_status:
-          '#type': webform_select_other
-          '#options': marital_status
-          '#title': 'Martial status'
-        employment_status:
-          '#type': webform_select_other
-          '#options': employment_status
-          '#title': 'Employment status'
-        age:
-          '#type': number
-          '#title': Age
-  form_elements:
-    '#type': details
-    '#title': 'Form elements'
-    '#open': true
-    form_element_input_mask:
-      '#type': textfield
-      '#title': 'Form element (Input mask: Phone)'
-      '#input_mask': '(999) 999-9999'
-      '#test': ''
-    form_element_input_hide:
-      '#type': textfield
-      '#title': 'Form element (Input hiding)'
-      '#input_hide': true
-      '#default_value': '{value}'
-    form_element_descriptions:
-      '#type': textfield
-      '#title': 'Form element (Labels and descriptions)'
-      '#description': 'This is a description.'
-      '#placeholder': 'This is a placeholder.'
-      '#help': 'This is help.'
-      '#more': 'This is more text'
-  dividers:
-    '#type': details
-    '#title': Dividers
-    '#open': true
-    horizontal_rule_dotted_medium:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--dotted
-          - webform-horizontal-rule--medium
-  messages:
-    '#type': details
-    '#title': Messages
-    '#open': true
-    message_info:
-      '#type': webform_message
-      '#message_type': info
-      '#message_message': 'This is an <strong>info</strong> message.'
-      '#message_close': true
-  flexbox:
-    '#type': details
-    '#title': Flexbox
-    '#open': true
-    webform_flexbox:
-      '#type': webform_flexbox
-      '#title': 'Flexbox elements'
-      element_flex_1:
-        '#type': textfield
-        '#title': 'Element (Flex: 1)'
-        '#flex': 1
-      element_flex_2:
-        '#type': textfield
-        '#title': 'Element (Flex: 2)'
-        '#flex': 2
-      element_flex_3:
-        '#type': textfield
-        '#title': 'Element (Flex: 3)'
-        '#flex': 3
-  internal:
-    '#type': details
-    '#title': 'Internal'
-    '#open': true
-    checkbox_value:
-      '#type': webform_checkbox_value
-      '#title': 'Checkbox with value'
-      '#value__title': 'Enter a value'
-    mapping:
-      '#type': webform_mapping
-      '#title': 'Mapping'
-      '#source':
-        one: One
-        two: Two
-        three: Three
-      '#destination':
-        four: Four
-        five: Five
-        six: Six
-    multiple:
-      '#type': webform_multiple
-      '#title': 'Multiple values'
-      '#element':
-        first_name:
-          '#type': textfield
-          '#title': first_name
-        last_name:
-          '#type': textfield
-          '#title': last_name
-      '#default_value':
-        - first_name: John
-          last_name: Smith
-        - first_name: Jane
-          last_name: Doe
+id: request_for_exception
+title: 'Request for Exception'
+description: '<p>Allows RA staff to request exceptions from training and other service expectations due to academic or other needs.</p>'
+categories: {  }
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#required': true
+  email:
+    '#type': textfield
+    '#title': Email
+    '#required': true
+  pennkey:
+    '#type': textfield
+    '#title': PennKey
+  penn_id_number:
+    '#type': textfield
+    '#title': 'Penn ID Number'
+  academic_program:
+    '#type': textfield
+    '#title': 'Academic Program'
+  college_house:
+    '#type': select
+    '#title': 'College House'
+    '#options':
+      dubois: 'W.E.B. Du Bois'
+      fisher_hassenfeld: 'Fisher Hassenfeld'
+      gregory: Gregory
+      gutmann: Gutmann
+      harnwell: Harnwell
+      harrison: Harrison
+      hill: Hill
+      kcech: 'Kings Court English'
+      radian: Radian
+      riepe: Riepe
+      rodin: Rodin
+      stouffer: Stouffer
+      ware: Ware
+  current_room_location:
+    '#type': textfield
+    '#title': 'Current room location'
+  academic_status:
+    '#type': radios
+    '#title': 'Academic status'
+    '#options':
+      ra: 'RA -- undergraduate RA'
+      gra: 'GRA -- graduate RA'
+  start_date:
+    '#type': date
+    '#title': 'Start date'
+  end_date:
+    '#type': date
+    '#title': 'End date'
+  reason_for_exception:
+    '#type': textarea
+    '#title': 'Reason for exception'
 css: ''
 javascript: ''
 settings:
@@ -314,7 +77,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: both
   form_submit_once: false
   form_open_message: ''
   form_close_message: ''
@@ -431,8 +194,8 @@ settings:
   entity_limit_user_interval: null
   purge: none
   purge_days: null
-  results_disabled: true
-  results_disabled_ignore: true
+  results_disabled: false
+  results_disabled_ignore: false
   results_customize: false
   token_view: false
   token_update: false
@@ -485,5 +248,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: 'Exception Email'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: chas@collegehouses.upenn.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: chas@collegehouses.upenn.edu
+      from_options: {  }
+      from_name: 'CHAS Website'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }
