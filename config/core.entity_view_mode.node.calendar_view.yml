@@ -1,0 +1,11 @@
+uuid: 1bee6679-8be5-4626-88ce-ff082bbf7a09
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.calendar_view
+label: 'Calendar View'
+description: ''
+targetEntityType: node
+cache: true
