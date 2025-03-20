@@ -1424,6 +1424,9 @@ label {
 .smartdate--time-inline div.time-end {
   gap: 5px;
 }
+.smartdate--time-inline .smartdate--separator {
+ padding-top: 12px;
+}
 
 .smartdate--widget .repeat--label {
   margin-right: 0;
@@ -2244,7 +2247,11 @@ input[type="time"]::-webkit-datetime-edit-text {
       background-color: #99b9cf !important;
     }
   }
-
+  .smartdate--time-inline {
+    .smartdate--separator {
+      padding-top: 2px;
+     }
+    }
   .calender-page {
     .calender-right {
       .pager__items {

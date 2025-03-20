@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_display.group.house1.default
+    - core.entity_view_display.node.article.full
     - core.entity_view_display.node.house_landing_page.default
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
@@ -45,6 +46,7 @@ permissions:
   - 'access my rerservations'
   - 'access reports'
   - 'cancel smart date recur instances'
+  - 'configure all article node layout overrides'
   - 'configure all house1 group layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'

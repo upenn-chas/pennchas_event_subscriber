@@ -55,7 +55,7 @@ third_party_settings:
                 settings:
                   link: false
                   class: ''
-                  tag: span
+                  tag: p
                 third_party_settings: {  }
             weight: 4
             additional: {  }
