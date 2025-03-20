@@ -13,9 +13,32 @@ dependencies:
     - field.field.node.article.field_location
     - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
+    - field.field.node.article.layout_builder__layout
     - node.type.article
   module:
+    - layout_builder
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          ab8da714-9ab3-4b7d-8e17-2656dc33734f:
+            uuid: ab8da714-9ab3-4b7d-8e17-2656dc33734f
+            region: content
+            configuration:
+              id: 'extra_field_block:node:article:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 id: node.article.full
 targetEntityType: node
 bundle: article
@@ -37,5 +60,6 @@ hidden:
   field_media_image: true
   field_tags: true
   langcode: true
+  layout_builder__layout: true
   published_at: true
   search_api_excerpt: true
