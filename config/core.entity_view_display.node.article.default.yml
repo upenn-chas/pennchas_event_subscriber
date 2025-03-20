@@ -192,12 +192,111 @@ third_party_settings:
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
+      allowed_layouts:
+        - tabs
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_7'
+        - 'bootstrap_layout_builder:blb_col_12'
+      denylisted_blocks:
+        Announcements:
+          - announce_block
+        'Content fields':
+          - 'field_block:node:article:uid'
+          - 'field_block:node:article:created'
+          - 'field_block:node:article:field_blocks_ref'
+          - 'field_block:node:article:body'
+          - 'field_block:node:article:changed'
+          - 'field_block:node:article:field_chas_news'
+          - 'field_block:node:article:comment'
+          - 'field_block:node:article:type'
+          - 'field_block:node:article:revision_default'
+          - 'field_block:node:article:default_langcode'
+          - 'field_block:node:article:field_is_campus_wide'
+          - 'field_block:node:article:field_location'
+          - 'field_block:node:article:nid'
+          - 'field_block:node:article:field_media_image'
+          - 'field_block:node:article:langcode'
+          - 'extra_field_block:node:article:links'
+          - 'field_block:node:article:menu_link'
+          - 'field_block:node:article:moderation_state'
+          - 'field_block:node:article:promote'
+          - 'field_block:node:article:status'
+          - 'field_block:node:article:published_at'
+          - 'field_block:node:article:revision_timestamp'
+          - 'field_block:node:article:vid'
+          - 'field_block:node:article:revision_log'
+          - 'field_block:node:article:revision_translation_affected'
+          - 'field_block:node:article:revision_uid'
+          - 'extra_field_block:node:article:search_api_excerpt'
+          - 'field_block:node:article:sticky'
+          - 'field_block:node:article:field_tags'
+          - 'field_block:node:article:title'
+        Devel:
+          - devel_switch_user
+        Forms:
+          - user_login_block
+        Help:
+          - help_block
+        'TB Mega Menu':
+          - 'tb_megamenu_menu_block:main'
+        User:
+          - 'views_block:who_s_new-block_1'
+        Webform:
+          - webform_block
+          - webform_submission_limit_block
+        core:
+          - page_title_block
+          - local_actions_block
+          - local_tasks_block
+      allowlisted_blocks:
+        'Inline blocks':
+          - 'inline_block:accordions'
+          - 'inline_block:basic'
+          - 'inline_block:callout_block'
+          - 'inline_block:cta_link'
+          - 'inline_block:cta_section'
+          - 'inline_block:dashboard_blocks'
+          - 'inline_block:dashboard_basic_item'
+          - 'inline_block:events'
+          - 'inline_block:events_by_group'
+          - 'inline_block:full_width_slider_section'
+          - 'inline_block:houses_sliders'
+          - 'inline_block:image_block'
+          - 'inline_block:instagram_block'
+          - 'inline_block:link'
+          - 'inline_block:list_content_block'
+          - 'inline_block:map_block'
+          - 'inline_block:news_announcements'
+          - 'inline_block:news_by_group'
+          - 'inline_block:program_communities_block'
+          - 'inline_block:program_communities_card'
+          - 'inline_block:program_communities_selection'
+          - 'inline_block:programs_by_group'
+          - 'inline_block:quote'
+          - 'inline_block:space_block'
+          - 'inline_block:two_columns_40_60'
+          - 'inline_block:two_columns'
+          - 'inline_block:video_block'
+          - 'inline_block:view_block'
+      restricted_categories:
+        - Menus
+        - System
     entity_view_mode_restriction_by_region:
-      allowed_layouts: {  }
+      allowed_layouts:
+        - tabs
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_7'
+        - 'bootstrap_layout_builder:blb_col_12'
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
 id: node.article.default

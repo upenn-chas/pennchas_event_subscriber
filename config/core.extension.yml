@@ -110,7 +110,6 @@ module:
   penchas_node_alteration: 0
   pennchas_event_subscriber: 0
   pennchas_form_alter: 0
-  r4032login: 0
   recaptcha_v3: 0
   recreate_block_content: 0
   redirect: 0
