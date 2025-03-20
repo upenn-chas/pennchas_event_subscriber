@@ -168,7 +168,7 @@
                 "html issue": "https://www.drupal.org/files/issues/2023-08-07/TypeError_htmlspecialchars_ArgumentNustBeTypeString_ArrayGiven-3352384-43.patch"
             },
             "drupal/simplesamlphp_auth": {
-                "Get dynamically values and Updated in drupal": "patches/simple_saml_auth1.patch"
+                "Get dynamically values and Updated in drupal": "patches/saml_auth.patch"
             },
             "drupal/clientside_validation": {
                 "no link issue": "patches/no_link_issue.patch"
