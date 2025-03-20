@@ -44,7 +44,9 @@ class PendingModerationNodeCount
         $query = \Drupal::database()->select('content_moderation_state_field_data', 'ms');
         $query->fields('ms', ['content_entity_id']);
         $query->join('node_field_data', 'nf', 'nf.nid = ms.content_entity_id');
+        $query->join('node__field_event_schedule', 'nfes', 'ms.content_entity_id = nfes.entity_id');
         // $query->condition('nfg.field_groups_target_id', array_keys($groups), 'IN');
+        $query->condition('nfes.field_event_schedule_value', time(), '>');
         $query->condition('ms.uid', $uid, '=');
         $query->condition('ms.moderation_state', ['draft', 'pending'], 'IN');
         $query->condition('nf.type', $type, '=');

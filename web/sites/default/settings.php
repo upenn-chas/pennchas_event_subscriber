@@ -41,11 +41,6 @@ ini_set('memory_limit', '-1');
 $config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
 $config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
 
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = 'smtp-relay/collegehouses.upenn.edu';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = 'oktad;Kneb63GlovUthid';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'smtp-relay.upenn.edu';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
-
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
       $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';

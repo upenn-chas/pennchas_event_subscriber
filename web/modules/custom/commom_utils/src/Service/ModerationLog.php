@@ -62,12 +62,13 @@ class ModerationLog
 
         $rows = [];
         foreach ($logs as $index => $log) {
+            $state = $log['moderation_state'];
             $rows[] = [
                 $index + 1,
-                $log['moderation_state'],
+                $state,
                 $log['revision_log'],
                 $this->formatter->format($log['revision_timestamp']),
-                $log['name'],
+                $state !== 'draft' ? $log['name'] : '',
             ];
         }
 
@@ -93,7 +94,7 @@ class ModerationLog
         $query->innerJoin('node_revision', 'nr', 'cmsfr.content_entity_revision_id = nr.vid');
         $query->innerJoin('users_field_data', 'ufd', 'nr.revision_uid = ufd.uid');
         $query->condition('cmsfr.content_entity_id', $nid, '=');
-        $query->condition('cmsfr.moderation_state', 'draft', '!=');
+        // $query->condition('cmsfr.moderation_state', 'draft', '!=');
         $query->orderBy('cmsfr.revision_id');
         return $query->distinct()->execute()->fetchAll(\PDO::FETCH_ASSOC);
     }

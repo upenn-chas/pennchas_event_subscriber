@@ -23,6 +23,7 @@ class ModerationFormAlter
             $form['new_state']['#options']['pending'] = 'Pending';
         }
         $form['#submit'][] = [$this, 'moderationFormSubmit'];
+        $form['submit']['#value'] = t('Submit');
         return $form;
     }
 

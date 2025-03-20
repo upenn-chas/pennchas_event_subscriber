@@ -27,9 +27,6 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     switch ($formId) {
-        case 'content_moderation_entity_moderation_form':
-            $form['submit']['#value'] = t('Submit');
-            break;
         case 'node_program_community_form':
             if (!\Drupal::currentUser()->hasRole('administrator')) {
                 $form['field_group']['#access'] = false;
