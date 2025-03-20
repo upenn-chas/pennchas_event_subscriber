@@ -38,8 +38,8 @@ ini_set('memory_limit', '-1');
 
 // TODO: Remove below config from here and add them in settings.local.php file on server.
 
-$config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
-$config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
+// $config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
+// $config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
