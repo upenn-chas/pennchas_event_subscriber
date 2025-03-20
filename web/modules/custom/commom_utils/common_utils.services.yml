@@ -17,4 +17,4 @@ services:
     class: \Drupal\common_utils\User\User
   pennchas_common.moderation_log:
     class: \Drupal\common_utils\Service\ModerationLog
-    arguments: ['@database', '@date.formatter', '@renderer']
+    arguments: ['@database', '@date.formatter', '@renderer', '@content_moderation.moderation_information']
