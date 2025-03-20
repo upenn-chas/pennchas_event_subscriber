@@ -33,35 +33,55 @@ class NodePreUpdateHook
 
     protected function handleEvent(Node $node)
     {
-        $eventExistingHouse = $node->original->get('field_groups')->getValue();
+        $originalNode = $node->original;
+        $eventExistingHouse = $originalNode->get('field_groups')->getValue();
         $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
 
-        $housesId = $this->getHouses($node);
-        $moderationState = $node->get('moderation_state')->getString();
-        if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
-            if (!$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)) {
-                $node->setPublished(false);
-                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-                $node->isDefaultRevision(TRUE);
-            }
+        $existingState = $originalNode->get('moderation_state')->getString();
+        $newState = $node->get('moderation_state')->getString();
+
+        if ($newState === Constant::MOD_STATUS_DELETE) {
+            return;
         }
-        $node->field_groups =  $housesId;
+
+        if (
+            $existingState === Constant::MOD_STATUS_PUBLISHED
+            && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
+        ) {
+            $node->setPublished(false);
+            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+            $node->setNewRevision(TRUE);
+            $node->setRevisionLogMessage('Moved to draft.');
+            $node->isDefaultRevision(TRUE);
+        }
+        $node->field_groups =  $this->getHouses($node);
         $this->updateEventEndsOn($node);
         $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
     }
 
     protected function handleReserveRoom(Node $node)
     {
-        $eventExistingHousesId = (int) $node->original->get('field_group')->getString();
+        $originalNode = $node->original;
+        $eventExistingHousesId = (int) $originalNode->get('field_group')->getString();
 
-        $moderationState = $node->get('moderation_state')->getString();
-        if ($moderationState === Constant::MOD_STATUS_PUBLISHED) {
-            if (!$this->canByPassModerationInAnyHouse([$eventExistingHousesId], Constant::PERMISSION_MODERATION)) {
-                $node->setPublished(false);
-                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-                $node->isDefaultRevision(TRUE);
-            }
+        $newState = $node->get('moderation_state')->getString();
+
+        if ($newState === Constant::MOD_STATUS_DELETE) {
+            return;
         }
+        $existingState = $originalNode->get('moderation_state')->getString();
+
+        if (
+            $existingState === Constant::MOD_STATUS_PUBLISHED
+            && !$this->canByPassModerationInAnyHouse([$eventExistingHousesId], Constant::PERMISSION_MODERATION)
+        ) {
+            $node->setPublished(false);
+            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+            $node->setNewRevision(TRUE);
+            $node->setRevisionLogMessage('Moved to draft.');
+            $node->isDefaultRevision(TRUE);
+        }
+
         $this->updateEventEndsOn($node);
     }
 

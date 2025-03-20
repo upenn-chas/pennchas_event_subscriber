@@ -9,7 +9,7 @@
 !/web/sites/*/services.pantheon.*.yml
 !/web/sites/*/services.yml
 # Ignore paths that contain user-generated content.
-/web/sites/*/files
+/web/sites/*/files*
 /web/sites/*/private
 
 # Ignore SimpleTest multi-site environment.

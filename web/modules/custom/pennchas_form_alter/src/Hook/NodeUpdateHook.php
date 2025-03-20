@@ -29,6 +29,10 @@ class NodeUpdateHook
 
     protected function handleEvent(Node $node)
     {
+        $state = $node->get('moderation_state')->getString();
+        if ($state === Constant::MOD_STATUS_DELETE) {
+            return;
+        }
         $result = $this->processHouseChangeData($node);
 
         if ($result['new']) {
