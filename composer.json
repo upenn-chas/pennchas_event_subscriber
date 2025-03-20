@@ -111,8 +111,7 @@
         "drupal/masquerade": "^2.0",
         "drupal/simple_sitemap": "^4.2",
         "drupal/robotstxt": "^1.6",
-        "drupal/gin_lb": "^1.0@RC",
-        "drupal/r4032login": "^2.2"
+        "drupal/gin_lb": "^1.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -167,6 +166,9 @@
                 "Views filter of timestamp type": "https://www.drupal.org/files/issues/2024-11-19/core_views-timestamp_date_filter-3204558-13.patch",
                 "Attachment pager": "https://www.drupal.org/files/issues/2020-11-29/2833734-allow-attachment-pager-42.patch",
                 "html issue": "https://www.drupal.org/files/issues/2023-08-07/TypeError_htmlspecialchars_ArgumentNustBeTypeString_ArrayGiven-3352384-43.patch"
+            },
+            "drupal/simplesamlphp_auth": {
+                "Get dynamically values and Updated in drupal": "patches/simple_saml_auth1.patch"
             },
             "drupal/clientside_validation": {
                 "no link issue": "patches/no_link_issue.patch"
