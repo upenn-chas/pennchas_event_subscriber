@@ -509,6 +509,7 @@ function penchas_preprocess_html(&$variables)
 
   //   $personentitlement_values = $user->get('field_edu_person_entitlement')->value;
   //   $personentitlement = explode(", ", $personentitlement_values);
+
   //   $query = \Drupal::entityQuery('group_role');
   //   $role_ids = $query->execute();
   //   $group_roles = GroupRole::loadMultiple($role_ids);
@@ -537,9 +538,12 @@ function penchas_preprocess_html(&$variables)
   //     "2" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.house_coordinator",
   //     "3" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Harnwell_CH",
   //     "4" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.Gregory_CH",
-  //     "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology"
+  //     "5" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_technology",
+  //     "6" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_professional_staff",
+  //     "7" => "urn.mac.upen.edu.pen.isc.alt.apps.wps.chas.student.chas_student_worker"
   //   ];
-  //   dump($personentitlement);
+  //   // dump($personentitlement);
+  //   $excluded_roles = ['campus_partner', 'chas_technology', 'chas_professional_staff', 'chas_student_worker'];
   //   foreach ($personentitlement as $row => $value) {
   //     $array = explode('.', $value);
   //     $last_string = end($array);
@@ -551,65 +555,16 @@ function penchas_preprocess_html(&$variables)
   //       $drupal_user_roles_ids[] = $last_string;
   //     }
   //     if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
-  //       $group_user_roles_ids[] = $last_string;
+  //       if(!in_array($last_string , $excluded_roles)){
+  //         $group_user_roles_ids[] = $last_string;
+  //       }
   //     }
   //   }
-  //   dump($group_ids);
-  //   dump($group_user_roles_ids);
-  //   dump($drupal_user_roles_ids);
-  //   // if(isset($drupal_user_roles_ids)){
-  //   //   if ($user) {
-  //   //     foreach ($drupal_user_roles_ids as $role) {
-  //   //       if (!$user->hasRole($role)) {
-  //   //         $user->addRole($role);
-  //   //       }
-  //   //     }
-  //   //     $user->save();
-  //   //   }
-  //   // }
+  //   // dump($drupal_user_roles_ids);
+  //   // dd($group_user_roles_ids);
   //   $bundle = 'house1-group_membership'; // Replace with your bundle if needed.
-  //   // dd($bundle);
-  //   $membership = GroupMembership::create([
-  //     'bundle' => $bundle,
-  //     'group' => 5,
-  //     'uid' => 40,
-  //     'roles' => ['house1-chas_technology'],
-  //   ]);
-
-  //   // Save the group membership.
-  //   // $membership->save();
-  //   dd($membership);
   //   if (isset($group_ids)) {
-  //     dump($group_user_roles_ids);
   //     foreach ($group_ids as $key => $group_id) {
-
-  //       $prefix = "house1-";
-
-  //       $values = array_map(function($item) use ($prefix) {
-  //         return $prefix . $item;
-  //       }, $group_user_roles_ids);
-  //       // $values = [
-  //       //     'global_role' => 'house1-house_coordinator',  // The role you want to assign
-  //       //     'role' => 'house1-house_coordinator',  // The role you want to assign
-  //       //     // 'status' => TRUE,                    // Set status to active
-  //       //     'scope' => 'any',               // This could be the context or scope of the membership
-  //       //     'group_type'=> 'house1',
-  //       //   ];
-  //       // $values = ['group_roles' => $values];
-  //       // dump($values);
-
-  //       // Remove existing group membership
-  //       // $groupData = Group::load($group_id);
-  //       // $groupData->removeMember($user);
-
-  //       // $groupData->addMember($user, $values);
-  //       // $groupData->save();
-
-  //       die();
-
-  //             $groupData->addMember($user, $values);
-  //             $groupData->save();
-  //             die();
   //       if(isset($group_user_roles_ids)){
   //         foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
   //           $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
@@ -617,71 +572,66 @@ function penchas_preprocess_html(&$variables)
   //           $query->condition('gr.entity_id', $uid);
   //           $query->condition('gr.gid', $group_id); 
   //           $group_results = $query->execute()->fetchObject();
-  //           // dd($group_user_roles_ids);
-  //           dump($group_results);
-  //           // if($group_results){
-  //           //   // dd('sad: asdasd'.$group_id);
-  //           //   if($group_results->plugin_id == 'group_membership'){
-  //           //     // dd($group_id);
-  //           //     if ($groupData->getMember($user)) {
+            
+  //           if(!empty($group_results)){
+  //             if($group_results->plugin_id == 'group_membership'){
+  //               $groupData = Group::load($group_id);
+  //               if ($groupData->getMember($user)) {
   //                 $groupData->removeMember($user);
 
-  //           //       $values = ['group_roles' => []];
-  //           //       foreach ($group_user_roles_ids as $role_id) {
-  //           //           // Add each role to the group member
-  //           //           $values['group_roles'][] = 'house1-' . $role_id;
-  //           //       }
-  //           //       if (!$groupData->getMember($user)) {
-  //           //         $groupData->addMember($user, $values);
-  //           //       }
-  //           //     }
-  //           //   }
-  //           // }else{
-  //             $values = ['group_roles' => 'house1-'.$group_user_roles_id];
-  //             dump($group_user_roles_ids);
+  //                 $values = ['group_roles' => []];
+  //                 foreach ($group_user_roles_ids as $role_id) {
+  //                     // Add each role to the group member
+  //                     $values['group_roles'][] = 'house1-' . $role_id;
+  //                 }
+  //                 if (!$groupData->getMember($user)) {
+  //                   $groupData->addMember($user, $values);
+  //                 }
+  //               }
+  //             }
+  //           }else{
+  //             // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
   //             $values = ['group_roles' => []];  
-  //             // foreach ($group_user_roles_ids as $role_id) {
-  //             //     // Add each role to the group member
-  //             //     $values['group_roles'][] = 'house1-' . $role_id;
-  //             // }
-  //             $prefix = "house1-";
+  //             foreach ($group_user_roles_ids as $role_id) {
+  //               // Add each role to the group member
+  //               $values['group_roles'][] = 'house1-' . $role_id;
+  //               // dd($values['group_roles']);
+  //             }
+  //             $groupData = Group::load($group_id);
+  //             if (!$groupData->getMember($user)) {
+  //               $groupData->addMember($user, $values);
+  //             }
 
-  //             $values = array_map(function($item) use ($prefix) {
-  //                 return $prefix . $item;
-  //             }, $group_user_roles_ids);
-  //             // $values = ['group_roles' => $values];
-  //             // dd($values);
-  //             // $values = [
-  //             //   'role' => 'house1-chas_technology',  // The role you want to assign
-  //             //   'status' => TRUE,                    // Set status to active
-  //             //   'scope' => 'outsider',               // This could be the context or scope of the membership
-  //             // ];
-  //             // $groupData = Group::load($group_id);
-  //             // if (!$groupData->getMember($user)) {
-  //               // $groupData->addMember($user);
-  //               $membership = $groupData->addMember($user);
+  //           }
 
-  //               // Set the role for the group membership.
-  //               $membership->addRole($role_entity);
-
-  //               // Save the changes.
-  //               $membership->save();
-  //               $groupData->save();
-  //               dd($membership);
-  //             // }
-
-  //           // }
-
-  //           // if ($user) {
-  //           //   foreach ($drupal_user_roles_ids as $role) {
-  //           //     if (!$user->hasRole($role)) {
-  //           //       $user->addRole($role);
-  //           //     }
-  //           //   }
-  //           //   $user->save();
-  //           // }
+  //           if ($user) {
+  //             foreach ($drupal_user_roles_ids as $role) {
+  //               if (!$user->hasRole($role)) {
+  //                 $user->addRole($role);
+  //               }
+  //             }
+  //             $user->save();
+  //           }
+  //         }
+  //       }elseif(isset($drupal_user_roles_ids)){
+  //         if ($user) {
+  //           foreach ($drupal_user_roles_ids as $role) {
+  //             if (!$user->hasRole($role)) {
+  //               $user->addRole($role);
+  //             }
+  //           }
+  //           $user->save();
   //         }
   //       }
+  //     }
+  //   }elseif(isset($drupal_user_roles_ids)){
+  //     if ($user) {
+  //       foreach ($drupal_user_roles_ids as $role) {
+  //         if (!$user->hasRole($role)) {
+  //           $user->addRole($role);
+  //         }
+  //       }
+  //       $user->save();
   //     }
   //   }
   // }
