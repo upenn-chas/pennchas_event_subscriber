@@ -73,16 +73,20 @@
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
+<a href="{{ url }}">
   <div class="event-block">
     <div class="event-img">
       <div class="date">{{ content.field_event_schedule }}</div>
-      <a href="{{ url }}">{{ content.field_media_image }}</a>
+      {{ content.field_media_image }}
     </div>
     <div class="tags">
     </div>
     <div class="event-info">
-      <h4><a href="{{ url }}">{{ label }}</a></h4>
+      <h4>{{ label }}</h4>
+      {% if node.field_marketing_blurb.0 %}
         <p>{{ node.field_marketing_blurb.value }}</p>
+      {% endif %}
     </div>
   </div>
+  </a>
 </article>
