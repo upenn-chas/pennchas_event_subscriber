@@ -1,0 +1,15 @@
+{%
+set classes = [
+  'add-to-calendar',
+  'blue-filled'
+]
+%}
+{% if icons %}{{ attach_library('addtocal_augment/icons') }}{% endif %}
+<span{{attributes.addClass(classes)}}>
+	{% if label %}
+		<label class="addtocal__label">{{ label|trim(':') }}</label>
+	{% endif %}
+	<a href="{{ google }}" target="_blank" class="addtocal__link addtocal__google">Google</a>
+	<a href="{{ outlook }}" download="event.ics" class="addtocal__link addtocal__outlook">Outlook</a>
+	<a href="{{ ical }}" download="event.ics" class="addtocal__link addtocal__ical">iCal</a>
+</span>

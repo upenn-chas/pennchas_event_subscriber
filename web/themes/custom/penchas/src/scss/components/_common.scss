@@ -1391,3 +1391,38 @@ ul.pagination.js-pager__items {
   } 
 }
 }
+
+.event-details-wrap,
+.node--view-mode-default,
+.node--view-mode-draft {
+  .field__item:has(.recurring-output--wrapper) img {
+    display: none;
+  }
+  .field__item:has(.add-to-calendar) time {
+    display: none;
+  }
+
+  .recur-text {
+    display: none;
+  }
+
+  .add-to-calendar {
+    .addtocal__label {
+      width: 10.25rem;
+      font-size: 20px;
+      text-transform: none;
+      text-indent: unset;
+      background: unset;
+      opacity: 1;
+      margin-bottom: unset;
+    }
+    a.addtocal__link {
+      background-color: #fff;
+    }
+    &:hover {
+      a.addtocal__link {
+        background-color: #011f5b;
+      }
+    }
+  }
+}

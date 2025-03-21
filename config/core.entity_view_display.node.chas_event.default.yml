@@ -252,6 +252,88 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          5c65063c-2cfd-4a75-9e3c-8a12a3783d65:
+            uuid: 5c65063c-2cfd-4a75-9e3c-8a12a3783d65
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_event_schedule'
+              label: 'Event Schedule'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_recurring
+                label: visually_hidden
+                settings:
+                  timezone_override: ''
+                  format: default
+                  force_chronological: false
+                  add_classes: true
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                  past_display: null
+                  upcoming_display: null
+                  show_next: false
+                  current_upcoming: false
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_text_box_2]'
+                          description: '[node:field_marketing_blurb]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: true
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+                    rule:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_text_box_2]'
+                          description: '[node:field_marketing_blurb]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: false
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }

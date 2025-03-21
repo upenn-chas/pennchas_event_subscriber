@@ -1241,6 +1241,10 @@ function generate_google_calendar_data_for_chas_event(NodeInterface $node)
   ];
 }
 
+function penchas_addtocal_links($x) {
+  dd('Here');
+}
+
 /**
  * Implements hook_preprocess_datetime_form().
  */
