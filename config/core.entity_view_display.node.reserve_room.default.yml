@@ -488,22 +488,7 @@ third_party_settings:
               block_id: 1279
               block_revision_id: 1464
               block_serialized: null
-            weight: 2
-            additional: {  }
-          86d5b5ae-a8d7-4c82-a9e8-dbe35727b490:
-            uuid: 86d5b5ae-a8d7-4c82-a9e8-dbe35727b490
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:link'
-              label: 'Add to calendar'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 1392
-              block_revision_id: 1709
-              block_serialized: null
-            weight: 3
+            weight: 4
             additional: {  }
           7a850e60-4803-4b80-91c2-e9f1b0364ae4:
             uuid: 7a850e60-4803-4b80-91c2-e9f1b0364ae4
@@ -518,7 +503,89 @@ third_party_settings:
               block_id: 1394
               block_revision_id: 1711
               block_serialized: null
-            weight: 4
+            weight: 5
+            additional: {  }
+          c21d9351-0b45-4e27-aecf-28ae3fe700dd:
+            uuid: c21d9351-0b45-4e27-aecf-28ae3fe700dd
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_event_schedule'
+              label: 'Your Room Reservation Details'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_recurring
+                label: visually_hidden
+                settings:
+                  timezone_override: ''
+                  format: default
+                  force_chronological: false
+                  add_classes: false
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                  past_display: null
+                  upcoming_display: null
+                  show_next: false
+                  current_upcoming: false
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_room:entity:title]'
+                          description: '[node:field_long_text]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: false
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+                    rule:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_room:entity:title]'
+                          description: '[node:field_long_text]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: false
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
+            weight: 3
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

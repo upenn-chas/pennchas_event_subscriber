@@ -111,7 +111,8 @@
         "drupal/masquerade": "^2.0",
         "drupal/simple_sitemap": "^4.2",
         "drupal/robotstxt": "^1.6",
-        "drupal/gin_lb": "^1.0@RC"
+        "drupal/gin_lb": "^1.0@RC",
+        "drupal/addtocal_augment": "^1.2"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
