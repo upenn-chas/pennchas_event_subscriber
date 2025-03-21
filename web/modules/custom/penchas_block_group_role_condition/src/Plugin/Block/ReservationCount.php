@@ -54,7 +54,7 @@ class ReservationCount extends BlockBase {
         if (!empty($total_results)) {
           return [
               '#type' => 'inline_template',
-              '#template' => '<div class="info-fields"><p>They are {{ count }} room reservations awaiting moderation. Go to <a href="{{ goToUrl }}">Pending Room Reservations</a>.</p></div>',
+              '#template' => '<div class="info-fields"><p>There are {{ count }} room reservations awaiting moderation. Go to <a href="{{ goToUrl }}">Pending Room Reservations</a>.</p></div>',
               '#context' => [
                   'count' => $total_results,
                   'goToUrl' => Url::fromRoute('view.my_reservations.page_1')->toString(),
