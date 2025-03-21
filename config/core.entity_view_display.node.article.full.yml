@@ -38,6 +38,16 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 0
             additional: {  }
+          a2491856-b9dc-4127-bd8d-c55370939f46:
+            uuid: a2491856-b9dc-4127-bd8d-c55370939f46
+            region: content
+            configuration:
+              id: 'extra_field_block:node:article:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
 id: node.article.full
 targetEntityType: node

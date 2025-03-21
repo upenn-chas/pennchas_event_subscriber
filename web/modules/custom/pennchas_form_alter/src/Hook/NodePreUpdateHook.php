@@ -52,8 +52,8 @@ class NodePreUpdateHook
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
             $node->setNewRevision(TRUE);
             $node->setRevisionLogMessage('Moved to draft.');
-            $node->isDefaultRevision(TRUE);
         }
+        $node->isDefaultRevision(TRUE);
         $node->field_groups =  $this->getHouses($node);
         $this->updateEventEndsOn($node);
         $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
@@ -81,7 +81,7 @@ class NodePreUpdateHook
             $node->setRevisionLogMessage('Moved to draft.');
             $node->isDefaultRevision(TRUE);
         }
-
+        $node->isDefaultRevision(TRUE);
         $this->updateEventEndsOn($node);
     }
 
