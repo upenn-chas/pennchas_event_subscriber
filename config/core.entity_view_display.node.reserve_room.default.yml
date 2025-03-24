@@ -521,9 +521,9 @@ third_party_settings:
                 label: visually_hidden
                 settings:
                   timezone_override: ''
-                  format: default
+                  format: date_and_month
                   force_chronological: false
-                  add_classes: false
+                  add_classes: true
                   time_wrapper: true
                   localize: false
                   parts:
@@ -558,9 +558,9 @@ third_party_settings:
                           icons: true
                           max_desc: 60
                           ellipsis: false
-                          past_events: false
+                          past_events: true
                           target: ''
-                          ignore_timezone_if_UTC: false
+                          ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
                     rule:
@@ -580,9 +580,9 @@ third_party_settings:
                           icons: true
                           max_desc: 60
                           ellipsis: false
-                          past_events: false
+                          past_events: true
                           target: ''
-                          ignore_timezone_if_UTC: false
+                          ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
             weight: 3
