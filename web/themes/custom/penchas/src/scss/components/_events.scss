@@ -843,15 +843,16 @@
     .field__item {
       margin-bottom: 10px;
 
-      .smart-date--date .datetime,
-      .smart-date--time .datetime,
-      .datetime {
-        font-size: 12px;
-        text-transform: uppercase;
-        font-family: tablet-gothic;
-        font-weight: 600;
-        display: inline-block;
-        margin-right: 10px;
+      .smart-date--date,
+      .smart-date--time {
+        .datetime {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-family: tablet-gothic;
+          font-weight: 600;
+          display: inline-block;
+          margin-right: 10px;
+        }
       }
     }
   }
