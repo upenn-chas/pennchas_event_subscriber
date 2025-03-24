@@ -142,7 +142,7 @@ third_party_settings:
                 label: hidden
                 settings:
                   timezone_override: ''
-                  format: full_date
+                  format: front_view
                   force_chronological: false
                   add_classes: false
                   time_wrapper: true
@@ -156,7 +156,30 @@ third_party_settings:
                     unit: ''
                     decimals: 2
                     suffix: h
-                third_party_settings: {  }
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: false
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: ''
+                          location: ''
+                          description: ''
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: true
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
             weight: 1
             additional: {  }
           7830a9c3-0cec-49c0-8d11-f2211160cad0:
@@ -265,10 +288,10 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: smartdate_recurring
-                label: visually_hidden
+                label: hidden
                 settings:
                   timezone_override: ''
-                  format: default
+                  format: date_and_month
                   force_chronological: false
                   add_classes: true
                   time_wrapper: true
@@ -304,8 +327,8 @@ third_party_settings:
                           retain_spacing: false
                           icons: true
                           max_desc: 60
-                          ellipsis: true
-                          past_events: false
+                          ellipsis: false
+                          past_events: true
                           target: ''
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
@@ -327,9 +350,9 @@ third_party_settings:
                           icons: true
                           max_desc: 60
                           ellipsis: false
-                          past_events: false
+                          past_events: true
                           target: ''
-                          ignore_timezone_if_UTC: false
+                          ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
             weight: 6

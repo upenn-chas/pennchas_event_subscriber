@@ -1,0 +1,15 @@
+uuid: 68a72c22-7aaa-4c7c-8693-f9a2a45ba43b
+langcode: en
+status: true
+dependencies: {  }
+id: front_view
+label: 'Front View'
+date_format: 'l, F j'
+time_format: 'h:ia'
+time_hour_format: ha
+allday_label: 'All day'
+separator: '-'
+join: ' '
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'

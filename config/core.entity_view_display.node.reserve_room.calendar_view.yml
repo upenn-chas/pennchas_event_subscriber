@@ -259,9 +259,65 @@ third_party_settings:
                 label: visually_hidden
                 settings:
                   timezone_override: ''
-                  format: default
+                  format: front_view
                   force_chronological: false
                   add_classes: false
+                  time_wrapper: false
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: false
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: ''
+                          location: ''
+                          description: ''
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: true
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+            weight: 3
+            additional: {  }
+          2daa298c-d7c7-4b81-9997-82456821922d:
+            uuid: 2daa298c-d7c7-4b81-9997-82456821922d
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_event_schedule'
+              label: 'Your Room Reservation Details'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_recurring
+                label: hidden
+                settings:
+                  timezone_override: ''
+                  format: date_and_month
+                  force_chronological: false
+                  add_classes: true
                   time_wrapper: true
                   localize: false
                   parts:
@@ -273,8 +329,57 @@ third_party_settings:
                     unit: ''
                     decimals: 2
                     suffix: h
-                third_party_settings: {  }
-            weight: 3
+                  past_display: null
+                  upcoming_display: null
+                  show_next: false
+                  current_upcoming: false
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_room:entity:title]'
+                          description: '[node:field_long_text]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: true
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+                    rule:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_room:entity:title]'
+                          description: '[node:field_long_text]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: true
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
+            weight: 12
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

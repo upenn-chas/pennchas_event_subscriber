@@ -1394,19 +1394,23 @@ ul.pagination.js-pager__items {
 
 .event-details-wrap,
 .node--view-mode-default,
-.node--view-mode-draft {
-  .field__item:has(.recurring-output--wrapper) img {
+.node--view-mode-draft,
+.node--view-mode-calendar-view {
+  .field__item:has(.add-to-calendar) {
+    & time,img {
     display: none;
   }
-  .field__item:has(.add-to-calendar) time {
-    display: none;
-  }
+}
+
 
   .recur-text {
     display: none;
   }
 
   .add-to-calendar {
+    @media(max-width: 767px) {
+      margin-bottom: 20px;
+    }
     .addtocal__label {
       width: 10.25rem;
       font-size: 20px;
@@ -1424,5 +1428,16 @@ ul.pagination.js-pager__items {
         background-color: #011f5b;
       }
     }
+  }
+}
+
+.field--type-smartdate {
+  time {
+    text-transform: uppercase;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: tablet-gothic;
+    font-weight: 600;
+    margin-right: 10px;
   }
 }
