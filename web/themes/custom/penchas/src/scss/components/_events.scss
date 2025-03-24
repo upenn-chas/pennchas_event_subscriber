@@ -1082,3 +1082,14 @@ body.page-view-my-events {
     }
   }
 }
+.user-logged-in{
+  .block-inline-blockevents-by-group{
+    .events{
+      &.grid-4{
+        @include media-query-min('large'){
+          padding-left: 22px;
+        }
+      }
+    }
+  }
+}

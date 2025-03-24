@@ -9,7 +9,7 @@ id: house1-house_director_insider
 label: 'House Director'
 weight: 7
 admin: false
-scope: insider
+scope: outsider
 global_role: house_director
 group_type: house1
 permissions: {  }

@@ -110,6 +110,14 @@
         }
       });
     }
+
+    if (jQuery('body').hasClass('user-logged-in')) {
+      var navWrapCount = jQuery('div.nav-wrap-cst').length;
+      if (navWrapCount > 1) {
+        jQuery('div.nav-wrap-cst').first().show();  
+        jQuery('div.nav-wrap-cst').last().hide();
+      }
+    }
     
     // if('#views-exposed-form-calendar-page-1'){
     //   jQuery(this).find('.form-radios').hide();

@@ -1,0 +1,30 @@
+uuid: a0ca1069-90c0-46d5-8170-dfb8dd4a0519
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_role_condition_plugin
+  theme:
+    - penchas
+id: penchas_tabs_2
+theme: penchas
+region: breadcrumb
+weight: -18
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Tabs New'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility:
+  group_role_condition_plugin:
+    id: group_role_condition_plugin
+    block_group_roles:
+      house1-house_coordinator: house1-house_coordinator
+      house1-house_director: house1-house_director
+      house1-house_director_insider: house1-house_director_insider
+      house1-house_faculty: house1-house_faculty
+    negate: null
