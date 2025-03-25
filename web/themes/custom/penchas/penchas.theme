@@ -73,7 +73,12 @@ function penchas_preprocess_container(array &$variables)
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
-    if (!empty($path_parts[2]) && $path_parts[2] == 'calendar' || $path_parts[2] == 'room-reservation-calendar' || $path_parts[2] == 'week-room-reservation-calendar' || $path_parts[2] == 'week-calendar') {
+    if (
+      isset($path_parts[2]) && ($path_parts[2] == 'calendar'
+        || $path_parts[2] == 'room-reservation-calendar'
+        || $path_parts[2] == 'week-room-reservation-calendar'
+        || $path_parts[2] == 'week-calendar')
+    ) {
       if (strpos($path_parts[2], 'calendar') !== false || strpos($path_parts[2], 'room-reservation-calendar') !== false || strpos($path_parts[2], 'week-room-reservation-calendar') !== false || strpos($path_parts[2], 'week-calendar') !== false) {
         $variables['attributes']['class'] = 'full-container';
       }

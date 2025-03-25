@@ -456,7 +456,7 @@ function pennchas_form_alter_preprocess_field(&$variables) {
 }
 
 function pennchas_form_alter_preprocess_form_element(&$variables) {
-    if (strpos($variables['name'] , 'field_block_display_condition_wi') !== false) {
+    if (isset($variables['name']) && strpos($variables['name'] , 'field_block_display_condition_wi') !== false) {
       $items = &$variables['items'];
 
         $group_role = GroupRole::load($variables['element']['#return_value']);
