@@ -85,7 +85,7 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
 {
     // Get the form ID
     $filterFormId = $form['#id'];
-    
+
     // Targeted views
     static $targetViews = [
         'views-exposed-form-moderation-reports-event-moderation' => 1,
@@ -112,11 +112,11 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
 
     if (isset($targetViews[$filterFormId])) {
         $form = (new ReportExposeFormAlter())->alter($form, $formState);
-    } else if(isset($targetDashboardViews[$filterFormId]) || $filterFormId === 'views-exposed-form-moderated-content-moderated-content') { 
+    } else if (isset($targetDashboardViews[$filterFormId]) || $filterFormId === 'views-exposed-form-moderated-content-moderated-content') {
         if (isset($form['moderation_state'])) {
             unset($form['moderation_state']['#options']['All']);
         }
-    }else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
+    } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
         $groups = $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
         $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
     }
@@ -179,7 +179,8 @@ function pennchas_form_alter_node_update(Node $node)
 {
 
     $nodeType = $node->getType();
-    if ($nodeType === Constant::NODE_EVENT 
+    if (
+        $nodeType === Constant::NODE_EVENT
         || $nodeType === Constant::NODE_RESERVE_ROOM
         || $nodeType === Constant::NODE_HOUSE_PAGE
         || $nodeType === Constant::NODE_ARTICLE
@@ -201,10 +202,10 @@ function pennchas_form_alter_entity_type_alter(&$entityType)
 function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
     if ($bundle === Constant::NODE_EVENT) {
-        if(isset($fields['title'])) {
+        if (isset($fields['title'])) {
             $fields['title']->addConstraint('TextConstraint');
         }
-        
+
         if (isset($fields['field_collaborators'])) {
             $fields['field_collaborators']->addConstraint('UniqueCollaboratorsEmailConstraint');
         }
@@ -213,7 +214,7 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
             $fields['field_event_schedule']->addConstraint('EventScheduleConstraint');
         }
     } else if ($bundle === Constant::NODE_RESERVE_ROOM) {
-        if(isset($fields['title'])) {
+        if (isset($fields['title'])) {
             $fields['title']->addConstraint('TextConstraint');
         }
 
@@ -230,15 +231,15 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
         }
     } else if ($bundle === Constant::NODE_ROOM) {
 
-        if(isset($fields['title'])) {
+        if (isset($fields['title'])) {
             $fields['title']->addConstraint('TextConstraint');
         }
-        
+
         if (isset($fields['field_text_box'])) {
             $fields['field_text_box']->addConstraint('TextConstraint');
         }
 
-        if(isset($fields['field_address'])) {
+        if (isset($fields['field_address'])) {
             $fields['field_address']->addConstraint('TextConstraint');
         }
     }
@@ -254,7 +255,7 @@ function pennchas_form_alter_entity_operation_alter(array &$operations, EntityIn
                 'clone',
                 'devel',
             ];
-            foreach($opts as $opt) {
+            foreach ($opts as $opt) {
                 if (isset($operations[$opt])) {
                     unset($operations[$opt]);
                 }
@@ -362,7 +363,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
     $tabs = &$data['tabs'][0];
 
     // Check if the tabs array is empty.
-    if(!$tabs) {
+    if (!$tabs) {
         return;
     }
 
@@ -411,7 +412,6 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         ];
         remove_tabs($tabs, $unsetDeleteTab);
     }
-
 }
 
 /**
@@ -433,53 +433,56 @@ function remove_tabs(array &$tabs, array $tabTitles)
 }
 
 
-function pennchas_form_alter_preprocess_field(&$variables) {
+function pennchas_form_alter_preprocess_field(&$variables)
+{
     // Target the specific field in the group entity.
     if ($variables['element']['#field_name'] == 'field_program_communities') {
         foreach ($variables['items'] as &$item) {
             if (!empty($item['content'])) {
-            $getEntity = $item['content']['#url']->getOption('entity');
+                $getEntity = $item['content']['#url']->getOption('entity');
 
-            $nid = $getEntity->get('entity_id')->target_id; // Assuming the field stores node ID.
-            // Load the node.
-            $node = \Drupal\node\Entity\Node::load($nid);
-            if ($node) {
-                // Generate the node link.
-                $url = $node->toUrl();
-                $title = $node->getTitle();
-                $item['content']['#url'] = $url;
-                $item['content']['#attributes'] = ['target'=> '_blank'];
+                $nid = $getEntity->get('entity_id')->target_id; // Assuming the field stores node ID.
+                // Load the node.
+                $node = \Drupal\node\Entity\Node::load($nid);
+                if ($node) {
+                    // Generate the node link.
+                    $url = $node->toUrl();
+                    $title = $node->getTitle();
+                    $item['content']['#url'] = $url;
+                    $item['content']['#attributes'] = ['target' => '_blank'];
+                }
             }
         }
-      }
     }
 }
 
-function pennchas_form_alter_preprocess_form_element(&$variables) {
-    if (isset($variables['name']) && strpos($variables['name'] , 'field_block_display_condition_wi') !== false) {
-      $items = &$variables['items'];
+function pennchas_form_alter_preprocess_form_element(&$variables)
+{
+    if (isset($variables['name']) && !empty($variables['name']) && strpos($variables['name'], 'field_block_display_condition_wi') !== false) {
+        $items = &$variables['items'];
 
         $group_role = GroupRole::load($variables['element']['#return_value']);
-        if($group_role){
-            $variables['label']['#title'] = $group_role->get('label') .' ('. $group_role->get('scope') .')';
+        if ($group_role) {
+            $variables['label']['#title'] = $group_role->get('label') . ' (' . $group_role->get('scope') . ')';
         }
     }
 }
 
-function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
-    
-    if($context['items']->getName() == 'field_events_by_group_ref'){
-        if($element['options']){
+function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context)
+{
+
+    if ($context['items']->getName() == 'field_events_by_group_ref') {
+        if ($element['options']) {
             $element['options']['argument']['#title'] = t('House ID');
         }
     }
 }
-  
-function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+
+function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context)
+{
     $request = \Drupal::service('request_stack')->getCurrentRequest();
     $parameter_value = $request->query->get('view_mode');
-    if( $parameter_value == 'calendar_view'){
+    if ($parameter_value == 'calendar_view') {
         $view_mode = 'calendar_view';
     }
-
 }
