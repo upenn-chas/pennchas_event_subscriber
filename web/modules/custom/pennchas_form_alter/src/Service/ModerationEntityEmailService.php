@@ -21,7 +21,7 @@ class ModerationEntityEmailService
     /**
      * Notifies the author about moderation.
      */
-    public function notifyAuthor(string $emailTemplateId, Node $node, int|null $moderationWaitingDays)
+    public function notifyAuthor(string $emailTemplateId, Node $node, int|null $moderationWaitingDays = null)
     {
         $emailData = [
             'node' => $node
