@@ -90,6 +90,7 @@ permissions:
   - 'reschedule smart date recur instances'
   - 'update media'
   - 'use editorial transition create_new_draft'
+  - 'use editorial transition edit_approved'
   - 'view any unpublished content'
   - 'view article revisions'
   - 'view chas_event revisions'

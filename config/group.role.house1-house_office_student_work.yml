@@ -38,6 +38,7 @@ permissions:
   - 'update own group_node:notices entity'
   - 'update own group_node:reserve_room entity'
   - 'use editorial transition create_new_draft'
+  - 'use editorial transition edit_approved'
   - 'view group'
   - 'view group_media:document entity'
   - 'view group_media:image entity'

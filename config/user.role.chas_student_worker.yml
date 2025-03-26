@@ -83,6 +83,7 @@ permissions:
   - 'event own evaluation'
   - 'update media'
   - 'use editorial transition create_new_draft'
+  - 'use editorial transition edit_approved'
   - 'view article revisions'
   - 'view chas_event revisions'
   - 'view house_landing_page revisions'
