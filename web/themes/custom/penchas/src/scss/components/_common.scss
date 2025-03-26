@@ -1277,7 +1277,28 @@ ul.pagination.js-pager__items {
       }
     }
   }
+  &.path-evaluate{
+    .views-element-container {
+      max-width: 100%;
+      padding-top: 0;
+      .attachment-after{
+        .event-evalution-form{
+          max-width: 1350px;
+          padding-left: 18px;
+          padding-right: 18px;
+          margin: auto;
+        }
+      }
+      .request-box{
+        @include media-query('mobile'){
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
+
 .layout.row.no-gutters {
   &:not(:has(.program-box)) {
     &.layout-builder__layout {
@@ -1438,6 +1459,6 @@ ul.pagination.js-pager__items {
     text-transform: uppercase;
     font-family: tablet-gothic;
     font-weight: 600;
-    margin-right: 10px;
+    margin-right: 0;
   }
 }

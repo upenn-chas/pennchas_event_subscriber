@@ -383,6 +383,11 @@ color: inherit !important;
     gap: 10px;
     .form-actions{
       width: 100%;
+      margin-bottom: 0 !important;
+      padding-bottom: 20px;
+      bottom: -30px;
+      padding-left:0;
+      padding-right: 0;
     }
   }
  #media-library-add-form-wrapper{

@@ -84,7 +84,6 @@ function penchas_preprocess_container(array &$variables)
     }
   }
 
-  // Check for 'moderate' path
   if (isset($path_parts[0]) && $path_parts[0] == 'moderate') {
     $variables['attributes']['class'] = 'full-container';
   }
