@@ -7,7 +7,7 @@
 if (!ini_get('session.save_handler')) {
  ini_set('session.save_handler', 'file');
 }
-
+$logdir = "";
 $host = $_SERVER['HTTP_HOST'];
 if ((isset($_ENV)) && (isset($_ENV['PANTHEON_ENVIRONMENT']))) {
 	$ps = json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE);

@@ -18,7 +18,7 @@ class ModerationFormAlter
 
     public function alter(array $form, FormStateInterface $formState)
     {
-        if ($form['current']['#markup'] === 'Pending') {
+        if (isset($form['current']['#markup']) && $form['current']['#markup'] === 'Pending') {
             $form['new_state']['#default_value'] = 'pending';
             $form['new_state']['#options']['pending'] = 'Pending';
         }
