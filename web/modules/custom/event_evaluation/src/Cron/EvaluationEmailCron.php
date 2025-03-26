@@ -30,13 +30,15 @@ class EvaluationEmailCron
         $nodeIds = $query->execute();
 
         if ($nodeIds) {
+            $this->logger->debug('Found '. count($nodeIds) . ' events, ready for evaluation.');
             $nodes = Node::loadMultiple($nodeIds);
             foreach ($nodes as $node) {
                 try {
                     $this->sendEvaluationEmailLink($node);
                     $node->set('field_evaluation_notification', TRUE);
+                    $node->setNewRevision(FALSE);
                     $node->save();
-                    $this->logger->info('Sent evaluation form link: ' . $node->getTitle());
+                    $this->logger->debug('Sent evaluation form link: ' . $node->getTitle());
                 } catch (\Exception $e) {
                     $this->logger->error($e->getMessage(), $e->getTrace());
                 }

@@ -21,6 +21,7 @@ dependencies:
     - node.type.reserve_room
     - node.type.room
     - workflows.workflow.editorial
+    - workflows.workflow.non_moderation_flow
   module:
     - content_moderation
     - event_evaluation
@@ -91,6 +92,8 @@ permissions:
   - 'reschedule smart date recur instances'
   - 'update media'
   - 'use editorial transition create_new_draft'
+  - 'use editorial transition edit_approved'
+  - 'use non_moderation_flow transition published'
   - 'view article revisions'
   - 'view chas_event revisions'
   - 'view house_landing_page revisions'

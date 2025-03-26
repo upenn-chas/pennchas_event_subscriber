@@ -4,6 +4,7 @@ namespace Drupal\pennchas_form_alter\Hook;
 
 use Drupal\block\Entity\Block;
 use Drupal\Core\Entity\EntityRepository;
+use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\layout_builder\Section;
@@ -43,20 +44,24 @@ class NodePreUpdateHook
         if ($newState === Constant::MOD_STATUS_DELETE) {
             return;
         }
+        $requestUrl = \Drupal::request()->getRequestUri();
+        $nodeId = $node->id();
 
-        if (
-            $existingState === Constant::MOD_STATUS_PUBLISHED
-            && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
-        ) {
-            $node->setPublished(false);
-            $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-            $node->setNewRevision(TRUE);
-            $node->setRevisionLogMessage('Moved to draft.');
+        if (strpos($requestUrl, "/node/$nodeId/edit") !== FALSE) {
+            if (
+                $existingState === Constant::MOD_STATUS_PUBLISHED
+                && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
+            ) {
+                $node->setPublished(false);
+                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+                $node->setNewRevision(TRUE);
+                $node->setRevisionLogMessage('The event has moved back to draft for moderation, as the author has edited the event.');
+            }
+            $node->field_groups =  $this->getHouses($node);
+            $this->updateEventEndsOn($node);
+            $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
         }
         $node->isDefaultRevision(TRUE);
-        $node->field_groups =  $this->getHouses($node);
-        $this->updateEventEndsOn($node);
-        $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
     }
 
     protected function handleReserveRoom(Node $node)

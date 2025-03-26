@@ -60,6 +60,12 @@ type_settings:
         - pending
       to: denied
       weight: 0
+    edit_approved:
+      label: 'Edit Approved'
+      from:
+        - published
+      to: published
+      weight: 3
     pending:
       label: Pending
       from:
@@ -71,7 +77,6 @@ type_settings:
       from:
         - draft
         - pending
-        - published
       to: published
       weight: -1
   entity_types:
