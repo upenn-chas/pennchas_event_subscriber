@@ -50,6 +50,7 @@ permissions:
   - 'update own group_node:room entity'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition edit_approved'
+  - 'use non_moderation_flow transition published'
   - 'view all group revisions'
   - 'view group'
   - 'view group revisions'

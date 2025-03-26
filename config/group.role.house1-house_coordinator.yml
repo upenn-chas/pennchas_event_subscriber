@@ -74,6 +74,7 @@ permissions:
   - 'use editorial transition edit_approved'
   - 'use editorial transition pending'
   - 'use editorial transition publish'
+  - 'use non_moderation_flow transition published'
   - 'view all group revisions'
   - 'view group'
   - 'view group revisions'

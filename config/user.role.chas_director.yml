@@ -22,6 +22,7 @@ dependencies:
     - node.type.reserve_room
     - node.type.room
     - workflows.workflow.editorial
+    - workflows.workflow.non_moderation_flow
   module:
     - complete_webform_exporter
     - config
@@ -113,6 +114,7 @@ permissions:
   - 'use editorial transition edit_approved'
   - 'use editorial transition pending'
   - 'use editorial transition publish'
+  - 'use non_moderation_flow transition published'
   - 'view all revisions'
   - 'view any audio media revisions'
   - 'view any document media revisions'
