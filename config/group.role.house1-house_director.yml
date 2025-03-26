@@ -15,6 +15,8 @@ permissions:
   - 'access group_media overview'
   - 'access group_node overview'
   - 'access reports'
+  - 'configure any layout'
+  - 'congigure any layout'
   - 'create group_media:document entity'
   - 'create group_media:image entity'
   - 'create group_media:remote_video entity'

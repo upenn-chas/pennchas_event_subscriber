@@ -11,12 +11,12 @@ smtp_username: smtp-relay/collegehouses.upenn.edu
 smtp_password: oktad;Kneb63GlovUthid
 smtp_from: chas@collegehouses.upenn.edu
 smtp_fromname: 'Penn CHAS'
-smtp_client_hostname: ''
+smtp_client_hostname: collegehouses.upenn.edu
 smtp_client_helo: ''
 smtp_allowhtml: true
-smtp_test_address: rohit@weassemble.team
+smtp_test_address: ''
 smtp_reroute_address: ''
-smtp_debugging: true
+smtp_debugging: false
 smtp_debug_level: 2
 prev_mail_system: php_mail
 smtp_keepalive: false

@@ -23,6 +23,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 use Drupal\group\Entity\GroupRole;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
+use Drupal\user\Entity\User;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
@@ -360,6 +361,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 {
     // Get the tabs array.
     $tabs = &$data['tabs'][0];
+    $group_role = FALSE; 
 
     // Check if the tabs array is empty.
     if(!$tabs) {
@@ -397,10 +399,68 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 
     $current_user = \Drupal::currentUser();
     $user_roles = $current_user->getRoles();
-
+    
     if ($current_user->hasRole('administrator')) {
         return;
     }
+
+    $required_roles = ['house1-house_coordinator', 'house1-house_faculty', 'house1-house_director'];
+    $permission = "configure any layout";
+    $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
+    foreach ($groupMemberships as $membership) {
+        $roles = $membership->getRoles();
+        foreach ($roles as $role) {
+            if (in_array($role->id(), $required_roles)) {
+                $uid = $current_user->id();
+                $user = User::load($uid);
+                if ($user instanceof User) {
+                    if (!$current_user->hasPermission($permission)) {
+                        $role = \Drupal\user\Entity\Role::load('authenticated');
+                        if($role){
+                            $role->grantPermission($permission);
+                            $role->save();
+                        }
+                    }
+                }
+                $group_role = TRUE; 
+            }
+        }
+
+        if($group_role){
+           
+            $connection = Database::getConnection();
+            $query = $connection->select('group_relationship_field_data', 'gr');
+            $query->condition('gr.entity_id', $current_user->id());
+            $query->condition('gr.plugin_id', 'group_membership');
+            $query->fields('gr', ['gid']);
+            $group_results = $query->execute()->fetchCol();
+            
+            if(!empty($group_results)){
+                foreach ($group_results as $group_id) {
+                    $group = Group::load($group_id);
+                    $groupName = $group->get('field_short_name')->value;
+                    $current_uri = \Drupal::request()->getRequestUri();
+                    $path_parts = explode('/', trim($current_uri, '/'));
+                    // dd($path_parts[0]);
+                    $group = \Drupal::routeMatch()->getParameter('group');
+                    if(!$group && $path_parts[0] != 'gregory'){
+                        static $tabsForGroupManager = [
+                            'layout' => 0,
+                        ];
+                        remove_tabs($tabs, $tabsForGroupManager);
+                    }
+                }
+            }
+    
+            static $unsetDeleteTabForGroup = [
+                'delete' => 0,
+                'latest version' => 0,
+            ];
+            remove_tabs($tabs, $unsetDeleteTabForGroup);
+        }
+    }
+
+
 
     $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
     // dd($tabs);
@@ -411,6 +471,8 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         ];
         remove_tabs($tabs, $unsetDeleteTab);
     }
+
+
 
 }
 
@@ -431,6 +493,25 @@ function remove_tabs(array &$tabs, array $tabTitles)
         }
     }
 }
+
+/**
+ * Restore tabs in the tabs array if removed.
+ *
+ * @param array $tabs
+ *   The tabs array.
+ * @param array $tabTitles
+ *   The list of tab titles to allow.
+ */
+function restore_tabs(array &$tabs, array $tabTitles)
+{
+    foreach ($tabs as $key => $config) {
+        $tabTitle = strtolower($config['#link']['title']);
+        if (isset($tabTitles[$tabTitle])) {
+            $tabs[$key]['#access'] = TRUE;
+        }
+    }
+}
+
 
 
 function pennchas_form_alter_preprocess_field(&$variables) {
@@ -456,15 +537,16 @@ function pennchas_form_alter_preprocess_field(&$variables) {
 }
 
 function pennchas_form_alter_preprocess_form_element(&$variables) {
-    if (strpos($variables['name'] , 'field_block_display_condition_wi') !== false) {
-      $items = &$variables['items'];
+    if (isset($variables['name']) && strpos($variables['name'], 'field_block_display_condition_wi') !== false) {
+        $items = &$variables['items'];
 
         $group_role = GroupRole::load($variables['element']['#return_value']);
-        if($group_role){
-            $variables['label']['#title'] = $group_role->get('label') .' ('. $group_role->get('scope') .')';
+        if ($group_role) {
+            $variables['label']['#title'] = $group_role->get('label') . ' (' . $group_role->get('scope') . ')';
         }
     }
 }
+
 
 function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
     

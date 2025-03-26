@@ -72,18 +72,24 @@ function penchas_preprocess_container(array &$variables)
   // Add a custom class to the container.
   $current_path = \Drupal::service('path.current')->getPath();
   $path_parts = explode('/', trim($current_path, '/'));
+
+  // Ensure that there are at least three elements in the path
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
-    if (!empty($path_parts[2]) && $path_parts[2] == 'calendar' || $path_parts[2] == 'room-reservation-calendar' || $path_parts[2] == 'week-room-reservation-calendar' || $path_parts[2] == 'week-calendar') {
-      if (strpos($path_parts[2], 'calendar') !== false || strpos($path_parts[2], 'room-reservation-calendar') !== false || strpos($path_parts[2], 'week-room-reservation-calendar') !== false || strpos($path_parts[2], 'week-calendar') !== false) {
-        $variables['attributes']['class'] = 'full-container';
-      }
+    if (isset($path_parts[2]) && (
+      $path_parts[2] == 'calendar' || 
+      $path_parts[2] == 'room-reservation-calendar' || 
+      $path_parts[2] == 'week-room-reservation-calendar' || 
+      $path_parts[2] == 'week-calendar')) {
+      $variables['attributes']['class'] = 'full-container';
     }
   }
 
-  if ($path_parts[0] == 'moderate') {
+  // Check for 'moderate' path
+  if (isset($path_parts[0]) && $path_parts[0] == 'moderate') {
     $variables['attributes']['class'] = 'full-container';
   }
 }
+
 
 
 function penchas_preprocess_node_edit_form(&$variables)
@@ -282,8 +288,6 @@ function penchas_preprocess_node(&$variables)
 
       $variables['is_logged_in'] = TRUE;
       $variables['attributes']['class'][] = 'logged-in-user';
-
-
 
       // Generate moderator link if the node is in draft/pending state and user has access.
       $moderator_access_check_service = \Drupal::service('pennchas_common.moderator_access_check');
@@ -922,7 +926,7 @@ function generate_create_form_url($group_id, $plugin_id)
 //   $group_permission_handler = \Drupal::service('group.permissions');
 
 //   // Check if the user has the specified permission for this group.
-//   $has_permission = $group_permission_handler->getPermissions($group, $user, $permission);
+//   $has_permission = $group_permission_handler->setPermissions($group, $user, $permission);
 //   // dd($has_permission);
 //   // Return whether the user has the permission.
 //   return $has_permission;
@@ -933,6 +937,8 @@ function generate_create_form_url($group_id, $plugin_id)
  */
 function penchas_preprocess_views_view(&$variables)
 {
+  $current_user = \Drupal::currentUser();
+
   $params = \Drupal::request()->query->all();
   $params['c_type'] = 'month';
   $monthparams = $params;
@@ -942,14 +948,16 @@ function penchas_preprocess_views_view(&$variables)
   $variables['week_params'] = http_build_query($weekparams);
   $user = \Drupal::currentUser();
   // Example usage: Check if the current user can create "article" content in the group.
-  // $group_id = 1;  // Replace with actual group ID.
-  // $permission = 'create group_node:notices entity';  // Replace with the specific permission.
-
-  // if (check_user_permission_in_group($group_id, $user, $permission)) {
+  $group_id = 1;  // Replace with actual group ID.
+  $permission = 'congigure any layout';  // Replace with the specific permission.
+  // check_user_permission_in_group($group_id, $user, $permission);
+  // if () {
   //   dd("User has the permission: $permission in the group.");
   // } else {
   //   dd("User does NOT have the permission: $permission in the group.");
   // }
+
+  // $usr = check_user_permissions();
   // $route_match = \Drupal::routeMatch();
   // $groupData = $route_match->getParameter('group');
   // $variables['current_group_id'] = $groupData;
@@ -1269,3 +1277,18 @@ function generate_google_calendar_data_for_chas_event(NodeInterface $node)
 //     }
 //   }
 // }
+
+
+function check_user_permissions() {
+  $current_user = \Drupal::currentUser();
+  $permissions = \Drupal::service('user.permissions')->getPermissionsByRole($current_user->getRoles());
+
+  // Print out the permissions
+  foreach ($permissions as $role => $permissions_list) {
+    foreach ($permissions_list as $permission => $is_granted) {
+      if ($is_granted) {
+        \Drupal::messenger()->addMessage('User has the permission: ' . $permission);
+      }
+    }
+  }
+}
