@@ -15135,59 +15135,59 @@ summary {
 
 .file--general,
 .file--application-octet-stream {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/application-octet-stream.png);
+  background-image: url(../images/icons/application-octet-stream.png);
 }
 
 .file--package-x-generic {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/package-x-generic.png);
+  background-image: url(../images/icons/package-x-generic.png);
 }
 
 .file--x-office-spreadsheet {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/x-office-spreadsheet.png);
+  background-image: url(../images/icons/x-office-spreadsheet.png);
 }
 
 .file--x-office-document {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/x-office-document.png);
+  background-image: url(../images/icons/x-office-document.png);
 }
 
 .file--x-office-presentation {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/x-office-presentation.png);
+  background-image: url(../images/icons/x-office-presentation.png);
 }
 
 .file--text-x-script {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/text-x-script.png);
+  background-image: url(../images/icons/text-x-script.png);
 }
 
 .file--text-html {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/text-html.png);
+  background-image: url(../images/icons/text-html.png);
 }
 
 .file--text-plain {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/text-plain.png);
+  background-image: url(../images/icons/text-plain.png);
 }
 
 .file--application-pdf {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/application-pdf.png);
+  background-image: url(../images/icons/application-pdf.png);
 }
 
 .file--application-x-executable {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/application-x-executable.png);
+  background-image: url(../images/icons/application-x-executable.png);
 }
 
 .file--audio {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/audio-x-generic.png);
+  background-image: url(../images/icons/audio-x-generic.png);
 }
 
 .file--video {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/video-x-generic.png);
+  background-image: url(../images/icons/video-x-generic.png);
 }
 
 .file--text {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/text-x-generic.png);
+  background-image: url(../images/icons/text-x-generic.png);
 }
 
 .file--image {
-  background-image: url(../../contrib/bootstrap_barrio/images/icons/image-x-generic.png);
+  background-image: url(../images/icons/image-x-generic.png);
 }
 
 /**
@@ -15198,7 +15198,7 @@ summary {
   content: "";
   vertical-align: super;
   display: inline-block;
-  background-image: url(../../contrib/bootstrap_barrio/images/required.svg);
+  background-image: url(../images/required.svg);
   background-repeat: no-repeat;
   -webkit-background-size: calc((1.5em + 0.75rem + calc(var(--bs-border-width) * 2)) * 0.5) calc((1.5em + 0.75rem + calc(var(--bs-border-width) * 2)) * 0.5);
           background-size: calc((1.5em + 0.75rem + calc(var(--bs-border-width) * 2)) * 0.5) calc((1.5em + 0.75rem + calc(var(--bs-border-width) * 2)) * 0.5);
@@ -15285,7 +15285,7 @@ form .form-type-textarea {
  * Visual styles for icons.
  */
 .icon-help {
-  background: url(/../../contrib/bootstrap_barrio/images/help.png) 0 50% no-repeat;
+  background: url(/../images/help.png) 0 50% no-repeat;
   /* LTR */
   padding: 0.0625rem 0 0.0625rem 1.5rem;
   /* LTR */
@@ -16292,7 +16292,7 @@ body.path-user .field--label-above .field__item {
   content: "";
   vertical-align: super;
   display: inline-block;
-  background-image: url(../../contrib/bootstrap_barrio/images/required.svg);
+  background-image: url(../images/required.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 7px 7px;
           background-size: 7px 7px;

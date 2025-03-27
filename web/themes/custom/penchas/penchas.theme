@@ -1036,7 +1036,7 @@ function penchas_preprocess_views_view(&$variables)
       $query->fields('hm', ['entity_id']);
       $query->condition('hm.field_short_name_value', $uri_parts['2']);
       $group_results = $query->execute()->fetchObject();
-      $groupData = $group_results->entity_id;
+      $groupData = $group_results? $group_results->entity_id : null;
     }
   }
 

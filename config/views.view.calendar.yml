@@ -1003,19 +1003,10 @@ display:
       exposed_block: false
       display_extenders:
         metatag_display_extender:
-          metatags:
-            title: 'Event Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
-            robots: 'index, follow'
+          metatags: {  }
           tokenize: true
         simple_sitemap_display_extender:
-          variants:
-            default:
-              index: true
-              priority: '0.5'
-              changefreq: always
-              arguments:
-                field_short_name_value: field_short_name_value
-              max_links: 15
+          variants: {  }
       path: group/%/calendar
     cache_metadata:
       max-age: -1
@@ -1523,19 +1514,10 @@ display:
       exposed_block: false
       display_extenders:
         metatag_display_extender:
-          metatags:
-            title: 'Weekly Event Calendar | {{ arguments.field_short_name_value }} | Penn CHAS'
-            robots: 'index, follow'
+          metatags: {  }
           tokenize: true
         simple_sitemap_display_extender:
-          variants:
-            default:
-              index: true
-              priority: '0.5'
-              changefreq: always
-              arguments:
-                field_short_name_value: field_short_name_value
-              max_links: 15
+          variants: {  }
       path: group/%/week-calendar
     cache_metadata:
       max-age: -1
