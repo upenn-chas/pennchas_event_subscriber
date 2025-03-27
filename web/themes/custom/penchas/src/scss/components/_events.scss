@@ -17,7 +17,8 @@
 
     article {
       padding: 0;
-      a{
+
+      a {
         text-decoration: none;
       }
     }
@@ -44,8 +45,12 @@
     min-height: 173px;
     max-height: 173px;
     background-color: var(--background-house-color, #ebf1ff);
-    @media (max-width:1200px) {
-      min-height: 157px;
+    overflow: hidden;
+
+    @media (max-width: 1070px) {
+
+      min-height: 161px;
+
     }
 
     .date {
@@ -87,12 +92,15 @@
         display: block;
         padding-bottom: 56%;
         content: "";
+
         @media (max-width:1340px) {
           padding-bottom: 63%;
         }
-        @media(max-width:1200px){
+
+        @media(max-width:1200px) {
           padding-bottom: 70%;
         }
+
         @media (max-width:991px) {
           padding-bottom: 56%;
         }
@@ -115,8 +123,8 @@
   h4 {
     margin-bottom: 5px;
     text-transform: capitalize;
-      font-size: 30px;
-      line-height: 30px;
+    font-size: 30px;
+    line-height: 30px;
   }
 
   .tags {
@@ -195,7 +203,7 @@
 
 @include media-query('mobile') {
 
-  .space:has(.events) .container{
+  .space:has(.events) .container {
     .col-12 {
       padding-right: 0;
     }
@@ -250,15 +258,18 @@
   @include media-query('tablet') {
     padding: 0 !important;
   }
-  .pagination{
-    @include media-query-min('small'){
-   padding-bottom: 0;
-   margin-bottom: 0;
+
+  .pagination {
+    @include media-query-min('small') {
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
-    @include media-query('small'){
+
+    @include media-query('small') {
       padding-top: 30px;
     }
   }
+
   .view-header {
     font-size: 14px;
     font-weight: 600;
@@ -266,14 +277,17 @@
     line-height: 16px;
     margin-bottom: 1rem;
   }
-  .view-content{
-   &.row{
-    padding-bottom:20px;
-    @include media-query('small'){
-      padding-bottom: 0;
+
+  .view-content {
+    &.row {
+      padding-bottom: 20px;
+
+      @include media-query('small') {
+        padding-bottom: 0;
+      }
     }
-   }
   }
+
   .row {
     margin: 0;
 
@@ -296,9 +310,11 @@
 
     .block1 {
       width: 185px;
-      span{
+
+      span {
         line-height: 24px;
       }
+
       @include media-query('tablet') {
         order: 2;
         width: 50%;
@@ -310,10 +326,12 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
-      span{
+
+      span {
         line-height: 24px;
         word-break: break-word;
       }
+
       @include media-query('tablet') {
         order: 3;
         width: 50%;
@@ -411,7 +429,8 @@
     font-family: $teritoryFont;
     color: $primaryColor;
     margin-bottom: -32px;
-    @include media-query('small'){
+
+    @include media-query('small') {
       margin-bottom: 0;
       text-align: center;
     }
@@ -702,7 +721,8 @@
       font-weight: 400;
       border: 1px solid #011f5b;
       line-height: 18px;
-      &:hover{
+
+      &:hover {
         background-color: #EBF2FF;
         border-color: #EBF2FF;
       }
@@ -856,6 +876,7 @@
   .block-field-blocknodechas-eventfield-event-schedule {
     .field__item {
       margin-bottom: 10px;
+
       .smart-date--date,
       .smart-date--time {
         .datetime {
@@ -1036,8 +1057,8 @@ body.page-view-my-events {
 
   .hero-banner.small {
     .col-lg-6 {
-      @include media-query('mobile'){
-      min-height: 125px;
+      @include media-query('mobile') {
+        min-height: 125px;
       }
     }
   }
@@ -1045,12 +1066,14 @@ body.page-view-my-events {
 
 .block-inline-blockevents-by-group {
 
-  h2{
+  h2 {
     margin-bottom: 40px;
-    @include media-query('mobile'){
+
+    @include media-query('mobile') {
       margin-bottom: 25px;
     }
   }
+
   .views-element-container {
     max-width: 1300px;
     margin-left: auto;
@@ -1059,60 +1082,70 @@ body.page-view-my-events {
   }
 }
 
-.mac_os{
-  .events-tab-blocks ,
-   .reservations-tab-blocks {
-    li{
-      span{
+.mac_os {
+
+  .events-tab-blocks,
+  .reservations-tab-blocks {
+    li {
+      span {
         padding: 12px 20px 12px 20px;
 
-        @include media-query('small'){
+        @include media-query('small') {
           padding: 7px 10px 7px 10px;
         }
       }
     }
-   }
+  }
 }
-.node--type-reserve-room{
-  .node__content{
+
+.node--type-reserve-room {
+  .node__content {
     padding-bottom: 80px;
-    @include media-query('mobile'){
+
+    @include media-query('mobile') {
       padding-bottom: 40px;
       padding-bottom: 40px;
     }
-    .space-medium-bottom:has(.reserve-details-breadcrumbs){
+
+    .space-medium-bottom:has(.reserve-details-breadcrumbs) {
       padding-top: 10px;
       padding-bottom: 40px;
-      @include media-query('mobile'){
+
+      @include media-query('mobile') {
         padding-top: 20px;
         padding-bottom: 20px;
       }
     }
-    .field__item{
-      p{
+
+    .field__item {
+      p {
         margin-bottom: 0;
       }
     }
   }
 }
-.user-logged-in{
-  .block-inline-blockevents-by-group{
-    .events{
-      &.grid-4{
-        @include media-query-min('large'){
+
+.user-logged-in {
+  .block-inline-blockevents-by-group {
+    .events {
+      &.grid-4 {
+        @include media-query-min('large') {
           padding-left: 22px;
         }
       }
     }
   }
 }
+
 .event-details-wrap {
+
   .block-field-blocknodenoticesfield-event-schedule,
-    .block-field-blocknodenoticesfield-text-box,
-    .field--name-field-event-schedule,
-    .block-field-blocknodechas-eventfield-text-box-2{
+  .block-field-blocknodenoticesfield-text-box,
+  .field--name-field-event-schedule,
+  .block-field-blocknodechas-eventfield-text-box-2 {
+
     .field__item,
-    .event-detail-location{
+    .event-detail-location {
       font-weight: 600;
       text-decoration: underline;
       text-decoration-color: #92b7ff;
@@ -1120,7 +1153,8 @@ body.page-view-my-events {
       text-decoration-thickness: 2px;
       text-underline-offset: 4px;
       font-size: 12px;
-      img{
+
+      img {
         margin-right: 15px;
       }
     }
