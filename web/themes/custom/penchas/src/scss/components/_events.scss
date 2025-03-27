@@ -42,7 +42,11 @@
   .event-img {
     position: relative;
     min-height: 173px;
+    max-height: 173px;
     background-color: var(--background-house-color, #ebf1ff);
+    @media (max-width:1200px) {
+      min-height: 157px;
+    }
 
     .date {
       position: absolute;
@@ -83,6 +87,15 @@
         display: block;
         padding-bottom: 56%;
         content: "";
+        @media (max-width:1340px) {
+          padding-bottom: 63%;
+        }
+        @media(max-width:1200px){
+          padding-bottom: 70%;
+        }
+        @media (max-width:991px) {
+          padding-bottom: 56%;
+        }
       }
 
       img {
