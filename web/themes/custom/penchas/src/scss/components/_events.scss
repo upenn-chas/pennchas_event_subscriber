@@ -843,7 +843,6 @@
   .block-field-blocknodechas-eventfield-event-schedule {
     .field__item {
       margin-bottom: 10px;
-
       .smart-date--date,
       .smart-date--time {
         .datetime {
@@ -1090,6 +1089,26 @@ body.page-view-my-events {
         @include media-query-min('large'){
           padding-left: 22px;
         }
+      }
+    }
+  }
+}
+.event-details-wrap {
+  .block-field-blocknodenoticesfield-event-schedule,
+    .block-field-blocknodenoticesfield-text-box,
+    .field--name-field-event-schedule,
+    .block-field-blocknodechas-eventfield-text-box-2{
+    .field__item,
+    .event-detail-location{
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: #92b7ff;
+      font-family: tablet-gothic;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      font-size: 12px;
+      img{
+        margin-right: 15px;
       }
     }
   }

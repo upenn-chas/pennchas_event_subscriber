@@ -89,7 +89,7 @@ third_party_settings:
                 label: hidden
                 settings:
                   timezone_override: ''
-                  format: full_date
+                  format: front_view
                   force_chronological: false
                   add_classes: false
                   time_wrapper: true
