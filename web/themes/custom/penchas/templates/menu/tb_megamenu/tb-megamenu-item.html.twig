@@ -13,7 +13,7 @@
 {% endif %}
 {% set classLI = 'menu-icon menu-icon-'~link['metadata']['entity_id'] %}
 <li {{ attributes.addClass(classLI) }} >
-  <{{ tag }}{{ href|raw }} {{ link['attributes'] }}>
+  <{{ tag }}{{ href|raw }} {{ link['attributes'] }} role="button" aria-haspopup="true">
     {% if  item_config['xicon'] %}
       <i class="{{ item_config['xicon'] }}"></i>
     {% endif %}
