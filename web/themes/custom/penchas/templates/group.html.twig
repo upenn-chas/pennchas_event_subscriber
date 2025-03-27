@@ -83,7 +83,7 @@
                 {% for menu_item in items.menu_tree %}
                   <a class="btn btn-secondary dropdown-toggle hide-in-mobile" role="button">{{ menu_item.text }}</a>
                   <a class="btn btn-secondary dropdown-toggle  hide-in-desktop" >{{ menu_item.text }}</a>
-                  <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                  <div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-describedby="dropdownMenuDescriptionText">
                     <ul class="clearfix nav">
                       <li class="hide-in-desktop">
                         <a class="nav-link nav-link--" href="{{menu_item.url}}">{{ menu_item.text }}</a>

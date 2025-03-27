@@ -61,7 +61,7 @@
     </div>
   {% else %}
     {% for item in items %}
-      <div{{ attributes.addClass(classes, 'field__item') }}><img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg">{{ item.content }}</div>
+      <div{{ attributes.addClass(classes, 'field__item') }}><img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">{{ item.content }}</div>
     {% endfor %}
   {% endif %}
 {% else %}
@@ -71,7 +71,7 @@
       <div class='field__items'>
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes.addClass('field__item') }}><img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg">{{ item.content }}</div>
+      <div{{ item.attributes.addClass('field__item') }}><img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
       </div>
