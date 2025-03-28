@@ -51,7 +51,7 @@
           </div>
           {% if content.field_cta.0 %}
             <div class="cta-right">
-                <a class="btn btn-secondary" href="{{content.field_cta.0['#url'].toString()}}" class="arrow-link">
+                <a class="btn btn-secondary" href="{{content.field_cta.0['#url'].toString()}}" role="button">
                   {{content.field_cta.0['#title']}}
                 </a>
               {% else %}
