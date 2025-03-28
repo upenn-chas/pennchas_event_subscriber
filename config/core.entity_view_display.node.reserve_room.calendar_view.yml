@@ -234,9 +234,9 @@ third_party_settings:
                 type: wrapper_class
                 label: hidden
                 settings:
-                  class: ''
-                  tag: h2
-                  link: false
+                  class: section-heading
+                  tag: h1
+                  link: true
                   link_class: ''
                   summary: false
                   trim: 200

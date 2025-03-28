@@ -95,7 +95,7 @@ field_settings:
           chas_event: default
           house_landing_page: default
           notices: default
-          page: default
+          page: ''
           program_community: default
           reserve_room: default
   title:

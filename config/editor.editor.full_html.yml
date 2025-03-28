@@ -26,7 +26,6 @@ settings:
       - numberedList
       - '|'
       - blockQuote
-      - drupalInsertImage
       - drupalMedia
       - insertTable
       - horizontalLine
@@ -89,8 +88,6 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_imageResize:
-      allow_resize: true
     ckeditor5_list:
       properties:
         reversed: true
@@ -105,6 +102,8 @@ settings:
         - cke_media_resize_medium
         - cke_media_resize_large
         - cke_media_resize_xl
+    linkit_extension:
+      linkit_enabled: false
     media_media:
       allow_view_mode_override: true
 image_upload:

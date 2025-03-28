@@ -242,7 +242,8 @@
   }
 
   .event-details-breadcrumbs,
-  .reserve-details-breadcrumbs {
+  .reserve-details-breadcrumbs,
+  .reserve-breadcrumbs {
     margin-top: 0;
     min-height: 25px;
 
@@ -260,6 +261,7 @@
           order: 1;
           position: absolute;
           right: 45px;
+          top: -4px;
           padding-right: 1px;
 
           a {
@@ -312,8 +314,11 @@
     .block-field-blocknodechas-eventtitle {
       margin-bottom: 10px;
     }
-
-    .event-breadcrumbs {
+    .block-field-blocknodereserve-roomtitle{
+      padding-top: 15px;
+    }
+    .event-breadcrumbs,
+    .reserve-breadcrumbs {
       li:first-child {
         display: none;
       }
@@ -326,6 +331,8 @@
           align-items: center;
           gap: 3px;
           padding-left: 0;
+          position: relative;
+          top: 5px;
 
           img {
             position: relative;
