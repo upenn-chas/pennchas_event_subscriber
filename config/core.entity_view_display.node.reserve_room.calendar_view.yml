@@ -236,7 +236,7 @@ third_party_settings:
                 settings:
                   class: ''
                   tag: h2
-                  link: false
+                  link: true
                   link_class: ''
                   summary: false
                   trim: 200
