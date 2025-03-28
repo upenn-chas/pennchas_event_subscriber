@@ -553,7 +553,7 @@ function pennchas_form_alter_field_widget_single_element_form_alter(&$element, F
     if ($context['items']->getName() == 'field_events_by_group_ref') {
         if ($element['options']) {
             $houseField = &$element['options']['argument'];
-            $houseField['#title'] = t('House ID');
+            $houseField['#title'] = t('House');
             $houseField['#type'] = 'select';
             $groups = \Drupal::service('pennchas_common.option_group')->options('house1', TRUE);
             $houseField['#options'] = ['' => '- None -'] + $groups;
