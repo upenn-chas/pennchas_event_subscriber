@@ -151,7 +151,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           b7bfd914-305d-4cc0-ad63-9a138ec69564:
             uuid: b7bfd914-305d-4cc0-ad63-9a138ec69564
@@ -176,30 +176,6 @@ third_party_settings:
                   trim: 200
                 third_party_settings: {  }
             weight: 0
-            additional: {  }
-          a5b54026-d28d-494f-8178-6c0b2247b3f5:
-            uuid: a5b54026-d28d-494f-8178-6c0b2247b3f5
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:notices:field_text_box'
-              label: Location
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: hidden
-                settings:
-                  class: 'event-detail- event-detail-location'
-                  tag: span
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 3
             additional: {  }
           ed924cbe-b002-49ed-88fc-9dddcccec00b:
             uuid: ed924cbe-b002-49ed-88fc-9dddcccec00b
@@ -238,7 +214,26 @@ third_party_settings:
                   view_mode: default
                   link: false
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
+            additional: {  }
+          9cbdba19-7644-49bd-a26d-2f7814b90a6a:
+            uuid: 9cbdba19-7644-49bd-a26d-2f7814b90a6a
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_groups'
+              label: 'House Affected'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

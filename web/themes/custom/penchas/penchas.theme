@@ -1248,21 +1248,12 @@ function penchas_preprocess_views_view(&$variables)
  */
 function penchas_preprocess_field(&$variables, $hook)
 {
-  if($variables['element']['#bundle'] === 'chas_event' && $variables['element']['#field_name'] === 'field_text_box_2') {
+  if($variables['element']['#bundle'] === 'chas_event' && $variables['element']['#field_name'] === 'field_location') {
     $node = $variables['element']['#items'][0]->getEntity();
-    $eventInHouseId = (int) $node->get('field_location')->getString();
-    $group = Group::load($eventInHouseId);
-    $variables['event_house'] = $group->label();
-  } else if ($variables['element']['#bundle'] === 'notices' && $variables['element']['#field_name'] === 'field_text_box') {
+    $variables['location'] = $node->get('field_text_box_2')->getString();
+  } else if ($variables['element']['#bundle'] === 'notices' && $variables['element']['#field_name'] === 'field_groups') {
     $node = $variables['element']['#items'][0]->getEntity();
-    $eventHousesId = $node->get('field_groups')->getValue();
-    $groupIds = array_column($eventHousesId, 'target_id');
-    $group = Group::loadMultiple($groupIds);
-    $houses = [];
-    foreach ($group as $key => $value) {
-      $houses[] = $value->label();
-    }
-    $variables['event_house'] = implode(', ', $houses);
+    $variables['location'] = $node->get('field_text_box')->getString();
   }
 }
 
