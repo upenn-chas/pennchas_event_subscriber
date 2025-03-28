@@ -5,7 +5,7 @@ dependencies:
   config:
     - block_content.type.news_by_group
     - field.storage.block_content.field_events_by_group_ref
-    - views.view.news_by_group
+    - views.view.articles_listing
   module:
     - viewsreference
 id: block_content.news_by_group.field_events_by_group_ref
@@ -18,11 +18,14 @@ required: false
 translatable: false
 default_value:
   -
-    target_uuid: 01298736-c8c1-422f-a006-ebf9dbc0c9ab
+    target_uuid: a0311039-ecd2-4b28-9222-3f53b96d701f
     display_id: block_1
-    data: 'a:6:{s:6:"header";N;s:8:"argument";N;s:5:"title";N;s:5:"limit";N;s:6:"offset";N;s:5:"pager";N;}'
+    data: 'a:6:{s:8:"argument";N;s:5:"limit";s:0:"";s:6:"offset";s:0:"";s:5:"title";N;s:5:"pager";s:0:"";s:6:"header";N;}'
     options:
       argument: ''
+      limit: ''
+      offset: ''
+      pager: ''
 default_value_callback: ''
 settings:
   handler: 'default:view'
@@ -32,7 +35,11 @@ settings:
   plugin_types:
     block: block
   preselect_views:
-    news_by_group: news_by_group
+    articles_listing: articles_listing
   enabled_settings:
     argument: argument
+    limit: limit
+    offset: offset
+    title: title
+    pager: pager
 field_type: viewsreference

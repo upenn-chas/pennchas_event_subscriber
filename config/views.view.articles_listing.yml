@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.card
     - core.entity_view_mode.node.teaser
     - field.storage.node.body
     - field.storage.node.field_chas_news
@@ -14,6 +15,7 @@ dependencies:
     - text
     - url_alteration
     - user
+    - views_bootstrap
 id: articles_listing
 label: 'Articles listing'
 module: views
@@ -550,10 +552,24 @@ display:
           break_phrase: false
           not: false
       style:
-        type: default
+        type: views_bootstrap_grid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          grid_class: ' events grid-4'
+          col_xs: none
+          col_sm: none
+          col_md: none
+          col_lg: none
+          col_xl: none
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: card
       defaults:
+        use_ajax: false
         pager: false
         style: false
         row: false
@@ -581,6 +597,7 @@ display:
             'group_node:reserve_room': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
+      use_ajax: true
       display_description: ''
       display_extenders:
         metatag_display_extender:
@@ -1031,10 +1048,24 @@ display:
         groups:
           1: AND
       style:
-        type: default
+        type: views_bootstrap_grid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          grid_class: ' events grid-4'
+          col_xs: none
+          col_sm: none
+          col_md: none
+          col_lg: none
+          col_xl: none
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: card
       defaults:
+        use_ajax: false
         pager: false
         style: false
         row: false
@@ -1064,6 +1095,7 @@ display:
             'group_node:reserve_room': '0'
             'group_node:room': '0'
             'group_node:webform': '0'
+      use_ajax: true
       display_description: ''
       display_extenders:
         metatag_display_extender:

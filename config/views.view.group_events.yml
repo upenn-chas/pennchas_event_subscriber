@@ -336,6 +336,7 @@ display:
     display_plugin: block
     position: 1
     display_options:
+      enabled: true
       display_extenders:
         metatag_display_extender:
           metatags: {  }
