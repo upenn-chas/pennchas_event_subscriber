@@ -891,7 +891,9 @@
     }
   }
 
-  .block-field-blocknodechas-eventfield-text-box-2 {
+  .block-field-blocknodechas-eventfield-text-box-2,
+  .block-field-blocknodechas-eventfield-location,
+  .block-field-blocknodenoticesfield-groups {
     margin-bottom: 30px;
 
     .event-detail-location {
@@ -901,6 +903,12 @@
       font-weight: 600;
       display: inline-block;
       margin-right: 10px;
+    }
+    .event-house-location-details {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-family: tablet-gothic;
+      font-weight: 600;
     }
   }
 
@@ -1142,7 +1150,9 @@ body.page-view-my-events {
   .block-field-blocknodenoticesfield-event-schedule,
   .block-field-blocknodenoticesfield-text-box,
   .field--name-field-event-schedule,
-  .block-field-blocknodechas-eventfield-text-box-2 {
+  .block-field-blocknodechas-eventfield-text-box-2,
+  .block-field-blocknodechas-eventfield-location,
+  .block-field-blocknodenoticesfield-groups {
 
     .field__item,
     .event-detail-location {
