@@ -14,6 +14,7 @@ use Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\NodeType;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Field\Plugin\Field\FieldType\StringItem;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -1241,6 +1242,30 @@ function penchas_preprocess_views_view(&$variables)
     $variables['selected_filters_output'] = $filters_html;
   }
 }
+
+/**
+ * Implements template_preprocess_field()
+ */
+function penchas_preprocess_field(&$variables, $hook)
+{
+  if($variables['element']['#bundle'] === 'chas_event' && $variables['element']['#field_name'] === 'field_text_box_2') {
+    $node = $variables['element']['#items'][0]->getEntity();
+    $eventInHouseId = (int) $node->get('field_location')->getString();
+    $group = Group::load($eventInHouseId);
+    $variables['event_house'] = $group->label();
+  } else if ($variables['element']['#bundle'] === 'notices' && $variables['element']['#field_name'] === 'field_text_box') {
+    $node = $variables['element']['#items'][0]->getEntity();
+    $eventHousesId = $node->get('field_groups')->getValue();
+    $groupIds = array_column($eventHousesId, 'target_id');
+    $group = Group::loadMultiple($groupIds);
+    $houses = [];
+    foreach ($group as $key => $value) {
+      $houses[] = $value->label();
+    }
+    $variables['event_house'] = implode(', ', $houses);
+  }
+}
+
 
 function generate_google_calendar_link(NodeInterface $node, string $bundle)
 {
