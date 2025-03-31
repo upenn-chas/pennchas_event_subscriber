@@ -75,7 +75,7 @@
 %}
 <div {{ attributes.addClass(classes) }}>
     <div class="program-card" style="background: transparent;">
-      <a href="{{ url }}"></a>
+      <a href="{{ url }}"><span class="sr-only-hidden">{{ label }}</span></a>
         <div class="program-card-img">
             {{ content.field_media_image }}
         </div>
