@@ -45,7 +45,7 @@ class BlockCountForModerator extends BlockBase {
 
 
         $view = \Drupal\views\Views::getView('my_events');
-        $display_id = 'page_2'; 
+        $display_id = 'pending_moderation'; 
         $view->setDisplay($display_id);
 
         $view->execute();
@@ -57,7 +57,7 @@ class BlockCountForModerator extends BlockBase {
               '#template' => '<div class="info-fields"><p>There are {{ count }} events awaiting moderation. Go to <a href="{{ goToUrl }}">Pending Events</a>.</p></div>',
               '#context' => [
                   'count' => $total_results,
-                  'goToUrl' => Url::fromRoute('view.my_events.page_2')->toString(),
+                  'goToUrl' => Url::fromRoute('view.my_events.pending_moderation')->toString(),
               ],
               '#cache' => [
                   'contexts' => ['user', 'session','user.roles'],

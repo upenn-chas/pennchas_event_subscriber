@@ -1,9 +1,30 @@
 access reports:
   title: "Access Reports Dashboard Page"
   description: "Allow user to access the reports on the dashboard."
+  
 dashboard pending events:
   title: "Access Pending Events Dashboard Page"
   description: "Allow user to access the pending events on the dashboard."
 dashboard pending reservations:
   title: "Access Pending Room Reservation  Dashboard Page"
   description: "Allow user to access the pending room reservations on the dashboard."
+
+my events dashboard:
+  title: "Access to my Upcoming and Past Events Dashboard Page"
+  description: "Allow user to access their upcoming and past events on the dashboard."
+all events dashboard:
+  title: "Access to all Upcoming and Past Events Dashboard Page"
+  description: "Allow user to access all upcoming and past events on the dashboard."
+pending moderation events dashboard:
+  title: "Access pending moderation event Dashboard Page"
+  description: "Allow user to access the pending moderation events on the dashboard."
+
+my reservations dashboard:
+  title: "Access to my Upcoming and Past Reservations Dashboard Page"
+  description: "Allow user to access their upcoming and past reservations on the dashboard."
+all reservations dashboard:
+  title: "Access to all Upcoming and Past Reservations Dashboard Page"
+  description: "Allow user to access all upcoming and past reservations on the dashboard."
+pending moderation reservations dashboard:
+  title: "Access pending moderation reservations Dashboard Page"
+  description: "Allow user to access the pending moderation reservations on the dashboard."

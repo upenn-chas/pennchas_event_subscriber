@@ -39,6 +39,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+{% set page_title = title ? title : 'Events'  %}
 <section class="hero-banner without-image small">
     <style>
         .hero-banner .container:before {
@@ -58,15 +59,13 @@
                                 <a href="{{breadcrumb_dashboard_link}}">{{breadcrumb_dashboard}}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                My Events
+                                  {{ page_title }}
                             </li>
                         </ol>
                     </nav>
                 </div>
                 <div class="banner-info items-gap">
-                    <h1>
-                        My Events
-                    </h1>
+                    <h1>{{ page_title }}</h1>
                     
                 </div>
             </div>
@@ -75,16 +74,51 @@
 </section>
 <div class="dashboard-events">
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
-    {{ title_prefix }}
-    {% if title %}
-      {{ title }}
-    {% endif %}
-    {{ title_suffix }}
-    {% if header %}
       <div class="view-header">
-        {{ header.area }}
+        <ul class="tabs tab--primary layout-tabs events-tab-blocks" role="tablist">
+          {% if user_has_permission("my events dashboard") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/my-upcoming-events">
+                  <span class="nav-item nav-link {% if display_id == 'my_upcoming_events'%} is-active {% endif %} tabs__link" data-wrap="my_events_block" role="tab" aria-controls="panel-my-events" aria-selected="true">
+                      My Events
+                  </span>
+                </a>
+            </li>
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/my-past-events">
+                  <span class="nav-item nav-link {% if display_id == 'my_past_events'%} is-active {% endif %} tabs__link" data-wrap="past_events" role="tab" aria-controls="panel-past-events" aria-selected="false" tabindex="-2">
+                      My Past Events
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+          {% if user_has_permission("pending moderation events dashboard") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/pending-moderation">
+                  <span class="nav-item nav-link {% if display_id == 'pending_moderation'%} is-active {% endif %} tabs__link" data-wrap="my_pending_events" role="tab" aria-controls="panel-pending-events" aria-selected="false" tabindex="-1">
+                      Pending Moderation
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+          {% if user_has_permission("all events dashboard:") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/all-upcoming-events">
+                  <span class="nav-item nav-link {% if display_id == 'all_upcoming_events'%} is-active {% endif %} tabs__link" data-wrap="my_events_block" role="tab" aria-controls="panel-my-events" aria-selected="true">
+                      All Upcoming Events
+                  </span>
+                </a>
+            </li>
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/all-past-events">
+                  <span class="nav-item nav-link {% if display_id == 'all_past_events'%} is-active {% endif %} tabs__link" data-wrap="past_events" role="tab" aria-controls="panel-past-events" aria-selected="false" tabindex="-2">
+                      All Past Events
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+        </ul>
       </div>
-    {% endif %}
     {% if exposed %}
       <div class="view-filters">
         {{ exposed }}
@@ -110,6 +144,7 @@
         {{ empty }}
       </div>
     {% endif %}
+
     {% if attachment_after %}
       <div class="attachment attachment-after">
         {{ attachment_after }}
@@ -122,9 +157,9 @@
       <div class="view-footer">
         {{ footer }}
       </div>
-    {% if pager %}
-      {{ pager }}
-    {% endif %}
+      {% if pager %}
+        {{ pager }}
+      {% endif %}
     {% endif %}
     {% if feed_icons %}
       <div class="feed-icons">

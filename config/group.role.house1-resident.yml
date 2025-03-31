@@ -14,8 +14,8 @@ group_type: house1
 permissions:
   - 'access group_node overview'
   - 'create group_node:reserve_room entity'
-  - 'dashboard pending reservations'
   - 'delete own group_node:reserve_room entity'
+  - 'my reservations dashboard'
   - 'update own group_node:reserve_room entity'
   - 'view group'
   - 'view group_node:article entity'
