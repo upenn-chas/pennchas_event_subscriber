@@ -205,7 +205,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 7
+            weight: 8
             additional: {  }
           1d166753-ae72-4237-8e47-e2c75e4b068a:
             uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
@@ -228,7 +228,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 8
+            weight: 9
             additional: {  }
           4707199f-6a30-4980-8b2e-a119a59824ad:
             uuid: 4707199f-6a30-4980-8b2e-a119a59824ad
@@ -332,7 +332,7 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 9
+            weight: 10
             additional: {  }
           55d3fd3f-9519-47f6-8abe-624ab89928eb:
             uuid: 55d3fd3f-9519-47f6-8abe-624ab89928eb
@@ -347,7 +347,7 @@ third_party_settings:
               block_id: 1449
               block_revision_id: 1853
               block_serialized: null
-            weight: 6
+            weight: 7
             additional: {  }
           dfd2ec97-ef2f-4ee4-a441-52d07376a2be:
             uuid: dfd2ec97-ef2f-4ee4-a441-52d07376a2be
@@ -366,7 +366,7 @@ third_party_settings:
                 settings:
                   link: false
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
