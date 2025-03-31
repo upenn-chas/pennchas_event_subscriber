@@ -40,17 +40,16 @@
 {% set background_color = content.field_background_color.0 %}
 <section {{ attributes.addClass(classes) }} style="background-color: {{background_color}};">
   {% block content %}
+                  {{ title_prefix }}
+                  {{ title_suffix }}
       <div class="container">
-                  {% if label %}
           <div class="row space">
               <div class="col-12 text-center">
-                  {{ title_prefix }}
                     <h2{{ title_attributes }}>{{ label }}</h2>
-                  {{ title_suffix }}
                   <p>{{content.body|raw}}</p>
               </div>
           </div>
-                  {% endif %}
+                  
           <div class="row">
             {{content.field_select_program}}
             {{content.field_cta}}

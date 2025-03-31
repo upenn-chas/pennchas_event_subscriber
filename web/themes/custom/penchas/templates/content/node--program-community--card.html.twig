@@ -75,7 +75,7 @@
 %}
 <div {{ attributes.addClass(classes) }}>
     <div class="program-card" style="background: transparent;">
-      <a href="{{ url }}"></a>
+      <a href="{{ url }}"><span class="sr-only-hidden">{{ label }}</span></a>
         <div class="program-card-img">
             {{ content.field_media_image }}
         </div>
@@ -88,7 +88,7 @@
             {% endif %}
             {{ title_suffix }}
              <p>{{content.body}}</p>
-             <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="none">
               <path d="M0 14.6816H24.5156" stroke="#011F5B" stroke-width="1.94183"></path>
               <path d="M14.3203 4L25.0004 14.4373L14.3203 25.1174" stroke="#011F5B" stroke-width="1.94183"></path>
               </svg>

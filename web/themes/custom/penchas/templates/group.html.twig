@@ -60,9 +60,9 @@
               <div class="dropdown">
                 {% set items = simplify_menu(menus.value['target_id']) %}
                 {% for menu_item in items.menu_tree %}
-                  <a class="btn btn-secondary dropdown-toggle hide-in-mobile" role="button">{{ menu_item.text }}</a>
+                  <a id="dropdownMenuButton2" class="btn btn-secondary dropdown-toggle hide-in-mobile" role="button">{{ menu_item.text }}</a>
                   <a class="btn btn-secondary dropdown-toggle  hide-in-desktop" >{{ menu_item.text }}</a>
-                  <div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-describedby="dropdownMenuDescriptionText">
+                  <div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-label="A menu with options for managing account settings">
                     <ul class="clearfix nav">
                       <li class="hide-in-desktop">
                         <a class="nav-link nav-link--" href="{{menu_item.url}}">{{ menu_item.text }}</a>

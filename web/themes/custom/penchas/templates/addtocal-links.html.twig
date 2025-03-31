@@ -9,7 +9,7 @@ set classes = [
 	{% if label %}
 		<label class="addtocal__label">{{ label|trim(':') }}</label>
 	{% endif %}
-	<a href="{{ google }}" target="_blank" class="addtocal__link addtocal__google">Google</a>
-	<a href="{{ outlook }}" download="event.ics" class="addtocal__link addtocal__outlook">Outlook</a>
-	<a href="{{ ical }}" download="event.ics" class="addtocal__link addtocal__ical">iCal</a>
+	<a href="{{ google }}" target="_blank" class="addtocal__link addtocal__google" aria-label="Add event to Google Calendar">Google</a>
+	<a href="{{ outlook }}" download="event.ics" class="addtocal__link addtocal__outlook" aria-label="Download event for Outlook">Outlook</a>
+	<a href="{{ ical }}" download="event.ics" class="addtocal__link addtocal__ical" aria-label="Download event for iCal">iCal</a>
 </span>
