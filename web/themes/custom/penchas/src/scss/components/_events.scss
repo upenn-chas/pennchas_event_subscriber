@@ -47,12 +47,6 @@
     background-color: var(--background-house-color, #ebf1ff);
     overflow: hidden;
 
-    @media (max-width: 1070px) {
-
-      min-height: 161px;
-
-    }
-
     .date {
       position: absolute;
       left: 0;
@@ -98,11 +92,17 @@
         }
 
         @media(max-width:1200px) {
-          padding-bottom: 70%;
+          padding-bottom: 77%;
         }
 
         @media (max-width:991px) {
-          padding-bottom: 56%;
+          padding-bottom: 60%;
+        }
+        @media (max-width:767px) {
+          padding-bottom: 71%;
+        }
+        @media (max-width:575px) {
+          padding-bottom: 66%;
         }
       }
 
