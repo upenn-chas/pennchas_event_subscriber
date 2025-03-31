@@ -135,7 +135,7 @@ function penchas_preprocess_node_edit_form(&$variables)
             foreach ($menu_data as $item) {
               $simplified_menu_html .= '<div class="dropdown">';
               $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >' . $item->link->getTitle() . '</a>';
-              $simplified_menu_html .= '<div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-describedby="dropdownMenuDescriptionText">
+              $simplified_menu_html .= '<div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-label="A menu with options for managing account settings">
                     <ul class="clearfix nav">';
               $simplified_menu_html .= process_submenu($item->subtree);
 
@@ -1103,7 +1103,7 @@ function penchas_preprocess_views_view(&$variables)
       foreach ($menu_data as $item) {
         $simplified_menu_html .= '<div class="dropdown">';
         $simplified_menu_html .= '<a class="btn btn-secondary dropdown-toggle" >' . $item->link->getTitle() . '</a>';
-        $simplified_menu_html .= '<div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-describedby="dropdownMenuDescriptionText">
+        $simplified_menu_html .= '<div id="dropdownMenuDescription" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" aria-label="A menu with options for managing account settings">
                 <ul class="clearfix nav">';
         $simplified_menu_html .= process_submenu($item->subtree);
 
