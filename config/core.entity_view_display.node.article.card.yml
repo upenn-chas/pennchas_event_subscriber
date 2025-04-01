@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.article.field_media_image
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
+    - image.style.house_events_style
     - node.type.article
   module:
     - layout_builder
@@ -171,7 +172,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: house_events_style
       image_loading:
         attribute: lazy
     third_party_settings: {  }
