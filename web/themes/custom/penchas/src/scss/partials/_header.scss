@@ -281,6 +281,9 @@ header {
 
                 ul {
                   &.tb-megamenu-subnav {
+                     li>a:focus {
+                      border-bottom: 1px dotted #011f5b;
+                    }
                     &.level-1 {
                       .level-2 {
                         .dropdown-toggle.nav-link {
