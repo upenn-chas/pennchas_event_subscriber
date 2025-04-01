@@ -1,0 +1,14 @@
+uuid: 033a9f74-27d1-415d-b79c-181a358d5f01
+langcode: en
+status: true
+dependencies: {  }
+name: house_events_style
+label: 'House Events Style'
+effects:
+  a73cac52-5f21-41db-b257-76aa69e846db:
+    uuid: a73cac52-5f21-41db-b257-76aa69e846db
+    id: image_resize
+    weight: 2
+    data:
+      width: 320
+      height: 260
