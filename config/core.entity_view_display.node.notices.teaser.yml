@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.notices.field_media_file
     - field.field.node.notices.field_media_image
     - field.field.node.notices.field_text_box
+    - image.style.large
     - node.type.notices
   module:
     - media
@@ -56,7 +57,7 @@ content:
     label: hidden
     settings:
       image_link: content
-      image_style: ''
+      image_style: large
       image_loading:
         attribute: lazy
     third_party_settings: {  }

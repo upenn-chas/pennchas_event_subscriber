@@ -27,6 +27,7 @@ dependencies:
     - complete_webform_exporter
     - config
     - content_moderation
+    - editoria11y
     - event_evaluation
     - layout_builder
     - media
@@ -101,6 +102,7 @@ permissions:
   - 'event own evaluation'
   - 'export configuration'
   - 'make smart dates recur'
+  - 'mark as hidden in editoria11y'
   - 'reschedule smart date recur instances'
   - 'revert all revisions'
   - 'revert chas_event revisions'
@@ -126,6 +128,7 @@ permissions:
   - 'view article revisions'
   - 'view chas_event revisions'
   - 'view chas_event revisions'
+  - 'view editoria11y checker'
   - 'view house_landing_page revisions'
   - 'view latest version'
   - 'view notices revisions'

@@ -1,0 +1,14 @@
+uuid: 7bdb245b-aa9f-437e-9e41-1fbedfb25188
+langcode: en
+status: true
+dependencies: {  }
+name: slider_item_style
+label: 'Slider Item Style'
+effects:
+  409d9874-304a-496f-8fa5-0eeea2a06443:
+    uuid: 409d9874-304a-496f-8fa5-0eeea2a06443
+    id: image_resize
+    weight: 1
+    data:
+      width: 590
+      height: 590

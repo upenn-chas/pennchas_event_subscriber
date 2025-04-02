@@ -539,6 +539,9 @@ function penchas_preprocess_html(&$variables)
   $variables['front_page_url'] = $front_page_path;
   $current_uri = \Drupal::request()->getRequestUri();
 
+  if($current_uri == "/dashboard"){
+    $variables['attributes']['class'][] = 'dashboard-page';
+  }
   /* SAML resposne testing starts */
   // if($current_uri == '/all-college-houses'){
 

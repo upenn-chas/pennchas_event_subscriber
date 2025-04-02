@@ -9,6 +9,7 @@ dependencies:
     - field.field.block_content.senior_leadership.field_heading
     - field.field.block_content.senior_leadership.field_image
     - field.field.block_content.senior_leadership.field_phone_number
+    - image.style.large
   module:
     - image
     - text
@@ -45,7 +46,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: large
       image_loading:
         attribute: lazy
     third_party_settings: {  }
