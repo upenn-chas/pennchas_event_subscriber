@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.two_columns_40_60.field_background_color
     - field.field.block_content.two_columns_40_60.field_cta
     - field.field.block_content.two_columns_40_60.field_media_image
+    - image.style.program_community_card_style
   module:
     - color_field
     - link
@@ -51,7 +52,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: program_community_card_style
       image_loading:
         attribute: lazy
     third_party_settings: {  }
