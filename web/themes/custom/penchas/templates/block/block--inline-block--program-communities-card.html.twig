@@ -43,17 +43,19 @@
                   {{ title_prefix }}
                   {{ title_suffix }}
       <div class="container">
+        {% if label is not empty%}
           <div class="row space">
               <div class="col-12 text-center">
                     <h2{{ title_attributes }}>{{ label }}</h2>
                   <p>{{content.body|raw}}</p>
               </div>
           </div>
+        {% endif %}
                   
-          <div class="row">
-            {{content.field_select_program}}
-            {{content.field_cta}}
-          </div>
+        <div class="row">
+          {{content.field_select_program}}
+          {{content.field_cta}}
+        </div>
     </div>
   {% endblock %}
 </section>

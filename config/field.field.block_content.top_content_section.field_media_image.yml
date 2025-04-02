@@ -12,7 +12,7 @@ entity_type: block_content
 bundle: top_content_section
 label: 'Media Image'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
