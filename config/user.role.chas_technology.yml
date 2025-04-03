@@ -24,6 +24,7 @@ dependencies:
     - workflows.workflow.non_moderation_flow
   module:
     - content_moderation
+    - editoria11y
     - event_evaluation
     - file
     - layout_builder
@@ -89,6 +90,7 @@ permissions:
   - 'make smart dates recur'
   - 'my events dashboard'
   - 'my reservations dashboard'
+  - 'mark as hidden in editoria11y'
   - 'reschedule smart date recur instances'
   - 'update media'
   - 'use editorial transition create_new_draft'
@@ -96,6 +98,7 @@ permissions:
   - 'use non_moderation_flow transition published'
   - 'view article revisions'
   - 'view chas_event revisions'
+  - 'view editoria11y checker'
   - 'view house_landing_page revisions'
   - 'view notices revisions'
   - 'view own unpublished content'

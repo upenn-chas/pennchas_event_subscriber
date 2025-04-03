@@ -9,6 +9,7 @@ dependencies:
     - field.field.block_content.two_columns.field_image
     - field.field.block_content.two_columns.field_image_alignment
     - field.field.block_content.two_columns.field_media_image
+    - image.style.right_side_image_style_programs
   module:
     - image
     - link
@@ -62,7 +63,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: right_side_image_style_programs
       image_loading:
         attribute: lazy
     third_party_settings: {  }

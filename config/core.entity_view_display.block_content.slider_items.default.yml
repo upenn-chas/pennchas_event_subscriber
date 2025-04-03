@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.slider_items.body
     - field.field.block_content.slider_items.field_heading
     - field.field.block_content.slider_items.field_image
+    - image.style.slider_item_style
   module:
     - image
     - text
@@ -27,7 +28,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: ''
+      image_style: slider_item_style
       image_loading:
         attribute: lazy
     third_party_settings: {  }

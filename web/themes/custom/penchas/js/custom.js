@@ -111,6 +111,24 @@
       });
     }
 
+    jQuery('.dropdown-toggle').on('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          jQuery(this).trigger('click'); // Simulate click
+      }
+    });
+
+    jQuery('.dropdown-toggle').on('click', function () {
+        let $this = jQuery(this);
+        let expanded = $this.attr('aria-expanded') === 'true';
+        $this.attr('aria-expanded', !expanded);
+        
+        let $menu = $this.next('.dropdown-menu');
+        if ($menu.length) {
+            $menu.toggle(!expanded);
+        }
+    });
+
     if (jQuery('body').hasClass('user-logged-in')) {
       var navWrapCount = jQuery('div.nav-wrap-cst').length;
       if (navWrapCount > 1) {

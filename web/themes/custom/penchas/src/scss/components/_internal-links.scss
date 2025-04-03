@@ -83,7 +83,7 @@
       }
 
       &:focus {
-        border: 0;
+        border-bottom: 1px dotted $redHighlightColor;
         outline: none;
         box-shadow: none;
       }

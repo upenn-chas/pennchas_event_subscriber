@@ -1,0 +1,14 @@
+uuid: 5b8ef027-7e43-44ef-b205-d9e642d114a7
+langcode: en
+status: true
+dependencies: {  }
+name: new_announcements_image_style
+label: 'New & Announcements Image Style'
+effects:
+  202da0d4-ec05-44b1-91be-f23198c5b77c:
+    uuid: 202da0d4-ec05-44b1-91be-f23198c5b77c
+    id: image_resize
+    weight: 1
+    data:
+      width: 730
+      height: 840

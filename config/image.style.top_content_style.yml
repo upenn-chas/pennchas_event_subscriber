@@ -1,0 +1,14 @@
+uuid: 04c77600-bf21-4de9-9a19-4b2f1b61bcb2
+langcode: en
+status: true
+dependencies: {  }
+name: top_content_style
+label: 'top content style'
+effects:
+  19dbf4f4-5681-4904-9890-9ef36fb8ca34:
+    uuid: 19dbf4f4-5681-4904-9890-9ef36fb8ca34
+    id: image_resize
+    weight: 1
+    data:
+      width: 697
+      height: 908

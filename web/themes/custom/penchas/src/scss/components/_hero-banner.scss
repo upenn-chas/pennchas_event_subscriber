@@ -138,6 +138,12 @@
   &.small {
     .col-lg-6 {
       min-height: 210px;
+      @media(max-width: 767px) {
+        min-height: auto;
+         p{
+          margin-bottom: 0;
+         }
+      }
     }
     .banner-info.items-gap {
       @media(max-width: 767px) {
@@ -248,3 +254,13 @@
 //     }
 //   }
 // }
+
+.dashboard-page{
+  .hero-banner.small {
+    .col-lg-6{
+      @include media-query('mobile'){
+        min-height: auto;
+      }
+    }
+  }
+}

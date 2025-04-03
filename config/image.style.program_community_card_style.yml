@@ -1,0 +1,14 @@
+uuid: f0a765a0-e21c-48e9-9126-8d26aa0473a2
+langcode: en
+status: true
+dependencies: {  }
+name: program_community_card_style
+label: 'Card style'
+effects:
+  1c86f15b-ceb8-4e66-a815-e4cf530b77aa:
+    uuid: 1c86f15b-ceb8-4e66-a815-e4cf530b77aa
+    id: image_resize
+    weight: 1
+    data:
+      width: 390
+      height: 250

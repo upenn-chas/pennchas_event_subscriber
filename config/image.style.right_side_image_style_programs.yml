@@ -1,0 +1,14 @@
+uuid: c6b693df-5e5a-4c70-ad4a-665e77170f6d
+langcode: en
+status: true
+dependencies: {  }
+name: right_side_image_style_programs
+label: 'Right Side Image style (Programs)'
+effects:
+  95ce34f2-5a8a-4433-9524-c4e381e6ac8f:
+    uuid: 95ce34f2-5a8a-4433-9524-c4e381e6ac8f
+    id: image_resize
+    weight: 1
+    data:
+      width: 700
+      height: 400

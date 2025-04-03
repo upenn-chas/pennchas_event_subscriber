@@ -1,0 +1,14 @@
+uuid: 78e468e7-4b90-4743-9153-7c51331206ae
+langcode: en
+status: true
+dependencies: {  }
+name: right_image_style
+label: 'Right Image Style'
+effects:
+  ff2e174b-cf05-46a3-84a7-05a84360a65d:
+    uuid: ff2e174b-cf05-46a3-84a7-05a84360a65d
+    id: image_resize
+    weight: 1
+    data:
+      width: 659
+      height: 494

@@ -4,7 +4,7 @@
   {% set href = " href='#{ link['url'] }'" %}
   {% set linkAttributes = linkAttributes.addClass('nav-link') %}
 {% else  %}
-  {% set tag = 'span' %}
+  {% set tag = 'button' %}
   {% set href = '' %}
   {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-link nav-link') %}
   {% if submenu is empty %}
@@ -13,7 +13,7 @@
 {% endif %}
 {% set classLI = 'menu-icon menu-icon-'~link['metadata']['entity_id'] %}
 <li {{ attributes.addClass(classLI) }} >
-  <{{ tag }}{{ href|raw }} {{ link['attributes'] }} role="button" aria-haspopup="true" tabindex="0">
+  <{{ tag }}{{ href|raw }} {{ link['attributes'] }} aria-expanded="false" role="button" aria-haspopup="true" tabindex="0">
     {% if  item_config['xicon'] %}
       <i class="{{ item_config['xicon'] }}"></i>
     {% endif %}

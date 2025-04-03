@@ -40,6 +40,7 @@ dependencies:
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box
     - field.field.node.chas_event.field_text_box_2
+    - image.style.large
     - node.type.chas_event
   module:
     - media
@@ -59,7 +60,7 @@ content:
     label: hidden
     settings:
       image_link: content
-      image_style: ''
+      image_style: large
       image_loading:
         attribute: lazy
     third_party_settings: {  }
