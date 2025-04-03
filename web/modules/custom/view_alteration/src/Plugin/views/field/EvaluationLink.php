@@ -2,6 +2,7 @@
 
 namespace Drupal\view_alteration\Plugin\views\field;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\views\Attribute\ViewsField;
@@ -69,6 +70,9 @@ class EvaluationLink extends EntityLink
      */
     private function checkEvaluationAccess(EntityInterface $entity)
     {
+        if(!$entity->hasField('moderation_state') || $entity->get('moderation_state')->getString() !== 'published') {
+            return AccessResult::forbidden();
+        }
         return \Drupal::service('pennchas_common.evaluation_check')->checkForEntity($entity);
     }
 }

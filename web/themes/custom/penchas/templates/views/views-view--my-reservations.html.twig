@@ -39,12 +39,13 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+{% set page_title = title ? title : 'Events'  %}
 <section class="hero-banner without-image small">
     <style>
-                                    .hero-banner .container:before {
-                                        background: #ffea3f;
-                                    }
-                                </style>
+        .hero-banner .container:before {
+            background: #ffea3f;
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6">
@@ -58,14 +59,16 @@
                                 <a href="{{breadcrumb_dashboard_link}}">{{breadcrumb_dashboard}}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{'Past Reservations'|t}}
+                              {{ page_title }}
                             </li>
                         </ol>
                     </nav>
                 </div>
                 <div class="banner-info items-gap">
                     <h1>
-                    {{'Past Reservations'|t}}
+                    {{ title_prefix }}
+                       {{ page_title }}
+                       {{ title_suffix }}
                     </h1>
                     
                 </div>
@@ -75,22 +78,59 @@
 </section>
 <div class="dashboard-reservations">
   <div{{ attributes.addClass(classes) }} id="view-display-id-{{display_id}}">
-    {{ title_prefix }}
-    {% if title %}
-      {{ title }}
-    {% endif %}
-    {{ title_suffix }}
-    {% if header %}
-      <div class="view-header">
-        {{ header.area }}
+    
+    <div class="view-header">
+        <ul class="tabs tab--primary layout-tabs events-tab-blocks" role="tablist">
+          {% if user_has_permission("my reservations dashboard") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/my-upcoming-reservations">
+                  <span class="nav-item nav-link {% if display_id == 'page_1'%} is-active {% endif %} tabs__link" data-wrap="my_events_block" role="tab" aria-controls="panel-my-events" aria-selected="true">
+                      My Reservations
+                  </span>
+                </a>
+            </li>
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/my-past-reservations">
+                  <span class="nav-item nav-link {% if display_id == 'page_2'%} is-active {% endif %} tabs__link" data-wrap="past_events" role="tab" aria-controls="panel-past-events" aria-selected="false" tabindex="-2">
+                      My Past Reservations
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+          {% if user_has_permission("pending moderation reservations dashboard") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/reservations-pending-moderation">
+                  <span class="nav-item nav-link {% if display_id == 'page_3'%} is-active {% endif %} tabs__link" data-wrap="my_pending_events" role="tab" aria-controls="panel-pending-events" aria-selected="false" tabindex="-1">
+                      Pending Moderation
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+          {% if user_has_permission("all reservations dashboard:") %}
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/all-upcoming-reservations">
+                  <span class="nav-item nav-link {% if display_id == 'page_4'%} is-active {% endif %} tabs__link" data-wrap="my_events_block" role="tab" aria-controls="panel-my-events" aria-selected="true">
+                      All Upcoming Reservations
+                  </span>
+                </a>
+            </li>
+            <li class="tabs__tab" role="presentation">
+                <a href="/dashboard/all-past-reservations">
+                  <span class="nav-item nav-link {% if display_id == 'page_5'%} is-active {% endif %} tabs__link" data-wrap="past_events" role="tab" aria-controls="panel-past-events" aria-selected="false" tabindex="-2">
+                      All Past Reservations
+                  </span>
+                </a>
+            </li>
+          {% endif %}
+        </ul>
       </div>
-    {% endif %}
+    
     {% if exposed %}
       <div class="view-filters">
         {{ exposed }}
       </div>
     {% endif %}
-     {% if header.result %}
+    {% if header.result %}
       <div class="view-header">
         {{ header.result }}
       </div>
@@ -124,7 +164,7 @@
         {{ footer }}
       </div>
       {% if pager %}
-        {{ pager }}
+       {{ pager }}
       {% endif %}
     {% endif %}
     {% if feed_icons %}
