@@ -87,7 +87,7 @@
     <div class="event-info">
       <h4>{{ label }}</h4>
       {% if node.body.0 %}
-        <p>{{ node.body.value }}</p>
+        <p>{{ node.body.value|striptags|raw|trim }}</p>
       {% endif %}
     </div>
   </div>
