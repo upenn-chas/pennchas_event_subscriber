@@ -264,3 +264,12 @@
     }
   }
 }
+.hero-banner{
+  &.small {
+    .col-lg-6{
+    &:has(.internal-links){
+      min-height: 210px;
+    }
+  }
+}
+}
