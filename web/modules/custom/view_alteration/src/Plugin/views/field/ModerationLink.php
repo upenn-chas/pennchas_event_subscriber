@@ -26,6 +26,13 @@ class ModerationLink extends EntityLink
     protected function checkUrlAccess(ResultRow $row)
     {
         $entity = $this->getEntity($row);
+        if(!$entity->hasField('moderation_state')) {
+            return AccessResult::forbidden();
+        }
+        $state = $entity->get('moderation_state')->getString();
+        if(!($state === 'draft' || $state === 'pending')){
+            return AccessResult::forbidden();
+        }
         return AccessResult::allowedIf(\Drupal::service('pennchas_common.moderator_access_check')->checkForEntity($entity));
     }
 

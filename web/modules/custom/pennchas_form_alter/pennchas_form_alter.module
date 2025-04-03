@@ -99,16 +99,16 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
         'views-exposed-form-users-reports-page-1' => 1,
     ];
     static $targetDashboardViews = [
-        'views-exposed-form-my-reservations-my-pending-reservations' => 1,
-        'views-exposed-form-my-reservations-my-reservations-block' => 1,
         'views-exposed-form-my-reservations-page-1' => 1,
         'views-exposed-form-my-reservations-page-2' => 1,
         'views-exposed-form-my-reservations-page-3' => 1,
-        'views-exposed-form-my-events-my-events-block' => 1,
-        'views-exposed-form-my-events-my-pending-events' => 1,
+        'views-exposed-form-my-reservations-page-4' => 1,
+        'views-exposed-form-my-reservations-page-5' => 1,
         'views-exposed-form-my-events-page-1' => 1,
         'views-exposed-form-my-events-page-2' => 1,
         'views-exposed-form-my-events-page-3' => 1,
+        'views-exposed-form-my-events-page-4' => 1,
+        'views-exposed-form-my-events-page-5' => 1,
     ];
 
     if (isset($targetViews[$filterFormId])) {

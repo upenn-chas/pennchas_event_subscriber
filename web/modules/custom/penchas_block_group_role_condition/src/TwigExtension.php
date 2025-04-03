@@ -29,6 +29,7 @@ class TwigExtension extends AbstractExtension
     {
         // Define a new Twig function.
         return [
+            new TwigFunction('user_has_permission', [$this, 'userHasPermission']),
             new TwigFunction('recurring_date_text_decription', [$this, 'getRecurringDateText']),
             new TwigFunction('verify_role_access', [$this, 'verifyRoleAccess']),
             new TwigFunction('get_group_name', [$this, 'getGroupName'], array('is_safe' => array('html'))),
@@ -116,5 +117,10 @@ class TwigExtension extends AbstractExtension
             $ouput['#time'] = '';
             return \Drupal::service('renderer')->render($ouput);
         }
+    }
+
+    public function userHasPermission($permission)
+    {
+        return \Drupal::service('pennchas_common.access_check')->check($permission);
     }
 }

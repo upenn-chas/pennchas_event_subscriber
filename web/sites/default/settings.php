@@ -47,4 +47,4 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   }
 }
 
-$settings['config_exclude_modules'] = ['simplesamlphp_auth'];
+$settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];

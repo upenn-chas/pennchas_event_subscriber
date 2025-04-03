@@ -182,30 +182,6 @@ third_party_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
             weight: 1
             additional: {  }
-          7830a9c3-0cec-49c0-8d11-f2211160cad0:
-            uuid: 7830a9c3-0cec-49c0-8d11-f2211160cad0
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_text_box_2'
-              label: 'Location of Program'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: hidden
-                settings:
-                  class: 'event-detail- event-detail-location'
-                  tag: span
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
           6be30408-3f27-481e-b2b1-bbb86573ef26:
             uuid: 6be30408-3f27-481e-b2b1-bbb86573ef26
             region: blb_region_col_1
@@ -228,7 +204,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           1d166753-ae72-4237-8e47-e2c75e4b068a:
             uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
@@ -356,6 +332,25 @@ third_party_settings:
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
             weight: 6
+            additional: {  }
+          8a9306d5-12fe-4754-9c6e-b1b30ddfe102:
+            uuid: 8a9306d5-12fe-4754-9c6e-b1b30ddfe102
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_location'
+              label: 'In which house will the event be held?'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
