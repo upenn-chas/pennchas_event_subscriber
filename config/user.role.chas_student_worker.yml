@@ -24,7 +24,6 @@ dependencies:
     - workflows.workflow.non_moderation_flow
   module:
     - content_moderation
-    - editoria11y
     - event_evaluation
     - file
     - layout_builder
@@ -90,7 +89,6 @@ permissions:
   - 'use non_moderation_flow transition published'
   - 'view article revisions'
   - 'view chas_event revisions'
-  - 'view editoria11y checker'
   - 'view house_landing_page revisions'
   - 'view notices revisions'
   - 'view own unpublished content'
