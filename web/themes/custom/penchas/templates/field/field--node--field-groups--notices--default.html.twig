@@ -57,7 +57,7 @@
       <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
        <span class="event-house-location-details">
         {% for item in items %}
-          {{ item.content }} {% if not loop.last %}, {% endif %}
+          {{ item.content }}{% if not loop.last %}, {% endif %}
         {% endfor %}
         {% if location %},&nbsp;{{ location }}{% endif %}
       </span>
@@ -66,7 +66,7 @@
     {% for item in items %}
       <div{{ attributes.addClass(classes, 'field__item') }}>
         <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
-        <span class="event-house-location-details">{{ item.content }} {% if location %},&nbsp;{{ location }}{% endif %} </span>    
+        <span class="event-house-location-details">{{ item.content }}{% if location %},&nbsp;{{ location }}{% endif %} </span>    
       </div>
     {% endfor %}
   {% endif %}
@@ -79,7 +79,7 @@
     {% for item in items %}
       <div{{ item.attributes.addClass('field__item') }}>
         <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
-        <span class="event-house-location-details">{{ item.content }} {% if location %},&nbsp;{{ location }}{% endif %} </span>  
+        <span class="event-house-location-details">{{ item.content }}{% if location %},&nbsp;{{ location }}{% endif %} </span>  
       </div>
     {% endfor %}
     {% if multiple %}
