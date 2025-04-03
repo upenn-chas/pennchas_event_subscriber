@@ -1,0 +1,176 @@
+uuid: c314f908-d92e-4011-aac8-f6005f120eef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_display_email
+    - field.field.user.user.field_display_name
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_title_position
+    - field.field.user.user.field_user_categories
+  module:
+    - feeds_log
+    - user
+third_party_settings:
+  feeds_log:
+    status: true
+    operations:
+      created: created
+      updated: updated
+      deleted: deleted
+      skipped: skipped
+      failed: failed
+      cleaned: cleaned
+    items:
+      created: created
+      updated: updated
+      deleted: deleted
+      skipped: skipped
+      failed: failed
+    source: true
+label: 'User Import'
+id: user_import
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:user'
+processor_configuration:
+  values: {  }
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  email:
+    value: Email
+    label: Email
+    machine_name: email
+    type: csv
+  display_name:
+    value: 'Display Name'
+    label: 'Display Name'
+    machine_name: display_name
+    type: csv
+  category:
+    value: Category
+    label: Category
+    machine_name: category
+    type: csv
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: csv
+  display_email:
+    value: 'Display Email'
+    label: 'Display Email'
+    machine_name: display_email
+    type: csv
+  first_name:
+    value: 'First Name'
+    label: 'First Name'
+    machine_name: first_name
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  position_title:
+    value: Position/Title
+    label: Position/Title
+    machine_name: position_title
+    type: csv
+  status:
+    value: Status
+    label: Status
+    machine_name: status
+    type: csv
+  pennkey:
+    value: PennKey
+    label: PennKey
+    machine_name: pennkey
+    type: csv
+mappings:
+  -
+    target: mail
+    map:
+      value: email
+    settings:
+      defuse: false
+    unique:
+      value: 1
+  -
+    target: field_display_name
+    map:
+      value: display_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_user_categories
+    map:
+      target_id: category
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: user_categories
+  -
+    target: field_display_email
+    map:
+      value: display_email
+    settings:
+      language: null
+      defuse: false
+    unique: {  }
+  -
+    target: field_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_title_position
+    map:
+      value: position_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: status
+    map:
+      value: status
+    settings: {  }
+  -
+    target: name
+    map:
+      value: pennkey
+    settings: {  }
+    unique: {  }

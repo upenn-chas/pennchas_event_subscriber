@@ -1,0 +1,20 @@
+uuid: 6f69787d-859b-4324-b279-f41f339c5790
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_group_roles
+  module:
+    - user
+id: user.user.field_group_roles
+field_name: field_group_roles
+entity_type: user
+bundle: user
+label: 'Group Roles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

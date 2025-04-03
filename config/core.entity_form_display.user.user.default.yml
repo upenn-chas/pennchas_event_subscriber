@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.feeds_item
     - field.field.user.user.field_description
     - field.field.user.user.field_display_email
     - field.field.user.user.field_display_name
@@ -11,6 +12,8 @@ dependencies:
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
+    - field.field.user.user.field_group
+    - field.field.user.user.field_group_roles
     - field.field.user.user.field_last_name
     - field.field.user.user.field_phone_no
     - field.field.user.user.field_preferred_name
@@ -102,6 +105,22 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_group:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_group_roles:
+    type: string_textfield
+    weight: 18
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_last_name:
     type: string_textfield
     weight: 10
@@ -171,5 +190,6 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  feeds_item: true
   langcode: true
   timezone: true
