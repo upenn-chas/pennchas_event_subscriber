@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.full
+    - field.field.user.user.feeds_item
     - field.field.user.user.field_description
     - field.field.user.user.field_display_email
     - field.field.user.user.field_display_name
@@ -12,6 +13,8 @@ dependencies:
     - field.field.user.user.field_employee_number
     - field.field.user.user.field_first_name
     - field.field.user.user.field_full_name
+    - field.field.user.user.field_group
+    - field.field.user.user.field_group_roles
     - field.field.user.user.field_last_name
     - field.field.user.user.field_phone_no
     - field.field.user.user.field_preferred_name
@@ -106,12 +109,15 @@ content:
     weight: 0
     region: content
 hidden:
+  feeds_item: true
   field_description: true
   field_display_email: true
   field_display_name: true
   field_edu_person_entitlement: true
   field_edu_person_principal_name: true
   field_first_name: true
+  field_group: true
+  field_group_roles: true
   field_last_name: true
   field_phone_no: true
   langcode: true

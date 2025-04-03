@@ -727,3 +727,14 @@ details{
 }
 }
 }
+body{
+  td.views-field-dropbutton{
+    .dropbutton-multiple{
+      margin-right: 0;
+      .dropbutton-widget{
+        width: 100%;
+        top: 5px;
+      }
+    }
+  }
+}
