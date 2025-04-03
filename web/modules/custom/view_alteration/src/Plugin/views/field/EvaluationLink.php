@@ -70,7 +70,7 @@ class EvaluationLink extends EntityLink
      */
     private function checkEvaluationAccess(EntityInterface $entity)
     {
-        if(!$entity->hasField('moderation_state') || $entity->get('moderation_state')->getString() !== 'published') {
+        if(!$entity->isPublished()) {
             return AccessResult::forbidden();
         }
         return \Drupal::service('pennchas_common.evaluation_check')->checkForEntity($entity);
