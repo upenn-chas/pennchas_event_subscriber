@@ -48,17 +48,20 @@ class NodePreUpdateHook
         $nodeId = $node->id();
 
         if (strpos($requestUrl, "/node/$nodeId/edit") !== FALSE) {
-            if (
-                $existingState === Constant::MOD_STATUS_PUBLISHED
-                && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
-            ) {
-                $node->setPublished(false);
-                $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
-                $node->setNewRevision(TRUE);
-                $node->setRevisionLogMessage('The event has moved back to draft for moderation, as the author has edited the event.');
+            $eventEndsOn = (int) $node->get('field_event_ends_on')->getString();
+            if ($eventEndsOn > time()) {
+                if (
+                    $existingState === Constant::MOD_STATUS_PUBLISHED
+                    && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
+                ) {
+                    $node->setPublished(false);
+                    $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
+                    $node->setNewRevision(TRUE);
+                    $node->setRevisionLogMessage('The event has moved back to draft for moderation, as the author has edited the event.');
+                }
+                $this->updateEventEndsOn($node);
             }
             $node->field_groups =  $this->getHouses($node);
-            $this->updateEventEndsOn($node);
             $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
         }
         $node->isDefaultRevision(TRUE);

@@ -39,6 +39,11 @@ class EventFormAlter
             }
             $entity = $formState->getFormObject()->getEntity();
             $currentUser = $entity->getOwner();
+            $eventEndsOn = (int) $entity->get('field_event_ends_on')->getString();
+            
+            if($eventEndsOn < time()) {
+                $form['field_event_schedule']['widget'][0]['#disabled'] = TRUE;
+            }
         }
         $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
         if ($index !== FALSE) {
