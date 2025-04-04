@@ -1,0 +1,15 @@
+uuid: f0392065-1742-4b5e-92b0-052ddedabdd2
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_date
+label: 'Dashboard Date Only'
+date_format: 'l, F d'
+time_format: ''
+time_hour_format: ''
+allday_label: ''
+separator: ''
+join: ''
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'
