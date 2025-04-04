@@ -22,8 +22,8 @@ attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: true
-allowSavingEmail: true
+saveEmail: false
+allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null
 purgePeriod: null

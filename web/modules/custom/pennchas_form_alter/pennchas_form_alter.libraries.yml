@@ -40,7 +40,7 @@ toast:
   dependencies:
     - core/jquery
     - core/drupal
-customSamrtDate:
+custom_smart_date:
   version: 1.0
   js:
     js/smart_date.js: {}

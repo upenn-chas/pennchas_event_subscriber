@@ -14,16 +14,16 @@ replyToAddress: ''
 subject: ' [easy_email:field_event:entity:title] waiting for approval'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi Moderator,</p><p>A new event has been submitted by " [easy_email:field_event:entity:author:display-name]" and is waiting for approval with the following details:</p><ul><li><strong>Title:</strong> [easy_email:field_event:entity:title]</li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Intended Audience/Participant Group: </strong>[easy_email:field_event:entity:field_intended_audience]</li><li><strong>In Which House Event is held:</strong> [easy_email:field_event:entity:field_location:entity]</li><li><strong>Experiences and Strategies:</strong> [easy_email:field_event:entity:field_text_box]</li><li><strong>Anticipated cost: </strong>[easy_email:field_event:entity:field_anticipated_cost]</li><li><strong>Anticipated number of participants:</strong> [easy_email:field_event:entity:field_anticipated_participants]</li></ul><p>&nbsp;</p>'
-  format: basic_html
+  value: '<p>Hi Moderator,</p><p>A new event has been submitted by " [easy_email:field_event:entity:author:display-name]" and is waiting for approval with the following details:</p><ul><li><strong>Title:</strong> <a href="[easy_email:field_event:entity:url:absolute]">[easy_email:field_event:entity:title]</a></li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Intended Audience/Participant Group: </strong>[easy_email:field_event:entity:field_intended_audience]</li><li><strong>In Which House Event is held:</strong> [easy_email:field_event:entity:field_location:entity]</li><li><strong>Experiences and Strategies:</strong> [easy_email:field_event:entity:field_text_box]</li><li><strong>Anticipated cost: </strong>[easy_email:field_event:entity:field_anticipated_cost]</li><li><strong>Anticipated number of participants:</strong> [easy_email:field_event:entity:field_anticipated_participants]</li></ul><p>&nbsp;</p>'
+  format: full_html
 bodyPlain: ''
 generateBodyPlain: false
 attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: true
-allowSavingEmail: true
+saveEmail: false
+allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null
 purgePeriod: null

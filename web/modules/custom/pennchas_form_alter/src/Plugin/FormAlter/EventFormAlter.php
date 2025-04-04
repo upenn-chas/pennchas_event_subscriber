@@ -51,7 +51,7 @@ class EventFormAlter
             '#weight' => -100, // Ensures it appears at the top
         ];
         
-        $form['#attached']['library'][] = 'pennchas_form_alter/customSamrtDate';
+        $form['#attached']['library'][] = 'pennchas_form_alter/custom_smart_date';
         return $form;
     }
 

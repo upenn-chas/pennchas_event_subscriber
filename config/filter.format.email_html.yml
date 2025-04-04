@@ -1,10 +1,117 @@
 uuid: 56752c7d-abdf-45d4-9300-642cf8c2f600
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_mode.media.cke_media_resize_large
+    - core.entity_view_mode.media.cke_media_resize_medium
+    - core.entity_view_mode.media.cke_media_resize_small
+  module:
+    - ckeditor_media_resize
+    - editor
+    - linkit
+    - media
+    - token_filter
 _core:
   default_config_hash: 8UYEKlWeJ8cK8V-9ojit-_9SwBjQKk0SU-UkiuvlWKI
 name: 'Email HTML'
 format: email_html
 weight: 10
-filters: {  }
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: false
+    weight: -43
+    settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: false
+    weight: -46
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: false
+    weight: -48
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: false
+    weight: -40
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -50
+    settings:
+      allowed_html: '<br> <p> <h1> <h2> <h3> <h4> <h5> <h6> <strong> <em> <s> <a href> <ul> <ol reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt data-view-mode data-align data-media-width>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -44
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: -38
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: -42
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: false
+    weight: -37
+    settings: {  }
+  filter_resize_media:
+    id: filter_resize_media
+    provider: ckeditor_media_resize
+    status: false
+    weight: -41
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: false
+    weight: -49
+    settings:
+      filter_url_length: 72
+  linkit:
+    id: linkit
+    provider: linkit
+    status: false
+    weight: -39
+    settings:
+      title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: -45
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        default: default
+        cke_media_resize_large: cke_media_resize_large
+        cke_media_resize_medium: cke_media_resize_medium
+        cke_media_resize_small: cke_media_resize_small
+      allowed_media_types: {  }
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: -47
+    settings:
+      replace_empty: true

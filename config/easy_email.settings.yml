@@ -4,4 +4,4 @@ purge_on_cron: true
 purge_cron_limit: 100
 allowed_attachment_paths:
   - 'public://*'
-email_collection_access: true
+email_collection_access: false

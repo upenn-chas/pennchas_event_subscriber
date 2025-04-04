@@ -65,6 +65,7 @@ permissions:
   - 'view group_node:notices entity'
   - 'view group_node:page entity'
   - 'view group_node:program_community entity'
+  - 'view group_node:reserve_room entity'
   - 'view group_node:room entity'
   - 'view own unpublished group_media:document entity'
   - 'view own unpublished group_media:image entity'

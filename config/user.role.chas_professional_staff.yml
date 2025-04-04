@@ -86,7 +86,6 @@ permissions:
   - 'edit own video media'
   - 'event own evaluation'
   - 'make smart dates recur'
-  - 'mark as hidden in editoria11y'
   - 'my events dashboard'
   - 'my reservations dashboard'
   - 'reschedule smart date recur instances'
