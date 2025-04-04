@@ -9,22 +9,15 @@ class ImportGroupUserService {
 
   public function customImport($entity) {
     $values = []; 
-    $options = [];
-    $group_name = $entity->field_group->value;
-    
+    $gid = [];
+    $user_id = $entity->id();
+
     $group_roles = $entity->field_group_roles->value;
     $roles_array = explode(" | ", $group_roles);
-    dump($roles_array);
-
+    
+    $group_name = $entity->field_group->value;
+    $group_array = explode(" | ", $group_name);
     $groupType = "house1";
-    $groupsId =  \Drupal::entityQuery('group')
-        ->condition('type', $groupType)
-        ->condition('status', 1)->accessCheck(true)->execute();
-    $groups = Group::loadMultiple($groupsId);
-    foreach ($groups as $group) {
-      $options[] = $group->field_short_name->value;
-      dd($options);
-    }
 
     if(!empty($roles_array)){
       $group_type_entity = GroupType::load('house1');
@@ -36,7 +29,24 @@ class ImportGroupUserService {
           $values[] = $role_key;
         }
       }
-      dd($values);
+
+      $groupsId =  \Drupal::entityQuery('group')
+        ->condition('type', $groupType)
+        ->condition('status', 1)->accessCheck(true)->execute();
+      $groups = Group::loadMultiple($groupsId);
+      foreach ($groups as $group_id => $group) {
+        $group_short_name = $group->field_short_name->value;
+        if(in_array($group_short_name, $group_array)){
+          $gid[] = $group_id;
+        }
+        $groupData = Group::load($gid);
+        dd($groupData);
+        if (!$groupData->getMember($user_id)) {
+          $groupData->addMember($user, $values);
+        }
+      }
+
+
     }
   }
 

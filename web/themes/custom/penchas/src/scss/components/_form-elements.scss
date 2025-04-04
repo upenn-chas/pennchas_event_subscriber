@@ -1424,8 +1424,9 @@ label {
 .smartdate--time-inline div.time-end {
   gap: 5px;
 }
+
 .smartdate--time-inline .smartdate--separator {
- padding-top: 12px;
+  padding-top: 12px;
 }
 
 .smartdate--widget .repeat--label {
@@ -1451,7 +1452,15 @@ label {
   * {
     font-family: tablet-gothic;
   }
-
+  .field--type-smartdate{
+    margin-top: 20px;
+    .field-event-schedule-add-more-wrapper{
+      line-height: normal;
+    }
+    .js-form-item{
+      margin-bottom: 16px;
+    }
+  }
   table {
     color: $primaryColor;
 
@@ -1526,11 +1535,12 @@ label {
               font-weight: 700;
               color: #fff;
               border-radius: 10px;
-              padding: 13px 20px 11px 20px;
+              padding: 12px 20px 6px 20px;
               // padding: 13px 20px 13px 20px;
               font-family: tablet-gothic;
               text-decoration: none;
               border: 1px solid #011f5b;
+              line-height: 30px;
 
               @supports (-moz-appearance: none) {
                 padding: 13px 20px 13px 20px;
@@ -1546,10 +1556,12 @@ label {
               }
             }
 
+
             .smartdate--widget {
-              padding-top: 15px;
-              padding-bottom: 15px;
+              padding-top: 0;
+              padding-bottom: 0;
               color: $primaryColor;
+              margin-bottom: 0 !important;
 
               label {
                 text-align: left;
@@ -2029,6 +2041,7 @@ label {
 
 .node-chas-event-form,
 .node-form {
+
   .block,
   .field--widget-term-reference-tree {
     ul {
@@ -2250,11 +2263,13 @@ input[type="time"]::-webkit-datetime-edit-text {
       background-color: #99b9cf !important;
     }
   }
+
   .smartdate--time-inline {
     .smartdate--separator {
       padding-top: 2px;
-     }
     }
+  }
+
   .calender-page {
     .calender-right {
       .pager__items {
@@ -2280,6 +2295,30 @@ input[type="time"]::-webkit-datetime-edit-text {
                   padding-top: 0;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .node-chas-event-edit-form,
+  .node-notices-edit-form,
+  .node-chas-event-form,
+  .node-reserve-room-form,
+  .node-room-form,
+  .node-notices-form,
+  .node-article-form,
+  .comment-comment-form,
+  .node-reserve-room-edit-form,
+  .node-page-form {
+    table.field-multiple-table {
+      tbody {
+        tr {
+          td {
+            .form-submit {
+              padding: 12px 20px 13px 20px;
+              line-height: 24px;
             }
           }
         }
@@ -2315,7 +2354,8 @@ input[type="time"]::-webkit-datetime-edit-text {
     color: #fff;
   }
 }
-.mac_os{
+
+.mac_os {
   .event-evalution-form {
     .input-group {
       .input-group-prepend {
@@ -2326,21 +2366,32 @@ input[type="time"]::-webkit-datetime-edit-text {
     }
   }
 }
-<<<<<<< HEAD
-.smartdate--widget{
-  .fieldset-wrapper  {
-    h4.label{
-    width: auto;
-    float: none;
-    text-align: left;
-    margin-right: 0;
-    padding-top: 0;
-    margin-bottom: 18px;
+
+.smartdate--widget {
+  .fieldset-wrapper {
+    h4.label {
+      width: auto;
+      float: none;
+      text-align: left;
+      margin-right: 0;
+      padding-top: 0;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: inline-block;
+      line-height: normal;
     }
   }
-=======
+  p.repeat-text{
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    display: inline-block; 
+  }
+}
 
 .manage-instances {
   display: none;
->>>>>>> origin/master
 }
