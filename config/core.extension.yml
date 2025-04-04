@@ -52,6 +52,7 @@ module:
   event_feedback: 0
   feeds: 0
   feeds_log: 0
+  feeds_tamper: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -139,6 +140,7 @@ module:
   svg_image_field: 0
   svg_image_field_media_bundle: 0
   system: 0
+  tamper: 0
   taxonomy: 0
   tb_megamenu: 0
   term_reference_tree: 0

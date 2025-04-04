@@ -328,7 +328,8 @@
         "signature_pad/signature_pad": "*",
         "tabby/tabby": "*",
         "tippyjs/tippyjs": "*",
-        "upenn/penn403": "dev-d8"
+        "upenn/penn403": "dev-d8",
+        "drupal/feeds_tamper": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -336,7 +337,7 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "drupal-scaffold": {

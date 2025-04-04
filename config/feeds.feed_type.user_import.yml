@@ -6,11 +6,14 @@ dependencies:
     - field.field.user.user.field_display_email
     - field.field.user.user.field_display_name
     - field.field.user.user.field_first_name
+    - field.field.user.user.field_group
+    - field.field.user.user.field_group_roles
     - field.field.user.user.field_last_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
   module:
     - feeds_log
+    - feeds_tamper
     - user
 third_party_settings:
   feeds_log:
@@ -29,6 +32,24 @@ third_party_settings:
       skipped: skipped
       failed: failed
     source: true
+  feeds_tamper:
+    tampers:
+      5dbf2467-f038-45d8-99ec-fcc256cd59e6:
+        separator: '|'
+        limit: null
+        uuid: 5dbf2467-f038-45d8-99ec-fcc256cd59e6
+        plugin: explode
+        source: drupal_role
+        weight: 0
+        label: Explode
+      91522f3e-4f01-4b12-9189-7ed93fe755a2:
+        separator: '|'
+        limit: null
+        uuid: 91522f3e-4f01-4b12-9189-7ed93fe755a2
+        plugin: explode
+        source: category
+        weight: 0
+        label: Explode
 label: 'User Import'
 id: user_import
 description: ''
@@ -109,6 +130,21 @@ custom_sources:
     label: PennKey
     machine_name: pennkey
     type: csv
+  role:
+    value: Role
+    label: Role
+    machine_name: role
+    type: csv
+  group:
+    value: Group
+    label: Group
+    machine_name: group
+    type: csv
+  drupal_role:
+    value: 'Drupal Role'
+    label: 'Drupal Role'
+    machine_name: drupal_role
+    type: csv
 mappings:
   -
     target: mail
@@ -130,9 +166,9 @@ mappings:
     map:
       target_id: category
     settings:
-      language: null
+      language: ''
       reference_by: name
-      autocreate: false
+      autocreate: 0
       autocreate_bundle: user_categories
   -
     target: field_display_email
@@ -174,3 +210,33 @@ mappings:
       value: pennkey
     settings: {  }
     unique: {  }
+  -
+    target: field_group_roles
+    map:
+      value: role
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_group
+    map:
+      value: group
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: roles
+    map:
+      target_id: drupal_role
+    settings:
+      reference_by: label
+      allowed_roles:
+        content_editor: content_editor
+        administrator: administrator
+        campus_partner: campus_partner
+        chas_student_worker: chas_student_worker
+        chas_technology: chas_technology
+        chas_director: chas_director
+        chas_professional_staff: chas_professional_staff
+      autocreate: 0
+      revoke_roles: 0

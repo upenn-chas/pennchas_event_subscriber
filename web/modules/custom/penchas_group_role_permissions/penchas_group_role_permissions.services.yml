@@ -1,0 +1,3 @@
+services:
+  penchas_group_role_permissions.custom_import_service:
+    class: Drupal\penchas_group_role_permissions\Service\ImportGroupUserService

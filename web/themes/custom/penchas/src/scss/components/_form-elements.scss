@@ -1674,6 +1674,7 @@ label {
 
             .duration-wrapper {
               display: inline-flex;
+              margin: 0;
 
               @include media-query("small") {
                 flex-direction: column;
@@ -2026,8 +2027,8 @@ label {
   }
 }
 
-.node-chas-event-form {
-
+.node-chas-event-form,
+.node-form {
   .block,
   .field--widget-term-reference-tree {
     ul {
@@ -2322,6 +2323,18 @@ input[type="time"]::-webkit-datetime-edit-text {
           top: -1px;
         }
       }
+    }
+  }
+}
+.smartdate--widget{
+  .fieldset-wrapper  {
+    h4.label{
+    width: auto;
+    float: none;
+    text-align: left;
+    margin-right: 0;
+    padding-top: 0;
+    margin-bottom: 18px;
     }
   }
 }

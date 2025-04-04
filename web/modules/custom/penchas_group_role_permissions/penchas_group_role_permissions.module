@@ -6,105 +6,15 @@
 
 use Drupal\user\Entity\User;
 use Drupal\Core\Render\BubbleableMetadata;
-use SimpleSAML\Auth\Simple;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Access\AccessResult;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 use Drupal\group\GroupManager;
 
 
-/**
- * Function to get SimpleSAMLphp response after login.
- */
-// function penchas_group_role_get_saml_response() {
-//   // Initialize the SimpleSAMLphp authentication source.
-//   var_dump('control came here');
-//   dd('shajsdhjsahdsajhd');
-//   // 'default-sp' should match your configured service provider (SP) in SimpleSAMLphp.
-//   $authSource = new Simple('default-sp');
-
-//   // Ensure the user is authenticated.
-//   if ($authSource->isAuthenticated()) {
-//     // Fetch the attributes from the SAML response.
-//     $attributes = $authSource->getAttributes();
-//     // Example: Accessing specific attributes.
-//     $user_id = $attributes['uid'][0] ?? NULL;
-//     $user_email = $attributes['mail'][0] ?? NULL;
-
-//     // Return or process the response attributes.
-//     return [
-//       'uid' => $user_id,
-//       'mail' => $user_email,
-//       'attributes' => $attributes,
-//     ];
-//   }
-//   else {
-//     // Optionally handle the case where the user is not authenticated.
-//     \Drupal::messenger()->addError(t('User is not authenticated via SimpleSAMLphp.'));
-//     return NULL;
-//   }
-// }
-
-/**
- *
- */
-// function penchas_group_role_permissions_node_access(Node $node, $op, AccountInterface $account) {
-
-//   $nid = $node->id();
-//   if ($node->bundle() == 'chas_event') {
-//     $query = \Drupal::database()->select('node_field_data', 'n');
-//     $query->leftJoin('group_relationship_field_data', 'gr', 'n.nid = gr.entity_id');
-//     $query->fields('gr',['gid']);
-//     $query->condition('n.type', 'chas_event');
-//     $result = $query->execute()->fetchCol();
-//     // dd($result);
-//     foreach($result as $items => $item){
-//       if (!user_has_permission__($account, 'access my events')) {
-//         // dd(check_user_group_permission__($account, $item, 'access my events'));
-//         // if (!check_user_group_permission__($account, $item, 'access my events')) {
-//           return AccessResult::forbidden();
-//         // }
-//       }
-//     }
-//   }
-
-//   return AccessResult::allowed();
-// }
-
-/**
- *
- */
-// function check_user_group_permission__(AccountInterface $account, $group_id, $permission) {
-//   // Load the group entity by group ID.
-//   $group = Group::load($group_id);
-//   // dd($account);
-//   if ($group) {
-//     // Get all group memberships for the user.
-//     // $memberships = \Drupal::service('group.query')->getGroupMemberships($account);
-//     $group_manager = \Drupal::service('group.manager');
-
-//     $group_memberships = $group_manager->getGroupsByUser($account);
-//     // Check if the user is a member of the given group.
-//     foreach ($group_memberships as $group) {
-//     // Compare the group's ID.
-//       if ($group->id() == $group_id) {
-//         $roles = $group->getMemberRoles($account);
-//         foreach ($roles as $role) {
-//           if ($role->hasPermission($permission)) {
-//             return TRUE;
-//           }
-//         }
-//       }
-//     }
-//   }
-
-//   return FALSE;
-// }
-
-/**
- * Custom function to check user permissions.
- */
-// function user_has_permission__(AccountInterface $account, $permission) {
-//   return $account->hasPermission($permission);
-// }
+function penchas_group_role_permissions_entity_presave(\Drupal\Core\Entity\EntityInterface $entity) {
+    // if($entity->bundle() == "user"){
+    //     $my_service = \Drupal::service('penchas_group_role_permissions.custom_import_service')->customImport($entity);
+    //     dd($my_service); 
+    // }
+}

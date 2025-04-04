@@ -71,7 +71,7 @@
         border-right: 0;
         position: absolute;
         right: 0;
-        top: 4px;
+        top: 1px;
         @include media-query('tablet') {
           display: none;
         }
@@ -176,7 +176,7 @@
 }
 
 /*for MAC's*/
-.mac-os{
+.mac_os{
   .internal-links {
     .dropdown {
       .btn{
