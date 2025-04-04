@@ -14,16 +14,16 @@ replyToAddress: ''
 subject: 'Reservation request for room "[easy_email:field_reserve_room:entity:field_room:entity]" is waiting for approval.'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi Moderator,</p><p>A new room reservation request with the following details is waiting for approval.</p><ul><li><strong>Title:</strong> [easy_email:field_reserve_room:entity:title]</li><li><strong>Room:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Schedule:</strong> [easy_email:field_reserve_room:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Purpose:</strong> [easy_email:field_reserve_room:entity:field_long_text:value]</li><li><strong>Number of People:</strong> [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</li><li><strong>Main Contact:</strong><ul><li><strong>Name:</strong> [easy_email:field_reserve_room:entity:field_support_contact:value]</li><li><strong>Email:</strong> [easy_email:field_reserve_room:entity:field_email:value]</li><li><strong>Phone:</strong> [easy_email:field_reserve_room:entity:field_phone:value]</li></ul></li></ul><p>&nbsp;</p>'
-  format: basic_html
+  value: '<p>Hi Moderator,</p><p>A new room reservation request with the following details is waiting for approval.</p><ul><li><strong>Title:</strong> <a href="[easy_email:field_reserve_room:entity:url:absolute]">[easy_email:field_reserve_room:entity:title]</a></li><li><strong>Room:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Schedule:</strong> [easy_email:field_reserve_room:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_reserve_room:entity:field_room:entity]</li><li><strong>Purpose:</strong> [easy_email:field_reserve_room:entity:field_long_text:value]</li><li><strong>Number of People:</strong> [easy_email:field_reserve_room:entity:field_anticipated_participants:value]</li><li><strong>Main Contact:</strong><ul><li><strong>Name:</strong> [easy_email:field_reserve_room:entity:field_support_contact:value]</li><li><strong>Email:</strong> [easy_email:field_reserve_room:entity:field_email:value]</li><li><strong>Phone:</strong> [easy_email:field_reserve_room:entity:field_phone:value]</li></ul></li></ul><p>&nbsp;</p>'
+  format: full_html
 bodyPlain: ''
 generateBodyPlain: false
 attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: true
-allowSavingEmail: true
+saveEmail: false
+allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null
 purgePeriod: null

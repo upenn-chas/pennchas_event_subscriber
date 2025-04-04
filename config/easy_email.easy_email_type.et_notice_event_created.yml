@@ -14,16 +14,16 @@ replyToAddress: ''
 subject: 'Notice: [easy_email:field_event:entity:title] created'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi [easy_email:field_event:entity:author:display-name],</p><p>Your notice has been created with the following details:</p><ul><li><strong>Title:</strong> [easy_email:field_event:entity:title]</li><li><strong>URL:</strong> [easy_email:field_event:entity:url:absolute]</li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>House(s):</strong> [easy_email:field_event:entity:field_groups]</li><li><strong>Location:</strong> [easy_email:field_event:entity:field_text_box]</li><li><strong>Description: </strong>[easy_email:field_event:entity:field_marketing_blurb:value]</li></ul>'
-  format: basic_html
+  value: '<p>Hi [easy_email:field_event:entity:author:display-name],</p><p>Your notice has been created with the following details:</p><ul><li><strong>Title:</strong> <a href="[easy_email:field_event:entity:url:absolute]">[easy_email:field_event:entity:title]</a></li><li><strong>House Affected:</strong> [easy_email:field_event:entity:field_groups]</li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Location:</strong> [easy_email:field_event:entity:field_text_box]</li><li><strong>Description: </strong>[easy_email:field_event:entity:field_marketing_blurb:value]</li></ul><p>&nbsp;</p>'
+  format: full_html
 bodyPlain: ''
 generateBodyPlain: false
 attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: true
-allowSavingEmail: true
+saveEmail: false
+allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null
 purgePeriod: null

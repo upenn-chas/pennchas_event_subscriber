@@ -1275,29 +1275,23 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: smartdate_default
           settings:
-            separator: ' to '
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'l, F d'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
+            timezone_override: ''
+            format: dashboard_date
+            force_chronological: false
+            add_classes: false
+            time_wrapper: false
+            localize: false
+            parts:
+              start: start
+              end: '0'
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -2576,29 +2570,23 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: smartdate_default
           settings:
-            separator: ' to '
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'l, F d'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
+            timezone_override: ''
+            format: dashboard_date
+            force_chronological: false
+            add_classes: false
+            time_wrapper: false
+            localize: false
+            parts:
+              start: start
+              end: '0'
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -3930,29 +3918,23 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: smartdate_default
           settings:
-            separator: ' to '
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'l, F d'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
+            timezone_override: ''
+            format: dashboard_date
+            force_chronological: false
+            add_classes: false
+            time_wrapper: false
+            localize: false
+            parts:
+              start: start
+              end: '0'
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -5124,29 +5106,23 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: smartdate_default
           settings:
-            separator: ' to '
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'l, F d'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
+            timezone_override: ''
+            format: dashboard_date
+            force_chronological: false
+            add_classes: false
+            time_wrapper: false
+            localize: false
+            parts:
+              start: start
+              end: '0'
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -6480,29 +6456,23 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: smartdate_default
           settings:
-            separator: ' to '
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'l, F d'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: long
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
+            timezone_override: ''
+            format: dashboard_date
+            force_chronological: false
+            add_classes: false
+            time_wrapper: false
+            localize: false
+            parts:
+              start: start
+              end: '0'
+              duration: '0'
+            duration:
+              separator: ' | '
+              unit: ''
+              decimals: 2
+              suffix: h
           group_column: value
           group_columns: {  }
           group_rows: true

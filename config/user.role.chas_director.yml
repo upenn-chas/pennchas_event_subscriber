@@ -101,7 +101,6 @@ permissions:
   - 'event own evaluation'
   - 'export configuration'
   - 'make smart dates recur'
-  - 'mark as hidden in editoria11y'
   - 'my events dashboard'
   - 'my reservations dashboard'
   - 'pending moderation events dashboard'

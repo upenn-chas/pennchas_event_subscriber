@@ -80,7 +80,6 @@ permissions:
   - 'edit own room content'
   - 'edit own video media'
   - 'event own evaluation'
-  - 'mark as hidden in editoria11y'
   - 'my events dashboard'
   - 'my reservations dashboard'
   - 'update media'

@@ -27,7 +27,7 @@ class ReserveRoomFormAlter
             $this->alterEditForm($form, $formState);
         }
         $form['actions']['submit']['#value'] = t('Send Request');
-        $form['#attached']['library'][] = 'pennchas_form_alter/customSamrtDate';
+        $form['#attached']['library'][] = 'pennchas_form_alter/custom_smart_date';
         return $form;
     }
 
