@@ -1,0 +1,17 @@
+uuid: f2375a77-9eec-4682-9163-4b505f6914fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - penchas_chas_user_import
+title: 'Default cron handler'
+id: penchas_chas_user_import_cron
+weight: 0
+module: penchas_chas_user_import
+callback: 'penchas_chas_user_import#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

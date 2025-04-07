@@ -1,0 +1,8 @@
+name: "Penchas Chas User Import"
+description: "Import grouper on cron."
+type: module
+core_version_requirement: ^10
+version: 1.0
+package: Custom
+dependencies:
+  - drupal:group

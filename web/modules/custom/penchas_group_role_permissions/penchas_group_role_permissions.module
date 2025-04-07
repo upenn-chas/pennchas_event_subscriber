@@ -12,9 +12,4 @@ use Drupal\node\Entity\Node;
 use Drupal\group\GroupManager;
 
 
-function penchas_group_role_permissions_entity_presave(\Drupal\Core\Entity\EntityInterface $entity) {
-    // if($entity->bundle() == "user"){
-    //     $my_service = \Drupal::service('penchas_group_role_permissions.custom_import_service')->customImport($entity);
-    //     dd($my_service); 
-    // }
-}
+  

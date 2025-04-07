@@ -1,0 +1,17 @@
+uuid: b27899d5-c747-4f0c-8af1-b8e35458dded
+langcode: en
+status: true
+dependencies:
+  module:
+    - penchas_group_role_permissions
+title: 'Default cron handler'
+id: penchas_group_role_permissions_cron
+weight: 0
+module: penchas_group_role_permissions
+callback: 'penchas_group_role_permissions#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
