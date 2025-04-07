@@ -60,9 +60,8 @@ class NodeUpdateHook
             $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
             $groupId = (int) $node->get('field_location')->getString();
             $group = Group::load($groupId);
-            $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
-            $mailService->notifyAuthor(Constant::EVENT_MOVED_TO_DRAFT, $node, $moderationWaitingDays);
-            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, [$groupId]);
+            $mailService->notifyAuthor($node, Constant::EVENT_MOVED_TO_DRAFT, $group);
+            $mailService->notifyModerators($node, Constant::EVENT_EMAIL_MODERATOR_ALERT, $group);
         }
     }
 
@@ -73,9 +72,8 @@ class NodeUpdateHook
             if ($groupId) {
                 $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
                 $group = Group::load($groupId);
-                $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
-                $mailService->notifyAuthor(Constant::RESERVE_ROOM_MOVED_TO_DRAFT, $node, $moderationWaitingDays);
-                $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, [$groupId]);
+                $mailService->notifyAuthor($node, Constant::RESERVE_ROOM_MOVED_TO_DRAFT, $group);
+                $mailService->notifyModerators($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $group);
             }
         }
     }

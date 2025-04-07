@@ -61,9 +61,8 @@ class NodeInsertHook
             $group = array_shift($eventHouses);
             $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
             $message = t('Your event has been submited and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.' . ' ' . $roomReservationMessage);
-
-            $mailService->notifyAuthor(Constant::EVENT_EMAIL_CREATED, $node, $moderationWaitingDays);
-            $mailService->notifyModerators(Constant::EVENT_EMAIL_MODERATOR_ALERT, $node, $groupIds);
+            $mailService->notifyAuthor($node, Constant::EVENT_EMAIL_CREATED, $group);
+            $mailService->notifyModerators( $node, Constant::EVENT_EMAIL_MODERATOR_ALERT, $group);
         }
         \Drupal::messenger()->addStatus($message);
     }
@@ -100,8 +99,8 @@ class NodeInsertHook
         } else {
             $moderationWaitingDays = $this->getHouseMaxModerationWaitingPeriod($group);
             $message = t('Your request has been submitted and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.');
-            $mailService->notifyAuthor(Constant::RESERVER_ROOM_EMAIL_CREATED, $node, $moderationWaitingDays);
-            $mailService->notifyModerators(Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $node, [$group->id()]);
+            $mailService->notifyAuthor($node,Constant::RESERVER_ROOM_EMAIL_CREATED, $group);
+            $mailService->notifyModerators($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $group);
         }
         \Drupal::messenger()->addStatus($message);
     }
