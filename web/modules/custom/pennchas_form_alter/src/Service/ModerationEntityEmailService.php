@@ -22,12 +22,14 @@ class ModerationEntityEmailService
     /**
      * Notifies the author about moderation.
      */
-    public function notifyAuthor(Node $node, string $emailTemplateId, Group $group)
+    public function notifyAuthor(Node $node, string $emailTemplateId, Group|null $group)
     {
         $emailData = [
             'node' => $node
         ];
-        $emailData['waitingDays'] = $this->getHouseMaxModerationWaitingPeriod($group);
+        if($group) {
+            $emailData['waitingDays'] = $this->getHouseMaxModerationWaitingPeriod($group);
+        }
         $this->sendMail($emailTemplateId, [$node->getOwnerId()], $emailData);
     }
 

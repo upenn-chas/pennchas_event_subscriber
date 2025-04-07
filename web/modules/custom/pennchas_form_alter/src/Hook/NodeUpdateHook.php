@@ -18,6 +18,8 @@ class NodeUpdateHook
         $nodeType = $node->getType();
         if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
+        } else if ($nodeType === Constant::NODE_NOTICES) {
+            $this->handleNotices($node);
         } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
             $this->handleHousePage($node);
         } else if ($nodeType === Constant::NODE_RESERVE_ROOM) {
@@ -33,28 +35,7 @@ class NodeUpdateHook
         if ($state === Constant::MOD_STATUS_DELETE) {
             return;
         }
-        $result = $this->processHouseChangeData($node);
-
-        if ($result['new']) {
-            $houses = Group::loadMultiple($result['new']);
-            foreach ($houses as $house) {
-                $existingRelationship = $house->getRelationshipsByEntity($node);
-                if (empty($existingRelationship)) {
-                    $house->addRelationship($node, 'group_node:' . $node->getType());
-                }
-            }
-        }
-        if ($result['remove']) {
-            $houses = Group::loadMultiple($result['remove']);
-            foreach ($houses as $house) {
-                $relationships = $house->getRelationshipsByEntity($node);
-                if (!empty($relationships)) {
-                    array_walk($relationships, function (GroupRelationshipInterface $rel) {
-                        $rel->delete();
-                    });
-                }
-            }
-        }
+        $this->updateHouseRelations($node);
 
         if ($this->isMovedForModeration($node)) {
             $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
@@ -63,6 +44,15 @@ class NodeUpdateHook
             $mailService->notifyAuthor($node, Constant::EVENT_MOVED_TO_DRAFT, $group);
             $mailService->notifyModerators($node, Constant::EVENT_EMAIL_MODERATOR_ALERT, $group);
         }
+    }
+
+    protected function handleNotices(Node $node)
+    {
+        $state = $node->get('moderation_state')->getString();
+        if ($state === Constant::MOD_STATUS_DELETE) {
+            return;
+        }
+        $this->updateHouseRelations($node);
     }
 
     protected function handleReserveRoom(Node $node)
@@ -123,14 +113,59 @@ class NodeUpdateHook
         }
     }
 
+    protected function updateHouseRelations(Node $node)
+    {
+        $result = $this->processHouseChangeData($node);
+        $new = $result['new'];
+        $remove = $result['remove'];
+
+        if ($new) {
+            $houses = Group::loadMultiple($new);
+            foreach ($houses as $house) {
+                $existingRelationship = $house->getRelationshipsByEntity($node);
+                if (empty($existingRelationship)) {
+                    $house->addRelationship($node, 'group_node:' . $node->getType());
+                }
+            }
+        }
+        if ($remove) {
+            $houses = Group::loadMultiple($remove);
+            foreach ($houses as $house) {
+                $relationships = $house->getRelationshipsByEntity($node);
+                if (!empty($relationships)) {
+                    array_walk($relationships, function (GroupRelationshipInterface $rel) {
+                        $rel->delete();
+                    });
+                }
+            }
+        }
+    }
+
     protected function processHouseChangeData(Node $node)
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
-        $newHouses = [(int) $node->get('field_location')->getString()];
-        if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
+        $newHouses = [];
+        if ($node->getType() === Constant::NODE_EVENT) {
+            $newHouses = [(int) $node->get('field_location')->getString()];
+            if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
+                $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
+            }
+        } else if ($node->getType() === Constant::NODE_NOTICES) {
             $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
         }
 
+
+        return $this->getHousesDifference($existingHouses, $newHouses);
+    }
+
+    private function getHousesDifference(array $existingHouses, array $newHouses)
+    {
+        if (!$newHouses) {
+            return [
+                'new' => [],
+                'remove' => []
+            ];
+        }
 
         $existingHouses = array_flip($existingHouses);
 

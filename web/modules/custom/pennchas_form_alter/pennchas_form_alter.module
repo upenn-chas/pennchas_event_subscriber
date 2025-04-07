@@ -185,6 +185,7 @@ function pennchas_form_alter_node_update(Node $node)
         || $nodeType === Constant::NODE_RESERVE_ROOM
         || $nodeType === Constant::NODE_HOUSE_PAGE
         || $nodeType === Constant::NODE_ARTICLE
+        || $nodeType === Constant::NODE_NOTICES
     ) {
         (new NodeUpdateHook())->handle($node);
     }

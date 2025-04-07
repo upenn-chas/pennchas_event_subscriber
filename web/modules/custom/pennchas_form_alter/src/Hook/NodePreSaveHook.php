@@ -60,25 +60,13 @@ class NodePreSaveHook
 
     protected function handleNotice(Node $node)
     {
-        $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
-        $nid = $node->id();
-        $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
-        $groupId = $this->getGroupIdsByEntity($nid);
-        $group = null;
-        if ($groupId) {
-            $group = Group::load($groupId);
-        } else {
-            $group = \Drupal::routeMatch()->getParameter('group');
-        }
-        if ($group) {
+        $affectedHouses = $node->get('field_groups')->getValue();
+        $groupIds = array_column($affectedHouses, 'target_id');
+        if (count($groupIds) === 1) {
+            $group = Group::load($groupIds[0]);
             $groupMachineName = $group->get('field_short_name')->value;
-            if ($group->hasField('field_short_name')) {
+            if ($groupMachineName) {
                 $node->set('field_group_ref', $groupMachineName);
-            }
-            if ($node->isNew() || !$node->original->get('field_groups')->getString()) {
-                $node->set('field_groups', $group->id());
-                $group_machine_name = $group->get('field_short_name')->value;
-                $node->set('field_group_ref', $group_machine_name);
             }
         }
     }

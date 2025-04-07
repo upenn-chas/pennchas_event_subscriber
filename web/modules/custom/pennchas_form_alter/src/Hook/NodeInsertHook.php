@@ -79,7 +79,7 @@ class NodeInsertHook
             }
         }
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
-        $mailService->notifyAuthor(Constant::NOTICE_EMAIL_CREATED, $node, null);
+        $mailService->notifyAuthor($node, Constant::NOTICE_EMAIL_CREATED, null);
     }
 
     protected function handleReserveRoom(Node $node)
