@@ -1,0 +1,3 @@
+services:
+  penchas_chas_user_import.custom_import_service:
+    class: Drupal\penchas_chas_user_import\Service\ImportGroupUserService

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
+use Drupal\group\GroupManager;
+use Drupal\penchas_chas_user_import\Service\ImportGroupUserService;
+ 
+
+function penchas_chas_user_import_cron() {
+    $import_service = \Drupal::service('penchas_chas_user_import.custom_import_service');
+
+    $uids = \Drupal::entityQuery('user')
+    ->exists('field_group')
+    ->accessCheck(false)
+    ->execute();
+    
+    $users = User::loadMultiple($uids);
+    
+    foreach ($users as $user) {
+        // Call the import service.
+        $import_service->customImport($user);
+    }
+}

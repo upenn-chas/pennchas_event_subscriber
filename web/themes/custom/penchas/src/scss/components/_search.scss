@@ -225,6 +225,9 @@
           width: 100%;
           margin-bottom: 10px;
         }
+        .sBtn-text{
+          padding-top: 7px;
+        }
 			}
 			.form_wrapper {
 				form {
@@ -338,6 +341,17 @@
         color: #333;
         margin-top: 16px;
         margin-bottom: 0;
+      }
+    }
+  }
+}
+.mac_os{
+  .find_your_house {
+    .content>div {
+      .select-menu {
+        .sBtn-text{
+          padding-top: 0;
+        }
       }
     }
   }
