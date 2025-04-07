@@ -5,8 +5,8 @@ dependencies: {  }
 id: front_view
 label: 'Front View'
 date_format: 'l, F j'
-time_format: 'h:ia'
-time_hour_format: ha
+time_format: 'g:iA'
+time_hour_format: 'g:iA'
 allday_label: 'All day'
 separator: '-'
 join: ' '
