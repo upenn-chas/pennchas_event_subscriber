@@ -93,7 +93,7 @@ class ReserveRoomFormAlter
      */
     private function alterRoomField(Group $group, array &$field)
     {
-        $field['#options'] = $this->_getGroupRooms($group->id());
+        $field['#options'] = $this->_getGroupRooms($group);
         $field['#title'] .= " at {$group->label()}";
         $roomPageUrl = $group->get('field_rooms_page')->getString();
         if ($roomPageUrl) {
@@ -108,30 +108,26 @@ class ReserveRoomFormAlter
     /**
      * Retrieves a list of available rooms for a given group.
      *
-     * @param int $groupId
-     *   The group ID.
+     * @param \Drupal\group\Entity\Group $group
+     *   The group.
      *
      * @return array
      *   An associative array of room options, formatted as [node_id => title].
      */
-    private function _getGroupRooms(int $groupId)
+
+    private function _getGroupRooms(Group $group)
     {
-        $roomsIds = \Drupal::entityQuery('node')
-            ->accessCheck(TRUE)
-            ->condition('type', 'room')
-            ->condition('status', 1)
-            ->condition('field_group', $groupId)
-            ->sort('title', 'ASC')
-            ->execute();
+        $roomRelationships = $group->getRelationships('group_node:room');
+        $rooms = [];
 
-        $rooms = Node::loadMultiple($roomsIds);
-
-        $roomOptions = [
-            '' => t('Select Your Room')
-        ];
-        foreach ($rooms as $room) {
-            $roomOptions[$room->id()] = $room->getTitle();
+        foreach ($roomRelationships as $relationship) {
+          $entity = $relationship->getEntity();
+          if($entity->isPublished()) {
+            $rooms[$entity->id()] = $entity->getTitle();
+          }
         }
-        return $roomOptions;
+    
+        asort($rooms);
+        return ['' => t('Select Your Room')] + $rooms;
     }
 }
