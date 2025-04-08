@@ -1,0 +1,8 @@
+uuid: bced9c63-109d-4dbc-9f2c-16a0a5c02cb8
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_cta_blocks
+label: 'Dashboard CTA Blocks'
+revision: false
+description: null
