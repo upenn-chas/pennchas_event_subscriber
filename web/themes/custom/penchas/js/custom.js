@@ -331,13 +331,13 @@
 
   // Custom code here
   $(document).ready(function () {
-    if (window.outerWidth < 991) {
+    if (window.outerWidth < 992) {
 
       $('.events').slick({
         dots: false,
         infinite: false,
         speed: 300,
-        slidesToShow: 1,
+        slidesToShow: 3,
         arrows: false,
         slidesToScroll: 1,
         responsive: [

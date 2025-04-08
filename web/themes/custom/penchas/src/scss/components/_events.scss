@@ -1043,9 +1043,9 @@
       margin-right: 0;
     }
 
-    @include media-query ('tablet') {
-      margin-left: -5px;
-    }
+    // @include media-query ('tablet') {
+    //   margin-left: -5px;
+    // }
 
     @include media-query ('mobile') {
       margin-left: 0;
