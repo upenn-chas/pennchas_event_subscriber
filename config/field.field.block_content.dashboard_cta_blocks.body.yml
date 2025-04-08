@@ -1,0 +1,24 @@
+uuid: 2e0cd2ea-f58b-4349-ab3e-fc521acdfda9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_cta_blocks
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.dashboard_cta_blocks.body
+field_name: body
+entity_type: block_content
+bundle: dashboard_cta_blocks
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
