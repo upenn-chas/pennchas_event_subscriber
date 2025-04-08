@@ -115,6 +115,7 @@ class TwigExtension extends AbstractExtension
             $smartDate = SmartDateRule::load($field_values);
             $ouput = $smartDate->getTextRule();
             $ouput['#time'] = '';
+            $ouput['#time_separator'] = '';
             return \Drupal::service('renderer')->render($ouput);
         }
     }
