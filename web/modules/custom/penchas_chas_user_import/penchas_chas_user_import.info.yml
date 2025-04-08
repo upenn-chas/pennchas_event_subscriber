@@ -1,4 +1,4 @@
-name: "Penchas Chas User Import"
+name: "Penn CHAS User Import"
 description: "Import grouper on cron."
 type: module
 core_version_requirement: ^10
