@@ -5,10 +5,11 @@ dependencies: {  }
 name: house_events_style
 label: 'House Events Style'
 effects:
-  a73cac52-5f21-41db-b257-76aa69e846db:
-    uuid: a73cac52-5f21-41db-b257-76aa69e846db
-    id: image_resize
+  2fff9386-24bb-4ad6-ba02-99edacc67dd2:
+    uuid: 2fff9386-24bb-4ad6-ba02-99edacc67dd2
+    id: image_scale_and_crop
     weight: 2
     data:
-      width: 320
-      height: 185
+      width: 600
+      height: 360
+      anchor: center-center
