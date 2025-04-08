@@ -1,0 +1,19 @@
+uuid: 9f766f6c-87c3-4f82-a858-de41229e4925
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_emails
+    - group.type.house1
+id: group.house1.field_emails
+field_name: field_emails
+entity_type: group
+bundle: house1
+label: 'Moderator Emails'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

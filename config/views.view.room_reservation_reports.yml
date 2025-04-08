@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_group
     - field.storage.node.field_room
     - node.type.reserve_room
     - workflows.workflow.editorial
@@ -12,9 +11,11 @@ dependencies:
     - content_moderation
     - csv_serialization
     - custom_view_filters
+    - group
     - node
     - rest
     - serialization
+    - url_alteration
     - verf
     - view_alteration
     - views_bootstrap
@@ -35,13 +36,15 @@ display:
     display_options:
       title: 'Rooms Reservations Report'
       fields:
-        field_group:
-          id: field_group
-          table: node__field_group
-          field: field_group
-          relationship: none
+        gid:
+          id: gid
+          table: group_relationship_field_data
+          field: gid
+          relationship: group_relationship
           group_type: group
           admin_label: ''
+          entity_type: group_relationship
+          entity_field: gid
           plugin_id: field
           label: House
           exclude: false
@@ -714,27 +717,28 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_group_target_id_verf:
-          id: field_group_target_id_verf
-          table: node__field_group
-          field: field_group_target_id_verf
-          relationship: none
+        gid_verf:
+          id: gid_verf
+          table: group_relationship_field_data
+          field: gid_verf
+          relationship: group_relationship
           group_type: group
           admin_label: ''
+          entity_type: group_relationship
           plugin_id: verf
           operator: in
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_group_target_id_verf_op
-            label: 'House '
+            operator_id: gid_verf_op
+            label: House
             description: ''
             use_operator: false
-            operator: field_group_target_id_verf_op
+            operator: gid_verf_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_group
+            identifier: gid
             required: false
             remember: false
             multiple: false
@@ -1028,7 +1032,27 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        group_relationship:
+          id: group_relationship
+          table: node_field_data
+          field: group_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content group relationship'
+          entity_type: node
+          plugin_id: group_relationship_to_entity_reverse
+          required: false
+          group_relation_plugins:
+            'group_node:reserve_room': 'group_node:reserve_room'
+            'group_node:article': '0'
+            'group_node:chas_event': '0'
+            'group_node:house_landing_page': '0'
+            'group_node:notices': '0'
+            'group_node:page': '0'
+            'group_node:program_community': '0'
+            'group_node:room': '0'
+            'group_node:webform': '0'
       use_ajax: true
       group_by: false
       header:
@@ -1055,7 +1079,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'
@@ -1102,7 +1125,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'
@@ -1130,7 +1152,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_group'
         - 'config:field.storage.node.field_room'
         - 'config:views.view.room_reservation_reports'
         - 'config:workflow_list'

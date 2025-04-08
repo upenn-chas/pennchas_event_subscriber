@@ -204,7 +204,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 4
+            weight: 8
             additional: {  }
           1d166753-ae72-4237-8e47-e2c75e4b068a:
             uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
@@ -227,7 +227,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 5
+            weight: 9
             additional: {  }
           4707199f-6a30-4980-8b2e-a119a59824ad:
             uuid: 4707199f-6a30-4980-8b2e-a119a59824ad
@@ -245,7 +245,7 @@ third_party_settings:
                 label: hidden
                 settings:
                   image_link: ''
-                  image_style: large
+                  image_style: ''
                   image_loading:
                     attribute: lazy
                 third_party_settings: {  }
@@ -331,10 +331,10 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 6
+            weight: 10
             additional: {  }
-          8a9306d5-12fe-4754-9c6e-b1b30ddfe102:
-            uuid: 8a9306d5-12fe-4754-9c6e-b1b30ddfe102
+          dfd2ec97-ef2f-4ee4-a441-52d07376a2be:
+            uuid: dfd2ec97-ef2f-4ee4-a441-52d07376a2be
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:chas_event:field_location'
@@ -350,7 +350,7 @@ third_party_settings:
                 settings:
                   link: false
                 third_party_settings: {  }
-            weight: 3
+            weight: 6
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
