@@ -16,7 +16,6 @@ permissions:
   - 'access group_media overview'
   - 'access group_node overview'
   - 'access my events'
-  - 'all events dashboard'
   - 'create group_media:document entity'
   - 'create group_media:image entity'
   - 'create group_media:remote_video entity'
