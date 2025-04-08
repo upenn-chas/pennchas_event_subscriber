@@ -106,7 +106,7 @@
                 </a>
             </li>
           {% endif %}
-          {% if user_has_permission("all reservations dashboard:") %}
+          {% if user_has_permission("all reservations dashboard") %}
             <li class="tabs__tab" role="presentation">
                 <a href="/dashboard/all-upcoming-reservations">
                   <span class="nav-item nav-link {% if display_id == 'page_4'%} is-active {% endif %} tabs__link" data-wrap="my_events_block" role="tab" aria-controls="panel-my-events" aria-selected="true">
