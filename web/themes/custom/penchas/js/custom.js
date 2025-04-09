@@ -111,12 +111,12 @@
       });
     }
 
-    jQuery('.dropdown-toggle').on('keydown', function (event) {
-      if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          jQuery(this).trigger('click'); // Simulate click
-      }
-    });
+    // jQuery('.dropdown-toggle').on('keydown', function (event) {
+    //   if (event.key === 'Enter' || event.key === ' ') {
+    //       event.preventDefault();
+    //       jQuery(this).trigger('click'); // Simulate click
+    //   }
+    // });
 
     jQuery('.dropdown-toggle').on('click', function () {
         let $this = jQuery(this);
@@ -125,7 +125,13 @@
         
         let $menu = $this.next('.dropdown-menu');
         if ($menu.length) {
-            $menu.toggle(!expanded);
+          if(expanded) {
+            $menu.show();
+            $menu.css('transform', 'translate3d(0px, 35px, 0px)');
+          } else {
+            $menu.hide();
+            $menu.css('transform', '');
+          }
         }
     });
 
