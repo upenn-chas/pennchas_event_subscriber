@@ -1444,6 +1444,7 @@ ul.pagination.js-pager__items {
 .node--view-mode-draft,
 .node--view-mode-calendar-view {
   .field__item:has(.add-to-calendar) {
+    text-decoration: none !important;
     & time,img {
     display: none;
   }
