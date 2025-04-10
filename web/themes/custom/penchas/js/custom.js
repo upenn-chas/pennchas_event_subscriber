@@ -126,8 +126,8 @@
         let $menu = $this.next('.dropdown-menu');
         if ($menu.length) {
           if(expanded) {
-            $menu.show();
             $menu.css('transform', 'translate3d(0px, 35px, 0px)');
+            $menu.show();
           } else {
             $menu.hide();
             $menu.css('transform', '');
