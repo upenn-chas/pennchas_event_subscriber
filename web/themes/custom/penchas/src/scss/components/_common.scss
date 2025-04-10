@@ -1522,3 +1522,9 @@ ul.pagination.js-pager__items {
     width: 98%;
   }
 }
+
+.hide {
+  @include media-query('mobile'){
+    opacity: 0 !important;
+  }
+}

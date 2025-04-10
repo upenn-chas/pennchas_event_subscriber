@@ -111,26 +111,27 @@
       });
     }
 
-    // jQuery('.dropdown-toggle').on('keydown', function (event) {
-    //   if (event.key === 'Enter' || event.key === ' ') {
-    //       event.preventDefault();
-    //       jQuery(this).trigger('click'); // Simulate click
-    //   }
-    // });
+    jQuery('.dropdown-toggle').on('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          jQuery(this).trigger('click'); // Simulate click
+      }
+    });
 
     jQuery('.dropdown-toggle').on('click', function () {
         let $this = jQuery(this);
         let expanded = $this.attr('aria-expanded') === 'true';
-        $this.attr('aria-expanded', !expanded);
+        console.debug($this, $this.attr('aria-expanded'))
+        $this.attr('aria-expanded', expanded? 'false' : 'true');
         
         let $menu = $this.next('.dropdown-menu');
         if ($menu.length) {
           if(expanded) {
-            $menu.css('transform', 'translate3d(0px, 35px, 0px)');
-            $menu.show();
+            $menu.addClass('show');
+            $menu.removeClass('hide');
           } else {
-            $menu.hide();
-            $menu.css('transform', '');
+            $menu.removeClass('show');
+            $menu.addClass('hide');
           }
         }
     });
