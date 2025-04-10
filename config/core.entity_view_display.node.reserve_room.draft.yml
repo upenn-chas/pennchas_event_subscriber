@@ -611,7 +611,7 @@ third_party_settings:
                 label: visually_hidden
                 settings:
                   timezone_override: ''
-                  format: default
+                  format: dashboard_date
                   force_chronological: false
                   add_classes: false
                   time_wrapper: true
@@ -648,9 +648,9 @@ third_party_settings:
                           icons: true
                           max_desc: 60
                           ellipsis: false
-                          past_events: false
+                          past_events: true
                           target: ''
-                          ignore_timezone_if_UTC: true
+                          ignore_timezone_if_UTC: false
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
                     rule:
@@ -670,7 +670,7 @@ third_party_settings:
                           icons: true
                           max_desc: 60
                           ellipsis: false
-                          past_events: false
+                          past_events: true
                           target: ''
                           ignore_timezone_if_UTC: false
                       augmenter_settings:
