@@ -111,7 +111,8 @@
       });
     }
 
-    jQuery('.dropdown-toggle').on('keydown', function (event) {
+    jQuery('.dropdown-toggle').on('keyup', function (event) {
+      // console.debug(event.key);
       if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           jQuery(this).trigger('click'); // Simulate click

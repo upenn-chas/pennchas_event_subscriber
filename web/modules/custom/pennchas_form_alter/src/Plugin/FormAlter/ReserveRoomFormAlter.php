@@ -26,6 +26,12 @@ class ReserveRoomFormAlter
         } else {
             $this->alterEditForm($form, $formState);
         }
+
+        $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
+        if ($index !== FALSE) {
+            unset($form['actions']['submit']['#submit'][$index]);
+        }
+        
         $form['actions']['submit']['#value'] = t('Send Request');
         $form['#attached']['library'][] = 'pennchas_form_alter/custom_smart_date';
         return $form;
