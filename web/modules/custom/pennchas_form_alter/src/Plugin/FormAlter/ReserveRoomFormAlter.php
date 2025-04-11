@@ -89,6 +89,7 @@ class ReserveRoomFormAlter
         $eventEndsOn = (int) $node->get('field_event_ends_on')->getString();
         if ($eventEndsOn < time()) {
             $form['field_event_schedule']['widget'][0]['#disabled'] = TRUE;
+            $form['field_room']['widget']['#disabled'] = TRUE;
         }
         // Remove all but the first event schedule widget.
         foreach ($form['field_event_schedule']['widget'] as $key => $value) {
