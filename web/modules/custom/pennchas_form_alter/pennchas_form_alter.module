@@ -23,6 +23,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 use Drupal\group\Entity\GroupRole;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
+use Drupal\pennchas_form_alter\Plugin\FormAlter\HouseFormAlter;
 use Drupal\user\Entity\User;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
@@ -59,6 +60,9 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             break;
         case 'content_moderation_entity_moderation_form':
             $form = (new ModerationFormAlter())->alter($form, $formState);
+            break;
+        case 'node_house_landing_page_form':
+            $form = (new HouseFormAlter())->alter($form, $formState);
             break;
         case 'node_room_delete_form':
         case 'node_chas_event_delete_form':
