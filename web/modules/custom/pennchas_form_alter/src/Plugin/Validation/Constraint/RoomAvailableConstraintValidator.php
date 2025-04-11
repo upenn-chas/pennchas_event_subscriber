@@ -25,6 +25,12 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
     public function validate(mixed $value, Constraint $constraint)
     {
         $entity = $this->context->getRoot()->getEntity();
+        if($entity->hasField('field_event_ends_on')) {
+            $eventEndsOn = (int) $entity->get('field_event_ends_on')->getString();
+            if($eventEndsOn < time()) {
+                return;
+            }
+        }
         $nid = $entity->id();
 
         if($nid) {

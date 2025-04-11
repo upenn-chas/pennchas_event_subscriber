@@ -367,7 +367,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 {
     // Get the tabs array.
     $tabs = &$data['tabs'][0];
-    $group_role = FALSE; 
+    $group_role = FALSE;
 
     // Check if the tabs array is empty.
     if (!$tabs) {
@@ -405,7 +405,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 
     $current_user = \Drupal::currentUser();
     $user_roles = $current_user->getRoles();
-    
+
     if ($current_user->hasRole('administrator')) {
         return;
     }
@@ -422,26 +422,26 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
                 if ($user instanceof User) {
                     if (!$current_user->hasPermission($permission)) {
                         $role = \Drupal\user\Entity\Role::load('authenticated');
-                        if($role){
+                        if ($role) {
                             $role->grantPermission($permission);
                             $role->save();
                         }
                     }
                 }
-                $group_role = TRUE; 
+                $group_role = TRUE;
             }
         }
 
-        if($group_role){
-           
+        if ($group_role) {
+
             $connection = Database::getConnection();
             $query = $connection->select('group_relationship_field_data', 'gr');
             $query->condition('gr.entity_id', $current_user->id());
             $query->condition('gr.plugin_id', 'group_membership');
             $query->fields('gr', ['gid']);
             $group_results = $query->execute()->fetchCol();
-            
-            if(!empty($group_results)){
+
+            if (!empty($group_results)) {
                 foreach ($group_results as $group_id) {
                     $group = Group::load($group_id);
                     $groupName = $group->get('field_short_name')->value;
@@ -449,7 +449,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
                     $path_parts = explode('/', trim($current_uri, '/'));
                     // dd($path_parts[0]);
                     $group = \Drupal::routeMatch()->getParameter('group');
-                    if(!$group && $path_parts[0] != 'gregory'){
+                    if (!$group && $path_parts[0] != 'gregory') {
                         static $tabsForGroupManager = [
                             'layout' => 0,
                         ];
@@ -457,7 +457,7 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
                     }
                 }
             }
-    
+
             static $unsetDeleteTabForGroup = [
                 'delete' => 0,
                 'latest version' => 0,
@@ -562,7 +562,6 @@ function pennchas_form_alter_field_widget_single_element_form_alter(&$element, F
             $houseField['#type'] = 'select';
             $groups = \Drupal::service('pennchas_common.option_group')->options('house1', TRUE);
             $houseField['#options'] = ['' => '- None -'] + $groups;
-            
         }
     }
 }
@@ -575,3 +574,13 @@ function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Ent
         $view_mode = 'calendar_view';
     }
 }
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+// function pennchas_form_alter_page_attachments_alter(array &$attachments) {
+//     $current_route = \Drupal::routeMatch()->getRouteName();
+//     if($current_route === 'node.add_page') {
+//         dd($attachments['#attached']);
+//     }
+// }
