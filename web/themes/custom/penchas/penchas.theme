@@ -1290,8 +1290,11 @@ function generate_google_calendar_link(NodeInterface $node, string $bundle)
 function generate_google_calendar_data_for_reserve_room(NodeInterface $node)
 {
   $roomId = (int)$node->get('field_room')->getString();
-  $room = Node::load($roomId);
-  $room_name = $room->getTitle();
+  $room_name = '';
+  if($roomId) {
+    $room = Node::load($roomId);
+    $room_name = $room->getTitle();
+  }
   $description = $node->get('field_long_text')->getString();
   return [
     'action' => 'TEMPLATE',
