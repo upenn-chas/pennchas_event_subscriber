@@ -26,4 +26,5 @@ permissions:
   - 'view group_node:page entity'
   - 'view group_node:program_community entity'
   - 'view group_node:program_community relationship'
+  - 'view group_node:reserve_room entity'
   - 'view group_node:room entity'
