@@ -873,7 +873,9 @@
     margin-bottom: 30px;
   }
 
-  .block-field-blocknodechas-eventfield-event-schedule {
+  .block-field-blocknodechas-eventfield-event-schedule,
+  .block-field-blocknodereserve-roomfield-event-schedule,
+  .block-field-blocknodereserve-roomfield-room {
     .field__item {
       margin-bottom: 10px;
 
@@ -893,7 +895,8 @@
 
   .block-field-blocknodechas-eventfield-text-box-2,
   .block-field-blocknodechas-eventfield-location,
-  .block-field-blocknodenoticesfield-groups {
+  .block-field-blocknodenoticesfield-groups,
+  .block-field-blocknodereserve-roomfield-room {
     margin-bottom: 30px;
 
     .event-detail-location {
@@ -904,7 +907,8 @@
       display: inline-block;
       margin-right: 10px;
     }
-    .event-house-location-details {
+    .event-house-location-details,
+    .house-room-details {
       font-size: 12px;
       text-transform: uppercase;
       font-family: tablet-gothic;
@@ -1150,13 +1154,15 @@ body.page-view-my-events {
   .block-field-blocknodenoticesfield-event-schedule,
   .block-field-blocknodenoticesfield-text-box,
   .field--name-field-event-schedule,
+  .block-field-blocknodereserve-roomfield-room,
   .block-field-blocknodechas-eventfield-text-box-2,
   .block-field-blocknodechas-eventfield-location,
   .block-field-blocknodenoticesfield-groups {
 
     .field__item,
     .event-detail-location,
-    .event-house-location-details {
+    .event-house-location-details,
+    .house-room-details {
       font-weight: 600;
       text-decoration: underline;
       text-decoration-color: #92b7ff;

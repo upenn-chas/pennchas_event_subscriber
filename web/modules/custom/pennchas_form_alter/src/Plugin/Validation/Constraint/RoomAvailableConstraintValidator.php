@@ -93,7 +93,6 @@ class RoomAvailableConstraintValidator extends ConstraintValidator
         }
         $query->condition($conditionsGroup);
         $result = $query->execute()->fetchAll();
-
         return (bool) count($result);
     }
 

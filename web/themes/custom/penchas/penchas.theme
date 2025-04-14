@@ -1257,6 +1257,14 @@ function penchas_preprocess_field(&$variables, $hook)
   } else if ($variables['element']['#bundle'] === 'notices' && $variables['element']['#field_name'] === 'field_groups') {
     $node = $variables['element']['#items'][0]->getEntity();
     $variables['location'] = $node->get('field_text_box')->getString();
+  } else if ($variables['element']['#bundle'] === 'reserve_room' && $variables['element']['#field_name'] === 'field_room') {
+    $node = $variables['element']['#items'][0]->getEntity();
+    $gid = (int) $node->get('field_group')->getString();
+    $variables['house'] = '';
+    if($gid) {
+      $group = Group::load($gid);
+      $variables['house'] = $group->label();
+    }
   }
 }
 
