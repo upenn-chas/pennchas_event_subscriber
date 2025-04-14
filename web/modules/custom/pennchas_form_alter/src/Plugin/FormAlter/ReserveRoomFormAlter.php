@@ -112,7 +112,7 @@ class ReserveRoomFormAlter
      */
     private function alterRoomField(Group $group, array &$field, AccountInterface $user)
     {
-        $field['#options'] = $this->_getGroupRooms($group, $user);
+        $field['#options'] = $this->_getGroupRooms($user, $group);
         $field['#title'] .= " at {$group->label()}";
         $roomPageUrl = $group->get('field_rooms_page')->getString();
         if ($roomPageUrl) {
@@ -127,20 +127,20 @@ class ReserveRoomFormAlter
     /**
      * Retrieves a list of available rooms for a given group.
      *
-     * @param \Drupal\group\Entity\Group $group
-     *   The group.
      * @param \Drupal\Core\Session\AccountInterface $user
      *   The user account.
+     * @param \Drupal\group\Entity\Group $group
+     *   The group.
      *
      * @return array
      *   An associative array of room options, formatted as [node_id => title].
      */
 
-    private function _getGroupRooms(Group $group, AccountInterface $user)
+    private function _getGroupRooms(AccountInterface $user, Group $group)
     {
         $roomRelationships = $group->getRelationships('group_node:room');
         $rooms = [];
-        $umbrellaRoles = $this->getUmbrellaRoles($user);
+        $umbrellaRoles = $this->getUmbrellaRoles($user, $group);
 
         foreach ($roomRelationships as $relationship) {
             $entity = $relationship->getEntity();
@@ -158,15 +158,10 @@ class ReserveRoomFormAlter
         return $user->hasRole('administrator') || isset($umbrellaRoles[$roomAvailableTo]);
     }
 
-    private function getUmbrellaRoles(AccountInterface $user)
+    private function getUmbrellaRoles(AccountInterface $user, Group $group)
     {
         $state = \Drupal::state();
         $roles = $user->getRoles() ?? [];
-        /**
-         * @var \Drupal\group\Entity\Group
-         */
-        $group = \Drupal::routeMatch()->getParameter('group');
-
         // Fetch user roles in the group, if applicable.
         if ($group && ($membership = $group->getMember($user))) {
             $groupRoles = $membership->getRoles();
