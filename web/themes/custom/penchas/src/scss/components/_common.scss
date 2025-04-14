@@ -1,3 +1,9 @@
+:root {
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: auto;
+  }
+}
+
 .container {
   max-width: 1350px;
 
