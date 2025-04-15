@@ -1,8 +1,8 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..6784aad 100644
+index 8a084f2..e4c77a7 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
-@@ -200,6 +200,127 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +200,104 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
@@ -11,7 +11,6 @@ index 8a084f2..6784aad 100644
 +    $employeeNumber = $attributes['employeeNumber'][0];
 +    $eduPersonPrincipalName = $attributes['eduPersonPrincipalName'][0];
 +    $eduPersonEntitlement = $attributes['eduPersonEntitlement'];
-+    $edu_person = implode(', ', $eduPersonEntitlement);
 +    $field_last_name = $attributes['sn'][0];
 +    $field_first_name = $attributes['givenName'][0];
 +    $displayName = $attributes['displayName'][0];
@@ -24,7 +23,7 @@ index 8a084f2..6784aad 100644
 +    if($user){
 +      $user->set('field_employee_number', $employeeNumber);
 +      $user->set('field_edu_person_principal_name', $eduPersonPrincipalName);
-+      $user->set('field_edu_person_entitlement', $edu_person);
++      $user->set('field_edu_person_entitlement', implode("\n", $eduPersonEntitlement));
 +      $user->set('field_first_name', $field_first_name);
 +      $user->set('field_last_name', $field_last_name);
 +      $user->set('field_preferred_name', $name);
@@ -35,16 +34,16 @@ index 8a084f2..6784aad 100644
 +    $role_ids = $query->execute();
 +    $group_roles = \Drupal\group\Entity\GroupRole::loadMultiple($role_ids);
 +    foreach ($group_roles as $role) {
-+      $group_roles_target_ids[] = $role->id();
++      $group_roles_target_ids[$role->id()] = $role->id();
 +    }
 +
 +    $query = \Drupal::entityQuery('user_role');
 +    $role_ids = $query->execute();
-+    $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
-+    foreach ($drupal_user_roles as $role) {
-+      $drupal_user_roles[] = $role->id();
++    $user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
++    $drupal_user_roles = [];
++    foreach ($user_roles as $role) {
++      $drupal_user_roles[$role->id()] = $role->id();
 +    }
-+    $personentitlement = explode(", ", $edu_person);
 +
 +    // get all groups IDs by machine names
 +    $group_machine_name_query = \Drupal::database()->select('group__field_house_machine_name', 'gfh')
@@ -55,62 +54,40 @@ index 8a084f2..6784aad 100644
 +      $groups_data[$row->field_house_machine_name_value] = $row->entity_id;  // Collect the 'group_roles_target_id' values.
 +    }
 +    $excluded_roles = ['campus_partner', 'chas_technology', 'chas_professional_staff', 'chas_student_worker'];
-+    foreach ($personentitlement as $row => $value) {
++    $group_user_roles_ids = [];
++    $group_ids = [];
++    $drupal_user_roles_ids = [];
++    foreach ($eduPersonEntitlement as $row => $value) {
 +      $array = explode('.', $value);
 +      $last_string = end($array);
-+      // Asign that user into group
-+      if (array_key_exists($last_string, $groups_data)) {
-+        $group_ids[] = $groups_data[$last_string]; // Get the group that come from grouper
++      if($last_string === 'ra') {
++        $last_string = 'resident_advisor';
 +      }
-+      if (in_array($last_string, $drupal_user_roles)) {
++      // Asign that user into group
++      if (isset($groups_data[$last_string])) {
++        $group_ids[$last_string] = $groups_data[$last_string]; // Get the group that come from grouper
++      }
++      if (isset($drupal_user_roles[$last_string])) {
 +        $drupal_user_roles_ids[] = $last_string; // Get the group roles from grouper
 +      }
-+      if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
++      if (isset($group_roles_target_ids['house1-' . $last_string])) {
 +        if(!in_array($last_string , $excluded_roles)){
-+          $group_user_roles_ids[] = $last_string; //Getdrupal role from grouper
++          $group_user_roles_ids[] = 'house1-' . $last_string; //Getdrupal role from grouper
 +        }
 +      }
 +    }
-+    if (isset($group_ids) && isset($group_user_roles_ids)) {
-+      foreach ($group_ids as $key => $group_id) {
-+        foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
-+          $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
-+          $query->fields('gr');
-+          $query->condition('gr.entity_id', $uid);
-+          $query->condition('gr.gid', $group_id); 
-+          $group_results = $query->execute()->fetchObject();
-+          if(!empty($group_results)){
-+            if($group_results->plugin_id == 'group_membership'){
-+              $groupData = \Drupal\group\Entity\Group::load($group_id);
-+              if ($groupData->getMember($user)) {
-+                $groupData->removeMember($user);
-+
-+                $values = ['group_roles' => []];
-+                foreach ($group_user_roles_ids as $role_id) {
-+                    // Add each role to the group member
-+                    $values['group_roles'][] = 'house1-' . $role_id;
-+                }
-+                if (!$groupData->getMember($user)) {
-+                  $groupData->addMember($user, $values);
-+                }
-+              }
-+            }
-+          }else{
-+            // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
-+            $values = ['group_roles' => []];  
-+            foreach ($group_user_roles_ids as $role_id) {
-+                // Add each role to the group member
-+                $values['group_roles'][] = 'house1-' . $role_id;
-+            }
-+            $groupData = \Drupal\group\Entity\Group::load($group_id);
-+            if (!$groupData->getMember($user)) {
-+              $groupData->addMember($user, $values);
-+            }
-+
-+          }
-+        }
++   
++    foreach($groups_data as $machin_name => $group_id) {
++      $group = \Drupal\group\Entity\Group::load($group_id);
++      $membership = $group->getMember($user);
++      if($membership) {
++        $group->removeMember($user);
++      }
++      if(isset($group_ids[$machin_name])) {
++        $group->addMember($user, ['group_roles' => $group_user_roles_ids]);
 +      }
 +    }
++ 
 +    if(isset($drupal_user_roles_ids)){
 +      if ($user) {
 +        foreach($user->getRoles() as $role) {
