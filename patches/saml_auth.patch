@@ -1,26 +1,16 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..9d1ec03 100644
+index 8a084f2..a80468b 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
-@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
- use Symfony\Component\HttpFoundation\RequestStack;
- use Symfony\Component\DependencyInjection\ContainerInterface;
- use Drupal\Core\Config\ConfigFactoryInterface;
-+use SimpleSAML\Auth\Simple;
-+use Drupal\user\Entity\User;
-+use Drupal\group\Entity\Group;
-+use Drupal\group\Entity\GroupMembership;
-+use Drupal\group\Entity\GroupRole;
-+use Drupal\group\GroupManager;
- 
- /**
-  * Controller routines for simplesamlphp_auth routes.
-@@ -200,6 +206,140 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +200,129 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
-+    $authSource = new Simple('default-sp'); 
++    $authSource = new \SimpleSAML\Auth\Simple('default-sp'); 
 +    $attributes = $authSource->getAttributes();
++    if ($this->config->get('debug')) {
++      $this->logger->debug('SMAL Reponse', $attributes);
++    }
 +    $employeeNumber = $attributes['employeeNumber'][0];
 +    $eduPersonPrincipalName = $attributes['eduPersonPrincipalName'][0];
 +    $eduPersonEntitlement = $attributes['eduPersonEntitlement'];
@@ -30,8 +20,8 @@ index 8a084f2..9d1ec03 100644
 +    $displayName = $attributes['displayName'][0];
 +    $name = str_replace(', ', ' ', $displayName);
 +
-+    $current_user = \Drupal::currentUser();
-+    $user = User::load($current_user->id());
++    $user = \Drupal::currentUser();
++    $uid = $user->id();
 +    $group_roles_target_ids = [];
 +    if($user){
 +      $user->set('field_employee_number', $employeeNumber);
@@ -45,7 +35,7 @@ index 8a084f2..9d1ec03 100644
 +
 +    $query = \Drupal::entityQuery('group_role');
 +    $role_ids = $query->execute();
-+    $group_roles = GroupRole::loadMultiple($role_ids);
++    $group_roles = \Drupal\group\Entity\GroupRole::loadMultiple($role_ids);
 +    foreach ($group_roles as $role) {
 +      $group_roles_target_ids[] = $role->id();
 +    }
@@ -72,78 +62,64 @@ index 8a084f2..9d1ec03 100644
 +      $last_string = end($array);
 +      // Asign that user into group
 +      if (array_key_exists($last_string, $groups_data)) {
-+        $group_ids[] = $groups_data[$last_string];
++        $group_ids[] = $groups_data[$last_string]; // Get the group that come from grouper
 +      }
 +      if (in_array($last_string, $drupal_user_roles)) {
-+        $drupal_user_roles_ids[] = $last_string;
++        $drupal_user_roles_ids[] = $last_string; // Get the group roles from grouper
 +      }
 +      if (in_array('house1-' . $last_string, $group_roles_target_ids)) {
 +        if(!in_array($last_string , $excluded_roles)){
-+          $group_user_roles_ids[] = $last_string;
++          $group_user_roles_ids[] = $last_string; //Getdrupal role from grouper
 +        }
 +      }
 +    }
-+    if (isset($group_ids)) {
++    if (isset($group_ids) && isset($group_user_roles_ids)) {
 +      foreach ($group_ids as $key => $group_id) {
-+        if(isset($group_user_roles_ids)){
-+          foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
-+            $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
-+            $query->fields('gr');
-+            $query->condition('gr.entity_id', $uid);
-+            $query->condition('gr.gid', $group_id); 
-+            $group_results = $query->execute()->fetchObject();
-+            if(!empty($group_results)){
-+              if($group_results->plugin_id == 'group_membership'){
-+                $groupData = Group::load($group_id);
-+                if ($groupData->getMember($user)) {
-+                  $groupData->removeMember($user);
++        foreach ($group_user_roles_ids as $gr_key => $group_user_roles_id) {
++          $query = \Drupal::database()->select('group_relationship_field_data', 'gr');
++          $query->fields('gr');
++          $query->condition('gr.entity_id', $uid);
++          $query->condition('gr.gid', $group_id); 
++          $group_results = $query->execute()->fetchObject();
++          if(!empty($group_results)){
++            if($group_results->plugin_id == 'group_membership'){
++              $groupData = \Drupal\group\Entity\Group::load($group_id);
++              if ($groupData->getMember($user)) {
++                $groupData->removeMember($user);
 +
-+                  $values = ['group_roles' => []];
-+                  foreach ($group_user_roles_ids as $role_id) {
-+                      // Add each role to the group member
-+                      $values['group_roles'][] = 'house1-' . $role_id;
-+                  }
-+                  if (!$groupData->getMember($user)) {
-+                    $groupData->addMember($user, $values);
-+                  }
++                $values = ['group_roles' => []];
++                foreach ($group_user_roles_ids as $role_id) {
++                    // Add each role to the group member
++                    $values['group_roles'][] = 'house1-' . $role_id;
++                }
++                if (!$groupData->getMember($user)) {
++                  $groupData->addMember($user, $values);
 +                }
 +              }
-+            }else{
-+              // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
-+              $values = ['group_roles' => []];  
-+              foreach ($group_user_roles_ids as $role_id) {
-+                  // Add each role to the group member
-+                  $values['group_roles'][] = 'house1-' . $role_id;
-+              }
-+              $groupData = Group::load($group_id);
-+              if (!$groupData->getMember($user)) {
-+                $groupData->addMember($user, $values);
-+              }
-+
++            }
++          }else{
++            // $values = ['group_roles' => 'house1-'.$group_user_roles_id];
++            $values = ['group_roles' => []];  
++            foreach ($group_user_roles_ids as $role_id) {
++                // Add each role to the group member
++                $values['group_roles'][] = 'house1-' . $role_id;
++            }
++            $groupData = \Drupal\group\Entity\Group::load($group_id);
++            if (!$groupData->getMember($user)) {
++              $groupData->addMember($user, $values);
 +            }
 +
-+            if ($user) {
-+              foreach ($drupal_user_roles_ids as $role) {
-+                if (!$user->hasRole($role)) {
-+                  $user->addRole($role);
-+                }
-+              }
-+              $user->save();
-+            }
-+          }
-+        }elseif(isset($drupal_user_roles_ids)){
-+          if ($user) {
-+            foreach ($drupal_user_roles_ids as $role) {
-+              if (!$user->hasRole($role)) {
-+                $user->addRole($role);
-+              }
-+            }
-+            $user->save();
 +          }
 +        }
 +      }
-+    }elseif(isset($drupal_user_roles_ids)){
++    }
++    if(isset($drupal_user_roles_ids)){
 +      if ($user) {
++        foreach($user->getRoles() as $role) {
++          if ($role !== 'authenticated') {
++            $user->removeRole($role);
++          }
++        }
 +        foreach ($drupal_user_roles_ids as $role) {
 +          if (!$user->hasRole($role)) {
 +            $user->addRole($role);
