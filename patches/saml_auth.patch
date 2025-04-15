@@ -1,16 +1,13 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..a80468b 100644
+index 8a084f2..fa177f0 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
-@@ -200,6 +200,129 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +200,127 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
 +    $authSource = new \SimpleSAML\Auth\Simple('default-sp'); 
 +    $attributes = $authSource->getAttributes();
-+    if ($this->config->get('debug')) {
-+      $this->logger->debug('SMAL Reponse', $attributes);
-+    }
 +    $employeeNumber = $attributes['employeeNumber'][0];
 +    $eduPersonPrincipalName = $attributes['eduPersonPrincipalName'][0];
 +    $eduPersonEntitlement = $attributes['eduPersonEntitlement'];
@@ -20,8 +17,9 @@ index 8a084f2..a80468b 100644
 +    $displayName = $attributes['displayName'][0];
 +    $name = str_replace(', ', ' ', $displayName);
 +
-+    $user = \Drupal::currentUser();
-+    $uid = $user->id();
++    $current_user = \Drupal::currentUser();
++    $uid = $current_user->id();
++    $user = \Drupal\user\Entity\User::load($uid);
 +    $group_roles_target_ids = [];
 +    if($user){
 +      $user->set('field_employee_number', $employeeNumber);
