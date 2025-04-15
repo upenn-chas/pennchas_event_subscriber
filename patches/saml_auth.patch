@@ -1,5 +1,5 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..fa177f0 100644
+index 8a084f2..6784aad 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
 @@ -200,6 +200,127 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
@@ -37,7 +37,7 @@ index 8a084f2..fa177f0 100644
 +    foreach ($group_roles as $role) {
 +      $group_roles_target_ids[] = $role->id();
 +    }
-+    
++
 +    $query = \Drupal::entityQuery('user_role');
 +    $role_ids = $query->execute();
 +    $drupal_user_roles = \Drupal\user\Entity\Role::loadMultiple($role_ids);
