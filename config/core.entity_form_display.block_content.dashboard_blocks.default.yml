@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.dashboard_blocks
     - field.field.block_content.dashboard_blocks.body
-    - field.field.block_content.dashboard_blocks.field_block_display_condition_wi
     - field.field.block_content.dashboard_blocks.field_call_to_actions
     - field.field.block_content.dashboard_blocks.field_child_dashboard_blocks
     - field.field.block_content.dashboard_blocks.field_display_block_to_roles
@@ -27,15 +26,9 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_block_display_condition_wi:
-    type: options_buttons
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_call_to_actions:
     type: link_default
-    weight: 2
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
@@ -43,13 +36,13 @@ content:
     third_party_settings: {  }
   field_child_dashboard_blocks:
     type: options_select
-    weight: 4
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_display_block_to_roles:
     type: options_buttons
-    weight: 26
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

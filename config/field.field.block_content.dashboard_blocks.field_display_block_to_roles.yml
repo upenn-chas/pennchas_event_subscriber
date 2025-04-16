@@ -11,7 +11,7 @@ id: block_content.dashboard_blocks.field_display_block_to_roles
 field_name: field_display_block_to_roles
 entity_type: block_content
 bundle: dashboard_blocks
-label: 'Display Block to Roles'
+label: 'Block Display Condition with group roles'
 description: ''
 required: false
 translatable: false

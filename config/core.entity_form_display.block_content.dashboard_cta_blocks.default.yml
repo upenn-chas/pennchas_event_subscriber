@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.dashboard_cta_blocks
     - field.field.block_content.dashboard_cta_blocks.body
-    - field.field.block_content.dashboard_cta_blocks.field_block_display_condition_wi
     - field.field.block_content.dashboard_cta_blocks.field_cta
     - field.field.block_content.dashboard_cta_blocks.field_display_block_to_roles
   module:
@@ -25,12 +24,6 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  field_block_display_condition_wi:
-    type: options_buttons
-    weight: 4
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_cta:
     type: link_default
