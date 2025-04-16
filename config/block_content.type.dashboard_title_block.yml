@@ -1,0 +1,8 @@
+uuid: 7b719e09-c9f2-42ae-b26d-35382e19fa23
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_title_block
+label: 'Dashboard Title Block'
+revision: false
+description: null

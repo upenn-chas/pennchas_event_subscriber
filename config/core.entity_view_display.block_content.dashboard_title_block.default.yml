@@ -1,0 +1,33 @@
+uuid: efc554d3-91e0-448f-94d0-b5bbc80bde89
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_title_block
+    - field.field.block_content.dashboard_title_block.body
+    - field.field.block_content.dashboard_title_block.field_display_block_to_roles
+  module:
+    - options
+    - text
+id: block_content.dashboard_title_block.default
+targetEntityType: block_content
+bundle: dashboard_title_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_display_block_to_roles:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

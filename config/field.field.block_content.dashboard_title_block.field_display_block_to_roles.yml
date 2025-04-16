@@ -1,0 +1,21 @@
+uuid: e16a1980-123b-4427-b4c4-5d95ec673208
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_title_block
+    - field.storage.block_content.field_display_block_to_roles
+  module:
+    - options
+id: block_content.dashboard_title_block.field_display_block_to_roles
+field_name: field_display_block_to_roles
+entity_type: block_content
+bundle: dashboard_title_block
+label: 'Block Display Condition with group roles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
