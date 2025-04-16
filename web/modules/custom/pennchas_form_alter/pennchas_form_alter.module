@@ -224,10 +224,6 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
             $fields['title']->addConstraint('TextConstraint');
         }
 
-        if (isset($fields['field_room'])) {
-            $fields['field_room']->addConstraint('AllowRoomConstraint');
-        }
-
         if (isset($fields['field_event_schedule'])) {
             $fields['field_event_schedule']->addConstraint('RoomAvailableConstraint');
         }
