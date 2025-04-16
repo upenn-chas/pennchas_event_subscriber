@@ -1,0 +1,21 @@
+uuid: ebe8544a-1ed3-4580-aad7-65e3f753842d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+    - field.storage.block_content.field_display_block_to_roles
+  module:
+    - options
+id: block_content.dashboard_blocks.field_display_block_to_roles
+field_name: field_display_block_to_roles
+entity_type: block_content
+bundle: dashboard_blocks
+label: 'Display Block to Roles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

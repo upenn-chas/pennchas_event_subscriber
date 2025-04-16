@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.dashboard_cta_blocks.body
     - field.field.block_content.dashboard_cta_blocks.field_block_display_condition_wi
     - field.field.block_content.dashboard_cta_blocks.field_cta
+    - field.field.block_content.dashboard_cta_blocks.field_display_block_to_roles
   module:
     - link
     - text
@@ -38,6 +39,12 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_display_block_to_roles:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
     third_party_settings: {  }
   info:
     type: string_textfield

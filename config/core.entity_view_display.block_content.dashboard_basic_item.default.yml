@@ -8,12 +8,14 @@ dependencies:
     - field.field.block_content.dashboard_basic_item.field_block_display_condition_wi
     - field.field.block_content.dashboard_basic_item.field_circle_colour
     - field.field.block_content.dashboard_basic_item.field_cta
+    - field.field.block_content.dashboard_basic_item.field_display_block_to_roles
     - field.field.block_content.dashboard_basic_item.field_heading
     - field.field.block_content.dashboard_basic_item.field_icon
   module:
     - color_field
     - link
     - media
+    - options
     - text
 id: block_content.dashboard_basic_item.default
 targetEntityType: block_content
@@ -55,6 +57,13 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_display_block_to_roles:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_heading:
     type: string

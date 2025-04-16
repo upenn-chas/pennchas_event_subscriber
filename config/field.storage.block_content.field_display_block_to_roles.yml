@@ -1,0 +1,54 @@
+uuid: db472f59-befd-4da8-a79e-08838130238e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_display_block_to_roles
+field_name: field_display_block_to_roles
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: administrator
+      label: Administrator
+    -
+      value: chas_director
+      label: 'Chas Director'
+    -
+      value: chas_professional_staff
+      label: 'CHAS Professional Staff'
+    -
+      value: chas_technology
+      label: 'CHAS Technology'
+    -
+      value: chas_student_worker
+      label: 'CHAS Student Worker'
+    -
+      value: house1-house_director
+      label: 'House Director'
+    -
+      value: house1-house_coordinator
+      label: 'House Coordinator'
+    -
+      value: house1-house_faculty
+      label: 'House Faculty'
+    -
+      value: house1-chas_tech_student_worker
+      label: 'CHAS Tech Student Worker'
+    -
+      value: house1-resident_advisor
+      label: 'Resident Advisor'
+    -
+      value: house1-resident
+      label: Resident
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
