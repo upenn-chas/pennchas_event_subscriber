@@ -200,10 +200,15 @@
   }
 }
 
-
 .resources-top-border {
   .block-layout-builder {
     border-top: 1px solid $primaryColor;
     padding-top: 45px;
+  }
+}
+
+.quicklinks-slot {
+  &:not(:has(> .block-inline-blockdashboard-blocks)) {
+    display: none;
   }
 }
