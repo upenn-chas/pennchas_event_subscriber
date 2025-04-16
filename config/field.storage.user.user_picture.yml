@@ -15,14 +15,14 @@ type: image
 settings:
   target_type: file
   display_field: false
-  display_default: false
+  display_default: true
   uri_scheme: public
   default_image:
-    uuid: null
-    alt: ''
+    uuid: 5b2905d4-ccc9-4d76-95ee-5bd80e07c675
+    alt: '[no photo available]'
     title: ''
-    width: null
-    height: null
+    width: 500
+    height: 500
 module: image
 locked: false
 cardinality: 1

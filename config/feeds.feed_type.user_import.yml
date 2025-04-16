@@ -50,6 +50,14 @@ third_party_settings:
         source: category
         weight: 0
         label: Explode
+      f105fc2b-a587-4d09-a11a-0552f8613465:
+        default_value: '1'
+        only_if_empty: false
+        uuid: f105fc2b-a587-4d09-a11a-0552f8613465
+        plugin: default_value
+        source: status
+        weight: 0
+        label: 'Set value or default value'
 label: 'User Import'
 id: user_import
 description: ''
