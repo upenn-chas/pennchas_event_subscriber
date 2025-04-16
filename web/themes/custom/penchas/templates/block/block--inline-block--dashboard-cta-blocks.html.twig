@@ -38,7 +38,7 @@
     'no-child-blocks'
   ]
 %}
-{% if verify_role_access(content.field_block_display_condition_wi) %}
+{% if verify_role_access(content.field_display_block_to_roles) %}
     {% block content %}
     <div{{ attributes.addClass(classes) }}>
       <div{{ content_attributes.addClass('contents') }}>
@@ -47,7 +47,7 @@
           <h5{{ title_attributes }}>{{ label }}</h5>
         {% endif %}
         {{ title_suffix }}
-        {{ content }}
+        {{ content|without('field_child_dashboard_blocks', 'field_display_block_to_roles') }}
       </div>
     </div>
     {% endblock %}
