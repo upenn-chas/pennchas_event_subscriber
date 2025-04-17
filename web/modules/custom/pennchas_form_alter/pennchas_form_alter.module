@@ -77,6 +77,11 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         case Constant::VIEW_EXPOSED_FORM_ID:
             pennchas_form_alter_views_exposed_form_alter($form, $formState);
             break;
+        case 'block_form':
+            if (isset($form['visibility']['user_role'])) {
+                unset($form['visibility']['user_role']);
+            }
+            break;
         default:
             break;
     }

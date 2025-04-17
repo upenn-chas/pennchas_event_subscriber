@@ -16,14 +16,20 @@ use Drupal\Core\Layout\LayoutBuilderInterface;
 use Drupal\block\BlockPluginInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\block\BlockInterface;
+use Drupal\user\Entity\Role;
 use Drupal\views\Views;
 
 
 function get_all_group_roles(){
   $all_roles = [];
+
+  $roles = Role::loadMultiple();
+  foreach($roles as $role_key => $role) {
+    $all_roles[$role_key] = $role->label();
+  }
   $group_type_entity = GroupType::load('house1');
   if ($group_type_entity) {
-    $roles = $group_type_entity->getRoles();
+    $roles = $group_type_entity->getRoles(FALSE);
 
     foreach ($roles as $role_key => $role) {
 

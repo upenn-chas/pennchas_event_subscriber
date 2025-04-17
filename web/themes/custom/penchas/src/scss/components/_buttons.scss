@@ -20,6 +20,7 @@ button {
   &:focus {
     box-shadow: none;
     outline: none;
+    border: none !important;
   }
   @include media-query('mobile') {
     font-size: 18px;
@@ -137,8 +138,11 @@ button {
   line-height: 65px;
   &.medium {
     height: 50px;
-    line-height: 50px;
+    // line-height: 50px;
     font-size: 18px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   &:active {
     background: $primaryColor;
@@ -248,4 +252,8 @@ a.arrow-link {
   &::before {
     display: none;
   }
+}
+
+.field.btn.btn-primary {
+  margin-bottom: 310px !important;
 }

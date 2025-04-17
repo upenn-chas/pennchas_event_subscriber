@@ -1,6 +1,6 @@
 uuid: a0ca1069-90c0-46d5-8170-dfb8dd4a0519
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - group_role_condition_plugin

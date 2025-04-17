@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - user
+    - group_role_condition_plugin
   theme:
     - penchas
 id: penchas_tabs
@@ -20,14 +20,15 @@ settings:
   primary: true
   secondary: true
 visibility:
-  user_role:
-    id: user_role
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'
-    roles:
+  group_role_condition_plugin:
+    id: group_role_condition_plugin
+    block_group_roles:
       administrator: administrator
       chas_student_worker: chas_student_worker
       chas_technology: chas_technology
       chas_director: chas_director
       chas_professional_staff: chas_professional_staff
+      house1-house_coordinator: house1-house_coordinator
+      house1-house_director: house1-house_director
+      house1-house_faculty: house1-house_faculty
+    negate: null

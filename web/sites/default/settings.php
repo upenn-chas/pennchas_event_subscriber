@@ -25,21 +25,9 @@ include __DIR__ . "/settings.pantheon.php";
  */
 // $settings['skip_permissions_hardening'] = TRUE;
 
-/**
- * If there is a local settings file, then include it
- */
-$local_settings = __DIR__ . "/settings.local.php";
-if (file_exists($local_settings)) {
-  include $local_settings;
-}
+
 $settings['config_sync_directory'] = '../config/';
 ini_set('memory_limit', '-1');
-
-
-// TODO: Remove below config from here and add them in settings.local.php file on server.
-
-$config['recaptcha_v3.settings']['site_key'] = '6LezWaAqAAAAAJe89jUpHevuVFBmn2A4JIJcfMuP';
-$config['recaptcha_v3.settings']['secret_key'] = '6LezWaAqAAAAADn_uR9jf-B4a86kj5ZVtIP4OPtF';
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
@@ -48,3 +36,11 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];
+
+/**
+ * If there is a local settings file, then include it
+ */
+$local_settings = __DIR__ . "/settings.local.php";
+if (file_exists($local_settings)) {
+  include $local_settings;
+}

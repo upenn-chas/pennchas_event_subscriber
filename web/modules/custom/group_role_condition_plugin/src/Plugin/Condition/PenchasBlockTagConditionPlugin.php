@@ -3,6 +3,7 @@
 namespace Drupal\group_role_condition_plugin\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
+use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRole;
@@ -13,21 +14,23 @@ use Drupal\group\Entity\GroupContent;
  *
  * @Condition(
  *   id = "group_role_condition_plugin",
- *   label = @Translation("Group Role Condition"),
+ *   label = @Translation("Roles"),
  * )
  */
-class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
+class PenchasBlockTagConditionPlugin extends ConditionPluginBase
+{
 
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state)
+  {
     $form = parent::buildConfigurationForm($form, $form_state);
     $group_roles = get_all_group_roles();
     $form['negate'] = [];
     $form['block_group_roles'] = [
       '#type' => 'checkboxes',
-      '#title' => $this->t('Block Display Condition with group roles'),
+      '#title' => $this->t('When the user has the following roles'),
       '#default_value' => $this->configuration['block_group_roles'],
       '#options' => $group_roles,
       '#description' => $this->t('If you select no Block role, the condition will evaluate to TRUE for all Blocks.'),
@@ -38,7 +41,8 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function defaultConfiguration() {
+  public function defaultConfiguration()
+  {
     return [
       'block_group_roles' => [],
     ] + parent::defaultConfiguration();
@@ -47,7 +51,8 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
+  {
     $this->configuration['block_group_roles'] = array_filter($form_state->getValue('block_group_roles'));
     parent::submitConfigurationForm($form, $form_state);
   }
@@ -55,20 +60,19 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function summary() {
+  public function summary()
+  {
     $block_group_roles = $this->configuration['block_group_roles'];
 
     if (count($block_group_roles) > 1) {
       $block_group_roles = implode(', ', $block_group_roles);
-    }
-    else {
+    } else {
       $block_group_roles = reset($block_group_roles);
     }
 
     if (!empty($this->configuration['negate'])) {
       return $this->t('The Tag is not @block_group_roles', ['@block_group_roles' => $block_group_roles]);
-    }
-    else {
+    } else {
       return $this->t('The Tag is @block_group_roles', ['@block_group_roles' => $block_group_roles]);
     }
   }
@@ -76,7 +80,8 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function evaluate() {
+  public function evaluate()
+  {
 
     if (empty($this->configuration['block_group_roles']) && !$this->isNegated()) {
       return TRUE;
@@ -90,39 +95,64 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
 
     // Load the current user.
     $current_user = \Drupal::currentUser();
-    $user_entity = \Drupal\user\Entity\User::load($current_user->id());
+    // $user_entity = \Drupal\user\Entity\User::load($current_user->id());
 
-    if (!$user_entity) {
-      return FALSE; // No user entity, so the condition fails.
+    // if (!$user_entity) {
+    //   return FALSE; // No user entity, so the condition fails.
+    // }
+
+    foreach ($current_user->getRoles(TRUE) as $role) {
+      if (isset($configured_roles[$role])) {
+        return TRUE;
+      }
     }
+    // Check if user has group roles.
+    $connection = Database::getConnection();
+    $query = $connection->select('group_relationship_field_data', 'grfd');
+    $query->innerJoin('group_relationship__group_roles', 'grgr', 'grfd.id = grgr.entity_id');
+    $query->fields('grgr', ['group_roles_target_id'])
+      ->condition('grfd.entity_id', $current_user->id(), '=')
+      ->condition('grfd.plugin_id', 'group_membership', '=');
 
-    // Initialize arrays to hold the roles.
-    $user_roles = array_merge($user_entity->getRoles(), []); // Start with the user's roles.
-
-    // Get group memberships for the user.
-    $memberships = \Drupal::service('group.membership_loader')->loadByUser($user_entity);
-
-    foreach ($memberships as $membership) {
-      $roles = $membership->getRoles();
-      
-      foreach ($roles as $role) {
-        if ($role instanceof GroupRole) {
-          $user_roles[] = $role->id(); // Add group roles to the user roles.
+    // Execute the query and fetch all results as an associative array.
+    $results = $query->distinct()->execute()->fetchAllAssoc('group_roles_target_id');
+    if (!empty($results)) {
+      foreach ($results as $role => $data) {
+        if (isset($configured_roles[$role])) {
+          return TRUE;
         }
       }
     }
+    return FALSE;
 
-    // Flatten the configured roles array into a simple list (if it's nested).
-    $configured_roles_flat = [];
-    foreach ($configured_roles as $group => $roles) {
-      $configured_roles_flat = array_merge($configured_roles_flat,  (array) $roles);
-    }
 
-    // Compare user roles with configured roles.
-    $matching_roles = array_intersect($user_roles, $configured_roles_flat);
+    // // Initialize arrays to hold the roles.
+    // $user_roles = array_merge($user_entity->getRoles(), []); // Start with the user's roles.
 
-    // Return the matching roles (or perform further logic).
-    return $matching_roles;
+    // // Get group memberships for the user.
+    // $memberships = \Drupal::service('group.membership_loader')->loadByUser($user_entity);
+
+    // foreach ($memberships as $membership) {
+    //   $roles = $membership->getRoles();
+
+    //   foreach ($roles as $role) {
+    //     if ($role instanceof GroupRole) {
+    //       $user_roles[] = $role->id(); // Add group roles to the user roles.
+    //     }
+    //   }
+    // }
+
+    // // Flatten the configured roles array into a simple list (if it's nested).
+    // $configured_roles_flat = [];
+    // foreach ($configured_roles as $group => $roles) {
+    //   $configured_roles_flat = array_merge($configured_roles_flat,  (array) $roles);
+    // }
+
+    // // Compare user roles with configured roles.
+    // $matching_roles = array_intersect($user_roles, $configured_roles_flat);
+
+    // // Return the matching roles (or perform further logic).
+    // return $matching_roles;
 
 
 
@@ -142,5 +172,4 @@ class PenchasBlockTagConditionPlugin extends ConditionPluginBase {
     // }
 
   }
-
 }
