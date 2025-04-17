@@ -536,17 +536,17 @@ function pennchas_form_alter_preprocess_field(&$variables)
     }
 }
 
-function pennchas_form_alter_preprocess_form_element(&$variables)
-{
-    if (isset($variables['name']) && !empty($variables['name']) && strpos($variables['name'], 'field_block_display_condition_wi') !== false) {
-        $items = &$variables['items'];
+// function pennchas_form_alter_preprocess_form_element(&$variables)
+// {
+//     if (isset($variables['name']) && !empty($variables['name']) && strpos($variables['name'], 'field_block_display_condition_wi') !== false) {
+//         $items = &$variables['items'];
 
-        $group_role = GroupRole::load($variables['element']['#return_value']);
-        if ($group_role) {
-            $variables['label']['#title'] = $group_role->get('label') . ' (' . $group_role->get('scope') . ')';
-        }
-    }
-}
+//         $group_role = GroupRole::load($variables['element']['#return_value']);
+//         if ($group_role) {
+//             $variables['label']['#title'] = $group_role->get('label') . ' (' . $group_role->get('scope') . ')';
+//         }
+//     }
+// }
 
 function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context)
 {

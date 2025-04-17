@@ -698,10 +698,14 @@ function getGroupLableFromShortName(string $short_name)
 
 function penchas_preprocess_page(&$variables)
 {
-  $base_url = base_path();
+  if (\Drupal::request()->getRequestUri() === '/dashboard') {
+    $variables['#cache']['contexts'][] = 'user.roles';
+    $variables['#cache']['max-age'] = 0;
+    return;
+  }
+  // $base_url = base_path();
   /* Node Meta tag updates  */
   $node = \Drupal::routeMatch()->getParameter('node');
-
   if ($node instanceof NodeInterface) {
     $node = $variables['node'];
 
@@ -709,6 +713,7 @@ function penchas_preprocess_page(&$variables)
     $variables['node_title'] = $node_title;
   }
 }
+
 function penchas_preprocess_block(&$variables)
 {
 
