@@ -127,7 +127,7 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
-            weight: 2
+            weight: 4
             additional: {  }
           9c1b8067-3fcb-4863-8364-3cd0b9225a87:
             uuid: 9c1b8067-3fcb-4863-8364-3cd0b9225a87
@@ -151,7 +151,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           b7bfd914-305d-4cc0-ad63-9a138ec69564:
             uuid: b7bfd914-305d-4cc0-ad63-9a138ec69564
@@ -214,26 +214,7 @@ third_party_settings:
                   view_mode: default
                   link: false
                 third_party_settings: {  }
-            weight: 7
-            additional: {  }
-          9cbdba19-7644-49bd-a26d-2f7814b90a6a:
-            uuid: 9cbdba19-7644-49bd-a26d-2f7814b90a6a
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:notices:field_groups'
-              label: 'House Affected'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: hidden
-                settings:
-                  link: false
-                third_party_settings: {  }
-            weight: 4
+            weight: 8
             additional: {  }
           99ca8977-f6bb-4230-b567-672120a50c40:
             uuid: 99ca8977-f6bb-4230-b567-672120a50c40
@@ -315,7 +296,45 @@ third_party_settings:
                           ignore_timezone_if_UTC: false
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 6
+            weight: 7
+            additional: {  }
+          ea927057-c8e1-4496-9028-fe2f140d760a:
+            uuid: ea927057-c8e1-4496-9028-fe2f140d760a
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_text_box'
+              label: Location
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          9cbdba19-7644-49bd-a26d-2f7814b90a6a:
+            uuid: 9cbdba19-7644-49bd-a26d-2f7814b90a6a
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_groups'
+              label: 'House Affected'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 2
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

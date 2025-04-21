@@ -215,7 +215,7 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
-            weight: 1
+            weight: 2
             additional: {  }
           81876a9f-2414-4927-9c47-ebabd40d23af:
             uuid: 81876a9f-2414-4927-9c47-ebabd40d23af
@@ -234,7 +234,7 @@ third_party_settings:
                 settings:
                   link: false
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           5c282e09-b65b-4b53-8d62-6a9e9a0f0e7d:
             uuid: 5c282e09-b65b-4b53-8d62-6a9e9a0f0e7d
@@ -258,7 +258,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           78911a1e-7433-4ff2-ace1-5b96d9b7103d:
             uuid: 78911a1e-7433-4ff2-ace1-5b96d9b7103d
@@ -340,7 +340,26 @@ third_party_settings:
                           ignore_timezone_if_UTC: false
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 4
+            weight: 5
+            additional: {  }
+          9cc4eb3a-2108-4938-b421-51e323e52f0c:
+            uuid: 9cc4eb3a-2108-4938-b421-51e323e52f0c
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:reserve_room:field_group'
+              label: House
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

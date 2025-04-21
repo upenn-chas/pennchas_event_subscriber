@@ -50,14 +50,12 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label_class
-                label: visually_hidden
+                type: entity_reference_label
+                label: hidden
                 settings:
                   link: false
-                  class: ''
-                  tag: p
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           086569e5-ca7a-44ba-b728-f7dfb02e188e:
             uuid: 086569e5-ca7a-44ba-b728-f7dfb02e188e
@@ -75,7 +73,7 @@ third_party_settings:
                 label: visually_hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 9
+            weight: 6
             additional: {  }
           642d70a1-4db5-401f-9b35-4fd5903a5a23:
             uuid: 642d70a1-4db5-401f-9b35-4fd5903a5a23
@@ -122,7 +120,7 @@ third_party_settings:
               formatter:
                 settings: {  }
                 third_party_settings: {  }
-            weight: 11
+            weight: 7
             additional: {  }
           532d91ea-057e-459b-bb18-f33bdb392772:
             uuid: 532d91ea-057e-459b-bb18-f33bdb392772
@@ -202,7 +200,7 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
-            weight: 3
+            weight: 4
             additional: {  }
           2daa298c-d7c7-4b81-9997-82456821922d:
             uuid: 2daa298c-d7c7-4b81-9997-82456821922d
@@ -284,7 +282,26 @@ third_party_settings:
                           ignore_timezone_if_UTC: false
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 12
+            weight: 8
+            additional: {  }
+          de99a5b8-5406-44a0-b749-d3646acf3746:
+            uuid: de99a5b8-5406-44a0-b749-d3646acf3746
+            region: content
+            configuration:
+              id: 'field_block:node:reserve_room:field_group'
+              label: House
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
