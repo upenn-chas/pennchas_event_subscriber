@@ -268,38 +268,42 @@ function penchas_preprocess_node(&$variables)
     }
     // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
     $variables['page_breadcrumbs_list'] = $breadcrumbs;
-  } else if ($nodeBundle === 'chas_event' || $nodeBundle === 'reserve_room') {  // Handle event-specific processing.
+  } else if ($nodeBundle === 'chas_event' || $nodeBundle === 'reserve_room' || $nodeBundle === 'notices') {  // Handle event-specific processing.
     $calendar_link = $base_path;
     $nid = $node->id();
     $links = '';
     $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
+    $classes = [
+      0 => 'event-details-breadcrumbs',
+      1 => 'event-breadcrumbs'
+    ];
 
-    if ($current_user->isAuthenticated()) {
-      $moderator_link = '';
-
-      // Get event house ID and group.
-      $calendar_path = '/calendar';
+    // Get event house ID and group.
+    $calendar_path = '/calendar';
+    $moderation_view = 'view.event_moderation_view.event_moderate_page_view';
+      
+    if ($nodeBundle === 'chas_event') {
+      $eventHouseId = (int) $node->get('field_location')->getString();
+    } else if ($nodeBundle === 'reserve_room') {
+      $calendar_path = '/room-reservation-calendar';
+      $eventHouseId = (int) $node->get('field_group')->getString();
       $classes = [
-        'event-details-breadcrumbs',
-        'event-breadcrumbs'
+        0 => 'reserve-details-breadcrumbs',
+        1 => 'reserve-breadcrumbs'
       ];
-      if ($nodeBundle === 'chas_event') {
-        $eventHouseId = (int) $node->get('field_location')->getString();
-      } else {
-        $calendar_path = '/room-reservation-calendar';
-        $eventHouseId = (int) $node->get('field_group')->getString();
-        $classes = [
-          'reserve-details-breadcrumbs',
-          'reserve-breadcrumbs'
-        ];
-      }
-      $group = Group::load($eventHouseId);
+      $moderation_view = 'view.reserve_room_moderation_view.page_1';
+    } else if ($nodeBundle === 'notices') {
+      $eventHouseId = (int) $node->get('field_groups')->getString();
+    }
 
-      if ($group) {
-        $eventHousename = $group->get('field_short_name')->value;
-        $calendar_link = $base_path . 'group/' . $eventHousename . $calendar_path;
-      }
+    $group = Group::load($eventHouseId);
 
+    if ($group) {
+      $eventHousename = $group->get('field_short_name')->value;
+      $calendar_link = $base_path . 'group/' . $eventHousename . $calendar_path;
+    }
+
+    if ($current_user->isAuthenticated()) {      
       $variables['is_logged_in'] = TRUE;
       $variables['attributes']['class'][] = 'logged-in-user';
 
@@ -319,9 +323,9 @@ function penchas_preprocess_node(&$variables)
         }
 
         // Generate moderation link if the user has permission.
-        if (in_array($moderationState, ['draft', 'pending']) && $moderator_access_check_service->checkForEntity($node)) {
-          $moderator_url = Url::fromRoute('view.event_moderation_view.event_moderate_page_view', ['node' => $node->id()])->toString();
-          $links .= '<li><a href="' . $moderator_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
+        if ($nodeBundle !== 'notices' && in_array($moderationState, ['draft', 'pending']) && $moderator_access_check_service->checkForEntity($node)) {
+            $moderator_url = Url::fromRoute($moderation_view, ['node' => $node->id()])->toString();
+            $links .= '<li><a href="' . $moderator_url . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/gear.svg"> Moderate</a></li>';
         }
       }
     }
@@ -331,6 +335,7 @@ function penchas_preprocess_node(&$variables)
           <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
         </svg><span class="sr-only-hidden">Copy</span></a><span class="copy-tooltip">LINK COPIED!</span></li>'
       . $links . '</ul></div></div>';
+      
     $referer = \Drupal::request()->headers->get('referer');
 
 
@@ -339,34 +344,6 @@ function penchas_preprocess_node(&$variables)
     }
 
     // dd($variables);
-  } else if ($nodeBundle === 'notices') {
-    $calendar_link = $base_path;
-    $nid = $node->id();
-
-    $links = '';
-    $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
-
-    if ($current_user->isAuthenticated()) {
-      $eventHouseId = (int) $node->get('field_groups')->getString();
-      $group = Group::load($eventHouseId);
-
-      if ($group) {
-        $eventHousename = $group->get('field_short_name')->value;
-        $calendar_link = $base_path . 'group/' . $eventHousename . '/calendar';
-      }
-    }
-
-    $variables['breadcrumbs_reserve_list'] = '<div class="reserve-details-breadcrumbs"><div class="reserve-breadcrumbs"><ul>
-          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg" alt="back to calendar"> Back to Calendar</a></li>
-          <li><a href="/node/' . $nid . '/edit"><img src="/themes/custom/penchas/assets/images/edit.svg" alt="edit">Edit</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
-          <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
-        </svg><span class="copy-tooltip">LINK COPIED!</span></a></li></ul></div></div>';
-    $referer = \Drupal::request()->headers->get('referer');
-
-
-    if ($referer && $referer . preg_match('/group\/[a-z\-]+\/calendar$/s', $referer)) {
-      $variables['content_attributes']['class'][] = 'calendar-item-modal';
-    }
   }
 
   // Set node title.
