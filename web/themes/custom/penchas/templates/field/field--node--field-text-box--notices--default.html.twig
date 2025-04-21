@@ -53,30 +53,35 @@
 %}
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field__item') }}>
-      <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/building.svg" alt="building icon">
-       <span class="event-house-location-details">
-        {% for item in items  %}{{ item.content }}{% if not loop.last %}, {% endif %}{% endfor %}
-      </span>
+    <div{{ attributes.addClass(classes, 'field__items') }}>
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>
+          <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
+          {{ item.content }}
+        </div>
+      {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
       <div{{ attributes.addClass(classes, 'field__item') }}>
-        <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/building.svg" alt="building icon">
-        <span class="event-house-location-details">{{ item.content}}</span>    
+        <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
+        {{ item.content }}
       </div>
     {% endfor %}
   {% endif %}
 {% else %}
   <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    <div{{ title_attributes.addClass(title_classes) }}>
+      <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
+      {{ label }}
+    </div>
     {% if multiple %}
       <div class='field__items'>
     {% endif %}
     {% for item in items %}
       <div{{ item.attributes.addClass('field__item') }}>
-        <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/building.svg" alt="building icon">
-        <span class="event-house-location-details">{{ item.content }}</span>  
+        <img src="{{ path('<front>') }}themes/custom/penchas/assets/images/pin.svg" alt="pin icon">
+        {{ item.content }}
       </div>
     {% endfor %}
     {% if multiple %}
@@ -84,3 +89,4 @@
     {% endif %}
   </div>
 {% endif %}
+

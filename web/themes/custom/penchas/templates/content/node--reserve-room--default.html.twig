@@ -130,6 +130,9 @@
 </section>
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    <div class="container">
+      {{breadcrumbs_list|t}}
+    </div>
     {{ content }}
   </div>
 </article>

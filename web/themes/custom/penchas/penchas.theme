@@ -77,9 +77,9 @@ function penchas_preprocess_container(array &$variables)
   // Ensure that there are at least three elements in the path
   if (isset($path_parts[0]) && $path_parts[0] === 'group' && isset($path_parts[1])) {
     if (isset($path_parts[2]) && (
-      $path_parts[2] == 'calendar' || 
-      $path_parts[2] == 'room-reservation-calendar' || 
-      $path_parts[2] == 'week-room-reservation-calendar' || 
+      $path_parts[2] == 'calendar' ||
+      $path_parts[2] == 'room-reservation-calendar' ||
+      $path_parts[2] == 'week-room-reservation-calendar' ||
       $path_parts[2] == 'week-calendar')) {
       $variables['attributes']['class'] = 'full-container';
     }
@@ -268,7 +268,7 @@ function penchas_preprocess_node(&$variables)
     }
     // Set breadcrumbs in variables (make sure to only include parent breadcrumbs)
     $variables['page_breadcrumbs_list'] = $breadcrumbs;
-  } else if ($nodeBundle === 'chas_event') {  // Handle event-specific processing.
+  } else if ($nodeBundle === 'chas_event' || $nodeBundle === 'reserve_room') {  // Handle event-specific processing.
     $calendar_link = $base_path;
     $nid = $node->id();
     $links = '';
@@ -278,12 +278,26 @@ function penchas_preprocess_node(&$variables)
       $moderator_link = '';
 
       // Get event house ID and group.
-      $eventHouseId = (int) $node->get('field_location')->getString();
+      $calendar_path = '/calendar';
+      $classes = [
+        'event-details-breadcrumbs',
+        'event-breadcrumbs'
+      ];
+      if ($nodeBundle === 'chas_event') {
+        $eventHouseId = (int) $node->get('field_location')->getString();
+      } else {
+        $calendar_path = '/room-reservation-calendar';
+        $eventHouseId = (int) $node->get('field_group')->getString();
+        $classes = [
+          'reserve-details-breadcrumbs',
+          'reserve-breadcrumbs'
+        ];
+      }
       $group = Group::load($eventHouseId);
 
       if ($group) {
         $eventHousename = $group->get('field_short_name')->value;
-        $calendar_link = $base_path . 'group/' . $eventHousename . '/calendar';
+        $calendar_link = $base_path . 'group/' . $eventHousename . $calendar_path;
       }
 
       $variables['is_logged_in'] = TRUE;
@@ -312,7 +326,7 @@ function penchas_preprocess_node(&$variables)
       }
     }
 
-    $variables['breadcrumbs_list'] = '<div class="event-details-breadcrumbs"><div class="event-breadcrumbs"><ul>
+    $variables['breadcrumbs_list'] = '<div class="'. $classes[0] .'"><div class="'. $classes[1] .'"><ul>
           <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg" alt="back-arrow icon"> Back to Calendar</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
           <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
         </svg><span class="sr-only-hidden">Copy</span></a><span class="copy-tooltip">LINK COPIED!</span></li>'
@@ -325,67 +339,34 @@ function penchas_preprocess_node(&$variables)
     }
 
     // dd($variables);
-  } else if ($nodeBundle === 'reserve_room') {
-    $request = \Drupal::service('request_stack')->getCurrentRequest();
-    $parameter_value = $request->query->get('view_mode');
-    if ($parameter_value == 'calendar_view') {
-      $calendar_link = $base_path;
-      $nid = $node->id();
-      $links = '';
-      $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
-      // dd($current_path);
-      if ($current_user->isAuthenticated()) {
-        $eventHouseId = (int) $node->get('field_group')->getString();
-        // dd($eventHouseId);
-        $group = Group::load($eventHouseId);
+  } else if ($nodeBundle === 'notices') {
+    $calendar_link = $base_path;
+    $nid = $node->id();
 
-        if ($group) {
-          $eventHousename = $group->get('field_short_name')->value;
-          $calendar_link = $base_path . 'group/' . $eventHousename . '/room-reservation-calendar';
-        }
-      }
+    $links = '';
+    $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
 
-      $variables['breadcrumbs_reserve_list'] = '<div class="reserve-details-breadcrumbs"><div class="reserve-breadcrumbs"><ul>
-          <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg" alt="back-arrow icon"> Back to Calendar</a></li>
-          <li><a href="/node/' . $nid . '/edit"><img src="/themes/custom/penchas/assets/images/edit.svg" alt="edit">Edit</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
-          <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
-        </svg><span class="copy-tooltip">LINK COPIED!</span></a></li></ul></div></div>';
-      $referer = \Drupal::request()->headers->get('referer');
+    if ($current_user->isAuthenticated()) {
+      $eventHouseId = (int) $node->get('field_groups')->getString();
+      $group = Group::load($eventHouseId);
 
-
-      if ($referer && $referer . preg_match('/group\/[a-z\-]+\/calendar$/s', $referer)) {
-        $variables['content_attributes']['class'][] = 'calendar-item-modal';
+      if ($group) {
+        $eventHousename = $group->get('field_short_name')->value;
+        $calendar_link = $base_path . 'group/' . $eventHousename . '/calendar';
       }
     }
-  } else if ($nodeBundle === 'notices') {
-      $calendar_link = $base_path;
-      $nid = $node->id();
-      
-      $links = '';
-      $current_path = Url::fromRoute('entity.node.canonical', ['node' => $nid], ['absolute' => TRUE])->toString();
-      
-      if ($current_user->isAuthenticated()) {
-        $eventHouseId = (int) $node->get('field_groups')->getString();
-        $group = Group::load($eventHouseId);
-        
-        if ($group) {
-          $eventHousename = $group->get('field_short_name')->value;
-          $calendar_link = $base_path . 'group/' . $eventHousename . '/calendar';
-        }
-      }
 
-      $variables['breadcrumbs_reserve_list'] = '<div class="reserve-details-breadcrumbs"><div class="reserve-breadcrumbs"><ul>
+    $variables['breadcrumbs_reserve_list'] = '<div class="reserve-details-breadcrumbs"><div class="reserve-breadcrumbs"><ul>
           <li><a href="' . $calendar_link . '"><img src="' . $base_path . 'themes/custom/penchas/assets/images/back-arrow.svg" alt="back to calendar"> Back to Calendar</a></li>
           <li><a href="/node/' . $nid . '/edit"><img src="/themes/custom/penchas/assets/images/edit.svg" alt="edit">Edit</a></li><li class="copy-icon"><a class="copy-link" href="' . $current_path . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="24">
           <path fill="#011F5B" d="M0 12C0 7.8562503 3.3562503 4.5 7.500001 4.5L11.250001 4.5L12.000001 4.5L12.000001 6L11.250001 6L7.500001 6C4.1859384 6 1.5000007 8.6859369 1.5000007 12C1.5000007 15.314063 4.1859384 18 7.500001 18L11.250001 18L12.000001 18L12.000001 19.5L11.250001 19.5L7.500001 19.5C3.3562503 19.5 0 16.143749 0 12ZM27 12C27 16.143749 23.643749 19.5 19.5 19.5L15.75 19.5L15 19.5L15 18L15.75 18L19.5 18C22.814064 18 25.5 15.314063 25.5 12C25.5 8.6859369 22.814064 6 19.5 6L15.75 6L15 6L15 4.5L15.75 4.5L19.5 4.5C23.643749 4.5 27 7.8562503 27 12ZM7.125 11.25L19.875 11.25L20.625 11.25L20.625 12.75L19.875 12.75L7.125 12.75L6.375 12.75L6.375 11.25L7.125 11.25Z"/>
         </svg><span class="copy-tooltip">LINK COPIED!</span></a></li></ul></div></div>';
-      $referer = \Drupal::request()->headers->get('referer');
+    $referer = \Drupal::request()->headers->get('referer');
 
 
-      if ($referer && $referer . preg_match('/group\/[a-z\-]+\/calendar$/s', $referer)) {
-        $variables['content_attributes']['class'][] = 'calendar-item-modal';
-      }
-    
+    if ($referer && $referer . preg_match('/group\/[a-z\-]+\/calendar$/s', $referer)) {
+      $variables['content_attributes']['class'][] = 'calendar-item-modal';
+    }
   }
 
   // Set node title.
@@ -539,7 +520,7 @@ function penchas_preprocess_html(&$variables)
   $variables['front_page_url'] = $front_page_path;
   $current_uri = \Drupal::request()->getRequestUri();
 
-  if($current_uri == "/dashboard"){
+  if ($current_uri == "/dashboard") {
     $variables['attributes']['class'][] = 'dashboard-page';
   }
   /* SAML resposne testing starts */
@@ -1074,7 +1055,7 @@ function penchas_preprocess_views_view(&$variables)
       $query->fields('hm', ['entity_id']);
       $query->condition('hm.field_short_name_value', $uri_parts['2']);
       $group_results = $query->execute()->fetchObject();
-      $groupData = $group_results? $group_results->entity_id : null;
+      $groupData = $group_results ? $group_results->entity_id : null;
     }
   }
 
@@ -1251,29 +1232,6 @@ function penchas_preprocess_views_view(&$variables)
   }
 }
 
-/**
- * Implements template_preprocess_field()
- */
-function penchas_preprocess_field(&$variables, $hook)
-{
-  if($variables['element']['#bundle'] === 'chas_event' && $variables['element']['#field_name'] === 'field_location') {
-    $node = $variables['element']['#items'][0]->getEntity();
-    $variables['location'] = $node->get('field_text_box_2')->getString();
-  } else if ($variables['element']['#bundle'] === 'notices' && $variables['element']['#field_name'] === 'field_groups') {
-    $node = $variables['element']['#items'][0]->getEntity();
-    $variables['location'] = $node->get('field_text_box')->getString();
-  } else if ($variables['element']['#bundle'] === 'reserve_room' && $variables['element']['#field_name'] === 'field_room') {
-    $node = $variables['element']['#items'][0]->getEntity();
-    $gid = (int) $node->get('field_group')->getString();
-    $variables['house'] = '';
-    if($gid) {
-      $group = Group::load($gid);
-      $variables['house'] = $group->label();
-    }
-  }
-}
-
-
 function generate_google_calendar_link(NodeInterface $node, string $bundle)
 {
   $ical_data = $bundle === 'reserve_room' ? generate_google_calendar_data_for_reserve_room($node) : generate_google_calendar_data_for_chas_event($node);
@@ -1296,8 +1254,7 @@ function generate_google_calendar_data_for_reserve_room(NodeInterface $node)
 {
   $roomId = (int)$node->get('field_room')->getString();
   $room_name = '';
-  if($roomId) {
-    $room = Node::load($roomId);
+  if ($roomId && $room = Node::load($roomId)) {
     $room_name = $room->getTitle();
   }
   $description = $node->get('field_long_text')->getString();
@@ -1342,7 +1299,8 @@ function generate_google_calendar_data_for_chas_event(NodeInterface $node)
 // }
 
 
-function check_user_permissions() {
+function check_user_permissions()
+{
   $current_user = \Drupal::currentUser();
   $permissions = \Drupal::service('user.permissions')->getPermissionsByRole($current_user->getRoles());
 

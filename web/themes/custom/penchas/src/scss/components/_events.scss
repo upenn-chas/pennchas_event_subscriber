@@ -875,7 +875,10 @@
 
   .block-field-blocknodechas-eventfield-event-schedule,
   .block-field-blocknodereserve-roomfield-event-schedule,
-  .block-field-blocknodereserve-roomfield-room {
+  .block-field-blocknodereserve-roomfield-room,
+  .block-field-blocknodechas-eventfield-location,
+  .block-field-blocknodenoticesfield-groups,
+  .block-field-blocknodereserve-roomfield-group {
     .field__item {
       margin-bottom: 10px;
 
@@ -894,8 +897,7 @@
   }
 
   .block-field-blocknodechas-eventfield-text-box-2,
-  .block-field-blocknodechas-eventfield-location,
-  .block-field-blocknodenoticesfield-groups,
+  .block-field-blocknodenoticesfield-text-box,
   .block-field-blocknodereserve-roomfield-room {
     margin-bottom: 30px;
 
@@ -1158,7 +1160,8 @@ body.page-view-my-events {
   .block-field-blocknodereserve-roomfield-room,
   .block-field-blocknodechas-eventfield-text-box-2,
   .block-field-blocknodechas-eventfield-location,
-  .block-field-blocknodenoticesfield-groups {
+  .block-field-blocknodenoticesfield-groups,
+  .block-field-blocknodereserve-roomfield-group {
 
     .field__item,
     .event-detail-location,
@@ -1166,6 +1169,7 @@ body.page-view-my-events {
     .house-room-details {
       font-weight: 600;
       text-decoration: underline;
+      text-transform: uppercase;
       text-decoration-color: #92b7ff;
       font-family: tablet-gothic;
       text-decoration-thickness: 2px;
@@ -1175,6 +1179,15 @@ body.page-view-my-events {
       img {
         margin-right: 15px;
       }
+    }
+  }
+}
+
+.event-details-wrap {
+  .block-field-blocknodereserve-roomfield-group {
+    img {
+      margin-right: 15px;
+      width: 17px;
     }
   }
 }
