@@ -10,7 +10,7 @@ field_name: field_parent_page
 entity_type: node
 bundle: page
 label: 'Parent Page'
-description: ''
+description: 'Helps to set a parent page. '
 required: false
 translatable: false
 default_value: {  }
