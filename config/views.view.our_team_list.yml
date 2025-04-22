@@ -713,11 +713,14 @@ display:
                 title: 'Central Office'
                 operator: or
                 value:
+                  76: '76'
+                  77: '77'
                   75: '75'
               3:
                 title: 'House Administrators'
                 operator: or
                 value:
+                  79: '79'
                   78: '78'
           reduce_duplicates: false
           vid: user_categories

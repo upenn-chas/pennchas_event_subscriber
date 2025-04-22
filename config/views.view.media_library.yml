@@ -814,7 +814,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: fgdfg
             make_link: false
             path: ''
             absolute: false
@@ -1128,6 +1128,7 @@ display:
       defaults:
         access: false
         css_class: false
+        group_by: false
         relationships: false
         fields: false
         arguments: false
@@ -1152,6 +1153,7 @@ display:
             'group_media:remote_video': '0'
             'group_media:video': '0'
       css_class: ''
+      group_by: true
       display_description: ''
       header:
         display_link_grid:
@@ -1162,16 +1164,24 @@ display:
           label: Grid
           empty: true
           display_id: widget
-        display_link_table:
-          id: display_link_table
+        display_link:
+          id: display_link
           table: views
           field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: display_link
           label: Table
           empty: true
           display_id: widget_table
       rendering_language: '***LANGUAGE_language_interface***'
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: admin/content/media-widget
     cache_metadata:
       max-age: -1
@@ -1196,26 +1206,119 @@ display:
           table: media
           field: media_library_select_form
           relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: media
           plugin_id: media_library_select_form
           label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
           element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
           element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
         thumbnail__target_id:
           id: thumbnail__target_id
           table: media_field_data
           field: thumbnail__target_id
           relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: media
           entity_field: thumbnail
           plugin_id: field
           label: Thumbnail
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: ''
           type: image
           settings:
             image_link: ''
             image_style: media_library
             image_loading:
               attribute: eager
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         name:
           id: name
           table: media_field_data
@@ -1283,6 +1386,70 @@ display:
           type: entity_reference_label
           settings:
             link: false
+          group_column: entity_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        gid_1:
+          id: gid_1
+          table: group_relationship_field_data
+          field: gid
+          relationship: group_relationship
+          group_type: count_distinct
+          admin_label: ''
+          entity_type: group_relationship
+          entity_field: gid
+          plugin_id: field
+          label: 'Total Houses'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_id
+          settings: {  }
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -1554,8 +1721,64 @@ display:
       style:
         type: table
         options:
+          grouping: {  }
           row_class: 'media-library-item media-library-item--table js-media-library-item js-click-to-select'
           default_row_class: true
+          columns:
+            media_library_select_form: media_library_select_form
+            thumbnail__target_id: thumbnail__target_id
+            name: name
+            gid: gid
+            uid: uid
+            changed: changed
+          default: '-1'
+          info:
+            media_library_select_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            thumbnail__target_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            gid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            changed:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
       row:
         type: fields
       defaults:
@@ -1588,7 +1811,7 @@ display:
             'group_media:video': 'group_media:video'
             'group_media:audio': '0'
       css_class: ''
-      group_by: false
+      group_by: true
       header:
         display_link_grid:
           id: display_link_grid
@@ -1598,17 +1821,25 @@ display:
           label: Grid
           empty: true
           display_id: widget
-        display_link_table:
-          id: display_link_table
+        display_link:
+          id: display_link
           table: views
           field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: display_link
           label: Table
           empty: true
           display_id: widget_table
       rendering_language: '***LANGUAGE_language_interface***'
-      display_extenders: {  }
-      path: admin/content/media-widget-table
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
+      path: admin/content/media-widget-table2
     cache_metadata:
       max-age: -1
       contexts:
