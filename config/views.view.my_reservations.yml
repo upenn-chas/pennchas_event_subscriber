@@ -1695,7 +1695,7 @@ display:
           value:
             min: ''
             max: ''
-            value: today
+            value: now
             type: offset
             granularity: second
           group: 1
@@ -2995,7 +2995,7 @@ display:
           value:
             min: ''
             max: ''
-            value: today
+            value: now
             type: offset
             granularity: second
           group: 1
@@ -5570,7 +5570,7 @@ display:
           value:
             min: ''
             max: ''
-            value: today
+            value: now
             type: offset
             granularity: second
           group: 1
@@ -6829,7 +6829,7 @@ display:
           value:
             min: ''
             max: ''
-            value: today
+            value: now
             type: offset
             granularity: second
           group: 1

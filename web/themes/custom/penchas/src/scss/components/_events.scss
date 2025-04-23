@@ -1041,7 +1041,8 @@
   }
 }
 
-.view-group-events {
+.view-group-events,
+.view-articles-listing {
 
   .row {
     @media (max-width:1440px) {
@@ -1141,7 +1142,8 @@ body.page-view-my-events {
 }
 
 .user-logged-in {
-  .block-inline-blockevents-by-group {
+  .block-inline-blockevents-by-group,
+  .block-inline-blocknews-by-group {
     .events {
       &.grid-4 {
         @include media-query-min('large') {
