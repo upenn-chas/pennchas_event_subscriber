@@ -5,10 +5,11 @@ dependencies: {  }
 name: right_side_image_style_programs
 label: 'Right Side Image style (Programs)'
 effects:
-  95ce34f2-5a8a-4433-9524-c4e381e6ac8f:
-    uuid: 95ce34f2-5a8a-4433-9524-c4e381e6ac8f
-    id: image_resize
-    weight: 1
+  227ef6e4-92c0-407a-ad04-e99160640cbf:
+    uuid: 227ef6e4-92c0-407a-ad04-e99160640cbf
+    id: image_scale
+    weight: 2
     data:
-      width: 700
+      width: null
       height: 400
+      upscale: true
