@@ -119,22 +119,25 @@
       }
     });
 
-    jQuery('.dropdown-toggle').on('click', function () {
-        let $this = jQuery(this);
-        let expanded = $this.attr('aria-expanded') === 'true';
-        console.debug($this, $this.attr('aria-expanded'))
-        $this.attr('aria-expanded', expanded? 'false' : 'true');
-        
-        let $menu = $this.next('.dropdown-menu');
-        if ($menu.length) {
-          if(expanded) {
-            $menu.addClass('show');
-            $menu.removeClass('hide');
-          } else {
-            $menu.removeClass('show');
-            $menu.addClass('hide');
-          }
+    jQuery(".dropdown-toggle").on("click", function () {
+      let $this = jQuery(this);
+      jQuery(".dropdown-menu").addClass("hide").removeClass("show");
+      let $menu = $this.next(".dropdown-menu");
+
+      // Toggle aria-expanded attribute
+      let expanded = $this.attr("aria-expanded") === "true";
+
+      let newExpanded = !expanded;
+      $this.attr("aria-expanded", newExpanded.toString());
+
+      // Show/hide menu based on new state
+      if ($menu.length) {
+        if (newExpanded) {
+          $menu.addClass("show").removeClass("hide");
+        } else {
+          $menu.removeClass("show").addClass("hide");
         }
+      }
     });
 
     if (jQuery('body').hasClass('user-logged-in')) {
