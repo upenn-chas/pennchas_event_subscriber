@@ -19,6 +19,7 @@ dependencies:
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
+    - field.field.user.user.field_user_display_order
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -187,6 +188,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 9
+    region: content
+  field_user_display_order:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 16
     region: content
   masquerade:
     settings: {  }

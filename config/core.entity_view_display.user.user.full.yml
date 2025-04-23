@@ -20,6 +20,7 @@ dependencies:
     - field.field.user.user.field_preferred_name
     - field.field.user.user.field_title_position
     - field.field.user.user.field_user_categories
+    - field.field.user.user.field_user_display_order
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -120,5 +121,6 @@ hidden:
   field_group_roles: true
   field_last_name: true
   field_phone_no: true
+  field_user_display_order: true
   langcode: true
   search_api_excerpt: true

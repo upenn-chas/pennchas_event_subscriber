@@ -642,6 +642,19 @@ display:
         options: {  }
       empty: {  }
       sorts:
+        field_user_display_order_value:
+          id: field_user_display_order_value
+          table: user__field_user_display_order
+          field: field_user_display_order_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_last_name_value:
           id: field_last_name_value
           table: user__field_last_name
