@@ -948,8 +948,9 @@ display:
             uid: uid
             status: status
             changed: changed
-            operations: operations
             gid: gid
+            gid_1: gid_1
+            operations: operations
           default: changed
           info:
             media_bulk_form:
@@ -979,7 +980,7 @@ display:
               empty_column: false
               responsive: ''
             uid:
-              sortable: false
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -999,14 +1000,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            operations:
+            gid:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            gid:
+            gid_1:
               sortable: false
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
               align: ''
               separator: ''
               empty_column: false
