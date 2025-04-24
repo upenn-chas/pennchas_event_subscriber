@@ -126,6 +126,9 @@
       width: 100%;
       height: 2px;
       background: $redHighlightColor;
+      @include media-query("tablet-large") {
+        display: none;
+      }
     }
   }
 

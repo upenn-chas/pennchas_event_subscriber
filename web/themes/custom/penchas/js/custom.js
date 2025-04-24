@@ -121,7 +121,9 @@
 
     jQuery(".dropdown-toggle").on("click", function () {
       let $this = jQuery(this);
-      jQuery(".dropdown-menu").addClass("hide").removeClass("show");
+      if (window.innerWidth > 991) {
+        jQuery(".dropdown-menu").addClass("hide").removeClass("show");
+      }
       let $menu = $this.next(".dropdown-menu");
 
       // Toggle aria-expanded attribute
