@@ -656,7 +656,7 @@ function getGroupLableFromShortName(string $short_name)
 function penchas_preprocess_page(&$variables)
 {
   if (\Drupal::request()->getRequestUri() === '/dashboard') {
-    $variables['#cache']['contexts'][] = 'user.roles';
+    $variables['#cache']['contexts'] = [];
     $variables['#cache']['max-age'] = 0;
     return;
   }

@@ -20,6 +20,7 @@ dependencies:
     - text
     - url_alteration
     - user
+    - views_sort_null_field
 id: our_team_list
 label: 'Our Team List'
 module: views
@@ -642,6 +643,19 @@ display:
         options: {  }
       empty: {  }
       sorts:
+        field_user_display_order_value_null_sort:
+          id: field_user_display_order_value_null_sort
+          table: user__field_user_display_order
+          field: field_user_display_order_value_null_sort
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: null_sort
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_user_display_order_value:
           id: field_user_display_order_value
           table: user__field_user_display_order
