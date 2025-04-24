@@ -144,9 +144,9 @@
     }
     li {
       &.hide-in-desktop {
-        // @media(min-width: 992px) {
+        @media(min-width: 992px) {
           display: none;
-        // }
+        }
       }
       a {
         padding: 7px 0;

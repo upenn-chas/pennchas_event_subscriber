@@ -150,6 +150,7 @@ third_party_settings:
           - 'inline_block:programs_by_group'
           - 'inline_block:quote'
           - 'inline_block:space_block'
+          - 'inline_block:staff_information'
           - 'inline_block:top_content_section'
           - 'inline_block:two_columns_40_60'
           - 'inline_block:two_columns'
