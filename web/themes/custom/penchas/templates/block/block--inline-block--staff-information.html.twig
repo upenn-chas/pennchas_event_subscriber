@@ -39,7 +39,7 @@
 %}
 <div {{ attributes.addClass(classes) }}>
   {% block content %}
-    {% if content.field_user %}
+    {% if content.field_user.0 %}
       {{ content.field_user }}
     {% else %}
       <div class="staff-img">
