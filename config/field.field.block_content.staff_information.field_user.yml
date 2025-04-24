@@ -1,0 +1,29 @@
+uuid: caee1350-202e-44f3-86c9-6e268f81203b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.staff_information
+    - field.storage.block_content.field_user
+id: block_content.staff_information.field_user
+field_name: field_user
+entity_type: block_content
+bundle: staff_information
+label: User
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: mail
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

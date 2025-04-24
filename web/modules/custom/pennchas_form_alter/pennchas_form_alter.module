@@ -87,11 +87,6 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
     }
 }
 
-function pennchas_form_alter_simplesamlphp_auth_user_roles_alter(&$roles, $attributes) {
-    \Drupal::logger('pennchas_form_alter')->debug('Roles: <pre>@roles</pre>', ['@roles' => print_r($roles, true)]);
-    \Drupal::logger('pennchas_form_alter')->debug('Attributes: <pre>@attributes</pre>', ['@attributes' => print_r($attributes, true)]);
-}
-
 /**
  * 
  * Alter the exposed form of views.

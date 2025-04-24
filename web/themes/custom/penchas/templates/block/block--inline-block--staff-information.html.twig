@@ -37,18 +37,22 @@
     'staff'
   ]
 %}
-  <div {{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(classes) }}>
   {% block content %}
-    <div class="staff-img">
-      {{content.field_image}}
-    </div>
-    <div class="staff-name">
-      {{ title_prefix }}
-      {% if label %}
-        <h4{{ title_attributes }}>{{ label }}</h4>
-      {% endif %}
-      {{ title_suffix }}
-      {{content.field_staff_position}}
-    </div>
+    {% if content.field_user %}
+      {{ content.field_user }}
+    {% else %}
+      <div class="staff-img">
+        {{content.field_image}}
+      </div>
+      <div class="staff-name">
+        {{ title_prefix }}
+        {% if label %}
+          <h4{{ title_attributes }}>{{ label }}</h4>
+        {% endif %}
+        {{ title_suffix }}
+        {{content.field_staff_position}}
+        {% endif %}
+      </div>
   {% endblock %}
-  </div>
+</div>

@@ -1,0 +1,11 @@
+uuid: 8d1c3ff6-a83b-44a5-8189-24784de1bfe1
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.staff_short_info
+label: 'Staff Short Info'
+description: ''
+targetEntityType: user
+cache: true
