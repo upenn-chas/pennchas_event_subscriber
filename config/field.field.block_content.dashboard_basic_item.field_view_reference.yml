@@ -12,7 +12,7 @@ field_name: field_view_reference
 entity_type: block_content
 bundle: dashboard_basic_item
 label: 'View Block'
-description: "Select the view to get the pending moderation items for the content types <em>chas_event</em> and <em>reserve_room</em>.<br>\r\n<strong>Note:</strong> Only the \"My Pending Moderation Count\" view is supported.\r\n"
+description: "Select the view to get the pending moderation count for the content types <em>chas_event</em> or <em>reserve_room</em>.<br>\r\n<strong>Note:</strong> Only the \"My Pending Moderation Count\" view is supported.\r\n"
 required: false
 translatable: false
 default_value: {  }
