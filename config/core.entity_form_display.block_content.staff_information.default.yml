@@ -4,33 +4,12 @@ status: true
 dependencies:
   config:
     - block_content.type.staff_information
-    - field.field.block_content.staff_information.field_image
-    - field.field.block_content.staff_information.field_staff_position
     - field.field.block_content.staff_information.field_user
-    - image.style.thumbnail
-  module:
-    - image
 id: block_content.staff_information.default
 targetEntityType: block_content
 bundle: staff_information
 mode: default
 content:
-  field_image:
-    type: image_image
-    weight: 3
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_staff_position:
-    type: string_textfield
-    weight: 26
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_user:
     type: entity_reference_autocomplete
     weight: 27

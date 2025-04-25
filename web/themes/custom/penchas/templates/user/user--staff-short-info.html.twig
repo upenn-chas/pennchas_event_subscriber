@@ -16,8 +16,12 @@
  * @see template_preprocess_user()
  */
 #}
-
-<div {{ attributes.addClass("staff") }}>
+{%
+  set classes = [
+    'staff'
+  ]
+%}
+<article {{ attributes.addClass(classes) }}>
   {% block content %}
     <div class="staff-img">
       {{content.user_picture}}
@@ -37,6 +41,6 @@
       </div> #}
     </div>
   {% endblock %}
-</div>
+</article>
 
 

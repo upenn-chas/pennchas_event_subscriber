@@ -25,5 +25,5 @@ settings:
     auto_create: false
     filter:
       type: _none
-    include_anonymous: true
+    include_anonymous: false
 field_type: entity_reference
