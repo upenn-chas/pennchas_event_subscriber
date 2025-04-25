@@ -88,13 +88,16 @@
         box-shadow: none;
       }
     }
-    &:hover {
+    // &:hover {
+    //   .dropdown-menu {
+    //     display: block;
+    //   }
+    // }
+
+    &.selected {
       .dropdown-menu {
         display: block;
       }
-    }
-
-    &.selected {
       button{
         &:after {
           transform: rotate(-225deg);
