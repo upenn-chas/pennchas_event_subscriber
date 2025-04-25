@@ -37,29 +37,30 @@
   ]
 %}
 {% if verify_role_access(content.field_display_block_to_roles) %}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
+  <div{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
     {% if label %}
       <h4{{ title_attributes }}>{{ label }}</h4>
     {% endif %}
     {{ title_suffix }}
-  {% block content %}
-    <div class="dashboard-tabs">
-      <div class="circle-color">
-        <span class="circel" style="background-color:{{content.field_circle_colour.0['#markup']}}"></span>
-        {{content.field_icon}}
+    {% block content %}
+      <div class="dashboard-tabs">
+        <div class="circle-color">
+          <span class="circel" style="background-color:{{content.field_circle_colour.0['#markup']}}"></span>
+          {{content.field_icon}}
+        </div>
+        <div class="right-content">
+        {% if content.field_heading %}
+            {{content.field_heading}}
+        {% endif %}
+        <div{{ content_attributes.addClass('content') }} >
+          {{ content.field_view_reference}}
+          {{ content.body }}
+        </div>
+        </div>
+      {{content.field_cta}}
       </div>
-      <div class="right-content">
-      {% if content.field_heading %}
-          {{content.field_heading}}
-      {% endif %}
-      <div{{ content_attributes.addClass('content') }} >
-        {{ content.body }}      
-      </div>
-      </div>
-    {{content.field_cta}}
-    </div>
-    
-  {% endblock %}
-</div>
+      
+    {% endblock %}
+  </div>
 {% endif %} 

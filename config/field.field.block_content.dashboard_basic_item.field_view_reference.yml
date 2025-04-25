@@ -1,0 +1,30 @@
+uuid: 0a859629-cef0-4ae2-87cc-d693443d8479
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+    - field.storage.block_content.field_view_reference
+  module:
+    - viewsreference
+id: block_content.dashboard_basic_item.field_view_reference
+field_name: field_view_reference
+entity_type: block_content
+bundle: dashboard_basic_item
+label: 'View Block'
+description: "Select the view to get the pending moderation items for the content types <em>chas_event</em> and <em>reserve_room</em>.<br>\r\n<strong>Note:</strong> Only the \"My Pending Moderation Count\" view is supported.\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: true
+  plugin_types:
+    block: block
+  preselect_views:
+    my_pending_moderation_count: my_pending_moderation_count
+  enabled_settings: {  }
+field_type: viewsreference

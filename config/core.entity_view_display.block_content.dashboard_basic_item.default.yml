@@ -10,12 +10,14 @@ dependencies:
     - field.field.block_content.dashboard_basic_item.field_display_block_to_roles
     - field.field.block_content.dashboard_basic_item.field_heading
     - field.field.block_content.dashboard_basic_item.field_icon
+    - field.field.block_content.dashboard_basic_item.field_view_reference
   module:
     - color_field
     - link
     - media
     - options
     - text
+    - viewsreference
 id: block_content.dashboard_basic_item.default
 targetEntityType: block_content
 bundle: dashboard_basic_item
@@ -74,6 +76,22 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_view_reference:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        block: block
+        default: '0'
+        entity_reference: '0'
+        page: '0'
+        data_export: '0'
+        attachment: '0'
+        feed: '0'
+        embed: '0'
+    third_party_settings: {  }
+    weight: 6
     region: content
 hidden:
   langcode: true
