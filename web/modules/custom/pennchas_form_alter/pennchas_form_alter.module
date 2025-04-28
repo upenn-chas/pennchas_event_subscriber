@@ -68,7 +68,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         case 'node_chas_event_delete_form':
         case 'node_reserve_room_delete_form':
         case 'node_notices_delete_form':
-            // $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
+            $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
             break;
         case 'views_form_webform_export_page_1':
             $form['header']['webform_submission_bulk_form']['action']['#default_value'] = 'webform_submission_export_action';
