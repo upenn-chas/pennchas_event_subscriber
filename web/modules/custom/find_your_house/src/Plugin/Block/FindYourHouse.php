@@ -71,6 +71,7 @@ class FindYourHouse extends BlockBase
 				"form" => [
 					'#type' => 'form',
 					'#id' => 'customer_find_your_house',
+					'#form_id' => 'go_to_form',
 					'#attributes' => [
 						'onsubmit' => 'window.location.href=document.getElementById(\'customer_find_your_house_group\').value; return false;',
 					],
