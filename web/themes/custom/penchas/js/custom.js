@@ -120,9 +120,11 @@
     });
     
     jQuery('.dropdown-toggle').on('show.bs.dropdown', function (e) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      return false;
+      if(window.innerWidth >= 992) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return false;
+      }
     });
 
     // jQuery(".dropdown-toggle").on("click", function () {
