@@ -5,10 +5,17 @@ dependencies: {  }
 name: top_content_style
 label: 'top content style'
 effects:
-  19dbf4f4-5681-4904-9890-9ef36fb8ca34:
-    uuid: 19dbf4f4-5681-4904-9890-9ef36fb8ca34
-    id: image_resize
-    weight: 1
+  9169475c-fa58-4071-bf33-4911ad895ef0:
+    uuid: 9169475c-fa58-4071-bf33-4911ad895ef0
+    id: image_scale
+    weight: 2
     data:
       width: 697
-      height: 908
+      height: null
+      upscale: true
+  f195192b-f5d0-4d9f-bf37-d23497f9ce91:
+    uuid: f195192b-f5d0-4d9f-bf37-d23497f9ce91
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

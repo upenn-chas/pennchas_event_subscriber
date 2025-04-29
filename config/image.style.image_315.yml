@@ -1,0 +1,21 @@
+uuid: 9a2ef2d2-fe88-470b-84b0-d7753b22d2c8
+langcode: en
+status: true
+dependencies: {  }
+name: image_315
+label: 'Image (315)'
+effects:
+  b7cc28a7-1e61-414f-a910-d9f50ecbb278:
+    uuid: b7cc28a7-1e61-414f-a910-d9f50ecbb278
+    id: image_scale
+    weight: 1
+    data:
+      width: 315
+      height: null
+      upscale: true
+  14cbeb6f-069c-4648-b892-edea468df917:
+    uuid: 14cbeb6f-069c-4648-b892-edea468df917
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

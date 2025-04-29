@@ -5,10 +5,17 @@ dependencies: {  }
 name: program_community_card_style
 label: 'Card style'
 effects:
-  1c86f15b-ceb8-4e66-a815-e4cf530b77aa:
-    uuid: 1c86f15b-ceb8-4e66-a815-e4cf530b77aa
-    id: image_resize
-    weight: 1
+  e7fb2a62-22ea-4cb2-872e-b8ad1a643d7f:
+    uuid: e7fb2a62-22ea-4cb2-872e-b8ad1a643d7f
+    id: image_scale_and_crop
+    weight: 2
     data:
-      width: 390
-      height: 250
+      width: 884
+      height: 567
+      anchor: center-center
+  8cbc9fdd-ceb8-4ead-95e6-383747a45c88:
+    uuid: 8cbc9fdd-ceb8-4ead-95e6-383747a45c88
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

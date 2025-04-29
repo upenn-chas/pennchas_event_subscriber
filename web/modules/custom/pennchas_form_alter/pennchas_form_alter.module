@@ -577,6 +577,22 @@ function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Ent
 }
 
 /**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function pennchas_form_alter_menu_links_discovered_alter(&$links)
+{
+    foreach ($links as $key => $link) {
+        if (
+            strpos($key, 'node.add.room') !== FALSE
+            || strpos($key, 'node.add.reserve_room') !== FALSE
+            || strpos($key, 'node.add.program_community') !== FALSE
+        ) {
+            unset($links[$key]);
+        }
+    }
+}
+
+/**
  * Implements hook_page_attachments_alter().
  */
 // function pennchas_form_alter_page_attachments_alter(array &$attachments) {

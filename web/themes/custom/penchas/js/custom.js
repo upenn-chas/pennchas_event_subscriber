@@ -118,6 +118,12 @@
         jQuery(this).parent().addClass('selected');
       }
     });
+    
+    jQuery('.dropdown-toggle').on('show.bs.dropdown', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+    });
 
     // jQuery(".dropdown-toggle").on("click", function () {
     //   let $this = jQuery(this);
@@ -373,8 +379,18 @@
     }
 
 
+    // $('.internal-links .dropdown').hover(function () {
+    //   $(this).addClass("selected", 3000);
+    // }, function () {
+    //   $(this).removeClass("selected", 3000);
+    // });
+
     $('.internal-links .dropdown').hover(function () {
+      $('.internal-links .dropdown').each(function (index, element) {
+        jQuery(element).removeClass("selected");
+      });
       $(this).addClass("selected", 3000);
+      $(this).children("a").trigger("focus");
     }, function () {
       $(this).removeClass("selected", 3000);
     });

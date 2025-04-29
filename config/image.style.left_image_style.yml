@@ -5,10 +5,11 @@ dependencies: {  }
 name: left_image_style
 label: 'left image style'
 effects:
-  88dcf571-32ae-4f30-8081-6ffd26adb2fa:
-    uuid: 88dcf571-32ae-4f30-8081-6ffd26adb2fa
-    id: image_resize
-    weight: 1
+  424d3fb2-2ef2-4aeb-b63a-f31a6b1a3868:
+    uuid: 424d3fb2-2ef2-4aeb-b63a-f31a6b1a3868
+    id: image_scale_and_crop
+    weight: 2
     data:
       width: 675
       height: 786
+      anchor: center-center

@@ -5,10 +5,11 @@ dependencies: {  }
 name: slider_item_style
 label: 'Slider Item Style'
 effects:
-  409d9874-304a-496f-8fa5-0eeea2a06443:
-    uuid: 409d9874-304a-496f-8fa5-0eeea2a06443
-    id: image_resize
-    weight: 1
+  29e503b1-0136-4f62-8d90-7dd6075180be:
+    uuid: 29e503b1-0136-4f62-8d90-7dd6075180be
+    id: image_scale_and_crop
+    weight: 2
     data:
       width: 590
       height: 590
+      anchor: center-center

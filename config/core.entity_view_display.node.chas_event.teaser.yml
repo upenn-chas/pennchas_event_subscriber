@@ -40,7 +40,7 @@ dependencies:
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box
     - field.field.node.chas_event.field_text_box_2
-    - image.style.house_events_style
+    - image.style.image_315
     - node.type.chas_event
   module:
     - media
@@ -94,7 +94,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: house_events_style
+      image_style: image_315
       image_loading:
         attribute: lazy
     third_party_settings: {  }

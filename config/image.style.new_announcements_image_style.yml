@@ -5,10 +5,17 @@ dependencies: {  }
 name: new_announcements_image_style
 label: 'New & Announcements Image Style'
 effects:
-  202da0d4-ec05-44b1-91be-f23198c5b77c:
-    uuid: 202da0d4-ec05-44b1-91be-f23198c5b77c
-    id: image_resize
-    weight: 1
+  cc9fc3c2-5ba0-4eb4-8e78-a2a3f9ca7978:
+    uuid: cc9fc3c2-5ba0-4eb4-8e78-a2a3f9ca7978
+    id: image_scale
+    weight: 2
     data:
-      width: 730
-      height: 840
+      width: 760
+      height: null
+      upscale: true
+  7e0becbd-4091-4e14-b2c7-0a26769cb739:
+    uuid: 7e0becbd-4091-4e14-b2c7-0a26769cb739
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

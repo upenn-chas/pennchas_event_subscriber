@@ -10,17 +10,17 @@ _core:
 name: media_library
 label: 'Media Library thumbnail (220×220)'
 effects:
-  75b076a8-1234-4b42-85db-bf377c4d8d5f:
-    uuid: 75b076a8-1234-4b42-85db-bf377c4d8d5f
-    id: image_scale
-    weight: 0
-    data:
-      width: 220
-      height: 220
-      upscale: false
   1021da71-fc2a-43d0-be5d-efaf1c79e2ea:
     uuid: 1021da71-fc2a-43d0-be5d-efaf1c79e2ea
     id: image_convert
-    weight: 2
+    weight: -8
     data:
       extension: webp
+  5f485391-75f5-43f7-befd-9bfe45b1d21a:
+    uuid: 5f485391-75f5-43f7-befd-9bfe45b1d21a
+    id: image_scale_and_crop
+    weight: -9
+    data:
+      width: 220
+      height: 220
+      anchor: center-center

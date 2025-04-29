@@ -81,7 +81,7 @@
       </div>
       <div class="col-12 col-lg-6">
         <div class="hero-img">
-          <img src="{{file_url(group.field_image.0.entity.field_media_image.0.entity.uri.value)}}" alt="{{file_url(group.field_image.0.entity.field_media_image.0.entity.alt.value)}}">
+          <img src="{{ file_url(group.field_image.0.entity.field_media_image.0.entity.uri.value | image_style('top_content_style')) }}" alt="{{file_url(group.field_image.0.entity.field_media_image.0.entity.alt.value)}}">
         </div>
       </div>
     </div>
