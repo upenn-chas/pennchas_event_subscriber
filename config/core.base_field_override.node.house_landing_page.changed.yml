@@ -1,0 +1,18 @@
+uuid: 7824a043-ad22-4e1a-91e4-0c237ea735a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+id: node.house_landing_page.changed
+field_name: changed
+entity_type: node
+bundle: house_landing_page
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

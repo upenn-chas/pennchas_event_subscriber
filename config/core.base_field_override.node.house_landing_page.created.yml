@@ -1,0 +1,18 @@
+uuid: 0005c5b5-534e-4545-9e06-e128146fd5be
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+id: node.house_landing_page.created
+field_name: created
+entity_type: node
+bundle: house_landing_page
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

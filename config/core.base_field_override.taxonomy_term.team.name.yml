@@ -1,0 +1,18 @@
+uuid: 260a72f9-0fe9-4893-a57b-12c269e7bbff
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.team
+id: taxonomy_term.team.name
+field_name: name
+entity_type: taxonomy_term
+bundle: team
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

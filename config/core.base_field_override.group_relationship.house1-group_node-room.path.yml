@@ -1,0 +1,20 @@
+uuid: c53ac83f-bfc7-43bf-aeb0-f54825335f2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-room
+  module:
+    - path
+id: group_relationship.house1-group_node-room.path
+field_name: path
+entity_type: group_relationship
+bundle: house1-group_node-room
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

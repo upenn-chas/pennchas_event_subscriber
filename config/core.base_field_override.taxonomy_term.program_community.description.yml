@@ -1,0 +1,21 @@
+uuid: 2924c44b-6d83-48f8-92c4-e05875cf058a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.program_community
+  module:
+    - text
+id: taxonomy_term.program_community.description
+field_name: description
+entity_type: taxonomy_term
+bundle: program_community
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

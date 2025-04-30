@@ -1,0 +1,20 @@
+uuid: f2714402-04ff-4c4b-8d26-e531a1887105
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.slider_items
+  module:
+    - metatag
+id: block_content.slider_items.metatag
+field_name: metatag
+entity_type: block_content
+bundle: slider_items
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

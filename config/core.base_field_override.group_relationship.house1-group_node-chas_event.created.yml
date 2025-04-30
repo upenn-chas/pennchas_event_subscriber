@@ -1,0 +1,18 @@
+uuid: 16d2e417-1677-427d-8d21-888b47c86a2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-chas_event
+id: group_relationship.house1-group_node-chas_event.created
+field_name: created
+entity_type: group_relationship
+bundle: house1-group_node-chas_event
+label: 'Created on'
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

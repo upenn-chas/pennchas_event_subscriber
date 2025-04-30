@@ -1,0 +1,22 @@
+uuid: bfc234ce-019e-4447-a243-e02df2bb3212
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: group.house1.status
+field_name: status
+entity_type: group
+bundle: house1
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

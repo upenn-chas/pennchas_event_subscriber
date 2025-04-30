@@ -1,0 +1,18 @@
+uuid: bae97437-7834-4675-bca9-9408d5a7b8ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_services
+id: block_content.footer_services.changed
+field_name: changed
+entity_type: block_content
+bundle: footer_services
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

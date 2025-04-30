@@ -1,0 +1,11 @@
+uuid: 767268bd-5acf-4ad3-bc93-e8d1475b8780
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-fae6ebd5a926aed11c13a2c5b
+id: group_relationship.house1-fae6ebd5a926aed11c13a2c5b
+target_entity_type_id: group_relationship
+target_bundle: house1-fae6ebd5a926aed11c13a2c5b
+default_langcode: site_default
+language_alterable: false

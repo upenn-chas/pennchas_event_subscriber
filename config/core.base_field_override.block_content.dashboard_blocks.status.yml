@@ -1,0 +1,22 @@
+uuid: ca9e21f5-4487-4058-ae7c-cad8d34d9ed8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+id: block_content.dashboard_blocks.status
+field_name: status
+entity_type: block_content
+bundle: dashboard_blocks
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

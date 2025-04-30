@@ -1,0 +1,22 @@
+uuid: 82bcc134-1b0d-4e8f-b8e4-7bb901deb7f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_priority
+id: taxonomy_term.chas_priority.status
+field_name: status
+entity_type: taxonomy_term
+bundle: chas_priority
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

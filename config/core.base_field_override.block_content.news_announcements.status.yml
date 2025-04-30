@@ -1,0 +1,22 @@
+uuid: 2676cd6a-d2d0-4b64-9397-01ee35250c15
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_announcements
+id: block_content.news_announcements.status
+field_name: status
+entity_type: block_content
+bundle: news_announcements
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

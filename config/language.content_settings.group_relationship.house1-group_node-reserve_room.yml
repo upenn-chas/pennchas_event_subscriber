@@ -1,0 +1,11 @@
+uuid: 554b17d5-6443-48ea-a160-2135d3af25a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-reserve_room
+id: group_relationship.house1-group_node-reserve_room
+target_entity_type_id: group_relationship
+target_bundle: house1-group_node-reserve_room
+default_langcode: site_default
+language_alterable: false

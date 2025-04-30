@@ -1,0 +1,18 @@
+uuid: 4bedd992-89ac-4f44-97c6-4be62f3273a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_cta_blocks
+id: block_content.dashboard_cta_blocks.changed
+field_name: changed
+entity_type: block_content
+bundle: dashboard_cta_blocks
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

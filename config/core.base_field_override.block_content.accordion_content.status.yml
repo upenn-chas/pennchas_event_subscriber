@@ -1,0 +1,22 @@
+uuid: f4a44ce3-f6a0-4187-bd3f-430beeac0cae
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+id: block_content.accordion_content.status
+field_name: status
+entity_type: block_content
+bundle: accordion_content
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

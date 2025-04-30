@@ -1,0 +1,20 @@
+uuid: b82eb078-b7b3-4daf-9c66-9874dc21ab9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+  module:
+    - metatag
+id: block_content.senior_leadership.metatag
+field_name: metatag
+entity_type: block_content
+bundle: senior_leadership
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

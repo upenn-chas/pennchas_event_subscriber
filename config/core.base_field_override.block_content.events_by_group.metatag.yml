@@ -1,0 +1,20 @@
+uuid: 34ecee5d-66b7-4b1d-9afe-c2d428c5d831
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+  module:
+    - metatag
+id: block_content.events_by_group.metatag
+field_name: metatag
+entity_type: block_content
+bundle: events_by_group
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

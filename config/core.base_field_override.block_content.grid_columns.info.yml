@@ -1,0 +1,18 @@
+uuid: 7c9019cc-7af6-4b00-86b7-85bdc00ca82e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_columns
+id: block_content.grid_columns.info
+field_name: info
+entity_type: block_content
+bundle: grid_columns
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

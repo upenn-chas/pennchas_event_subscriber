@@ -1,0 +1,22 @@
+uuid: 93c316a1-cfc4-4ea1-a915-054e8c58bb1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+id: block_content.dashboard_basic_item.status
+field_name: status
+entity_type: block_content
+bundle: dashboard_basic_item
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

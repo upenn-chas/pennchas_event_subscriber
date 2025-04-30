@@ -1,0 +1,18 @@
+uuid: 10b9e210-c012-49a2-bfcd-b3faf59bb648
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+id: node.program_community.title
+field_name: title
+entity_type: node
+bundle: program_community
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

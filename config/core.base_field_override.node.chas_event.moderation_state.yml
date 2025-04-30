@@ -1,0 +1,18 @@
+uuid: e29d76fa-2ba7-4853-846a-20a96314f79f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: chas_event
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: 89e692ba-4b0b-4503-ac93-c2af9f9ab67b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_news
+id: taxonomy_term.chas_news.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: chas_news
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

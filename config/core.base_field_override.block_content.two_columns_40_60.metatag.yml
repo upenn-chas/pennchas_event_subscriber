@@ -1,0 +1,20 @@
+uuid: 19aa9ad9-4c75-4f4e-9fdf-ea3f1137e807
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns_40_60
+  module:
+    - metatag
+id: block_content.two_columns_40_60.metatag
+field_name: metatag
+entity_type: block_content
+bundle: two_columns_40_60
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,22 @@
+uuid: aee6e444-0fad-4f9b-bfb7-33640f54b7b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+id: node.house_landing_page.sticky
+field_name: sticky
+entity_type: node
+bundle: house_landing_page
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 83b7afea-e06d-40b8-bee3-385f5abd954a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+id: group.house1.changed
+field_name: changed
+entity_type: group
+bundle: house1
+label: 'Changed on'
+description: 'The time that the group was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: 9303bd6b-b145-4ec8-ba71-1d38dfa122f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+id: block_content.senior_leadership.changed
+field_name: changed
+entity_type: block_content
+bundle: senior_leadership
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

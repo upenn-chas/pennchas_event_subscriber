@@ -1,0 +1,11 @@
+uuid: bf099fa2-537b-4f1d-9f3a-b94134416fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+id: block_content.houses_sliders
+target_entity_type_id: block_content
+target_bundle: houses_sliders
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 88a46550-cc36-4b95-9e2d-c0dcf20978bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns
+id: block_content.two_columns.changed
+field_name: changed
+entity_type: block_content
+bundle: two_columns
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

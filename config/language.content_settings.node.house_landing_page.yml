@@ -1,0 +1,11 @@
+uuid: 899a720e-8f3a-49b9-8ff3-71662e13f8db
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+id: node.house_landing_page
+target_entity_type_id: node
+target_bundle: house_landing_page
+default_langcode: site_default
+language_alterable: false

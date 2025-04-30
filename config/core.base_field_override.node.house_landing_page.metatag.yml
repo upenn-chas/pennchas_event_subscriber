@@ -1,0 +1,20 @@
+uuid: 63e4ebb8-445d-4804-98f4-888d9157d991
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+  module:
+    - metatag
+id: node.house_landing_page.metatag
+field_name: metatag
+entity_type: node
+bundle: house_landing_page
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

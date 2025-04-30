@@ -1,0 +1,18 @@
+uuid: 42b48ee7-8b14-4c51-8b8d-d3d1c0de9ebc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_announcements
+id: block_content.news_announcements.changed
+field_name: changed
+entity_type: block_content
+bundle: news_announcements
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

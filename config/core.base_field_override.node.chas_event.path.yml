@@ -1,0 +1,20 @@
+uuid: 7a623fa6-1597-40bc-ac6b-afab637bc4cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+  module:
+    - path
+id: node.chas_event.path
+field_name: path
+entity_type: node
+bundle: chas_event
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

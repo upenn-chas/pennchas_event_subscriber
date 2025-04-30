@@ -1,0 +1,20 @@
+uuid: 94f5e1a0-3f5b-47ea-9552-29722c5c7089
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_link
+  module:
+    - metatag
+id: block_content.cta_link.metatag
+field_name: metatag
+entity_type: block_content
+bundle: cta_link
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

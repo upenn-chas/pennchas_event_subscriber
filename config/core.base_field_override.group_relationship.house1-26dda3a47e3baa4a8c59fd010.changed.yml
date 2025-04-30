@@ -1,0 +1,18 @@
+uuid: 5b118df8-4332-44c4-8950-d2f4eaf6a6a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-26dda3a47e3baa4a8c59fd010
+id: group_relationship.house1-26dda3a47e3baa4a8c59fd010.changed
+field_name: changed
+entity_type: group_relationship
+bundle: house1-26dda3a47e3baa4a8c59fd010
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,20 @@
+uuid: fe045252-3125-4b7d-975f-cd17348af129
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_columns
+  module:
+    - metatag
+id: block_content.grid_columns.metatag
+field_name: metatag
+entity_type: block_content
+bundle: grid_columns
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

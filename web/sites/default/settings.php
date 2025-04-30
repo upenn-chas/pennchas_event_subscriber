@@ -36,6 +36,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];
+$settings['state_cache'] = TRUE;
 
 /**
  * If there is a local settings file, then include it

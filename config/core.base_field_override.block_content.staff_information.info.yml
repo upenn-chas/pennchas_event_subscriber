@@ -1,0 +1,18 @@
+uuid: 4e94d944-197d-46c4-9a40-9fffc58e09ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.staff_information
+id: block_content.staff_information.info
+field_name: info
+entity_type: block_content
+bundle: staff_information
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

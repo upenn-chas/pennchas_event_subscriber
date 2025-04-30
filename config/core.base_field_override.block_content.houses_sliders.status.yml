@@ -1,0 +1,22 @@
+uuid: 24ac5f43-b940-4e14-b9fd-d796b8bfba47
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+id: block_content.houses_sliders.status
+field_name: status
+entity_type: block_content
+bundle: houses_sliders
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

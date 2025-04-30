@@ -1,0 +1,20 @@
+uuid: 8fbcfda5-6b7f-4965-8bd3-c8a8641ea12d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.house1
+  module:
+    - path
+id: group.house1.path
+field_name: path
+entity_type: group
+bundle: house1
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

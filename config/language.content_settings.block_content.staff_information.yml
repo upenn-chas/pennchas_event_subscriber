@@ -1,0 +1,11 @@
+uuid: c13a2a6c-1e8b-4969-9bfc-ed14b61e2773
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.staff_information
+id: block_content.staff_information
+target_entity_type_id: block_content
+target_bundle: staff_information
+default_langcode: site_default
+language_alterable: false

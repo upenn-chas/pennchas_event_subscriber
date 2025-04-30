@@ -1,0 +1,11 @@
+uuid: 0d3f5e51-1a43-4311-8f50-f0ff7b6a9e9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+id: node.program_community
+target_entity_type_id: node
+target_bundle: program_community
+default_langcode: site_default
+language_alterable: false

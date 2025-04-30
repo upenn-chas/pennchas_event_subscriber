@@ -1,0 +1,20 @@
+uuid: c38e0c41-24d4-46ea-a49c-f466edc7a6ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.room_amenities_and_technology
+  module:
+    - path
+id: taxonomy_term.room_amenities_and_technology.path
+field_name: path
+entity_type: taxonomy_term
+bundle: room_amenities_and_technology
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

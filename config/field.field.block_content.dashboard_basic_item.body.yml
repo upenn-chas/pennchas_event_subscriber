@@ -14,7 +14,7 @@ bundle: dashboard_basic_item
 label: Body
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

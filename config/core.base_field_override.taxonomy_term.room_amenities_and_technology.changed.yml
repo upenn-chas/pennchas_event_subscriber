@@ -1,0 +1,18 @@
+uuid: 328f3d35-4dbc-4784-a5bc-6dc197bc04fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.room_amenities_and_technology
+id: taxonomy_term.room_amenities_and_technology.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: room_amenities_and_technology
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

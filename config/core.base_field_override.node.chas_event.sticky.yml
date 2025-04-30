@@ -1,0 +1,22 @@
+uuid: b828c2eb-df8b-4780-a0e3-dcf79a5c7294
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.sticky
+field_name: sticky
+entity_type: node
+bundle: chas_event
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

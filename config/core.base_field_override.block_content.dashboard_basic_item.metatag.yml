@@ -1,0 +1,20 @@
+uuid: ab4c0c96-3933-43a9-a37c-661dcee058e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+  module:
+    - metatag
+id: block_content.dashboard_basic_item.metatag
+field_name: metatag
+entity_type: block_content
+bundle: dashboard_basic_item
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

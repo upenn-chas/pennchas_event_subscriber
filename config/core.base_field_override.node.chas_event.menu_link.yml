@@ -1,0 +1,20 @@
+uuid: ba6d050e-a457-43e3-802e-bb2e8284cfef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.menu_link
+field_name: menu_link
+entity_type: node
+bundle: chas_event
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

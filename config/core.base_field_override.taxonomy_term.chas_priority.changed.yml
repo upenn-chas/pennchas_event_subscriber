@@ -1,0 +1,18 @@
+uuid: 5358a95f-caae-4946-b56d-92c0ea0a2917
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_priority
+id: taxonomy_term.chas_priority.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: chas_priority
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

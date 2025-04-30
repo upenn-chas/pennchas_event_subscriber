@@ -1,0 +1,18 @@
+uuid: 1edc22a1-1582-47a8-acee-47a420bc6bb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+id: block_content.events_by_group.changed
+field_name: changed
+entity_type: block_content
+bundle: events_by_group
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

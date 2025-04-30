@@ -1,0 +1,11 @@
+uuid: fc9f8bcc-0587-48e9-bcf2-c18e2ce7c2ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+id: block_content.dashboard_basic_item
+target_entity_type_id: block_content
+target_bundle: dashboard_basic_item
+default_langcode: site_default
+language_alterable: false

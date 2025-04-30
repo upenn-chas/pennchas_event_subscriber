@@ -1,0 +1,22 @@
+uuid: 7f249b67-1b5e-475b-88a8-0dcfb800e7a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+id: block_content.program_communities_block.status
+field_name: status
+entity_type: block_content
+bundle: program_communities_block
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

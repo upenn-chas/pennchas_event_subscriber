@@ -1,0 +1,18 @@
+uuid: a8b00172-798d-4007-87f7-6e04caa318b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+id: block_content.senior_leadership.info
+field_name: info
+entity_type: block_content
+bundle: senior_leadership
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

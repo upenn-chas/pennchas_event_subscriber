@@ -1,0 +1,11 @@
+uuid: c4ade7d5-9deb-4b40-8c5d-b0bbf51f8541
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-chas_event
+id: group_relationship.house1-group_node-chas_event
+target_entity_type_id: group_relationship
+target_bundle: house1-group_node-chas_event
+default_langcode: site_default
+language_alterable: false

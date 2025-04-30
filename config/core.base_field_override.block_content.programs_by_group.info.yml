@@ -1,0 +1,18 @@
+uuid: 0b9efdf6-e65c-430c-a311-71e76fe057e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.programs_by_group
+id: block_content.programs_by_group.info
+field_name: info
+entity_type: block_content
+bundle: programs_by_group
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

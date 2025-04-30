@@ -1,0 +1,18 @@
+uuid: 3d250bd8-9ab4-4f56-bccb-3f40bbfecff8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.space_block
+id: block_content.space_block.info
+field_name: info
+entity_type: block_content
+bundle: space_block
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 574e081b-148f-488a-91de-20053e5ac3b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+  module:
+    - path
+id: node.house_landing_page.path
+field_name: path
+entity_type: node
+bundle: house_landing_page
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

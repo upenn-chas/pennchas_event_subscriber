@@ -1,0 +1,20 @@
+uuid: cc95af61-dad6-4d69-bd5b-50254721c021
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+  module:
+    - publication_date
+id: node.program_community.published_at
+field_name: published_at
+entity_type: node
+bundle: program_community
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

@@ -1,0 +1,11 @@
+uuid: f64e9621-f41f-496b-b172-1b0b06140270
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.callout_block
+id: block_content.callout_block
+target_entity_type_id: block_content
+target_bundle: callout_block
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,11 @@
+uuid: a754bc3b-6c94-4da5-9b82-050a2f2cfc44
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_media-document
+id: group_relationship.house1-group_media-document
+target_entity_type_id: group_relationship
+target_bundle: house1-group_media-document
+default_langcode: site_default
+language_alterable: false

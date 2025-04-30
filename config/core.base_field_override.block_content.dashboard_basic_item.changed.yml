@@ -1,0 +1,18 @@
+uuid: bb2834b1-7df2-4be4-ad79-172742e37eda
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_basic_item
+id: block_content.dashboard_basic_item.changed
+field_name: changed
+entity_type: block_content
+bundle: dashboard_basic_item
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

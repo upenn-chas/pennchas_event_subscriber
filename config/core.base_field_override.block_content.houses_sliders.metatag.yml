@@ -1,0 +1,20 @@
+uuid: 0d2eb1f1-9d1e-447e-a7d7-1c86a32fa343
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+  module:
+    - metatag
+id: block_content.houses_sliders.metatag
+field_name: metatag
+entity_type: block_content
+bundle: houses_sliders
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

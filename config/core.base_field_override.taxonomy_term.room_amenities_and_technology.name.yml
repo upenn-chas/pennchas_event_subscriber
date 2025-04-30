@@ -1,0 +1,18 @@
+uuid: 0c0f2d1a-64ed-4acf-ac47-b1c58ecc17ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.room_amenities_and_technology
+id: taxonomy_term.room_amenities_and_technology.name
+field_name: name
+entity_type: taxonomy_term
+bundle: room_amenities_and_technology
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

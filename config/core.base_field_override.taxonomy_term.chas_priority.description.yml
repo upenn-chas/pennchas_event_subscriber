@@ -1,0 +1,21 @@
+uuid: f36f2f3d-a570-4da4-8c1e-9491c87fa3fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_priority
+  module:
+    - text
+id: taxonomy_term.chas_priority.description
+field_name: description
+entity_type: taxonomy_term
+bundle: chas_priority
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

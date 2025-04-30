@@ -1,0 +1,20 @@
+uuid: 6b5b13fd-7430-41d5-8c36-8f72d9d213d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_media-video
+  module:
+    - path
+id: group_relationship.house1-group_media-video.path
+field_name: path
+entity_type: group_relationship
+bundle: house1-group_media-video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

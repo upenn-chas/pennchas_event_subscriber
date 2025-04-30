@@ -1,0 +1,20 @@
+uuid: c83a8fa1-7d4a-4577-bf6d-be069e797873
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-room
+  module:
+    - metatag
+id: group_relationship.house1-group_node-room.metatag
+field_name: metatag
+entity_type: group_relationship
+bundle: house1-group_node-room
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,11 @@
+uuid: 0e0999ba-f3bc-419c-8fff-5d30f722e912
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-26dda3a47e3baa4a8c59fd010
+id: group_relationship.house1-26dda3a47e3baa4a8c59fd010
+target_entity_type_id: group_relationship
+target_bundle: house1-26dda3a47e3baa4a8c59fd010
+default_langcode: site_default
+language_alterable: false

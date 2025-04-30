@@ -1,0 +1,11 @@
+uuid: fc2284ce-4ca9-46b2-acb4-984c6fd9271a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+id: block_content.dashboard_blocks
+target_entity_type_id: block_content
+target_bundle: dashboard_blocks
+default_langcode: site_default
+language_alterable: false

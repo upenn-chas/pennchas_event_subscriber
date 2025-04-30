@@ -1,0 +1,18 @@
+uuid: 4432fbe7-4c4b-4c3d-ba13-f24e01e3c926
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.title
+field_name: title
+entity_type: node
+bundle: chas_event
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

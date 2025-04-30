@@ -1,0 +1,22 @@
+uuid: 9f34b741-c2d1-460a-95dd-698a87212d91
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_card
+id: block_content.program_communities_card.status
+field_name: status
+entity_type: block_content
+bundle: program_communities_card
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

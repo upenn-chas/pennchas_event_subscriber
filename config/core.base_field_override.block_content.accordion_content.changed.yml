@@ -1,0 +1,18 @@
+uuid: ff1eed2f-7310-49d9-9827-bd745e8c10d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+id: block_content.accordion_content.changed
+field_name: changed
+entity_type: block_content
+bundle: accordion_content
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

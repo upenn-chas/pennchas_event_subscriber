@@ -1,0 +1,11 @@
+uuid: 65f93a36-e7f3-4147-b7e6-150a54114f63
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.room_amenities_and_technology
+id: taxonomy_term.room_amenities_and_technology
+target_entity_type_id: taxonomy_term
+target_bundle: room_amenities_and_technology
+default_langcode: site_default
+language_alterable: false

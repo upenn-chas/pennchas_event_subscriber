@@ -1,0 +1,22 @@
+uuid: 4d7eae24-9a41-4906-81bc-efbca5f6c3e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_news
+id: taxonomy_term.chas_news.status
+field_name: status
+entity_type: taxonomy_term
+bundle: chas_news
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

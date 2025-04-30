@@ -1,6 +1,7 @@
 _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
+  webform_clientside_validation: -1
   addtocal_augment: 0
   admin_toolbar: 0
   admin_toolbar_search: 0
@@ -24,6 +25,7 @@ module:
   ckeditor_html_embed: 0
   ckeditor_media_resize: 0
   clientside_validation: 0
+  clientside_validation_jquery: 0
   color_field: 0
   comment: 0
   common_utils: 0
@@ -90,6 +92,7 @@ module:
   layout_discovery: 0
   link: 0
   linkit: 0
+  mailsystem: 0
   masquerade: 0
   media: 0
   media_library: 0
@@ -139,6 +142,7 @@ module:
   standard: 0
   svg_image_field: 0
   svg_image_field_media_bundle: 0
+  symfony_mailer_lite: 0
   system: 0
   tamper: 0
   taxonomy: 0

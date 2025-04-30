@@ -1,0 +1,22 @@
+uuid: 6c13eedd-f60d-4368-a5fc-20fce464badf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_columns
+id: block_content.grid_columns.status
+field_name: status
+entity_type: block_content
+bundle: grid_columns
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

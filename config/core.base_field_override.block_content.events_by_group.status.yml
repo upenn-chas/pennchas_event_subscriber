@@ -1,0 +1,22 @@
+uuid: 997d79d9-e741-4816-9b82-f0d5b6b94df6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+id: block_content.events_by_group.status
+field_name: status
+entity_type: block_content
+bundle: events_by_group
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

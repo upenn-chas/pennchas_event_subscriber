@@ -1,0 +1,21 @@
+uuid: 89cb7528-a4be-42e4-83fc-8a51de1b91e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_news
+  module:
+    - text
+id: taxonomy_term.chas_news.description
+field_name: description
+entity_type: taxonomy_term
+bundle: chas_news
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

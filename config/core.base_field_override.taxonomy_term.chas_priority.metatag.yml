@@ -1,0 +1,20 @@
+uuid: 212f51ae-caa3-499a-9e5b-d4e9b3d7d2f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_priority
+  module:
+    - metatag
+id: taxonomy_term.chas_priority.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: chas_priority
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

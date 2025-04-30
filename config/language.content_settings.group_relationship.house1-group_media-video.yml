@@ -1,0 +1,11 @@
+uuid: 59f679e8-faf8-440a-8c2a-5bd90221a70d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_media-video
+id: group_relationship.house1-group_media-video
+target_entity_type_id: group_relationship
+target_bundle: house1-group_media-video
+default_langcode: site_default
+language_alterable: false

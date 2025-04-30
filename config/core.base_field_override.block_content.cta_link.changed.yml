@@ -1,0 +1,18 @@
+uuid: b1845a97-fd54-4c61-8c69-65110d5f8926
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_link
+id: block_content.cta_link.changed
+field_name: changed
+entity_type: block_content
+bundle: cta_link
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: e9206570-90d1-47cb-86fd-c33c5cc2d584
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-fae6ebd5a926aed11c13a2c5b
+id: group_relationship.house1-fae6ebd5a926aed11c13a2c5b.created
+field_name: created
+entity_type: group_relationship
+bundle: house1-fae6ebd5a926aed11c13a2c5b
+label: 'Created on'
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

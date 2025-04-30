@@ -1,0 +1,11 @@
+uuid: 71d5e307-9f1c-443e-96ed-7aefeb54749b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_news
+id: taxonomy_term.chas_news
+target_entity_type_id: taxonomy_term
+target_bundle: chas_news
+default_langcode: site_default
+language_alterable: false

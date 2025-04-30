@@ -1,0 +1,21 @@
+uuid: 6aa80d89-a375-46da-97fa-eaba5798a885
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.team
+  module:
+    - text
+id: taxonomy_term.team.description
+field_name: description
+entity_type: taxonomy_term
+bundle: team
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

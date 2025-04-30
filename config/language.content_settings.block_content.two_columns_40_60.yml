@@ -1,0 +1,11 @@
+uuid: 1c911d30-77bf-4c24-ae3a-c14226e6fefa
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns_40_60
+id: block_content.two_columns_40_60
+target_entity_type_id: block_content
+target_bundle: two_columns_40_60
+default_langcode: site_default
+language_alterable: false

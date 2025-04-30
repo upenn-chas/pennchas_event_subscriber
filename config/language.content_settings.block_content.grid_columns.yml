@@ -1,0 +1,11 @@
+uuid: fe16c9e7-8ded-460a-a3d3-ae95b83041e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_columns
+id: block_content.grid_columns
+target_entity_type_id: block_content
+target_bundle: grid_columns
+default_langcode: site_default
+language_alterable: false

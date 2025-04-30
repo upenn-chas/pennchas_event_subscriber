@@ -1,0 +1,18 @@
+uuid: cdf63339-5c24-4de5-9430-87eeaf173f76
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+id: block_content.video_block.info
+field_name: info
+entity_type: block_content
+bundle: video_block
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

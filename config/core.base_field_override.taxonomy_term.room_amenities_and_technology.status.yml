@@ -1,0 +1,22 @@
+uuid: e1f62804-b25c-42a7-8d6e-ad55f1f06120
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.room_amenities_and_technology
+id: taxonomy_term.room_amenities_and_technology.status
+field_name: status
+entity_type: taxonomy_term
+bundle: room_amenities_and_technology
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

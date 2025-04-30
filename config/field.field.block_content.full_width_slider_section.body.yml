@@ -14,7 +14,7 @@ bundle: full_width_slider_section
 label: Body
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -1,0 +1,18 @@
+uuid: c2a932fd-e851-4309-9d57-832822932c93
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.space_block
+id: block_content.space_block.changed
+field_name: changed
+entity_type: block_content
+bundle: space_block
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

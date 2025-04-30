@@ -1,0 +1,18 @@
+uuid: cd2963ed-2591-40f1-9a34-187c7caae953
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_blocks
+id: block_content.dashboard_blocks.info
+field_name: info
+entity_type: block_content
+bundle: dashboard_blocks
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

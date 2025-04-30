@@ -1,0 +1,22 @@
+uuid: aab2dd36-5782-4ede-8bdf-0b8f77a70d86
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.senior_leadership
+id: block_content.senior_leadership.status
+field_name: status
+entity_type: block_content
+bundle: senior_leadership
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

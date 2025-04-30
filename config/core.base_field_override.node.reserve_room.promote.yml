@@ -1,0 +1,22 @@
+uuid: 279433b9-c031-4b87-aea8-caccace0bfa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.reserve_room
+id: node.reserve_room.promote
+field_name: promote
+entity_type: node
+bundle: reserve_room
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 683cedd3-e2eb-4fde-9d3f-506a9cb7d17f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+id: node.program_community.created
+field_name: created
+entity_type: node
+bundle: program_community
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

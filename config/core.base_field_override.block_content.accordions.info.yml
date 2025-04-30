@@ -1,0 +1,18 @@
+uuid: 2ea87255-08fd-45f4-b665-2163ecc7faca
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordions
+id: block_content.accordions.info
+field_name: info
+entity_type: block_content
+bundle: accordions
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

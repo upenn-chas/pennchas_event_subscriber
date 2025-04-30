@@ -1,0 +1,18 @@
+uuid: dea31b1a-abb6-4362-bb19-ca8a34b5082b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.programs_by_group
+id: block_content.programs_by_group.changed
+field_name: changed
+entity_type: block_content
+bundle: programs_by_group
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

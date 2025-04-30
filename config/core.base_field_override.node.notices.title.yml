@@ -1,0 +1,18 @@
+uuid: 2d88fd7d-8e6a-450e-87b5-3135fc953441
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.notices
+id: node.notices.title
+field_name: title
+entity_type: node
+bundle: notices
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

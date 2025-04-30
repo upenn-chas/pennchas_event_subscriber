@@ -1,0 +1,18 @@
+uuid: b2de6bc8-4e9d-43c7-871f-cd703e3c5d1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_block
+id: block_content.program_communities_block.info
+field_name: info
+entity_type: block_content
+bundle: program_communities_block
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

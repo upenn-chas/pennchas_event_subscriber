@@ -1,0 +1,20 @@
+uuid: 8a1ee95b-23cc-44e0-b7e2-7f1222fa93a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-page
+id: group_relationship.house1-group_node-page.uid
+field_name: uid
+entity_type: group_relationship
+bundle: house1-group_node-page
+label: 'Group relationship creator'
+description: 'The username of the group relationship creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\url_alteration\Entity\CustomGroupRelationship::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,22 @@
+uuid: cad42856-48e6-47e9-b6d5-cf59e3935224
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_by_group
+id: block_content.news_by_group.status
+field_name: status
+entity_type: block_content
+bundle: news_by_group
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,11 @@
+uuid: 419e1983-dafc-467a-9f63-53db4621fbc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.chas_priority
+id: taxonomy_term.chas_priority
+target_entity_type_id: taxonomy_term
+target_bundle: chas_priority
+default_langcode: site_default
+language_alterable: false

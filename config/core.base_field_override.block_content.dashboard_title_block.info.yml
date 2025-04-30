@@ -1,0 +1,18 @@
+uuid: 6f0d0b51-9608-49a4-94d9-c798fb38b6f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_title_block
+id: block_content.dashboard_title_block.info
+field_name: info
+entity_type: block_content
+bundle: dashboard_title_block
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

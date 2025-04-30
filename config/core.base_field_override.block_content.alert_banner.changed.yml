@@ -1,0 +1,18 @@
+uuid: b313b02b-f909-4c41-b573-c83a6bfc1532
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_banner
+id: block_content.alert_banner.changed
+field_name: changed
+entity_type: block_content
+bundle: alert_banner
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

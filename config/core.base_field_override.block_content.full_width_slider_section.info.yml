@@ -1,0 +1,18 @@
+uuid: 14b53b0e-89e7-411b-8229-5a83a51470a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.full_width_slider_section
+id: block_content.full_width_slider_section.info
+field_name: info
+entity_type: block_content
+bundle: full_width_slider_section
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

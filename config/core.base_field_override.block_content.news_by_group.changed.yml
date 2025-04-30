@@ -1,0 +1,18 @@
+uuid: 8fd112e3-d153-4760-953b-dd793e99eb3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_by_group
+id: block_content.news_by_group.changed
+field_name: changed
+entity_type: block_content
+bundle: news_by_group
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

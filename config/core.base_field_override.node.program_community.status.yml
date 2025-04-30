@@ -1,0 +1,22 @@
+uuid: c70b4f14-ab13-4589-963b-06c967c7ca97
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+id: node.program_community.status
+field_name: status
+entity_type: node
+bundle: program_community
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

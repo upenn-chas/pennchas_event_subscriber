@@ -1,0 +1,18 @@
+uuid: 2bca7c6d-ea28-4699-86e5-55bcc325ab81
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_media-document
+id: group_relationship.house1-group_media-document.created
+field_name: created
+entity_type: group_relationship
+bundle: house1-group_media-document
+label: 'Created on'
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,20 @@
+uuid: b6a54d29-2801-446e-8d69-449205b9bcc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.room
+  module:
+    - metatag
+id: node.room.metatag
+field_name: metatag
+entity_type: node
+bundle: room
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

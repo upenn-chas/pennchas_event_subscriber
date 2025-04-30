@@ -1,0 +1,18 @@
+uuid: f8016a87-886a-43aa-990b-b950a3e96a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_columns
+id: block_content.two_columns.info
+field_name: info
+entity_type: block_content
+bundle: two_columns
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

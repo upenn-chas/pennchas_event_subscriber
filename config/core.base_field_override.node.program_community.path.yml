@@ -1,0 +1,20 @@
+uuid: b3ad4b20-d756-47cd-b956-0a6ad02f4077
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_community
+  module:
+    - path
+id: node.program_community.path
+field_name: path
+entity_type: node
+bundle: program_community
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

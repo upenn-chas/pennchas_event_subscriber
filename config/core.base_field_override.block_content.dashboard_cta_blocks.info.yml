@@ -1,0 +1,18 @@
+uuid: f8153c7b-4370-4b09-846f-6d73308bcc02
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_cta_blocks
+id: block_content.dashboard_cta_blocks.info
+field_name: info
+entity_type: block_content
+bundle: dashboard_cta_blocks
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

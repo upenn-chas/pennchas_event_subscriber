@@ -1,0 +1,22 @@
+uuid: d7ae70da-5d6c-4217-99eb-a88909a45dea
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.house_landing_page
+id: node.house_landing_page.status
+field_name: status
+entity_type: node
+bundle: house_landing_page
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

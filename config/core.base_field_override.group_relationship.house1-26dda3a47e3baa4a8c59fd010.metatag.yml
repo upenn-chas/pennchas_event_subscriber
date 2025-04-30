@@ -1,0 +1,20 @@
+uuid: b375435d-f71e-4738-a813-d09453a72497
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-26dda3a47e3baa4a8c59fd010
+  module:
+    - metatag
+id: group_relationship.house1-26dda3a47e3baa4a8c59fd010.metatag
+field_name: metatag
+entity_type: group_relationship
+bundle: house1-26dda3a47e3baa4a8c59fd010
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

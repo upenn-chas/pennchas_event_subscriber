@@ -1,0 +1,18 @@
+uuid: cea1d29d-9962-4401-b8cd-2093b2f53c6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.houses_sliders
+id: block_content.houses_sliders.changed
+field_name: changed
+entity_type: block_content
+bundle: houses_sliders
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

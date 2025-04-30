@@ -1,0 +1,20 @@
+uuid: 9b29f1fa-244b-4ec6-bf7d-2b091bc59607
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_block
+  module:
+    - metatag
+id: block_content.video_block.metatag
+field_name: metatag
+entity_type: block_content
+bundle: video_block
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

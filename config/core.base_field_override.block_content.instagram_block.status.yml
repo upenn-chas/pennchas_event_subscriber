@@ -1,0 +1,22 @@
+uuid: b89b762e-8c30-48f7-8239-8b41412b1510
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.instagram_block
+id: block_content.instagram_block.status
+field_name: status
+entity_type: block_content
+bundle: instagram_block
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

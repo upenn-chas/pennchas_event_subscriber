@@ -1,0 +1,20 @@
+uuid: 3ddd7012-42a2-4605-aa3e-b80538b582e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.house1-group_node-notices
+  module:
+    - path
+id: group_relationship.house1-group_node-notices.path
+field_name: path
+entity_type: group_relationship
+bundle: house1-group_node-notices
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

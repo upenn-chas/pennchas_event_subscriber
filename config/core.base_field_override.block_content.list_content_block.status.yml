@@ -1,0 +1,22 @@
+uuid: ec1013e3-a132-4400-ab87-c5ee45b90b7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.list_content_block
+id: block_content.list_content_block.status
+field_name: status
+entity_type: block_content
+bundle: list_content_block
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: c5deb074-dde2-4c14-9018-ae3c5d229e3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dashboard_cta_blocks
+id: block_content.dashboard_cta_blocks.status
+field_name: status
+entity_type: block_content
+bundle: dashboard_cta_blocks
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

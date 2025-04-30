@@ -1,0 +1,18 @@
+uuid: 05c4f027-c472-4230-b29d-50f4543ede56
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events_by_group
+id: block_content.events_by_group.info
+field_name: info
+entity_type: block_content
+bundle: events_by_group
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

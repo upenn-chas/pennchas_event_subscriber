@@ -1,0 +1,20 @@
+uuid: 896d24ed-c99c-4d53-8ba8-ff799c994cbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.uid
+field_name: uid
+entity_type: node
+bundle: chas_event
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,18 @@
+uuid: 554733b8-effd-4369-9e8c-a58d3143b11d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_communities_selection
+id: block_content.program_communities_selection.changed
+field_name: changed
+entity_type: block_content
+bundle: program_communities_selection
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

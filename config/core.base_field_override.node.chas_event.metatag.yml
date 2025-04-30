@@ -1,0 +1,20 @@
+uuid: 99fb67db-4ed2-4ee3-984c-1ca71ef34eb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+  module:
+    - metatag
+id: node.chas_event.metatag
+field_name: metatag
+entity_type: node
+bundle: chas_event
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

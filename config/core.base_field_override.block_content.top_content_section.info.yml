@@ -1,0 +1,18 @@
+uuid: b69b0563-bc86-4f10-b733-b706b972f2c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_content_section
+id: block_content.top_content_section.info
+field_name: info
+entity_type: block_content
+bundle: top_content_section
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

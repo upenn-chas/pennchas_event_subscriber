@@ -1,0 +1,22 @@
+uuid: 4898b1e5-4f80-4597-b33b-72b44a669077
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_link
+id: block_content.cta_link.status
+field_name: status
+entity_type: block_content
+bundle: cta_link
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

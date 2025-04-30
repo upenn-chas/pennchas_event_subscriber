@@ -1,0 +1,11 @@
+uuid: 7d819099-ab6b-4e17-820f-de7c1ba67735
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+id: block_content.events
+target_entity_type_id: block_content
+target_bundle: events
+default_langcode: site_default
+language_alterable: false

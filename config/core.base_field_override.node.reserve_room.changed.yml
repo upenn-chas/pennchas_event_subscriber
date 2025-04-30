@@ -1,0 +1,18 @@
+uuid: 75fffa93-da80-4b6c-beca-ebf43795f7a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.reserve_room
+id: node.reserve_room.changed
+field_name: changed
+entity_type: node
+bundle: reserve_room
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

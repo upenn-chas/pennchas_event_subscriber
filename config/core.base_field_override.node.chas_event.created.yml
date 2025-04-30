@@ -1,0 +1,18 @@
+uuid: 0324f033-9bb4-4260-a72a-16317f9df1c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.chas_event
+id: node.chas_event.created
+field_name: created
+entity_type: node
+bundle: chas_event
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created
