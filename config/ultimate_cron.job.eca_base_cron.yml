@@ -1,0 +1,17 @@
+uuid: 1213421e-1540-4c53-a47a-0207f59daf0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+title: 'Default cron handler'
+id: eca_base_cron
+weight: 0
+module: eca_base
+callback: 'eca_base#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
