@@ -26,84 +26,94 @@ modeldata: |
         </bpmn2:extensionElements>
         <bpmn2:outgoing>Flow_00xtnur</bpmn2:outgoing>
       </bpmn2:startEvent>
-      <bpmn2:task id="Activity_1wgeehj" name="set path_check token" camunda:modelerTemplate="org.drupal.action.eca_token_set_value">
-        <bpmn2:extensionElements>
-          <camunda:properties>
-            <camunda:property name="pluginid" value="eca_token_set_value"/>
-          </camunda:properties>
-          <camunda:field name="token_name">
-            <camunda:string>path_check</camunda:string>
-          </camunda:field>
-          <camunda:field name="token_value">
-            <camunda:string>site:current-page:path</camunda:string>
-          </camunda:field>
-          <camunda:field name="use_yaml">
-            <camunda:string>no</camunda:string>
-          </camunda:field>
-        </bpmn2:extensionElements>
-      </bpmn2:task>
       <bpmn2:task id="Activity_0ywcjcu" name="Debug Message to Screen" camunda:modelerTemplate="org.drupal.action.action_message_action">
         <bpmn2:extensionElements>
           <camunda:properties>
             <camunda:property name="pluginid" value="action_message_action"/>
           </camunda:properties>
           <camunda:field name="message">
-            <camunda:string>This is an ECA test model. SBG 4/29 TBD</camunda:string>
+            <camunda:string>This Debugging ECA test model.
+  SBG 5/1/25 2PM 
+  Testing</camunda:string>
           </camunda:field>
           <camunda:field name="replace_tokens">
             <camunda:string>yes</camunda:string>
           </camunda:field>
         </bpmn2:extensionElements>
         <bpmn2:incoming>Flow_00xtnur</bpmn2:incoming>
-        <bpmn2:outgoing>Flow_0hmq708</bpmn2:outgoing>
-      </bpmn2:task>
-      <bpmn2:task id="Activity_07bt0im" name="Debug Message to log" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
-        <bpmn2:extensionElements>
-          <camunda:properties>
-            <camunda:property name="pluginid" value="eca_write_log_message"/>
-          </camunda:properties>
-          <camunda:field name="channel"/>
-          <camunda:field name="severity">
-            <camunda:string>6</camunda:string>
-          </camunda:field>
-          <camunda:field name="message">
-            <camunda:string>test message to log</camunda:string>
-          </camunda:field>
-        </bpmn2:extensionElements>
-        <bpmn2:incoming>Flow_0hmq708</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0vyf408</bpmn2:outgoing>
       </bpmn2:task>
       <bpmn2:sequenceFlow id="Flow_00xtnur" sourceRef="Event_0ihponr" targetRef="Activity_0ywcjcu"/>
-      <bpmn2:sequenceFlow id="Flow_0hmq708" sourceRef="Activity_0ywcjcu" targetRef="Activity_07bt0im"/>
+      <bpmn2:task id="Activity_051gq9a" name="Set IP Address Token" camunda:modelerTemplate="org.drupal.action.eca_endpoint_get_client_ip">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_endpoint_get_client_ip"/>
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>IP_Token</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0vyf408</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1jak7km</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0vyf408" sourceRef="Activity_0ywcjcu" targetRef="Activity_051gq9a"/>
+      <bpmn2:task id="Activity_05x4nvl" name="Display IP Address" camunda:modelerTemplate="org.drupal.action.action_message_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_message_action"/>
+          </camunda:properties>
+          <camunda:field name="message">
+            <camunda:string>IP Address CHeck: [ip_token]</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1jak7km</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1jak7km" sourceRef="Activity_051gq9a" targetRef="Activity_05x4nvl"/>
+      <bpmn2:textAnnotation id="TextAnnotation_0r9sfm1">
+        <bpmn2:text>A basic Page is Viewed</bpmn2:text>
+      </bpmn2:textAnnotation>
+      <bpmn2:association id="Association_1dn0hoj" associationDirection="None" sourceRef="Event_0ihponr" targetRef="TextAnnotation_0r9sfm1"/>
     </bpmn2:process>
     <bpmndi:BPMNDiagram id="sid-2ceeff0a-e29f-4a1b-a612-c7b024d7a655">
       <bpmndi:BPMNPlane id="sid-fc68c370-ecc9-4372-bda7-4f47bbbd8e85" bpmnElement="Process_etVUfr0">
         <bpmndi:BPMNShape id="Event_0ihponr_di" bpmnElement="Event_0ihponr">
-          <dc:Bounds x="302" y="182" width="36" height="36"/>
-        </bpmndi:BPMNShape>
-        <bpmndi:BPMNShape id="Activity_1wgeehj_di" bpmnElement="Activity_1wgeehj">
-          <dc:Bounds x="640" y="330" width="100" height="80"/>
-          <bpmndi:BPMNLabel/>
-        </bpmndi:BPMNShape>
-        <bpmndi:BPMNShape id="Activity_07bt0im_di" bpmnElement="Activity_07bt0im">
-          <dc:Bounds x="850" y="160" width="100" height="80"/>
-          <bpmndi:BPMNLabel/>
+          <dc:Bounds x="342" y="222" width="36" height="36"/>
         </bpmndi:BPMNShape>
         <bpmndi:BPMNShape id="Activity_0ywcjcu_di" bpmnElement="Activity_0ywcjcu">
-          <dc:Bounds x="550" y="210" width="100" height="80"/>
+          <dc:Bounds x="470" y="210" width="100" height="80"/>
           <bpmndi:BPMNLabel/>
         </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_051gq9a_di" bpmnElement="Activity_051gq9a">
+          <dc:Bounds x="600" y="210" width="100" height="80"/>
+          <bpmndi:BPMNLabel/>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_05x4nvl_di" bpmnElement="Activity_05x4nvl">
+          <dc:Bounds x="730" y="210" width="100" height="80"/>
+          <bpmndi:BPMNLabel/>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Association_1dn0hoj_di" bpmnElement="Association_1dn0hoj">
+          <di:waypoint x="363" y="222"/>
+          <di:waypoint x="367" y="191"/>
+        </bpmndi:BPMNEdge>
         <bpmndi:BPMNEdge id="Flow_00xtnur_di" bpmnElement="Flow_00xtnur">
-          <di:waypoint x="338" y="200"/>
-          <di:waypoint x="444" y="200"/>
-          <di:waypoint x="444" y="240"/>
-          <di:waypoint x="550" y="240"/>
+          <di:waypoint x="378" y="240"/>
+          <di:waypoint x="470" y="240"/>
         </bpmndi:BPMNEdge>
-        <bpmndi:BPMNEdge id="Flow_0hmq708_di" bpmnElement="Flow_0hmq708">
-          <di:waypoint x="650" y="250"/>
-          <di:waypoint x="750" y="250"/>
-          <di:waypoint x="750" y="200"/>
-          <di:waypoint x="850" y="200"/>
+        <bpmndi:BPMNEdge id="Flow_0vyf408_di" bpmnElement="Flow_0vyf408">
+          <di:waypoint x="570" y="250"/>
+          <di:waypoint x="600" y="250"/>
         </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1jak7km_di" bpmnElement="Flow_1jak7km">
+          <di:waypoint x="700" y="250"/>
+          <di:waypoint x="730" y="250"/>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNShape id="TextAnnotation_0r9sfm1_di" bpmnElement="TextAnnotation_0r9sfm1">
+          <dc:Bounds x="320" y="150" width="100" height="41"/>
+          <bpmndi:BPMNLabel/>
+        </bpmndi:BPMNShape>
       </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>
   </bpmn2:definitions>
