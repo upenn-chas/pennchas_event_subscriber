@@ -216,6 +216,36 @@
                 "license": "MIT"
             }
         },
+        "jquery-simple-color": {
+            "type": "package",
+            "package": {
+                "name": "recurser/jquery-simple-color",
+                "version": "1.2.3",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "jquery-simple-color"
+                },
+                "dist": {
+                    "url": "https://github.com/recurser/jquery-simple-color/archive/refs/tags/v1.2.3.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "spectrum": {
+            "type": "package",
+            "package": {
+                "name": "bgrins/spectrum",
+                "version": "1.8.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "spectrum"
+                },
+                "dist": {
+                    "url": "https://github.com/bgrins/spectrum/archive/refs/tags/1.8.0.zip",
+                    "type": "zip"
+                }
+            }
+        },
         "vcs": {
             "type": "vcs",
             "url": "https://github.com/upenn/penn403.git"
@@ -332,7 +362,9 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/views_sort_null_field": "^1.3",
         "drupal/symfony_mailer_lite": "^2.0",
-        "drupal/search_api": "^1.38"
+        "drupal/search_api": "^1.38",
+        "recurser/jquery-simple-color": "*",
+        "bgrins/spectrum":"*"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
