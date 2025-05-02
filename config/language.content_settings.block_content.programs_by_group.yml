@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - block_content.type.programs_by_group
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
 id: block_content.programs_by_group
 target_entity_type_id: block_content
 target_bundle: programs_by_group

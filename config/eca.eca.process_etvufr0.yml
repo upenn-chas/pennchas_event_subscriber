@@ -5,8 +5,9 @@ dependencies:
   config:
     - node.type.page
   module:
+    - eca_base
     - eca_content
-    - eca_endpoint
+    - eca_log
 id: process_etvufr0
 modeller: bpmn_io
 label: 'Campus Network Checker'
@@ -25,32 +26,29 @@ events:
 conditions: {  }
 gateways: {  }
 actions:
+  Activity_1wgeehj:
+    plugin: eca_token_set_value
+    label: 'set path_check token'
+    configuration:
+      token_name: path_check
+      token_value: 'site:current-page:path'
+      use_yaml: false
+    successors: {  }
   Activity_0ywcjcu:
     plugin: action_message_action
     label: 'Debug Message to Screen'
     configuration:
-      message: |-
-        This Debugging ECA test model.
-        SBG 5/1/25 2PM 
-        Testing
+      message: 'This is an ECA test model. SBG 4/29 TBD'
       replace_tokens: true
     successors:
       -
-        id: Activity_051gq9a
+        id: Activity_07bt0im
         condition: ''
-  Activity_051gq9a:
-    plugin: eca_endpoint_get_client_ip
-    label: 'Set IP Address Token'
+  Activity_07bt0im:
+    plugin: eca_write_log_message
+    label: 'Debug Message to log'
     configuration:
-      token_name: IP_Token
-    successors:
-      -
-        id: Activity_05x4nvl
-        condition: ''
-  Activity_05x4nvl:
-    plugin: action_message_action
-    label: 'Display IP Address'
-    configuration:
-      replace_tokens: false
-      message: 'IP Address CHeck: [ip_token]'
+      channel: ''
+      severity: '6'
+      message: 'test message to log'
     successors: {  }

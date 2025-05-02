@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - node.type.house_landing_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
 id: node.house_landing_page
 target_entity_type_id: node
 target_bundle: house_landing_page
