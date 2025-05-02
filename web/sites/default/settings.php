@@ -37,6 +37,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 
 $settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];
 $settings['state_cache'] = TRUE;
+$settings['simple_sitemap_engines.index_now.key'] = 'ac0e81f6-3263-4f3c-b2f4-5a04a81c8fa6';
 
 /**
  * If there is a local settings file, then include it
