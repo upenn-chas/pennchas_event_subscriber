@@ -1,0 +1,19 @@
+uuid: ecdfca99-eb63-48ca-ba4e-dfc498ef59a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_ref
+    - node.type.house_landing_page
+id: node.house_landing_page.field_group_ref
+field_name: field_group_ref
+entity_type: node
+bundle: house_landing_page
+label: 'Parent Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

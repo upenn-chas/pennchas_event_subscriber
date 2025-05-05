@@ -1,9 +1,9 @@
-uuid: 2dfc3e26-a5bd-4deb-b468-88db367bda07
+uuid: 093c16d1-5aa4-4e0c-982d-209987772150
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.full
     - field.field.node.house_landing_page.body
     - field.field.node.house_landing_page.feeds_item
     - field.field.node.house_landing_page.field_blocks_ref
@@ -13,46 +13,26 @@ dependencies:
     - field.field.node.house_landing_page.field_parent_page
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
-    - image.style.media_library
     - node.type.house_landing_page
   module:
-    - media
-    - text
     - user
-id: node.house_landing_page.teaser
+id: node.house_landing_page.full
 targetEntityType: node
 bundle: house_landing_page
-mode: teaser
+mode: full
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 101
-    region: content
-  field_media_image:
-    type: media_thumbnail
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: media_library
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  body: true
   feeds_item: true
   field_blocks_ref: true
   field_group_ref: true
   field_last_state: true
+  field_media_image: true
   field_parent_page: true
   field_select_house: true
   langcode: true

@@ -2,6 +2,7 @@
 
 namespace Drupal\pennchas_form_alter\Hook;
 
+use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\Entity\Node;
@@ -26,6 +27,8 @@ class NodePreSaveHook
             $this->handleProgramCommunity($node);
         } else if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);
+        } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
+            $this->handleHousePage($node);
         }
     }
 
@@ -147,6 +150,28 @@ class NodePreSaveHook
                 $node->set('field_group_ref', $groupMachineName);
             }
         }
+    }
+
+    protected function handleHousePage(Node $node)
+    {
+        $parentPageId = (int) $node->get('field_parent_page')->getString();
+        $pageRef = null;
+        if ($parentPageId) {
+            $pageRef = Url::fromRoute('entity.node.canonical', ['node' => $parentPageId])->toString();
+        } else {
+            $group = null;
+            $groupId = (int) $node->get('field_select_house')->getString();
+            if ($groupId) {
+                $group = Group::load($groupId);
+            } else {
+                $group = \Drupal::routeMatch()->getParameter('group');
+                $node->set('field_select_house', $group->id());
+            }
+            if ($group) {
+                $pageRef = $group->get('field_short_name')->value;
+            }
+        }
+        $node->set('field_group_ref', $pageRef);
     }
 
     private function getGroupIdsByEntity($nid)

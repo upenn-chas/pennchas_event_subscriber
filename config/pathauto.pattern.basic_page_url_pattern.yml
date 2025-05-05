@@ -9,10 +9,10 @@ label: 'Basic Page URL pattern'
 type: 'canonical_entities:node'
 pattern: '[node:title]'
 selection_criteria:
-  0ba11fe1-810b-4211-aa07-b4d2e917d7cc:
+  035a293d-9f42-4350-88e4-40c3304ce44f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 0ba11fe1-810b-4211-aa07-b4d2e917d7cc
+    uuid: 035a293d-9f42-4350-88e4-40c3304ce44f
     context_mapping:
       node: node
     bundles:
