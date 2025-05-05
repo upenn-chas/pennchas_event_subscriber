@@ -18,3 +18,4 @@ enabled_entity_types:
   - node
   - group
   - redirect
+  - menu_link_content
