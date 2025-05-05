@@ -148,7 +148,9 @@
     .banner-info.items-gap {
       @media(max-width: 767px) {
         gap: 0;
-         
+        p {
+          margin-bottom: 0px;
+        }
       }
     }
   }
@@ -164,6 +166,13 @@
         margin-bottom: 0;
         padding-bottom: 0;
         width: 100%;
+    }
+    p {
+      margin-bottom: -65px;
+    }
+    ul > li {
+      line-height: 20px;
+      font-size: 20px;
     }
   }
 
