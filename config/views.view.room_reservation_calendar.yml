@@ -99,8 +99,8 @@ display:
               date_format: custom
               custom_date_format: 'g:i a'
             join: ', '
-            time_format: 'h:ia'
-            time_hour_format: 'h:ia'
+            time_format: 'g:ia'
+            time_hour_format: 'g:ia'
             allday_label: 'All day'
             date_first: '1'
             ampm_reduce: 0
