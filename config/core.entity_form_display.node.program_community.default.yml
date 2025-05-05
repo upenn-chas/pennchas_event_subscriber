@@ -26,7 +26,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 12
+    weight: 13
     region: content
     settings:
       rows: 9
@@ -37,12 +37,6 @@ content:
   created:
     type: datetime_timestamp
     weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_group:
-    type: options_select
-    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -110,7 +104,17 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
     weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -153,6 +157,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_blocks_ref: true
+  field_group: true
   field_group_ref: true
   field_last_state: true
   layout_builder__layout: true

@@ -132,50 +132,21 @@ class NodePreSaveHook
 
     protected function handleProgramCommunity(Node $node)
     {
-        // dump('presave call here prpgam');
-        $urlAlias = $node->hasField('path') ? $node->get('path')->alias : "";
-        $nid = $node->id();
-        $urlAlias = $urlAlias ?: ('/' . $this->slugify($node->getTitle()));
-        $current_user = \Drupal::currentUser();
-        if ($current_user->hasRole('administrator')) {
-            $groupName = $node->get('field_group')->getValue();
-            $group_id = $groupName[0]['target_id'];
+        $group_id = (int) $node->get('field_group')->getString();
+        $group = null;
+        if ($group_id) {
             $group = Group::load($group_id);
-            $groupMachineName = $group->get('field_short_name')->value;
-
-            if ($group->hasField('field_short_name')) {
-                if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
-                    $urlAlias = $groupMachineName . $urlAlias;
-                }
-            }
-            if ($node->hasField('field_group')) {
-                if (!empty($node->get('field_group'))) {
-                    $node->set('field_group_ref', $groupMachineName);
-                }
-            }
         } else {
-            $groupId = $this->getGroupIdsByEntity($nid);
-            $group = null;
-            if ($groupId) {
-                $group = Group::load($groupId);
-            } else {
-                $group = \Drupal::routeMatch()->getParameter('group');
-            }
-            if ($group) {
-                $groupMachineName = $group->get('field_short_name')->value;
-                if ($group->hasField('field_short_name')) {
-                    if (!empty($groupMachineName) && !str_contains($urlAlias, $groupMachineName)) {
-                        $urlAlias = $groupMachineName . $urlAlias;
-                    }
-                }
-                if ($node->isNew() || !$node->original->get('field_group')->getString()) {
-                    $node->set('field_group', $group->id());
-                }
-                // dd($group);
+            $group = \Drupal::routeMatch()->getParameter('group');
+            $node->set('field_group', $group->id());
+        }
+        $groupMachineName = $group->get('field_short_name')->value;
+
+        if ($node->hasField('field_group')) {
+            if (!empty($node->get('field_group'))) {
                 $node->set('field_group_ref', $groupMachineName);
             }
         }
-        // $node->set('field_group_ref', $urlAlias);
     }
 
     private function getGroupIdsByEntity($nid)

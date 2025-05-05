@@ -24,16 +24,12 @@ use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
 use Drupal\group\Entity\GroupRole;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\HouseFormAlter;
+use Drupal\pennchas_form_alter\Plugin\FormAlter\ProgramCommunityFormAlter;
 use Drupal\user\Entity\User;
 
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     switch ($formId) {
-        case 'node_program_community_form':
-            if (!\Drupal::currentUser()->hasRole('administrator')) {
-                $form['field_group']['#access'] = false;
-            }
-            break;
         case 'node_chas_event_form':
         case 'node_chas_event_edit_form':
             $form = (new EventFormAlter())->alter($form, $formState);
@@ -57,6 +53,10 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             break;
         case 'node_article_form':
             $form = (new ArticleFormAlter())->alter($form, $formState);
+            break;
+        case 'node_program_community_form':
+        case 'node_program_community_edit_form':
+            $form = (new ProgramCommunityFormAlter())->alter($form, $formState);
             break;
         case 'content_moderation_entity_moderation_form':
             $form = (new ModerationFormAlter())->alter($form, $formState);
