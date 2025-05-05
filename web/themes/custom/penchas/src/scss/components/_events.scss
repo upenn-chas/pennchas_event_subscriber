@@ -1139,6 +1139,14 @@ body.page-view-my-events {
         font-family: $secondaryFont;
       }
     }
+    .field--name-field-long-text{
+      p{
+        margin-bottom: 0;
+        font-family: unset;
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
   }
 }
 
