@@ -1559,3 +1559,18 @@ ul.pagination.js-pager__items {
     }
   }
 }
+.block-layout-builder .content {
+  font-size: 24px;
+  line-height: 28px;
+  .text-formatted {
+    margin-top: 20px;
+    p{
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 30px;
+    }
+  }
+  .field--name-field-address {
+    margin-bottom: 20px;
+  }
+}
