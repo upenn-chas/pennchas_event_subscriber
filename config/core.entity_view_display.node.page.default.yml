@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
+    - field.field.node.page.field_is_campus_wide
     - field.field.node.page.field_last_state
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
@@ -58,6 +59,24 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings: {  }
             weight: 1
+            additional: {  }
+          e74598db-00c1-4942-ad6a-3280601f3305:
+            uuid: e74598db-00c1-4942-ad6a-3280601f3305
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_is_campus_wide'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 2
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -192,6 +211,16 @@ content:
     third_party_settings: {  }
     weight: 105
     region: content
+  field_is_campus_wide:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 109
+    region: null
   field_last_state:
     type: string
     label: above

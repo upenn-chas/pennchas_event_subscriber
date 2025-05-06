@@ -6,12 +6,14 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
+    - field.field.node.page.field_is_campus_wide
     - field.field.node.page.field_last_state
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
     - field.field.node.page.layout_builder__layout
     - node.type.page
+    - workflows.workflow.non_moderation_flow
   module:
     - conditional_fields
     - content_moderation
@@ -41,6 +43,13 @@ content:
     weight: 5
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_is_campus_wide:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_media_image:
     type: media_library_widget
@@ -117,6 +126,11 @@ content:
   published_at:
     type: publication_date_timestamp
     weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

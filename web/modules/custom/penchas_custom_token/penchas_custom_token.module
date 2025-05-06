@@ -160,34 +160,14 @@ function penchas_custom_token_permission() {
  */
 function penchas_custom_token_node_access(Node $node, $op, AccountInterface $account) {
 
-  if ($node) {
-    $nid = $node->id();
-    $current_uri = \Drupal::request()->getRequestUri();
-    $user = \Drupal::currentUser();
-    if($current_uri == '/dashboard'){
-      if (!$user->isAuthenticated()) {
-        return AccessResult::forbidden();
-      }
+
+  if ($op === 'view' && $node && $node->bundle() === 'page') {
+    $isRestricted = (bool) $node->get('field_is_campus_wide')->getString();
+    if($isRestricted && !$account->isAuthenticated())  {
+      return AccessResult::forbidden();
     }
   }
-  // if ($node->bundle() == 'chas_event') {
-  //   $query = \Drupal::database()->select('node_field_data', 'n');
-  //   $query->leftJoin('group_relationship_field_data', 'gr', 'n.nid = gr.entity_id');
-  //   $query->fields('gr',['gid']);
-  //   $query->condition('n.type', 'chas_event');
-  //   $result = $query->execute()->fetchCol();
-  //   // dd($result);
-  //   foreach($result as $items => $item){
-  //     if (!user_has_permission($account, 'access my events')) {
-  //       // dd(check_user_group_permission($account, $item, 'access my events'));
-  //       // if (!check_user_group_permission($account, $item, 'access my events')) {
-  //         return AccessResult::forbidden();
-  //       // }
-  //     }
-  //   }
-  // }
-
-  return AccessResult::allowed();
+  return AccessResult::neutral();
 }
 
 /**

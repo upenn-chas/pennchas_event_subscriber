@@ -1539,3 +1539,23 @@ ul.pagination.js-pager__items {
     opacity: 0 !important;
   }
 }
+
+.contextual-region .view-content .views-row .views-field {
+  margin-top: 20px;
+}
+
+.views-element-container .view-event-survey-report {
+  .view-header{
+
+    margin-top: 20px;
+  }
+  .view-content > table{
+    margin-top: 20px;
+
+  }
+  @media(min-width: 767px){
+    .view-content .views-row{
+      margin-top: 40px;
+    }
+  }
+}

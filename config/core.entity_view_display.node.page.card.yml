@@ -1,9 +1,9 @@
-uuid: 3e5be35f-606f-4fc4-b5fc-e93c9297c3d6
+uuid: 6fa17e86-0a45-415d-909f-eebc5db6dbd4
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.card
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
@@ -13,48 +13,26 @@ dependencies:
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
     - field.field.node.page.layout_builder__layout
-    - image.style.medium
     - node.type.page
   module:
-    - media
-    - text
     - user
-_core:
-  default_config_hash: 8BgdRtLbtQ0F__o0FHSH0Mx5fvXOra9tfT1GmNKbRYw
-id: node.page.teaser
+id: node.page.card
 targetEntityType: node
 bundle: page
-mode: teaser
+mode: card
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_media_image:
-    type: media_thumbnail
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: medium
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 0
     region: content
 hidden:
+  body: true
   feeds_item: true
   field_blocks_ref: true
   field_is_campus_wide: true
   field_last_state: true
+  field_media_image: true
   field_menus: true
   field_parent_page: true
   langcode: true
