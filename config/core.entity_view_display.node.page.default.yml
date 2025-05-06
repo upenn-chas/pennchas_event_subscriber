@@ -60,8 +60,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
-          e74598db-00c1-4942-ad6a-3280601f3305:
-            uuid: e74598db-00c1-4942-ad6a-3280601f3305
+          e6b58d69-483f-4ff1-a41c-e0106900dd6e:
+            uuid: e6b58d69-483f-4ff1-a41c-e0106900dd6e
             region: null
             configuration:
               id: 'field_block:node:page:field_is_campus_wide'
@@ -102,9 +102,8 @@ third_party_settings:
           - 'extra_field_block:node:page:links'
           - 'field_block:node:page:revision_timestamp'
           - 'field_block:node:page:vid'
-          - 'field_block:node:page:revision_uid'
           - 'extra_field_block:node:page:search_api_excerpt'
-          - 'field_block:node:page:revision_log'
+          - 'field_block:node:page:revision_uid'
           - 'field_block:node:page:uid'
           - 'field_block:node:page:created'
           - 'field_block:node:page:field_blocks_ref'
@@ -121,6 +120,7 @@ third_party_settings:
           - 'field_block:node:page:promote'
           - 'field_block:node:page:status'
           - 'field_block:node:page:published_at'
+          - 'field_block:node:page:revision_log'
           - 'field_block:node:page:revision_translation_affected'
           - 'field_block:node:page:sticky'
           - 'field_block:node:page:title'

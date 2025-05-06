@@ -1,4 +1,4 @@
-uuid: 2d3beb4b-d54f-424a-82d9-664b9f23064b
+uuid: f46699a4-fb58-4fa1-875c-2e112c150fab
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ field_name: field_is_campus_wide
 entity_type: node
 bundle: page
 label: 'Accessible only by Authenticate User'
-description: 'If selected, this page will be visible only to logged-in users.'
+description: '<p>If selected, this page will be visible only to logged-in users.</p>'
 required: false
 translatable: false
 default_value:
