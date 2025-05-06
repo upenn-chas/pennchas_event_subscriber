@@ -119,6 +119,11 @@
         </div>
 
         <div class="internal-links">
+            <div class="dropdown d-lg-none">
+              <a href="{{ path('<front>') }}" class="btn">
+                <img src="{{ path('<front>') }}themes/custom/penchas/images/icons/home-white.svg" alt="cta-contact icon" />
+              </a>
+            </div>
             {% for menus in node.field_select_house.0.parent.entity.field_menus %}
               <div class="dropdown">
                 {% set items = simplify_menu(menus.value['target_id']) %}
