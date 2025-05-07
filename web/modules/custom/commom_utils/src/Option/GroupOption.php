@@ -43,14 +43,10 @@ class GroupOption
             return [];
         }
 
-        $groupMemberships = GroupMembership::loadByUser($this->user);
-        if ($groupMemberships) {
-            foreach ($groupMemberships as $groupMembership) {
-                $gid = $groupMembership->get('gid')->getString();
-                $group = Group::load($gid);
-                $options[$group->id()] = $group->label();
-            }
-        } else if ($allGroupsForNonMember) {
+        $drupalRoles = ['administrator', 'chas_student_worker', 'chas_director', 'chas_technology', 'chas_professional_staff'];
+        $userRoles = $this->user->getRoles(TRUE);
+        $hasTargetRoles = count(array_intersect($drupalRoles, $userRoles)) > 0;
+        if ($hasTargetRoles && $allGroupsForNonMember) {
             $groupsId =  \Drupal::entityQuery('group')
                 ->condition('type', $groupType)
                 ->condition('status', 1)->accessCheck(true)->execute();
@@ -59,7 +55,17 @@ class GroupOption
             foreach ($groups as $group) {
                 $options[$group->id()] = $group->label();
             }
+        } else if (!$hasTargetRoles) {
+            $groupMemberships = GroupMembership::loadByUser($this->user);
+            if ($groupMemberships) {
+                foreach ($groupMemberships as $groupMembership) {
+                    $gid = $groupMembership->get('gid')->getString();
+                    $group = Group::load($gid);
+                    $options[$group->id()] = $group->label();
+                }
+            }
         }
+        asort($options, SORT_STRING);
         return $options;
     }
 
@@ -70,16 +76,7 @@ class GroupOption
         if (!$this->user->isAuthenticated()) {
             return [];
         }
-        $groupMemberships = GroupMembership::loadByUser($this->user);
-        if ($groupMemberships) {
-            foreach ($groupMemberships as $groupMembership) {
-                $gid = $groupMembership->get('gid')->getString();
-                $group = Group::load($gid);
-                if ($group->hasPermission($permission, $this->user)) {
-                    $options[$group->id()] = $group->label();
-                }
-            }
-        } else if ($this->user->hasPermission($permission)) {
+        if ($this->user->hasPermission($permission)) {
             $groupsId =  \Drupal::entityQuery('group')
                 ->condition('type', $groupType)
                 ->condition('status', 1)->accessCheck(true)->execute();
@@ -88,8 +85,19 @@ class GroupOption
             foreach ($groups as $group) {
                 $options[$group->id()] = $group->label();
             }
+        } else {
+            $groupMemberships = GroupMembership::loadByUser($this->user);
+            if ($groupMemberships) {
+                foreach ($groupMemberships as $groupMembership) {
+                    $gid = $groupMembership->get('gid')->getString();
+                    $group = Group::load($gid);
+                    if ($group->hasPermission($permission, $this->user)) {
+                        $options[$group->id()] = $group->label();
+                    }
+                }
+            }
         }
-
+        asort($options, SORT_STRING);
         return $options;
     }
 }

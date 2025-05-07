@@ -4,6 +4,7 @@ use Drupal\views\ViewExecutable;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 
 const EVENT_EVALUTION_VIEW_ID = 'event_evaluation_view';
 const EVENT_EVALUTION_VIEW_DISPLAY_ID = 'event_evaluate_page_view';
@@ -73,29 +74,33 @@ function event_evaluation_cron()
 }
 
 /**
- * Check is user is authroized for event evalution.
+ * Checks if the user is authorized for the node.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *
+ * @return bool
  */
-function isUserAuthorized($node)
+function isUserAuthorized(NodeInterface $node): bool
 {
     $current_user = \Drupal::currentUser();
-    if ($current_user->hasRole('administrator')) {
-        return true;
-    }
-    $current_user_id = $current_user->id();
-    $owner_id = $node->getOwnerId();
-    $group_memberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
-    if ($group_memberships) {
-        $node_groups = $node->get('field_groups')->getValue();
 
-        foreach ($node_groups as $node_group) {
-            $group = Group::load($node_group['target_id']);
-            if ($group && $group->hasPermission('event own evaluation', $current_user) &&  $owner_id === $current_user_id) {
-                return true;
-            }
-        }
-        return false;
+    if ($current_user->hasRole('administrator')) {
+        return TRUE;
     }
-    return $current_user->hasPermission('event own evaluation') && $owner_id === $current_user_id;
+
+    // If the user is not the owner, deny early.
+    if ($node->getOwnerId() !== $current_user->id()) {
+        return FALSE;
+    }
+
+    // Check permissions.
+    if ($current_user->hasPermission('event own evaluation')) {
+        return TRUE;
+    }
+
+    /** @var \Drupal\pennchas_common\AccessCheckService $access_check */
+    $access_check = \Drupal::service('pennchas_common.access_check');
+    return $access_check->checkForGroupMember('event own evaluation');
 }
 
 /**

@@ -1574,3 +1574,12 @@ ul.pagination.js-pager__items {
     margin-bottom: 20px;
   }
 }
+.container .layout-builder__layout > div:first-child {
+  margin-bottom: 30px;
+}
+
+@media (min-width: 996px) {
+  .container .layout-builder__layout > div:first-child {
+    margin-bottom: 0; 
+  }
+}

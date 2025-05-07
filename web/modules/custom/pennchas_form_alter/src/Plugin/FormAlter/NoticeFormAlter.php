@@ -34,27 +34,6 @@ class NoticeFormAlter
 
     protected function getOptions()
     {
-        $options = [];
-
-        $currentUser = \Drupal::currentUser();
-        $groupMemberships = GroupMembership::loadByUser($currentUser);
-        if ($groupMemberships) {
-            foreach ($groupMemberships as $groupMembership) {
-                $gid = $groupMembership->get('gid')->getString();
-                $group = Group::load($gid);
-                $options[$group->id()] = $group->label();
-            }
-        } else {
-            $groupsId =  \Drupal::entityQuery('group')
-                ->condition('type', 'house1')
-                ->condition('status', 1)->accessCheck(true)->execute();
-            $groups = Group::loadMultiple($groupsId);
-
-            foreach ($groups as $group) {
-                $options[$group->id()] = $group->label();
-            }
-        }
-        asort($options,SORT_STRING);
-        return $options;
+        return  \Drupal::service('pennchas_common.option_group')->options('house1');
     }
 }
