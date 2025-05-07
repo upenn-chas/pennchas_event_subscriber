@@ -24,6 +24,11 @@ class ReportExposeFormAlter
             unset($form['type']['#options']['All']);
         }
 
+        if (isset($form['gid'])) {
+            $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
+            $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
+        }
+
         $form['#validate'][] = [$this, 'validate'];
         $form['#attached']['library'][] = 'pennchas_form_alter/toast';
 
