@@ -730,7 +730,8 @@ body{
 }
 
 .view-users-reports,
-.action-container {
+.action-container,
+.survey-report  {
   .view-header {
     border-bottom: 1px solid #011f5b;
     padding-bottom: 20px;
@@ -1546,11 +1547,10 @@ ul.pagination.js-pager__items {
 
 .views-element-container .view-event-survey-report {
   .view-header{
-
     margin-top: 20px;
   }
   .view-content > table{
-    margin-top: 20px;
+    margin-top: 21px;
 
   }
   @media(min-width: 767px){
