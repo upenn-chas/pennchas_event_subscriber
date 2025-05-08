@@ -1564,6 +1564,8 @@ ul.pagination.js-pager__items {
   line-height: 28px;
   .text-formatted {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
     p{
       font-size: 24px;
       line-height: 28px;
