@@ -77,8 +77,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 2
             additional: {  }
-          bcbd3e1c-9754-4e9b-948d-42dbb20d9ae6:
-            uuid: bcbd3e1c-9754-4e9b-948d-42dbb20d9ae6
+          ac5d486d-6979-40d9-a1dc-50efe6b6ab6d:
+            uuid: ac5d486d-6979-40d9-a1dc-50efe6b6ab6d
             region: content
             configuration:
               id: 'field_block:node:house_landing_page:field_group_ref'
@@ -109,31 +109,31 @@ third_party_settings:
         Announcements:
           - announce_block
         'Content fields':
+          - 'field_block:node:house_landing_page:type'
+          - 'field_block:node:house_landing_page:nid'
+          - 'field_block:node:house_landing_page:langcode'
+          - 'extra_field_block:node:house_landing_page:links'
+          - 'field_block:node:house_landing_page:revision_timestamp'
+          - 'field_block:node:house_landing_page:vid'
+          - 'extra_field_block:node:house_landing_page:search_api_excerpt'
+          - 'field_block:node:house_landing_page:revision_uid'
           - 'field_block:node:house_landing_page:uid'
           - 'field_block:node:house_landing_page:created'
           - 'field_block:node:house_landing_page:field_blocks_ref'
           - 'field_block:node:house_landing_page:body'
           - 'field_block:node:house_landing_page:changed'
-          - 'field_block:node:house_landing_page:type'
           - 'field_block:node:house_landing_page:revision_default'
           - 'field_block:node:house_landing_page:default_langcode'
           - 'field_block:node:house_landing_page:feeds_item'
-          - 'field_block:node:house_landing_page:nid'
           - 'field_block:node:house_landing_page:field_media_image'
-          - 'field_block:node:house_landing_page:langcode'
-          - 'extra_field_block:node:house_landing_page:links'
           - 'field_block:node:house_landing_page:menu_link'
           - 'field_block:node:house_landing_page:moderation_state'
           - 'field_block:node:house_landing_page:field_parent_page'
           - 'field_block:node:house_landing_page:promote'
           - 'field_block:node:house_landing_page:status'
           - 'field_block:node:house_landing_page:published_at'
-          - 'field_block:node:house_landing_page:revision_timestamp'
-          - 'field_block:node:house_landing_page:vid'
           - 'field_block:node:house_landing_page:revision_log'
           - 'field_block:node:house_landing_page:revision_translation_affected'
-          - 'field_block:node:house_landing_page:revision_uid'
-          - 'extra_field_block:node:house_landing_page:search_api_excerpt'
           - 'field_block:node:house_landing_page:field_select_house'
           - 'field_block:node:house_landing_page:sticky'
           - 'field_block:node:house_landing_page:title'

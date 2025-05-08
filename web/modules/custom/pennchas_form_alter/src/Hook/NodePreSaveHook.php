@@ -2,17 +2,17 @@
 
 namespace Drupal\pennchas_form_alter\Hook;
 
-use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Hook\Trait\EntityHookTrait;
+use Drupal\pennchas_form_alter\Hook\Trait\HousePageHookTrait;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 class NodePreSaveHook
 {
-    use EntityHookTrait;
+    use EntityHookTrait, HousePageHookTrait;
 
     public function handle(NodeInterface $node)
     {
@@ -135,43 +135,11 @@ class NodePreSaveHook
 
     protected function handleProgramCommunity(Node $node)
     {
-        $group_id = (int) $node->get('field_group')->getString();
-        $group = null;
-        if ($group_id) {
-            $group = Group::load($group_id);
-        } else {
+        $groupId = (int) $node->get('field_group')->getString();
+        if (!$groupId) {
             $group = \Drupal::routeMatch()->getParameter('group');
             $node->set('field_group', $group->id());
         }
-        $groupMachineName = $group->get('field_short_name')->value;
-
-        if ($node->hasField('field_group')) {
-            if (!empty($node->get('field_group'))) {
-                $node->set('field_group_ref', $groupMachineName);
-            }
-        }
-    }
-
-    protected function handleHousePage(Node $node)
-    {
-        $parentPageId = (int) $node->get('field_parent_page')->getString();
-        $pageRef = null;
-        if ($parentPageId) {
-            $pageRef = Url::fromRoute('entity.node.canonical', ['node' => $parentPageId])->toString();
-        } else {
-            $group = null;
-            $groupId = (int) $node->get('field_select_house')->getString();
-            if ($groupId) {
-                $group = Group::load($groupId);
-            } else {
-                $group = \Drupal::routeMatch()->getParameter('group');
-                $node->set('field_select_house', $group->id());
-            }
-            if ($group) {
-                $pageRef = $group->get('field_short_name')->value;
-            }
-        }
-        $node->set('field_group_ref', $pageRef);
     }
 
     private function getGroupIdsByEntity($nid)

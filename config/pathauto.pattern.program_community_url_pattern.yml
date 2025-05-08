@@ -7,12 +7,12 @@ dependencies:
 id: program_community_url_pattern
 label: 'Program community URL pattern'
 type: 'canonical_entities:node'
-pattern: '[node:field_group_ref:value]/programcommunity/[node:title]'
+pattern: '[node:field_group:entity:field_short_name]/programcommunity/[node:title]'
 selection_criteria:
-  e2b3d413-fb99-419a-a907-f11389a00148:
+  f64084b2-a0ea-48a5-aa03-375c3bf11ee1:
     id: 'entity_bundle:node'
     negate: false
-    uuid: e2b3d413-fb99-419a-a907-f11389a00148
+    uuid: f64084b2-a0ea-48a5-aa03-375c3bf11ee1
     context_mapping:
       node: node
     bundles:

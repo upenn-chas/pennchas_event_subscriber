@@ -12,11 +12,12 @@ use Drupal\layout_builder\SectionComponent;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\pennchas_form_alter\Hook\Trait\EntityHookTrait;
+use Drupal\pennchas_form_alter\Hook\Trait\HousePageHookTrait;
 use Drupal\pennchas_form_alter\Util\Constant;
 
 class NodePreUpdateHook
 {
-    use EntityHookTrait;
+    use EntityHookTrait, HousePageHookTrait;
 
     public function handle(NodeInterface $node)
     {
@@ -25,6 +26,8 @@ class NodePreUpdateHook
             $this->handleEvent($node);
         } else if ($nodeType === Constant::NODE_RESERVE_ROOM) {
             $this->handleReserveRoom($node);
+        } else if ($nodeType === Constant::NODE_HOUSE_PAGE) {
+            $this->handleHousePage($node);
         }
 
         if ($node->hasField('layout_builder__layout') && $node->hasField('field_blocks_ref')) {
@@ -92,6 +95,7 @@ class NodePreUpdateHook
         $node->isDefaultRevision(TRUE);
         $this->updateEventEndsOn($node);
     }
+
 
     protected function handleLayoutBuilder(Node $node)
     {
