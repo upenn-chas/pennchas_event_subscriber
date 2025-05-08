@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.page.field_media_image
     - field.field.node.page.field_menus
     - field.field.node.page.field_parent_page
+    - field.field.node.page.field_rendered_layout
     - field.field.node.page.layout_builder__layout
     - node.type.page
   module:
@@ -75,6 +76,7 @@ hidden:
   field_media_image: true
   field_menus: true
   field_parent_page: true
+  field_rendered_layout: true
   langcode: true
   layout_builder__layout: true
   published_at: true

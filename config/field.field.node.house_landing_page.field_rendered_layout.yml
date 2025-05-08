@@ -1,0 +1,19 @@
+uuid: e959a937-27fa-4a2a-9a3e-e1676de6a19b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rendered_layout
+    - node.type.house_landing_page
+id: node.house_landing_page.field_rendered_layout
+field_name: field_rendered_layout
+entity_type: node
+bundle: house_landing_page
+label: 'Rendered Layout'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: 0b8c2f04-0d42-48fa-be60-bf8e6577804f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rendered_layout
+    - node.type.page
+id: node.page.field_rendered_layout
+field_name: field_rendered_layout
+entity_type: node
+bundle: page
+label: 'Rendered Layout'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

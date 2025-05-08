@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.house_landing_page.field_last_state
     - field.field.node.house_landing_page.field_media_image
     - field.field.node.house_landing_page.field_parent_page
+    - field.field.node.house_landing_page.field_rendered_layout
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
     - node.type.house_landing_page
@@ -41,6 +42,7 @@ hidden:
   field_last_state: true
   field_media_image: true
   field_parent_page: true
+  field_rendered_layout: true
   field_select_house: true
   langcode: true
   layout_builder__layout: true

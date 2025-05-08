@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.house_landing_page.field_last_state
     - field.field.node.house_landing_page.field_media_image
     - field.field.node.house_landing_page.field_parent_page
+    - field.field.node.house_landing_page.field_rendered_layout
     - field.field.node.house_landing_page.field_select_house
     - field.field.node.house_landing_page.layout_builder__layout
     - node.type.house_landing_page
@@ -92,6 +93,21 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings: {  }
             weight: 0
+            additional: {  }
+          ff9b78c3-7d8e-42dc-9c4c-f2be9299e4a1:
+            uuid: ff9b78c3-7d8e-42dc-9c4c-f2be9299e4a1
+            region: null
+            configuration:
+              id: 'field_block:node:house_landing_page:field_rendered_layout'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -259,6 +275,13 @@ content:
       link: true
     third_party_settings: {  }
     weight: 106
+    region: null
+  field_rendered_layout:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
     region: null
   field_select_house:
     type: entity_reference_label
