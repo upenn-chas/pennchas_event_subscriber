@@ -28,7 +28,7 @@ trait HousePageHookTrait
             }
         }
         $node->set('field_group_ref', $pageRef);
-        $this->renderLayoutBuilderContent($node);
+        // $this->renderLayoutBuilderContent($node);
     }
 
     protected function renderLayoutBuilderContent(Node $node)

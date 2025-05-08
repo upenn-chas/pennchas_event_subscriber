@@ -3,12 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_rendered_layout
     - search_api.server.pantheon_search
   module:
     - node
     - search_api_solr
-    - view_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -61,14 +59,18 @@ name: 'Solr Content (Basic page / House Pages)'
 description: ''
 read_only: false
 field_settings:
-  field_rendered_layout:
-    label: 'Rendered Layout'
-    datasource_id: 'entity:node'
-    property_path: field_rendered_layout
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
     type: text
-    dependencies:
-      config:
-        - field.storage.node.field_rendered_layout
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': ''
+          house_landing_page: ':default'
+          page: ':default'
 datasource_settings:
   'entity:node':
     bundles:
@@ -87,7 +89,6 @@ processor_settings:
   custom_value: {  }
   entity_type: {  }
   language_with_fallback: {  }
-  layout_builder_rendered: {  }
   rendered_item: {  }
   solr_date_range: {  }
 tracker_settings:
