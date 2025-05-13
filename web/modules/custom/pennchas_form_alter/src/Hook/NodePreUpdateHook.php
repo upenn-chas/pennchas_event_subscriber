@@ -45,12 +45,8 @@ class NodePreUpdateHook
             return;
         }
 
-        $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
-        $eventExistingHousesId = NULL;
-        if (!$isChasCentralEvent) {
-            $eventExistingHouse = $originalNode->get('field_groups')->getValue();
-            $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
-        }
+        $eventExistingHouse = $originalNode->get('field_groups')->getValue();
+        $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
 
         $requestUrl = \Drupal::request()->getRequestUri();
         $nodeId = $node->id();
@@ -62,7 +58,7 @@ class NodePreUpdateHook
                     $existingState === Constant::MOD_STATUS_PUBLISHED
                     && !$this->canByPassModerationInAnyHouse($eventExistingHousesId, Constant::PERMISSION_MODERATION)
                 ) {
-                    $node->setPublished(false);
+                    $node->setPublished(FALSE);
                     $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
                     $node->setNewRevision(TRUE);
                     $node->setRevisionLogMessage('The event has moved back to draft for moderation, as the author has edited the event.');
@@ -70,11 +66,7 @@ class NodePreUpdateHook
                 $this->updateEventEndsOn($node);
             }
             $node->field_groups =  $this->getHouses($node);
-            if ($isChasCentralEvent) {
-                $node->set('field_is_campus_wide', TRUE);
-            } else {
-                $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
-            }
+            $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
         }
         $node->isDefaultRevision(TRUE);
     }

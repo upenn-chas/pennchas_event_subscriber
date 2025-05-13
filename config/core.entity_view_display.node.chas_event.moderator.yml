@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_blocks_ref
-    - field.field.node.chas_event.field_chas_tech_managed_space
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluated_by
     - field.field.node.chas_event.field_evaluated_on
@@ -22,6 +21,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -506,7 +506,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 35
+            weight: 36
             additional: {  }
           11b37596-c3ef-4df5-abbd-d7d3fe31a3b2:
             uuid: 11b37596-c3ef-4df5-abbd-d7d3fe31a3b2
@@ -582,27 +582,6 @@ third_party_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
             weight: 25
             additional: {  }
-          6dde46b1-c5bb-42ad-b879-1e0878394cb9:
-            uuid: 6dde46b1-c5bb-42ad-b879-1e0878394cb9
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_chas_tech_managed_space'
-              label: 'Is this CHAS Central Event?:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: boolean
-                label: hidden
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 32
-            additional: {  }
           9cb29c6f-cc98-46d0-a2ec-7a566002b01d:
             uuid: 9cb29c6f-cc98-46d0-a2ec-7a566002b01d
             region: blb_region_col_1
@@ -620,7 +599,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 34
+            weight: 35
             additional: {  }
           98731d2c-8c37-4993-883b-113afbeeffcf:
             uuid: 98731d2c-8c37-4993-883b-113afbeeffcf
@@ -640,6 +619,27 @@ third_party_settings:
                   link: true
                 third_party_settings: {  }
             weight: 38
+            additional: {  }
+          cbcd9bac-34be-4855-b7a1-d92dbf899263:
+            uuid: cbcd9bac-34be-4855-b7a1-d92dbf899263
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_flag'
+              label: 'Is this CHAS Central Event?'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: boolean
+                label: hidden
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 34
             additional: {  }
         third_party_settings: {  }
       -
@@ -842,13 +842,13 @@ hidden:
   field_actual_program_outcomes: true
   field_areas_for_improvement: true
   field_blocks_ref: true
-  field_chas_tech_managed_space: true
   field_evaluated_by: true
   field_evaluated_on: true
   field_evaluation_notification: true
   field_event_ends_on: true
   field_event_schedule: true
   field_feedback_form: true
+  field_flag: true
   field_group: true
   field_group_ref: true
   field_groups: true

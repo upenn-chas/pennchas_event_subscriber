@@ -22,7 +22,7 @@ attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: false
+saveEmail: true
 allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null

@@ -49,7 +49,7 @@ class ModeratorCheck
 
         // Check if the user has the moderator permission for 'chas_event' node type
         // and the event type is 'chas_centered_event'
-        if ($nodeType === 'chas_event' && (bool) $node->get('field_chas_tech_managed_space')->getString()) {
+        if ($nodeType === 'chas_event' && (bool) $node->get('field_flag')->getString()) {
             return $this->user->hasPermission($this->moderatorPermission);
         }
 

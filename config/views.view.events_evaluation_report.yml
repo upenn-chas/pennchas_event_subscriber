@@ -1881,45 +1881,37 @@ display:
           value:
             chas_event: chas_event
           group: 1
-        field_chas_tech_managed_space_value:
-          id: field_chas_tech_managed_space_value
-          table: node__field_chas_tech_managed_space
-          field: field_chas_tech_managed_space_value
+        field_flag_value:
+          id: field_flag_value
+          table: node__field_flag
+          field: field_flag_value
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: boolean
           operator: '='
-          value: All
+          value: ''
           group: 1
           exposed: true
           expose:
             operator_id: ''
-            label: 'CHAS Central Event'
-            description: ''
+            label: 'Is this CHAS Central Event? (field_flag)'
+            description: null
             use_operator: false
-            operator: field_chas_tech_managed_space_value_op
+            operator: field_flag_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_chas_tech_managed_space_value
-            required: false
+            identifier: field_flag_value
+            required: true
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              campus_partner: '0'
-              chas_student_worker: '0'
-              chas_technology: '0'
-              chas_director: '0'
-              chas_professional_staff: '0'
           is_grouped: true
           group_info:
             label: 'CHAS Central Event'
             description: ''
-            identifier: field_chas_tech_managed_space_value
+            identifier: field_flag_value
             optional: true
             widget: select
             multiple: false

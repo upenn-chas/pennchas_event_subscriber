@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_blocks_ref
-    - field.field.node.chas_event.field_chas_tech_managed_space
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluated_by
     - field.field.node.chas_event.field_evaluated_on

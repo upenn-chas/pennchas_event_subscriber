@@ -34,7 +34,6 @@ class NodePreSaveHook
 
     protected function handleEvent(Node $node)
     {
-        // dump('presave call here');
         $eventFeedbackWebformId = 'event_feedback';
         $node->set('field_feedback_form', [
             'target_id' => $eventFeedbackWebformId
@@ -42,27 +41,24 @@ class NodePreSaveHook
         $eventHouse = NULL;
         $housesId = $this->getHouses($node);
         $node->field_groups =  $housesId;
-        $isChasCenteredEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
-        if ($isChasCenteredEvent) {
-            $node->set('field_is_campus_wide', TRUE);
-        } else {
+        $houseCount = count($housesId);
+        $isChasCenteredEvent = (bool) $node->get('field_flag')->getString();
+        if (!$isChasCenteredEvent) {
             $eventHouseId = (int) $node->get('field_location')->getString();
             $eventHouse = Group::load($eventHouseId);
-            
-            $houseCount = count($housesId);
             if ($houseCount === 1) {
                 $eventHouse_data = Group::load($housesId[0]);
                 $group_machine_name = $eventHouse_data->get('field_short_name')->value;
                 $node->set('field_group_ref', $group_machine_name);
             }
-            $node->set('field_is_campus_wide', $houseCount >= 14);
         }
+        $node->set('field_is_campus_wide', $houseCount >= 14);
         if ($this->canByPassModeration($eventHouse, Constant::PERMISSION_MODERATION)) {
-            $node->setPublished(true);
+            $node->setPublished(TRUE);
             $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
             $node->set('field_moderation_finished_at', time());
         } else {
-            $node->setPublished(false);
+            $node->setPublished(FALSE);
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
         $this->updateEventEndsOn($node);

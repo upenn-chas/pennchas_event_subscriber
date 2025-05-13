@@ -14,7 +14,7 @@ replyToAddress: ''
 subject: '[easy_email:field_event:entity:title] edited.'
 inboxPreview: ''
 bodyHtml:
-  value: '<p>Hi [easy_email:field_event:entity:author:display-name],</p><p>Your event has been edited and moved back to moderation with the following details:</p><ul><li><strong>Title:</strong> <a href="[easy_email:field_event:entity:url:absolute]">[easy_email:field_event:entity:title]</a></li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Intended Audience/Participant Group: </strong>[easy_email:field_event:entity:field_intended_audience]</li><li><strong>Is this CHAS Central Event?:</strong> [easy_email:field_event:entity:field_chas_tech_managed_space]</li><li><strong>In Which House Event is held:</strong> [easy_email:field_event:entity:field_location:entity]</li><li><strong>Location of Program:</strong> [easy_email:field_event:entity:field_text_box_2]</li><li><strong>Anticipated cost: </strong>[easy_email:field_event:entity:field_anticipated_cost]</li><li><strong>Anticipated no. of participants:</strong> [easy_email:field_event:entity:field_anticipated_participants]</li></ul><p>Approval of this event can take up to [easy_email:field_waiting_period] day(s). Please check your email for your confirmation.</p>'
+  value: '<p>Hi [easy_email:field_event:entity:author:display-name],</p><p>Your event has been edited and moved back to moderation with the following details:</p><ul><li><strong>Title:</strong> <a href="[easy_email:field_event:entity:url:absolute]">[easy_email:field_event:entity:title]</a></li><li><strong>Schedule: </strong>[easy_email:field_event:entity:field_event_schedule]</li><li><strong>Intended Audience/Participant Group: </strong>[easy_email:field_event:entity:field_intended_audience]</li><li><strong>Is this CHAS Central Event?:</strong> [easy_email:field_event:entity:field_flag]</li><li><strong>In Which House Event is held:</strong> [easy_email:field_event:entity:field_location:entity]</li><li><strong>Location of Program:</strong> [easy_email:field_event:entity:field_text_box_2]</li><li><strong>Anticipated cost: </strong>[easy_email:field_event:entity:field_anticipated_cost]</li><li><strong>Anticipated no. of participants:</strong> [easy_email:field_event:entity:field_anticipated_participants]</li></ul><p>Approval of this event can take up to [easy_email:field_waiting_period] day(s). Please check your email for your confirmation.</p>'
   format: full_html
 bodyPlain: ''
 generateBodyPlain: true
@@ -22,7 +22,7 @@ attachment: {  }
 saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
-saveEmail: false
+saveEmail: true
 allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null

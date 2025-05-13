@@ -28,7 +28,7 @@ class EventFormAlter
         $userRoles = \Drupal::currentUser()->getRoles(TRUE);
         $hasTargetRoles = count(array_intersect($drupalRoles, $userRoles)) > 0;
         if (!$hasTargetRoles) {
-            $form['field_chas_tech_managed_space']['#access'] = FALSE;
+            $form['field_flag']['#access'] = FALSE;
             $form['field_location']['widget']['#required'] = TRUE;
         }
         unset($form['field_event_schedule']['widget']['add_more']);

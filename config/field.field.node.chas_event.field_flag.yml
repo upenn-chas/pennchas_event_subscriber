@@ -1,17 +1,17 @@
-uuid: 7399bea9-4d33-4abd-956e-30dc21a2e41e
+uuid: 0547931f-afb0-4870-80db-745bec8b93f6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_chas_tech_managed_space
+    - field.storage.node.field_flag
     - node.type.chas_event
-id: node.chas_event.field_chas_tech_managed_space
-field_name: field_chas_tech_managed_space
+id: node.chas_event.field_flag
+field_name: field_flag
 entity_type: node
 bundle: chas_event
 label: 'Is this CHAS Central Event?'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -

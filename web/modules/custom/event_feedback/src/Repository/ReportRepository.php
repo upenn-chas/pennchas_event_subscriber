@@ -24,6 +24,7 @@ class ReportRepository
         $eventQuery->leftJoin('node__field_groups', 'nfg', 'nfg.entity_id = n.nid');
         $eventQuery->leftJoin('groups_field_data', 'gfd', 'gfd.id=nfg.field_groups_target_id');
         $eventQuery->leftJoin('node__field_intended_audience', 'nfia', 'nfia.entity_id = n.nid');
+        $eventQuery->leftJoin('node__field_flag', 'nff', 'nff.entity_id = n.nid');
         $eventQuery->leftJoin('node__field_intended_outcomes', 'nfio', 'nfio.entity_id = n.nid');
         $eventQuery->leftJoin('node__field_event_priority', 'nfep', 'nfep.entity_id = n.nid');
         $eventQuery->leftJoin('node__field_participants', 'nfp', 'nfp.entity_id = n.nid');
@@ -33,12 +34,24 @@ class ReportRepository
         $eventQuery->addExpression('GROUP_CONCAT(DISTINCT gfd.label)', 'houses');
         $eventQuery->addExpression('COUNT(DISTINCT ws.sid)', 'respondant');
         $eventQuery->condition('ws.webform_id', $webformId, '=');
-        if($groupIds) {
+        if ($groupIds) {
             $eventQuery->condition('grfd.gid', $groupIds, 'IN');
         }
         $eventQuery->groupBy('ws.entity_id');
         $eventQuery->orderBy('ws.created', 'DESC');
 
+
+        if (isset($filters['chas_central_event']) && $filters['chas_central_event'] !== '_all') {
+            if ($filters['chas_central_event'] != '1') {
+                $eventQuery->condition(
+                    $eventQuery->orConditionGroup()
+                        ->isNull('nff.field_flag_value')
+                        ->condition('nff.field_flag_value', 1, '!=')
+                );
+            } else {
+                $eventQuery->condition('nff.field_flag_value', 1);
+            }
+        }
 
         if (isset($filters['gid']) && $filters['gid'] !== '_all') {
             $eventQuery->condition('grfd.gid', $filters['gid']);
@@ -99,7 +112,7 @@ class ReportRepository
         $query->groupBy('wsd.name');
         $query->groupBy('wsd.value');
 
-        
+
         if (isset($filters['submit_from']) && $filters['submit_from']) {
             $startFrom = strtotime($filters['submit_from'] . ' 00:00:00');
             $query->condition('ws.created', $startFrom, '>=');

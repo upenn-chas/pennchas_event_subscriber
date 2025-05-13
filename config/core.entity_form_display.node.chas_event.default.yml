@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_blocks_ref
-    - field.field.node.chas_event.field_chas_tech_managed_space
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluated_by
     - field.field.node.chas_event.field_evaluated_on
@@ -19,6 +18,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -63,28 +63,21 @@ content:
     third_party_settings: {  }
   field_anticipated_cost:
     type: number
-    weight: 26
+    weight: 25
     region: content
     settings:
       placeholder: Cost
     third_party_settings: {  }
   field_anticipated_participants:
     type: number
-    weight: 27
+    weight: 26
     region: content
     settings:
       placeholder: 'No. of participants'
     third_party_settings: {  }
-  field_chas_tech_managed_space:
-    type: boolean_checkbox
-    weight: 16
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_college_houses:
     type: options_buttons
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings:
@@ -138,7 +131,7 @@ content:
     third_party_settings: {  }
   field_event_schedule:
     type: smartdate_inline
-    weight: 25
+    weight: 24
     region: content
     settings:
       modal: false
@@ -166,9 +159,35 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
+  field_flag:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        067dbae4-f819-47b1-b4c7-8281f8234b22:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_intended_audience
+          settings:
+            state: visible
+            reset: true
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: house_event
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_intended_audience:
     type: options_buttons
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings:
@@ -181,7 +200,7 @@ content:
     third_party_settings: {  }
   field_link_1:
     type: link_default
-    weight: 31
+    weight: 30
     region: content
     settings:
       placeholder_url: ''
@@ -232,7 +251,7 @@ content:
             selector: ''
   field_long_text:
     type: string_textarea
-    weight: 15
+    weight: 14
     region: content
     settings:
       rows: 5
@@ -342,7 +361,7 @@ content:
             selector: ''
   field_long_text_3:
     type: string_textarea
-    weight: 24
+    weight: 23
     region: content
     settings:
       rows: 5
@@ -350,7 +369,7 @@ content:
     third_party_settings: {  }
   field_marketing_blurb:
     type: string_textarea
-    weight: 30
+    weight: 29
     region: content
     settings:
       rows: 5
@@ -377,7 +396,7 @@ content:
             selector: ''
   field_media_file:
     type: media_library_widget
-    weight: 28
+    weight: 27
     region: content
     settings:
       media_types: {  }
@@ -403,7 +422,7 @@ content:
             selector: ''
   field_media_image:
     type: media_library_widget
-    weight: 29
+    weight: 28
     region: content
     settings:
       media_types: {  }
@@ -429,7 +448,7 @@ content:
             selector: ''
   field_multi_text:
     type: string_textfield
-    weight: 9
+    weight: 8
     region: content
     settings:
       size: 60
@@ -443,7 +462,7 @@ content:
     third_party_settings: {  }
   field_program_communities:
     type: options_buttons
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings:
@@ -514,12 +533,12 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 13
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 11
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -561,7 +580,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 32
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }

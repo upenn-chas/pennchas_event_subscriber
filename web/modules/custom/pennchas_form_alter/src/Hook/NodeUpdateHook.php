@@ -40,7 +40,7 @@ class NodeUpdateHook
 
         if ($this->isMovedForModeration($node)) {
             $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
-            $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+            $isChasCentralEvent = (bool) $node->get('field_flag')->getString();
             $group = null;
             $moderationWaitingDays = 0;
             if ($isChasCentralEvent) {
@@ -154,7 +154,7 @@ class NodeUpdateHook
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
         $newHouses = [];
-        $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+        $isChasCentralEvent = (bool) $node->get('field_flag')->getString();
         if ($node->getType() === Constant::NODE_EVENT && !$isChasCentralEvent) {
             $newHouses = [(int) $node->get('field_location')->getString()];
             if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {

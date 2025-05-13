@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: chas_moderator
-label: 'CHAS Moderator'
-token: true
+label: 'CHAS Central Event'
+token: false
 context:
   show_warning: true
   group:
@@ -12,6 +12,6 @@ context:
   fallback:
     language: ''
 menu:
-  path: /admin/config/chas-moderator
+  path: /admin/config/chas-central-event
   weight: 0
   description: ''

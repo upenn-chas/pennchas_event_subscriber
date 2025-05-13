@@ -23,7 +23,7 @@ saveAttachment: false
 attachmentScheme: private
 attachmentDirectory: ''
 saveEmail: true
-allowSavingEmail: true
+allowSavingEmail: false
 purgeEmails: false
 purgeInterval: null
 purgePeriod: null

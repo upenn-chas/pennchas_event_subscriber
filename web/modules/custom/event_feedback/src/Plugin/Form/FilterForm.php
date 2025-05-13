@@ -32,6 +32,15 @@ class FilterForm extends FormBase
                 'class' => 'd-flex flex-wrap'
             ]
         ];
+
+        $form['wrapper']['chas_central_event'] = [
+            '#type' => 'select',
+            '#title' => $this->t('CHAS Central Event'),
+            '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getBooleanOptions(),
+            '#default_value' => NULL,
+            '#required' => FALSE,
+        ];
+
         $form['wrapper']['gid'] = [
             '#type' => 'select',
             '#title' => $this->t('House'),
@@ -156,6 +165,7 @@ class FilterForm extends FormBase
 
     private function resetForm(array &$form, FormStateInterface &$form_state)
     {
+        $form['wrapper']['chas_central_event']['#value'] = '_all';
         $form['wrapper']['gid']['#value'] = '_all';
         $form['wrapper']['type']['#value'] = '_all';
         $form['wrapper']['outcome']['#value'] = '_all';

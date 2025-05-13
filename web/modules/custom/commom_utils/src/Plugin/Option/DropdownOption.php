@@ -31,6 +31,14 @@ class DropdownOption
         return self::getTerms('chas_priority');
     }
 
+    public static function getBooleanOptions()
+    {
+        return [
+            1 => t('Yes'),
+            0 => t('No')
+        ];
+    }
+
     protected static function getFieldAllowedValues($entityType, $bundle, $fieldName)
     {
         $options = [];

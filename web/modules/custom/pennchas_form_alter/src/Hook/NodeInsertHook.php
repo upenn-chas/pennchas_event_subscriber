@@ -21,7 +21,7 @@ class NodeInsertHook
         $nodeType = $node->getType();
         if ($nodeType === Constant::NODE_RESERVE_ROOM) {
             $this->handleReserveRoom($node);
-        } else if ($nodeType === Constant::NODE_EVENT && (bool) $node->get('field_chas_tech_managed_space')->getString()) {
+        } else if ($nodeType === Constant::NODE_EVENT && (bool) $node->get('field_flag')->getString()) {
             $this->handleChasCentralEvent($node);
         } else if ($nodeType === Constant::NODE_EVENT) {
             $this->handleEvent($node);

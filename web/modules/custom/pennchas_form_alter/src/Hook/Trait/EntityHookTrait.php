@@ -64,7 +64,7 @@ trait EntityHookTrait
                 $gid = (int) $grp['target_id'];
                 $housesId[$gid] = $gid;
             }
-        } else if ((bool) $node->get('field_chas_tech_managed_space')->getString()) {
+        } else if ((bool) $node->get('field_flag')->getString()) {
             $housesId = $housesId + \Drupal::service('pennchas_common.option_group')->getHouses();
             $housesId = array_keys($housesId);
         } 

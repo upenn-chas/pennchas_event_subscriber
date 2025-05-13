@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_blocks_ref
-    - field.field.node.chas_event.field_chas_tech_managed_space
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluated_by
     - field.field.node.chas_event.field_evaluated_on
@@ -20,6 +19,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -110,7 +110,6 @@ hidden:
   field_anticipated_participants: true
   field_areas_for_improvement: true
   field_blocks_ref: true
-  field_chas_tech_managed_space: true
   field_college_houses: true
   field_evaluated_by: true
   field_evaluated_on: true
@@ -119,6 +118,7 @@ hidden:
   field_event_ends_on: true
   field_event_priority: true
   field_feedback_form: true
+  field_flag: true
   field_group_ref: true
   field_groups: true
   field_intended_audience_attach: true
