@@ -15,12 +15,21 @@ class EventFormAlter
     {
         $currentUser = \Drupal::currentUser();
         $options = $this->getOptions($currentUser);
+        $form['field_multi_text']['widget']['add_more']['#value'] = t('Add Another Collaborator');
         $form['field_college_houses']['widget']['#options'] = $options['houses'];
         $form['field_program_communities']['widget']['#options'] = $options['communities'];
         $form['field_location']['widget']['#options'] = $options['houses'];
         $houseCount = count($form['field_college_houses']['widget']['#options']);
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
+        }
+
+        $drupalRoles = ['administrator', 'chas_director', 'chas_technology', 'chas_professional_staff'];
+        $userRoles = \Drupal::currentUser()->getRoles(TRUE);
+        $hasTargetRoles = count(array_intersect($drupalRoles, $userRoles)) > 0;
+        if (!$hasTargetRoles) {
+            $form['field_chas_tech_managed_space']['#access'] = FALSE;
+            $form['field_location']['widget']['#required'] = TRUE;
         }
         unset($form['field_event_schedule']['widget']['add_more']);
 

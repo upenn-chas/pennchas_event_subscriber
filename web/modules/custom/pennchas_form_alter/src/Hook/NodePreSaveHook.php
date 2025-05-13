@@ -39,9 +39,24 @@ class NodePreSaveHook
         $node->set('field_feedback_form', [
             'target_id' => $eventFeedbackWebformId
         ]);
-        $eventHouseId = (int) $node->get('field_location')->getString();
-        $eventHouse = Group::load($eventHouseId);
+        $eventHouse = NULL;
         $housesId = $this->getHouses($node);
+        $node->field_groups =  $housesId;
+        $isChasCenteredEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+        if ($isChasCenteredEvent) {
+            $node->set('field_is_campus_wide', TRUE);
+        } else {
+            $eventHouseId = (int) $node->get('field_location')->getString();
+            $eventHouse = Group::load($eventHouseId);
+            
+            $houseCount = count($housesId);
+            if ($houseCount === 1) {
+                $eventHouse_data = Group::load($housesId[0]);
+                $group_machine_name = $eventHouse_data->get('field_short_name')->value;
+                $node->set('field_group_ref', $group_machine_name);
+            }
+            $node->set('field_is_campus_wide', $houseCount >= 14);
+        }
         if ($this->canByPassModeration($eventHouse, Constant::PERMISSION_MODERATION)) {
             $node->setPublished(true);
             $node->set('moderation_state', Constant::MOD_STATUS_PUBLISHED);
@@ -50,14 +65,6 @@ class NodePreSaveHook
             $node->setPublished(false);
             $node->set('moderation_state', Constant::MOD_STATUS_DRAFT);
         }
-        $node->field_groups =  $housesId;
-        $houseCount = count($housesId);
-        if ($houseCount === 1) {
-            $eventHouse_data = Group::load($housesId[0]);
-            $group_machine_name = $eventHouse_data->get('field_short_name')->value;
-            $node->set('field_group_ref', $group_machine_name);
-        }
-        $node->set('field_is_campus_wide', $houseCount >= 14);
         $this->updateEventEndsOn($node);
     }
 
@@ -102,7 +109,6 @@ class NodePreSaveHook
 
         $this->updateEventEndsOn($node);
     }
-
 
     protected function handleRoom(Node $node)
     {

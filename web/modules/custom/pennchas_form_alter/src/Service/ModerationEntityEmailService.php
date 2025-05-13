@@ -22,13 +22,15 @@ class ModerationEntityEmailService
     /**
      * Notifies the author about moderation.
      */
-    public function notifyAuthor(Node $node, string $emailTemplateId, Group|null $group)
+    public function notifyAuthor(Node $node, string $emailTemplateId, Group|null $group, $waitingPeriod = 0)
     {
         $emailData = [
             'node' => $node
         ];
         if($group) {
             $emailData['waitingDays'] = $this->getHouseMaxModerationWaitingPeriod($group);
+        } else if ($waitingPeriod) {
+            $emailData['waitingDays'] = $waitingPeriod;
         }
         $this->sendMail($emailTemplateId, [$node->getOwnerId()], $emailData);
     }
@@ -36,7 +38,7 @@ class ModerationEntityEmailService
     /**
      * Notifies moderators about a node update.
      */
-    public function notifyModerators(Node $node, string $emailTemplatId, Group $group)
+    public function notifyModerators(Node $node, string $emailTemplatId, Group|null $group)
     {
         $moderatorEmails = $this->getModeratorEmails($group);
         if ($moderatorEmails) {
@@ -46,9 +48,14 @@ class ModerationEntityEmailService
         }
     }
 
-    private function getModeratorEmails(Group $group)
+    private function getModeratorEmails(Group|null $group)
     {
-        $emails = array_column($group->get('field_emails')->getValue(), 'value');
+        $emails = [];
+        if($group) {
+            $emails = array_column($group->get('field_emails')->getValue(), 'value');
+        } else {
+            $emails = \Drupal::service('config_pages.loader')->getValue('chas_moderator', 'field_moderator_emails', [], 'value');
+        }
         return $emails ? array_chunk($emails, 12) : [];
     }
 

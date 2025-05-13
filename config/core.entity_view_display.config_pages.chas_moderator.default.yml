@@ -1,0 +1,31 @@
+uuid: b5c492de-5ad1-4f9c-a6e3-bc18cbba36d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.chas_moderator
+    - field.field.config_pages.chas_moderator.field_moderator_emails
+    - field.field.config_pages.chas_moderator.field_waiting_period
+id: config_pages.chas_moderator.default
+targetEntityType: config_pages
+bundle: chas_moderator
+mode: default
+content:
+  field_moderator_emails:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_waiting_period:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

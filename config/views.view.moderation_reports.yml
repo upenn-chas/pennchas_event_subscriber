@@ -726,6 +726,52 @@ display:
           granularity: second
       arguments: {  }
       filters:
+        field_chas_tech_managed_space_value:
+          id: field_chas_tech_managed_space_value
+          table: node__field_chas_tech_managed_space
+          field: field_chas_tech_managed_space_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'CHAS Tech Managed Space? (field_chas_tech_managed_space)'
+            description: null
+            use_operator: false
+            operator: field_chas_tech_managed_space_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_chas_tech_managed_space_value
+            required: true
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: true
+          group_info:
+            label: 'CHAS Central Event'
+            description: ''
+            identifier: field_chas_tech_managed_space_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Yes'
+                operator: '='
+                value: '1'
+              2:
+                title: 'No'
+                operator: '='
+                value: '0'
         field_groups_target_id_verf:
           id: field_groups_target_id_verf
           table: node__field_groups

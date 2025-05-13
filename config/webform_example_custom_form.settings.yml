@@ -39,19 +39,22 @@ entity_autocomplete: 1
 webform_entity_select: 1
 webform_term_select: 39
 webform_custom_composite:
-  - first_name: George
+  -
+    first_name: George
     last_name: Lennon
     sex: Female
     martial_status: Divorced
     employment_status: 'Full Time'
     age: 1
-  - first_name: George
+  -
+    first_name: George
     last_name: McCartney
     sex: Male
     martial_status: Married
     employment_status: Unemployed
     age: 1
-  - first_name: Paul
+  -
+    first_name: Paul
     last_name: Starr
     sex: Male
     martial_status: Single

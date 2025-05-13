@@ -1,0 +1,19 @@
+uuid: ce08f52a-35e0-4a0d-8e02-76b208b8bde9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_long_text_3
+field_name: field_long_text_3
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

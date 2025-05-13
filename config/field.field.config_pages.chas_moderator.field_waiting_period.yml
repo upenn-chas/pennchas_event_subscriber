@@ -1,0 +1,25 @@
+uuid: a8c37d49-704a-40fc-89ad-800bf5dc14a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.chas_moderator
+    - field.storage.config_pages.field_waiting_period
+id: config_pages.chas_moderator.field_waiting_period
+field_name: field_waiting_period
+entity_type: config_pages
+bundle: chas_moderator
+label: 'Maximum Moderation Waiting Day(s)'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

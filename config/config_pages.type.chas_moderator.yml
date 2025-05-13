@@ -1,0 +1,17 @@
+uuid: df678cb7-b5d4-40cb-84bb-fb0709549748
+langcode: en
+status: true
+dependencies: {  }
+id: chas_moderator
+label: 'CHAS Moderator'
+token: true
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/chas-moderator
+  weight: 0
+  description: ''

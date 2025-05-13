@@ -38,15 +38,20 @@ class NodePreUpdateHook
     protected function handleEvent(Node $node)
     {
         $originalNode = $node->original;
-        $eventExistingHouse = $originalNode->get('field_groups')->getValue();
-        $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
-
         $existingState = $originalNode->get('moderation_state')->getString();
         $newState = $node->get('moderation_state')->getString();
 
         if ($newState === Constant::MOD_STATUS_DELETE) {
             return;
         }
+
+        $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+        $eventExistingHousesId = NULL;
+        if (!$isChasCentralEvent) {
+            $eventExistingHouse = $originalNode->get('field_groups')->getValue();
+            $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
+        }
+
         $requestUrl = \Drupal::request()->getRequestUri();
         $nodeId = $node->id();
 
@@ -65,7 +70,11 @@ class NodePreUpdateHook
                 $this->updateEventEndsOn($node);
             }
             $node->field_groups =  $this->getHouses($node);
-            $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
+            if ($isChasCentralEvent) {
+                $node->set('field_is_campus_wide', TRUE);
+            } else {
+                $node->set('field_is_campus_wide', count($node->get('field_groups')->getValue()) >= 14);
+            }
         }
         $node->isDefaultRevision(TRUE);
     }

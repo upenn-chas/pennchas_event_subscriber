@@ -321,7 +321,7 @@
         "drupal/section_library": "^1.2",
         "drupal/seo_checklist": "^5.2",
         "drupal/simple_sitemap": "^4.2",
-        "drupal/simplesamlphp_auth": "^4.0",
+        "drupal/simplesamlphp_auth": "4.0.1",
         "drupal/simplify_menu": "^3.2",
         "drupal/smart_date": "^4.1",
         "drupal/smtp": "^1.4",
@@ -364,7 +364,8 @@
         "drupal/symfony_mailer_lite": "^2.0",
         "drupal/search_api": "^1.38",
         "recurser/jquery-simple-color": "*",
-        "bgrins/spectrum":"*"
+        "bgrins/spectrum":"*",
+        "drupal/config_pages": "^2.17"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

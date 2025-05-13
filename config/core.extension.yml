@@ -31,6 +31,7 @@ module:
   complete_webform_exporter: 0
   conditional_fields: 0
   config: 0
+  config_pages: 0
   contact: 0
   content_moderation: 0
   contextual: 0

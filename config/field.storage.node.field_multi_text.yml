@@ -1,14 +1,17 @@
-uuid: 744479d1-b7b2-4b12-a805-9502edcf92c3
+uuid: 198f1544-48dc-4e02-acb3-53d43d994d13
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_collaborators
-field_name: field_collaborators
+id: node.field_multi_text
+field_name: field_multi_text
 entity_type: node
-type: email
-settings: {  }
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: -1

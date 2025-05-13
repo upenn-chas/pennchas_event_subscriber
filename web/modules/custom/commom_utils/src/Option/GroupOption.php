@@ -100,4 +100,27 @@ class GroupOption
         asort($options, SORT_STRING);
         return $options;
     }
+
+    /**
+     * Get the list of groups.
+     * 
+     * @param string  $groupType
+     *  Type of group to return,
+     * 
+     * @return array []
+     *  Key value pair of group id and group label
+     */
+    public function getHouses(string $groupType = 'house1')
+    {
+        $options = [];
+        $groupsId =  \Drupal::entityQuery('group')
+            ->condition('type', $groupType)
+            ->condition('status', 1)->accessCheck(false)->execute();
+        $groups = Group::loadMultiple($groupsId);
+
+        foreach ($groups as $group) {
+            $options[$group->id()] = $group->label();
+        }
+        return $options;
+    }
 }

@@ -16,11 +16,11 @@ trait EntityHookTrait
         return ($group) ? $group->hasPermission($permission, $currentUser) : $currentUser->hasPermission($permission);
     }
 
-    protected function canByPassModerationInAnyHouse(array $gids, $permission): bool
+    protected function canByPassModerationInAnyHouse(array|null $gids, $permission): bool
     {
         $result = false;
         if (!$gids) {
-            return $result;
+            return $this->canByPassModeration($gids, $permission);
         }
         $groups = Group::loadMultiple($gids);
         foreach ($groups as $group) {
@@ -42,9 +42,12 @@ trait EntityHookTrait
 
     protected function getHouses(Node $node)
     {
+        $housesId = [];
         $eventHouseId = (int) $node->get('field_location')->getString();
+        if ($eventHouseId) {
+            $housesId[$eventHouseId] = $eventHouseId;
+        }
         $eventType = $node->get('field_intended_audience')->getString();
-        $housesId[$eventHouseId] = $eventHouseId;
 
         if ($eventType === Constant::EVT_COMMUNITY_EVENT) {
             $programsGroupRelationshipsId = array_column($node->get('field_program_communities')->getValue(), 'target_id');
@@ -61,7 +64,10 @@ trait EntityHookTrait
                 $gid = (int) $grp['target_id'];
                 $housesId[$gid] = $gid;
             }
-        }
+        } else if ((bool) $node->get('field_chas_tech_managed_space')->getString()) {
+            $housesId = $housesId + \Drupal::service('pennchas_common.option_group')->getHouses();
+            $housesId = array_keys($housesId);
+        } 
 
         return array_values($housesId);
     }

@@ -1,0 +1,23 @@
+uuid: 7399bea9-4d33-4abd-956e-30dc21a2e41e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chas_tech_managed_space
+    - node.type.chas_event
+id: node.chas_event.field_chas_tech_managed_space
+field_name: field_chas_tech_managed_space
+entity_type: node
+bundle: chas_event
+label: 'Is this CHAS Central Event?'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

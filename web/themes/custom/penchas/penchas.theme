@@ -109,7 +109,7 @@ function penchas_preprocess_node_edit_form(&$variables)
         } else if ($bundle_type == 'room') {
           $label = "Room";
         } else if ($bundle_type == 'chas_event') {
-          $label = "CHAS Event";
+          $label = "Add New Event";
         } else if ($bundle_type == 'notices') {
           $label = "Notices";
         } else if ($bundle_type == 'article') {
@@ -684,7 +684,7 @@ function penchas_preprocess_block(&$variables)
       if ($node && $node instanceof \Drupal\node\NodeInterface) {
         $bundle = $node->bundle();
         if (in_array($bundle, ['reserve_room', 'chas_event'])) {
-          $variables['add_to_calendar_link'] = generate_google_calendar_link($node, $bundle);
+          $variables['add_to_calendar_link'] = '';//generate_google_calendar_link($node, $bundle);
         }
       }
     }

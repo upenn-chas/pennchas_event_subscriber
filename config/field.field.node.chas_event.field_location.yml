@@ -10,9 +10,9 @@ id: node.chas_event.field_location
 field_name: field_location
 entity_type: node
 bundle: chas_event
-label: 'In which house will the event be held?'
+label: 'Which house/team is planning the event?'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

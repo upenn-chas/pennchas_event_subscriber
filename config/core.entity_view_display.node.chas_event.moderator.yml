@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.chas_event.title
+    - core.base_field_override.node.chas_event.uid
     - core.entity_view_mode.node.moderator
     - field.field.node.chas_event.field_actual_program_attendance
     - field.field.node.chas_event.field_actual_program_expense
@@ -11,7 +13,7 @@ dependencies:
     - field.field.node.chas_event.field_anticipated_participants
     - field.field.node.chas_event.field_areas_for_improvement
     - field.field.node.chas_event.field_blocks_ref
-    - field.field.node.chas_event.field_collaborators
+    - field.field.node.chas_event.field_chas_tech_managed_space
     - field.field.node.chas_event.field_college_houses
     - field.field.node.chas_event.field_evaluated_by
     - field.field.node.chas_event.field_evaluated_on
@@ -32,13 +34,14 @@ dependencies:
     - field.field.node.chas_event.field_location
     - field.field.node.chas_event.field_long_text
     - field.field.node.chas_event.field_long_text_2
+    - field.field.node.chas_event.field_long_text_3
     - field.field.node.chas_event.field_marketing_blurb
     - field.field.node.chas_event.field_media_file
     - field.field.node.chas_event.field_media_image
     - field.field.node.chas_event.field_moderation_finished_at
+    - field.field.node.chas_event.field_multi_text
     - field.field.node.chas_event.field_participants
     - field.field.node.chas_event.field_program_communities
-    - field.field.node.chas_event.field_text_box
     - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
   module:
@@ -176,7 +179,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 24
+            weight: 27
             additional: {  }
           9083fe3a-a3c4-4619-91f9-0810057d2f85:
             uuid: 9083fe3a-a3c4-4619-91f9-0810057d2f85
@@ -195,7 +198,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 26
+            weight: 29
             additional: {  }
           02d9f20a-ad9e-476d-8f91-167eeb4f9ec8:
             uuid: 02d9f20a-ad9e-476d-8f91-167eeb4f9ec8
@@ -219,7 +222,253 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 25
+            weight: 28
+            additional: {  }
+          ceab2dcc-6ebf-493a-9c40-e91ed820337d:
+            uuid: ceab2dcc-6ebf-493a-9c40-e91ed820337d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_program_communities'
+              label: 'Program communities:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 30
+            additional: {  }
+          f29622cc-daf9-4268-959c-56d10d3455d2:
+            uuid: f29622cc-daf9-4268-959c-56d10d3455d2
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_participants'
+              label: 'Intended participant year(s):'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 37
+            additional: {  }
+          af74ab86-20d3-4790-8998-7375ebd1f942:
+            uuid: af74ab86-20d3-4790-8998-7375ebd1f942
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_intended_outcomes'
+              label: 'Intended Outcome(s):'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 39
+            additional: {  }
+          d7da02f5-7d6f-4160-9aed-e80151c029b8:
+            uuid: d7da02f5-7d6f-4160-9aed-e80151c029b8
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_long_text_2'
+              label: 'Please specify:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: basic_string
+                label: visually_hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 40
+            additional: {  }
+          2f7533c4-ec72-4fb2-82b3-ecc5bb426ff0:
+            uuid: 2f7533c4-ec72-4fb2-82b3-ecc5bb426ff0
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_anticipated_cost'
+              label: '$ Anticipated cost:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_decimal
+                label: hidden
+                settings:
+                  thousand_separator: ''
+                  decimal_separator: .
+                  scale: 2
+                  prefix_suffix: false
+                third_party_settings: {  }
+            weight: 42
+            additional: {  }
+          84be5985-25d1-4538-b547-0803544d81d4:
+            uuid: 84be5985-25d1-4538-b547-0803544d81d4
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_anticipated_participants'
+              label: 'Anticipated number of participants:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_integer
+                label: hidden
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 43
+            additional: {  }
+          79739c62-f550-46ec-a80e-96a99a4f7818:
+            uuid: 79739c62-f550-46ec-a80e-96a99a4f7818
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_media_file'
+              label: 'Intended Audience Attachment:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 44
+            additional: {  }
+          ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1:
+            uuid: ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_marketing_blurb'
+              label: 'Marketing blurb:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings: {  }
+            weight: 45
+            additional: {  }
+          edf7410e-998f-43e9-ac58-7655b096bc12:
+            uuid: edf7410e-998f-43e9-ac58-7655b096bc12
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_link_1'
+              label: 'RSVP Link:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: true
+                  url_plain: false
+                  rel: nofollow
+                  target: _blank
+                third_party_settings: {  }
+            weight: 47
+            additional: {  }
+          a82b2ef8-2d54-433a-9028-21aaa8b9bb48:
+            uuid: a82b2ef8-2d54-433a-9028-21aaa8b9bb48
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:title'
+              label: 'Title:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
+                label: inline
+                settings:
+                  class: ''
+                  tag: span
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings: {  }
+            weight: 22
+            additional: {  }
+          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
+            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_media_image'
+              label: 'Highlight Image:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_thumbnail
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 46
+            additional: {  }
+          4f64893c-2dda-4f88-990c-192e7c610f5a:
+            uuid: 4f64893c-2dda-4f88-990c-192e7c610f5a
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_multi_text'
+              label: 'Collaborator(s)/ Cohost(s):'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 26
             additional: {  }
           8afe4901-79ef-41b5-84c2-9bc962a9043b:
             uuid: 8afe4901-79ef-41b5-84c2-9bc962a9043b
@@ -238,7 +487,44 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 27
+            weight: 24
+            additional: {  }
+          0841f8d9-5887-4a00-913d-06fc3c646271:
+            uuid: 0841f8d9-5887-4a00-913d-06fc3c646271
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_text_box_2'
+              label: 'Location of Program:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 35
+            additional: {  }
+          11b37596-c3ef-4df5-abbd-d7d3fe31a3b2:
+            uuid: 11b37596-c3ef-4df5-abbd-d7d3fe31a3b2
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_long_text_3'
+              label: 'Experiences and Strategies:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: basic_string
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 41
             additional: {  }
           44e792a0-ee7e-4b96-8904-2b488dd9b3ce:
             uuid: 44e792a0-ee7e-4b96-8904-2b488dd9b3ce
@@ -294,26 +580,28 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
-            weight: 28
+            weight: 25
             additional: {  }
-          ceab2dcc-6ebf-493a-9c40-e91ed820337d:
-            uuid: ceab2dcc-6ebf-493a-9c40-e91ed820337d
+          6dde46b1-c5bb-42ad-b879-1e0878394cb9:
+            uuid: 6dde46b1-c5bb-42ad-b879-1e0878394cb9
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:chas_event:field_program_communities'
-              label: 'Program communities:'
+              id: 'field_block:node:chas_event:field_chas_tech_managed_space'
+              label: 'Is this CHAS Central Event?:'
               label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
+                type: boolean
                 label: hidden
                 settings:
-                  link: true
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
                 third_party_settings: {  }
-            weight: 29
+            weight: 32
             additional: {  }
           9cb29c6f-cc98-46d0-a2ec-7a566002b01d:
             uuid: 9cb29c6f-cc98-46d0-a2ec-7a566002b01d
@@ -332,25 +620,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 30
-            additional: {  }
-          f29622cc-daf9-4268-959c-56d10d3455d2:
-            uuid: f29622cc-daf9-4268-959c-56d10d3455d2
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_participants'
-              label: 'Intended participant year(s):'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: list_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 32
+            weight: 34
             additional: {  }
           98731d2c-8c37-4993-883b-113afbeeffcf:
             uuid: 98731d2c-8c37-4993-883b-113afbeeffcf
@@ -369,259 +639,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 31
-            additional: {  }
-          af74ab86-20d3-4790-8998-7375ebd1f942:
-            uuid: af74ab86-20d3-4790-8998-7375ebd1f942
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_intended_outcomes'
-              label: 'Intended Outcome(s):'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: list_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 33
-            additional: {  }
-          d7da02f5-7d6f-4160-9aed-e80151c029b8:
-            uuid: d7da02f5-7d6f-4160-9aed-e80151c029b8
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_long_text_2'
-              label: 'Please specify:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: basic_string
-                label: visually_hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 34
-            additional: {  }
-          fcc72063-3426-4104-9213-9e6bb6091c3b:
-            uuid: fcc72063-3426-4104-9213-9e6bb6091c3b
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_text_box'
-              label: 'Experiences and Strategies:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 35
-            additional: {  }
-          2f7533c4-ec72-4fb2-82b3-ecc5bb426ff0:
-            uuid: 2f7533c4-ec72-4fb2-82b3-ecc5bb426ff0
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_anticipated_cost'
-              label: '$ Anticipated cost:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: number_decimal
-                label: hidden
-                settings:
-                  thousand_separator: ''
-                  decimal_separator: .
-                  scale: 2
-                  prefix_suffix: false
-                third_party_settings: {  }
             weight: 38
-            additional: {  }
-          84be5985-25d1-4538-b547-0803544d81d4:
-            uuid: 84be5985-25d1-4538-b547-0803544d81d4
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_anticipated_participants'
-              label: 'Anticipated number of participants:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: number_integer
-                label: hidden
-                settings:
-                  thousand_separator: ''
-                  prefix_suffix: true
-                third_party_settings: {  }
-            weight: 39
-            additional: {  }
-          79739c62-f550-46ec-a80e-96a99a4f7818:
-            uuid: 79739c62-f550-46ec-a80e-96a99a4f7818
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_media_file'
-              label: 'Intended Audience Attachment:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_entity_view
-                label: hidden
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
-            weight: 40
-            additional: {  }
-          ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1:
-            uuid: ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_marketing_blurb'
-              label: 'Marketing blurb:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: hidden
-                settings:
-                  class: ''
-                  tag: span
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 42
-            additional: {  }
-          edf7410e-998f-43e9-ac58-7655b096bc12:
-            uuid: edf7410e-998f-43e9-ac58-7655b096bc12
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_link_1'
-              label: 'RSVP Link:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: link
-                label: hidden
-                settings:
-                  trim_length: 80
-                  url_only: true
-                  url_plain: false
-                  rel: nofollow
-                  target: _blank
-                third_party_settings: {  }
-            weight: 44
-            additional: {  }
-          18d9d905-b56b-447d-8005-70b63d1ac3c2:
-            uuid: 18d9d905-b56b-447d-8005-70b63d1ac3c2
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_collaborators'
-              label: 'Collaborator(s):'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: visually_hidden
-                settings:
-                  class: ''
-                  tag: span
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 23
-            additional: {  }
-          a82b2ef8-2d54-433a-9028-21aaa8b9bb48:
-            uuid: a82b2ef8-2d54-433a-9028-21aaa8b9bb48
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:title'
-              label: 'Title:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: wrapper_class
-                label: inline
-                settings:
-                  class: ''
-                  tag: span
-                  link: false
-                  link_class: ''
-                  summary: false
-                  trim: 200
-                third_party_settings: {  }
-            weight: 22
-            additional: {  }
-          0841f8d9-5887-4a00-913d-06fc3c646271:
-            uuid: 0841f8d9-5887-4a00-913d-06fc3c646271
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_text_box_2'
-              label: 'Location of Program:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 37
-            additional: {  }
-          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
-            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_media_image'
-              label: 'Highlight Image:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: media_thumbnail
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: large
-                  image_loading:
-                    attribute: lazy
-                third_party_settings: {  }
-            weight: 43
             additional: {  }
         third_party_settings: {  }
       -
@@ -698,13 +716,6 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 13
-    region: content
-  field_collaborators:
-    type: basic_string
-    label: inline
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
     region: content
   field_college_houses:
     type: entity_reference_label
@@ -812,14 +823,6 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_text_box:
-    type: string
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 10
-    region: content
   field_text_box_2:
     type: string
     label: inline
@@ -839,6 +842,7 @@ hidden:
   field_actual_program_outcomes: true
   field_areas_for_improvement: true
   field_blocks_ref: true
+  field_chas_tech_managed_space: true
   field_evaluated_by: true
   field_evaluated_on: true
   field_evaluation_notification: true
@@ -852,7 +856,9 @@ hidden:
   field_last_moderated_by: true
   field_last_moderation_message: true
   field_last_state: true
+  field_long_text_3: true
   field_moderation_finished_at: true
+  field_multi_text: true
   langcode: true
   published_at: true
   search_api_excerpt: true

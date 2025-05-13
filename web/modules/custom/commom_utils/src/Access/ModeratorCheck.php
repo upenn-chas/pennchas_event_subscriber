@@ -41,17 +41,23 @@ class ModeratorCheck
      */
     public function checkForEntity(NodeInterface $node)
     {
-        $field = NULL;
         $nodeType = $node->getType();
-        if ($nodeType === 'reserve_room') {
-            $field = 'field_group';
-        } else if ($nodeType === 'chas_event') {
-            $field = 'field_location';
-        }
-
-        if (!$field) {
+        // Check if the node type is either 'reserve_room' or 'chas_event'
+        if ($nodeType !== 'reserve_room' && $nodeType !== 'chas_event') {
             return FALSE;
         }
+
+        // Check if the user has the moderator permission for 'chas_event' node type
+        // and the event type is 'chas_centered_event'
+        if ($nodeType === 'chas_event' && (bool) $node->get('field_chas_tech_managed_space')->getString()) {
+            return $this->user->hasPermission($this->moderatorPermission);
+        }
+
+        $field = 'field_location';
+        if ($nodeType === 'reserve_room') {
+            $field = 'field_group';
+        } 
+
         if ($this->user->hasPermission($this->moderatorPermission)) {
             return TRUE;
         }

@@ -1,0 +1,30 @@
+uuid: 528f3294-5b68-41b7-8967-861a2d3b6531
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.chas_moderator
+    - field.field.config_pages.chas_moderator.field_moderator_emails
+    - field.field.config_pages.chas_moderator.field_waiting_period
+id: config_pages.chas_moderator.default
+targetEntityType: config_pages
+bundle: chas_moderator
+mode: default
+content:
+  field_moderator_emails:
+    type: email_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: Email
+      size: 60
+    third_party_settings: {  }
+  field_waiting_period:
+    type: number
+    weight: 0
+    region: content
+    settings:
+      placeholder: 'Max. waiting day(s)'
+    third_party_settings: {  }
+hidden:
+  label: true

@@ -406,6 +406,28 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          f9642b19-5c8d-4ba0-854e-cd56daee1793:
+            uuid: f9642b19-5c8d-4ba0-854e-cd56daee1793
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:room:field_media_images'
+              label: Photos
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_thumbnail
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: new_announcements_image_style
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 13
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }

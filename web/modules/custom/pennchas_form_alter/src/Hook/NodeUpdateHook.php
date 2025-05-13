@@ -35,13 +35,22 @@ class NodeUpdateHook
         if ($state === Constant::MOD_STATUS_DELETE) {
             return;
         }
+
         $this->updateHouseRelations($node);
 
         if ($this->isMovedForModeration($node)) {
             $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
-            $groupId = (int) $node->get('field_location')->getString();
-            $group = Group::load($groupId);
-            $mailService->notifyAuthor($node, Constant::EVENT_MOVED_TO_DRAFT, $group);
+            $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+            $group = null;
+            $moderationWaitingDays = 0;
+            if ($isChasCentralEvent) {
+                $moderationWaitingDays = \Drupal::service('config_pages.loader')->getValue('chas_moderator', 'field_waiting_period', [], 'value');
+                $moderationWaitingDays = $moderationWaitingDays[0];
+            } else {
+                $groupId = (int) $node->get('field_location')->getString();
+                $group = Group::load($groupId);
+            }
+            $mailService->notifyAuthor($node, Constant::EVENT_MOVED_TO_DRAFT, $group, $moderationWaitingDays);
             $mailService->notifyModerators($node, Constant::EVENT_EMAIL_MODERATOR_ALERT, $group);
         }
     }
@@ -145,12 +154,13 @@ class NodeUpdateHook
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
         $newHouses = [];
-        if ($node->getType() === Constant::NODE_EVENT) {
+        $isChasCentralEvent = (bool) $node->get('field_chas_tech_managed_space')->getString();
+        if ($node->getType() === Constant::NODE_EVENT && !$isChasCentralEvent) {
             $newHouses = [(int) $node->get('field_location')->getString()];
             if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
                 $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
             }
-        } else if ($node->getType() === Constant::NODE_NOTICES) {
+        } else if ($node->getType() === Constant::NODE_EVENT || $node->getType() === Constant::NODE_NOTICES) {
             $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');
         }
 
