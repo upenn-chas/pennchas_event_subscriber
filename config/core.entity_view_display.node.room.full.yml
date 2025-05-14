@@ -175,27 +175,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
-          b135a9d7-8ed0-4ffd-9cd5-09cf6d0617b9:
-            uuid: b135a9d7-8ed0-4ffd-9cd5-09cf6d0617b9
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_amenities_technology'
-              label: Amenities/Technology
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label_class
-                label: inline
-                settings:
-                  link: true
-                  class: event-detail-left
-                  tag: span
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
           d2ee82c4-206a-4c3c-a94d-1a33f5703963:
             uuid: d2ee82c4-206a-4c3c-a94d-1a33f5703963
             region: blb_region_col_1
@@ -215,7 +194,7 @@ third_party_settings:
                   format_custom_false: ''
                   format_custom_true: ''
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           ca846254-966a-4c04-88a6-bd84d6cec73c:
             uuid: ca846254-966a-4c04-88a6-bd84d6cec73c
@@ -238,7 +217,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           8108850c-8eb6-48aa-85b1-a4da6e293ea4:
             uuid: 8108850c-8eb6-48aa-85b1-a4da6e293ea4
@@ -261,7 +240,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 6
+            weight: 7
             additional: {  }
           a32e254d-282c-478a-9e7b-1a56347aba8b:
             uuid: a32e254d-282c-478a-9e7b-1a56347aba8b
@@ -281,7 +260,7 @@ third_party_settings:
                   text_length: full
                   separator: space
                 third_party_settings: {  }
-            weight: 7
+            weight: 8
             additional: {  }
           f0dce52e-879e-4ff9-8d88-b9991a2c1f21:
             uuid: f0dce52e-879e-4ff9-8d88-b9991a2c1f21
@@ -301,7 +280,7 @@ third_party_settings:
                   thousand_separator: ''
                   prefix_suffix: true
                 third_party_settings: {  }
-            weight: 8
+            weight: 9
             additional: {  }
           1f725557-c6b3-445b-b7f3-adc221f5607e:
             uuid: 1f725557-c6b3-445b-b7f3-adc221f5607e
@@ -324,7 +303,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 9
+            weight: 10
             additional: {  }
           fab26ca7-ce59-48d3-a0b6-d9f9cbe53433:
             uuid: fab26ca7-ce59-48d3-a0b6-d9f9cbe53433
@@ -343,7 +322,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 10
+            weight: 11
             additional: {  }
           31676864-ae78-40f1-a209-0505944e57bc:
             uuid: 31676864-ae78-40f1-a209-0505944e57bc
@@ -362,7 +341,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 11
+            weight: 12
             additional: {  }
           d2ab3bce-d3e4-43f2-9f5d-f34612ed1238:
             uuid: d2ab3bce-d3e4-43f2-9f5d-f34612ed1238
@@ -380,7 +359,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 12
+            weight: 13
             additional: {  }
           f57c3101-db54-4022-a199-1e0466041e1c:
             uuid: f57c3101-db54-4022-a199-1e0466041e1c
@@ -426,7 +405,26 @@ third_party_settings:
                   image_loading:
                     attribute: lazy
                 third_party_settings: {  }
-            weight: 13
+            weight: 14
+            additional: {  }
+          69b47c5b-c667-4239-a756-ac89c055ad6c:
+            uuid: 69b47c5b-c667-4239-a756-ac89c055ad6c
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:room:field_amenities_technology'
+              label: 'Amenities/Technology:'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: inline
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
