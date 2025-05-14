@@ -247,21 +247,6 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-        8c63a0bb-752a-4510-b162-8e1e07796004:
-          entity_type: node
-          bundle: chas_event
-          dependee: field_flag
-          settings:
-            state: required
-            condition: '!checked'
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form: {  }
-            effect: show
-            effect_options: {  }
-            selector: ''
   field_long_text:
     type: string_textarea
     weight: 14
