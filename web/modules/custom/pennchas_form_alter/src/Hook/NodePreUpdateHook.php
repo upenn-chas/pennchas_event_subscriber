@@ -45,8 +45,12 @@ class NodePreUpdateHook
             return;
         }
 
-        $eventExistingHouse = $originalNode->get('field_groups')->getValue();
-        $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
+        $eventExistingHousesId = NULL;
+        $isChasCentralEvent = (bool) $node->get('field_flag')->getString();
+        if (!$isChasCentralEvent) {
+            $eventExistingHouse = $originalNode->get('field_groups')->getValue();
+            $eventExistingHousesId = array_column($eventExistingHouse, 'target_id');
+        }
 
         $requestUrl = \Drupal::request()->getRequestUri();
         $nodeId = $node->id();

@@ -1202,3 +1202,27 @@ body.page-view-my-events {
     }
   }
 }
+
+.node--type-room.node--view-mode-full {
+  .field--label-inline {
+    .field__label {
+      &::after {
+        content: ':';
+      }
+    }
+  }
+  // .field--name-field-amenities-technology {
+  //   .field__items {
+  //     display: flex;;
+  //     .field__item ~ .field__item::before {
+  //       content: ', ';
+  //     }
+  //   }
+  // }
+  .field--name-field-media-images {
+    margin-top: 15px;
+    .field__item {
+      margin-bottom: 15px;
+    }
+  }
+}

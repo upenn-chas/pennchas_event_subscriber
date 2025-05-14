@@ -20,7 +20,7 @@ trait EntityHookTrait
     {
         $result = false;
         if (!$gids) {
-            return $this->canByPassModeration($gids, $permission);
+            return $this->canByPassModeration(NULL, $permission);
         }
         $groups = Group::loadMultiple($gids);
         foreach ($groups as $group) {

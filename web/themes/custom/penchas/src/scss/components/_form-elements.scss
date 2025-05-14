@@ -1541,6 +1541,8 @@ label {
               text-decoration: none;
               border: 1px solid #011f5b;
               line-height: 30px;
+              margin-bottom: 1rem;
+              margin-left: 15px;
 
               @supports (-moz-appearance: none) {
                 padding: 13px 20px 13px 20px;
@@ -1782,6 +1784,12 @@ label {
     .fieldset-legend {
       margin-bottom: 10px;
       display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: tablet-gothic;
+      margin-bottom: 5px;
+      letter-spacing: .7px;
     }
   }
 
@@ -2394,4 +2402,30 @@ input[type="time"]::-webkit-datetime-edit-text {
 
 .manage-instances {
   display: none;
+}
+
+#field-multi-text-add-more-wrapper  table > thead > tr > th > h4 {
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+#edit-field-location-wrapper legend.form-required::after {
+  display: none !important;
+}
+
+#edit-field-participants--wrapper .form-check,
+#edit-field-event-priority .form-check,
+#edit-field-intended-outcomes .form-check,
+#edit-field-college-houses--wrapper .form-check,
+#edit-field-program-communities .form-check {
+  display: block;
+  margin-bottom: 0.125rem !important;
+}
+
+
+.item-list .field--widget-term-reference-tree ul, .block .field--widget-term-reference-tree ul, .field--widget-term-reference-tree ul{
+  margin-bottom: 10px;
 }

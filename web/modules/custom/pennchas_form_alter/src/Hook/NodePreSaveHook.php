@@ -42,8 +42,8 @@ class NodePreSaveHook
         $housesId = $this->getHouses($node);
         $node->field_groups =  $housesId;
         $houseCount = count($housesId);
-        $isChasCenteredEvent = (bool) $node->get('field_flag')->getString();
-        if (!$isChasCenteredEvent) {
+        $isChasCentralEvent = (bool) $node->get('field_flag')->getString();
+        if (!$isChasCentralEvent) {
             $eventHouseId = (int) $node->get('field_location')->getString();
             $eventHouse = Group::load($eventHouseId);
             if ($houseCount === 1) {
