@@ -20,13 +20,13 @@ class EventFormAlter
         $form['field_program_communities']['widget']['#options'] = $options['communities'];
         $form['field_location']['widget']['#options'] = $options['houses'];
         $houseCount = count($options['houses']);
+        // if ($houseCount > 1) {
+            // $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
+            // $form['field_college_houses']['widget']['#options'] = ['_none' => t('All college houses')] + $options['houses'];
+        // }
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
-            $form['field_college_houses']['widget']['#options'] = ['select_all' => t('All college houses')] + $options['houses'];
         }
-        // if ($houseCount > 1) {
-        //     $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
-        // }
 
         $drupalRoles = ['administrator', 'chas_director', 'chas_technology', 'chas_professional_staff'];
         $userRoles = \Drupal::currentUser()->getRoles(TRUE);
