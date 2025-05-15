@@ -337,10 +337,12 @@
         font-size: 28px;
         font-family: tablet-gothic-compressed;
       }
-      p{
-        color: #333;
-        margin-top: 16px;
-        margin-bottom: 0;
+      .views-field-body {
+        .field-content{
+          color: #333;
+          margin-top: 16px;
+          margin-bottom: 0;
+        }
       }
     }
   }
