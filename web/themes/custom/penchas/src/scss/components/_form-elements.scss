@@ -2421,7 +2421,8 @@ table > thead > tr > th > h4 {
 #edit-field-intended-outcomes .form-check,
 #edit-field-college-houses--wrapper .form-check,
 #edit-field-program-communities .form-check,
-#edit-field-groups .form-check {
+#edit-field-groups .form-check,
+#edit-field-amenities-technology .form-check {
   display: block;
   margin-bottom: 0.125rem !important;
 }
@@ -2429,4 +2430,27 @@ table > thead > tr > th > h4 {
 
 .item-list .field--widget-term-reference-tree ul, .block .field--widget-term-reference-tree ul, .field--widget-term-reference-tree ul{
   margin-bottom: 10px;
+}
+
+.js-media-library-widget{
+  .fieldset-legend {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: tablet-gothic;
+    margin-bottom: 5px;
+  } 
+
+  .field-prefix {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: tablet-gothic;
+    margin-bottom: 5px;
+  }
+}
+
+#layout-builder-modal {
+ .fieldset-legend {
+    color: #383A40;
+ }
 }

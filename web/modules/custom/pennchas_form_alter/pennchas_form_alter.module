@@ -411,73 +411,72 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
         return;
     }
 
-    $required_roles = ['house1-house_coordinator', 'house1-house_faculty', 'house1-house_director'];
-    $permission = "configure any layout";
-    $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
-    foreach ($groupMemberships as $membership) {
-        $roles = $membership->getRoles();
-        foreach ($roles as $role) {
-            if (in_array($role->id(), $required_roles)) {
-                $uid = $current_user->id();
-                $user = User::load($uid);
-                if ($user instanceof User) {
-                    if (!$current_user->hasPermission($permission)) {
-                        $role = \Drupal\user\Entity\Role::load('authenticated');
-                        if ($role) {
-                            $role->grantPermission($permission);
-                            $role->save();
-                        }
-                    }
-                }
-                $group_role = TRUE;
-            }
-        }
+    // $required_roles = ['house1-house_coordinator', 'house1-house_faculty', 'house1-house_director'];
+    // $permission = "configure any layout";
+    // $groupMemberships = \Drupal::service('group.membership_loader')->loadByUser($current_user);
+    // foreach ($groupMemberships as $membership) {
+    //     $roles = $membership->getRoles();
+    //     foreach ($roles as $role) {
+    //         if (in_array($role->id(), $required_roles)) {
+    //             $uid = $current_user->id();
+    //             $user = User::load($uid);
+    //             if ($user instanceof User) {
+    //                 if (!$current_user->hasPermission($permission)) {
+    //                     $role = \Drupal\user\Entity\Role::load('authenticated');
+    //                     if ($role) {
+    //                         $role->grantPermission($permission);
+    //                         $role->save();
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        if ($group_role) {
+    //     if ($group_role) {
 
-            $connection = Database::getConnection();
-            $query = $connection->select('group_relationship_field_data', 'gr');
-            $query->condition('gr.entity_id', $current_user->id());
-            $query->condition('gr.plugin_id', 'group_membership');
-            $query->fields('gr', ['gid']);
-            $group_results = $query->execute()->fetchCol();
+    //         $connection = Database::getConnection();
+    //         $query = $connection->select('group_relationship_field_data', 'gr');
+    //         $query->condition('gr.entity_id', $current_user->id());
+    //         $query->condition('gr.plugin_id', 'group_membership');
+    //         $query->fields('gr', ['gid']);
+    //         $group_results = $query->execute()->fetchCol();
 
-            if (!empty($group_results)) {
-                foreach ($group_results as $group_id) {
-                    $group = Group::load($group_id);
-                    $groupName = $group->get('field_short_name')->value;
-                    $current_uri = \Drupal::request()->getRequestUri();
-                    $path_parts = explode('/', trim($current_uri, '/'));
-                    // dd($path_parts[0]);
-                    $group = \Drupal::routeMatch()->getParameter('group');
-                    if (!$group && $path_parts[0] != 'gregory') {
-                        static $tabsForGroupManager = [
-                            'layout' => 0,
-                        ];
-                        remove_tabs($tabs, $tabsForGroupManager);
-                    }
-                }
-            }
+    //         // if (!empty($group_results)) {
+    //         //     foreach ($group_results as $group_id) {
+    //         //         $group = Group::load($group_id);
+    //         //         $groupName = $group->get('field_short_name')->value;
+    //         //         $current_uri = \Drupal::request()->getRequestUri();
+    //         //         $path_parts = explode('/', trim($current_uri, '/'));
+    //         //         // dd($path_parts[0]);
+    //         //         $group = \Drupal::routeMatch()->getParameter('group');
+    //         //         if (!$group && $path_parts[0] != 'gregory') {
+    //         //             static $tabsForGroupManager = [
+    //         //                 'layout' => 0,
+    //         //             ];
+    //         //             remove_tabs($tabs, $tabsForGroupManager);
+    //         //         }
+    //         //     }
+    //         // }
 
-            static $unsetDeleteTabForGroup = [
-                'delete' => 0,
-                'latest version' => 0,
-            ];
-            remove_tabs($tabs, $unsetDeleteTabForGroup);
-        }
-    }
-
+    //         static $unsetDeleteTabForGroup = [
+    //             'delete' => 0,
+    //             'latest version' => 0,
+    //         ];
+    //         remove_tabs($tabs, $unsetDeleteTabForGroup);
+    //     }
+    // }
 
 
-    $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
-    // dd($tabs);
-    if (array_intersect($user_roles, $allowed_roles)) {
-        static $unsetDeleteTab = [
-            'delete' => 0,
-            'latest version' => 0,
-        ];
-        remove_tabs($tabs, $unsetDeleteTab);
-    }
+
+    // $allowed_roles = ['chas_student_worker', 'chas_technology', 'chas_professional_staff', 'chas_director'];
+    // // dd($tabs);
+    // if (array_intersect($user_roles, $allowed_roles)) {
+    //     static $unsetDeleteTab = [
+    //         'delete' => 0,
+    //         'latest version' => 0,
+    //     ];
+    //     remove_tabs($tabs, $unsetDeleteTab);
+    // }
 }
 
 /**

@@ -245,13 +245,13 @@ function penchas_preprocess_node(&$variables)
       if (!empty($breadcrumb_value)) {
         // Try to find path alias if it exists
         $query = \Drupal::database()->select('path_alias', 'pa')
-          ->fields('pa', ['path'])
+          ->fields('pa', ['path', 'alias'])
           ->condition('pa.alias', '/' . implode('/', array_slice($url_array, 0, $key + 1))) // Get the path for the alias
           ->execute();
         $result = $query->fetchObject();
 
         // If alias is found, use it; otherwise, fall back to the original path segment
-        $node_path = $result ? $result->path : '/' . implode('/', array_slice($url_array, 0, $key + 1));
+        $node_path = $result ? $result->alias : '/' . implode('/', array_slice($url_array, 0, $key + 1));
 
         // Build the breadcrumb URL incrementally
         $url_parts[] = $breadcrumb_value;

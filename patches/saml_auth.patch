@@ -1,8 +1,8 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..3190c9f 100644
+index 8a084f2..0f827f0 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
-@@ -200,6 +200,112 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +200,113 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
@@ -63,9 +63,9 @@ index 8a084f2..3190c9f 100644
 +      $last_string = end($array);
 +      if($stud_role === 'student') { // Assign the reseident role if the string contains student keyword
 +        $group_user_roles_ids['house1-resident'] = 'house1-resident';
-+      } else if($last_string === 'ra') { // Map grouper RA role with system RA role
++      } else if($last_string === 'ra') { // Assign RA role
 +        $last_string = 'resident_advisor';
-+      } else if ($last_string === 'faculty') { // Map grouper faculty role with system house faculty role
++      } else if ($last_string === 'faculty') {
 +        $last_string = 'house_faculty';
 +      }
 +      // Asign that user into group
@@ -76,8 +76,9 @@ index 8a084f2..3190c9f 100644
 +        $drupal_user_roles_ids[$last_string] = $last_string; // Get the group roles from grouper
 +      }
 +      if (isset($group_roles_target_ids['house1-' . $last_string])) {
-+        if(!in_array($last_string , $excluded_roles)){
-+          $group_user_roles_ids['house1-' . $last_string] = 'house1-' . $last_string; //Getdrupal role from grouper
++        $group_user_roles_ids['house1-' . $last_string] = 'house1-' . $last_string; // Get drupal group role from grouper
++        if(in_array($last_string, ['house_faculty', 'house_coordinator', 'house_director'])) {
++          $drupal_user_roles_ids['group_layout_editor'] = 'group_layout_editor';
 +        }
 +      }
 +    }

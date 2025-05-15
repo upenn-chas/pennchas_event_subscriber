@@ -1,0 +1,14 @@
+uuid: f6ea6799-df3f-4c0a-a8ab-71b2a5258529
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.group_layout_editor
+  module:
+    - user
+id: user_add_role_action.group_layout_editor
+label: 'Add the Group Layout Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: group_layout_editor

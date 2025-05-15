@@ -15,7 +15,6 @@ dependencies:
     - file
     - filter
     - group
-    - layout_builder
     - media
     - shortcut
     - system
@@ -32,7 +31,6 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
-  - 'configure any layout'
   - 'create audio media'
   - 'create document media'
   - 'create remote_video media'

@@ -17,7 +17,6 @@ permissions:
   - 'access reports'
   - 'all events dashboard'
   - 'all reservations dashboard'
-  - 'configure any layout'
   - 'congigure any layout'
   - 'create group_media:document entity'
   - 'create group_media:image entity'

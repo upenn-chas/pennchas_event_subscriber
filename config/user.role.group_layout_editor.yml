@@ -1,0 +1,22 @@
+uuid: 4b04e6c8-4e7b-42c6-b129-751c90501bb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.group.house1.default
+    - core.entity_view_display.node.article.full
+    - core.entity_view_display.node.house_landing_page.default
+    - core.entity_view_display.node.page.default
+    - core.entity_view_display.node.program_community.default
+  module:
+    - layout_builder
+id: group_layout_editor
+label: 'Group Layout Editor'
+weight: -1
+is_admin: null
+permissions:
+  - 'configure editable article node layout overrides'
+  - 'configure editable house1 group layout overrides'
+  - 'configure editable house_landing_page node layout overrides'
+  - 'configure editable page node layout overrides'
+  - 'configure editable program_community node layout overrides'

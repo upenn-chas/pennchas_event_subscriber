@@ -1,0 +1,14 @@
+uuid: cec88ff4-8067-40eb-9d85-0fc2b2844c87
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.group_layout_editor
+  module:
+    - user
+id: user_remove_role_action.group_layout_editor
+label: 'Remove the Group Layout Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: group_layout_editor
