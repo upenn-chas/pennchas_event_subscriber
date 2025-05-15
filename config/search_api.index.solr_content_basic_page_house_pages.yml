@@ -69,8 +69,8 @@ field_settings:
       view_mode:
         'entity:node':
           ':default': ''
-          house_landing_page: ':default'
-          page: ':default'
+          house_landing_page: default
+          page: default
 datasource_settings:
   'entity:node':
     bundles:
@@ -88,9 +88,28 @@ processor_settings:
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
   entity_type: {  }
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - rendered_item
+    title: true
+    alt: true
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
