@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
     - field.field.node.chas_event.field_feedback_form
+    - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
     - field.field.node.chas_event.field_groups
     - field.field.node.chas_event.field_intended_audience
@@ -76,6 +77,75 @@ third_party_settings:
                   background_repeat: no-repeat
                   background_attachment: not_fixed
                   background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: container
@@ -88,18 +158,18 @@ third_party_settings:
             blb_region_col_1: null
             blb_region_col_2: null
           breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: null
+            desktop: blb_col_8_4
+            tablet: blb_col_8_4
+            mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - null
+              - col-lg-8
+              - col-md-8
+              - col-12
             blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - null
+              - col-lg-4
+              - col-md-4
+              - col-12
           remove_gutters: '0'
           context_mapping: {  }
         components:
@@ -205,7 +275,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 4
+            weight: 7
             additional: {  }
           1d166753-ae72-4237-8e47-e2c75e4b068a:
             uuid: 1d166753-ae72-4237-8e47-e2c75e4b068a
@@ -228,7 +298,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 5
+            weight: 8
             additional: {  }
           4707199f-6a30-4980-8b2e-a119a59824ad:
             uuid: 4707199f-6a30-4980-8b2e-a119a59824ad
@@ -246,7 +316,7 @@ third_party_settings:
                 label: hidden
                 settings:
                   image_link: ''
-                  image_style: ''
+                  image_style: event_highlight_image
                   image_loading:
                     attribute: lazy
                 third_party_settings: {  }
@@ -332,7 +402,7 @@ third_party_settings:
                           ignore_timezone_if_UTC: true
                       augmenter_settings:
                         settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-            weight: 6
+            weight: 9
             additional: {  }
           dfd2ec97-ef2f-4ee4-a441-52d07376a2be:
             uuid: dfd2ec97-ef2f-4ee4-a441-52d07376a2be
@@ -389,6 +459,25 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 0
+            additional: {  }
+          d334a1ce-09fa-4bdf-af8e-7f1fa22a1a13:
+            uuid: d334a1ce-09fa-4bdf-af8e-7f1fa22a1a13
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_media_file'
+              label: 'Intended Audience Attachment'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 6
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
@@ -671,6 +760,7 @@ hidden:
   field_evaluation_notification: true
   field_event_ends_on: true
   field_feedback_form: true
+  field_flag: true
   field_is_campus_wide: true
   field_last_moderated_by: true
   field_last_moderation_message: true

@@ -154,8 +154,7 @@ class NodeUpdateHook
     {
         $existingHouses = array_column($node->original->get('field_groups')->getValue(), 'target_id');
         $newHouses = [];
-        $isChasCentralEvent = (bool) $node->get('field_flag')->getString();
-        if ($node->getType() === Constant::NODE_EVENT && !$isChasCentralEvent) {
+        if ($node->getType() === Constant::NODE_EVENT && !(bool) $node->get('field_flag')->getString()) {
             $newHouses = [(int) $node->get('field_location')->getString()];
             if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
                 $newHouses = array_column($node->get('field_groups')->getValue(), 'target_id');

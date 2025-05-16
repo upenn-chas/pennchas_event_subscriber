@@ -1,0 +1,21 @@
+uuid: cc0a47b8-aedd-434b-b9dd-5d0240fc6e70
+langcode: en
+status: true
+dependencies: {  }
+name: event_highlight_image
+label: 'Event Highlight Image'
+effects:
+  ee4111c2-1e6f-4e21-8441-230c381367d9:
+    uuid: ee4111c2-1e6f-4e21-8441-230c381367d9
+    id: image_scale
+    weight: 1
+    data:
+      width: 427
+      height: null
+      upscale: true
+  c26192de-6369-4c77-a205-903e0711a217:
+    uuid: c26192de-6369-4c77-a205-903e0711a217
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
