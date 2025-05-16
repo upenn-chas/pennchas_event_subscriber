@@ -1,4 +1,4 @@
-uuid: 12b14294-a0ab-43d1-bf61-a67ee0aae542
+uuid: c57928c3-9b81-483f-8b51-7d11c44ca831
 langcode: en
 status: open
 dependencies: {  }
@@ -8,66 +8,80 @@ close: null
 uid: 52
 template: false
 archive: false
-id: request_for_exception
-title: 'Request for Exception'
-description: '<p>Allows RA staff to request exceptions from training and other service expectations due to academic or other needs.</p>'
+id: chas_guest_suite_request
+title: 'CHAS Guest Suite Request'
+description: '<p>Request for use of the CHAS Guest Suite</p>'
 categories: {  }
 elements: |-
-  instructions:
+  markup:
     '#type': webform_markup
-    '#markup': '<h2>Request for Exception</h2><p>The RA Appointment Agreement outlines the dates, responsibilities, and expectations of the RA position. Anything beyond those dates does not fall under CHAS. Non-returning Graduate RAs seeking an extension of housing after the end of the appointment agreement must arrange for summer housing through the Residential Services and contact at <a href="mailto:living@upenn.edu">living@upenn.edu</a> .</p><p><em><strong>Exceptions are based on academic or religious requirements. A request for an exception must be made no less than 4 weeks in advance. </strong></em>CHAS, which also includes the House Director, will review the request, and the outcome will be reported back within a reasonable time.</p><p>If you have any questions regarding this process, please email <a href="mailto:chas@collegehouses.upenn.edu">chas@collegehouses.upenn.edu</a>. Thank you.</p>'
-  name:
-    '#type': textfield
-    '#title': Name
+    '#markup': '<h2>CHAS Guest Suite Request</h2><p>The CHAS guest suite provides limited accommodation for College Houses business (i.e. visiting presenter for a House program, or candidate). <strong>Personal use is not allowed. </strong>Reservations are allowed up to 7 days/6 nights. &nbsp;The suite is located on the second floor of Penn’s W.E.B. Du Bois College House. The CHAS guest suite has a living room, dining area, full kitchen, bathroom, one bedroom with a queen bed, and an office. It also has a full-sized fridge, washer, and dryer. Linens and towels are provided. The CHAS Guest Suite is closed for reservations when Du Bois is closed, including during all University breaks including winter and summer.<br>&nbsp;<br>The cost of the CHAS Guest Suite is $105 (cost related to housekeeping/linen service). There is no housekeeping during the stay. Your House budget will be charged. Payment will be made through journal transfer; no cash or credit card will be collected. Guests are responsible for leaving the suite tidy and clean. If there are additional guests that is not related to the College House initiative, that has to be included in the below request. &nbsp;The Du Bois Residential Services Manager will need 3-5 Days notice to generate a SAL (Special Access Letter) for NON-PennCard holding guests.</p><p>It takes up to 2 weeks for review and confirmation. By submitting this request, you confirm responsibility for making sure you and your guest(s) abide by the Guest Suite Rules and Regulations and the proper fees are paid to the House. &nbsp;Guest Suite Rules and Regulations are subject to change. For inquiries, please contact the CHAS office through email at <a href="mailto:chas@collegehouses.upenn.edu">chas@collegehouses.upenn.edu</a> or at (215) 898-5551.</p><p>&nbsp;</p>'
+  requested_dates:
+    '#type': fieldset
+    '#title': 'Requested Dates'
     '#required': true
-  email:
-    '#type': textfield
-    '#title': Email
-    '#required': true
-  pennkey:
-    '#type': textfield
-    '#title': PennKey
-  penn_id_number:
-    '#type': textfield
-    '#title': 'Penn ID Number'
-  academic_program:
-    '#type': textfield
-    '#title': 'Academic Program'
-  college_house:
-    '#type': select
-    '#title': 'College House'
-    '#options':
-      dubois: 'W.E.B. Du Bois'
-      fisher_hassenfeld: 'Fisher Hassenfeld'
-      gregory: Gregory
-      gutmann: Gutmann
-      harnwell: Harnwell
-      harrison: Harrison
-      hill: Hill
-      kcech: 'Kings Court English'
-      radian: Radian
-      riepe: Riepe
-      rodin: Rodin
-      stouffer: Stouffer
-      ware: Ware
-  current_room_location:
-    '#type': textfield
-    '#title': 'Current room location'
-  academic_status:
-    '#type': radios
-    '#title': 'Academic status'
-    '#options':
-      ra: 'RA -- undergraduate RA'
-      gra: 'GRA -- graduate RA'
-  start_date:
-    '#type': date
-    '#title': 'Start date'
-  end_date:
-    '#type': date
-    '#title': 'End date'
-  reason_for_exception:
-    '#type': textarea
-    '#title': 'Reason for exception'
+    check_in_date:
+      '#type': date
+      '#title': 'Check-in Date'
+      '#required': true
+    check_out_date:
+      '#type': date
+      '#title': 'Check-out Date'
+      '#required': true
+  budget_code_fieldset:
+    '#type': fieldset
+    '#title': budget-code-fieldset
+    '#title_display': invisible
+    budget_code:
+      '#type': textfield
+      '#title': 'Budget code'
+      '#required': true
+  requestor_info:
+    '#type': fieldset
+    '#title': 'Your Information'
+    name_of_staff_member_making_request:
+      '#type': textfield
+      '#title': 'Name of staff member making request:'
+      '#required': true
+    email:
+      '#type': email
+      '#title': Email
+      '#required': true
+    position:
+      '#type': select
+      '#title': 'Position:'
+      '#options':
+        faculty_director: 'Faculty Director'
+        house_fellow: 'College House Fellow'
+        house_director: 'House Director'
+        house_coordinator: 'House Coordinator'
+        chas_director: 'CHAS Director'
+      '#required': true
+    college_house:
+      '#type': select
+      '#title': 'College House'
+      '#options': college_houses
+      '#required': true
+  guest_information:
+    '#type': fieldset
+    '#title': 'Guest Information'
+    name_of_guest:
+      '#type': textfield
+      '#title': 'Name of guest:'
+      '#required': true
+    guest_emergency_cell_phone_number:
+      '#type': textfield
+      '#title': 'Guest emergency cell phone number'
+      '#required': true
+    does_the_guest_have_an_active_penncard:
+      '#type': radios
+      '#title': 'Does the guest have an active PennCard?'
+      '#options': yes_no
+      '#required': true
+    purpose_of_stay:
+      '#type': textarea
+      '#title': 'Purpose of stay:'
+      '#required': true
 css: ''
 javascript: ''
 settings:
@@ -77,7 +91,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: /staff/exception
+  page_submit_path: /staff/guest-suite-request
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -175,7 +189,7 @@ settings:
   confirmation_type: page
   confirmation_url: ''
   confirmation_title: ''
-  confirmation_message: '<p>Your exception request has been submitted. &nbsp;Thank you.</p>'
+  confirmation_message: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -255,9 +269,9 @@ handlers:
   email:
     id: email
     handler_id: email
-    label: 'Exception Email'
+    label: Email
     notes: ''
-    status: false
+    status: true
     conditions: {  }
     weight: 0
     settings:
@@ -267,44 +281,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: chas@collegehouses.upenn.edu
-      from_options: {  }
-      from_name: 'CHAS Website'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      parameters: {  }
-      debug: false
-  email_1:
-    id: email
-    handler_id: email_1
-    label: 'Email Test'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: sgiulian@electrickite.com
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
+      cc_mail: lkaliher@upenn.edu
       cc_options: {  }
       from_mail: _default
       from_options: {  }

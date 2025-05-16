@@ -10,9 +10,12 @@ template: false
 archive: false
 id: basic_page_request
 title: 'Basic Page Request'
-description: ''
+description: '<p>Request form for basic page creation</p>'
 categories: {  }
 elements: |-
+  markup:
+    '#type': webform_markup
+    '#markup': '<h2>Basic Page Request</h2><p>If you wish to request an additional page for your section of the site, please fill out this form with as much detail as you can provide.</p>'
   email:
     '#type': email
     '#title': Email
@@ -28,9 +31,10 @@ elements: |-
   add_attachment:
     '#type': webform_document_file
     '#title': 'Add Attachment'
-  message:
-    '#type': textfield
-    '#title': Message
+  request:
+    '#type': textarea
+    '#title': Request
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -40,7 +44,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /staff/pagerequest
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -218,5 +222,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: cbogs@upenn.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: true
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }

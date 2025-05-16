@@ -1,4 +1,4 @@
-uuid: 12b14294-a0ab-43d1-bf61-a67ee0aae542
+uuid: 5eb2ccea-296a-4df2-a854-b305e42121ae
 langcode: en
 status: open
 dependencies: {  }
@@ -8,66 +8,82 @@ close: null
 uid: 52
 template: false
 archive: false
-id: request_for_exception
-title: 'Request for Exception'
-description: '<p>Allows RA staff to request exceptions from training and other service expectations due to academic or other needs.</p>'
+id: ra_onboard_offboard_ticket
+title: 'RA Onboard/Offboard Ticket'
+description: '<p>Form to initiate the process of on- or off-boarding an RA</p>'
 categories: {  }
 elements: |-
-  instructions:
+  header:
     '#type': webform_markup
-    '#markup': '<h2>Request for Exception</h2><p>The RA Appointment Agreement outlines the dates, responsibilities, and expectations of the RA position. Anything beyond those dates does not fall under CHAS. Non-returning Graduate RAs seeking an extension of housing after the end of the appointment agreement must arrange for summer housing through the Residential Services and contact at <a href="mailto:living@upenn.edu">living@upenn.edu</a> .</p><p><em><strong>Exceptions are based on academic or religious requirements. A request for an exception must be made no less than 4 weeks in advance. </strong></em>CHAS, which also includes the House Director, will review the request, and the outcome will be reported back within a reasonable time.</p><p>If you have any questions regarding this process, please email <a href="mailto:chas@collegehouses.upenn.edu">chas@collegehouses.upenn.edu</a>. Thank you.</p>'
-  name:
-    '#type': textfield
-    '#title': Name
-    '#required': true
-  email:
-    '#type': textfield
-    '#title': Email
-    '#required': true
-  pennkey:
-    '#type': textfield
-    '#title': PennKey
-  penn_id_number:
-    '#type': textfield
-    '#title': 'Penn ID Number'
-  academic_program:
-    '#type': textfield
-    '#title': 'Academic Program'
-  college_house:
-    '#type': select
-    '#title': 'College House'
+    '#display_on': both
+    '#markup': '<p>&nbsp;</p><h2>RA Onboard/Offboard Ticket</h2>'
+  onboarding_or_offboarding:
+    '#type': radios
+    '#title': 'Onboarding or Offboarding?'
     '#options':
-      dubois: 'W.E.B. Du Bois'
-      fisher_hassenfeld: 'Fisher Hassenfeld'
-      gregory: Gregory
-      gutmann: Gutmann
-      harnwell: Harnwell
-      harrison: Harrison
-      hill: Hill
-      kcech: 'Kings Court English'
-      radian: Radian
-      riepe: Riepe
-      rodin: Rodin
-      stouffer: Stouffer
-      ware: Ware
-  current_room_location:
+      on-board: On-boarding
+      off-board: Off-boarding
+    '#required': true
+  full_name:
     '#type': textfield
-    '#title': 'Current room location'
+    '#title': "RA's full name:"
+    '#required': true
+  house:
+    '#type': select
+    '#title': 'House:'
+    '#options': college_houses
+    '#required': true
+  ra_email:
+    '#type': email
+    '#title': 'RA Email:'
+    '#required': true
+  ra_pennkey:
+    '#type': textfield
+    '#title': 'RA Pennkey:'
+    '#description': '<p>Usually matches the part of the email address preceding the @</p>'
+    '#required': true
+  penn_id:
+    '#type': number
+    '#title': 'Penn ID number'
+    '#required': true
   academic_status:
     '#type': radios
-    '#title': 'Academic status'
+    '#title': 'Academic status:'
     '#options':
-      ra: 'RA -- undergraduate RA'
-      gra: 'GRA -- graduate RA'
-  start_date:
+      undergraduate: Undergraduate
+      graduate: Graduate/Professional
+    '#required': true
+  incoming_current:
+    '#type': radios
+    '#title': 'Incoming/Current:'
+    '#options':
+      incoming_ra: 'Incoming RA'
+      current_or_returner: Current/Returner
+    '#required': true
+  room:
+    '#type': textfield
+    '#title': Room
+    '#required': true
+  phone:
+    '#type': textfield
+    '#title': 'Phone:'
+    '#required': true
+  date_effective:
     '#type': date
-    '#title': 'Start date'
-  end_date:
+    '#title': 'Date effective:'
+    '#required': true
+  last_date_worked:
     '#type': date
-    '#title': 'End date'
-  reason_for_exception:
+    '#title': 'Last date worked:'
+    '#required': true
+  move_out_date:
+    '#type': date
+    '#title': 'Move-out date:'
+    '#required': true
+  comment:
     '#type': textarea
-    '#title': 'Reason for exception'
+    '#title': 'Comment:'
+    '#required': true
 css: ''
 javascript: ''
 settings:
@@ -77,7 +93,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: /staff/exception
+  page_submit_path: /staff/ra-ticket
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -175,7 +191,7 @@ settings:
   confirmation_type: page
   confirmation_url: ''
   confirmation_title: ''
-  confirmation_message: '<p>Your exception request has been submitted. &nbsp;Thank you.</p>'
+  confirmation_message: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -255,9 +271,9 @@ handlers:
   email:
     id: email
     handler_id: email
-    label: 'Exception Email'
-    notes: ''
-    status: false
+    label: Emails
+    notes: 'Email Directors, CHAS, Webdev, and Marketing'
+    status: true
     conditions: {  }
     weight: 0
     settings:
@@ -267,44 +283,7 @@ handlers:
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      cc_mail: ''
-      cc_options: {  }
-      from_mail: chas@collegehouses.upenn.edu
-      from_options: {  }
-      from_name: 'CHAS Website'
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      subject: _default
-      body: _default
-      excluded_elements: {  }
-      ignore_access: false
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      exclude_attachments: false
-      html: true
-      attachments: false
-      twig: false
-      theme_name: ''
-      parameters: {  }
-      debug: false
-  email_1:
-    id: email
-    handler_id: email_1
-    label: 'Email Test'
-    notes: ''
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: sgiulian@electrickite.com
-      to_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      cc_mail: ''
+      cc_mail: 'lkaliher@upenn.edu, marziani@upenn.edu, drjen10@upenn.edu, trinan@upenn.edu, sgrou@upenn.edu, cbogs@upenn.edu'
       cc_options: {  }
       from_mail: _default
       from_options: {  }
@@ -313,7 +292,7 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      subject: _default
+      subject: 'RA On-/Off-boarding Ticket'
       body: _default
       excluded_elements: {  }
       ignore_access: false

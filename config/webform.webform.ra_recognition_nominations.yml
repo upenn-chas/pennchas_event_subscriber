@@ -1,21 +1,44 @@
-uuid: 1c255662-62e6-4f1e-ad33-31269a17a0c1
+uuid: f8c19046-d577-4fb7-bf3d-94f40bc47e6b
 langcode: en
 status: open
 dependencies: {  }
 weight: 0
 open: null
 close: null
-uid: 3
+uid: 52
 template: false
 archive: false
-id: additional_occupancy
-title: "Steve's Test Additional Occupancy"
-description: ''
+id: ra_recognition_nominations
+title: 'RA Recognition Nominations'
+description: '<p>Peer and professional nominations for exceptional RA service</p>'
 categories: {  }
 elements: |-
-  name:
+  intro:
+    '#type': webform_markup
+    '#markup': "<h2>RA Recognition Nominations</h2><p>Do you know an RA who has accomplished something special? Did they implement a program or engagement initiative that should be shouted from the rooftops? Or an RA who's gone to extra effort for their residents and deserves a shout-out? &nbsp;Let us know about them here! Self-nominations are welcome.</p>"
+  nominee_name:
     '#type': textfield
-    '#title': 'Name '
+    '#title': "Name of the RA you're nominating:"
+    '#required': true
+  the_nominee_s_college_house:
+    '#type': select
+    '#title': "The nominee's College House:"
+    '#options': college_houses
+    '#required': true
+  nominator_name:
+    '#type': textfield
+    '#title': 'Your name (optional):'
+  your_college_house_optional:
+    '#type': select
+    '#title': 'Your College House (optional):'
+    '#options': college_houses
+  reason:
+    '#type': textarea
+    '#title': 'Why are you nominating this RA for a spotlight?'
+    '#required': true
+  photo:
+    '#type': webform_image_file
+    '#title': 'Please upload a photo to accompany this submission, if available:'
 css: ''
 javascript: ''
 settings:
@@ -25,7 +48,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /staff/nominate
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -199,5 +222,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: chas@collegehouses.upenn.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: true
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
 variants: {  }

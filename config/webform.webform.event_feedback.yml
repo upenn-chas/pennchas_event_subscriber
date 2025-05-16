@@ -10,7 +10,7 @@ template: false
 archive: false
 id: event_feedback
 title: 'Event Feedback'
-description: ''
+description: '<p>Feedback form for event attendees</p>'
 categories: {  }
 elements: |-
   event_like_rating:

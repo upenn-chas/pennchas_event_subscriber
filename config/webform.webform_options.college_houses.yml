@@ -1,0 +1,23 @@
+uuid: d0b36ddc-c48e-41c9-b63d-9de304b605d5
+langcode: en
+status: true
+dependencies: {  }
+id: college_houses
+label: 'College Houses'
+category: ''
+likert: false
+options: |-
+  dubois: 'Du Bois'
+  fisher_hassenfeld: 'Fisher Hassenfeld'
+  gregory: Gregory
+  gutmann: Gutmann
+  harnwell: Harnwell
+  harrison: Harrison
+  hill: Hill
+  kcech: 'Kings Court English'
+  lauder: Lauder
+  radian: 'The College House at the Radian'
+  riepe: Riepe
+  rodin: Rodin
+  stouffer: Stouffer
+  ware: Ware
