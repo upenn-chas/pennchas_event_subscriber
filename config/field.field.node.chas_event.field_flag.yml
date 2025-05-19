@@ -10,7 +10,7 @@ field_name: field_flag
 entity_type: node
 bundle: chas_event
 label: 'Is this CHAS Central Event?'
-description: ''
+description: '<p>If selected, the event will be considered a CHAS Central event.</p>'
 required: false
 translatable: false
 default_value:
