@@ -13,7 +13,6 @@ scope: outsider
 global_role: authenticated
 group_type: house1
 permissions:
-  - 'access group_node overview'
   - 'access my events'
   - 'access my rerservations'
   - 'create group_media:image entity'
@@ -23,8 +22,11 @@ permissions:
   - 'update own group_media:image relationship'
   - 'update own group_node:room entity'
   - 'view group'
+  - 'view group_media:document entity'
   - 'view group_media:image entity'
   - 'view group_media:image relationship'
+  - 'view group_media:remote_video entity'
+  - 'view group_media:video entity'
   - 'view group_node:article entity'
   - 'view group_node:article relationship'
   - 'view group_node:chas_event entity'

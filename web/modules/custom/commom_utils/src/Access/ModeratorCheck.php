@@ -53,17 +53,17 @@ class ModeratorCheck
             return $this->user->hasPermission($this->moderatorPermission);
         }
 
-        $field = 'field_location';
-        if ($nodeType === 'reserve_room') {
-            $field = 'field_group';
-        } 
+        $field = $nodeType === 'reserve_room' ? 'field_group' : 'field_location';
 
         if ($this->user->hasPermission($this->moderatorPermission)) {
             return TRUE;
         }
         $groupId = (int) $node->get($field)->getString();
         $group = Group::load($groupId);
+        if ($group) {
+            return $group->hasPermission($this->moderatorPermission, $this->user);
+        }
 
-        return $group->hasPermission($this->moderatorPermission, $this->user);
+        return FALSE;
     }
 }

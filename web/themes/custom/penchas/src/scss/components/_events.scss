@@ -988,9 +988,6 @@
       background-size: 18px;
       background-repeat: no-repeat;
       padding-left: 33px;
-      font-family: tablet-gothic;
-      font-size: 12px;
-      text-transform: uppercase;
       text-decoration: underline;
       text-decoration-color: #92b7ff;
       text-decoration-thickness: 2px;
@@ -1003,18 +1000,14 @@
     }
   }
 
-  .block-field-blocknodechas-eventfield-media-file {
+  .block-field-blocknodechas-eventfield-media-file,
+  .block-field-blocknodenoticesfield-media-file {
     margin-bottom: 40px;
 
     .field  {
       font-family: tablet-gothic;
       font-size: 12px;
       text-transform: uppercase;
-      text-decoration: underline;
-      text-decoration-color: #92b7ff;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-      font-weight: 600;
 
       a{
         text-decoration: none;
