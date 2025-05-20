@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.space_block
     - core.base_field_override.node.room.title
     - core.entity_view_mode.node.full
     - field.field.node.room.body
@@ -42,7 +44,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          container_wrapper_classes: spacing-top-medium-spacing
+          container_wrapper_classes: space
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -52,9 +54,9 @@ third_party_settings:
                 class: null
               background_media:
                 image:
-                  media_id: ''
+                  media_id: null
                 video:
-                  media_id: ''
+                  media_id: null
                 background_options:
                   background_position: center
                   background_repeat: no-repeat
@@ -141,27 +143,42 @@ third_party_settings:
             blb_region_col_1: null
             blb_region_col_2: null
           breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_8_4
+            desktop: blb_col_6_6
+            tablet: blb_col_12
             mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
-              - col-lg-9
-              - col-md-8
+              - col-lg-6
+              - col-md-12
               - col-12
             blb_region_col_2:
-              - col-lg-3
-              - col-md-4
+              - col-lg-6
+              - col-md-12
               - col-12
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          15d8fef2-a491-4698-9a1d-938e6cd10200:
-            uuid: 15d8fef2-a491-4698-9a1d-938e6cd10200
+          75868e4c-9639-40ac-a8bb-08dbc67c31aa:
+            uuid: 75868e4c-9639-40ac-a8bb-08dbc67c31aa
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:room:field_address'
-              label: 'Address tst'
+              id: 'inline_block:basic'
+              label: Amenities
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 2628
+              block_revision_id: 3860
+              block_serialized: null
+            weight: 11
+            additional: {  }
+          31676864-ae78-40f1-a209-0505944e57bc:
+            uuid: 31676864-ae78-40f1-a209-0505944e57bc
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:room:field_text_box_2'
+              label: 'Support Contact'
               label_display: '0'
               provider: layout_builder
               context_mapping:
@@ -169,116 +186,9 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: string
-                label: hidden
+                label: inline
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          d2ee82c4-206a-4c3c-a94d-1a33f5703963:
-            uuid: d2ee82c4-206a-4c3c-a94d-1a33f5703963
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_chas_tech_managed_space'
-              label: 'CHAS Tech Managed Space?'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: boolean
-                label: inline
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
-          ca846254-966a-4c04-88a6-bd84d6cec73c:
-            uuid: ca846254-966a-4c04-88a6-bd84d6cec73c
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_link_2'
-              label: 'Legacy Policy URL'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: link
-                label: inline
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          8108850c-8eb6-48aa-85b1-a4da6e293ea4:
-            uuid: 8108850c-8eb6-48aa-85b1-a4da6e293ea4
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_link_3'
-              label: 'Legacy Resource URL'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: link
-                label: inline
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
-                third_party_settings: {  }
-            weight: 7
-            additional: {  }
-          a32e254d-282c-478a-9e7b-1a56347aba8b:
-            uuid: a32e254d-282c-478a-9e7b-1a56347aba8b
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_duration'
-              label: 'Max amount of time that can be booked'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: duration_human_display
-                label: inline
-                settings:
-                  text_length: full
-                  separator: space
-                third_party_settings: {  }
-            weight: 8
-            additional: {  }
-          f0dce52e-879e-4ff9-8d88-b9991a2c1f21:
-            uuid: f0dce52e-879e-4ff9-8d88-b9991a2c1f21
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:room:field_maximum_occupancy'
-              label: 'Maximum Occupancy'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: number_integer
-                label: inline
-                settings:
-                  thousand_separator: ''
-                  prefix_suffix: true
                 third_party_settings: {  }
             weight: 9
             additional: {  }
@@ -303,45 +213,77 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 10
+            weight: 8
             additional: {  }
-          fab26ca7-ce59-48d3-a0b6-d9f9cbe53433:
-            uuid: fab26ca7-ce59-48d3-a0b6-d9f9cbe53433
+          a32e254d-282c-478a-9e7b-1a56347aba8b:
+            uuid: a32e254d-282c-478a-9e7b-1a56347aba8b
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:room:field_text_box'
-              label: 'Room GPS Pin'
+              id: 'field_block:node:room:field_duration'
+              label: 'Max amount of time that can be booked'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: string
+                type: duration_human_display
                 label: inline
                 settings:
-                  link_to_entity: false
+                  text_length: full
+                  separator: space
                 third_party_settings: {  }
-            weight: 11
+            weight: 7
             additional: {  }
-          31676864-ae78-40f1-a209-0505944e57bc:
-            uuid: 31676864-ae78-40f1-a209-0505944e57bc
+          f0dce52e-879e-4ff9-8d88-b9991a2c1f21:
+            uuid: f0dce52e-879e-4ff9-8d88-b9991a2c1f21
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:room:field_text_box_2'
-              label: 'Support Contact'
+              id: 'field_block:node:room:field_maximum_occupancy'
+              label: 'Maximum Occupancy'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: string
+                type: number_integer
                 label: inline
                 settings:
-                  link_to_entity: false
+                  thousand_separator: ''
+                  prefix_suffix: true
                 third_party_settings: {  }
-            weight: 12
+            weight: 6
+            additional: {  }
+          96a3d66c-8c2e-43b4-b0c2-6365b011d6f0:
+            uuid: 96a3d66c-8c2e-43b4-b0c2-6365b011d6f0
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Space Details'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 2627
+              block_revision_id: 3859
+              block_serialized: null
+            weight: 5
+            additional: {  }
+          c088af27-1c74-4e43-87dc-5da849d44b4d:
+            uuid: c088af27-1c74-4e43-87dc-5da849d44b4d
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:space_block'
+              label: spacer
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 2626
+              block_revision_id: 3858
+              block_serialized: null
+            weight: 4
             additional: {  }
           d2ab3bce-d3e4-43f2-9f5d-f34612ed1238:
             uuid: d2ab3bce-d3e4-43f2-9f5d-f34612ed1238
@@ -359,7 +301,41 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 13
+            weight: 3
+            additional: {  }
+          2fd96290-d76d-4d80-b96b-619de4415c84:
+            uuid: 2fd96290-d76d-4d80-b96b-619de4415c84
+            region: blb_region_col_1
+            configuration:
+              id: 'inline_block:space_block'
+              label: spacer
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 2625
+              block_revision_id: 3857
+              block_serialized: null
+            weight: 2
+            additional: {  }
+          15d8fef2-a491-4698-9a1d-938e6cd10200:
+            uuid: 15d8fef2-a491-4698-9a1d-938e6cd10200
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:room:field_address'
+              label: 'Address tst'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
           f57c3101-db54-4022-a199-1e0466041e1c:
             uuid: f57c3101-db54-4022-a199-1e0466041e1c
@@ -377,7 +353,7 @@ third_party_settings:
                 label: hidden
                 settings:
                   class: section-heading
-                  tag: h1
+                  tag: h2
                   link: false
                   link_class: ''
                   summary: false
@@ -387,7 +363,7 @@ third_party_settings:
             additional: {  }
           f9642b19-5c8d-4ba0-854e-cd56daee1793:
             uuid: f9642b19-5c8d-4ba0-854e-cd56daee1793
-            region: blb_region_col_1
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:room:field_media_images'
               label: Photos
@@ -401,11 +377,11 @@ third_party_settings:
                 label: hidden
                 settings:
                   image_link: ''
-                  image_style: new_announcements_image_style
+                  image_style: cke_media_resize_medium
                   image_loading:
                     attribute: lazy
                 third_party_settings: {  }
-            weight: 14
+            weight: 0
             additional: {  }
           69b47c5b-c667-4239-a756-ac89c055ad6c:
             uuid: 69b47c5b-c667-4239-a756-ac89c055ad6c
@@ -419,12 +395,14 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
-                label: inline
+                type: entity_reference_list_label_class
+                label: hidden
                 settings:
                   link: false
+                  class: ''
+                  list_type: ul
                 third_party_settings: {  }
-            weight: 4
+            weight: 12
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
