@@ -77,7 +77,7 @@ content:
     third_party_settings: {  }
   field_college_houses:
     type: options_buttons
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings:
@@ -161,7 +161,7 @@ content:
           YEARLY: YEARLY
   field_flag:
     type: boolean_checkbox
-    weight: 8
+    weight: 15
     region: content
     settings:
       display_label: true
@@ -187,7 +187,7 @@ content:
             selector: ''
   field_intended_audience:
     type: options_buttons
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings:
@@ -241,18 +241,33 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 1
+            values_set: 3
             value: ''
-            values: {  }
+            values: "community_event\r\nhouse_event\r\nfloor_event"
             value_form:
               -
                 value: floor_event
             effect: show
             effect_options: {  }
             selector: ''
+        485decfa-e811-4760-bdac-8eace8b41861:
+          entity_type: node
+          bundle: chas_event
+          dependee: field_flag
+          settings:
+            state: required
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_long_text:
     type: string_textarea
-    weight: 15
+    weight: 14
     region: content
     settings:
       rows: 5
@@ -431,7 +446,7 @@ content:
       conditional_fields: {  }
   field_multi_text:
     type: string_textfield
-    weight: 9
+    weight: 10
     region: content
     settings:
       size: 60
@@ -516,12 +531,12 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 13
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 11
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }

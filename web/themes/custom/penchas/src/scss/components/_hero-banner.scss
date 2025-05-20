@@ -286,3 +286,11 @@
     }
   }
 }
+
+.article.banner-info.items-gap {
+  gap: unset !important;
+  p {
+    margin-bottom: 30px !important;
+  }
+}
+

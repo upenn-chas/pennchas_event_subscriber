@@ -117,8 +117,9 @@
                                 {{ drupal_entity('block', 'penchas_breadcrumbs') }}
                               </nav>
                           </div>
-                          <div class="banner-info items-gap">
+                          <div class="article banner-info items-gap">
                               <h1>{{node.title.value}}</h1>
+                              <p> {{node.create_at.value|date('d.m.Y')}}</p>
                               {% if node.body %}
                                 {% if node.body.0 %}
                                   {{node.body.0.value|t}}
