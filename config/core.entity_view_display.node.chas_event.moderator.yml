@@ -356,7 +356,7 @@ third_party_settings:
                 settings:
                   view_mode: default
                 third_party_settings: {  }
-            weight: 44
+            weight: 45
             additional: {  }
           ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1:
             uuid: ddfd6a75-4f9a-4c1b-83ec-7f0a210babf1
@@ -380,7 +380,7 @@ third_party_settings:
                   summary: false
                   trim: 200
                 third_party_settings: {  }
-            weight: 45
+            weight: 46
             additional: {  }
           edf7410e-998f-43e9-ac58-7655b096bc12:
             uuid: edf7410e-998f-43e9-ac58-7655b096bc12
@@ -428,28 +428,6 @@ third_party_settings:
                   trim: 200
                 third_party_settings: {  }
             weight: 22
-            additional: {  }
-          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
-            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_media_image'
-              label: 'Highlight Image:'
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: media_thumbnail
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: large
-                  image_loading:
-                    attribute: lazy
-                third_party_settings: {  }
-            weight: 46
             additional: {  }
           4f64893c-2dda-4f88-990c-192e7c610f5a:
             uuid: 4f64893c-2dda-4f88-990c-192e7c610f5a
@@ -640,6 +618,28 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 34
+            additional: {  }
+          72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d:
+            uuid: 72bbf13d-dbcb-466e-84c2-c1f3d5c40b7d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_media_image'
+              label: 'Highlight Image:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_thumbnail
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 44
             additional: {  }
         third_party_settings: {  }
       -

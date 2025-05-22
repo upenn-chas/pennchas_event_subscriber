@@ -976,8 +976,6 @@ body{
       margin-left: 10px;
 
       @include media-query('mobile') {
-        font-size: 18px;
-        line-height: normal;
         margin-bottom: 0.5rem;
       }
 

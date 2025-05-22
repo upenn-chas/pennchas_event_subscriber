@@ -80,7 +80,7 @@
                       {{content.field_chas_news}}
                     </div>
                   {% endif %}
-                  <span class="article-date">{{node.getCreatedTime|format_date('custom', 'd.m.Y')}}</span>
+                  <span class="article-date">{{node.getCreatedTime|format_date('only_date_format')}}</span>
                 </div>
                 <h5><a href="{{ url }}">{{ label }}</a></h5>
                 <p>{{ content.body }}</p>

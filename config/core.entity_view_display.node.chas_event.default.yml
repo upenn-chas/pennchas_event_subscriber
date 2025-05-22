@@ -442,24 +442,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
-          20795243-98e3-4798-8d7a-c4f6ba5bffd9:
-            uuid: 20795243-98e3-4798-8d7a-c4f6ba5bffd9
-            region: content
-            configuration:
-              id: 'field_block:node:chas_event:field_chas_tech_managed_space'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: boolean
-                label: hidden
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
           d334a1ce-09fa-4bdf-af8e-7f1fa22a1a13:
             uuid: d334a1ce-09fa-4bdf-af8e-7f1fa22a1a13
             region: blb_region_col_1
@@ -563,16 +545,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 22
-    region: content
-  field_chas_tech_managed_space:
-    type: boolean
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 5
     region: content
   field_college_houses:
     type: entity_reference_label
