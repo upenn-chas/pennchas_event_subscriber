@@ -915,8 +915,6 @@ body{
         margin-bottom: 1rem;
 
         @include media-query('mobile') {
-          font-size: 18px;
-          line-height: normal;
           margin-bottom: 0.5rem;
         }
 
