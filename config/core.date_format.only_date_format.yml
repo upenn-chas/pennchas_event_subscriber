@@ -5,4 +5,4 @@ dependencies: {  }
 id: only_date_format
 label: 'Only Date format'
 locked: false
-pattern: d.m.Y
+pattern: m.d.Y
