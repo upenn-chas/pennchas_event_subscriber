@@ -32,14 +32,16 @@ class FilterForm extends FormBase
                 'class' => 'd-flex flex-wrap'
             ]
         ];
-
-        $form['wrapper']['chas_central_event'] = [
-            '#type' => 'select',
-            '#title' => $this->t('CHAS Central Event'),
-            '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getBooleanOptions(),
-            '#default_value' => NULL,
-            '#required' => FALSE,
-        ];
+        
+        if (\Drupal::service('pennchas_common.access_check')->checkForNonGroupMember('chas central event')) {
+            $form['wrapper']['chas_central_event'] = [
+                '#type' => 'select',
+                '#title' => $this->t('CHAS Central Event'),
+                '#options' => ['_all' => $this->t('- Any -')] + DropdownOption::getBooleanOptions(),
+                '#default_value' => 0,
+                '#required' => FALSE,
+            ];
+        }
 
         $form['wrapper']['gid'] = [
             '#type' => 'select',
@@ -154,7 +156,7 @@ class FilterForm extends FormBase
         \Drupal::requestStack()->getSession()->set('participantsSurvey', $form_state->getValues());
         $data = $controller->reportData($form_state->getValues(), $form);
         $res = new AjaxResponse();
-        if($form_state->hasAnyErrors()) {
+        if ($form_state->hasAnyErrors()) {
             $error = $form_state->getErrors();
             $error = $error['submit_to'];
             $res->addCommand(new MessageCommand($error, null, ['type' => 'error']), TRUE);
@@ -165,7 +167,7 @@ class FilterForm extends FormBase
 
     private function resetForm(array &$form, FormStateInterface &$form_state)
     {
-        $form['wrapper']['chas_central_event']['#value'] = '_all';
+        $form['wrapper']['chas_central_event']['#value'] = 0;
         $form['wrapper']['gid']['#value'] = '_all';
         $form['wrapper']['type']['#value'] = '_all';
         $form['wrapper']['outcome']['#value'] = '_all';

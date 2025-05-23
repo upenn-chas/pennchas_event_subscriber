@@ -49,6 +49,7 @@ permissions:
   - 'access my rerservations'
   - 'access reports'
   - 'cancel smart date recur instances'
+  - 'chas central event'
   - 'configure editable article node layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'

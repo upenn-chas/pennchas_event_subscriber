@@ -3,35 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_description
-    - field.storage.node.field_actual_program_attendance
-    - field.storage.node.field_actual_program_expense
-    - field.storage.node.field_actual_program_outcomes
-    - field.storage.node.field_anticipated_cost
-    - field.storage.node.field_anticipated_participants
-    - field.storage.node.field_areas_for_improvement
-    - field.storage.node.field_college_houses
-    - field.storage.node.field_evaluated_by
-    - field.storage.node.field_evaluated_on
-    - field.storage.node.field_event_ends_on
-    - field.storage.node.field_event_priority
-    - field.storage.node.field_event_schedule
-    - field.storage.node.field_group_ref
-    - field.storage.node.field_groups
-    - field.storage.node.field_is_campus_wide
-    - field.storage.node.field_last_moderated_by
-    - field.storage.node.field_last_moderation_message
     - field.storage.node.field_location
-    - field.storage.node.field_long_text
     - field.storage.node.field_marketing_blurb
     - field.storage.node.field_media_file
-    - field.storage.node.field_program_communities
+    - field.storage.node.field_text_box_2
     - search_api.server.pantheon_search
   module:
     - content_moderation
     - group
+    - media
     - node
-    - publication_date
     - search_api_solr
     - url_alteration
 third_party_settings:
@@ -86,295 +67,6 @@ name: 'Solr Content (Chas Event / Notices)'
 description: ''
 read_only: false
 field_settings:
-  aggregated_field:
-    label: 'Aggregated field'
-    property_path: aggregated_field
-    type: string
-    configuration:
-      type: union
-      separator: |+
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      fields: {  }
-  field_actual_program_attendance:
-    label: 'Actual Program Attendance'
-    datasource_id: 'entity:node'
-    property_path: field_actual_program_attendance
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_actual_program_attendance
-  field_actual_program_expense:
-    label: 'Actual Program Expense'
-    datasource_id: 'entity:node'
-    property_path: field_actual_program_expense
-    type: decimal
-    dependencies:
-      config:
-        - field.storage.node.field_actual_program_expense
-  field_actual_program_outcomes:
-    label: 'Actual Program Outcomes'
-    datasource_id: 'entity:node'
-    property_path: field_actual_program_outcomes
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_actual_program_outcomes
-  field_anticipated_cost:
-    label: '$ Anticipated cost '
-    datasource_id: 'entity:node'
-    property_path: field_anticipated_cost
-    type: decimal
-    dependencies:
-      config:
-        - field.storage.node.field_anticipated_cost
-  field_anticipated_cost_1:
-    label: '$ Anticipated cost '
-    datasource_id: 'entity:node'
-    property_path: field_anticipated_cost
-    type: decimal
-    dependencies:
-      config:
-        - field.storage.node.field_anticipated_cost
-  field_anticipated_participants:
-    label: 'Anticipated number of participants '
-    datasource_id: 'entity:node'
-    property_path: field_anticipated_participants
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_anticipated_participants
-  field_areas_for_improvement:
-    label: 'Areas for improvement'
-    datasource_id: 'entity:node'
-    property_path: field_areas_for_improvement
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_areas_for_improvement
-  field_college_houses:
-    label: 'For Which House(s)?'
-    datasource_id: 'entity:node'
-    property_path: field_college_houses
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_college_houses
-  field_description:
-    label: Description
-    datasource_id: 'entity:group'
-    property_path: field_description
-    type: text
-    dependencies:
-      config:
-        - field.storage.group.field_description
-  field_evaluated_by:
-    label: 'Evaluated By'
-    datasource_id: 'entity:node'
-    property_path: field_evaluated_by
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_evaluated_by
-  field_evaluated_on:
-    label: 'Evaluated On'
-    datasource_id: 'entity:node'
-    property_path: field_evaluated_on
-    type: date
-    dependencies:
-      config:
-        - field.storage.node.field_evaluated_on
-  field_event_ends_on:
-    label: 'Event Ends On'
-    datasource_id: 'entity:node'
-    property_path: field_event_ends_on
-    type: date
-    dependencies:
-      config:
-        - field.storage.node.field_event_ends_on
-  field_event_priority:
-    label: 'CHAS Priority/Goal Area'
-    datasource_id: 'entity:node'
-    property_path: field_event_priority
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_event_priority
-  field_event_schedule:
-    label: 'Event Schedule'
-    datasource_id: 'entity:node'
-    property_path: field_event_schedule
-    type: date
-    dependencies:
-      config:
-        - field.storage.node.field_event_schedule
-  field_group_ref:
-    label: 'Group Ref'
-    datasource_id: 'entity:node'
-    property_path: field_group_ref
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_group_ref
-  field_groups:
-    label: Groups
-    datasource_id: 'entity:node'
-    property_path: field_groups
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_groups
-  field_is_campus_wide:
-    label: 'Campus wide'
-    datasource_id: 'entity:node'
-    property_path: field_is_campus_wide
-    type: boolean
-    dependencies:
-      config:
-        - field.storage.node.field_is_campus_wide
-  field_last_moderated_by:
-    label: 'Last Moderated By'
-    datasource_id: 'entity:node'
-    property_path: field_last_moderated_by
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_last_moderated_by
-  field_last_moderated_by_1:
-    label: 'Last Moderated By'
-    datasource_id: 'entity:node'
-    property_path: field_last_moderated_by
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_last_moderated_by
-  field_last_moderation_message:
-    label: 'Last Moderation Message'
-    datasource_id: 'entity:node'
-    property_path: field_last_moderation_message
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_last_moderation_message
-  field_location:
-    label: 'In which house will the event be held?'
-    datasource_id: 'entity:node'
-    property_path: field_location
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_location
-  field_long_text:
-    label: 'Which Floor(s)?'
-    datasource_id: 'entity:node'
-    property_path: field_long_text
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_long_text
   field_marketing_blurb:
     label: 'Marketing blurb'
     datasource_id: 'entity:node'
@@ -383,102 +75,42 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_marketing_blurb
-  field_media_file:
-    label: 'Intended Audience Attachment'
+  field_text_box_2:
+    label: 'Location of Program'
     datasource_id: 'entity:node'
-    property_path: field_media_file
-    type: integer
+    property_path: field_text_box_2
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_text_box_2
+  label:
+    label: 'Which house/team is planning the event? » Group » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_location:entity:label'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_location
+      module:
+        - group
+  name:
+    label: 'Intended Audience Attachment » Media » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_media_file:entity:name'
+    type: string
     dependencies:
       config:
         - field.storage.node.field_media_file
-  field_program_communities:
-    label: 'Program communities'
-    datasource_id: 'entity:node'
-    property_path: field_program_communities
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_program_communities
-  moderation_state:
-    label: 'Moderation state'
-    datasource_id: 'entity:node'
-    property_path: moderation_state
-    type: string
-    dependencies:
       module:
-        - content_moderation
-  moderation_state_1:
-    label: 'Moderation state'
-    datasource_id: 'entity:content_moderation_state'
-    property_path: moderation_state
-    type: string
-    dependencies:
-      module:
-        - content_moderation
-  nid:
-    label: ID
-    datasource_id: 'entity:node'
-    property_path: nid
-    type: integer
-    dependencies:
-      module:
-        - node
-  published_at:
-    label: 'Published on'
-    datasource_id: 'entity:node'
-    property_path: published_at
-    type: date
-    dependencies:
-      module:
-        - publication_date
-  status:
-    label: Published
-    datasource_id: 'entity:node'
-    property_path: status
-    type: boolean
-    dependencies:
-      module:
-        - node
+        - media
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: string
+    type: text
     dependencies:
       module:
         - node
-  type:
-    label: 'Content type'
-    datasource_id: 'entity:node'
-    property_path: type
-    type: string
-    dependencies:
-      module:
-        - node
-  type_1:
-    label: 'Group relationship type'
-    datasource_id: 'entity:group_relationship'
-    property_path: type
-    type: string
-    dependencies:
-      module:
-        - url_alteration
-  uid:
-    label: 'Authored by'
-    datasource_id: 'entity:node'
-    property_path: uid
-    type: integer
-    dependencies:
-      module:
-        - node
-  workflow:
-    label: Workflow
-    datasource_id: 'entity:content_moderation_state'
-    property_path: workflow
-    type: string
-    dependencies:
-      module:
-        - content_moderation
 datasource_settings:
   'entity:content_moderation_state':
     languages:

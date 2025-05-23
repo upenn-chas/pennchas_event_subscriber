@@ -671,14 +671,14 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
+            max_length: 220
             word_boundary: true
-            ellipsis: true
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
             strip_tags: true
-            trim: false
+            trim: true
             preserve_tags: ''
             html: false
           element_type: ''
@@ -696,7 +696,7 @@ display:
           click_sort_column: value
           type: text_trimmed
           settings:
-            trim_length: 100
+            trim_length: 500
           group_column: value
           group_columns: {  }
           group_rows: true

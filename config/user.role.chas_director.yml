@@ -49,6 +49,7 @@ permissions:
   - 'all events dashboard'
   - 'all reservations dashboard'
   - 'cancel smart date recur instances'
+  - 'chas central event'
   - 'configure all house1 group layout overrides'
   - 'configure all house_landing_page node layout overrides'
   - 'configure all page node layout overrides'

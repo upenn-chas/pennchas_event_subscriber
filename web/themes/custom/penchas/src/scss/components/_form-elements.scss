@@ -48,10 +48,10 @@
 //     top: 22px;
 //     height: 11px;
 //     width: 11px;
-//     background-color: #fff;  
+//     background-color: #fff;
 //     transform: rotate(-45deg);
 //     border-left: 2px solid $primaryColor;
-//     border-bottom: 2px solid $primaryColor; 
+//     border-bottom: 2px solid $primaryColor;
 //   }
 //   select {
 //     font-family: $teritoryFont;
@@ -74,7 +74,6 @@
 //   }
 // }
 
-
 // label {
 //   font-size: 12px;
 //   font-weight: 600;
@@ -86,7 +85,6 @@
 // .form-item {
 //   margin-bottom: 30px;
 // }
-
 
 // .reservation-form {
 //   .row {
@@ -131,13 +129,12 @@
 //   }
 // }
 
-
 // .repeat-reservation {
 //   background: #EBF2FF;
 //   border-radius: 10px;
 //   display: flex;
 //   width: calc(100% - 24px);
-//   margin-left: 12px; 
+//   margin-left: 12px;
 //   padding: 20px 12px 30px 12px;
 //   margin-bottom: 30px;
 //   flex-wrap: wrap;
@@ -149,7 +146,6 @@
 //     margin-bottom: 0px;
 //   }
 // }
-
 
 // .policy {
 //   label {
@@ -205,7 +201,7 @@
 //       border-bottom: 2px solid #fff;
 //       left: 4px;
 //       top: 3px;
-//       transform: rotate(-45deg);  
+//       transform: rotate(-45deg);
 //       @include media-query ('ipad') {
 //         top: 2
 //       }
@@ -224,7 +220,7 @@
 //     font-family: $teritoryFont;
 //     line-height: 25px;
 //     &:before {
-//       content: "";   
+//       content: "";
 //       height: 25px;
 //       width: 25px;
 //       background: url(../../assets/images/info-icon.jpg) no-repeat;
@@ -351,14 +347,14 @@
 // .js-form-item-field-event-schedule-0-time-wrapper-value-date {
 //   margin-right: 5px;
 // }
-// .node-chas-event-edit-form, 
-// .node-notices-edit-form, 
-// .node-chas-event-form, 
-// .node-reserve-room-form, 
-// .node-room-form, 
+// .node-chas-event-edit-form,
+// .node-notices-edit-form,
+// .node-chas-event-form,
+// .node-reserve-room-form,
+// .node-room-form,
 // .node-notices-form,
 // .node-article-form,
-// .comment-comment-form{ 
+// .comment-comment-form{
 //   margin-bottom: 30px;
 //   .row:has(.col-md-8) {
 //     margin-top: 30px;
@@ -369,7 +365,7 @@
 
 // 	table {
 //     color: $primaryColor;
-// 		&.field-multiple-table {  
+// 		&.field-multiple-table {
 // 			tbody {
 // 				tr {
 
@@ -432,7 +428,7 @@
 //                   min-width: auto;
 //                 }
 //               }
-//               .smartdate--time-inline{ 
+//               .smartdate--time-inline{
 //                 .time-start {
 //                   flex-wrap: nowrap;
 //                   gap: 10px;
@@ -600,7 +596,7 @@
 // 			}
 // 		}
 // 	}
-//   .fieldgroup{ 
+//   .fieldgroup{
 //     .fieldset-legend {
 //       margin-bottom: 10px;
 //       display: block;
@@ -609,15 +605,15 @@
 //   .image-widget-data {
 //     width: 100%;
 //   }
-//   .form-type-managed-file{ 
-//     .form-managed-file{ 
+//   .form-type-managed-file{
+//     .form-managed-file{
 //       input {
 //         display: flex;
 //         align-content: center;
 //       }
 //     }
 //   }
-//   .form-actions{ 
+//   .form-actions{
 //     #edit-submit {
 //       background: #011f5b;
 //       font-size: 20px;
@@ -655,7 +651,7 @@
 //       &:hover{
 //         background-color: #fd4453;
 //         color: #fff;
-//       }      
+//       }
 //     }
 //     .btn-primary {
 //       background: transparent;
@@ -691,7 +687,7 @@
 // 		padding: 18px 20px 16px 20px;
 // 		font-family: tablet-gothic;
 // 		text-decoration: none;
-// 		border: 1px solid #011f5b;		
+// 		border: 1px solid #011f5b;
 // 		&:hover {
 // 			background: transparent;
 // 			color: #011f5b;
@@ -706,7 +702,7 @@
 //   padding-left: 0;
 //   padding-right: 10px;
 // }
-// .user-login-form { 
+// .user-login-form {
 //   padding-top: 30px;
 //   padding-bottom: 30px;
 //   .form-submit{
@@ -727,7 +723,7 @@
 //       background: transparent;
 //       color: #011f5b;
 //     }
-//   }  
+//   }
 // }
 // .block-field-blocknodearticlefield-chas-news {
 //   padding-bottom: 30px;
@@ -754,7 +750,6 @@
 //   margin-right: 10px;
 //   font-weight: 700;
 // }
-
 
 // .node-reserve-room-form {
 //   .field--name-field-room {
@@ -821,7 +816,7 @@
 //     padding-right: 0;
 //   &.has-multiple-fields-remove-button{
 //     padding: 0 !important;
-//   }   
+//   }
 
 //   }
 // }
@@ -884,7 +879,6 @@
 // // }
 // // }
 
-
 // .info-fields {
 //   background: #EBF2FF;
 //   padding: 13px 20px;
@@ -896,7 +890,7 @@
 //     font-family: $teritoryFont;
 //     line-height: 25px;
 //     &:before {
-//       content: "";   
+//       content: "";
 //       height: 25px;
 //       width: 25px;
 //       background: url(../../assets/images/info-icon.svg) no-repeat;
@@ -929,7 +923,7 @@
 //         color: #011f5b;
 //         border-color: #ffea3f;
 //         }
-//       }  
+//       }
 //       [data-drupal-selector="edit-delete"]{
 //         border: 1px solid $primaryColor;
 //         border-radius: 10px;
@@ -1043,7 +1037,6 @@
 }
 
 @supports (font: -apple-system-body) {
-
   input[type="date"]::-webkit-datetime-edit,
   input[type="time"]::-webkit-datetime-edit {
     font-family: $arialFont;
@@ -1235,7 +1228,7 @@ label {
     }
   }
 
-  input:checked+label {
+  input:checked + label {
     &:before {
       background-color: $primaryColor;
     }
@@ -1316,7 +1309,8 @@ label {
 }
 
 .form-item {
-  .input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  .input-group:not(.has-validation)
+    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
     border-radius: 10px;
   }
 }
@@ -1419,7 +1413,6 @@ label {
 //   margin-right: 5px;
 // }
 
-
 .smartdate--time-inline div.time-start,
 .smartdate--time-inline div.time-end {
   gap: 5px;
@@ -1452,12 +1445,12 @@ label {
   * {
     font-family: tablet-gothic;
   }
-  .field--type-smartdate{
+  .field--type-smartdate {
     margin-top: 20px;
-    .field-event-schedule-add-more-wrapper{
+    .field-event-schedule-add-more-wrapper {
       line-height: normal;
     }
-    .js-form-item{
+    .js-form-item {
       margin-bottom: 16px;
     }
   }
@@ -1483,7 +1476,6 @@ label {
         display: none;
       }
     }
-
 
     &.field-multiple-table {
       tbody {
@@ -1557,7 +1549,6 @@ label {
                 color: #011f5b;
               }
             }
-
 
             .smartdate--widget {
               padding-top: 0;
@@ -1677,7 +1668,7 @@ label {
                 }
               }
 
-              .form-type-number+.form-type-date {
+              .form-type-number + .form-type-date {
                 vertical-align: bottom;
               }
 
@@ -1789,7 +1780,7 @@ label {
       text-transform: uppercase;
       font-family: tablet-gothic;
       margin-bottom: 5px;
-      letter-spacing: .7px;
+      letter-spacing: 0.7px;
     }
   }
 
@@ -1940,7 +1931,6 @@ label {
 }
 
 .view-id-event_moderation_view {
-
   .node--unpublished {
     padding: 20px 0 0 0;
   }
@@ -1953,7 +1943,8 @@ label {
   max-width: 1235px;
 }
 
-.node--view-mode-moderator .field--label-inline .field__item {}
+.node--view-mode-moderator .field--label-inline .field__item {
+}
 
 .node--view-mode-moderator .field--label-inline .field__label {
   margin-right: 10px;
@@ -2002,7 +1993,8 @@ label {
   &::after {
     content: "";
     display: inline-block;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="%23EE0000" d="M0,7.562l1.114-3.438c2.565,0.906,4.43,1.688,5.59,2.35C6.398,3.553,6.237,1.544,6.22,0.447h3.511 c-0.05,1.597-0.234,3.6-0.558,6.003c1.664-0.838,3.566-1.613,5.714-2.325L16,7.562c-2.05,0.678-4.06,1.131-6.028,1.356 c0.984,0.856,2.372,2.381,4.166,4.575l-2.906,2.059c-0.935-1.274-2.041-3.009-3.316-5.206c-1.194,2.275-2.244,4.013-3.147,5.206 l-2.856-2.059c1.872-2.307,3.211-3.832,4.017-4.575C3.849,8.516,1.872,8.062,0,7.562"/></svg>') no-repeat center center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="%23EE0000" d="M0,7.562l1.114-3.438c2.565,0.906,4.43,1.688,5.59,2.35C6.398,3.553,6.237,1.544,6.22,0.447h3.511 c-0.05,1.597-0.234,3.6-0.558,6.003c1.664-0.838,3.566-1.613,5.714-2.325L16,7.562c-2.05,0.678-4.06,1.131-6.028,1.356 c0.984,0.856,2.372,2.381,4.166,4.575l-2.906,2.059c-0.935-1.274-2.041-3.009-3.316-5.206c-1.194,2.275-2.244,4.013-3.147,5.206 l-2.856-2.059c1.872-2.307,3.211-3.832,4.017-4.575C3.849,8.516,1.872,8.062,0,7.562"/></svg>')
+      no-repeat center center;
     background-size: contain;
     margin-left: 2px; // Adjust spacing if needed
     inset: unset !important;
@@ -2013,7 +2005,7 @@ label {
   .form-floating {
     padding-top: 25px;
 
-    >label {
+    > label {
       padding: 0;
       word-break: break-word;
       box-sizing: border-box;
@@ -2022,7 +2014,9 @@ label {
   }
 }
 
-.node-form #edit-field-event-schedule-wrapper button#edit-field-event-schedule-add-more {
+.node-form
+  #edit-field-event-schedule-wrapper
+  button#edit-field-event-schedule-add-more {
   display: none;
 }
 
@@ -2049,7 +2043,6 @@ label {
 
 .node-chas-event-form,
 .node-form {
-
   .block,
   .field--widget-term-reference-tree {
     ul {
@@ -2249,9 +2242,7 @@ input[type="time"]::-webkit-datetime-edit-text {
   padding-bottom: 6px;
 }
 
-
 .mac_os {
-
   input[type="date"]::-webkit-datetime-edit,
   input[type="time"]::-webkit-datetime-edit {
     padding-top: 0px;
@@ -2297,7 +2288,6 @@ input[type="time"]::-webkit-datetime-edit-text {
           td {
             .smartdate--widget {
               .smartdate--time-inline {
-
                 .time-start,
                 .time-end {
                   padding-top: 0;
@@ -2391,12 +2381,12 @@ input[type="time"]::-webkit-datetime-edit-text {
       line-height: normal;
     }
   }
-  p.repeat-text{
+  p.repeat-text {
     font-size: 14px;
     font-weight: 500;
     text-transform: capitalize;
     margin-bottom: 5px;
-    display: inline-block; 
+    display: inline-block;
   }
 }
 
@@ -2405,11 +2395,11 @@ input[type="time"]::-webkit-datetime-edit-text {
 }
 
 table > thead > tr > th > h4 {
-    line-height: 24px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 5px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 #edit-field-location-wrapper legend.form-required::after {
@@ -2427,19 +2417,20 @@ table > thead > tr > th > h4 {
   margin-bottom: 0.125rem !important;
 }
 
-
-.item-list .field--widget-term-reference-tree ul, .block .field--widget-term-reference-tree ul, .field--widget-term-reference-tree ul{
+.item-list .field--widget-term-reference-tree ul,
+.block .field--widget-term-reference-tree ul,
+.field--widget-term-reference-tree ul {
   margin-bottom: 10px;
 }
 
-.js-media-library-widget{
+.js-media-library-widget {
   .fieldset-legend {
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     font-family: tablet-gothic;
     margin-bottom: 5px;
-  } 
+  }
 
   .field-prefix {
     font-size: 12px;
@@ -2450,9 +2441,23 @@ table > thead > tr > th > h4 {
 }
 
 #layout-builder-modal {
- .fieldset-legend {
-    color: #383A40;
- }
+  .fieldset-legend {
+    color: #383a40;
+  }
+
+  .label,
+  .fieldset-legend {
+    font-family: tablet-gothic;
+    font-size: 1rem;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .ck-source-editing-area {
+    textarea {
+      height: 100%;;
+    }
+  }
 }
 
 .layout-region-node-main {
@@ -2469,7 +2474,7 @@ table > thead > tr > th > h4 {
   }
 }
 
-// .node-chas-event-edit-form, 
+// .node-chas-event-edit-form,
 // .node-chas-event-form {
 
 //   .field--widget-string-textfield,
@@ -2484,7 +2489,6 @@ table > thead > tr > th > h4 {
 
 //   }
 
-
 //   .field--type-entity-reference,
 //   .field--type-string,
 //   .field--type-boolean,
@@ -2497,6 +2501,5 @@ table > thead > tr > th > h4 {
 //   .form-item-terms-condition {
 //     margin-bottom: 50px !important;
 //   }
-
 
 // }

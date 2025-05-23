@@ -21,20 +21,20 @@ class EventFormAlter
         $form['field_location']['widget']['#options'] = $options['houses'];
         $houseCount = count($options['houses']);
         // if ($houseCount > 1) {
-            // $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
-            // $form['field_college_houses']['widget']['#options'] = ['_none' => t('All college houses')] + $options['houses'];
+        // $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
+        // $form['field_college_houses']['widget']['#options'] = ['_none' => t('All college houses')] + $options['houses'];
         // }
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
         }
 
-        $drupalRoles = ['administrator', 'chas_director', 'chas_technology', 'chas_professional_staff'];
-        $userRoles = \Drupal::currentUser()->getRoles(TRUE);
-        $hasTargetRoles = count(array_intersect($drupalRoles, $userRoles)) > 0;
-        if (!$hasTargetRoles) {
-            $form['field_flag']['#access'] = FALSE;
-            $form['field_location']['widget']['#required'] = TRUE;
+        $form['field_flag']['#access'] = FALSE;
+        $form['field_location']['widget']['#required'] = TRUE;
+        if (\Drupal::service('pennchas_common.access_check')->checkForNonGroupMember('chas central event')) {
+            $form['field_flag']['#access'] = TRUE;
+            $form['field_location']['widget']['#required'] = FALSE;
         }
+
         unset($form['field_event_schedule']['widget']['add_more']);
 
         if ($form['#form_id'] === 'node_chas_event_form') {

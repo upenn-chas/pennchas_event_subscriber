@@ -658,7 +658,7 @@ body{
   .js-form-type-textfield {
     display: flex;
     flex-wrap: wrap;
-    // flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
 
 
@@ -689,6 +689,15 @@ body{
         display: none;
       }
     }
+  }
+
+
+  select[name="field_intended_audience"] {
+    width: 180px;
+  }
+  
+  input[name="title"] {
+    width: 245px;
   }
 
   .btn.btn-primary {
@@ -1061,6 +1070,7 @@ body{
 }
 
 .reports {
+  margin-bottom: 50px;
   .views-exposed-form {
     .d-flex {
       gap: 12px;

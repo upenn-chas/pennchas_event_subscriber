@@ -21,3 +21,7 @@ all reservations dashboard:
 pending moderation reservations dashboard:
   title: "Access pending moderation reservations Dashboard Page"
   description: "Allow user to access the pending moderation reservations on the dashboard."
+  
+chas central event:
+  title: "Allow the user to chas central events"
+  description: "Allow the user to create and access the chas central event."

@@ -37,34 +37,31 @@
     'space-bottoms'
   ]
 %}
-  {% block content %}
-  {# {{dump(content)}} #}
+{% block content %}
 <section  {{ attributes.addClass(classes) }}>
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="cta" style="background-color: #92b7ff;">
           <div class="cta-left">
-          {{ title_prefix }}
-            <h2><img src="/{{themePath}}/images/icons/cta-contact-icon.png" alt="cta-contact icon"> <span>{{ label }}</span></h2>
+            {{ title_prefix }}
+              <h2><img src="/{{themePath}}/images/icons/cta-contact-icon.png" alt="cta-contact icon"> <span>{{ label }}</span></h2>
             {{ title_suffix }}
-          </div>
-          {% if content.field_cta.0 %}
-            <div class="cta-right">
-                <a class="btn btn-secondary" href="{{content.field_cta.0['#url'].toString()}}" role="button">
-                  {{content.field_cta.0['#title']}}
-                </a>
-              {% else %}
-                {% if not logged_in %}
-                  <a href="{{user_login_path}}" class="btn btn-secondary">Log In to Get Started</a>
-                {% else %}
-                  <a href="{{base_path}}" class="btn btn-secondary">Contact</a>
-                {% endif %}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> {# End cta-left #}
+          <div class="cta-right">
+            {% if content.field_cta.0 %}
+              <a class="btn btn-secondary" href="{{content.field_cta.0['#url'].toString()}}" role="button">
+                {{content.field_cta.0['#title']}}
+              </a>
+            {% elseif not logged_in %}
+                <a href="{{user_login_path}}" class="btn btn-secondary">Log In to Get Started</a>
+            {% else %}
+                <a href="{{base_path}}" class="btn btn-secondary">Contact</a>
+            {% endif %}
+          </div> {# End cta-right #}
+        </div>   {# End cta #}
+      </div>   {# End col 12 #}
+    </div>  {# End row #}
+  </div>  {# End container #}
 </section>
-  {% endblock %}
+{% endblock %}

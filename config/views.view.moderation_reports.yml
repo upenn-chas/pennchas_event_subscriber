@@ -665,8 +665,38 @@ display:
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
-              reset_button_always_show: true
+              reset_button_always_show: false
             filter:
+              field_flag_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_groups_target_id_verf:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              title:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
               moderation_state:
                 plugin_id: default
                 advanced:
@@ -761,7 +791,7 @@ display:
             widget: select
             multiple: false
             remember: false
-            default_group: All
+            default_group: '2'
             default_group_multiple: {  }
             group_items:
               1:
@@ -772,10 +802,6 @@ display:
                 title: 'No'
                 operator: '='
                 value: '0'
-              3:
-                title: ''
-                operator: '='
-                value: ''
         field_groups_target_id_verf:
           id: field_groups_target_id_verf
           table: node__field_groups
@@ -1242,7 +1268,12 @@ display:
         header: true
       use_ajax: true
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: dashboard/reports/events-moderation
     cache_metadata:
       max-age: -1

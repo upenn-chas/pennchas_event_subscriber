@@ -8,6 +8,11 @@ class ReportExposeFormAlter
 {
     public function alter(array $form, FormStateInterface $formState)
     {
+
+        if (isset($form['field_flag_value']) && !\Drupal::service('pennchas_common.access_check')->checkForNonGroupMember('chas central event')) {
+            $form['field_flag_value']['#access'] = FALSE;
+        }
+
         if (isset($form['moderation_state'])) {
             unset($form['moderation_state']['#options']['All']);
         }

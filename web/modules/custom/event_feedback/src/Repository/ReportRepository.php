@@ -42,15 +42,9 @@ class ReportRepository
 
 
         if (isset($filters['chas_central_event']) && $filters['chas_central_event'] !== '_all') {
-            if ($filters['chas_central_event'] != '1') {
-                $eventQuery->condition(
-                    $eventQuery->orConditionGroup()
-                        ->isNull('nff.field_flag_value')
-                        ->condition('nff.field_flag_value', 1, '!=')
-                );
-            } else {
-                $eventQuery->condition('nff.field_flag_value', 1);
-            }
+            $eventQuery->condition('nff.field_flag_value', $filters['chas_central_event']);
+        } else if(!isset($filters['chas_central_event'])) {
+            $eventQuery->condition('nff.field_flag_value', 0);
         }
 
         if (isset($filters['gid']) && $filters['gid'] !== '_all') {
