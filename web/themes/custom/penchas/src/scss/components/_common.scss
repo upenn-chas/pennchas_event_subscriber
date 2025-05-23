@@ -1572,6 +1572,9 @@ ul.pagination.js-pager__items {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    &:has(.media-embed-resized) {
+      display: block;
+    }
     p{
       font-size: 24px;
       line-height: 28px;
