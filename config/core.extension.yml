@@ -160,6 +160,7 @@ module:
   standard: 0
   svg_image_field: 0
   svg_image_field_media_bundle: 0
+  symfony_mailer_lite: 0
   system: 0
   tamper: 0
   taxonomy: 0
