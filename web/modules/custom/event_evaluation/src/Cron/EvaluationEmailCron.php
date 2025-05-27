@@ -15,7 +15,7 @@ class EvaluationEmailCron
     public function __construct(EmailHandlerInterface $mailer, LoggerChannelFactoryInterface $logger)
     {
         $this->mailer = $mailer;
-        $this->logger = $logger->get(get_class());
+        $this->logger = $logger->get('event_evaluation');
     }
 
     public function notifyEndEventsForEvaluation()

@@ -12,7 +12,7 @@ class UpdateEndsOnDate
 
     public function __construct(LoggerChannelFactoryInterface $logger)
     {
-        $this->logger = $logger->get(get_class());
+        $this->logger = $logger->get('update_ends_on_date');
     }
 
     public function updateEndsOnDate()

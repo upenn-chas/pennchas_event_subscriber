@@ -15,7 +15,7 @@ class EvaluationConfirmation
     public function __construct(EmailHandlerInterface $mailer, LoggerChannelFactoryInterface $logger)
     {
         $this->mailer = $mailer;
-        $this->logger = $logger->get(get_class());
+        $this->logger = $logger->get('evaluation_confirmation');
     }
 
     public function sendConfirmationEmail(Node $node)
