@@ -1,7 +1,0 @@
-name: 'Penchas Custom configs'
-type: module
-description: 'Custom module to handle all custom headings.'
-core_version_requirement: ^8 || ^9
-package: Custom
-dependencies:
-  - drupal:core

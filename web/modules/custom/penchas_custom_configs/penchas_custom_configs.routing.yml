@@ -1,7 +1,0 @@
-penchas_custom_configs.custom_headings:
-  path: '/penchas-custom-headings/{heading_id}'
-  defaults:
-    _controller: '\Drupal\penchas_custom_configs\Controller\HeadingController::headingPage'
-    _title: 'Penchas Custom Headings Page'
-  requirements:
-    _permission: 'access content'
