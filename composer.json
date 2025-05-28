@@ -286,8 +286,6 @@
         "drupal/entity_reference_revisions": "^1.12",
         "drupal/feeds": "^3.0",
         "drupal/field_group": "^3.6",
-        "drupal/fullcalendar": "^3.0",
-        "drupal/fullcalendar_view": "^5.2",
         "drupal/gcontent_moderation": "3.0.x-dev@dev",
         "drupal/gin": "^4.0",
         "drupal/gin_lb": "^1.0@RC",
