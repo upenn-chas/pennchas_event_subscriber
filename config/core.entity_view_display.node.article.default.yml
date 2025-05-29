@@ -3,9 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
-    - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
     - field.field.node.article.field_is_campus_wide
@@ -16,7 +14,6 @@ dependencies:
     - field.field.node.article.layout_builder__layout
     - node.type.article
   module:
-    - comment
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
@@ -88,23 +85,6 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             weight: 3
-            additional: {  }
-          7ff669f6-4a61-4371-aa4d-cc394f977bfa:
-            uuid: 7ff669f6-4a61-4371-aa4d-cc394f977bfa
-            region: content
-            configuration:
-              id: 'field_block:node:article:comment'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: comment_default
-                label: above
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-            weight: 4
             additional: {  }
           05a8313d-d80b-4b8a-89e5-b32133781129:
             uuid: 05a8313d-d80b-4b8a-89e5-b32133781129
@@ -312,15 +292,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
-    region: content
-  comment:
-    type: comment_default
-    label: above
-    settings:
-      view_mode: default
-      pager_id: 0
-    third_party_settings: {  }
-    weight: 110
     region: content
   field_blocks_ref:
     type: entity_reference_label

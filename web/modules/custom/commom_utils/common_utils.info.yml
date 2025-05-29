@@ -5,4 +5,9 @@ core_version_requirement: ^10
 version: 1.0
 package: Custom
 dependencies:
- - drupal:group
+  - drupal:field
+  - drupal:node
+  - drupal:user
+  - drupal:content_moderation
+  - drupal:group
+ 

@@ -27,15 +27,17 @@ class FieldOption
      */
     public function values(NodeInterface $node, string $field)
     {
-        $fieldDefinition = $node->get('field_intended_outcomes');
+        $fieldDefinition = $node->get($field);
         $selectedValues = $fieldDefinition->getValue();
         $fieldSettings = $fieldDefinition->getDataDefinition()->getSettings();
         $allowedValues = $fieldSettings['allowed_values'];
 
         $data = [];
 
-        foreach ($selectedValues as $value) {
-            $data[] = $allowedValues[$value['value']];
+        if($allowedValues) {
+            foreach ($selectedValues as $value) {
+                $data[] = $allowedValues[$value['value']];
+            }
         }
 
         return $data;

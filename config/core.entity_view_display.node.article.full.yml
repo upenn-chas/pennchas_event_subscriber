@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.article.body
-    - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
     - field.field.node.article.field_is_campus_wide
@@ -17,6 +16,7 @@ dependencies:
     - node.type.article
   module:
     - layout_builder
+    - layout_discovery
     - user
 third_party_settings:
   layout_builder:
@@ -61,7 +61,6 @@ content:
     region: content
 hidden:
   body: true
-  comment: true
   field_blocks_ref: true
   field_chas_news: true
   field_is_campus_wide: true

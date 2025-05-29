@@ -1119,7 +1119,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: ''
+      title: Articles
       fields:
         title:
           id: title
@@ -1353,9 +1353,9 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
+            max_length: 120
             word_boundary: true
-            ellipsis: true
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -1376,9 +1376,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_trimmed
+          type: text_summary_or_trimmed
           settings:
-            trim_length: 100
+            trim_length: 140
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1478,7 +1478,12 @@ display:
             value: '<div class="col-12 col-lg-12 section-title space"><h3>News &amp; Announcements</h3></div>'
             format: full_html
           tokenize: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: articles-listing
     cache_metadata:
       max-age: -1

@@ -65,7 +65,13 @@ class ModerationLog
     }
 
     /**
-     * Builds and returns a rendered table for the moderation log .
+     * Builds a table of moderation logs for a given node ID.
+     *
+     * @param int $nid
+     *   The node ID for which to build the moderation log table.
+     *
+     * @return string
+     *   Rendered HTML of the moderation log table.
      */
     public function buildModerationLogTable(int $nid)
     {
@@ -101,9 +107,15 @@ class ModerationLog
     }
 
     /**
-     * Fetches moderation data for the given node ID.
+     * Retrieves moderation data for a specific node ID from database.
+     *
+     * @param int $nid
+     *   The node ID for which to retrieve moderation data.
+     *
+     * @return array
+     *   An array of moderation data for the specified node ID.
      */
-    public function getNodeModerationData(int $nid)
+    private function getNodeModerationData(int $nid)
     {
         $query = $this->connection->select('content_moderation_state_field_revision', 'cmsfr');
         $query->fields('cmsfr', ['moderation_state']);

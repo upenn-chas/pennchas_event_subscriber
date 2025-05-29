@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.article.body
-    - field.field.node.article.comment
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
     - field.field.node.article.field_is_campus_wide
@@ -192,7 +191,6 @@ content:
     weight: 1
     region: content
 hidden:
-  comment: true
   field_blocks_ref: true
   field_last_state: true
   field_location: true

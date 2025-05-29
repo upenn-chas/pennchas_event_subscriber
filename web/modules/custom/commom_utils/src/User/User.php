@@ -35,6 +35,16 @@ class User
         return array_unique(array_merge($nonGroupMembers, $groupMembers));
     }
 
+    /**
+     * Retrieves a list of user IDs, that have the specified permission.
+     * The returned users are not members of any group/house.
+     *
+     * @param string $permission
+     *   The permission to check.
+     *
+     * @return array
+     *   An array of user IDs that have the specified permission.
+     */
     protected function getNonGroupMemberUsers(string $permission)
     {
         $roles = $this->getNonGroupRolesWithPermission($permission);
@@ -50,6 +60,20 @@ class User
         }
         return [];
     }
+
+    /**
+     * Retrieves a list of user IDs, that have the specified permission.
+     * The returned users are member of one or more group/house.
+     *
+     * @param string $permission
+     *   The permission to check.
+     * 
+     * @param array $groupIds
+     *  An array of group IDs to check for members.
+     *
+     * @return array
+     *   An array of user IDs that have the specified permission.
+     */
     protected function getGroupMemberUsers(string $permission, array $groupIds)
     {
         if (!$groupIds) {
@@ -73,6 +97,16 @@ class User
         return $groupUserIds;
     }
 
+
+    /**
+     * Retrieves a list of drupal roles that have the specified permission.
+     * 
+     * @param string $permission
+     *   The permission to check.
+     *
+     * @return array
+     *   An array of role IDs that have the specified permission.
+     */
     protected function getNonGroupRolesWithPermission(string $permission)
     {
         $roles = Role::loadMultiple();
@@ -86,7 +120,15 @@ class User
         return $moderatorRoles;
     }
 
-
+    /**
+     * Retrieves a list of group roles that have the specified permission.
+     *
+     * @param string $permission
+     *   The permission to check.
+     *
+     * @return array
+     *   An array of group role IDs that have the specified permission.
+     */
     protected function getGroupRolesWithPermission(string $permission)
     {
         $groupType = GroupType::load($this->groupType);
