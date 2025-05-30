@@ -775,19 +775,20 @@ function penchas_preprocess_block(&$variables)
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
 
-  if ($variables['plugin_id'] === 'system_menu_block:account') {
-    $current_path = \Drupal::service('path.current')->getPath();
-    $destination = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
-    foreach ($variables['content']['#items'] as $key => $item) {
-      if (isset($item['url']) && $item['url']->getRouteName() === 'simplesamlphp_auth.saml_login') {
-        $variables['content']['#items'][$key]['url'] = \Drupal\Core\Url::fromRoute('simplesamlphp_auth.saml_login',
-          [
-            'destination' => $destination,
-          ]
-        )->setOptions(['attributes' => ['class' => ['nav-link--saml-login']]]);
-      }
-    }
-  }
+  // if ($variables['plugin_id'] === 'system_menu_block:account') {
+  //   $current_path = \Drupal::service('path.current')->getPath();
+  //   $destination = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+  //   dump($destination);
+  //   foreach ($variables['content']['#items'] as $key => $item) {
+  //     if (isset($item['url']) && $item['url']->getRouteName() === 'simplesamlphp_auth.saml_login') {
+  //       $variables['content']['#items'][$key]['url'] = \Drupal\Core\Url::fromRoute('simplesamlphp_auth.saml_login',
+  //         [
+  //           'destination' => $destination,
+  //         ]
+  //       )->setOptions(['attributes' => ['class' => ['nav-link--saml-login']]]);
+  //     }
+  //   }
+  // }
 
   if ($variables['plugin_id'] == 'inline_block:houses_sliders') {
     $group_storage = \Drupal::entityTypeManager()->getStorage('group');
