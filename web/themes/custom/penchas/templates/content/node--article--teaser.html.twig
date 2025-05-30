@@ -73,19 +73,19 @@
   ]
 %}
 <div class="news-card">
-              <div class="news-card-left">
-                <div class="news-head">
-                  {% if content.field_chas_news['#items'] %}
-                    <div class="tags">
-                      {{content.field_chas_news}}
-                    </div>
-                  {% endif %}
-                  <span class="article-date">{{node.published_at.value|format_date('only_date_format') }}</span>
-                </div>
-                <h5><a href="{{ url }}">{{ label }}</a></h5>
-                <p>{{ content.body }}</p>
-              </div>
-              <div class="news-card-right">
-                {{content.field_media_image}}
-              </div>
-            </div>
+  <div class="news-card-left">
+    <div class="news-head">
+      {% if content.field_chas_news['#items'] %}
+        <div class="tags">
+          {{content.field_chas_news}}
+        </div>
+      {% endif %}
+      <span class="article-date">{{content.published_at}}</span>
+    </div>
+    <h5><a href="{{ url }}">{{ label }}</a></h5>
+    <p>{{ content.body }}</p>
+  </div>
+  <div class="news-card-right">
+    {{content.field_media_image}}
+  </div>
+</div>

@@ -119,7 +119,11 @@
                           </div>
                           <div class="article banner-info items-gap">
                               <h1>{{node.title.value}}</h1>
-                              <p class="article-date"> {{ node.published_at.value|format_date('only_date_format') }}</p>
+                              <p class="article-date"> 
+                                {% if node.published_at.value %}
+                                  {{ node.published_at.value|format_date('only_date_format') }}
+                                {% endif %}
+                              </p>
                               {% if node.body %}
                                 {% if node.body.0 %}
                                   {{node.body.0.value|t}}
