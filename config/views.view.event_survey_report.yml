@@ -1279,7 +1279,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Is CHAS Central Event?'
+          label: 'Is this a CHAS Central Event?'
           exclude: false
           alter:
             alter_text: false

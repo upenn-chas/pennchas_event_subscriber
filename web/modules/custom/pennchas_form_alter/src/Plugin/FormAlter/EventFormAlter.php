@@ -70,7 +70,18 @@ class EventFormAlter
         ];
 
         $form['#attached']['library'][] = 'pennchas_form_alter/custom_smart_date';
+        $form['#validate'][] = [$this, 'customValidator'];
         return $form;
+    }
+
+    public function customValidator(array $form, FormStateInterface $formState)
+    {
+        $values = $formState->getValues();
+        if (empty($values['field_location'][0]['target_id']) && $values['field_flag']['value'] === 0) {
+            $formState->setErrorByName('field_location', t('%field is required.', [
+                '%field' => $form['field_location']['widget']['#title']
+            ]));
+        }
     }
 
     protected function getOptions(AccountInterface $currentUser)

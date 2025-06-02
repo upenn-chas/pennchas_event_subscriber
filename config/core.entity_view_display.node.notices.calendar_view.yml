@@ -1,0 +1,530 @@
+uuid: 5ea05473-1d09-4af9-ab2c-339f45e60ebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.notices.title
+    - core.entity_view_mode.node.calendar_view
+    - field.field.node.notices.field_blocks_ref
+    - field.field.node.notices.field_event_schedule
+    - field.field.node.notices.field_group_ref
+    - field.field.node.notices.field_groups
+    - field.field.node.notices.field_last_state
+    - field.field.node.notices.field_marketing_blurb
+    - field.field.node.notices.field_media_file
+    - field.field.node.notices.field_media_image
+    - field.field.node.notices.field_text_box
+    - node.type.notices
+  module:
+    - bootstrap_layout_builder
+    - layout_builder
+    - layout_builder_restrictions
+    - smart_date
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: 'space event-details-wrap notice-details-wrap'
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: video
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: ''
+                video:
+                  media_id: ''
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: null
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+          context_mapping: {  }
+        components:
+          3b24ce48-5d73-43d3-bf82-db1fe981528e:
+            uuid: 3b24ce48-5d73-43d3-bf82-db1fe981528e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: section-heading
+                  tag: h1
+                  link: true
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          8cdf3dad-c450-4167-b7de-49d434653201:
+            uuid: 8cdf3dad-c450-4167-b7de-49d434653201
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_groups'
+              label: 'House Affected'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          29c28a54-763c-45e7-88f5-f4e47ffe8d26:
+            uuid: 29c28a54-763c-45e7-88f5-f4e47ffe8d26
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_text_box'
+              label: Location
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          75fd0199-2b8b-4c7e-90d0-077675abe735:
+            uuid: 75fd0199-2b8b-4c7e-90d0-077675abe735
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_media_file'
+              label: Attachment
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          8e015ee1-465f-4e8f-a78a-39183a7984c1:
+            uuid: 8e015ee1-465f-4e8f-a78a-39183a7984c1
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_marketing_blurb'
+              label: Description
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: event-detail-left
+                  tag: p
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          d863b74a-df9b-4ced-9484-77e5bc8c4410:
+            uuid: d863b74a-df9b-4ced-9484-77e5bc8c4410
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_event_schedule'
+              label: 'Start/End Date and Time'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_default
+                label: hidden
+                settings:
+                  timezone_override: ''
+                  format: front_view
+                  force_chronological: false
+                  add_classes: false
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: false
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: ''
+                          location: ''
+                          description: ''
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: true
+                          past_events: false
+                          target: ''
+                          ignore_timezone_if_UTC: true
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+            weight: 2
+            additional: {  }
+          c8747d6f-1d3b-45f3-81aa-d8e021b0c7a7:
+            uuid: c8747d6f-1d3b-45f3-81aa-d8e021b0c7a7
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_event_schedule'
+              label: 'Start/End Date and Time'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_recurring
+                label: hidden
+                settings:
+                  timezone_override: ''
+                  format: dashboard_date
+                  force_chronological: false
+                  add_classes: true
+                  time_wrapper: true
+                  localize: false
+                  parts:
+                    start: start
+                    end: end
+                    duration: '0'
+                  duration:
+                    separator: ' | '
+                    unit: ''
+                    decimals: 2
+                    suffix: h
+                  past_display: null
+                  upcoming_display: null
+                  show_next: false
+                  current_upcoming: false
+                third_party_settings:
+                  date_augmenter:
+                    instances:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_text_box]'
+                          description: '[node:field_marketing_blurb]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: true
+                          target: ''
+                          ignore_timezone_if_UTC: false
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+                    rule:
+                      status:
+                        addtocal: true
+                      weights:
+                        order:
+                          addtocal:
+                            weight: 0
+                      settings:
+                        addtocal:
+                          label: 'Add to calendar'
+                          event_title: '[node:title]'
+                          location: '[node:field_text_box]'
+                          description: '[node:field_marketing_blurb]'
+                          retain_spacing: false
+                          icons: true
+                          max_desc: 60
+                          ellipsis: false
+                          past_events: true
+                          target: ''
+                          ignore_timezone_if_UTC: false
+                      augmenter_settings:
+                        settings__formatter__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
+            weight: 6
+            additional: {  }
+          fb192726-9d3e-4575-9f8d-f3a98cef94f5:
+            uuid: fb192726-9d3e-4575-9f8d-f3a98cef94f5
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:notices:field_media_image'
+              label: Image
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_thumbnail
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: event_highlight_image
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+        - 'bootstrap_layout_builder:blb_col_8'
+id: node.notices.calendar_view
+targetEntityType: node
+bundle: notices
+mode: calendar_view
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_blocks_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: blb_region_col_1
+  field_event_schedule:
+    type: smartdate_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        start: start
+        end: end
+        duration: '0'
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_group_ref:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_groups:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_last_state:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 29
+    region: blb_region_col_1
+  field_marketing_blurb:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_media_file:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 28
+    region: blb_region_col_1
+  field_media_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: blb_region_col_1
+  field_text_box:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true
+  published_at: true
+  search_api_excerpt: true

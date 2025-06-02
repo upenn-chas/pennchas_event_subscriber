@@ -309,6 +309,7 @@
     .event-details-wrap {
       padding-top: 15px !important;
       padding-bottom: 25px;
+      
     }
 
     .block-field-blocknodechas-eventtitle {
@@ -450,7 +451,6 @@
       }
     }
     .event-details-wrap .block-field-blocknodechas-eventfield-text-box-2 {
-      margin-bottom: 15px;
 
       .field--name-field-text-box-2 {
         display: inline-flex;
@@ -652,5 +652,41 @@
   .add-to-calendar {
     display: inline-flex !important;
     padding:18px 20px 21px 20px
+  }
+}
+
+.node--view-mode-calendar-view {
+  .file {
+    padding-left: 23px !important;
+    a {
+      font-size: 12px !important;
+      color: #011f5b !important;
+    }
+  }
+  .block-field-blocknodenoticesfield-media-image {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  .block-field-blocknodechas-eventfield-media-image {
+    margin-bottom: 15px;
+  }
+
+  .block-field-blocknodenoticesfield-marketing-blurb,
+  .block-field-blocknodenoticesfield-media-file,
+  .block-field-blocknodechas-eventfield-marketing-blurb,
+  .block-field-blocknodechas-eventfield-media-file {
+    margin-bottom: 15px;
+  }
+
+  &:not(:has(.block-field-blocknodenoticesfield-media-file)) {
+    .block-field-blocknodenoticesfield-text-box {
+      margin-bottom: 15px;
+    }
+  }
+
+  &:not(:has(.block-field-blocknodechas-eventfield-media-file)) {
+    .block-field-blocknodechas-eventfield-text-box-2 {
+      margin-bottom: 15px;
+    }
   }
 }

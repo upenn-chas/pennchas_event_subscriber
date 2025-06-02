@@ -10,12 +10,17 @@ class PerEventReportFooterProcessor
     public function process(array $dbData, array $columnIndexes, $total, array $webformElements)
     {
         $formattedData = $this->formatData($dbData, $columnIndexes, $webformElements);
+        if (empty($formattedData)) {
+            return [];
+        }
         $data = [];
-        $data[$columnIndexes['event_like_rating']] = round($formattedData[$columnIndexes['event_like_rating']]['value'] / $total, 1) . '';
+        $totalRecords = $total ? $total : 1;
+
+        $data[$columnIndexes['event_like_rating']] = round($formattedData[$columnIndexes['event_like_rating']]['value'] / $totalRecords, 1) . '';
         $data[$columnIndexes['event_intended_to']] = implode(', ', $formattedData[$columnIndexes['event_intended_to']]['value']);
         $data[$columnIndexes['why_choose_event']] = implode(', ', $formattedData[$columnIndexes['why_choose_event']]['value']);
         ksort($data);
-        return array_merge([$total], $data);
+        return array_merge([$totalRecords], $data);
     }
 
     protected function formatData(array $dbData, array $columnIndexes, $webformElements)

@@ -54,15 +54,20 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-        $roomReservationMessage = "Do you need a room reservation? <a href='{$roomReservationUrl}'>click here</a>";
-        $message = t('Your event has been accepted and published.' . ' ' . $roomReservationMessage);
+        $roomReservationMessage = t('Do you need a room reservation? <a href="@url">click here</a>', [
+            '@url' => $roomReservationUrl,
+        ]);
+        $message = t('Your event has been accepted and published.') . ' ' . $roomReservationMessage;
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
         if ($eventState === Constant::MOD_STATUS_PUBLISHED) {
             $mailService->notifyAuthor($node, Constant::EVENT_EMAIL_MODERATOR_CREATED, null);
         } else {
             $group = array_shift($eventHouses);
             $moderationWaitingDays =  $this->getHouseMaxModerationWaitingPeriod($group);
-            $message = t('Your event has been submited and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.' . ' ' . $roomReservationMessage);
+            $message = t('Your event has been submitted and there may be a wait time of up to @days for approval.', [
+                '@days' => $moderationWaitingDays .($moderationWaitingDays > 1 ? ' days' : ' day') 
+            ]);
+            $message .= ' ' . $roomReservationMessage;
             $mailService->notifyAuthor($node, Constant::EVENT_EMAIL_CREATED, $group);
             $mailService->notifyModerators($node, Constant::EVENT_EMAIL_MODERATOR_ALERT, $group);
         }
@@ -91,7 +96,9 @@ class NodeInsertHook
         } else {
             $moderationWaitingDays = \Drupal::service('config_pages.loader')->getValue('chas_moderator', 'field_waiting_period', [], 'value');
             $moderationWaitingDays = $moderationWaitingDays[0];
-            $message = t('Your event has been submited and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.');
+            $message = t('Your event has been submitted and there may be a wait time of up to @days for approval.', [
+                '@days' => $moderationWaitingDays .($moderationWaitingDays > 1 ? ' days' : ' day') 
+            ]);
             $mailService->notifyAuthor($node, Constant::EVENT_EMAIL_CREATED, null, $moderationWaitingDays);
             $mailService->notifyModerators($node, Constant::EVENT_EMAIL_MODERATOR_ALERT, null);
         }
@@ -124,12 +131,14 @@ class NodeInsertHook
             }
         }
         $mailService = \Drupal::service('pennchas_form_alter.moderation_entity_email_service');
-        $message = t('Your request has been accepted.');
+        $message = t('Your room reservation request has been accepted.');
         if ($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED) {
             $mailService->notifyAuthor($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_CREATED, null);
         } else {
             $moderationWaitingDays = $this->getHouseMaxModerationWaitingPeriod($group);
-            $message = t('Your request has been submitted and there is a possible ' . $moderationWaitingDays . ' day(s) wait time for approval.');
+            $message = t('Your room reservation request has been submitted and there may be a wait time of up to @days for approval.', [
+                '@days' => $moderationWaitingDays .($moderationWaitingDays > 1 ? ' days' : ' day') 
+            ]);
             $mailService->notifyAuthor($node, Constant::RESERVER_ROOM_EMAIL_CREATED, $group);
             $mailService->notifyModerators($node, Constant::RESERVER_ROOM_EMAIL_MODERATOR_ALERT, $group);
         }
