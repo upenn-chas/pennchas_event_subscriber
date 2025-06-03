@@ -194,7 +194,7 @@ content:
       conditional_fields: {  }
   field_intended_outcomes:
     type: options_buttons
-    weight: 20
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -232,31 +232,13 @@ content:
     settings: {  }
     third_party_settings:
       conditional_fields:
-        c554c5e3-e70d-4c12-9464-e21276c6028e:
-          entity_type: node
-          bundle: chas_event
-          dependee: field_intended_audience
-          settings:
-            state: required
-            reset: false
-            condition: value
-            grouping: AND
-            values_set: 3
-            value: ''
-            values: "community_event\r\nhouse_event\r\nfloor_event"
-            value_form:
-              -
-                value: floor_event
-            effect: show
-            effect_options: {  }
-            selector: ''
-        485decfa-e811-4760-bdac-8eace8b41861:
+        54e9ad83-6c2f-4442-bb80-01232a2216c1:
           entity_type: node
           bundle: chas_event
           dependee: field_flag
           settings:
             state: required
-            condition: value
+            condition: '!checked'
             grouping: AND
             values_set: 1
             value: ''
@@ -312,69 +294,13 @@ content:
             selector: ''
   field_long_text_2:
     type: string_textarea
-    weight: 21
+    weight: 20
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings:
-      conditional_fields:
-        ef535d5b-eca5-4675-9144-c1ec2c0e7ebf:
-          entity_type: node
-          bundle: chas_event
-          dependee: field_intended_outcomes
-          settings:
-            state: visible
-            reset: true
-            condition: value
-            grouping: OR
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                value: learn_a_skill
-              -
-                value: gain_information
-              -
-                value: connect_with_peers
-              -
-                value: connect_with_resource
-              -
-                value: connect_with_faculty
-              -
-                value: engage_in_an_activity
-            effect: show
-            effect_options: {  }
-            selector: ''
-        8429b851-3192-4e71-ba5f-8856aec399c3:
-          entity_type: node
-          bundle: chas_event
-          dependee: field_intended_outcomes
-          settings:
-            state: required
-            reset: true
-            condition: value
-            grouping: OR
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                value: learn_a_skill
-              -
-                value: gain_information
-              -
-                value: connect_with_peers
-              -
-                value: connect_with_resource
-              -
-                value: connect_with_faculty
-              -
-                value: engage_in_an_activity
-            effect: show
-            effect_options: {  }
-            selector: ''
+      conditional_fields: {  }
   field_long_text_3:
     type: string_textarea
     weight: 22

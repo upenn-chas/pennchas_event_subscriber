@@ -32,7 +32,6 @@ class EventFormAlter
         $form['field_location']['widget']['#required'] = TRUE;
         if (\Drupal::service('pennchas_common.access_check')->checkForNonGroupMember('chas central event')) {
             $form['field_flag']['#access'] = TRUE;
-            $form['field_location']['widget']['#required'] = FALSE;
         }
 
         unset($form['field_event_schedule']['widget']['add_more']);
