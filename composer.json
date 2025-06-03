@@ -443,7 +443,7 @@
                 "html issue": "https://www.drupal.org/files/issues/2023-08-07/TypeError_htmlspecialchars_ArgumentNustBeTypeString_ArrayGiven-3352384-43.patch"
             },
             "drupal/simplesamlphp_auth": {
-                "Get dynamically values and Updated in drupal": "patches/saml_auth.patch",
+                "Get dynamically values and updated in drupal": "patches/saml_auth.patch",
                 "Masquerade user fix": "https://git.drupalcode.org/project/simplesamlphp_auth/-/merge_requests/33.diff"
             },
             "drupal/clientside_validation": {
