@@ -54,7 +54,7 @@ class NodeInsertHook
                 $house->addRelationship($node, 'group_node:' . $node->getType());
             }
         }
-        $roomReservationMessage = t('Do you need a room reservation? <a href="@url">click here</a>', [
+        $roomReservationMessage = t('Do you need a room reservation? <a href="@url">Click here</a>', [
             '@url' => $roomReservationUrl,
         ]);
         $message = t('Your event has been accepted and published.') . ' ' . $roomReservationMessage;
