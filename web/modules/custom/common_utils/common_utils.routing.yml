@@ -1,5 +1,5 @@
 common_utils.user_login:
-  path: /user/login
+  path: /sso/login
   defaults:
     _controller: '\Drupal\common_utils\Controller\LoginController::userLogin'
     _title: 'Login'
