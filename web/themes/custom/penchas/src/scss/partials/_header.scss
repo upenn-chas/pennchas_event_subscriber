@@ -133,13 +133,15 @@ header {
               @supports (-webkit-touch-callout: none) and (font: -apple-system-body) {
 
                 a.nav-link--user-login,
-                .nav-link--saml-login {
+                .nav-link--saml-login,
+                .nav-link--sso-login {
                   padding: 16px 20px 18px;
                 }
               }
 
               a.nav-link--user-login,
-              .nav-link--saml-login {
+              .nav-link--saml-login,
+              .nav-link--sso-login {
                 border: 1px solid #011f5b;
                 padding: 16px 20px;
                 color: #011f5b;
@@ -604,7 +606,8 @@ article>header {
               a {
 
                 &.nav-link--user-login,
-                &.nav-link--saml-login {
+                &.nav-link--saml-login,
+                &.nav-link--sso-login {
                   background: #011F5B;
                   text-align: center;
                   color: #fff;
