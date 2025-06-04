@@ -31,7 +31,7 @@
         window.location.href = jQuery(this).val();
       }
     });
-    jQuery('.calendar-view-day__rows').each(function() {
+    jQuery('.calendar-view-month .calendar-view-day__rows').each(function() {
       var jQueryliElements = jQuery(this).find('li');
       var liCount = jQueryliElements.length;
     

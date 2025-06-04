@@ -161,7 +161,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"dashboard-header\">\r\n<div class=\"name\">{{ name }}</div>\r\n<div class=\"email\">{{ mail }}</div>\r\n<div class=\"edit-profile\">\r\n<a href=\"/user\">Edit My Profile</a>\r\n</div>\r\n</div>\r\n<div class=\"dashboard-breadcrumbs\">\r\n<nav role=\"navigation\" aria-label=\"breadcrumb\" style=\"--bs-breadcrumb-divider: '/';\">\r\n  <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n        <a href=\"/\">HOME</a>\r\n      </li>\r\n<li class=\"breadcrumb-item\">\r\n        <a href=\"/\">DASHBOARD</a>\r\n      </li>\r\n        </ol>\r\n</nav>\r\n</div>"
+            text: "<div class=\"dashboard-header\">\r\n{# <div class=\"name\">{{ name }}</div> #}\r\n<div class=\"email\">{{ mail }}</div>\r\n<div class=\"edit-profile\">\r\n<a href=\"https://directory.apps.upenn.edu/directory/jsp/fast.do\">Edit My Profile</a>\r\n</div>\r\n</div>\r\n<div class=\"dashboard-breadcrumbs\">\r\n<nav role=\"navigation\" aria-label=\"breadcrumb\" style=\"--bs-breadcrumb-divider: '/';\">\r\n  <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n        <a href=\"/\">HOME</a>\r\n      </li>\r\n<li class=\"breadcrumb-item\">\r\n        <a href=\"/\">DASHBOARD</a>\r\n      </li>\r\n        </ol>\r\n</nav>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
