@@ -1,4 +1,4 @@
-uuid: f437c196-380a-4e19-bb34-eaee305e731a
+uuid: 980187ac-c72e-4aa9-b849-e14d3f5b9e6b
 langcode: en
 status: true
 dependencies:
@@ -9,5 +9,5 @@ _core:
 id: redirect.redirect
 target_entity_type_id: redirect
 target_bundle: redirect
-default_langcode: site_default
-language_alterable: false
+default_langcode: und
+language_alterable: true

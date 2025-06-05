@@ -1,9 +1,10 @@
-uuid: 23155172-e49c-4808-911c-193021c30805
+uuid: bd09db38-230a-45e2-96ba-9ac2d4a499b6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_house_machine_name
+    - field.storage.group.field_description
+    - field.storage.group.field_heading
     - field.storage.node.body
     - search_api.server.pantheon_search
   module:
@@ -52,13 +53,13 @@ third_party_settings:
       timezone: ''
     multilingual:
       limit_to_content_language: false
-      include_language_independent: false
+      include_language_independent: true
       use_language_undefined_as_fallback_language: false
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: solr_search_content
-name: 'Solr Search Content'
+id: other_content_types
+name: 'Other content types and Groups'
 description: ''
 read_only: false
 field_settings:
@@ -70,14 +71,30 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  field_house_machine_name:
-    label: 'Grouper Name'
+  field_description:
+    label: Description
     datasource_id: 'entity:group'
-    property_path: field_house_machine_name
+    property_path: field_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.group.field_description
+  field_heading:
+    label: Heading
+    datasource_id: 'entity:group'
+    property_path: field_heading
     type: string
     dependencies:
       config:
-        - field.storage.group.field_house_machine_name
+        - field.storage.group.field_heading
+  label:
+    label: Title
+    datasource_id: 'entity:group'
+    property_path: label
+    type: string
+    dependencies:
+      module:
+        - group
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -87,33 +104,24 @@ field_settings:
         - anonymous
       view_mode:
         'entity:group':
-          ':default': ''
-          house1: ''
-        'entity:node':
           ':default': default
-          article: default
-          chas_event: default
-          house_landing_page: default
-          notices: default
-          page: ''
-          program_community: default
-          reserve_room: default
+          house1: ':default'
+        'entity:node':
+          ':default': ''
+          article: ':default'
+          house_landing_page: ':default'
+          page: ':default'
+          program_community: ':default'
+          room: ':default'
+          webform: ':default'
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: text
-    dependencies:
-      module:
-        - node
-  type:
-    label: 'Group type'
-    datasource_id: 'entity:group'
-    property_path: type
     type: string
     dependencies:
       module:
-        - group
+        - node
 datasource_settings:
   'entity:group':
     bundles:
@@ -126,14 +134,10 @@ datasource_settings:
         - en
   'entity:node':
     bundles:
-      default: false
+      default: true
       selected:
-        - article
         - chas_event
-        - house_landing_page
         - notices
-        - page
-        - program_community
         - reserve_room
     languages:
       default: false
@@ -145,9 +149,30 @@ processor_settings:
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
   entity_type: {  }
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - body
+      - rendered_item
+      - title
+    title: true
+    alt: true
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

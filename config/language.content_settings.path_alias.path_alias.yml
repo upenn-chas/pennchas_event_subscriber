@@ -1,4 +1,4 @@
-uuid: 2309f58a-c34b-4379-bac9-2c9a73dabc16
+uuid: f4ab948f-f669-4108-bd01-97a9420f53cd
 langcode: en
 status: true
 dependencies:
@@ -9,5 +9,5 @@ _core:
 id: path_alias.path_alias
 target_entity_type_id: path_alias
 target_bundle: path_alias
-default_langcode: site_default
-language_alterable: false
+default_langcode: und
+language_alterable: true
