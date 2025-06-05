@@ -1,17 +1,15 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: eb2459c5-a487-4a8c-b156-14c1dab1885b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
-    - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
-    - field.storage.node.field_text_box_2
+    - field.storage.node.field_group
+    - field.storage.node.field_long_text
+    - field.storage.node.field_room
     - search_api.server.pantheon_search
   module:
     - content_moderation
     - group
-    - media
     - node
     - search_api_solr
     - url_alteration
@@ -62,53 +60,45 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_content_reserve_room_room
+name: 'Solr Content (Reserve Room / Room)'
 description: ''
 read_only: false
 field_settings:
-  field_marketing_blurb:
-    label: 'Marketing blurb'
+  field_long_text:
+    label: 'Purpose Of Request'
     datasource_id: 'entity:node'
-    property_path: field_marketing_blurb
+    property_path: field_long_text
     type: text
     dependencies:
       config:
-        - field.storage.node.field_marketing_blurb
-  field_text_box_2:
-    label: 'Location of Program'
-    datasource_id: 'entity:node'
-    property_path: field_text_box_2
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_text_box_2
+        - field.storage.node.field_long_text
   label:
-    label: 'Which house/team is planning the event? » Group » Title'
+    label: 'House » Group » Title'
     datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
+    property_path: 'field_group:entity:label'
     type: string
     dependencies:
       config:
-        - field.storage.node.field_location
+        - field.storage.node.field_group
       module:
         - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_media_file
-      module:
-        - media
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
     type: text
     dependencies:
+      module:
+        - node
+  title_1:
+    label: 'Select Your Room » Content » Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_room:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_room
       module:
         - node
 datasource_settings:
@@ -128,8 +118,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
+        - house1-group_node-reserve_room
+        - house1-group_node-room
     languages:
       default: true
       selected: {  }
@@ -137,8 +127,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - chas_event
-        - notices
+        - reserve_room
+        - room
     languages:
       default: false
       selected:

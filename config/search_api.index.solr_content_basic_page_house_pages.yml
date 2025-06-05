@@ -1,20 +1,15 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: e6f78e4c-3158-40ad-a1cb-57bdcd70783b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
-    - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
-    - field.storage.node.field_text_box_2
+    - field.storage.node.body
+    - field.storage.node.field_select_house
     - search_api.server.pantheon_search
   module:
-    - content_moderation
     - group
-    - media
     - node
     - search_api_solr
-    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -62,83 +57,48 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_content_basic_page_house_pages
+name: 'Solr Content (Basic page / House Pages)'
 description: ''
 read_only: false
 field_settings:
-  field_marketing_blurb:
-    label: 'Marketing blurb'
+  body:
+    label: Body
     datasource_id: 'entity:node'
-    property_path: field_marketing_blurb
+    property_path: body
     type: text
     dependencies:
       config:
-        - field.storage.node.field_marketing_blurb
-  field_text_box_2:
-    label: 'Location of Program'
-    datasource_id: 'entity:node'
-    property_path: field_text_box_2
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_text_box_2
+        - field.storage.node.body
   label:
-    label: 'Which house/team is planning the event? » Group » Title'
+    label: 'Select House » Group » Title'
     datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
+    property_path: 'field_select_house:entity:label'
     type: string
     dependencies:
       config:
-        - field.storage.node.field_location
+        - field.storage.node.field_select_house
       module:
         - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_media_file
-      module:
-        - media
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
     type: text
-    dependencies:
-      module:
-        - node
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          ':default': ''
+          house_landing_page: default
+          page: default
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: false
-      selected:
-        - en
-  'entity:group_relationship':
-    bundles:
-      default: false
-      selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
       selected:
-        - chas_event
-        - notices
+        - house_landing_page
+        - page
     languages:
       default: false
       selected:
@@ -149,9 +109,44 @@ processor_settings:
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
   entity_type: {  }
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    highlight: always
+    highlight_partial: false
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - rendered_item
+    title: true
+    alt: true
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  unique_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: 0
+    fields:
+      - rendered_item
 tracker_settings:
   default:
     indexing_order: fifo

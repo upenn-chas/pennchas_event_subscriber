@@ -1,20 +1,19 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: 0f41870a-bc4e-4029-a6d4-26e064b4dae0
 langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_college_houses
+    - field.storage.node.field_event_ends_on
+    - field.storage.node.field_event_schedule
+    - field.storage.node.field_group_ref
+    - field.storage.node.field_groups
     - field.storage.node.field_location
-    - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
-    - field.storage.node.field_text_box_2
     - search_api.server.pantheon_search
   module:
     - content_moderation
-    - group
-    - media
     - node
     - search_api_solr
-    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -62,87 +61,100 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: chas_events
+name: 'Chas Events'
 description: ''
 read_only: false
 field_settings:
-  field_marketing_blurb:
-    label: 'Marketing blurb'
+  field_college_houses:
+    label: 'For Which House(s)?'
     datasource_id: 'entity:node'
-    property_path: field_marketing_blurb
-    type: text
+    property_path: field_college_houses
+    type: integer
     dependencies:
       config:
-        - field.storage.node.field_marketing_blurb
-  field_text_box_2:
-    label: 'Location of Program'
+        - field.storage.node.field_college_houses
+  field_event_ends_on:
+    label: 'Event Ends On'
     datasource_id: 'entity:node'
-    property_path: field_text_box_2
-    type: text
+    property_path: field_event_ends_on
+    type: date
     dependencies:
       config:
-        - field.storage.node.field_text_box_2
-  label:
-    label: 'Which house/team is planning the event? » Group » Title'
+        - field.storage.node.field_event_ends_on
+  field_event_schedule:
+    label: 'Event Schedule'
     datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
+    property_path: field_event_schedule
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_event_schedule
+  field_group_ref:
+    label: 'Group Ref'
+    datasource_id: 'entity:node'
+    property_path: field_group_ref
     type: string
+    dependencies:
+      config:
+        - field.storage.node.field_group_ref
+  field_groups:
+    label: Groups
+    datasource_id: 'entity:node'
+    property_path: field_groups
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_groups
+  field_location:
+    label: 'In which house will the event be held?'
+    datasource_id: 'entity:node'
+    property_path: field_location
+    type: integer
     dependencies:
       config:
         - field.storage.node.field_location
-      module:
-        - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
+  moderation_state:
+    label: 'Moderation state'
     datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
+    property_path: moderation_state
+    type: text
     dependencies:
-      config:
-        - field.storage.node.field_media_file
       module:
-        - media
+        - content_moderation
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: text
+    type: string
     dependencies:
       module:
         - node
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: false
-      selected:
-        - en
-  'entity:group_relationship':
-    bundles:
-      default: false
-      selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
       selected:
         - chas_event
-        - notices
     languages:
-      default: false
-      selected:
-        - en
+      default: true
+      selected: {  }
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
@@ -151,7 +163,10 @@ processor_settings:
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  reverse_entity_references: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

@@ -1,17 +1,12 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: 19f689bb-7779-4838-a675-653e243a8d8c
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
-    - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
-    - field.storage.node.field_text_box_2
+    - field.storage.node.body
     - search_api.server.pantheon_search
   module:
-    - content_moderation
     - group
-    - media
     - node
     - search_api_solr
     - url_alteration
@@ -62,47 +57,49 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_content_program_community_article
+name: 'Solr Content (Program Community / Article)'
 description: ''
 read_only: false
 field_settings:
-  field_marketing_blurb:
-    label: 'Marketing blurb'
+  body:
+    label: Body
     datasource_id: 'entity:node'
-    property_path: field_marketing_blurb
+    property_path: body
     type: text
     dependencies:
       config:
-        - field.storage.node.field_marketing_blurb
-  field_text_box_2:
-    label: 'Location of Program'
-    datasource_id: 'entity:node'
-    property_path: field_text_box_2
+        - field.storage.node.body
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
     type: text
-    dependencies:
-      config:
-        - field.storage.node.field_text_box_2
-  label:
-    label: 'Which house/team is planning the event? » Group » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_location
-      module:
-        - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_media_file
-      module:
-        - media
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:group':
+          ':default': ''
+          house1: ''
+        'entity:group_relationship':
+          ':default': ''
+          house1-26dda3a47e3baa4a8c59fd010: ''
+          house1-fae6ebd5a926aed11c13a2c5b: ''
+          house1-group_media-document: ''
+          house1-group_media-image: ''
+          house1-group_media-remote_video: ''
+          house1-group_media-video: ''
+          house1-group_membership: ''
+          house1-group_node-article: ''
+          house1-group_node-chas_event: ''
+          house1-group_node-notices: ''
+          house1-group_node-page: ''
+          house1-group_node-reserve_room: ''
+          house1-group_node-room: ''
+        'entity:node':
+          ':default': default
+          article: default
+          program_community: default
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -112,10 +109,6 @@ field_settings:
       module:
         - node
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
   'entity:group':
     bundles:
       default: true
@@ -126,10 +119,8 @@ datasource_settings:
         - en
   'entity:group_relationship':
     bundles:
-      default: false
-      selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
+      default: true
+      selected: {  }
     languages:
       default: true
       selected: {  }
@@ -137,8 +128,8 @@ datasource_settings:
     bundles:
       default: false
       selected:
-        - chas_event
-        - notices
+        - article
+        - program_community
     languages:
       default: false
       selected:

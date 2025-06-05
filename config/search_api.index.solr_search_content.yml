@@ -1,20 +1,15 @@
-uuid: 1fb556e7-dec0-4234-9359-78d8cea348e5
+uuid: 23155172-e49c-4808-911c-193021c30805
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
-    - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
-    - field.storage.node.field_text_box_2
+    - field.storage.group.field_house_machine_name
+    - field.storage.node.body
     - search_api.server.pantheon_search
   module:
-    - content_moderation
     - group
-    - media
     - node
     - search_api_solr
-    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -62,47 +57,47 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: chas_content
-name: 'Solr Content (Chas Event / Notices)'
+id: solr_search_content
+name: 'Solr Search Content'
 description: ''
 read_only: false
 field_settings:
-  field_marketing_blurb:
-    label: 'Marketing blurb'
+  body:
+    label: Body
     datasource_id: 'entity:node'
-    property_path: field_marketing_blurb
+    property_path: body
     type: text
     dependencies:
       config:
-        - field.storage.node.field_marketing_blurb
-  field_text_box_2:
-    label: 'Location of Program'
-    datasource_id: 'entity:node'
-    property_path: field_text_box_2
+        - field.storage.node.body
+  field_house_machine_name:
+    label: 'Grouper Name'
+    datasource_id: 'entity:group'
+    property_path: field_house_machine_name
+    type: string
+    dependencies:
+      config:
+        - field.storage.group.field_house_machine_name
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
     type: text
-    dependencies:
-      config:
-        - field.storage.node.field_text_box_2
-  label:
-    label: 'Which house/team is planning the event? » Group » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_location
-      module:
-        - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_media_file
-      module:
-        - media
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:group':
+          ':default': ''
+          house1: ''
+        'entity:node':
+          ':default': default
+          article: default
+          chas_event: default
+          house_landing_page: default
+          notices: default
+          page: ''
+          program_community: default
+          reserve_room: default
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -111,34 +106,35 @@ field_settings:
     dependencies:
       module:
         - node
+  type:
+    label: 'Group type'
+    datasource_id: 'entity:group'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - group
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
   'entity:group':
     bundles:
-      default: true
-      selected: {  }
+      default: false
+      selected:
+        - house1
     languages:
       default: false
       selected:
         - en
-  'entity:group_relationship':
-    bundles:
-      default: false
-      selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
       selected:
+        - article
         - chas_event
+        - house_landing_page
         - notices
+        - page
+        - program_community
+        - reserve_room
     languages:
       default: false
       selected:
