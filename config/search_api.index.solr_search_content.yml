@@ -117,13 +117,11 @@ field_settings:
 datasource_settings:
   'entity:group':
     bundles:
-      default: false
-      selected:
-        - house1
+      default: true
+      selected: {  }
     languages:
-      default: false
-      selected:
-        - en
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -134,7 +132,7 @@ datasource_settings:
         - notices
         - page
         - program_community
-        - reserve_room
+        - room
     languages:
       default: false
       selected:
