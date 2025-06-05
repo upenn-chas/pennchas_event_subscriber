@@ -106,6 +106,7 @@ function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInt
         'views-exposed-form-contents-delete-report-page-1' => 1,
         'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
         'views-exposed-form-users-reports-page-1' => 1,
+        'views-exposed-form-webform-export-page-1' => 1
     ];
     static $targetDashboardViews = [
         'views-exposed-form-my-reservations-page-1' => 1,

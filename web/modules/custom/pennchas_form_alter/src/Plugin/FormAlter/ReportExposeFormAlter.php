@@ -34,6 +34,10 @@ class ReportExposeFormAlter
             $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
         }
 
+        if(isset($form['webform_id'])) {
+            unset($form['webform_id']['#options']['event_feedback']);
+        }
+
         $form['#validate'][] = [$this, 'validate'];
         $form['#attached']['library'][] = 'pennchas_form_alter/toast';
 
