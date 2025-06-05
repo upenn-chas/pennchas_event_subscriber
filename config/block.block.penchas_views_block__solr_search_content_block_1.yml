@@ -1,0 +1,24 @@
+uuid: f72dba91-9d92-4996-830e-001e15033e59
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.solr_search_content
+  module:
+    - views
+  theme:
+    - penchas
+id: penchas_views_block__solr_search_content_block_1
+theme: penchas
+region: none
+weight: 0
+provider: null
+plugin: 'views_block:solr_search_content-block_1'
+settings:
+  id: 'views_block:solr_search_content-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }
