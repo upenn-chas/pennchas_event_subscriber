@@ -1,11 +1,12 @@
 uuid: 174f38b7-1bc6-42a5-b8ac-40a9d681d5dc
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.moderator
     - field.field.node.notices.field_blocks_ref
     - field.field.node.notices.field_event_schedule
+    - field.field.node.notices.field_exclude_from_index
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_last_state
@@ -43,6 +44,7 @@ content:
 hidden:
   field_blocks_ref: true
   field_event_schedule: true
+  field_exclude_from_index: true
   field_group_ref: true
   field_groups: true
   field_last_state: true

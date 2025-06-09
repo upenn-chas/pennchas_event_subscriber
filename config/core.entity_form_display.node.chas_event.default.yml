@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
+    - field.field.node.chas_event.field_exclude_from_index
     - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
@@ -47,6 +48,7 @@ dependencies:
     - media_library
     - path
     - publication_date
+    - search_api_exclude_entity
     - smart_date
     - smart_date_recur
     - term_reference_tree
@@ -159,6 +161,14 @@ content:
           WEEKLY: WEEKLY
           MONTHLY: MONTHLY
           YEARLY: YEARLY
+  field_exclude_from_index:
+    type: search_api_exclude_entity_widget
+    weight: 26
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
+    third_party_settings: {  }
   field_flag:
     type: boolean_checkbox
     weight: 12

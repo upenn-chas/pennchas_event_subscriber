@@ -1,0 +1,23 @@
+uuid: b64fb59e-b756-40e5-a0c8-38c03610110e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_index
+    - node.type.room
+  module:
+    - search_api_exclude_entity
+id: node.room.field_exclude_from_index
+field_name: field_exclude_from_index
+entity_type: node
+bundle: room
+label: 'Exclude From Index'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

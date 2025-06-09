@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
+    - field.field.node.chas_event.field_exclude_from_index
     - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
@@ -117,6 +118,7 @@ hidden:
   field_event_date: true
   field_event_ends_on: true
   field_event_priority: true
+  field_exclude_from_index: true
   field_feedback_form: true
   field_flag: true
   field_group_ref: true

@@ -1,0 +1,23 @@
+uuid: 6ca0f90c-090d-42e9-b6fc-53805df34eda
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_index
+    - node.type.chas_event
+  module:
+    - search_api_exclude_entity
+id: node.chas_event.field_exclude_from_index
+field_name: field_exclude_from_index
+entity_type: node
+bundle: chas_event
+label: 'Exclude From Index'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

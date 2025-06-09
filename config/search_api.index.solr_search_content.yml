@@ -3,12 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_house_machine_name
     - field.storage.node.body
     - search_api.server.pantheon_search
   module:
-    - group
     - node
+    - search_api_exclude_entity
     - search_api_solr
 third_party_settings:
   search_api_solr:
@@ -70,14 +69,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  field_house_machine_name:
-    label: 'Grouper Name'
-    datasource_id: 'entity:group'
-    property_path: field_house_machine_name
-    type: string
-    dependencies:
-      config:
-        - field.storage.group.field_house_machine_name
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -106,22 +97,7 @@ field_settings:
     dependencies:
       module:
         - node
-  type:
-    label: 'Group type'
-    datasource_id: 'entity:group'
-    property_path: type
-    type: string
-    dependencies:
-      module:
-        - group
 datasource_settings:
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -145,7 +121,13 @@ processor_settings:
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  search_api_exclude_entity_processor:
+    fields:
+      node:
+        - field_exclude_from_index
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

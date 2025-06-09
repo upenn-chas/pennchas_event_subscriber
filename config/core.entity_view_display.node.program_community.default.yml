@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.program_community.title
     - field.field.node.program_community.body
     - field.field.node.program_community.field_blocks_ref
+    - field.field.node.program_community.field_exclude_from_index
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_last_state
@@ -17,6 +18,7 @@ dependencies:
     - bootstrap_layout_builder
     - layout_builder
     - layout_builder_restrictions
+    - search_api_exclude_entity
     - text
     - user
 third_party_settings:
@@ -225,6 +227,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 2
             additional: {  }
+          35d41d35-c3a2-452d-9be0-93b6f0bfaaf4:
+            uuid: 35d41d35-c3a2-452d-9be0-93b6f0bfaaf4
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:program_community:field_exclude_from_index'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: search_api_exclude_entity_formatter
+                label: above
+                settings:
+                  format: yes-no
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -273,6 +293,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: 104
+    region: blb_region_col_1
+  field_exclude_from_index:
+    type: search_api_exclude_entity_formatter
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 106
     region: blb_region_col_1
   field_group:
     type: entity_reference_entity_id

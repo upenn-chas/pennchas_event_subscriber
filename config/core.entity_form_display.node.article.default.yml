@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
+    - field.field.node.article.field_exclude_from_index
     - field.field.node.article.field_is_campus_wide
     - field.field.node.article.field_last_state
     - field.field.node.article.field_location
@@ -19,6 +20,7 @@ dependencies:
     - media_library
     - path
     - publication_date
+    - search_api_exclude_entity
     - text
 _core:
   default_config_hash: ewbd6G2uX456-bgwseM2Q-KQG3RkASoyHmTh-XR3oLU
@@ -52,6 +54,14 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_exclude_from_index:
+    type: search_api_exclude_entity_widget
+    weight: 26
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   field_is_campus_wide:
     type: boolean_checkbox

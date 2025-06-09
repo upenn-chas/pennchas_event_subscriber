@@ -82,6 +82,8 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
                 unset($form['visibility']['user_role']);
             }
             break;
+        case 'group_house1_add_form': 
+            $form['#attributes']['class'][] = 'container';
         default:
             break;
     }

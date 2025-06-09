@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.chas_event.field_event_ends_on
     - field.field.node.chas_event.field_event_priority
     - field.field.node.chas_event.field_event_schedule
+    - field.field.node.chas_event.field_exclude_from_index
     - field.field.node.chas_event.field_feedback_form
     - field.field.node.chas_event.field_flag
     - field.field.node.chas_event.field_group_ref
@@ -48,6 +49,7 @@ dependencies:
     - layout_builder_restrictions
     - link
     - options
+    - search_api_exclude_entity
     - smart_date
     - user
 third_party_settings:
@@ -461,6 +463,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
+          32b87cbb-7628-4345-9516-0022ba8a1c8c:
+            uuid: 32b87cbb-7628-4345-9516-0022ba8a1c8c
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:chas_event:field_exclude_from_index'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: search_api_exclude_entity_formatter
+                label: above
+                settings:
+                  format: yes-no
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -585,6 +605,16 @@ content:
     third_party_settings: {  }
     weight: 14
     region: content
+  field_exclude_from_index:
+    type: search_api_exclude_entity_formatter
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 32
+    region: blb_region_col_1
   field_group_ref:
     type: string
     label: above

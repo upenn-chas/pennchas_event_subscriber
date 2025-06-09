@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
+    - field.field.node.article.field_exclude_from_index
     - field.field.node.article.field_is_campus_wide
     - field.field.node.article.field_last_state
     - field.field.node.article.field_location
@@ -258,6 +259,7 @@ content:
     region: content
 hidden:
   field_blocks_ref: true
+  field_exclude_from_index: true
   field_is_campus_wide: true
   field_last_state: true
   field_location: true

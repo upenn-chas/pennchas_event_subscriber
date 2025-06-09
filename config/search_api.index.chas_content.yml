@@ -3,18 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_location
+    - field.storage.node.field_groups
     - field.storage.node.field_marketing_blurb
-    - field.storage.node.field_media_file
     - field.storage.node.field_text_box_2
     - search_api.server.pantheon_search
   module:
-    - content_moderation
     - group
-    - media
     - node
+    - search_api_exclude_entity
     - search_api_solr
-    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -84,25 +81,15 @@ field_settings:
       config:
         - field.storage.node.field_text_box_2
   label:
-    label: 'Which house/team is planning the event? » Group » Title'
+    label: 'Groups » Group » Title'
     datasource_id: 'entity:node'
-    property_path: 'field_location:entity:label'
+    property_path: 'field_groups:entity:label'
     type: string
     dependencies:
       config:
-        - field.storage.node.field_location
+        - field.storage.node.field_groups
       module:
         - group
-  name:
-    label: 'Intended Audience Attachment » Media » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_media_file:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_media_file
-      module:
-        - media
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -112,27 +99,6 @@ field_settings:
       module:
         - node
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: false
-      selected:
-        - en
-  'entity:group_relationship':
-    bundles:
-      default: false
-      selected:
-        - house1-group_node-chas_event
-        - house1-group_node-notices
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -151,7 +117,13 @@ processor_settings:
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  search_api_exclude_entity_processor:
+    fields:
+      node:
+        - field_exclude_from_index
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.group.field_description
     - field.storage.node.body
     - field.storage.node.field_select_house
     - search_api.server.pantheon_search
   module:
     - group
     - node
+    - search_api_exclude_entity
     - search_api_solr
 third_party_settings:
   search_api_solr:
@@ -70,6 +72,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
+  field_description:
+    label: Description
+    datasource_id: 'entity:group'
+    property_path: field_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.group.field_description
   label:
     label: 'Select House » Group » Title'
     datasource_id: 'entity:node'
@@ -78,6 +88,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_select_house
+      module:
+        - group
+  label_1:
+    label: Title
+    datasource_id: 'entity:group'
+    property_path: label
+    type: string
+    dependencies:
       module:
         - group
   rendered_item:
@@ -92,7 +110,23 @@ field_settings:
           ':default': ''
           house_landing_page: default
           page: default
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
 datasource_settings:
+  'entity:group':
+    bundles:
+      default: false
+      selected:
+        - house1
+    languages:
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -137,6 +171,10 @@ processor_settings:
       strong: 2
   language_with_fallback: {  }
   rendered_item: {  }
+  search_api_exclude_entity_processor:
+    fields:
+      node:
+        - field_exclude_from_index
   solr_date_range:
     weights:
       preprocess_index: 0

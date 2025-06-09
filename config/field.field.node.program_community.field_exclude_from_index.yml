@@ -1,0 +1,23 @@
+uuid: 1dacae15-a8d3-4154-b605-bdb084e8b04a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_index
+    - node.type.program_community
+  module:
+    - search_api_exclude_entity
+id: node.program_community.field_exclude_from_index
+field_name: field_exclude_from_index
+entity_type: node
+bundle: program_community
+label: 'Exclude From Index'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

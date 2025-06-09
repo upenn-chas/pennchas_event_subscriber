@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_blocks_ref
     - field.field.node.article.field_chas_news
+    - field.field.node.article.field_exclude_from_index
     - field.field.node.article.field_is_campus_wide
     - field.field.node.article.field_last_state
     - field.field.node.article.field_location
@@ -17,6 +18,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - search_api_exclude_entity
     - text
     - user
 third_party_settings:
@@ -169,6 +171,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
+          efe9fd76-2f02-420c-806a-65b1d29f6cc0:
+            uuid: efe9fd76-2f02-420c-806a-65b1d29f6cc0
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_exclude_from_index'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: search_api_exclude_entity_formatter
+                label: above
+                settings:
+                  format: yes-no
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -187,23 +207,18 @@ third_party_settings:
         Announcements:
           - announce_block
         'Content fields':
-          - 'field_block:node:article:type'
           - 'field_block:node:article:nid'
-          - 'field_block:node:article:langcode'
           - 'extra_field_block:node:article:links'
-          - 'field_block:node:article:revision_timestamp'
           - 'field_block:node:article:vid'
-          - 'field_block:node:article:revision_log'
-          - 'field_block:node:article:revision_uid'
           - 'extra_field_block:node:article:search_api_excerpt'
-          - 'field_block:node:article:status'
+          - 'field_block:node:article:langcode'
           - 'field_block:node:article:uid'
           - 'field_block:node:article:created'
           - 'field_block:node:article:field_blocks_ref'
           - 'field_block:node:article:body'
           - 'field_block:node:article:changed'
           - 'field_block:node:article:field_chas_news'
-          - 'field_block:node:article:comment'
+          - 'field_block:node:article:type'
           - 'field_block:node:article:revision_default'
           - 'field_block:node:article:default_langcode'
           - 'field_block:node:article:field_is_campus_wide'
@@ -212,8 +227,12 @@ third_party_settings:
           - 'field_block:node:article:menu_link'
           - 'field_block:node:article:moderation_state'
           - 'field_block:node:article:promote'
+          - 'field_block:node:article:status'
           - 'field_block:node:article:published_at'
+          - 'field_block:node:article:revision_timestamp'
+          - 'field_block:node:article:revision_log'
           - 'field_block:node:article:revision_translation_affected'
+          - 'field_block:node:article:revision_uid'
           - 'field_block:node:article:sticky'
           - 'field_block:node:article:field_tags'
           - 'field_block:node:article:title'
@@ -308,6 +327,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: 111
+    region: content
+  field_exclude_from_index:
+    type: search_api_exclude_entity_formatter
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 117
     region: content
   field_is_campus_wide:
     type: boolean

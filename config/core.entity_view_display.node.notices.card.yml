@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.card
     - field.field.node.notices.field_blocks_ref
     - field.field.node.notices.field_event_schedule
+    - field.field.node.notices.field_exclude_from_index
     - field.field.node.notices.field_group_ref
     - field.field.node.notices.field_groups
     - field.field.node.notices.field_last_state
@@ -47,6 +48,7 @@ content:
 hidden:
   field_blocks_ref: true
   field_event_schedule: true
+  field_exclude_from_index: true
   field_group_ref: true
   field_groups: true
   field_last_state: true

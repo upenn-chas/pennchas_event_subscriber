@@ -34,7 +34,7 @@ class FindYourHouse extends BlockBase
 		$link_url = $config->get('link_url') ?? '#';
 
 		$group_storage = \Drupal::entityTypeManager()->getStorage('group');
-		$group_ids = $group_storage->getQuery()->accessCheck(false)->execute();
+		$group_ids = $group_storage->getQuery()->condition('status', 1)->accessCheck(false)->execute();
 		$groups = Group::loadMultiple($group_ids);
 		// Sort groups alphabetically by title
 		usort($groups, function ($a, $b) {

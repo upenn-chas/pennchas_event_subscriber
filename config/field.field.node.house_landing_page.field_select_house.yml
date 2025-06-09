@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_select_house
-    - group.type.house1
     - node.type.house_landing_page
 id: node.house_landing_page.field_select_house
 field_name: field_select_house
@@ -17,13 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:group'
+  handler: views
   handler_settings:
-    target_bundles:
-      house1: house1
-    sort:
-      field: id
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: filed_college_houses_view
+      display_name: field_college_houses_view
+      arguments: {  }
 field_type: entity_reference

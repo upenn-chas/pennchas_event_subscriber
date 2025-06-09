@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.program_community.body
     - field.field.node.program_community.field_blocks_ref
+    - field.field.node.program_community.field_exclude_from_index
     - field.field.node.program_community.field_group
     - field.field.node.program_community.field_group_ref
     - field.field.node.program_community.field_last_state
@@ -12,12 +13,14 @@ dependencies:
     - field.field.node.program_community.field_tags
     - field.field.node.program_community.layout_builder__layout
     - node.type.program_community
+    - workflows.workflow.non_moderation_flow
   module:
     - conditional_fields
     - content_moderation
     - media_library
     - path
     - publication_date
+    - search_api_exclude_entity
     - text
 id: node.program_community.default
 targetEntityType: node
@@ -39,6 +42,14 @@ content:
     weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_exclude_from_index:
+    type: search_api_exclude_entity_widget
+    weight: 26
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   field_media_image:
     type: media_library_widget

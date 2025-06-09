@@ -1,0 +1,23 @@
+uuid: 7bd66a02-b216-4e7e-ad2b-ebf512b765e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_index
+    - node.type.house_landing_page
+  module:
+    - search_api_exclude_entity
+id: node.house_landing_page.field_exclude_from_index
+field_name: field_exclude_from_index
+entity_type: node
+bundle: house_landing_page
+label: 'Exclude From Index'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

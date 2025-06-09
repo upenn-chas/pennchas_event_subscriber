@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.feeds_item
     - field.field.node.page.field_blocks_ref
+    - field.field.node.page.field_exclude_from_index
     - field.field.node.page.field_is_campus_wide
     - field.field.node.page.field_last_state
     - field.field.node.page.field_media_image
@@ -14,12 +15,14 @@ dependencies:
     - field.field.node.page.field_rendered_layout
     - field.field.node.page.layout_builder__layout
     - node.type.page
+    - workflows.workflow.non_moderation_flow
   module:
     - conditional_fields
     - content_moderation
     - media_library
     - path
     - publication_date
+    - search_api_exclude_entity
     - text
 _core:
   default_config_hash: SfpLhPExzvR0MgFp0Wp7CrmgEnhcqQ-fXIWFhbf4ue0
@@ -43,6 +46,14 @@ content:
     weight: 6
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_exclude_from_index:
+    type: search_api_exclude_entity_widget
+    weight: 26
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   field_is_campus_wide:
     type: boolean_checkbox

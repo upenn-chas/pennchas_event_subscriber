@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.room.field_circle_color
     - field.field.node.room.field_duration
     - field.field.node.room.field_evaluation_notification
+    - field.field.node.room.field_exclude_from_index
     - field.field.node.room.field_group
     - field.field.node.room.field_group_ref
     - field.field.node.room.field_last_state
@@ -31,6 +32,7 @@ dependencies:
     - media_library
     - path
     - publication_date
+    - search_api_exclude_entity
     - text
 id: node.room.default
 targetEntityType: node
@@ -84,6 +86,14 @@ content:
     weight: 22
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_exclude_from_index:
+    type: search_api_exclude_entity_widget
+    weight: 26
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   field_link_1:
     type: link_default

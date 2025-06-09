@@ -13,6 +13,7 @@ dependencies:
   module:
     - content_moderation
     - node
+    - search_api_exclude_entity
     - search_api_solr
 third_party_settings:
   search_api_solr:
@@ -164,6 +165,10 @@ processor_settings:
   language_with_fallback: {  }
   rendered_item: {  }
   reverse_entity_references: {  }
+  search_api_exclude_entity_processor:
+    fields:
+      node:
+        - field_exclude_from_index
   solr_date_range:
     weights:
       preprocess_index: 0

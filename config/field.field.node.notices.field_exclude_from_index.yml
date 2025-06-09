@@ -1,0 +1,23 @@
+uuid: c452f433-e236-414d-b307-1d829a6e4db8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_index
+    - node.type.notices
+  module:
+    - search_api_exclude_entity
+id: node.notices.field_exclude_from_index
+field_name: field_exclude_from_index
+entity_type: node
+bundle: notices
+label: 'Exclude From Index'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

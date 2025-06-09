@@ -3,16 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_group
-    - field.storage.node.field_long_text
-    - field.storage.node.field_room
+    - field.storage.node.body
     - search_api.server.pantheon_search
   module:
-    - content_moderation
-    - group
     - node
+    - search_api_exclude_entity
     - search_api_solr
-    - url_alteration
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -65,24 +61,14 @@ name: 'Solr Content (Reserve Room / Room)'
 description: ''
 read_only: false
 field_settings:
-  field_long_text:
-    label: 'Purpose Of Request'
+  body:
+    label: Description
     datasource_id: 'entity:node'
-    property_path: field_long_text
+    property_path: body
     type: text
     dependencies:
       config:
-        - field.storage.node.field_long_text
-  label:
-    label: 'House » Group » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_group:entity:label'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_group
-      module:
-        - group
+        - field.storage.node.body
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -91,38 +77,7 @@ field_settings:
     dependencies:
       module:
         - node
-  title_1:
-    label: 'Select Your Room » Content » Title'
-    datasource_id: 'entity:node'
-    property_path: 'field_room:entity:title'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_room
-      module:
-        - node
 datasource_settings:
-  'entity:content_moderation_state':
-    languages:
-      default: true
-      selected: {  }
-  'entity:group':
-    bundles:
-      default: true
-      selected: {  }
-    languages:
-      default: false
-      selected:
-        - en
-  'entity:group_relationship':
-    bundles:
-      default: false
-      selected:
-        - house1-group_node-reserve_room
-        - house1-group_node-room
-    languages:
-      default: true
-      selected: {  }
   'entity:node':
     bundles:
       default: false
@@ -141,7 +96,13 @@ processor_settings:
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  search_api_exclude_entity_processor:
+    fields:
+      node:
+        - field_exclude_from_index
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
