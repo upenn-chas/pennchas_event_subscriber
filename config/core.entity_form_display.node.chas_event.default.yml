@@ -42,8 +42,10 @@ dependencies:
     - field.field.node.chas_event.field_program_communities
     - field.field.node.chas_event.field_text_box_2
     - node.type.chas_event
+    - workflows.workflow.editorial
   module:
     - conditional_fields
+    - content_moderation
     - link
     - media_library
     - path
@@ -210,7 +212,7 @@ content:
     third_party_settings: {  }
   field_link_1:
     type: link_default
-    weight: 29
+    weight: 30
     region: content
     settings:
       placeholder_url: ''
@@ -321,7 +323,7 @@ content:
     third_party_settings: {  }
   field_marketing_blurb:
     type: string_textarea
-    weight: 28
+    weight: 29
     region: content
     settings:
       rows: 5
@@ -348,7 +350,7 @@ content:
             selector: ''
   field_media_file:
     type: media_library_widget
-    weight: 27
+    weight: 28
     region: content
     settings:
       media_types: {  }
@@ -374,7 +376,7 @@ content:
             selector: ''
   field_media_image:
     type: media_library_widget
-    weight: 26
+    weight: 27
     region: content
     settings:
       media_types: {  }
@@ -452,6 +454,12 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 6
@@ -514,7 +522,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 30
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -536,4 +544,3 @@ hidden:
   field_last_moderation_message: true
   field_last_state: true
   field_moderation_finished_at: true
-  moderation_state: true

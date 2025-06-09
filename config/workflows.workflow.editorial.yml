@@ -79,6 +79,12 @@ type_settings:
         - pending
       to: published
       weight: -1
+    unpublished:
+      label: Unpublished
+      from:
+        - published
+      to: draft
+      weight: 4
   entity_types:
     node:
       - chas_event

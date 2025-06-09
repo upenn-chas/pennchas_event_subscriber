@@ -8,6 +8,7 @@ use Drupal\Core\Url;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
 use Drupal\node\Entity\Node;
+use Drupal\pennchas_form_alter\Util\Constant;
 
 class ReserveRoomFormAlter
 {
@@ -23,6 +24,7 @@ class ReserveRoomFormAlter
     {
         unset($form['field_event_schedule']['widget']['add_more']);
         $currentUser = \Drupal::currentUser();
+        $form['moderation_state']['#access'] = FALSE;
         if ($form['#form_id'] === 'node_reserve_room_form') {
             $this->alterAddForm($form, $currentUser);
         } else {
@@ -97,6 +99,10 @@ class ReserveRoomFormAlter
                 unset($form['field_event_schedule']['widget'][$key]);
             }
         }
+
+         if($node->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED && \Drupal::currentUser()->hasPermission('use editorial transition unpublished')) {
+                $form['moderation_state']['#access'] = TRUE;
+            }
     }
 
 

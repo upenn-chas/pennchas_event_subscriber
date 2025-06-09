@@ -7,6 +7,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\group\Entity\Group;
 use Drupal\group\Entity\GroupMembership;
 use Drupal\group\Entity\GroupType;
+use Drupal\pennchas_form_alter\Util\Constant;
 use Drupal\user\Entity\Role;
 
 class EventFormAlter
@@ -14,16 +15,14 @@ class EventFormAlter
     public function alter(array $form, FormStateInterface $formState)
     {
         $currentUser = \Drupal::currentUser();
+        $canUnpublised = $currentUser->hasPermission('use editorial transition unpublished');
         $options = $this->getOptions($currentUser);
         $form['field_multi_text']['widget']['add_more']['#value'] = t('Add Another Collaborator');
         $form['field_college_houses']['widget']['#options'] = $options['houses'];
         $form['field_program_communities']['widget']['#options'] = $options['communities'];
         $form['field_location']['widget']['#options'] = $options['houses'];
         $houseCount = count($options['houses']);
-        // if ($houseCount > 1) {
-        // $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
-        // $form['field_college_houses']['widget']['#options'] = ['_none' => t('All college houses')] + $options['houses'];
-        // }
+
         if ($houseCount > 1) {
             $form['#attached']['library'][] = 'pennchas_form_alter/eventListeners';
         }
@@ -35,6 +34,7 @@ class EventFormAlter
         }
 
         unset($form['field_event_schedule']['widget']['add_more']);
+        $form['moderation_state']['#access'] = FALSE;
 
         if ($form['#form_id'] === 'node_chas_event_form') {
             $form['terms_condition'] = [
@@ -56,6 +56,10 @@ class EventFormAlter
             if ($eventEndsOn < time()) {
                 $form['field_event_schedule']['widget'][0]['#disabled'] = TRUE;
             }
+
+            if($entity->get('moderation_state')->getString() === Constant::MOD_STATUS_PUBLISHED && $canUnpublised) {
+                $form['moderation_state']['#access'] = TRUE;
+            }
         }
         $index = array_search('group_relationship_entity_submit', $form['actions']['submit']['#submit']);
         if ($index !== FALSE) {
@@ -70,6 +74,7 @@ class EventFormAlter
 
         $form['#attached']['library'][] = 'pennchas_form_alter/custom_smart_date';
         $form['#validate'][] = [$this, 'customValidator'];
+        
         return $form;
     }
 
