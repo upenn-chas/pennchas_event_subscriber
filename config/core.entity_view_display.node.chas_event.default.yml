@@ -463,24 +463,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
-          32b87cbb-7628-4345-9516-0022ba8a1c8c:
-            uuid: 32b87cbb-7628-4345-9516-0022ba8a1c8c
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:chas_event:field_exclude_from_index'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: search_api_exclude_entity_formatter
-                label: above
-                settings:
-                  format: yes-no
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 10
-            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }

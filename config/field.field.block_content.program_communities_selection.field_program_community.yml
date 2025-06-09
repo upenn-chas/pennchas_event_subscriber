@@ -5,7 +5,6 @@ dependencies:
   config:
     - block_content.type.program_communities_selection
     - field.storage.block_content.field_program_community
-    - node.type.program_community
 id: block_content.program_communities_selection.field_program_community
 field_name: field_program_community
 entity_type: block_content
@@ -17,13 +16,11 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      program_community: program_community
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: content_options
+      display_name: entity_reference_1
+      arguments:
+        - program_community
 field_type: entity_reference
