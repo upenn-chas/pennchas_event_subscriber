@@ -68,6 +68,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
         case 'node_chas_event_delete_form':
         case 'node_reserve_room_delete_form':
         case 'node_notices_delete_form':
+            $form['#attributes']['class'][] = 'container';
             $form['actions']['submit']['#submit'] = ['pennchas_form_alter_soft_delete'];
             break;
         case 'views_form_webform_export_page_1':
@@ -83,6 +84,10 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
             }
             break;
         case 'group_house1_add_form': 
+        case 'layout_builder_discard_changes':
+        case 'node_house_landing_page_delete_form':
+        case 'node_article_delete_form':
+        case 'node_page_delete_form':
             $form['#attributes']['class'][] = 'container';
         default:
             break;
