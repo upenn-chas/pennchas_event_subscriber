@@ -23,6 +23,7 @@ dependencies:
     - workflows.workflow.non_moderation_flow
   module:
     - content_moderation
+    - contextual
     - event_evaluation
     - file
     - layout_builder
@@ -44,6 +45,7 @@ weight: -4
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access contextual links'
   - 'access media overview'
   - 'access my events'
   - 'access my rerservations'
@@ -54,6 +56,7 @@ permissions:
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'
+  - 'create and edit custom blocks'
   - 'create chas_event content'
   - 'create document media'
   - 'create image media'

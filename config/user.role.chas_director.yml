@@ -8,6 +8,7 @@ dependencies:
     - core.entity_view_display.node.house_landing_page.default
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
+    - core.entity_view_display.node.reserve_room.default
     - media.type.audio
     - media.type.document
     - media.type.image
@@ -27,8 +28,10 @@ dependencies:
     - complete_webform_exporter
     - config
     - content_moderation
+    - contextual
     - event_evaluation
     - layout_builder
+    - layout_builder_modal
     - media
     - node
     - penchas_custom_token
@@ -42,24 +45,27 @@ weight: -3
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access contextual links'
   - 'access media overview'
   - 'access my events'
   - 'access my rerservations'
   - 'access reports'
+  - 'administer layout builder modal'
   - 'all events dashboard'
   - 'all reservations dashboard'
   - 'cancel smart date recur instances'
   - 'chas central event'
-  - 'configure all house1 group layout overrides'
   - 'configure all house_landing_page node layout overrides'
   - 'configure all page node layout overrides'
   - 'configure all program_community node layout overrides'
+  - 'configure all reserve_room node layout overrides'
   - 'configure any layout'
   - 'configure editable article node layout overrides'
   - 'configure editable house1 group layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'
+  - 'create and edit custom blocks'
   - 'create audio media'
   - 'create chas_event content'
   - 'create document media'

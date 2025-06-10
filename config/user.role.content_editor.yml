@@ -6,7 +6,6 @@ dependencies:
     - taxonomy.vocabulary.tags
   module:
     - comment
-    - contextual
     - file
     - group
     - node
@@ -23,7 +22,6 @@ is_admin: false
 permissions:
   - 'access administration pages'
   - 'access content overview'
-  - 'access contextual links'
   - 'access files overview'
   - 'access group overview'
   - 'access toolbar'

@@ -9,14 +9,17 @@ dependencies:
     - core.entity_view_display.node.page.default
     - core.entity_view_display.node.program_community.default
   module:
+    - contextual
     - layout_builder
 id: group_layout_editor
 label: 'Group Layout Editor'
 weight: -1
 is_admin: null
 permissions:
+  - 'access contextual links'
   - 'configure editable article node layout overrides'
   - 'configure editable house1 group layout overrides'
   - 'configure editable house_landing_page node layout overrides'
   - 'configure editable page node layout overrides'
   - 'configure editable program_community node layout overrides'
+  - 'create and edit custom blocks'
