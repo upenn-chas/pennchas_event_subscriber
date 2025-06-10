@@ -62,8 +62,13 @@ header{
   }
 }
 
+
 img {
   max-width: 100%;
+}
+
+img.btn-house-home {
+  max-width: unset;
 }
 
 .space {
