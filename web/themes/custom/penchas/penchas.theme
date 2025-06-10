@@ -94,6 +94,22 @@ function penchas_preprocess_container(array &$variables)
 }
 
 
+/**
+ * Implements HOOK_preprocess_menu().
+ */
+function penchas_preprocess_menu(&$variables) 
+{
+  // Disable the login button for admin user.
+  if(\Drupal::currentUser()->hasRole('administrator') && $variables['menu_name'] === 'account') {
+    foreach($variables['items'] as $key => $menu) {
+      if($menu['url']->getRouteName() === 'common_utils.user_login') {
+        unset($variables['items'][$key]);
+      }
+    }
+  }
+}
+
+
 
 function penchas_preprocess_node_edit_form(&$variables)
 {
