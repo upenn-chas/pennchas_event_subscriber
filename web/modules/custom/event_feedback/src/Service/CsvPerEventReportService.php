@@ -6,14 +6,16 @@ use Drupal\event_feedback\Builder\HeaderBuilder;
 use Drupal\event_feedback\Processor\CsvPerEventReportProcessor;
 use Drupal\event_feedback\Processor\PerEventReportFooterProcessor;
 use Drupal\event_feedback\Repository\ReportRepository;
+use Drupal\event_feedback\Trait\ReportWebformTrait;
 use Drupal\node\Entity\Node;
-use Drupal\webform\Entity\Webform;
 
 /**
  * Service to build the data for per event survey export
  */
 class CsvPerEventReportService
 {
+    use ReportWebformTrait;
+
     protected ReportRepository $repository;
     protected CsvPerEventReportProcessor $processor;
     protected HeaderBuilder $headerBuilder;
@@ -33,20 +35,16 @@ class CsvPerEventReportService
 
     public function build(int $eventId, string $webformId, Node $node)
     {
-        $webformElements = $this->getWebformElements($webformId);
+        $webform = $this->getWebform($webformId);
+        $webformElements = $webform->getElementsOriginalDecoded();
+
         $submissions = $this->repository->getEventSubmissions($eventId, $webformId);
         $submissionsFooter = $this->repository->getEventSubmissionSummary($eventId, $webformId);
-        $headerDetails = $this->headerBuilder->buildHeader($webformId, 'csvEvent');
+        $headerDetails = $this->headerBuilder->buildHeader('csvEvent', $webformElements);
         $totalSubmission = $this->repository->getTotalEventSubmissions($eventId, $webformId);
         $footerData = $this->footer->process($submissionsFooter['data'], $headerDetails['indexes'], $totalSubmission, $webformElements);
         array_shift($footerData);
         return $this->processor->process($submissions['data'], $headerDetails, $footerData, $webformElements, $node);
     }
 
-    
-    protected function getWebformElements(string $webformId)
-    {
-        $webform = Webform::load($webformId);
-        return $webform->getElementsOriginalDecoded();
-    }
 }

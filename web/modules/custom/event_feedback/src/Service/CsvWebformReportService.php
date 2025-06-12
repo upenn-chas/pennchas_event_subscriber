@@ -3,24 +3,24 @@
 namespace Drupal\event_feedback\Service;
 
 use Drupal\event_feedback\Builder\HeaderBuilder;
-use Drupal\event_feedback\Processor\CsvReportProcessor;
+use Drupal\event_feedback\Processor\CsvWebformReportProcessor;
 use Drupal\event_feedback\Repository\ReportRepository;
 use Drupal\event_feedback\Trait\ReportWebformTrait;
 
 /**
- * Service to build the data for participant survey report export
+ * Service to build the data for webform report CSV
  */
-class CsvReportService
+class CsvWebformReportService
 {
     use ReportWebformTrait;
 
     protected ReportRepository $repository;
-    protected CsvReportProcessor $processor;
+    protected CsvWebformReportProcessor $processor;
     protected HeaderBuilder $headerBuilder;
 
     public function __construct(
         ReportRepository $repository,
-        CsvReportProcessor $processor,
+        CsvWebformReportProcessor $processor,
         HeaderBuilder $headerBuilder
     ) {
         $this->repository = $repository;
@@ -28,16 +28,17 @@ class CsvReportService
         $this->headerBuilder = $headerBuilder;
     }
 
-    public function buildReport(string $webformId, array $filters, $page = -1, $length = 10)
+    public function buildReport(string $webformId, $page = -1, $length = 10)
     {
         $webform = $this->getWebform($webformId);
         $webformElements = $webform->getElementsOriginalDecoded();
+        
+        $submissions = $this->repository->getWebformSubmissionsData($webformId, $page, $length);
+        $headerDetails = $this->headerBuilder->buildHeader('csvWebform', $webformElements);
+        $data = $this->processor->process($submissions, $headerDetails, $webformElements);
 
-        $groups = \Drupal::service('pennchas_common.option_group')->options('house1', false);
-        $submissions = $this->repository->getSubmissions($webformId, $filters, array_keys($groups), $page, $length);
-        $headerDetails = $this->headerBuilder->buildHeader('csv', $webformElements);
-        $data = $this->processor->process($submissions, $headerDetails);
-
+    
         return $data;
     }
+
 }

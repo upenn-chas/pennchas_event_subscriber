@@ -39,3 +39,26 @@ event_feedback.per_event_report_export:
     parameters:
       node:
         type: entity:node
+event_feedback.webform_report:
+  path: /dashboard/reports/webform-report
+  defaults:
+    _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::webformReport'
+    _title: 'Webform Report'
+  requirements:
+    _dashboard_access: 'view_alteration.dashboard_access'
+  options:
+    permission: 'access reports'
+    no_cache: 'TRUE'
+event_feedback.webform_report_export:
+  path: /dashboard/reports/webform-report/export/{webformId}
+  defaults:
+    _controller: '\Drupal\event_feedback\Controller\EventFeedbackController::webformReportExport'
+    _title: 'Webform Report'
+  requirements:
+    _dashboard_access: 'view_alteration.dashboard_access'
+  options:
+    permission: 'access reports'
+    no_cache: 'TRUE'
+    parameters:
+      webformId:
+        type: string

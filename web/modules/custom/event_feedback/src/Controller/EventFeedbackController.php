@@ -9,6 +9,7 @@ use Drupal\Core\Pager\PagerManager;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Url;
 use Drupal\event_feedback\Plugin\Form\FilterForm;
+use Drupal\event_feedback\Plugin\Form\WebformReportForm;
 use Drupal\node\Entity\Node;
 use Drupal\webform\Entity\Webform;
 use PDO;
@@ -104,7 +105,8 @@ class EventFeedbackController extends ControllerBase
         ];
     }
 
-    public function report() {
+    public function report()
+    {
         $request = \Drupal::request()->request->all();
         $page = \Drupal::request()->query->get('page', 0);
         $page = $page < 0 ? 0 : $page;
@@ -113,9 +115,12 @@ class EventFeedbackController extends ControllerBase
 
         $reportData = $this->renderer->render($reportData);
 
+        $title = $this->t('Participations Survey Report');
+
         return [
             '#theme' => 'report_page',
-            '#title' => $this->t('Participations Survey Report'),
+            '#breadcrumbTitle' => $title,
+            '#title' => $title,
             '#data' => $reportData
         ];
     }
@@ -128,7 +133,7 @@ class EventFeedbackController extends ControllerBase
         $rows = $this->renderer->render($rows);
         \Drupal::service('pager.manager')->createPager($total, $this->pageLength);
         $header = NULL;
-        if($total > 0) {
+        if ($total > 0) {
             $header = [
                 '#markup' => '<a target="_blank" class="views-display-link" id="export-btn" href="' . Url::fromRoute('event_feedback.report_export')->toString() . '">' . $this->t('Export') . '</a>',
             ];
@@ -159,6 +164,55 @@ class EventFeedbackController extends ControllerBase
         return $tableData;
     }
 
+    public function webformReport()
+    {
+        $webformId = \Drupal::request()->query->get('wid');
+        $pageTitle = $this->t('Webform Report');
+        $webformReportData = '';
+        if ($webformId) {
+            $page = \Drupal::request()->query->get('page', 0);
+            $page = $page < 0 ? 0 : $page;
+            $length = 3;//$this->pageLength;
+
+            [$header, $rows, $total, $ccount, $title] = \Drupal::service('event_feedback.webform_report_service')->buildReport($webformId, $page, $length);
+            $pageTitle .= ' - '. $title;
+            $rows = [
+                '#theme' => 'report_table',
+                '#table_header' => [$header],
+                '#ccount' => $ccount,
+                '#table_body' => $rows
+            ];
+
+            $rows = $this->renderer->render($rows);
+            \Drupal::service('pager.manager')->createPager($total, $length);
+
+            $header = [
+                '#markup' => '<span></span>'
+            ];
+            if ($total > 0) {
+                $header['#markup'] = '<a target="_blank" class="views-display-link" id="export-btn" href="' . Url::fromRoute('event_feedback.webform_report_export', ['webformId' => $webformId])->toString() . '">' . $this->t('Export') . '</a>';
+            }
+
+            $reportData = [
+                '#theme' => 'report_container',
+                '#rows' => $rows,
+                '#header' => $header,
+                '#pager' => ['#type' => 'pager']
+            ];
+
+            $webformReportData = $this->renderer->render($reportData);
+        }
+        $form = \Drupal::formBuilder()->getForm(new WebformReportForm($webformId));
+
+        return [
+            '#theme' => 'report_page',
+            '#breadcrumbTitle' => $this->t('Webform Report'),
+            '#title' => $pageTitle,
+            '#preHeader' => $form,
+            '#data' => $webformReportData
+        ];
+    }
+
     public function reportExport()
     {
         $request = \Drupal::requestStack()->getSession()->get('participantsSurvey', []);
@@ -167,12 +221,12 @@ class EventFeedbackController extends ControllerBase
         $csvFile = new StreamedResponse();
         $csvFile->setCallback(function () use ($data) {
             $handler = fopen('php://output', 'w');
-            foreach($data as $row) {
+            foreach ($data as $row) {
                 fputcsv($handler, $row);
             }
             fclose($handler);
         });
-        
+
         $csvFile->headers->set('Content-Type', 'text/csv; charset=UTF-8');
         $csvFile->headers->set('Content-Disposition', 'attachment; filename="participant_survey.csv"');
         return $csvFile;
@@ -185,14 +239,31 @@ class EventFeedbackController extends ControllerBase
         $csvFile = new StreamedResponse();
         $csvFile->setCallback(function () use ($data) {
             $handler = fopen('php://output', 'w');
-            foreach($data as $row) {
+            foreach ($data as $row) {
                 fputcsv($handler, $row);
             }
             fclose($handler);
         });
-        
+
         $csvFile->headers->set('Content-Type', 'text/csv; charset=UTF-8');
         $csvFile->headers->set('Content-Disposition', 'attachment; filename="event_survey_report.csv"');
+        return $csvFile;
+    }
+
+    public function webformReportExport(string $webformId)
+    {
+        $data = \Drupal::service('event_feedback.csv_webform_report_service')->buildReport($webformId);
+        $csvFile = new StreamedResponse();
+        $csvFile->setCallback(function () use ($data) {
+            $handler = fopen('php://output', 'w');
+            foreach ($data as $row) {
+                fputcsv($handler, $row);
+            }
+            fclose($handler);
+        });
+
+        $csvFile->headers->set('Content-Type', 'text/csv; charset=UTF-8');
+        $csvFile->headers->set('Content-Disposition', 'attachment; filename="'. $webformId .'.csv"');
         return $csvFile;
     }
 

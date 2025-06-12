@@ -16,7 +16,7 @@ class ReportRepository
         $this->connection = $connection;
     }
 
-    public function getSubmissions(string $webformId, array $filters, array $groupIds = [], $page = 0, $length = 10)
+    public function getSubmissions(string $webformId, array $filters = [], array $groupIds = [], $page = 0, $length = 10)
     {
         $eventQuery = $this->connection->select('webform_submission', 'ws');
         $eventQuery->innerJoin('node_field_data', 'n', 'ws.entity_id = n.nid');
@@ -43,7 +43,7 @@ class ReportRepository
 
         if (isset($filters['chas_central_event']) && $filters['chas_central_event'] !== '_all') {
             $eventQuery->condition('nff.field_flag_value', $filters['chas_central_event']);
-        } else if(!isset($filters['chas_central_event'])) {
+        } else if (!isset($filters['chas_central_event'])) {
             $eventQuery->condition('nff.field_flag_value', 0);
         }
 
@@ -170,6 +170,68 @@ class ReportRepository
 
         return [
             'data' => $submissionData,
+        ];
+    }
+
+    public function getWebformSubmissions(string $webformId, $page = 0, $length = 10)
+    {
+        $countQuery = $this->connection->select('webform_submission', 'ws');
+        $countQuery->addExpression('COUNT(DISTINCT ws.sid)', 'respondant');
+        $countQuery->condition('ws.webform_id', $webformId, '=');
+
+        $count = $countQuery->execute()->fetchCol();
+
+        if (count($count) > 0 && !$count[0]) {
+            return [
+                'submissions' => [],
+                'total' => 0
+            ];
+        }
+        $count = $count[0];
+
+        $pageDataQuery = $this->connection->select('webform_submission', 'ws');
+        $pageDataQuery->fields('ws', ['sid']);
+        $pageDataQuery->condition('ws.webform_id', $webformId, '=');
+        if ($page > -1) {
+            $pageDataQuery->range($length * $page, $length);
+        }
+        $pageDataQuery->orderBy('ws.created', 'DESC');
+
+        $sids = $pageDataQuery->execute()->fetchCol(0);
+
+
+        $query = $this->connection->select('webform_submission', 'ws');
+        $query->innerJoin('webform_submission_data', 'wsd', 'wsd.sid = ws.sid');
+        $query->leftJoin('user__field_display_email', 'ufde', 'ufde.entity_id=ws.uid');
+        $query->condition('wsd.sid', $sids, 'IN');
+        $query->addField('ufde', 'field_display_email_value', 'user');
+        $query->fields('ws', ['created', 'remote_addr']);
+        $query->fields('wsd', ['name', 'value', 'sid']);
+        $query->orderBy('ws.created', 'DESC');
+
+        $submissionData = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+
+        return [
+            'submissions' => $submissionData,
+            'total' => $count
+        ];
+    }
+
+    public function getWebformSubmissionsData(string $webformId)
+    {
+        $query = $this->connection->select('webform_submission', 'ws');
+        $query->innerJoin('webform_submission_data', 'wsd', 'wsd.sid = ws.sid');
+        $query->leftJoin('user__field_display_email', 'ufde', 'ufde.entity_id=ws.uid');
+        $query->condition('ws.webform_id', $webformId, '=');
+        $query->addField('ufde', 'field_display_email_value', 'user');
+        $query->fields('ws', ['created', 'remote_addr']);
+        $query->fields('wsd', ['name', 'value', 'sid']);
+        $query->orderBy('ws.created', 'DESC');
+
+        $submissionData = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+
+        return [
+            'submissions' => $submissionData
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
+
 namespace Drupal\common_utils\Plugin\Option;
 
-use Drupal\group\Entity\Group;
-use Drupal\group\Entity\GroupMembership;
+use Drupal\webform\Entity\Webform;
 
 class DropdownOption
 {
@@ -37,6 +37,19 @@ class DropdownOption
             1 => t('Yes'),
             0 => t('No')
         ];
+    }
+
+    public static function getWebforms()
+    {
+        $webforms = Webform::loadMultiple();
+
+        $options = [];
+
+        foreach($webforms as $webform) {
+            $options[$webform->id()] = $webform->label();
+        }
+        unset($options['event_feedback']);
+        return $options;
     }
 
     protected static function getFieldAllowedValues($entityType, $bundle, $fieldName)

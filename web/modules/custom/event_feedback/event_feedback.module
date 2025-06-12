@@ -28,7 +28,9 @@ function event_feedback_theme($existing, $type, $theme, $path)
         'report_page' => [
             'variables' => [
                 'data' => NULL,
+                'preHeader' => NULL,
                 'title' => "",
+                'breadcrumbTitle' => '',
             ],
             'template' => 'report-page'
         ],

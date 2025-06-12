@@ -14,15 +14,17 @@ class HeaderBuilder
     /**
      * Facade function. Return the header
      * 
-     * @var string $webformId
      * @var string $headerType
+     * @var array $webformElements
      */
-    public function buildHeader(string $webformId, string $headerType)
+    public function buildHeader(string $headerType, array $webformElements)
     {
         return match ($headerType) {
-            'report' => $this->reportHeader($webformId),
-            'csv' => $this->csvHeader($webformId),
-            'csvEvent' => $this->csvEvent($webformId),
+            'report' => $this->reportHeader($webformElements),
+            'csv' => $this->csvHeader($webformElements),
+            'csvEvent' => $this->csvEvent($webformElements),
+            'webform' => $this->webformHeader($webformElements),
+            'csvWebform' => $this->webformCSVHeader($webformElements),
             default => throw new InvalidArgumentException("'{$headerType}' is invlaid header type.")
         };
     }
@@ -30,11 +32,10 @@ class HeaderBuilder
     /**
      * Build a header for the participant survey report
      * 
-     * @var string $webformId
+     * @var array $webformElements
      */
-    protected function reportHeader(string $webformId)
+    protected function reportHeader(array $webformElements)
     {
-        $webformElements = $this->getWebformElements($webformId);
         $header = [
             [
                 [
@@ -136,11 +137,10 @@ class HeaderBuilder
     /**
      * Build a header for the participant survey report export data
      * 
-     * @var string $webformId
+     * @var array $webformElements
      */
-    protected function csvHeader(string $webformId)
+    protected function csvHeader(array $webformElements)
     {
-        $webformElements = $this->getWebformElements($webformId);
         $header = [
             [
                 t('Event Report'),
@@ -202,12 +202,10 @@ class HeaderBuilder
     /**
      * Build a header for the per event survey report export data
      * 
-     * @var string $webformId
+     * @var array $webformElements
      */
-
-    protected function csvEvent(string $webformId)
+    protected function csvEvent(array $webformElements)
     {
-        $webformElements = $this->getWebformElements($webformId);
         $header = [];
         $columnIndexes = [];
         $defaultRowValues = [
@@ -231,17 +229,142 @@ class HeaderBuilder
     }
 
     /**
-     * Get the webform elements
+     * Build a header for the webform report
      * 
-     * @var string $webformId
+     * @var array $webformElements
      */
-
-    protected function getWebformElements(string $webformId)
+    protected function webformHeader(array $webformElements)
     {
-        $webform = Webform::load($webformId);
-        if (!$webform) {
-            throw new Exception("'{$webformId}' is invalid.");
+        $header = [
+            [
+                'title' => 'Serial number',
+                'cspan' => 0,
+                'class' => 'event-feedback--th-2 opt'
+            ],
+            [
+                'title' => 'Submission ID',
+                'cspan' => 0,
+                'class' => 'event-feedback--th-2 opt'
+            ],
+            [
+                'title' => 'Created',
+                'cspan' => 0,
+                'class' => 'event-feedback--th-2 opt'
+            ],
+            [
+                'title' => 'User',
+                'cspan' => 0,
+                'class' => 'event-feedback--th-2 opt'
+            ],
+            [
+                'title' => 'IP Address',
+                'cspan' => 0,
+                'class' => 'event-feedback--th-2 opt'
+            ],
+        ];
+        $columnIndexes = [
+            'serial' => 0,
+            'sid' => 1,
+            'created' => 2,
+            'user' => 3,
+            'remote_addr' => 4
+        ];
+
+         $defaultRowValues = [
+            '','','','',''
+        ];
+
+        $colIndex = 5;
+        unset($webformElements['actions']);
+        foreach ($webformElements as $key => $ele) {
+            if (!isset($ele['#title'])) {
+                continue;
+            }
+            if ($ele['#type'] === 'webform_wizard_page') {
+                foreach ($ele as $key2 => $ele2) {
+                    if (is_array($ele2)) {
+                        foreach ($ele2 as $key3 => $ele3) {
+                            if (!isset($ele3['#title'])) {
+                                continue;
+                            }
+                            $header[$colIndex] = [
+                                'title' => $ele3['#title'],
+                                'cspan' => 0,
+                                'class' => 'event-feedback--th-2 opt'
+                            ];
+                            $defaultRowValues[$colIndex] = [];
+                            $columnIndexes[$key3] = $colIndex++;
+                        }
+                    }
+                }
+            } else {
+                $header[$colIndex] = [
+                    'title' => $ele['#title'],
+                    'cspan' => 0,
+                    'class' => 'event-feedback--th-2 opt'
+                ];
+
+                $defaultRowValues[$colIndex] = [];
+                $columnIndexes[$key] = $colIndex++;
+            }
         }
-        return $webform->getElementsOriginalDecoded();
+
+        return [
+            'header' => $header,
+            'indexes' => $columnIndexes,
+            'default' => $defaultRowValues
+        ];
+    }
+
+    /**
+     * Build a header for the webform report CSV
+     * 
+     * @var array $webformElements
+     */
+    protected function webformCSVHeader(array $webformElements)
+    {
+        $header = [
+            t('Serial number'),
+            t('Submission ID'),
+            t('Created'),
+            t('User'),
+            t('IP Address')
+        ];
+        $columnIndexes = [
+            'serial' => 0,
+            'sid' => 1,
+            'created' => 2,
+            'user' => 3,
+            'remote_addr' => 4
+        ];
+
+        $colIndex = 5;
+        unset($webformElements['actions']);
+        foreach ($webformElements as $key => $ele) {
+            if (!isset($ele['#title'])) {
+                continue;
+            }
+            if ($ele['#type'] === 'webform_wizard_page') {
+                foreach ($ele as $key2 => $ele2) {
+                    if (is_array($ele2)) {
+                        foreach ($ele2 as $key3 => $ele3) {
+                            if (!isset($ele3['#title'])) {
+                                continue;
+                            }
+                            $header[$colIndex] = $ele3['#title'];
+                            $columnIndexes[$key3] = $colIndex++;
+                        }
+                    }
+                }
+            } else {
+                $header[$colIndex] = $ele['#title'];
+                $columnIndexes[$key] = $colIndex++;
+            }
+        }
+
+        return [
+            'header' => $header,
+            'indexes' => $columnIndexes
+        ];
     }
 }
