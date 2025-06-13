@@ -172,7 +172,7 @@ class EventFeedbackController extends ControllerBase
         if ($webformId) {
             $page = \Drupal::request()->query->get('page', 0);
             $page = $page < 0 ? 0 : $page;
-            $length = 3;//$this->pageLength;
+            $length = $this->pageLength;
 
             [$header, $rows, $total, $ccount, $title] = \Drupal::service('event_feedback.webform_report_service')->buildReport($webformId, $page, $length);
             $pageTitle .= ' - '. $title;
