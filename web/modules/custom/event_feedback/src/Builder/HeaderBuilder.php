@@ -237,7 +237,7 @@ class HeaderBuilder
     {
         $header = [
             [
-                'title' => 'Serial number',
+                'title' => 'Sr. No.',
                 'cspan' => 0,
                 'class' => 'event-feedback--th-2 opt'
             ],
@@ -324,7 +324,7 @@ class HeaderBuilder
     protected function webformCSVHeader(array $webformElements)
     {
         $header = [
-            t('Serial number'),
+            t('Sr. No.'),
             t('Submission ID'),
             t('Created'),
             t('User'),
