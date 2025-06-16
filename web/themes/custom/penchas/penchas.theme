@@ -97,12 +97,12 @@ function penchas_preprocess_container(array &$variables)
 /**
  * Implements HOOK_preprocess_menu().
  */
-function penchas_preprocess_menu(&$variables) 
+function penchas_preprocess_menu(&$variables)
 {
   // Disable the login button for admin user.
-  if(\Drupal::currentUser()->hasRole('administrator') && $variables['menu_name'] === 'account') {
-    foreach($variables['items'] as $key => $menu) {
-      if($menu['url']->getRouteName() === 'common_utils.user_login') {
+  if (\Drupal::currentUser()->hasRole('administrator') && $variables['menu_name'] === 'account') {
+    foreach ($variables['items'] as $key => $menu) {
+      if ($menu['url']->getRouteName() === 'common_utils.user_login') {
         unset($variables['items'][$key]);
       }
     }
@@ -887,17 +887,19 @@ function penchas_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterfa
 {
   $themeHandler = \Drupal::service('theme_handler');
   $themePath = $themeHandler->getTheme($themeHandler->getDefault())->getPath();
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['group'] = -100;
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['type'] = 'file';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['data'] = $themePath . '/js/tbcustom.js';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['version'] = '1.x';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['minified'] = '';
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['weight'] =  0.079;
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['cache'] = 1;
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['preprocess'] = 1;
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['attributes'] = array();
-  $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['browsers'] = array();
+  if (isset($javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js'])) {
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['scope'] = 'footer';
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['group'] = -100;
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['type'] = 'file';
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['data'] = $themePath . '/js/tbcustom.js';
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['version'] = '1.x';
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['minified'] = '';
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['weight'] =  0.079;
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['cache'] = 1;
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['preprocess'] = 1;
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['attributes'] = array();
+    $javascript['modules/contrib/tb_megamenu/js/tb-megamenu-frontend.js']['browsers'] = array();
+  }
 }
 
 /**
