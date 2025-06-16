@@ -1,0 +1,4 @@
+ajax_pager:
+  version: 1.0
+  js:
+    js/ajax_pager.js: {}
