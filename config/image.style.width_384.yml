@@ -1,0 +1,21 @@
+uuid: 0ae7dd4b-9fb4-442a-9069-be041d66492a
+langcode: en
+status: true
+dependencies: {  }
+name: width_384
+label: 'Width 384'
+effects:
+  ded75985-5926-4667-931c-15ada838882a:
+    uuid: ded75985-5926-4667-931c-15ada838882a
+    id: image_scale
+    weight: 1
+    data:
+      width: 384
+      height: null
+      upscale: true
+  b1a48d0b-c39c-4ea5-b26d-408174646b84:
+    uuid: b1a48d0b-c39c-4ea5-b26d-408174646b84
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
