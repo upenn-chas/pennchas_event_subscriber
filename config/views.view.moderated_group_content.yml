@@ -10,6 +10,7 @@ dependencies:
     - gcontent_moderation
     - group
     - node
+    - url_alteration
     - user
   enforced:
     module:
@@ -520,7 +521,7 @@ display:
         options:
           group_permission: 'view latest version'
       cache:
-        type: none
+        type: tag
         options: {  }
       empty:
         area_text_custom:
@@ -1004,7 +1005,12 @@ display:
     position: 1
     display_options:
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: group/%group/moderated
       menu:
         type: tab
