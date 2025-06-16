@@ -30,7 +30,7 @@ $settings['config_sync_directory'] = '../config/';
 ini_set('memory_limit', '-1');
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev'){
+  if(in_array($_ENV['PANTHEON_ENVIRONMENT'], ['dev', 'test', 'live'])){
       $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
   }
 }
