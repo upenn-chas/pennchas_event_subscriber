@@ -1,0 +1,17 @@
+measurement_id: G-DFXHQNN9K5
+scripts_custom_attributes: ''
+ga4_access_roles:
+  anonymous: 0
+  authenticated: 0
+  content_editor: 0
+  administrator: 0
+  campus_partner: 0
+  chas_student_worker: 0
+  chas_technology: 0
+  chas_director: 0
+  chas_professional_staff: 0
+  group_layout_editor: 0
+ga4_access_pages:
+  id: request_path
+  pages: ''
+  negate: '0'

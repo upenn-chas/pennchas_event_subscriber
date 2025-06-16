@@ -81,6 +81,7 @@ module:
   find_your_house: 0
   flexible_permissions: 0
   fullcalendar_view: 0
+  ga4_google_analytics: 0
   gcontent_moderation: 0
   gnode: 0
   group: 0
