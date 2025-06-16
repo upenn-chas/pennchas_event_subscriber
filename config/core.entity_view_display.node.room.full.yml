@@ -250,21 +250,6 @@ third_party_settings:
               block_serialized: null
             weight: 4
             additional: {  }
-          d2e5f3f3-263a-44e9-82a0-d3842e865495:
-            uuid: d2e5f3f3-263a-44e9-82a0-d3842e865495
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'Space Details'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 2688
-              block_revision_id: 4062
-              block_serialized: null
-            weight: 5
-            additional: {  }
           bf1cdf5f-5171-4c94-95d5-37e95757dd89:
             uuid: bf1cdf5f-5171-4c94-95d5-37e95757dd89
             region: blb_region_col_1
