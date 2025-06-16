@@ -19,8 +19,13 @@ class LoginController extends ControllerBase
 
             $request = \Drupal::request();
             $destination = $request->headers->get('referer');
+        
             if ($destination) {
                 $destination = preg_replace('/^.+?[^\/:](?=[?\/]|$)/', '', $destination);
+            }
+            if( !$destination || $destination === '/') {
+                // If the destination is empty or the front page, redirect to the front page.
+                $destination = \Drupal::config('system.site')->get('page.front');
             }
             $login_url = \Drupal\Core\Url::fromRoute('simplesamlphp_auth.saml_login', [
                 'destination' => $destination,
