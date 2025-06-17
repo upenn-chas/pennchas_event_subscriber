@@ -2,6 +2,8 @@ uuid: 0bd7d218-c715-4a41-940a-3ead36e8245b
 langcode: en
 status: true
 dependencies:
+  config:
+    - user.role.authenticated
   module:
     - user
 id: dashboard_header
@@ -214,8 +216,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -292,6 +296,7 @@ display:
         - 'languages:language_interface'
         - url
         - user
+        - user.roles
       tags: {  }
   block_1:
     id: block_1
@@ -299,7 +304,11 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -307,4 +316,5 @@ display:
         - 'languages:language_interface'
         - url
         - user
+        - user.roles
       tags: {  }

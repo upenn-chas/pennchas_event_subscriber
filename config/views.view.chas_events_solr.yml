@@ -11,6 +11,7 @@ dependencies:
   module:
     - search_api
     - smart_date
+    - view_alteration
     - views_bootstrap
 id: chas_events_solr
 label: 'Chas Events - SOLR'
@@ -600,8 +601,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: dashboard_access
+        options:
+          dashboard_perm: 'access reports'
       cache:
         type: search_api_none
         options: {  }
@@ -873,6 +875,7 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:field.storage.node.field_college_houses'
         - 'config:field.storage.node.field_event_schedule'
@@ -886,7 +889,12 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: dashboard/my-events-old
     cache_metadata:
       max-age: -1
@@ -895,6 +903,7 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:field.storage.node.field_college_houses'
         - 'config:field.storage.node.field_event_schedule'

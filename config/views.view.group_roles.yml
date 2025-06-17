@@ -4,13 +4,14 @@ status: true
 dependencies:
   module:
     - group
+    - user
 id: group_roles
 label: 'Group Roles'
 module: views
 description: ''
 tag: ''
 base_table: groups_field_data
-base_field: nid
+base_field: id
 display:
   default:
     id: default
@@ -100,8 +101,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -135,11 +137,13 @@ display:
       relationships: {  }
       header: {  }
       footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.permissions
       tags: {  }
   block_1:
     id: block_1
@@ -147,10 +151,15 @@ display:
     display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.permissions
       tags: {  }

@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.group.field_short_name
     - field.storage.node.body
     - search_api.index.solr_search_content
   module:
     - search_api
     - text
+    - user
 id: solr_search_content
 label: 'Solr Search Content'
 module: views
@@ -270,8 +270,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: search_api_none
         options: {  }
@@ -463,8 +464,8 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
-        - 'config:field.storage.group.field_short_name'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.solr_search_content'
         - 'search_api_list:solr_search_content'
@@ -524,8 +525,8 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
-        - 'config:field.storage.group.field_short_name'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.solr_search_content'
         - 'search_api_list:solr_search_content'
@@ -932,8 +933,8 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
-        - 'config:field.storage.group.field_short_name'
         - 'config:field.storage.node.body'
         - 'config:search_api.index.solr_search_content'
         - 'search_api_list:solr_search_content'

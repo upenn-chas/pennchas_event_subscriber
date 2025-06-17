@@ -5,6 +5,7 @@ dependencies:
   config:
     - webform.webform.event_feedback
   module:
+    - user
     - views_bootstrap
     - webform
 id: webform
@@ -13,7 +14,7 @@ module: views
 description: ''
 tag: ''
 base_table: webform_submission
-base_field: nid
+base_field: sid
 display:
   default:
     id: default
@@ -107,8 +108,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -140,12 +142,14 @@ display:
       relationships: {  }
       header: {  }
       footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: 0
       contexts:
         - 'languages:language_interface'
         - url.query_args
         - user
+        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -153,7 +157,12 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: webform
     cache_metadata:
       max-age: 0
@@ -161,4 +170,5 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - user
+        - user.permissions
       tags: {  }

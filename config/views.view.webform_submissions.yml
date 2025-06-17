@@ -386,8 +386,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -594,7 +595,11 @@ display:
           empty: false
           content: 'Displaying @start - @end of @total'
       footer: {  }
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -603,6 +608,7 @@ display:
         - url
         - url.query_args
         - user
+        - user.permissions
       tags: {  }
   embed_administer:
     id: embed_administer
@@ -1461,6 +1467,10 @@ display:
     display_plugin: embed
     position: 1
     display_options:
+      access:
+        type: perm
+        options:
+          perm: 'access content'
       style:
         type: table
         options:
@@ -1524,13 +1534,18 @@ display:
           separator: ''
           hide_empty: false
       defaults:
+        access: false
         style: false
         row: false
         fields: true
         filters: true
         filter_groups: true
       display_description: 'Display submissions.'
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1539,6 +1554,7 @@ display:
         - url
         - url.query_args
         - user
+        - user.permissions
       tags: {  }
   embed_manage:
     id: embed_manage

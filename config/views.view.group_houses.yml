@@ -13,6 +13,7 @@ dependencies:
     - media
     - options
     - text
+    - user
     - views_bootstrap
 id: group_houses
 label: 'Group houses'
@@ -124,8 +125,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -175,6 +177,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - user.permissions
       tags: {  }
   block_1:
     id: block_1
@@ -203,6 +206,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.permissions
       tags: {  }
   block_2:
     id: block_2
@@ -854,13 +858,18 @@ display:
       css_class: 'filter-results space-bottom'
       use_ajax: false
       header: {  }
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags:
         - 'config:field.storage.group.field_description'
         - 'config:field.storage.group.field_image'
@@ -1536,6 +1545,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags:
         - 'config:field.storage.group.field_description'
         - 'config:field.storage.group.field_image'
