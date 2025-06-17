@@ -366,7 +366,8 @@
         "drupal/config_pages": "^2.17",
         "drupal/fullcalendar_view": "^5.2",
         "drupal/search_api_exclude_entity": "^3.0",
-        "drupal/ga4_google_analytics": "^1.1"
+        "drupal/ga4_google_analytics": "^1.1",
+        "drupal/security_review": "^3.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
