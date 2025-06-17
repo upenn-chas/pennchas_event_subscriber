@@ -32,7 +32,7 @@ ini_set('memory_limit', '-1');
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
     $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
-    $settings['simple_sitemap_engines.index_now.key'] = '';
+    $settings['simple_sitemap_engines.index_now.key'] = '4181e12e-157e-4577-949c-51fc9c6be013';
   } else if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
     $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
     $settings['simple_sitemap_engines.index_now.key'] = '1ab4ac30-c52c-4c90-abe8-57d8a155a2cf';
