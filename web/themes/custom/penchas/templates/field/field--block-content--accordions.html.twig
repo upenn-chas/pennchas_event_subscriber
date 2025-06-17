@@ -60,11 +60,12 @@
   {% endif %}
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field__items accordion') }} id="accordionExample">
+      {% set rand =  random() %} 
       {% for item in items %}
         <div{{ item.attributes.addClass('field__item') }}></div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="heading{{ loop.index }}">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+          <h2 class="accordion-header" id="heading{{ loop.index }}_{{ rand }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}_{{ rand }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}_{{ rand }}">
               {% if item.content['#paragraph'].field_heading is not empty %}
                 {{ item.content['#paragraph'].field_heading.value }}
               {% endif %}
@@ -81,7 +82,7 @@
               </div>
             {% endif %}
           </h2>
-          <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#accordionExample" style="">
+          <div id="collapse{{ loop.index }}_{{ rand }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}_{{ rand }}" data-bs-parent="#accordionExample" style="">
             <div class="accordion-body">
             {% if item.content['#paragraph'].field_accordions_description %}
               {{ item.content['#paragraph'].field_accordions_description.value|raw }}
