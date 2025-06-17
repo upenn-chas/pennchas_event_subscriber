@@ -30,14 +30,20 @@ $settings['config_sync_directory'] = '../config/';
 ini_set('memory_limit', '-1');
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if(in_array($_ENV['PANTHEON_ENVIRONMENT'], ['dev', 'test', 'live'])){
-      $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+    $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+    $settings['simple_sitemap_engines.index_now.key'] = 'ac0e81f6-3263-4f3c-b2f4-5a04a81c8fa6';
+  } else if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
+    $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+    $settings['simple_sitemap_engines.index_now.key'] = '';
+  } else if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
+    $config['search_api.server.pantheon_search']['backend_config']['connector'] = 'pantheon';
+    $settings['simple_sitemap_engines.index_now.key'] = '';
   }
 }
 
 $settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];
 $settings['state_cache'] = TRUE;
-$settings['simple_sitemap_engines.index_now.key'] = 'ac0e81f6-3263-4f3c-b2f4-5a04a81c8fa6';
 
 /**
  * If there is a local settings file, then include it
