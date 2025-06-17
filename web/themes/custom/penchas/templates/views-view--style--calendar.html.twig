@@ -32,7 +32,7 @@
             </div>
           {% endif %}
           <div class="select-outer">
-            <select class="redirect-dropdown" onchange="redirectToLink()">
+            <select class="redirect-dropdown">
               <option value="{{base_path}}group/{{short_name}}/room-reservation-calendar">Reservation</option>
               <option value="{{base_path}}group/{{short_name}}/calendar">Events</option>
             </select>
@@ -53,7 +53,7 @@
           {% endif %}
 
             <div class="select-outer">
-              <select class="redirect-dropdown" onchange="redirectToLink()">
+              <select class="redirect-dropdown">
                 <option data-class="month" value="{{base_path}}group/{{short_name}}/room-reservation-calendar?c_type=month">Month</option>
                 <option data-class="week" value="{{base_path}}group/{{short_name}}/week-room-reservation-calendar?c_type=week">Week</option>
               </select>

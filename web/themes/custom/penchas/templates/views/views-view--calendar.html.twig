@@ -62,7 +62,7 @@
           {% endif %}
           
           <div class="select-outer">
-              <select class="redirect-dropdown" onchange="redirectToLink()">
+              <select class="redirect-dropdown">
                 <option value="{{base_path}}group/{{short_name}}/calendar_view">Events</option>
                 <option value="{{base_path}}group/{{short_name}}/room-reservation-calendar">Reservation</option>
               </select>
@@ -81,7 +81,7 @@
             {{ pager }}
           {% endif %}
           <div class="select-outer">
-              <select class="redirect-dropdown" onchange="redirectToLink()" tabindex="-1">
+              <select class="redirect-dropdown" tabindex="-1">
                 <option data-class="month"  value="{{base_path}}group/{{short_name}}/calendar?{{month_params}}">Month</option>
                 <option data-class="week" value="{{base_path}}group/{{short_name}}/week-calendar?{{week_params}}">Week</option>
               </select>

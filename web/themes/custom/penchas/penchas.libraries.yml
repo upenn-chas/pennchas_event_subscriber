@@ -5,8 +5,8 @@ global-styling:
     js/bootstrap.min.js: { weight: -48 }
     js/barrio.js: {}
     js/slick.min.js: {}
-    js/custom.js?sxsxs=ssxss: {}
-    js/new_custom.js?ver=0.9: {}
+    js/custom.js: {}
+    js/new_custom.js: {}
   css:
     component:
       css/style.css: {}
