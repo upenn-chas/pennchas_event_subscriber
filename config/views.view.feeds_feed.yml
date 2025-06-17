@@ -513,7 +513,7 @@ display:
         options:
           perm: 'access feed overview'
       cache:
-        type: none
+        type: tag
         options: {  }
       empty:
         result:
@@ -734,7 +734,12 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: admin/content/feed
       menu:
         type: normal

@@ -470,8 +470,12 @@ display:
         options:
           perm: 'access site reports'
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 60
+          results_lifespan_custom: 0
+          output_lifespan: 60
+          output_lifespan_custom: 0
       empty:
         area:
           id: area_text_custom
@@ -700,7 +704,12 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        simple_sitemap_display_extender:
+          variants: {  }
       path: admin/reports/dblog
     cache_metadata:
       max-age: -1
