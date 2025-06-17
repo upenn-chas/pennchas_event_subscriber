@@ -1,8 +1,8 @@
 diff --git a/src/Controller/SimplesamlphpAuthController.php b/src/Controller/SimplesamlphpAuthController.php
-index 8a084f2..9c42442 100644
+index 8a084f2..425fb4e 100644
 --- a/src/Controller/SimplesamlphpAuthController.php
 +++ b/src/Controller/SimplesamlphpAuthController.php
-@@ -200,6 +200,115 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
+@@ -200,6 +200,118 @@ class SimplesamlphpAuthController extends ControllerBase implements ContainerInj
        $this->simplesaml->externalAuthenticate();
      }
  
@@ -11,6 +11,9 @@ index 8a084f2..9c42442 100644
 +    $employeeNumber = $attributes['employeeNumber'][0];
 +    $eduPersonPrincipalName = $attributes['eduPersonPrincipalName'][0];
 +    $eduPersonEntitlement = $attributes['eduPersonEntitlement'];
++    if(!is_array($eduPersonEntitlement)) {
++      $eduPersonEntitlement = [$eduPersonEntitlement];
++    }
 +    $field_last_name = $attributes['sn'][0];
 +    $field_first_name = $attributes['givenName'][0];
 +    $displayName = $attributes['displayName'][0];
