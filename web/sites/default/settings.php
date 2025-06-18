@@ -46,6 +46,15 @@ $settings['config_exclude_modules'] = ['simplesamlphp_auth', 'smtp.settings'];
 $settings['state_cache'] = TRUE;
 
 /**
+ * REDIRECTS
+ * If there is a redirects file, then include it
+ */
+$redirects = __DIR__ . "/settings.redirects.php";
+if (file_exists($redirects)) {
+  include $redirects;
+}
+
+/**
  * If there is a local settings file, then include it
  */
 $local_settings = __DIR__ . "/settings.local.php";
