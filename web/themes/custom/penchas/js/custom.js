@@ -372,7 +372,6 @@
   });
 
   jQuery('.find_your_house .select-menu .option').on('keyup', function (e) {
-    console.debug(e.key);
     if (e.key === 'Enter' || e.key === ' ') {
       jQuery(this).trigger('click');
     }
