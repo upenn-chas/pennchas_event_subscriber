@@ -8,35 +8,6 @@ $(document).ready(function () {
     $(this).toggleClass('active');
   })
 
-  if (window.outerWidth < 991) {
-
-    $('.events').slick({
-      dots: false,
-      infinite: false,
-      speed: 300,
-      slidesToShow: 1,
-      arrows: false,
-      slidesToScroll: 1,
-      variableWidth: true,
-      responsive: [
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1
-          }
-        },
-        {
-          breakpoint: 575,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        },
-      ]
-    });
-  }
-
   var $slider = $('.two-column-slider');
 
   if ($slider.length) {

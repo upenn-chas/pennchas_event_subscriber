@@ -352,40 +352,6 @@
 
   // Custom code here
   $(document).ready(function () {
-    if (window.outerWidth < 992) {
-
-      $('.events').slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 3,
-        arrows: false,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          },
-        ]
-      });
-    }
-
-
-    // $('.internal-links .dropdown').hover(function () {
-    //   $(this).addClass("selected", 3000);
-    // }, function () {
-    //   $(this).removeClass("selected", 3000);
-    // });
 
     $('.internal-links .dropdown').hover(function () {
       $('.internal-links .dropdown').each(function (index, element) {
