@@ -365,6 +365,19 @@
 
   });
 
+  jQuery('.find_your_house .sBtn-text').on('keyup', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      jQuery(this).trigger('click');
+    }
+  });
+
+  jQuery('.find_your_house .select-menu .option').on('keyup', function (e) {
+    console.debug(e.key);
+    if (e.key === 'Enter' || e.key === ' ') {
+      jQuery(this).trigger('click');
+    }
+  });
+
   var $slider = $('.two-column-slider');
 
   if ($slider.length) {
