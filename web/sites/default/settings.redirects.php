@@ -61,6 +61,10 @@ if (isset($_SERVER['HTTP_HOST'])) {
             header('HTTP/1.0 301 Moved Permanently');
             header('Location: https://' . $primary_domain . '/dubois');
             exit();
+        case 'support.collegehouses.upenn.edu':
+            header('HTTP/1.0 301 Moved Permanently');
+            header('Location: https://housetech.freshservice.com');
+            exit();
         case 'www.collegehouses.upenn.edu':
             header('HTTP/1.0 301 Moved Permanently');
             header('Location: https://' . $primary_domain . $_SERVER['REQUEST_URI']);
