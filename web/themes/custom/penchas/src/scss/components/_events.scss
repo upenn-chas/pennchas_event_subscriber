@@ -276,6 +276,12 @@
     padding: 0 !important;
   }
 
+  @include media-query("mobile") {
+   ul {
+      padding-left: 0px;
+      padding-right: 0px;
+   }
+  }
   .pagination {
     @include media-query-min("small") {
       padding-bottom: 0;
@@ -293,6 +299,10 @@
     font-family: $teritoryFont;
     line-height: 16px;
     margin-bottom: 1rem;
+
+    @include media-query("small") {
+      text-align: center;
+    }
   }
 
   .view-content {
@@ -308,13 +318,18 @@
   .row {
     margin: 0;
 
-    ul {
+    li {
       border: 1px solid #bfc7d6;
       padding: 0 20px;
       font-family: $teritoryFont;
       font-size: 14px;
       line-height: 19px;
       transition: border-color 0.3s ease-in-out;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: inherit;
+      }
 
       .row {
         margin: 0 -12px;
@@ -1139,7 +1154,8 @@
   }
 }
 
-body.page-view-my-events {
+body.page-view-my-events,
+body.page-view-my-reservations {
   div#main {
     @include media-query("mobile") {
       padding-left: 0;
