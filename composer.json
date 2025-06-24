@@ -362,7 +362,7 @@
         "drupal/symfony_mailer_lite": "^2.0",
         "drupal/search_api": "^1.38",
         "recurser/jquery-simple-color": "*",
-        "bgrins/spectrum":"*",
+        "bgrins/spectrum": "*",
         "drupal/config_pages": "^2.17",
         "drupal/fullcalendar_view": "^5.2",
         "drupal/search_api_exclude_entity": "^3.0",
@@ -382,9 +382,7 @@
             "locations": {
                 "web-root": "./web"
             },
-            "allowed-packages": [
-                "pantheon-systems/drupal-integrations"
-            ],
+            "allowed-packages": ["pantheon-systems/drupal-integrations"],
             "file-mapping": {
                 "[project-root]/.editorconfig": false,
                 "[project-root]/pantheon.upstream.yml": false,
@@ -393,36 +391,16 @@
             }
         },
         "installer-paths": {
-            "web/core": [
-                "type:drupal-core"
-            ],
-            "web/libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "web/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "web/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "web/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "web/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "web/profiles/custom/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "web/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ],
-            "web/private/scripts/quicksilver/{$name}/": [
-                "type:quicksilver-script"
-            ]
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
@@ -458,17 +436,11 @@
         }
     },
     "autoload": {
-        "classmap": [
-            "upstream-configuration/scripts/ComposerScripts.php"
-        ]
+        "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
     },
     "scripts": {
-        "post-install-cmd": [
-            "/bin/bash scripts/saml_config.sh"
-        ],
-        "pre-update-cmd": [
-            "DrupalComposerManaged\\ComposerScripts::preUpdate"
-        ],
+        "post-install-cmd": ["/bin/bash scripts/saml_config.sh"],
+        "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
         "post-update-cmd": [
             "DrupalComposerManaged\\ComposerScripts::postUpdate",
             "/bin/bash scripts/saml_config.sh"
@@ -478,7 +450,7 @@
         "preferred-install": "dist",
         "sort-packages": false,
         "platform": {
-            "php": "8.2.0"
+            "php": "8.3.14"
         },
         "allow-plugins": {
             "composer/installers": true,
