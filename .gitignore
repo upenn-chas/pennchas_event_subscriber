@@ -102,3 +102,4 @@ docker-compose.yml
 .dockerignore
 docker-logs
 .vscode
+config/CHAS Web 5.0.code-workspace
