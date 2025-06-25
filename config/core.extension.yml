@@ -74,6 +74,7 @@ module:
   feeds_tamper: 0
   field: 0
   field_group: 0
+  field_ui: 0
   file: 0
   filter: 0
   find_your_house: 0

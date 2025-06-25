@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.user.staff_short_info
     - field.storage.user.field_description
     - field.storage.user.field_display_email
     - field.storage.user.field_display_name
     - field.storage.user.field_phone_no
     - field.storage.user.field_title_position
+    - field.storage.user.field_user_categories
     - field.storage.user.user_picture
     - group.type.house1
     - image.style.medium
@@ -594,6 +596,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+        field_user_categories:
+          id: field_user_categories
+          table: user__field_user_categories
+          field: field_user_categories
+          plugin_id: field
       pager:
         type: none
         options:
@@ -644,6 +651,19 @@ display:
         options: {  }
       empty: {  }
       sorts:
+        field_user_categories_target_id:
+          id: field_user_categories_target_id
+          table: user__field_user_categories
+          field: field_user_categories_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_user_display_order_value_null_sort:
           id: field_user_display_order_value_null_sort
           table: user__field_user_display_order
@@ -857,6 +877,7 @@ display:
         - 'config:field.storage.user.field_display_name'
         - 'config:field.storage.user.field_phone_no'
         - 'config:field.storage.user.field_title_position'
+        - 'config:field.storage.user.field_user_categories'
         - 'config:field.storage.user.user_picture'
   block_1:
     id: block_1
@@ -882,4 +903,5 @@ display:
         - 'config:field.storage.user.field_display_name'
         - 'config:field.storage.user.field_phone_no'
         - 'config:field.storage.user.field_title_position'
+        - 'config:field.storage.user.field_user_categories'
         - 'config:field.storage.user.user_picture'
