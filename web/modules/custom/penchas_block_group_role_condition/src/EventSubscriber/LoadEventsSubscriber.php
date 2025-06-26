@@ -29,7 +29,7 @@ class LoadEventsSubscriber implements EventSubscriberInterface {
         $current_path = \Drupal::service('path.current')->getPath();
         $route_match = \Drupal::routeMatch();
         if (!\Drupal::currentUser()->isAuthenticated()) {
-            if("system.403" == $route_match->getRouteName()){
+            if("system.403" == $route_match->getRouteName() || preg_match('/^\/user\/\d+$/', \Drupal::request()->getPathInfo())) {
                 $login_url = '/saml_login?destination=' . urlencode($current_path);
                 $response = new RedirectResponse($login_url);
                 $event->setResponse($response);

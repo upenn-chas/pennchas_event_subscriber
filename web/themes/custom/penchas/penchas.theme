@@ -27,6 +27,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\group\GroupMembershipInterface;
 use Drupal\group\Access\GroupPermissionHandlerInterface;
 use Drupal\smart_date_recur\Entity\SmartDateRule;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -1040,7 +1041,8 @@ function penchas_preprocess_views_view(&$variables)
       $term = Term::load($filter_value);
       if ($term) {
         // Get the name of the term
-        $team_name = $term->getName();
+        $parent = $term->parent->entity;
+        $team_name = $parent? $parent->getName() : $term->getName();
         $variables['team_name'] = $team_name;
       }
     }
