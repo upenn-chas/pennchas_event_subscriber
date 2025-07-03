@@ -1,0 +1,18 @@
+<?php
+use \Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function penchas_node_alteration_entity_view_mode_alter(&$view_mode, EntityInterface $entity, $context) {
+  $type = $entity->bundle();
+  if ($type == 'reserve_room') {
+    if(\Drupal::routeMatch()->getRouteName() === 'view.reserve_room_moderation_view.page_1') {
+      return;
+    }
+    // Directly check if the status is 1 or not.
+    $view_mode = ($entity->get('status')->value == 1) ? 'default' : 'draft';
+  }
+}

@@ -1,0 +1,3 @@
+find_your_house:
+  js:
+    js/find-your-house.js: {}
