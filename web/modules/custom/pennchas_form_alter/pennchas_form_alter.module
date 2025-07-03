@@ -83,7 +83,7 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
                 unset($form['visibility']['user_role']);
             }
             break;
-        case 'group_house1_add_form': 
+        case 'group_house1_add_form':
         case 'layout_builder_discard_changes':
         case 'node_house_landing_page_delete_form':
         case 'node_article_delete_form':
@@ -164,8 +164,6 @@ function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formS
     }
 }
 
-
-
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
@@ -207,7 +205,6 @@ function pennchas_form_alter_node_update(Node $node)
         (new NodeUpdateHook())->handle($node);
     }
 }
-
 
 function pennchas_form_alter_entity_type_alter(&$entityType)
 {
@@ -338,14 +335,6 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
     return $variables;
 }
 
-// function pennchas_form_alter_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
-// {
-//     // Ensure the form ID is correct
-//     $view_id = ['calendar'];
-//     if (false && $form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_id)) {
-//         $form['#after_build'][] = 'penchas_add_exclude_notices_filter';
-//     }
-// }
 
 function penchas_add_exclude_notices_filter($form, FormStateInterface &$form_state)
 {
@@ -524,7 +513,6 @@ function restore_tabs(array &$tabs, array $tabTitles)
 }
 
 
-
 function pennchas_form_alter_preprocess_field(&$variables)
 {
     // Target the specific field in the group entity.
@@ -548,17 +536,6 @@ function pennchas_form_alter_preprocess_field(&$variables)
     }
 }
 
-// function pennchas_form_alter_preprocess_form_element(&$variables)
-// {
-//     if (isset($variables['name']) && !empty($variables['name']) && strpos($variables['name'], 'field_block_display_condition_wi') !== false) {
-//         $items = &$variables['items'];
-
-//         $group_role = GroupRole::load($variables['element']['#return_value']);
-//         if ($group_role) {
-//             $variables['label']['#title'] = $group_role->get('label') . ' (' . $group_role->get('scope') . ')';
-//         }
-//     }
-// }
 
 function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context)
 {
@@ -580,6 +557,9 @@ function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Ent
     $parameter_value = $request->query->get('view_mode');
     if ($parameter_value == 'calendar_view') {
         $view_mode = 'calendar_view';
+    } else if ($entity->bundle() == 'reserve_room' && \Drupal::routeMatch()->getRouteName() !== 'view.reserve_room_moderation_view.page_1') {
+        // Directly check if the status is 1 or not.
+        $view_mode = ($entity->get('status')->value == 1) ? 'default' : 'draft';
     }
 }
 
@@ -599,12 +579,3 @@ function pennchas_form_alter_menu_links_discovered_alter(&$links)
     }
 }
 
-/**
- * Implements hook_page_attachments_alter().
- */
-// function pennchas_form_alter_page_attachments_alter(array &$attachments) {
-//     $current_route = \Drupal::routeMatch()->getRouteName();
-//     if($current_route === 'node.add_page') {
-//         dd($attachments['#attached']);
-//     }
-// }

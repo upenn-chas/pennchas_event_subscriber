@@ -147,7 +147,7 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
  */
 function penchas_custom_token_permission() {
   $user = \Drupal::currentUser();
-  if ($user->hasPermission('access my events')) {
+  if ($user->hasPermission('my events dashboard')) {
     return AccessResult::allowed();
   }
   else {

@@ -35,7 +35,6 @@ dependencies:
     - media
     - node
     - penchas_custom_token
-    - penchas_group_role_permissions
     - smart_date_recur
     - webform
     - webform_node
@@ -47,8 +46,6 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access media overview'
-  - 'access my events'
-  - 'access my rerservations'
   - 'access reports'
   - 'administer layout builder modal'
   - 'all events dashboard'

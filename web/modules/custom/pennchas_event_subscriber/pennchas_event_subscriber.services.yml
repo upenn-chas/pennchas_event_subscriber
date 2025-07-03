@@ -4,11 +4,12 @@ services:
     arguments: ['@current_user']
     tags:
       - { name: event_subscriber }
-  pennchas_event_subscriber.route_subscriber:
-    class: Drupal\pennchas_event_subscriber\Routing\LoginRouteSubscriber
-    tags:
-      - { name: event_subscriber }
   pennchas_event_subscriber.no_page_cache_subscriber:
     class: Drupal\pennchas_event_subscriber\Subscriber\NoCacheForPageSubscriber
+    tags:
+      - { name: event_subscriber }
+  pennchas_event_subscriber.access_denied_subscriber:
+    class: Drupal\pennchas_event_subscriber\Subscriber\LoadEventsSubscriber
+    arguments: ['@current_route_match', '@request_stack']
     tags:
       - { name: event_subscriber }

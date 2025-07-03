@@ -1,7 +1,0 @@
-find_your_house.admin_form:
-  path: '/admin/config/system/find-your-house'
-  defaults:
-    _form: 'Drupal\find_your_house\Form\AdminFindYourHouse'
-    _title: 'Find Your House'
-  requirements:
-    _permission: 'administer site configuration'

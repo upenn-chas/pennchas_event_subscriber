@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\penchas_block_group_role_condition\EventSubscriber;
+namespace Drupal\pennchas_event_subscriber\Subscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -30,16 +30,11 @@ class LoadEventsSubscriber implements EventSubscriberInterface {
         $route_match = \Drupal::routeMatch();
         if (!\Drupal::currentUser()->isAuthenticated()) {
             if("system.403" == $route_match->getRouteName() || preg_match('/^\/user\/\d+$/', \Drupal::request()->getPathInfo())) {
-                $login_url = '/saml_login?destination=' . urlencode($current_path);
+                $login_url = '/backend/login?destination=' . urlencode($current_path);
                 $response = new RedirectResponse($login_url);
                 $event->setResponse($response);
             }
         }
 
     }
-
-    // public function checkForRedirection(RequestEvent $event) {
-    //     // dump('checkForRedirection',$event);
-    // }
-
 }

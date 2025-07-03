@@ -3,8 +3,3 @@ services:
     class: 'Drupal\penchas_block_group_role_condition\TwigExtension'
     tags:
       - { name: twig.extension }
-  penchas_block_group_role_condition.access_denied_subscriber:
-    class: Drupal\penchas_block_group_role_condition\EventSubscriber\LoadEventsSubscriber
-    arguments: ['@current_route_match', '@request_stack']
-    tags:
-      - { name: event_subscriber }

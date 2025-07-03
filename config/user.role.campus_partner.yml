@@ -4,12 +4,9 @@ status: true
 dependencies:
   module:
     - file
-    - penchas_group_role_permissions
 id: campus_partner
 label: 'Campus Partner'
 weight: -6
 is_admin: null
 permissions:
-  - 'access my events'
-  - 'access my rerservations'
   - 'delete own files'

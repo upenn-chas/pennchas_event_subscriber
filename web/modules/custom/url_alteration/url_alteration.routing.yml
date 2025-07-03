@@ -6,7 +6,7 @@
 #   requirements:
 #     _permission: 'create page content'
 
-custom_node.add_page:
+url_alteration.custom_node_add_page:
   path: '/node/add'
   defaults:
     _title: 'Add content'
@@ -16,3 +16,12 @@ custom_node.add_page:
     _node_operation_route: TRUE
   requirements:
     _entity_create_any_access: 'node'
+url_alteration.user_login:
+  path: /user/login
+  defaults:
+    _controller: '\Drupal\url_alteration\Controller\LoginController::userLogin'
+    _title: 'Login'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE

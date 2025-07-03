@@ -13,8 +13,6 @@ scope: outsider
 global_role: authenticated
 group_type: house1
 permissions:
-  - 'access my events'
-  - 'access my rerservations'
   - 'create group_media:image entity'
   - 'delete own group_media:image entity'
   - 'update any group_node:room entity'

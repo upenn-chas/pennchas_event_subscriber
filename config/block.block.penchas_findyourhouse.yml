@@ -1,20 +1,20 @@
-uuid: 62776e17-a9b6-4cea-8cef-638610f95305
+uuid: 520a660e-4669-4f98-89a3-69ca9187ced8
 langcode: en
 status: true
 dependencies:
   module:
-    - find_your_house
+    - penchas_block_group_role_condition
   theme:
     - penchas
 id: penchas_findyourhouse
 theme: penchas
 region: none
-weight: -15
+weight: 0
 provider: null
 plugin: find_your_house
 settings:
   id: find_your_house
   label: 'Find Your House'
   label_display: '0'
-  provider: find_your_house
+  provider: penchas_block_group_role_condition
 visibility: {  }

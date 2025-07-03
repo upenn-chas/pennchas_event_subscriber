@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\common_utils\Controller;
+namespace Drupal\url_alteration\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\RedirectResponse;

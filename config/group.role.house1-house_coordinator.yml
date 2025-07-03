@@ -14,8 +14,6 @@ group_type: house1
 permissions:
   - 'access group_media overview'
   - 'access group_node overview'
-  - 'access my events'
-  - 'access my rerservations'
   - 'access reports'
   - 'all events dashboard'
   - 'all reservations dashboard'

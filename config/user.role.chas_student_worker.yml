@@ -30,7 +30,6 @@ dependencies:
     - media
     - node
     - penchas_custom_token
-    - penchas_group_role_permissions
     - pennchas_form_alter
 third_party_settings:
   pennchas_form_alter:
@@ -44,7 +43,6 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access media overview'
-  - 'access my rerservations'
   - 'administer nodes'
   - 'configure editable article node layout overrides'
   - 'configure editable house_landing_page node layout overrides'

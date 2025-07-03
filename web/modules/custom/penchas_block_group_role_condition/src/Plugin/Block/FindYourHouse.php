@@ -1,12 +1,9 @@
 <?php
 
-namespace Drupal\find_your_house\Plugin\Block;
+namespace Drupal\penchas_block_group_role_condition\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\group\Entity\Group;
-// use Drupal\Core\Link;
-use Drupal\Core\Url;
 
 /**
  * Provides a 'Find Your House' Block.
@@ -24,14 +21,8 @@ class FindYourHouse extends BlockBase
 	 */
 	public function build()
 	{
-		$config = \Drupal::config('find_your_house.settings');
-		if (empty($config)) {
-			return;
-		}
-		$go_button = $config->get('go_button') ?? 'Go';
-		$group_types = $config->get('group_types');
-		$link_text = $config->get('link_text') ?? 'Discover all our houses';
-		$link_url = $config->get('link_url') ?? '#';
+		$go_button = 'Go';
+		$link_text = 'Discover all our houses';
 
 		$group_storage = \Drupal::entityTypeManager()->getStorage('group');
 		$group_ids = $group_storage->getQuery()->condition('status', 1)->accessCheck(false)->execute();
@@ -83,7 +74,7 @@ class FindYourHouse extends BlockBase
 						'#empty_option' => $this->t('Select Your House Name'),
 						'#options' => $options,
 						'#attributes' => [
-							'class' => ['hidden'],
+							'class' => ['hidden d-none'],
 						],
 					],
 					'submit' => [
@@ -113,12 +104,9 @@ class FindYourHouse extends BlockBase
 				'class' => ['find_your_house form-group'],
 			],
 			'#markup' => '<div class="select-menu"><div class="select-btn"><span class="sBtn-text" role="button" tabindex="0">Select your House Name</span><div class="select-arrow" aria-label="Select dropdown" role="button" aria-pressed="false"></div><ul class="options">' . $options_html . '</ul></div></div>',
-			// '#markup' => implode('</span></li><li class="option"><span class="option-text">', $options),
-			// '#suffix' => '</span></li></ul></div><div class="form-action"><button type="submit">Go</button></div>'
-			// '#markup' => $prefix . $content
 		];
 
-		$build['#attached']['library'][] = 'find_your_house/find_your_house';
+		$build['#attached']['library'][] = 'penchas_block_group_role_condition/find_your_house';
 		return $build;
 	}
 

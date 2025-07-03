@@ -1,10 +1,12 @@
-.search-area {
+.search-area,
+.find_your_house {
   background-color: $lightBlue;
   .col-lg-6 {
     position: relative;
     z-index: 3;
   }
  
+  
   .select-menu {
     .select-btn {
       display: flex;
@@ -36,7 +38,7 @@
     .options {
       position: absolute;
       display: none;
-      width: 430px;
+      width: 422px;
       overflow-y: auto;
       max-height: 240px;
       padding: 10px;

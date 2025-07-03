@@ -1621,3 +1621,6 @@ ul.pagination.js-pager__items {
 .node--unpublished {
   padding: unset;
 }
+.node--type-reserve-room.node--unpublished.node--view-mode-draft {
+  margin-top: 40px;
+}

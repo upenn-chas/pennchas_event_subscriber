@@ -1,9 +1,0 @@
-name: "PennChas Node View Mode Alteration"
-description: "PennChas New view mode alteration."
-type: module
-core_version_requirement: ^10
-version: 1.0
-package: Custom
-dependencies:
-  - drupal:group
-  - drupal:gnode

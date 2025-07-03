@@ -93,14 +93,9 @@ function isUserAuthorized(NodeInterface $node): bool
         return FALSE;
     }
 
-    // Check permissions.
-    if ($current_user->hasPermission('event own evaluation')) {
-        return TRUE;
-    }
-
     /** @var \Drupal\pennchas_common\AccessCheckService $access_check */
     $access_check = \Drupal::service('pennchas_common.access_check');
-    return $access_check->checkForGroupMember('event own evaluation');
+    return $access_check->check('event own evaluation');
 }
 
 /**
