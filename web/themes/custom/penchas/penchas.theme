@@ -103,7 +103,7 @@ function penchas_preprocess_menu(&$variables)
   // Disable the login button for admin user.
   if (\Drupal::currentUser()->hasRole('administrator') && $variables['menu_name'] === 'account') {
     foreach ($variables['items'] as $key => $menu) {
-      if ($menu['url']->getRouteName() === 'common_utils.user_login') {
+      if ($menu['url']->getRouteName() === 'url_alteration.user_login') {
         unset($variables['items'][$key]);
       }
     }
