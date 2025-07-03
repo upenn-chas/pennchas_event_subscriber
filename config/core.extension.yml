@@ -130,7 +130,6 @@ module:
   penchas_block_group_role_condition: 0
   penchas_chas_user_import: 0
   penchas_custom_token: 0
-  penchas_node_alteration: 0
   pennchas_event_subscriber: 0
   pennchas_form_alter: 0
   recaptcha_v3: 0
