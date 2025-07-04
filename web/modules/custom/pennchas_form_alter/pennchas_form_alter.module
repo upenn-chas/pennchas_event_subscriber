@@ -12,21 +12,28 @@ use Drupal\pennchas_form_alter\Hook\NodeUpdateHook;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\EventFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\NoticeFormAlter;
 use Drupal\pennchas_form_alter\Util\Constant;
-use Drupal\group\Entity\Group;
-use Drupal\user\Entity\Role;
-use Drupal\group\Entity\GroupType;
 use Drupal\Core\Database\Database;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReserveRoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\RoomFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\UserFormAlter;
-use Drupal\field\Entity\FieldConfig;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ReportExposeFormAlter;
-use Drupal\group\Entity\GroupRole;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ArticleFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\HouseFormAlter;
 use Drupal\pennchas_form_alter\Plugin\FormAlter\ProgramCommunityFormAlter;
-use Drupal\user\Entity\User;
 
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array $form
+ *   The form structure.
+ * @param \Drupal\Core\Form\FormStateInterface $formState
+ *   The current state of the form.
+ * @param string $formId
+ *   The ID of the form being altered.
+ *
+ * @see \Drupal\Core\Form\FormStateInterface
+ */
 function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
     switch ($formId) {
@@ -95,75 +102,11 @@ function pennchas_form_alter_form_alter(array &$form, FormStateInterface $formSt
 }
 
 /**
- * 
- * Alter the exposed form of views.
+ * Implements hook_form_alter_entity_presave().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being saved.
  */
-function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInterface $formState)
-{
-    // Get the form ID
-    $filterFormId = $form['#id'];
-
-    // Targeted views
-    static $targetViews = [
-        'views-exposed-form-moderation-reports-event-moderation' => 1,
-        'views-exposed-form-room-reservation-reports-page-1' => 1,
-        'views-exposed-form-contents-change-report-page-1' => 1,
-        'views-exposed-form-videos-link-report-page-1' => 1,
-        'views-exposed-form-events-evaluation-report-page-1' => 1,
-        'views-exposed-form-contents-delete-report-page-1' => 1,
-        'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
-        'views-exposed-form-users-reports-page-1' => 1,
-        'views-exposed-form-webform-export-page-1' => 1
-    ];
-    static $targetDashboardViews = [
-        'views-exposed-form-my-reservations-page-1' => 1,
-        'views-exposed-form-my-reservations-page-2' => 1,
-        'views-exposed-form-my-reservations-page-3' => 1,
-        'views-exposed-form-my-reservations-page-4' => 1,
-        'views-exposed-form-my-reservations-page-5' => 1,
-        'views-exposed-form-my-events-page-1' => 1,
-        'views-exposed-form-my-events-page-2' => 1,
-        'views-exposed-form-my-events-page-3' => 1,
-        'views-exposed-form-my-events-page-4' => 1,
-        'views-exposed-form-my-events-page-5' => 1,
-    ];
-
-    if (isset($targetViews[$filterFormId])) {
-        $form = (new ReportExposeFormAlter())->alter($form, $formState);
-    } else if (isset($targetDashboardViews[$filterFormId]) || $filterFormId === 'views-exposed-form-moderated-content-moderated-content') {
-        if (isset($form['moderation_state'])) {
-            unset($form['moderation_state']['#options']['All']);
-        }
-    } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
-        $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
-        $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
-    }
-}
-
-function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formState)
-{
-    $node = $formState->getFormObject()->getEntity();
-    if ($node instanceof Node && $node->hasField('moderation_state')) {
-        $type = ucwords(str_replace('_', ' ', $node->getType()));
-        $currentState = $node->get('moderation_state')->getString();
-        if ($currentState !== Constant::MOD_STATUS_DELETE) {
-            $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
-            $node->setUnpublished();
-            $node->setNewRevision(true);
-            $node->setRevisionLogMessage('Deleted');
-            $node->set('field_last_state', $currentState);
-            $node->save();
-
-            \Drupal::messenger()->addStatus(t('%type %title has been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
-        } else {
-            \Drupal::messenger()->addStatus(t('%type %title has already been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
-        }
-        $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
-    } else {
-        \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
-    }
-}
-
 function pennchas_form_alter_entity_presave(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
@@ -176,6 +119,12 @@ function pennchas_form_alter_entity_presave(EntityInterface $entity)
     }
 }
 
+/**
+ * Implements hook_node_insert().
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node being inserted.
+ */
 function pennchas_form_alter_node_insert(Node $node)
 {
     $nodeType = $node->getType();
@@ -191,6 +140,12 @@ function pennchas_form_alter_node_insert(Node $node)
     }
 }
 
+/**
+ * Implements hook_node_update().
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node being updated.
+ */
 function pennchas_form_alter_node_update(Node $node)
 {
 
@@ -206,6 +161,12 @@ function pennchas_form_alter_node_update(Node $node)
     }
 }
 
+/**
+ * Implements hook_entity_type_alter().
+ *
+ * @param array $entityType
+ *   The entity type definition.
+ */
 function pennchas_form_alter_entity_type_alter(&$entityType)
 {
     if (isset($entityType['group_role'])) {
@@ -215,6 +176,16 @@ function pennchas_form_alter_entity_type_alter(&$entityType)
     }
 }
 
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ *
+ * @param array $fields
+ *   The fields to alter.
+ * @param string $entityType
+ *   The entity type.
+ * @param string $bundle
+ *   The bundle name.
+ */
 function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityType, $bundle)
 {
     if ($bundle === Constant::NODE_EVENT) {
@@ -257,6 +228,14 @@ function pennchas_form_alter_entity_bundle_field_info_alter(&$fields, $entityTyp
     }
 }
 
+/**
+ * Implements hook_entity_operation_alter().
+ *
+ * @param array $operations
+ *   The operations available for the entity.
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being operated on.
+ */
 function pennchas_form_alter_entity_operation_alter(array &$operations, EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface) {
@@ -276,6 +255,15 @@ function pennchas_form_alter_entity_operation_alter(array &$operations, EntityIn
     }
 }
 
+/**
+ * Implements hook_node_search_result().
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node being checked for access.
+ *
+ * @return array
+ *   An array containing the node access status.
+ */
 function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node)
 {
     // Initialize variables
@@ -335,31 +323,13 @@ function pennchas_form_alter_node_search_result(\Drupal\node\NodeInterface $node
     return $variables;
 }
 
-
-function penchas_add_exclude_notices_filter($form, FormStateInterface &$form_state)
-{
-    // Add your custom checkbox field under the form
-    $inputs = $form_state->getUserInput();
-
-    $form['exclude_notice'] = [
-        '#type' => 'checkbox',
-        '#title' => t('General Events/Notice'),
-        '#description' => t('Exclude Notices'),
-        '#default_value' => !!$inputs['exclude_notice'],
-        '#attributes' => [
-            'class' => ['form-checkbox', 'form-check-input'],
-            'data-drupal-selector' => 'edit-type-exclude-notices',
-            'id' => 'edit-type-exclude-notices',
-            'name' => 'exclude_notice',
-            'value' => 'Exclude Notices',
-        ],
-    ];
-
-    return $form;
-}
-
 /**
- * Implements hook_menu_local_tasks_alter().
+ * Implements hook_form_alter_menu_local_tasks_alter().
+ *
+ * @param array $data
+ *   The data to alter.
+ * @param string $route_name
+ *   The route name.
  */
 function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 {
@@ -477,6 +447,176 @@ function pennchas_form_alter_menu_local_tasks_alter(&$data, $route_name)
 }
 
 /**
+ * Implements hook_form_alter_preprocess_field().
+ *
+ * @param array $variables
+ *   The variables for the field.
+ */
+function pennchas_form_alter_preprocess_field(&$variables)
+{
+    // Target the specific field in the group entity.
+    if ($variables['element']['#field_name'] == 'field_program_communities') {
+        foreach ($variables['items'] as &$item) {
+            if (!empty($item['content']) && !empty($item['content']['#url'])) {
+                $getEntity = $item['content']['#url']->getOption('entity');
+
+                $nid = $getEntity->get('entity_id')->target_id; // Assuming the field stores node ID.
+                // Load the node.
+                $node = \Drupal\node\Entity\Node::load($nid);
+                if ($node) {
+                    // Generate the node link.
+                    $url = $node->toUrl();
+                    $title = $node->getTitle();
+                    $item['content']['#url'] = $url;
+                    $item['content']['#attributes'] = ['target' => '_blank'];
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_form_alter_field_widget_single_element_form_alter().
+ *
+ * @param array $element
+ *   The form element to alter.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ * @param array $context
+ *   The context for the field widget.
+ */
+function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context)
+{
+    $itemName = $context['items']->getName();
+    if ($itemName === 'field_events_by_group_ref' || $itemName === 'field_view_reference') {
+        if (isset($element['options']['argument'])) {
+            $houseField = &$element['options']['argument'];
+            $houseField['#title'] = t('House');
+            $houseField['#type'] = 'select';
+            $groups = \Drupal::service('pennchas_common.option_group')->options('house1', TRUE);
+            $houseField['#options'] = ['' => '- None -'] + $groups;
+        }
+    }
+}
+
+/**
+ * Implements hook_form_alter_entity_view_mode_alter().
+ *
+ * @param string $view_mode
+ *   The view mode to alter.
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being viewed.
+ * @param array $context
+ *   The context for the view mode alteration.
+ */
+function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context)
+{
+    $request = \Drupal::service('request_stack')->getCurrentRequest();
+    $parameter_value = $request->query->get('view_mode');
+    if ($parameter_value == 'calendar_view') {
+        $view_mode = 'calendar_view';
+    } else if ($entity->bundle() == 'reserve_room' && \Drupal::routeMatch()->getRouteName() !== 'view.reserve_room_moderation_view.page_1') {
+        // Directly check if the status is 1 or not.
+        $view_mode = ($entity->get('status')->value == 1) ? 'default' : 'draft';
+    }
+}
+
+/**
+ * Implements hook_form_alter_menu_links_discovered_alter().
+ *
+ * @param array $links
+ *   The menu links to alter.
+ */
+function pennchas_form_alter_menu_links_discovered_alter(&$links)
+{
+    foreach ($links as $key => $link) {
+        if (
+            strpos($key, 'node.add.room') !== FALSE
+            || strpos($key, 'node.add.reserve_room') !== FALSE
+            || strpos($key, 'node.add.program_community') !== FALSE
+        ) {
+            unset($links[$key]);
+        }
+    }
+}
+
+/**
+ * Alters the exposed filter forms of specific views.
+ * This function modifies the exposed filter forms of various views
+ * to customize their behavior and appearance.
+ */
+function pennchas_form_alter_views_exposed_form_alter(array &$form, FormStateInterface $formState)
+{
+    // Get the form ID
+    $filterFormId = $form['#id'];
+
+    // Targeted views
+    static $targetViews = [
+        'views-exposed-form-moderation-reports-event-moderation' => 1,
+        'views-exposed-form-room-reservation-reports-page-1' => 1,
+        'views-exposed-form-contents-change-report-page-1' => 1,
+        'views-exposed-form-videos-link-report-page-1' => 1,
+        'views-exposed-form-events-evaluation-report-page-1' => 1,
+        'views-exposed-form-contents-delete-report-page-1' => 1,
+        'views-exposed-form-rooms-reservation-moderation-reports-page-1' => 1,
+        'views-exposed-form-users-reports-page-1' => 1,
+        'views-exposed-form-webform-export-page-1' => 1
+    ];
+    static $targetDashboardViews = [
+        'views-exposed-form-my-reservations-page-1' => 1,
+        'views-exposed-form-my-reservations-page-2' => 1,
+        'views-exposed-form-my-reservations-page-3' => 1,
+        'views-exposed-form-my-reservations-page-4' => 1,
+        'views-exposed-form-my-reservations-page-5' => 1,
+        'views-exposed-form-my-events-page-1' => 1,
+        'views-exposed-form-my-events-page-2' => 1,
+        'views-exposed-form-my-events-page-3' => 1,
+        'views-exposed-form-my-events-page-4' => 1,
+        'views-exposed-form-my-events-page-5' => 1,
+    ];
+
+    if (isset($targetViews[$filterFormId])) {
+        $form = (new ReportExposeFormAlter())->alter($form, $formState);
+    } else if (isset($targetDashboardViews[$filterFormId]) || $filterFormId === 'views-exposed-form-moderated-content-moderated-content') {
+        if (isset($form['moderation_state'])) {
+            unset($form['moderation_state']['#options']['All']);
+        }
+    } else if (in_array($filterFormId, ['views-exposed-form-media-library-widget', 'views-exposed-form-media-library-widget-table'], TRUE)) {
+        $groups = \Drupal::service('pennchas_common.option_group')->options('house1');
+        $form['gid']['#options'] = ['All' => $form['gid']['#options']['All']] + $groups;
+    }
+}
+
+/**
+ * Overrides the delete functionality for nodes.
+ * To implement a soft delete functionality, this function sets the moderation state to 'delete',
+ * unpublished the node, and saves it with a revision log message.
+ */
+function pennchas_form_alter_soft_delete(array &$form, FormStateInterface $formState)
+{
+    $node = $formState->getFormObject()->getEntity();
+    if ($node instanceof Node && $node->hasField('moderation_state')) {
+        $type = ucwords(str_replace('_', ' ', $node->getType()));
+        $currentState = $node->get('moderation_state')->getString();
+        if ($currentState !== Constant::MOD_STATUS_DELETE) {
+            $node->set('moderation_state', Constant::MOD_STATUS_DELETE);
+            $node->setUnpublished();
+            $node->setNewRevision(true);
+            $node->setRevisionLogMessage('Deleted');
+            $node->set('field_last_state', $currentState);
+            $node->save();
+
+            \Drupal::messenger()->addStatus(t('%type %title has been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
+        } else {
+            \Drupal::messenger()->addStatus(t('%type %title has already been deleted.', ['%type' => $type, '%title' => $node->getTitle()]));
+        }
+        $formState->setRedirect('entity.node.canonical', ['node' => $node->id()]);
+    } else {
+        \Drupal::messenger()->addStatus(t('Node of type %type doesnt support soft delete.', ['%type' => $node->gettype()]));
+    }
+}
+
+/**
  * Remove tabs from the tabs array.
  *
  * @param array $tabs
@@ -512,70 +652,25 @@ function restore_tabs(array &$tabs, array $tabTitles)
     }
 }
 
-
-function pennchas_form_alter_preprocess_field(&$variables)
+function penchas_add_exclude_notices_filter($form, FormStateInterface &$form_state)
 {
-    // Target the specific field in the group entity.
-    if ($variables['element']['#field_name'] == 'field_program_communities') {
-        foreach ($variables['items'] as &$item) {
-            if (!empty($item['content']) && !empty($item['content']['#url'])) {
-                $getEntity = $item['content']['#url']->getOption('entity');
+    // Add your custom checkbox field under the form
+    $inputs = $form_state->getUserInput();
 
-                $nid = $getEntity->get('entity_id')->target_id; // Assuming the field stores node ID.
-                // Load the node.
-                $node = \Drupal\node\Entity\Node::load($nid);
-                if ($node) {
-                    // Generate the node link.
-                    $url = $node->toUrl();
-                    $title = $node->getTitle();
-                    $item['content']['#url'] = $url;
-                    $item['content']['#attributes'] = ['target' => '_blank'];
-                }
-            }
-        }
-    }
-}
+    $form['exclude_notice'] = [
+        '#type' => 'checkbox',
+        '#title' => t('General Events/Notice'),
+        '#description' => t('Exclude Notices'),
+        '#default_value' => !!$inputs['exclude_notice'],
+        '#attributes' => [
+            'class' => ['form-checkbox', 'form-check-input'],
+            'data-drupal-selector' => 'edit-type-exclude-notices',
+            'id' => 'edit-type-exclude-notices',
+            'name' => 'exclude_notice',
+            'value' => 'Exclude Notices',
+        ],
+    ];
 
-
-function pennchas_form_alter_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context)
-{
-    $itemName = $context['items']->getName();
-    if ($itemName === 'field_events_by_group_ref' || $itemName === 'field_view_reference') {
-        if (isset($element['options']['argument'])) {
-            $houseField = &$element['options']['argument'];
-            $houseField['#title'] = t('House');
-            $houseField['#type'] = 'select';
-            $groups = \Drupal::service('pennchas_common.option_group')->options('house1', TRUE);
-            $houseField['#options'] = ['' => '- None -'] + $groups;
-        }
-    }
-}
-
-function pennchas_form_alter_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context)
-{
-    $request = \Drupal::service('request_stack')->getCurrentRequest();
-    $parameter_value = $request->query->get('view_mode');
-    if ($parameter_value == 'calendar_view') {
-        $view_mode = 'calendar_view';
-    } else if ($entity->bundle() == 'reserve_room' && \Drupal::routeMatch()->getRouteName() !== 'view.reserve_room_moderation_view.page_1') {
-        // Directly check if the status is 1 or not.
-        $view_mode = ($entity->get('status')->value == 1) ? 'default' : 'draft';
-    }
-}
-
-/**
- * Implements hook_menu_links_discovered_alter().
- */
-function pennchas_form_alter_menu_links_discovered_alter(&$links)
-{
-    foreach ($links as $key => $link) {
-        if (
-            strpos($key, 'node.add.room') !== FALSE
-            || strpos($key, 'node.add.reserve_room') !== FALSE
-            || strpos($key, 'node.add.program_community') !== FALSE
-        ) {
-            unset($links[$key]);
-        }
-    }
+    return $form;
 }
 

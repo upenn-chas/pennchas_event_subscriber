@@ -644,19 +644,6 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        field_user_categories_target_id:
-          id: field_user_categories_target_id
-          table: user__field_user_categories
-          field: field_user_categories_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
         field_user_display_order_value_null_sort:
           id: field_user_display_order_value_null_sort
           table: user__field_user_display_order
