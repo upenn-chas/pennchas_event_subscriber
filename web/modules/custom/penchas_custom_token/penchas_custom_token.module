@@ -20,6 +20,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Contains custom tokens info for Penchas.
  * Implements hook_token_info().
  */
 function penchas_custom_token_token_info(): array {
@@ -66,6 +67,7 @@ function penchas_custom_token_token_info(): array {
 
 
 /**
+ * Custom tokens for Penchas.
  * Implements hook_tokens().
  */
 function penchas_custom_token_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
@@ -142,9 +144,7 @@ function penchas_custom_token_tokens(string $type, array $tokens, array $data, a
   return $replacements;
 }
 
-/**
- *
- */
+
 function penchas_custom_token_permission() {
   $user = \Drupal::currentUser();
   if ($user->hasPermission('my events dashboard')) {
@@ -156,7 +156,17 @@ function penchas_custom_token_permission() {
 }
 
 /**
+ * Implements hook_node_access().
  *
+ * @param \Drupal\node\Entity\Node $node
+ *   The node entity.
+ * @param string $op
+ *   The operation being performed (e.g., 'view', 'update', 'delete').
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   The user account performing the operation.
+ *
+ * @return \Drupal\Core\Access\AccessResultInterface
+ *   The access result.
  */
 function penchas_custom_token_node_access(Node $node, $op, AccountInterface $account) {
 
@@ -207,8 +217,5 @@ function user_has_permission(AccountInterface $account, $permission) {
   return $account->hasPermission($permission);
 }
 
-// function penchas_custom_token_get_pending_moderation_node()
-// {
-  
-// }
+
 

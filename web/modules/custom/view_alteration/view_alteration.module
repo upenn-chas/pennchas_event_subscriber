@@ -23,6 +23,7 @@ function view_alteration_views_post_execute(ViewExecutable $view)
         }
     }
 }
+
 /**
  * Implements hook_page_attachments().
  */
@@ -49,8 +50,7 @@ function view_alteration_theme()
 
 
 /**
- * Add the logged in user allowed groups in the query.
- *  * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
+ * Alter the Views query to apply group filters.
  * Implements hook_views_query_alter().
  */
 function view_alteration_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
@@ -74,6 +74,14 @@ function view_alteration_views_query_alter(ViewExecutable $view, QueryPluginBase
     }
 }
 
+/**
+ * Apply group filters to the Views query based on the view ID.
+ *
+ * @param Sql $query
+ *   The Views SQL query object.
+ * @param string $viewId
+ *   The ID of the view being altered.
+ */
 function view_alteration_apply_group_filter_to_query(Sql &$query, string $viewId)
 {
     $fields = view_alteration_get_group_fields($viewId);
@@ -85,6 +93,15 @@ function view_alteration_apply_group_filter_to_query(Sql &$query, string $viewId
     }
 }
 
+/**
+ * Get the group fields based on the view ID.
+ *
+ * @param string $viewId
+ *   The ID of the view.
+ *
+ * @return array
+ *   An array of group fields to be used in the query.
+ */
 function view_alteration_get_group_fields(string $viewId)
 {
     return  match ($viewId) {
