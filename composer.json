@@ -1,0 +1,9 @@
+{
+  "name": "upenn/pennchas-pennchas_event_subscriber",
+  "description": "Custom module pennchas_event_subscriber extracted from site.",
+  "type": "drupal-module",
+  "license": "MIT",
+  "autoload": { "psr-4": { "Drupal\\pennchas_event_subscriber\\": "src/" } },
+  "require": { "drupal/core": "^10" },
+  "extra": { "drupal": { "type": "module" } }
+}
