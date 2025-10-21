@@ -1,8 +1,8 @@
-name: "Pennchas Event Subscriber"
-description: "Provides the subscriber for events."
+name: Pennchas Event Subscriber
+description: Provides the subscriber for events.
 type: module
 core_version_requirement: ^10
 version: 1.0
 package: Custom
 dependencies:
-  - drupal:node
+  - node
