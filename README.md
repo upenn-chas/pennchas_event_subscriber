@@ -12,7 +12,7 @@ Why it exists: To keep site behavior modular and maintainable by reacting to fra
 
 # further details
 
-1) DeletedNodeAccessSubscriber
+## 1) DeletedNodeAccessSubscriber
 
 Purpose: Hide nodes in a “deleted” moderation state from most users by returning a 404.
 When it runs: On every request (KernelEvents::REQUEST).
@@ -46,7 +46,7 @@ Inject RouteMatchInterface (or CurrentRouteMatch), AccountInterface, and maybe S
 
 Consider an AccessCheck (custom route access service) or entity access handler override instead of a global request subscriber.
 
-2) LoadEventsSubscriber
+## 2) LoadEventsSubscriber
 
 Purpose: Force anonymous users who hit a 403 page or a “user/{id}” profile path to go to a custom login URL that preserves their destination.
 When it runs: On every response (KernelEvents::RESPONSE) with priority 28.
@@ -76,7 +76,7 @@ Inject CurrentRouteMatch, AccountProxyInterface, PathCurrent, and build the logi
 
 Ensure you don’t redirect if already on the login route (avoid loops).
 
-3) NoCacheForPageSubscriber
+## 3) NoCacheForPageSubscriber
 
 Purpose: Disable HTTP caching for the /dashboard path.
 When it runs: On response (kernel.response).
